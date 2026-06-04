@@ -1,7 +1,8 @@
+import { SITE_URL } from '@/lib/site'
+
 // Site-wide Organization + LocalBusiness + WebSite schema
 // Rendered once in the root layout's <head>.
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export default function OrganizationJsonLd() {
   const orgSchema = {

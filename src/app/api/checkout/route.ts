@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       }),
     )
 
-    const origin = req.headers.get('origin') || 'https://cleanwatersupply-rose.vercel.app'
+    const origin = req.headers.get('origin') || 'https://cleanwatersupply.dk'
 
     // NOTE: by NOT passing payment_method_types or automatic_payment_methods,
     // Stripe Checkout will show every payment method enabled for your account

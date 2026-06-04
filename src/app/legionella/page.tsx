@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import LegionellaClient from './LegionellaClient'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import ArticleJsonLd from '@/components/seo/ArticleJsonLd'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 const URL = `${SITE_URL}/legionella`
 
 export const metadata: Metadata = {

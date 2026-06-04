@@ -9,7 +9,7 @@ import ProductJsonLd from '@/components/seo/ProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
+import { SITE_URL } from '@/lib/site'
 
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 

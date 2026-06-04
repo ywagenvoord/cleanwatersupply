@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import HomeClient from './HomeClient'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Legionella-filtre & vandhygiejne i Danmark',

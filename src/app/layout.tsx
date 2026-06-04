@@ -4,8 +4,8 @@ import Providers from '@/components/Providers'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

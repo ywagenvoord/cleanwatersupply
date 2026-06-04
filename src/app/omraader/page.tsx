@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import OmraaderClient from './OmraaderClient'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 const URL = `${SITE_URL}/omraader`
 
 export const metadata: Metadata = {

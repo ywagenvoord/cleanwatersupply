@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Mail, Phone, ArrowLeft } from 'lucide-react'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Privatlivspolitik – Persondatabehandling',

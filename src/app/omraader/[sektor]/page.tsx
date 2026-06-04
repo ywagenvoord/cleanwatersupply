@@ -5,7 +5,7 @@ import { sektorer, getSektorById } from '@/lib/sektorer'
 import { notFound } from 'next/navigation'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
+import { SITE_URL } from '@/lib/site'
 
 export const dynamicParams = false
 

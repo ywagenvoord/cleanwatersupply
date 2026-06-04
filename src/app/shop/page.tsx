@@ -7,8 +7,8 @@ import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import { PRODUCTS, type Product } from '@/lib/products'
 import ShopClient from './ShopClient'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const revalidate = 60 // ISR: refresh every 60 seconds
 

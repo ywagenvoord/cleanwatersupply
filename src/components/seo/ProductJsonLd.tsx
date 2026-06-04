@@ -1,6 +1,6 @@
 import type { Product } from '@/lib/products'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export default function ProductJsonLd({ product }: { product: Product }) {
   const url = `${SITE_URL}/shop/${product.id}`

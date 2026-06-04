@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import FordeleClient from './FordeleClient'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 const URL = `${SITE_URL}/fordele`
 
 export const metadata: Metadata = {

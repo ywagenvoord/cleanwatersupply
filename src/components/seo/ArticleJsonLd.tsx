@@ -1,3 +1,5 @@
+import { SITE_URL } from '@/lib/site'
+
 type ArticleProps = {
   url:           string
   headline:      string
@@ -9,7 +11,6 @@ type ArticleProps = {
   about?:        string[]  // entities the article is about
 }
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export default function ArticleJsonLd(props: ArticleProps) {
   const schema = {

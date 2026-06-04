@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import BusinessClient from './BusinessClient'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const metadata: Metadata = {
   title: 'B2B vandbehandling – Hospitaler, hoteller, fødevareindustri',

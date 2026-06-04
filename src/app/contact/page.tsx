@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import ContactClient from './ContactClient'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export const metadata: Metadata = {
   title: 'Kontakt – Få et tilbud på vandbehandling',

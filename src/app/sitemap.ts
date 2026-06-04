@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { PRODUCTS } from '@/lib/products'
 import { sektorer } from '@/lib/sektorer'
+import { SITE_URL } from '@/lib/site'
 
-const SITE_URL = 'https://cleanwatersupply-rose.vercel.app'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
