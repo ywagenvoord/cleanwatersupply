@@ -2,10 +2,15 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import WaterBackground from '@/components/WaterBackground'
+import ImageCarousel from '@/components/ImageCarousel'
+import { useRouter } from 'next/navigation'
+import { writeAudience } from '@/lib/useAudience'
 import {
   ArrowRight, CheckCircle, Droplets, Filter, Zap, Award,
   Wrench, Leaf, ShieldCheck, Star, Users, Clock, Building2,
-  Home, ChevronRight, Quote
+  Home, ChevronRight, Quote, Truck,
+  Tractor, HeartPulse, Thermometer, Wind
 } from 'lucide-react'
 import LegionellaSlider from '@/components/LegionellaSlider'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -20,6 +25,12 @@ const WHY_ICONS = [Award, Wrench, Leaf, ShieldCheck, Zap, CheckCircle]
 
 export default function HomePage() {
   const { t } = useLanguage()
+  const router = useRouter()
+
+  const chooseAudience = (value: 'privat' | 'erhverv') => {
+    writeAudience(value)
+    router.push(value === 'erhverv' ? '/erhverv' : '/private')
+  }
 
   const solutions = [
     { key: 'filtration', color: 'blue', href: '/solutions#filtration' },
@@ -32,33 +43,19 @@ export default function HomePage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[540px] flex items-center overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
-          {/* YouTube background video – covers full hero, no controls */}
-          <iframe
-            src="https://www.youtube.com/embed/R-HfHwUlZbc?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&playlist=R-HfHwUlZbc&start=3"
-            allow="autoplay; fullscreen"
-            style={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              width: '100vw',
-              height: '56.25vw',   /* 16:9 */
-              minHeight: '100%',
-              minWidth: '177.78vh', /* 100/56.25*100 */
-              transform: 'translate(-50%, -50%)',
-              border: 'none',
-              pointerEvents: 'none',
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-950/85 via-blue-900/75 to-blue-800/65" />
+          {/* Animated water background (WebGL) */}
+          <WaterBackground />
+          {/* Overlay: darker on the left for headline legibility, water visible on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/70 via-[#0a2540]/30 to-transparent" />
           {/* Decorative circles */}
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 w-full">
-          <div className="max-w-3xl">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 w-full">
+          <div className="max-w-2xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-2 rounded-full mb-8 uppercase tracking-widest">
               <Droplets className="w-3.5 h-3.5 text-emerald-400" />
@@ -76,7 +73,7 @@ export default function HomePage() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full text-base font-bold transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
@@ -93,19 +90,24 @@ export default function HomePage() {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-10">
+            <div className="flex flex-wrap gap-10 mb-12">
               {[
-                { value: t('hero.stat1Value'), label: t('hero.stat1Label') },
-                { value: t('hero.stat2Value'), label: t('hero.stat2Label') },
-                { value: t('hero.stat3Value'), label: t('hero.stat3Label') },
-              ].map((stat, i) => (
-                <div key={i} className="flex flex-col">
-                  <span className="text-3xl md:text-4xl font-extrabold text-white">{stat.value}</span>
-                  <span className="text-sm text-blue-200 mt-1">{stat.label}</span>
+                { value: t('hero.stat1Value'), label: t('hero.stat1Label'), Icon: Users },
+                { value: t('hero.stat3Value'), label: t('hero.stat3Label'), Icon: Truck },
+              ].map(({ value, label, Icon }, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                    <Icon className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-3xl md:text-4xl font-extrabold text-white">{value}</span>
+                    <span className="text-sm text-blue-200 mt-1">{label}</span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
+
         </div>
 
         {/* Scroll indicator */}
@@ -115,17 +117,92 @@ export default function HomePage() {
       </section>
 
       {/* ─── TRUST TICKER ──────────────────────────────────────── */}
-      <section className="bg-gray-950 py-4 overflow-hidden">
+      <section className="relative z-20 -mt-12">
+        <div className="overflow-hidden border-y border-white/30 bg-white/10 backdrop-blur-sm py-3">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, round) =>
-            ['CE Certificeret', 'NSF Godkendt', 'ISO 9001', 'Drikkevandsgodkendt', 'Energimærket A+',
-             'Legionella specialist', '5 års garanti', 'Landsdækkende service'].map((cert) => (
-              <span key={`${round}-${cert}`} className="inline-flex items-center gap-2.5 text-gray-400 text-xs font-semibold uppercase tracking-widest mx-8">
+            ['Legionella bekæmpelse', 'Bakteriefrit vand', 'Miljøvenlig løsning',
+             'Nem montering', 'Filter løsninger', 'Blødgøringsanlæg',
+             'ISO 9001:2015', 'ISO 13485:2016', 'ISO 140010:2015',
+             'Løsninger til erhverv', 'Løsninger til private'].map((cert) => (
+              <span key={`${round}-${cert}`} className="inline-flex items-center gap-2.5 text-white text-sm font-bold uppercase tracking-widest mx-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                 {cert}
               </span>
             ))
           )}
+        </div>
+        </div>
+      </section>
+
+      {/* ─── JEG SHOPPER SOM ───────────────────────────────────── */}
+      <section className="py-20 bg-gradient-to-b from-white to-blue-50/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="section-badge">Privat eller erhverv?</span>
+          <h2 className="section-heading">Vi tilpasser os efter dig</h2>
+          <p className="section-subheading">
+            Om du handler privat eller erhverv, tilpasser vi vores produkter, priser og rådgivning,
+            så du får præcis det, der passer til dine behov. Vælg hvad der passer til dig:
+          </p>
+          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto mt-12">
+            {[
+              { value: 'privat' as const, Icon: Home, title: 'Privat', desc: 'Løsninger til dit hjem og din familie', gradient: 'from-[#0a6cff] to-[#0044c4]' },
+              { value: 'erhverv' as const, Icon: Building2, title: 'Erhverv', desc: 'Løsninger til din virksomhed', gradient: 'from-[#0c3a73] to-[#0a2540]' },
+            ].map(({ value, Icon, title, desc, gradient }, i) => (
+              <ScrollReveal key={value} direction="up" scale delay={i * 130} className="h-full">
+                <button
+                  onClick={() => chooseAudience(value)}
+                  className={`group relative w-full h-full overflow-hidden flex flex-col items-center text-center gap-4 rounded-3xl bg-gradient-to-br ${gradient} p-8 text-white shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300`}
+                >
+                  <span className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Icon className="w-8 h-8" />
+                  </span>
+                  <div>
+                    <p className="text-2xl font-extrabold">{title}</p>
+                    <p className="text-sm text-white/80 mt-1">{desc}</p>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-bold text-white">
+                    Vælg <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </button>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── OMRÅDER (AREA SELECTOR) ───────────────────────────── */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="section-badge">Områder</span>
+            <h2 className="section-heading">Find løsningen til dit område</h2>
+            <p className="section-subheading">Vi leverer vandhygiejne til mange forskellige miljøer. Vælg dit område og se, hvad vi kan gøre for jer.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+            {[
+              { label: 'Landbrug', slug: 'landbruget', img: '/images/area-landbruget.jpg' },
+              { label: 'Svømmehaller', slug: 'svoemmehaller', img: '/images/area-svoemmehaller.jpg' },
+              { label: 'Hospitaler', slug: 'hospitaler', img: '/images/area-hospitaler.jpg' },
+              { label: 'Hoteller', slug: 'hoteller', img: '/images/area-hoteller.jpg' },
+              { label: 'Campingpladser', slug: 'campingpladser', img: '/images/area-campingpladser.jpg' },
+              { label: 'Det private hjem', slug: 'det-private-hjem', img: '/images/area-det-private-hjem.jpg' },
+            ].map(({ label, slug, img }) => (
+              <Link
+                key={slug}
+                href={`/omraader/${slug}`}
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
+              >
+                <img
+                  src={img}
+                  alt={label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/35 group-hover:bg-black/45 transition-colors" />
+                <span className="absolute inset-0 flex items-center justify-center text-center px-3 text-white font-extrabold text-xl md:text-2xl tracking-wide uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">{label}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -158,11 +235,10 @@ export default function HomePage() {
 
             <div className="relative pb-10 lg:pb-0">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="/images/team-owner.jpg"
-                  alt="Clean Water Supply"
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=800&q=80&fit=crop' }}
+                <ImageCarousel
+                  images={[
+                    { src: '/images/kenneth-kontor.jpg', alt: 'Kenneth på kontoret – Clean Water Supply' },
+                  ]}
                 />
               </div>
               {/* Floating badge */}
@@ -177,8 +253,6 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              {/* Green accent */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-emerald-400/20 rounded-full blur-xl" />
             </div>
           </div>
         </div>
@@ -239,6 +313,129 @@ export default function HomePage() {
               {t('common.seeAllSolutions')}
               <ArrowRight className="w-4 h-4" />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ECA-VAND ──────────────────────────────────────────── */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div>
+              <span className="section-badge">ECA-vand</span>
+              <h2 className="section-heading mb-6">Elektrolyseret vand – effektiv og skånsom desinfektion</h2>
+              <p className="text-gray-600 leading-relaxed mb-6 text-base">
+                ECA-vand laves af blot vand, salt og strøm. Processen skaber to nyttige væsker:
+                et stærkt desinfektionsmiddel og et skånsomt rengøringsmiddel – helt uden skadelige kemikalier.
+              </p>
+              <div className="space-y-4 mb-8">
+                <div className="rounded-2xl bg-white border border-gray-100 p-5">
+                  <p className="font-bold text-gray-900 mb-1">Anolyt – desinfektion</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Dræber hurtigt bakterier, vira, svampe og sporer. Op til 80 % mere effektivt end traditionelt klor.</p>
+                </div>
+                <div className="rounded-2xl bg-white border border-gray-100 p-5">
+                  <p className="font-bold text-gray-900 mb-1">Katolyt – rengøring</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">Opløser effektivt fedt og snavs uden at skumme – sikkert og enkelt at bruge.</p>
+                </div>
+              </div>
+              <Link href="/eca-vand" className="btn-primary">
+                Læs mere om ECA-vand
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="space-y-5">
+              <p className="text-sm font-semibold text-blue-700 uppercase tracking-widest">3 gode grunde til at vælge anlægget</p>
+              {[
+                { Icon: ShieldCheck, title: 'Fremtidssikret løsning', body: 'Salt, vand og elektricitet er de eneste ingredienser, ECA-vand kræver for at blive produceret.' },
+                { Icon: Leaf, title: 'Kemikaliefri', body: 'Der kræves ingen værnemidler ved håndtering eller opbevaring – sikkert for mennesker og miljø.' },
+                { Icon: Zap, title: 'Omkostningseffektiv', body: 'Anlægget renser drikkevandssystemer, foderanlæg og overflader – alt på én gang.' },
+              ].map(({ Icon, title, body }) => (
+                <div key={title} className="flex items-start gap-4 rounded-2xl bg-white border border-gray-100 p-5 shadow-sm">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <p className="font-bold text-gray-900 mb-1">{title}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── LEGIONELLA & BIOFILM ──────────────────────────────── */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="section-badge">Vidste du det?</span>
+            <h2 className="section-heading">Legionella – en alvorlig trussel</h2>
+            <p className="section-subheading">Legionella er en bakterie, der kan give alvorlige luftvejsinfektioner. Den trives særligt under disse forhold:</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {[
+              { Icon: Thermometer, title: '30–40 °C', body: 'Bakterien trives i stillestående vand mellem 30 og 40 grader – præcis den temperatur, mange foretrækker i bad.' },
+              { Icon: Wind, title: 'Spredes i luften', body: 'Den spredes gennem små vanddråber i luften, fx fra brusere, og kan indåndes og give infektioner.' },
+              { Icon: Droplets, title: 'Rør & tanke', body: 'Den vokser hurtigt i rør og tanke, hvor vandet står stille og ikke skylles regelmæssigt.' },
+            ].map(({ Icon, title, body }) => (
+              <div key={title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-3xl bg-[#0a2540] text-white p-8 md:p-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <span className="inline-block text-xs font-semibold text-emerald-400 uppercase tracking-widest mb-3">Biofilm &amp; bakteriedannelse</span>
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-4">Bakterierne gemmer sig i biofilmen</h3>
+                <p className="text-blue-100/85 leading-relaxed">
+                  Biofilm er en slimet belægning, der sætter sig på overflader i vandinstallationer og danner et beskyttende lag,
+                  hvor bakterier kan trives. Det kan give dårlig lugt og smag, korrosion og bakterier, der er modstandsdygtige
+                  over for almindelig rengøring. ECA-vand opløser biofilmen og dræber bakterierne – uden skadelige kemikalier.
+                </p>
+              </div>
+              <div className="lg:text-right">
+                <Link href="/shop" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-7 py-4 rounded-full text-base font-bold transition-colors">
+                  Se vores produkter
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FN'S VERDENSMÅL ───────────────────────────────────── */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="section-badge">Bæredygtighed</span>
+            <h2 className="section-heading">Vi understøtter FN&apos;s Verdensmål</h2>
+            <p className="section-subheading">Gennem innovative og bæredygtige løsninger til sikker vandbehandling i kritiske miljøer bidrager vi til en sundere fremtid.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre bakteriefrit vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
+              { Icon: Droplets, title: 'Rent vand og sanitet', body: 'Vi forbedrer vandkvaliteten i installationer, hvor bakteriekontrol er afgørende, med dokumenterbare løsninger.' },
+              { Icon: Building2, title: 'Industri & innovation', body: 'Vores produkter og anlæg styrker den tekniske infrastruktur og en mere fremtidssikret vandbehandling.' },
+              { Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores bæredygtige løsninger understøtter en ansvarlig og ressourceeffektiv tilgang til vandbehandling.' },
+              { Icon: Tractor, title: 'Livet på landet', body: 'Vi begrænser bakteriespredning i landbruget og styrker sundere dyre- og fødevaresystemer.' },
+            ].map(({ Icon, title, body }) => (
+              <div key={title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <h3 className="text-base font-bold text-gray-900 mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

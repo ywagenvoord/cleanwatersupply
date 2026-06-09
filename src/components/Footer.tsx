@@ -20,8 +20,8 @@ export default function Footer() {
   return (
     <footer className="bg-[#0a2540] text-gray-400" role="contentinfo">
       {/* Top section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
 
           {/* Brand column */}
           <div className="lg:col-span-2">
@@ -29,28 +29,27 @@ export default function Footer() {
               <img
                 src="/images/logo.png"
                 alt="Clean Water Supply – Danmarks specialist i vandhygiejne"
-                className="h-14 w-auto"
+                className="h-20 w-auto"
                 width={180}
                 height={56}
                 loading="lazy"
                 decoding="async"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none'
-                  const fb = e.currentTarget.nextElementSibling as HTMLElement | null
-                  if (fb) fb.style.display = 'block'
-                }}
               />
-              <span className="hidden text-white font-extrabold text-lg">CLEAN WATER SUPPLY</span>
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 mb-5 max-w-md">
-              Danmarks specialist i Legionella-filtre, blødgøringsanlæg og ECA-vand.
-              Medicinsk certificerede løsninger til hospitaler, hoteller og private hjem.
-            </p>
-            <p className="text-sm font-semibold text-green-400 italic mb-5">
+            <p className="text-sm font-semibold text-green-400 italic mb-3">
               ECHA Article 95 godkendt · 7 log retention · Made in EU
             </p>
-            <address className="not-italic">
-              <ul className="space-y-3 text-sm">
+            <a
+              href="https://www.aqua-free.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-green-400 transition-colors mb-3"
+            >
+              Autoriseret forhandler af Aqua Free-produkter
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+            <address className="not-italic mt-3">
+              <ul className="space-y-2.5 text-sm">
                 <li className="flex items-start gap-3">
                   <Phone className="w-4 h-4 text-green-400 mt-0.5 shrink-0" aria-hidden="true" />
                   <a href="tel:+4551215800" className="text-white hover:text-green-400 transition-colors">
@@ -118,7 +117,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: '/about',     label: 'Om os' },
-                { href: '/business',  label: 'Erhverv (B2B)' },
+                { href: '/business',  label: 'Erhverv' },
                 { href: '/contact',   label: 'Kontakt' },
               ].map((link) => (
                 <li key={link.href}>
@@ -126,6 +125,25 @@ export default function Footer() {
                     <ArrowRight className="w-3 h-3 text-green-500 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Partners */}
+          <nav aria-label="Samarbejdspartnere">
+            <h2 className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Samarbejdspartnere</h2>
+            <ul className="space-y-3">
+              {[
+                { name: 'JVT', url: 'https://www.jvt.dk' },
+                { name: 'Aqua Free', url: 'https://www.aqua-free.com' },
+                { name: 'Kirkmayer', url: 'https://www.kirkmayer.com' },
+              ].map((p) => (
+                <li key={p.name}>
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors flex items-center gap-1.5 group">
+                    <ArrowRight className="w-3 h-3 text-green-500 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                    {p.name}
+                  </a>
                 </li>
               ))}
             </ul>

@@ -3,6 +3,7 @@ import './globals.css'
 import Providers from '@/components/Providers'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
+import AudienceModal from '@/components/AudienceModal'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
 
@@ -119,6 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </div>
           <Footer />
+          <AudienceModal />
         </Providers>
       </body>
     </html>
