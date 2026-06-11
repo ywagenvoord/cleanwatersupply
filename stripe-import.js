@@ -9,7 +9,9 @@
  *   1. Hent din Stripe Secret Key:
  *        Stripe Dashboard → Developers → API keys → Secret key (sk_live_…)
  *
- *   2. Indsæt nøglen nedenfor (linje 21).
+ *   2. Sæt nøglen som miljøvariabel (commit ALDRIG nøglen til Git):
+ *        macOS / Linux:   export STRIPE_SECRET_KEY=sk_live_din_nøgle
+ *        Windows (PowerShell):  $env:STRIPE_SECRET_KEY = "sk_live_din_nøgle"
  *
  *   3. Installér Stripe-biblioteket (kun første gang):
  *        npm install stripe
@@ -25,7 +27,12 @@ const Stripe = require('stripe')
 
 // ─── CONFIGURATION ───────────────────────────────────────────────────────────
 
-const STRIPE_SECRET_KEY = 'sk_live_YOUR_KEY_HERE'  // ← indsæt din nøgle her
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY  // ← sættes som miljøvariabel, ikke i koden
+
+if (!STRIPE_SECRET_KEY) {
+  console.error('Fejl: miljøvariablen STRIPE_SECRET_KEY er ikke sat. Se instruktionerne øverst i filen.')
+  process.exit(1)
+}
 
 const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2024-04-10' })
 
