@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, type Product } from '@/lib/products'
-import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Filter, Waves, ArrowRight, Phone } from 'lucide-react'
+import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
 import BuyBox from './BuyBox'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
@@ -212,6 +212,36 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   </span>
                 </div>
               )}
+
+              {/* Fordele ved blødt vand – udfylder venstre kolonne (kun blødgøringsanlæg) */}
+              {product.category === 'blosgoringsanlaeg' && (
+                <div className="mt-6 rounded-3xl border border-gray-100 bg-gray-50 p-6">
+                  <h2 className="text-lg font-extrabold text-gray-900 mb-1">Derfor blødt vand</h2>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-5">
+                    Hårdt, kalkholdigt vand slider på dit hjem – og på dig. Anlægget fjerner kalken via ionbytning, så du får blødt vand i hele huset. Det mærker du hver dag:
+                  </p>
+                  <ul className="space-y-4">
+                    {[
+                      { Icon: Sparkles, title: 'Mindre kalk & rengøring', body: 'Slut med kalkrande på fliser, glas og armaturer – mindre tid og færre kemikalier.' },
+                      { Icon: Droplets, title: 'Mindre sæbe & produkt', body: 'Blødt vand skummer bedre, så du bruger markant mindre sæbe, shampoo og vaskemiddel.' },
+                      { Icon: Heart, title: 'Blødere hud & hår', body: 'Uden kalk føles huden mindre tør, og håret bliver blødere og lettere at rede.' },
+                      { Icon: ShieldCheck, title: 'Beskytter installationer', body: 'Mindre kalk i rør, varmtvandsbeholder og hvidevarer forlænger levetiden og sparer reparationer.' },
+                      { Icon: Zap, title: 'Lavere energiforbrug', body: 'Kalkfri varmelegemer varmer vandet mere effektivt – det sænker dine regninger.' },
+                      { Icon: Shirt, title: 'Blødere tøj', body: 'Tøj vasket i blødt vand bliver blødere og holder bedre på farverne.' },
+                    ].map(({ Icon, title, body }) => (
+                      <li key={title} className="flex gap-3">
+                        <span className="w-9 h-9 rounded-lg bg-white text-blue-700 flex items-center justify-center shrink-0 shadow-sm">
+                          <Icon className="w-5 h-5" />
+                        </span>
+                        <div>
+                          <p className="text-sm font-bold text-gray-900">{title}</p>
+                          <p className="text-xs text-gray-600 leading-relaxed">{body}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* RIGHT: Info + buy */}
@@ -327,6 +357,98 @@ export default async function ProductDetailPage({ params }: { params: { productI
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-extrabold text-gray-900 mb-5">Om produktet</h2>
             <p className="text-gray-600 leading-relaxed text-[15px]">{product.longDescription}</p>
+          </div>
+        </section>
+      )}
+
+      {/* ─── STANDARD INSTALLATION (kun blødgøringsanlæg) ─────────── */}
+      {product.category === 'blosgoringsanlaeg' && (
+        <section className="py-16 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+
+              {/* Header */}
+              <div className="bg-[#0a2540] px-8 py-7 text-white">
+                <div className="flex items-center gap-2 text-green-300 text-xs font-bold uppercase tracking-widest mb-2">
+                  <Wrench className="w-4 h-4" /> Tilkøb
+                </div>
+                <h2 className="text-2xl font-extrabold">Standard installation af kalkanlæg</h2>
+                <p className="text-white/70 text-[15px] mt-2 max-w-2xl">
+                  Vælg vores standard installation, så sørger vi for en komplet og professionel montering af dit nye anlæg – korrekt installeret og klar til brug fra dag ét.
+                </p>
+                <p className="text-green-300 text-xs font-semibold mt-3">
+                  Monteringen tilbydes kun i kombination med køb af et af vores kalkanlæg.
+                </p>
+              </div>
+
+              <div className="p-8 grid md:grid-cols-2 gap-8">
+                {/* Inkluderet */}
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-4">Inkluderet i installationen</h3>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Indskæring og tilslutning på hovedvandledningen (koldt vand)',
+                      'Montering og opsætning på gulv, hylde eller plan overflade',
+                      'Tilslutning med medfølgende slanger (op til 1 meter)',
+                      'Tilslutning til eksisterende afløb',
+                      'Måling af vandets hårdhed og korrekt indstilling efter lokale forhold',
+                      'Kontrolmåling af vandet før og efter installation',
+                      'Påfyldning af første omgang regenereringssalt',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
+                        <span className="text-sm text-gray-700 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Forudsætninger + ekstra tilkøb */}
+                <div>
+                  <h3 className="font-bold text-gray-900 mb-4">Forudsætninger</h3>
+                  <ul className="space-y-2.5 mb-7">
+                    {[
+                      'Adressen ligger inden for 50 km fra Horsens (ellers kørselstillæg)',
+                      'Plads til anlægget på gulv eller hylde',
+                      'Velfungerende afløb maks. 1 meter fra anlægget',
+                      'Slangerne er 1 meter – længere afstand kræver et længere slangesæt',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <ChevronRight className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+                        <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <h3 className="font-bold text-gray-900 mb-4">Ekstra tilkøb</h3>
+                  <ul className="space-y-2.5">
+                    {[
+                      'Vægbeslag til vægmontering',
+                      '2 meter tilslutningsslangesæt',
+                      'Ekstra kørsel ud over 50 km fra Horsens',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#3aad4a] shrink-0 mt-2" />
+                        <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="px-8 pb-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-blue-50 rounded-2xl p-5">
+                  <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
+                    I tvivl om forholdene hos jer? Vi rådgiver gerne og finder den rette løsning. Kontakt os for pris og book installation sammen med dit anlæg.
+                  </p>
+                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors shrink-0">
+                    Kontakt os
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       )}

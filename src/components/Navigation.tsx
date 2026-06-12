@@ -26,14 +26,41 @@ export default function Navigation() {
     router.push(value === 'erhverv' ? '/erhverv' : '/private')
   }
 
-  const navLinks = [
+  const omraaderChildren = [
+    { href: '/omraader/hoteller', label: 'Hoteller' },
+    { href: '/omraader/svoemmehaller', label: 'Svømmehaller' },
+    { href: '/omraader/hospitaler', label: 'Hospitaler' },
+    { href: '/omraader/campingpladser', label: 'Campingpladser' },
+    { href: '/omraader/foedevare', label: 'Fødevareindustri' },
+    { href: '/omraader/landbruget', label: 'Landbrug' },
+    { href: '/omraader/det-private-hjem', label: 'Det private hjem' },
+  ]
+
+  type NavLink = { href: string; label: string; children?: { href: string; label: string }[] }
+
+  // Erhverv (og standard): fuld, teknisk menu med Områder-dropdown
+  const erhvervLinks: NavLink[] = [
     { href: '/solutions', label: t('nav.solutions') },
     { href: '/legionella', label: 'Legionella' },
     { href: '/eca-vand', label: 'ECA-VAND' },
-    { href: '/omraader', label: 'Områder' },
+    { href: '/omraader', label: 'Områder', children: omraaderChildren },
     { href: '/about', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
+
+  // Privat: forenklet, hjem-fokuseret menu
+  const privatLinks: NavLink[] = [
+    { href: '/solutions', label: t('nav.solutions') },
+    { href: '/shop', label: t('nav.shop') },
+    { href: '/legionella', label: 'Legionella' },
+    { href: '/about', label: t('nav.about') },
+    { href: '/contact', label: t('nav.contact') },
+  ]
+
+  const navLinks: NavLink[] = audience === 'privat' ? privatLinks : erhvervLinks
+
+  // Hjem/logo: privat → den private forside; erhverv (og standard) → den originale forside
+  const homeHref = audience === 'privat' ? '/private' : '/'
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a2540] shadow-lg" aria-label="Hovednavigation">
@@ -41,7 +68,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-24">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center" aria-label="Clean Water Supply – tilbage til forsiden">
+          <Link href={homeHref} className="flex items-center" aria-label="Clean Water Supply – tilbage til forsiden">
             <img
               src="/images/logo.png"
               alt="Clean Water Supply – Danmarks specialist i Legionella-filtre"
@@ -54,19 +81,53 @@ export default function Navigation() {
 
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium uppercase tracking-wide transition-colors ${
-                  pathname === link.href
-                    ? 'text-white bg-white/15'
-                    : 'text-white/75 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const active = pathname === link.href || (!!link.children && pathname.startsWith(link.href))
+              const linkClass = `px-4 py-2 rounded-lg text-sm font-medium uppercase tracking-wide transition-colors ${
+                active ? 'text-white bg-white/15' : 'text-white/75 hover:text-white hover:bg-white/10'
+              }`
+
+              if (link.children) {
+                return (
+                  <div key={link.href} className="relative group">
+                    <Link href={link.href} className={`${linkClass} inline-flex items-center gap-1`}>
+                      {link.label}
+                      <ChevronDown className="w-3 h-3 transition-transform group-hover:rotate-180" />
+                    </Link>
+                    {/* Hover dropdown */}
+                    <div className="absolute left-0 top-full pt-2 opacity-0 invisible translate-y-1 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-50">
+                      <div className="w-56 bg-[#0a2540] border border-white/15 rounded-xl shadow-xl overflow-hidden py-1">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={`block px-4 py-2.5 text-sm transition-colors ${
+                              pathname === child.href
+                                ? 'text-green-400 font-semibold bg-white/10'
+                                : 'text-white/75 hover:bg-white/10 hover:text-white'
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                        <Link
+                          href={link.href}
+                          className="block px-4 py-2.5 text-sm font-semibold text-green-400 hover:bg-white/10 border-t border-white/10"
+                        >
+                          Alle områder →
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
+
+              return (
+                <Link key={link.href} href={link.href} className={linkClass}>
+                  {link.label}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Right side */}

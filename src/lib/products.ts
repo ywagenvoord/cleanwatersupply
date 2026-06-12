@@ -41,6 +41,9 @@ export type Product = {
 
 const CWS = 'https://cleanwatersupply.dk/wp-content/uploads'
 
+// Pris for standard montering af blødgøringsanlæg (tillæg, inkl. moms). Kan ændres frit.
+export const INSTALLATION_PRICE = 2995
+
 export const PRODUCTS: Product[] = [
 
   /* ═══════════════════════════════════════════════════════ FILTRE */
@@ -56,7 +59,7 @@ export const PRODUCTS: Product[] = [
     price: 499,
     imgSrc:   '/images/product-tr5.jpg',
     imgLarge: '/images/product-tr5.jpg',
-    description: 'Engangsfilter til håndvaskarmatur – medicinsk godkendt med bruserudløb, giver sikker beskyttelse i op til 62 dage.',
+    description: 'Medicinsk godkendt engangsfilter til håndvask med bruserudløb. Beskytter i op til 62 dage.',
     longDescription: 'Baclyser® neo TR (2M) er et medicinsk godkendt point-of-use vandhanefilter med blomsterformet bruserudløb. Filteret stopper alle vandbårne bakterier inkl. Legionella og Pseudomonas direkte ved tappen og leverer 62 dages sikker beskyttelse.',
     highlights: ['62 dages levetid', 'Bruserudløb (TR)', 'Medicinsk godkendt'],
     features: [
@@ -92,7 +95,7 @@ export const PRODUCTS: Product[] = [
     price: 550,
     imgSrc:   '/images/product-tr5.jpg',
     imgLarge: '/images/product-tr5.jpg',
-    description: 'Engangsfilter til håndvaskarmatur – medicinsk godkendt med bruserudløb, giver sikker beskyttelse i op til 93 dage.',
+    description: 'Medicinsk godkendt engangsfilter til håndvask med bruserudløb. Beskytter i op til 93 dage.',
     longDescription: 'Baclyser® neo TR (3M) er den længstlevende variant af bruserudløbsfilteret med 93 dages beskyttelse mod Legionella og andre vandbårne bakterier – ideel til professionelle anlæg med kvartalsvis service.',
     highlights: ['93 dages levetid', 'Bruserudløb (TR)', 'Medicinsk godkendt'],
     features: [
@@ -127,7 +130,7 @@ export const PRODUCTS: Product[] = [
     price: 499,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
-    description: 'Engangs-vandfilter til håndvaskarmaturer med laminart udløb, medicinsk udstyr, levetid op til 62 dage.',
+    description: 'Medicinsk engangsfilter til håndvask med laminart udløb. Levetid op til 62 dage.',
     longDescription: 'Baclyser® neo TL (2M) leverer en jævn laminar vandstråle og samtidig sikker filtrering af alle vandbårne bakterier – inkl. Legionella og Pseudomonas. Den medicinske godkendelse og 62 dages levetid gør den ideel til hospitaler og plejehjem.',
     highlights: ['62 dages levetid', 'Laminar udløb (TL)', 'Medicinsk godkendt'],
     features: [
@@ -162,7 +165,7 @@ export const PRODUCTS: Product[] = [
     price: 550,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
-    description: 'Engangs-vandfilter til håndvaskarmaturer med laminart udløb, medicinsk udstyr, levetid op til 93 dage.',
+    description: 'Medicinsk engangsfilter til håndvask med laminart udløb. Levetid op til 93 dage.',
     longDescription: 'Baclyser® neo TL (3M) er den længstlevende variant med 93 dages beskyttelse og laminar vandstråle. Ideel til professionelle anlæg med kvartalsvis service.',
     highlights: ['93 dages levetid', 'Laminar udløb (TL)', 'Medicinsk godkendt'],
     features: [
@@ -196,7 +199,7 @@ export const PRODUCTS: Product[] = [
     price: 899,
     imgSrc:   `${CWS}/2025/10/Hjemmeside-2-300x300.png`,
     imgLarge: `${CWS}/2025/10/Hjemmeside-2.png`,
-    description: 'Brusehoved i chrome med udskiftelig filter. Optimal Legionella-beskyttelse i et elegant, diskret design.',
+    description: 'Brusehoved i krom med udskifteligt filter. Legionella-beskyttelse i et elegant design.',
     longDescription: 'cBlue SC3 forener premium krom brusehoveddesign med en integreret hulfiber-filterpatron. Brusehovedet er æstetisk og passer alle badeværelsesmiljøer, mens den udskiftelige filterpatron sikrer kontinuerlig Legionella-beskyttelse.',
     highlights: ['Krom design', 'Udskifteligt filter', '7 log Legionella-beskyttelse'],
     features: [
@@ -225,33 +228,172 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'brusehoved-filter-acf',
-    name: 'Brusehoved med filter (inkl. børste, svamp & ACF-filter)',
-    tagline: 'Brusehoved med udskifteligt ACF-filter – inkl. børste og svamp',
-    badge: 'Brusefilter',
+    productNr: 'WDBruser',
+    name: 'Brusehoved med vandfilter – komplet (inkl. børste & svamp)',
+    tagline: 'Renser bruservandet for klor, rust & urenheder – komplet sæt med ACF-filter, børste og svamp',
+    badge: 'Brusehoved',
     category: 'filtre',
     featured: true,
-    price: 499,
+    price: 525,
     imgSrc:   '/images/product-kalkbruser.jpg',
     imgLarge: '/images/product-kalkbruser.jpg',
-    description: 'Et brusehoved med filter til dig, der vil reducere urenheder i badevandet uden at installere et centralt filter. Pakken indeholder brusehoved, børste, svamp og et ACF-filter.',
-    longDescription: 'Brusehoved med filterfunktion er en enkel løsning, hvis du vil reducere urenheder, når du bader, men ikke har mulighed for et centralt filter. Brusehovedet kan bruges med flere filtertyper, så du kan vælge den løsning, der passer bedst til dit vand og dine behov. Pakken indeholder et ACF-filter, en børste og en svamp.',
-    highlights: ['Udskifteligt ACF-filter', 'Inkl. børste & svamp', 'Godkendt til drikkevand'],
+    description: 'Brusehoved med vandfilter, der renser bruservandet for klor, rust og urenheder. Komplet sæt med filter, børste og svamp.',
+    longDescription: 'Bruservand indeholder ofte klor, rust, bundfald og tungmetaller. Når du tager et varmt bad, forstøves vandet til en fin damp, du trækker ned i lungerne, samtidig med at hud og hår er i direkte kontakt med vandet – og netop klor og urenheder er med til at tørre hud og hår ud. Dette brusehoved har et indbygget ACF-filter (aktivt kul-fiber), der fjerner klor, rust, bundfald og tungmetaller fra vandet, så badet bliver mildere mod hud og hår og renere at trække vejret i. Du behøver hverken VVS’er eller et centralt filter: brusehovedet skrues direkte på dit eksisterende armatur, og filteret skiftes på under et minut uden værktøj. Vil du have ekstra effekt, kan du skifte til et ACF + C-vitamin-filter (frisk og mildt mod hud og hår) eller et ACF + kalkhæmmer-filter (mindsker kalkens påvirkning). Pakken indeholder brusehoved, et ACF-filter samt børste og svamp, og hele løsningen er godkendt til drikkevand.',
+    highlights: ['Fjerner klor, rust & tungmetaller', 'Mildere mod hud & hår', 'Nem og enkel montering', 'Inkl. børste, svamp & ACF-filter'],
     features: [
-      'Reducerer urenheder i bruservandet',
-      'Kan bruges med flere filtertyper – fx aktivt kul + kalkhæmmer eller aktivt kul + C-vitamin',
-      'Pakke: brusehoved, børste, svamp og ACF-filter',
-      'Nem filterudskiftning',
+      'Renser bruservandet for klor, rust, bundfald og tungmetaller',
+      'Mildere mod hud og hår – og renere damp at trække vejret i',
+      'Skrues direkte på dit armatur – ingen VVS’er eller centralt filter nødvendigt',
+      'Værktøjsfri filterudskiftning på under et minut',
+      'Kan bruges med flere filtertyper – ACF, ACF + C-vitamin eller ACF + kalkhæmmer',
+      'Pakke: brusehoved, ACF-filter, børste og svamp',
       'Godkendt til drikkevand',
     ],
     specs: [
       { label: 'Indhold',    value: 'Brusehoved, børste, svamp, ACF-filter' },
       { label: 'Filtertype', value: 'ACF (aktivt kul-fiber)' },
+      { label: 'Filterlevetid', value: 'Ca. 2-3 måneder' },
       { label: 'Vægt',       value: '1,2 kg' },
     ],
     faqs: [
+      { q: 'Hvorfor skal jeg filtrere bruservandet?', a: 'Når du bader, forstøves det varme vand til en fin damp, du indånder, og hud og hår er i direkte kontakt med vandet. Klor og urenheder kan tørre hud og hår ud. Filteret reducerer klor, rust, bundfald og tungmetaller, så badet føles mildere og renere.' },
+      { q: 'Skal jeg bruge en VVS’er for at montere det?', a: 'Nej. Brusehovedet skrues direkte på dit eksisterende slangearmatur som en helt almindelig håndbruser – ingen VVS’er nødvendig.' },
+      { q: 'Hjælper det mod kalk?', a: 'Det medfølgende ACF-filter renser vandet for klor, rust, bundfald og tungmetaller, men fjerner ikke kalk. Vil du gøre noget ved kalken, kan du skifte til vores ACF + kalkhæmmer-filter, der hjælper med at reducere uønskede stoffer og samtidig mindske kalkens påvirkning. Bemærk, at kalken stadig er i vandet – den sætter sig bare mindre. Skal kalken fjernes helt, kræver det et blødgøringsanlæg.' },
+      { q: 'Hvor ofte skal filteret skiftes?', a: 'ACF-filteret har en levetid på ca. 2-3 måneder. Du skifter det nemt selv uden værktøj.' },
       { q: 'Hvordan skifter jeg filteret?', a: 'Sluk for vandet, skru bunden af brusehovedet, træk det gamle filter ud, monter det nye med pakningen opad, skru bunden på og skyl igennem i 1–2 minutter.' },
     ],
     useCases: ['Private hjem', 'Lejligheder', 'Hvor centralt filter ikke er muligt'],
+  },
+
+  {
+    id: 'brusehoved-til-filter',
+    productNr: 'WDbrusehoved',
+    name: 'Brusehoved med vandfilter',
+    tagline: 'Renser bruservandet for klor, rust & urenheder – inkl. ACF-filter',
+    badge: 'Brusehoved',
+    category: 'filtre',
+    price: 499,
+    imgSrc:   '/images/product-brusehoved-sort.jpg',
+    imgLarge: '/images/product-brusehoved-sort.jpg',
+    description: 'Brusehoved med vandfilter, der renser bruservandet for klor, rust og urenheder. Inkl. filter – uden børste og svamp.',
+    longDescription: 'Et brusehoved med filterfunktion, hvis du vil reducere urenheder, når du bader, men ikke har mulighed for et centralt filter. Brusehovedet kan bruges med flere filtertyper, så du kan vælge den løsning, der passer bedst til dit vand. Udover det medfølgende ACF-filter kan du tilvælge ACF + kalkhæmmer eller ACF + C-vitamin. Pakken indeholder brusehoved og et ACF-filter (uden børste og svamp).',
+    highlights: ['Inkl. brusehoved + ACF-filter', 'Kan bruges med flere filtertyper', 'Godkendt til drikkevand'],
+    features: [
+      'Indeholder brusehoved og ACF-filter',
+      'Kan bruges med flere filtertyper – fx ACF + kalkhæmmer eller ACF + C-vitamin',
+      'Reducerer urenheder i bruservandet',
+      'Nem, værktøjsfri filterudskiftning',
+      'Godkendt til drikkevand',
+    ],
+    specs: [
+      { label: 'Indhold',    value: 'Brusehoved + ACF-filter (uden børste og svamp)' },
+      { label: 'Filtertype', value: 'ACF (aktivt kul-fiber)' },
+      { label: 'Vægt',       value: '0,9 kg' },
+    ],
+    faqs: [
+      { q: 'Følger der et filter med?', a: 'Ja, der følger et ACF-filter med. Denne pakke er uden børste og svamp – vil du have dem med, så vælg "Brusehoved med filter (inkl. børste, svamp & ACF-filter)".' },
+      { q: 'Hvordan skifter jeg filteret?', a: 'Sluk for vandet, skru bunden af brusehovedet (mod uret), træk det gamle filter ud, monter det nye med pakningen opad, skru bunden på håndfast og skyl igennem i 1-2 minutter.' },
+    ],
+    useCases: ['Private hjem', 'Lejligheder', 'Hvor centralt filter ikke er muligt'],
+  },
+
+  {
+    id: 'brusefilter-acf',
+    productNr: 'WDACF',
+    name: 'Udskiftningsfilter til brusehoved',
+    tagline: 'Aktivt kul-filter – renser bruservandet for klor, rust & urenheder',
+    badge: 'Udskiftningsfilter',
+    category: 'filtre',
+    price: 64,
+    imgSrc:   '/images/product-acf-filter.jpg',
+    imgLarge: '/images/product-acf-filter.jpg',
+    description: 'Udskifteligt filter med aktivt kul. Fjerner klor, rust, bundfald og tungmetaller fra bruservandet.',
+    longDescription: 'Et udskifteligt ACF-filter (aktivt kul-fiber) til brusehovedet. Det fjerner effektivt bundfald, rust, rester af klor og tungmetaller fra vandet. Filteret har en levetid på ca. 2-3 måneder, hvorefter det nemt udskiftes med et nyt.',
+    highlights: ['Fjerner klor, rust & tungmetaller', 'Levetid ca. 2-3 måneder', 'Godkendt til drikkevand'],
+    features: [
+      'Fjerner bundfald, rust, klorrester og tungmetaller',
+      'Passer vores brusehoved med filter',
+      'Levetid ca. 2-3 måneder',
+      'Nem, værktøjsfri udskiftning',
+      'Godkendt til drikkevand',
+    ],
+    specs: [
+      { label: 'Filtertype', value: 'ACF (aktivt kul-fiber)' },
+      { label: 'Levetid',    value: 'Ca. 2-3 måneder' },
+      { label: 'Mål',        value: 'Længde 150 mm · Ø 30 mm' },
+      { label: 'Vægt',       value: '0,075 kg' },
+    ],
+    faqs: [
+      { q: 'Hvor ofte skal filteret skiftes?', a: 'Filteret har en levetid på ca. 2-3 måneder. Skift det derefter med et nyt udskiftningsfilter.' },
+      { q: 'Hvordan skifter jeg filteret?', a: 'Sluk for vandet, skru bunden af brusehovedet (mod uret), træk det gamle filter ud, monter det nye med pakningen opad, skru bunden på håndfast og skyl igennem i 1-2 minutter.' },
+    ],
+    useCases: ['Private hjem', 'Lejligheder'],
+  },
+
+  {
+    id: 'brusefilter-acf-vitamin-c',
+    productNr: 'WDACF+C',
+    name: 'Udskiftningsfilter til brusehoved + C-vitamin',
+    tagline: 'Aktivt kul med C-vitamin – ekstra mildt mod hud & hår',
+    badge: 'Udskiftningsfilter',
+    category: 'filtre',
+    price: 69,
+    imgSrc:   '/images/product-acf-vitamin-c.jpg',
+    imgLarge: '/images/product-acf-vitamin-c.jpg',
+    description: 'Udskifteligt filter med aktivt kul + C-vitamin. Renser vandet og føles ekstra mildt mod hud og hår.',
+    longDescription: 'Et udskifteligt ACF-filter (aktivt kul-fiber) tilsat C-vitamin. Det aktive kul fjerner bundfald, rust, klorrester og tungmetaller, mens C-vitaminet (ascorbinsyre) giver en ekstra "frisk" filterløsning, som mange foretrækker til hud og hår. Levetid ca. 2-3 måneder.',
+    highlights: ['Aktivt kul + C-vitamin', 'Frisk – mange foretrækker den til hud & hår', 'Levetid ca. 2-3 måneder'],
+    features: [
+      'Fjerner bundfald, rust, klorrester og tungmetaller',
+      'Tilsat C-vitamin for en ekstra frisk filterløsning',
+      'Mange foretrækker den til hud og hår',
+      'Passer vores brusehoved med filter',
+      'Nem, værktøjsfri udskiftning',
+    ],
+    specs: [
+      { label: 'Filtertype', value: 'ACF + C-vitamin' },
+      { label: 'Levetid',    value: 'Ca. 2-3 måneder' },
+      { label: 'Mål',        value: 'Længde 150 mm · Ø 30 mm' },
+      { label: 'Vægt',       value: '0,075 kg' },
+    ],
+    faqs: [
+      { q: 'Hvad gør C-vitaminet?', a: 'C-vitamin (ascorbinsyre) giver en ekstra "frisk" filterløsning, som mange foretrækker til hud og hår.' },
+      { q: 'Hvor ofte skal filteret skiftes?', a: 'Filteret har en levetid på ca. 2-3 måneder.' },
+    ],
+    useCases: ['Private hjem', 'Følsom hud'],
+  },
+
+  {
+    id: 'brusefilter-acf-amino-acid',
+    productNr: 'WDACF+A',
+    name: 'Udskiftningsfilter til brusehoved + kalkhæmmer',
+    tagline: 'Aktivt kul med kalkhæmmer – mindsker kalkens påvirkning af hud, hår & armatur',
+    badge: 'Udskiftningsfilter',
+    category: 'filtre',
+    price: 69,
+    imgSrc:   '/images/product-acf-amino-acid.jpg',
+    imgLarge: '/images/product-acf-amino-acid.jpg',
+    description: 'Udskifteligt filter med aktivt kul + kalkhæmmer. Renser vandet og mindsker kalkens påvirkning.',
+    longDescription: 'Et udskifteligt ACF-filter (aktivt kul-fiber) tilsat en aminosyre-baseret kalkhæmmer fremstillet af æblesyre. Det aktive kul fjerner bundfald, rust, klorrester og tungmetaller, mens kalkhæmmeren mindsker kalkens påvirkning af hud, hår og armatur. Levetid ca. 2-3 måneder.',
+    highlights: ['Aktivt kul + aminosyre-kalkhæmmer', 'Mindsker kalkens påvirkning', 'Levetid ca. 2-3 måneder'],
+    features: [
+      'Fjerner bundfald, rust, klorrester og tungmetaller',
+      'Aminosyre-kalkhæmmer (æblesyre) mindsker kalkens påvirkning',
+      'Mildere mod hud, hår og armatur',
+      'Passer vores brusehoved med filter',
+      'Nem, værktøjsfri udskiftning',
+    ],
+    specs: [
+      { label: 'Filtertype', value: 'ACF + aminosyre-kalkhæmmer' },
+      { label: 'Levetid',    value: 'Ca. 2-3 måneder' },
+      { label: 'Mål',        value: 'Længde 150 mm · Ø 30 mm' },
+      { label: 'Vægt',       value: '0,075 kg' },
+    ],
+    faqs: [
+      { q: 'Hvad gør kalkhæmmeren?', a: 'Den aminosyre-baserede kalkhæmmer (æblesyre) mindsker kalkens påvirkning, så vandet føles mildere mod hud, hår og armatur – især nyttigt ved hårdt vand.' },
+      { q: 'Hvor ofte skal filteret skiftes?', a: 'Filteret har en levetid på ca. 2-3 måneder.' },
+    ],
+    useCases: ['Private hjem', 'Områder med hårdt vand'],
   },
 
   {
@@ -263,7 +405,7 @@ export const PRODUCTS: Product[] = [
     price: 150,
     imgSrc:   `${CWS}/2025/08/1-300x300.png`,
     imgLarge: `${CWS}/2025/08/1-300x300.png`,
-    description: 'Hurtigkobling til indvendig gevind M22 IG. Gør montering og udskiftning af Baclyser®-filtre hurtig og værktøjsfri.',
+    description: 'Hurtigkobling til indvendigt M22-gevind. Værktøjsfri montering af Baclyser®-filtre.',
     longDescription: 'Coupling M22 er hurtigkoblingen der passer indvendige M22 IG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj og er fremstillet i kvalitetsmessing.',
     highlights: ['M22 indvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],
     features: [
@@ -294,7 +436,7 @@ export const PRODUCTS: Product[] = [
     price: 150,
     imgSrc:   `${CWS}/2025/08/1-300x300.png`,
     imgLarge: `${CWS}/2025/08/1-300x300.png`,
-    description: 'Hurtigkobling til udvendig gevind M24 AG. Gør montering og udskiftning af Baclyser®-filtre hurtig og værktøjsfri.',
+    description: 'Hurtigkobling til udvendigt M24-gevind. Værktøjsfri montering af Baclyser®-filtre.',
     longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24 AG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj.',
     highlights: ['M24 udvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],
     features: [
@@ -325,7 +467,7 @@ export const PRODUCTS: Product[] = [
     price: 499,
     imgSrc:   `${CWS}/2025/10/1-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/1-1-300x300.png`,
-    description: 'Til filtrering af vand i rørledning. Universelt filterhus kompatibelt med standard 10" filterpatroner.',
+    description: 'Universelt filterhus til rørledning. Passer standard 10"-filterpatroner.',
     longDescription: 'Filter Housing er det alsidige filterhus til rørledningsmonterede filtre. Det passer alle standard 10" patroner – kulfiltre, kalkfiltre eller mikrofiltre – og er solidt bygget til driftstryk op til 8 bar.',
     highlights: ['Standard 10" patroner', 'Op til 8 bar drift', 'Hurtig serviceadgang'],
     features: [
@@ -358,7 +500,7 @@ export const PRODUCTS: Product[] = [
     price: 749,
     imgSrc:   `${CWS}/2025/10/6-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/6-1-300x300.png`,
-    description: 'Forbedrer vandets smag og lugt, fjerner tungmetaller og medicinrester og gør vandet mikrobiologisk sikkert.',
+    description: 'Tostadigt filter: bedre smag og lugt, fjerner tungmetaller og medicinrester, mikrobiologisk sikkert.',
     longDescription: 'DualStage MF 10-CL er det alsidige tostadie-filter der i ét gennemløb forbedrer smag og lugt, fjerner tungmetaller og medicinrester og leverer mikrobiologisk sikkerhed via en mikrofiltermembran.',
     highlights: ['2-i-1: kulblok + membran', 'Fjerner tungmetaller', 'Mikrobiologisk sikkerhed'],
     features: [
@@ -391,7 +533,7 @@ export const PRODUCTS: Product[] = [
     price: 449,
     imgSrc:   `${CWS}/2025/10/3-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/3-1-300x300.png`,
-    description: 'Aktivt kulblokfilter 10-CL bruges til at forbedre vandets smag og lugt, samt til at fjerne tungmetaller og medicinrester.',
+    description: 'Forbedrer vandets smag og lugt og fjerner tungmetaller og medicinrester.',
     longDescription: 'Aktivt Kulblokfilter 10-CL kombinerer aktivt kul med KDF-medie. Det fjerner klor, kloramin, tungmetaller (bly, kobber) og medicinrester, og forbedrer markant vandets smag og lugt.',
     highlights: ['KDF + aktivt kul', 'Fjerner tungmetaller', 'Forbedrer smag & lugt'],
     features: [
@@ -424,7 +566,7 @@ export const PRODUCTS: Product[] = [
     price: 99,
     imgSrc:   '/images/product-filter-udskift.jpg',
     imgLarge: '/images/product-filter-udskift.jpg',
-    description: 'Filter til vandkande med en levetid på 150L. Original Bi-flux® reservedel der fjerner kalk, klor og urenheder.',
+    description: 'Original Bi-flux®-reservedel til vandkande. Fjerner kalk, klor og urenheder. Levetid 150 L.',
     longDescription: 'Bi-flux® universal filterpatron passer i de fleste standard vandkander. Den 6-trins filtrering kombinerer aktivt kul og ionbytning og leverer 150 liter renset vand pr. patron.',
     highlights: ['Universal Bi-flux®', '150 liters levetid', 'Snap-on montering'],
     features: [
@@ -455,7 +597,7 @@ export const PRODUCTS: Product[] = [
     price: 300,
     imgSrc:   'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     imgLarge: 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
-    description: 'Laica filterkande med 2-trins filtrering: Bi-flux® + MikroPLASTIK-STOP. Reducerer over 99,99 % af mikroplast, fjerner klor, tungmetaller og pesticider, og blokerer mikroorganismer som Legionella og Coli. 3 liter, Made in EU.',
+    description: 'Laica filterkande med 2-trins filtrering. Reducerer over 99,99 % mikroplast og fjerner klor, tungmetaller og pesticider. 3 liter, Made in EU.',
     longDescription: 'Filterkande fra Laica med patenteret modulært filtersystem i to trin. Bi-flux®-filteret reducerer klor, tungmetaller, pesticider, herbicider, trihalomethaner og andre kemiske forurenende stoffer – og bevarer samtidig vandets vigtige mineraler. MikroPLASTIK-STOP-filteret reducerer over 99,99 % af mikroplasten og filtrerer partikler ned til 0,1 mikron, hvilket også blokerer mikroorganismer som Legionella- og Coli-bakterier. Kanden rummer 3 liter (2 liter filtreret vand), har et praktisk Quick-Fill-låg og en analog timer, der minder dig om filterskift. Made in EU.',
     highlights: ['Reducerer >99,99 % mikroplast', 'Blokerer Legionella & Coli (>0,1 mikron)', '3 liter · Made in EU'],
     features: [
@@ -489,7 +631,7 @@ export const PRODUCTS: Product[] = [
     category: 'filtre',
     imgSrc:   'https://www.laica.com/wp-content/uploads/filtro-mikroplastik-stop-laica.jpg',
     imgLarge: 'https://www.laica.com/wp-content/uploads/filtro-mikroplastik-stop-laica.jpg',
-    description: 'Udskiftningsfilter til Laica MikroPLASTIK-STOP filterkande. Blokerer over 99,5 % af mikroplast (≥ 0,1 μm) – og ≥ 99,99 % for partikler ≥ 1 μm. Levetid op til 1000 liter. Pakke med 6 filtre.',
+    description: 'Udskiftningsfilter til Laica MikroPLASTIK-STOP-kande. Blokerer over 99,5 % mikroplast. Levetid op til 1000 L. 6 stk.',
     longDescription: 'MikroPLASTIK-STOP™ er udskiftningsfilteret til Laicas MikroPLASTIK-STOP filterkande. Det blokerer over 99,5 % af mikroplast med en størrelse ≥ 0,1 mikron i postevandet, og for partikler ≥ 1 mikron er reduktionen ≥ 99,99 %. Effektiviteten er testet af uafhængige, akkrediterede laboratorier i Tyskland og Italien. Filteret er BPA-frit og har en levetid på op til 1000 liter afhængigt af vandets kvalitet. Leveres i pakke med 6 filtre.',
     highlights: ['Blokerer >99,5 % mikroplast', 'Levetid op til 1000 liter', 'BPA-fri · 6 stk. i pakken'],
     features: [
@@ -523,7 +665,7 @@ export const PRODUCTS: Product[] = [
     price: 1200,
     imgSrc:   'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
     imgLarge: 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
-    description: 'Inline hulfibermembranfilter patron (udskifteligt filter) til professionelle installationer.',
+    description: 'Udskifteligt inline-filter med hulfibermembran til professionelle installationer.',
     longDescription: 'AS Tube er en udskiftelig hulfibermembran-patron til inline filterinstallationer. Den leverer dokumenteret 7 log-retention og er valideret til medicinsk og hospitalsbrug.',
     highlights: ['Hulfibermembran 0,2 μm', '7 log retention', 'Til professionelle anlæg'],
     features: [
@@ -558,7 +700,7 @@ export const PRODUCTS: Product[] = [
     price: 11250,
     imgSrc:   `${CWS}/2025/07/2-3-300x300.png`,
     imgLarge: `${CWS}/2025/07/2-3.png`,
-    description: '3L resin, 15 kg integreret saltkar og en flowhastighed på 1.500 L/t.',
+    description: 'Kompakt blødgøringsanlæg: 3 L resin, 15 kg integreret saltkar, flow 1.500 L/t.',
     longDescription: 'Blødgøringsanlæg 100M er den kompakte alt-i-ét løsning. Anlægget kombinerer 3 liter ionbytterharpiks med en integreret 15 kg salttank i ét kabinet og leverer 1.500 l/t kapacitet – mere end tilstrækkeligt til en familie.',
     highlights: ['Alt-i-ét design', 'Integreret 15 kg salttank', '1.500 l/t flow'],
     features: [
@@ -592,7 +734,7 @@ export const PRODUCTS: Product[] = [
     comingSoon: true,
     imgSrc:   `${CWS}/2025/07/1-3-300x300.png`,
     imgLarge: `${CWS}/2025/07/1-3.png`,
-    description: '3L resin, 25 kg separat saltkar og en flowhastighed: 1.500 L/t.',
+    description: 'Blødgøringsanlæg: 3 L resin, 25 kg separat saltkar, flow 1.500 L/t.',
     longDescription: 'Blødgøringsanlæg 100BS er familieløsningen med 25 kg separat salttank, der giver sjældnere genopfyldning. Anlægget kommer snart i salg.',
     highlights: ['Separat 25 kg salttank', 'Sjælden genopfyldning', 'Kommer snart'],
     features: [
@@ -623,7 +765,7 @@ export const PRODUCTS: Product[] = [
     comingSoon: true,
     imgSrc:   `${CWS}/2025/07/3-3-300x300.png`,
     imgLarge: `${CWS}/2025/07/3-3.png`,
-    description: '3L resin, 10 kg separat saltkar og en flowhastighed: 1.500 L/t.',
+    description: 'Blødgøringsanlæg: 3 L resin, 10 kg separat saltkar, flow 1.500 L/t.',
     longDescription: 'Blødgøringsanlæg 100B er mellemvejen: separat 10 kg salttank og kompakt design – ideel til installationer med begrænset plads. Anlægget kommer snart i salg.',
     highlights: ['Separat 10 kg salttank', 'Kompakt design', 'Kommer snart'],
     features: [

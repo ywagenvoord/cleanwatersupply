@@ -16,6 +16,7 @@ export default function PrivateClient() {
     'baclyser-neo-tl-2m',
     'cblue-sc3',
     'brusehoved-filter-acf',
+    'brusehoved-til-filter',
     'dualstage-mf-10-cl',
     'kulblokfilter-10-cl',
     'filter-housing',
@@ -27,6 +28,7 @@ export default function PrivateClient() {
 
   const solutions = [
     {
+      slug: 'filtre-paa-tappestedet',
       img: '/images/solution-tappested.jpg',
       title: da ? 'Filtre på tappestedet' : 'Filters at the tap',
       body: da
@@ -34,6 +36,7 @@ export default function PrivateClient() {
         : 'Mounted directly on the tap, stopping bacteria right at the point of use – safe and simple.',
     },
     {
+      slug: 'kalkanlaeg',
       img: '/images/solution-kalkanlaeg.jpg',
       title: da ? 'Kalkanlæg' : 'Water softener',
       body: da
@@ -41,6 +44,7 @@ export default function PrivateClient() {
         : 'Soft water means less limescale and cleaning, less use of soap and detergents – and softer skin and hair. It also protects your installations and appliances.',
     },
     {
+      slug: 'filtre-i-vandforsyningen',
       img: '/images/solution-undervask.jpg',
       title: da ? 'Filtre i vandforsyningen' : 'Filters in the water supply',
       body: da
@@ -48,6 +52,7 @@ export default function PrivateClient() {
         : 'Inline filters fitted in the water supply, cleaning the water before it reaches the tap.',
     },
     {
+      slug: 'brusefilter',
       img: '/images/solution-brusefilter.jpg',
       title: da ? 'Brusefilter' : 'Shower filter',
       body: da
@@ -141,10 +146,10 @@ export default function PrivateClient() {
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
-            {solutions.map(({ img, title, body }) => (
+            {solutions.map(({ img, title, body, slug }) => (
               <Link
                 key={title}
-                href="/shop"
+                href={`/loesninger/${slug}`}
                 className="group relative aspect-[2/1] rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
               >
                 <img
