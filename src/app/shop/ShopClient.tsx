@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check } from 'lucide-react'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
@@ -21,13 +21,43 @@ const CATEGORIES = [
     color: 'blue',
   },
   {
+    key: 'vandhane',
+    labelDa: 'Vandhane',
+    labelEn: 'Tap',
+    icon: Droplet,
+    color: 'blue',
+    descDa: 'Filtre og tilbehør der monteres direkte på vandhanen.',
+    descEn: 'Filters and accessories mounted directly on the tap.',
+    imgSrc: '/images/baclyser-tl.jpg',
+  },
+  {
+    key: 'bruser',
+    labelDa: 'Bruser',
+    labelEn: 'Shower',
+    icon: ShowerHead,
+    color: 'sky',
+    descDa: 'Brusefiltre og brusehoveder der renser badevandet for klor, kalk og urenheder.',
+    descEn: 'Shower filters and heads that clean your water of chlorine, lime and impurities.',
+    imgSrc: '/images/product-brusehoved-sort.jpg',
+  },
+  {
+    key: 'vandkande',
+    labelDa: 'Vandkande',
+    labelEn: 'Water jug',
+    icon: GlassWater,
+    color: 'sky',
+    descDa: 'Filterkander og udskiftningsfiltre til renere vand direkte fra kanden.',
+    descEn: 'Filter jugs and replacement filters for cleaner water straight from the jug.',
+    imgSrc: 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
+  },
+  {
     key: 'filtre',
     labelDa: 'Filtre',
     labelEn: 'Filters',
     icon: Filter,
     color: 'blue',
-    descDa: 'Bakteriefiltre og legionellafiltre til alle vandhaner og brusere.',
-    descEn: 'Bacteria and legionella filters for all taps and showers.',
+    descDa: 'Inline-filtre, filterhuse og øvrige vandfiltre til hus og installation.',
+    descEn: 'Inline filters, housings and other water filters for home and installation.',
     imgSrc: '/images/filters-legionella.jpg',
   },
   {
@@ -40,6 +70,16 @@ const CATEGORIES = [
     descEn: 'TALENT series: effective softening that removes limescale and protects your appliances.',
     imgSrc: '/images/softener-talent100b.jpg',
   },
+  {
+    key: 'anlaeg',
+    labelDa: 'Anlæg',
+    labelEn: 'Systems',
+    icon: FlaskConical,
+    color: 'emerald',
+    descDa: 'Professionelle vandbehandlingsanlæg – ECA-vand (Kirkmayer HClO-generatorer) til erhverv.',
+    descEn: 'Professional water treatment systems – ECA water (Kirkmayer HClO generators) for business.',
+    imgSrc: '/images/sicursan-anlaeg.jpg',
+  },
 ]
 
 const COLOR = {
@@ -50,6 +90,20 @@ const COLOR = {
 }
 
 /* ─── PRODUCT CARD ─────────────────────────────────────────────────────── */
+
+// Produkter der "passer til" et andet produkt – vises som lille rund markering
+const HOUSING_IMG = 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/1-1-300x300.png'
+const JUG_IMG = 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915'
+const ASTUBE_IMG = 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg'
+const CBLUE_IMG = 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png'
+const FITS_WITH: Record<string, { img: string; label: string }> = {
+  'dualstage-mf-10-cl':           { img: HOUSING_IMG, label: 'Filter Housing' },
+  'kulblokfilter-10-cl':          { img: HOUSING_IMG, label: 'Filter Housing' },
+  'vandfilter-biflux-reservedel': { img: JUG_IMG,     label: 'Vandkande' },
+  'cartridge-mf5':                { img: ASTUBE_IMG,  label: 'AS Tube' },
+  'cartridge-sc3':                { img: ASTUBE_IMG,  label: 'AS Tube' },
+  'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
+}
 
 function ProductCard({ product, catColor }: { product: Product; catColor: string }) {
   const c = COLOR[catColor as keyof typeof COLOR] ?? COLOR.blue
@@ -76,11 +130,16 @@ function ProductCard({ product, catColor }: { product: Product; catColor: string
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col overflow-hidden group h-full">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full">
       {/* Image / icon top */}
-      <Link href={`/shop/${product.id}`} className="block">
+      <Link href={`/shop/${product.id}`} className="block relative">
+        {product.badge && (
+          <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${c.badge}`}>
+            {product.badge}
+          </span>
+        )}
         {product.imgSrc ? (
-          <div className="h-44 overflow-hidden bg-white flex items-center justify-center p-4">
+          <div className="h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-4">
             <img
               src={product.imgSrc}
               alt={product.name}
@@ -92,55 +151,71 @@ function ProductCard({ product, catColor }: { product: Product; catColor: string
             />
           </div>
         ) : (
-          <div className={`h-44 bg-gradient-to-br ${c.icon} flex items-center justify-center`}>
+          <div className={`h-64 bg-gradient-to-br ${c.icon} flex items-center justify-center`}>
             <CatIcon className="w-16 h-16 text-white/30" />
           </div>
         )}
       </Link>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <Link href={`/shop/${product.id}`}>
-            <h3 className="font-bold text-gray-900 text-sm leading-snug hover:text-blue-700 transition-colors">{product.name}</h3>
-          </Link>
-          {product.badge && (
-            <span className={`shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full border uppercase tracking-wide ${c.badge}`}>
-              {product.badge}
-            </span>
-          )}
-        </div>
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">{product.tagline}</p>
-        <p className="text-sm text-gray-500 leading-relaxed flex-1">{product.description}</p>
+      <div className="p-5 flex flex-col flex-1">
+        <Link href={`/shop/${product.id}`}>
+          <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
+        </Link>
+        <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">{product.tagline}</p>
+
+        {FITS_WITH[product.id] && (
+          <div className="mt-2.5 inline-flex items-center gap-1.5 self-start rounded-full border border-gray-200 bg-gray-50 py-1 pl-1 pr-2.5">
+            <img
+              src={FITS_WITH[product.id].img}
+              alt={FITS_WITH[product.id].label}
+              className="w-5 h-5 rounded-full object-contain bg-white border border-gray-200"
+            />
+            <span className="text-[11px] font-medium text-gray-500">Passer til <span className="font-semibold text-gray-700">{FITS_WITH[product.id].label}</span></span>
+          </div>
+        )}
+
+        <div className="flex-1" />
 
         {/* ── PRICE ─────────────────────────────────────────────── */}
-        <div className="mt-4">
-          {product.comingSoon || product.price === undefined ? (
+        <div className="mt-4 pt-4 border-t border-gray-100">
+          {product.quoteOnly ? (
+            <p className="text-base font-bold text-[#0a2540]">Kontakt for info</p>
+          ) : product.comingSoon || product.price === undefined ? (
             <p className="text-base font-bold text-gray-400">Kommer snart</p>
           ) : (
-            <p className="text-xl font-extrabold text-[#0a2540]">
-              {product.price.toLocaleString('da-DK')} kr
+            <p className="flex items-baseline gap-1.5">
+              <span className="text-xl font-extrabold text-[#0a2540]">{product.price.toLocaleString('da-DK')} kr</span>
+              <span className="text-[11px] font-medium text-gray-400">{product.priceExMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
           )}
         </div>
 
         {/* ── CTA ───────────────────────────────────────────────── */}
         <div className="mt-3 space-y-2">
-          {buyable ? (
+          {product.quoteOnly ? (
+            <Link
+              href={`/shop/${product.id}`}
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
+            >
+              Kontakt for info
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          ) : buyable ? (
             <>
               <Link
                 href={`/shop/${product.id}`}
-                className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
+                className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all"
               >
-                Køb nu
+                Se vare
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
               <button
                 onClick={handleAdd}
-                className={`w-full inline-flex items-center justify-center gap-2 border-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all ${
+                className={`w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-sm font-bold text-white transition-all ${
                   added
-                    ? 'border-[#3aad4a] bg-[#3aad4a]/5 text-[#3aad4a]'
-                    : 'border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white'
+                    ? 'bg-[#2e9a3d]'
+                    : 'bg-[#3aad4a] hover:bg-[#2e9a3d] hover:shadow-md hover:-translate-y-0.5'
                 }`}
               >
                 {added ? <><Check className="w-3.5 h-3.5" /> Tilføjet</> : <><ShoppingBag className="w-3.5 h-3.5" /> Tilføj til kurv</>}
@@ -171,10 +246,17 @@ function ProductCard({ product, catColor }: { product: Product; catColor: string
 
 /* ─── PAGE ─────────────────────────────────────────────────────────────── */
 
-export default function ShopClient({ products }: { products: Product[] }) {
+export default function ShopClient({ products: allProducts, showErhverv = false }: { products: Product[]; showErhverv?: boolean }) {
   const { language } = useLanguage()
   const da = language === 'da'
   const [activeCategory, setActiveCategory] = useState('alle')
+
+  // Filtrér efter shop: kun-erhverv vises kun i erhvervs-shop, kun-privat kun i privat-shop.
+  const products = allProducts.filter(p => {
+    if (p.audience === 'erhverv') return showErhverv
+    if (p.audience === 'privat') return !showErhverv
+    return true
+  })
 
   const filtered = activeCategory === 'alle'
     ? products
@@ -223,7 +305,7 @@ export default function ShopClient({ products }: { products: Product[] }) {
       <section className="sticky top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
-            {CATEGORIES.map((cat) => {
+            {CATEGORIES.filter(cat => cat.key === 'alle' || products.some(p => p.category === cat.key)).map((cat) => {
               const Icon = cat.icon
               const isActive = activeCategory === cat.key
               const c = COLOR[cat.color as keyof typeof COLOR]

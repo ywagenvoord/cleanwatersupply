@@ -89,20 +89,17 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-10 mb-12">
+            {/* Highlights */}
+            <div className="flex flex-wrap gap-x-8 gap-y-4 mb-12">
               {[
-                { value: t('hero.stat1Value'), label: t('hero.stat1Label'), Icon: Users },
-                { value: t('hero.stat3Value'), label: t('hero.stat3Label'), Icon: Truck },
-              ].map(({ value, label, Icon }, i) => (
+                { text: t('hero.stat1Label'), Icon: Wrench },
+                { text: t('hero.stat3Label'), Icon: Leaf },
+              ].map(({ text, Icon }, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-6 h-6 text-emerald-400" />
+                  <div className="w-11 h-11 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0">
+                    <Icon className="w-5 h-5 text-emerald-400" />
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-3xl md:text-4xl font-extrabold text-white">{value}</span>
-                    <span className="text-sm text-blue-200 mt-1">{label}</span>
-                  </div>
+                  <span className="text-base md:text-lg font-bold text-white">{text}</span>
                 </div>
               ))}
             </div>
@@ -135,41 +132,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── JEG SHOPPER SOM ───────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50/50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="section-badge">Privat eller erhverv?</span>
-          <h2 className="section-heading">Vi tilpasser os efter dig</h2>
-          <p className="section-subheading">
-            Om du handler privat eller erhverv, tilpasser vi vores produkter, priser og rådgivning,
-            så du får præcis det, der passer til dine behov. Vælg hvad der passer til dig:
-          </p>
-          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto mt-12">
-            {[
-              { value: 'privat' as const, Icon: Home, title: 'Privat', desc: 'Løsninger til dit hjem og din familie', gradient: 'from-[#0a6cff] to-[#0044c4]' },
-              { value: 'erhverv' as const, Icon: Building2, title: 'Erhverv', desc: 'Løsninger til din virksomhed', gradient: 'from-[#0c3a73] to-[#0a2540]' },
-            ].map(({ value, Icon, title, desc, gradient }, i) => (
-              <ScrollReveal key={value} direction="up" scale delay={i * 130} className="h-full">
-                <button
-                  onClick={() => chooseAudience(value)}
-                  className={`group relative w-full h-full overflow-hidden flex flex-col items-center text-center gap-4 rounded-3xl bg-gradient-to-br ${gradient} p-8 text-white shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300`}
-                >
-                  <span className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Icon className="w-8 h-8" />
-                  </span>
-                  <div>
-                    <p className="text-2xl font-extrabold">{title}</p>
-                    <p className="text-sm text-white/80 mt-1">{desc}</p>
-                  </div>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-bold text-white">
-                    Vælg <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </span>
-                </button>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ─── OMRÅDER (AREA SELECTOR) ───────────────────────────── */}
       <section className="py-20 bg-gray-50">
@@ -181,16 +143,16 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
             {[
-              { label: 'Landbrug', slug: 'landbruget', img: '/images/area-landbruget.jpg' },
-              { label: 'Svømmehaller', slug: 'svoemmehaller', img: '/images/area-svoemmehaller.jpg' },
-              { label: 'Hospitaler', slug: 'hospitaler', img: '/images/area-hospitaler.jpg' },
-              { label: 'Hoteller', slug: 'hoteller', img: '/images/area-hoteller.jpg' },
-              { label: 'Campingpladser', slug: 'campingpladser', img: '/images/area-campingpladser.jpg' },
-              { label: 'Det private hjem', slug: 'det-private-hjem', img: '/images/area-det-private-hjem.jpg' },
-            ].map(({ label, slug, img }) => (
+              { label: 'Landbrug', img: '/images/area-landbruget.jpg', href: '/omraader/landbruget' },
+              { label: 'Svømmehaller', img: '/images/area-svoemmehaller.jpg', href: '/omraader/svoemmehaller' },
+              { label: 'Hospitaler', img: '/images/area-hospitaler.jpg', href: '/omraader/hospitaler' },
+              { label: 'Hoteller', img: '/images/area-hoteller.jpg', href: '/omraader/hoteller' },
+              { label: 'Campingpladser', img: '/images/area-campingpladser.jpg', href: '/omraader/campingpladser' },
+              { label: 'Spildevand', img: '/images/area-spildevand.jpg', href: '/spildevand' },
+            ].map(({ label, img, href }) => (
               <Link
-                key={slug}
-                href={`/omraader/${slug}`}
+                key={href}
+                href={href}
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all"
               >
                 <img
@@ -349,7 +311,7 @@ export default function HomePage() {
               {[
                 { Icon: ShieldCheck, title: 'Fremtidssikret løsning', body: 'Salt, vand og elektricitet er de eneste ingredienser, ECA-vand kræver for at blive produceret.' },
                 { Icon: Leaf, title: 'Kemikaliefri', body: 'Der kræves ingen værnemidler ved håndtering eller opbevaring – sikkert for mennesker og miljø.' },
-                { Icon: Zap, title: 'Omkostningseffektiv', body: 'Anlægget renser drikkevandssystemer, foderanlæg og overflader – alt på én gang.' },
+                { Icon: Zap, title: 'Omkostningseffektiv', body: 'Anlægget renser anlæg til bakteriefrit vand, foderanlæg og overflader – alt på én gang.' },
               ].map(({ Icon, title, body }) => (
                 <div key={title} className="flex items-start gap-4 rounded-2xl bg-white border border-gray-100 p-5 shadow-sm">
                   <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
@@ -422,16 +384,18 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre bakteriefrit vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
-              { Icon: Droplets, title: 'Rent vand og sanitet', body: 'Vi forbedrer vandkvaliteten i installationer, hvor bakteriekontrol er afgørende, med dokumenterbare løsninger.' },
-              { Icon: Building2, title: 'Industri & innovation', body: 'Vores produkter og anlæg styrker den tekniske infrastruktur og en mere fremtidssikret vandbehandling.' },
-              { Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores bæredygtige løsninger understøtter en ansvarlig og ressourceeffektiv tilgang til vandbehandling.' },
-              { Icon: Tractor, title: 'Livet på landet', body: 'Vi begrænser bakteriespredning i landbruget og styrker sundere dyre- og fødevaresystemer.' },
-            ].map(({ Icon, title, body }) => (
+              { num: 3,  color: '#4C9F38', Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre bakteriefrit vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
+              { num: 6,  color: '#26BDE2', Icon: Droplets, title: 'Rent vand og sanitet', body: 'Vi forbedrer vandkvaliteten i installationer, hvor bakteriekontrol er afgørende, med dokumenterbare løsninger.' },
+              { num: 9,  color: '#FD6925', Icon: Building2, title: 'Industri & innovation', body: 'Vores produkter og anlæg styrker den tekniske infrastruktur og en mere fremtidssikret vandbehandling.' },
+              { num: 12, color: '#BF8B2E', Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores bæredygtige løsninger understøtter en ansvarlig og ressourceeffektiv tilgang til vandbehandling.' },
+              { num: 15, color: '#56C02B', Icon: Tractor, title: 'Livet på landet', body: 'Vi begrænser bakteriespredning i landbruget og styrker sundere dyre- og fødevaresystemer.' },
+            ].map(({ num, color, Icon, title, body }) => (
               <div key={title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-                  <Icon className="w-6 h-6" />
+                <div className="w-14 h-14 rounded-xl flex items-center justify-center gap-1.5 mb-4 text-white shadow-sm" style={{ backgroundColor: color }}>
+                  <span className="text-xl font-extrabold leading-none">{num}</span>
+                  <Icon className="w-5 h-5" />
                 </div>
+                <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color }}>Verdensmål {num}</p>
                 <h3 className="text-base font-bold text-gray-900 mb-2">{title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{body}</p>
               </div>

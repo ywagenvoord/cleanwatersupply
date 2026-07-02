@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin, ArrowRight, Info, Clock, MessageSquare, Loader2, C
 const teamMembers = [
   {
     name: 'Kenneth',
-    role: 'CEO',
+    role: 'Stifter & indehaver',
     phone: '+45 51 21 58 00',
     email: 'ksj@cleanwatersupply.dk',
     photo: 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Billeder-til-hjemmeside-e1765262253453-278x300.png',
@@ -17,28 +17,28 @@ const teamMembers = [
     role: 'Salg / Sygeplejerske',
     phone: '+45 21 98 40 99',
     email: 'lm@cleanwatersupply.dk',
-    photo: null,
+    photo: '/images/team-lotte.jpg',
+  },
+  {
+    name: 'Kristoffer',
+    role: 'Tekniker & Rejsemontør',
+    phone: '+45 22 32 01 56',
+    email: 'kristoffer@cleanwatersupply.dk',
+    photo: 'https://cleanwatersupply.dk/wp-content/uploads/2026/02/Kristoffer-300x200.png',
   },
   {
     name: 'Camilla',
     role: 'Marketing',
     phone: '+45 40 73 70 53',
     email: 'caj@cleanwatersupply.dk',
-    photo: null,
-  },
-  {
-    name: 'Kristoffer',
-    role: 'Tekniker / Service',
-    phone: '+45 22 32 01 56',
-    email: 'kristoffer@cleanwatersupply.dk',
-    photo: 'https://cleanwatersupply.dk/wp-content/uploads/2026/02/Kristoffer-300x200.png',
+    photo: '/images/team-camilla-v2.jpg',
   },
   {
     name: 'Heidi',
-    role: 'Bogholderiet',
+    role: 'Bogholderi',
     phone: null,
     email: 'bogholderi@cleanwatersupply.dk',
-    photo: null,
+    photo: '/images/team-heidi.jpg',
   },
 ]
 
@@ -74,6 +74,7 @@ export default function ContactPage() {
           _subject: `Ny henvendelse fra ${formData.name} – ${formData.type || 'Generel'}`,
           _template: 'table',
           _captcha: 'false',
+          _cc: 'ksj@cleanwatersupply.dk',
         }),
       })
       const data = await res.json()
@@ -120,20 +121,22 @@ export default function ContactPage() {
 
       {/* ─── CONTACT INFO CARDS ───────────────────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-3 gap-7 -mt-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-12">
             {[
               {
                 icon: Phone,
                 label: t('contactPage.info.phoneLabel'),
                 value: '+45 51 21 58 00',
-                desc: 'Mandag–fredag 07:30–16:00',
+                href: 'tel:+4551215800',
+                desc: 'Mandag–fredag 08:00–16:00',
                 color: 'from-blue-600 to-blue-700',
               },
               {
                 icon: Mail,
                 label: t('contactPage.info.emailLabel'),
                 value: 'info@cleanwatersupply.dk',
+                href: 'mailto:info@cleanwatersupply.dk',
                 desc: 'Vi svarer inden for 24 timer',
                 color: 'from-sky-500 to-sky-600',
               },
@@ -141,20 +144,30 @@ export default function ContactPage() {
                 icon: MapPin,
                 label: t('contactPage.info.addressLabel'),
                 value: 'Strømøvej 3, 8700 Horsens',
+                href: 'https://www.google.com/maps/search/?api=1&query=Str%C3%B8m%C3%B8vej%203%2C%208700%20Horsens',
                 desc: 'CVR: 44405563',
                 color: 'from-emerald-500 to-emerald-600',
               },
             ].map((info, i) => {
               const Icon = info.icon
               return (
-                <div key={i} className="bg-white rounded-2xl border border-gray-100 shadow-lg p-7 flex gap-5">
-                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${info.color} flex items-center justify-center shrink-0 shadow-sm`}>
-                    <Icon className="w-5 h-5 text-white" />
+                <div key={i} className="bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow p-8 flex gap-5 items-start">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${info.color} flex items-center justify-center shrink-0 shadow-sm`}>
+                    <Icon className="w-7 h-7 text-white" />
                   </div>
-                  <div>
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{info.label}</p>
-                    <p className="font-bold text-gray-900 text-sm">{info.value}</p>
-                    <p className="text-xs text-gray-400 mt-1">{info.desc}</p>
+                  <div className="min-w-0">
+                    <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-1.5">{info.label}</p>
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        target={info.href.startsWith('http') ? '_blank' : undefined}
+                        rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        className="font-extrabold text-gray-900 hover:text-[#0044c4] text-lg leading-snug break-words transition-colors"
+                      >{info.value}</a>
+                    ) : (
+                      <p className="font-extrabold text-gray-900 text-lg leading-snug break-words">{info.value}</p>
+                    )}
+                    <p className="text-sm text-gray-400 mt-1.5">{info.desc}</p>
                   </div>
                 </div>
               )
@@ -289,7 +302,7 @@ export default function ContactPage() {
               {/* Google Maps embed */}
               <div className="flex-1 rounded-3xl overflow-hidden min-h-[300px] shadow-lg border border-gray-100">
                 <iframe
-                  src="https://maps.google.com/maps?q=Danmark&t=m&z=6&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Str%C3%B8m%C3%B8vej%203%2C%208700%20Horsens&t=m&z=11&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ minHeight: '300px', border: 0 }}
@@ -310,9 +323,8 @@ export default function ContactPage() {
                 </div>
                 <ul className="space-y-2 text-sm">
                   {[
-                    { day: 'Mandag – fredag', hours: '07:30 – 16:00' },
-                    { day: 'Lørdag', hours: 'Lukket' },
-                    { day: 'Søndag', hours: 'Lukket' },
+                    { day: 'Mandag – fredag', hours: '08:00 – 16:00' },
+                    { day: 'Lørdag – søndag', hours: 'Lukket' },
                   ].map((row, i) => (
                     <li key={i} className="flex justify-between text-gray-600">
                       <span>{row.day}</span>
@@ -332,36 +344,36 @@ export default function ContactPage() {
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">Mød teamet</h2>
             <p className="text-gray-500">Vi er klar til at hjælpe dig</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {teamMembers.map((member) => (
-              <div key={member.name} className="bg-white rounded-2xl border border-gray-100 p-6 text-center shadow-sm">
+              <div key={member.name} className="bg-white rounded-3xl border border-gray-100 p-8 text-center shadow-sm hover:shadow-lg transition-shadow">
                 {member.photo ? (
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="w-20 h-20 rounded-2xl object-cover mx-auto mb-4"
+                    className="w-32 h-32 rounded-3xl object-cover object-top mx-auto mb-5"
                   />
                 ) : (
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#0a2540] to-blue-700 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl font-extrabold text-white">{member.name[0]}</span>
+                  <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-[#0a2540] to-blue-700 flex items-center justify-center mx-auto mb-5">
+                    <span className="text-4xl font-extrabold text-white">{member.name[0]}</span>
                   </div>
                 )}
-                <p className="font-bold text-[#0a2540] text-base">{member.name}</p>
-                <p className="text-[#3aad4a] text-xs font-medium mb-3">{member.role}</p>
+                <p className="font-bold text-[#0a2540] text-xl">{member.name}</p>
+                <p className="text-[#3aad4a] text-sm font-medium mb-4">{member.role}</p>
                 {member.phone && (
                   <a
                     href={`tel:${member.phone.replace(/\s/g, '')}`}
-                    className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs mb-1.5 transition-colors"
+                    className="flex items-center justify-center gap-2 text-gray-500 hover:text-[#0a2540] text-sm mb-2 transition-colors"
                   >
-                    <Phone className="w-3 h-3 text-[#3aad4a]" />
+                    <Phone className="w-4 h-4 text-[#3aad4a]" />
                     {member.phone}
                   </a>
                 )}
                 <a
                   href={`mailto:${member.email}`}
-                  className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs transition-colors break-all"
+                  className="flex items-center justify-center gap-2 text-gray-500 hover:text-[#0a2540] text-sm transition-colors break-all"
                 >
-                  <Mail className="w-3 h-3 text-[#3aad4a] shrink-0" />
+                  <Mail className="w-4 h-4 text-[#3aad4a] shrink-0" />
                   {member.email}
                 </a>
               </div>

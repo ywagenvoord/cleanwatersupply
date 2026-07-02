@@ -81,6 +81,39 @@ export default function LegionellaPage() {
         </div>
       </section>
 
+      {/* ─── BAKTERIER I VANDET ───────────────────────────────── */}
+      <section className="py-20 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">Bakterier der kan findes i vandet</h2>
+            <p className="text-gray-600 leading-relaxed">
+              Vand kan indeholde flere typer bakterier – især i ældre installationer, stillestående vand og egen brønd. Her er nogle af de mest almindelige, og hvad de kan gøre.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: 'Legionella', body: 'Trives i stillestående, lunkent vand (ca. 25–45 °C) – fx i varmtvandsbeholdere og brusere. Indåndes via små vanddråber og kan give legionærsygdom, en alvorlig lungebetændelse.' },
+              { name: 'Pseudomonas aeruginosa', body: 'En hårdfør bakterie, der kan give infektioner i hud, øjne, ører og luftveje. Særligt risikabel for personer med svækket immunforsvar.' },
+              { name: 'E. coli (colibakterier)', body: 'Stammer typisk fra fækal forurening. Kan give mavepine, diarré og opkast, og ses oftere i brøndvand end i kommunalt vand.' },
+              { name: 'Coliforme bakterier', body: 'Bruges som indikator for forurening. Er de til stede, kan vandet også indeholde egentlige sygdomsfremkaldende mikroorganismer.' },
+              { name: 'Campylobacter', body: 'En af de hyppigste årsager til maveinfektion i Danmark. Giver diarré, mavekramper og feber, og kan overføres via forurenet vand.' },
+              { name: 'Enterokokker', body: 'Tarmbakterier, der er tegn på fækal forurening af vandet. Bruges som kvalitetsindikator – især ved egen brønd.' },
+            ].map((b) => (
+              <div key={b.name} className="bg-gray-50 rounded-2xl border border-gray-100 p-6">
+                <div className="w-11 h-11 rounded-xl bg-white border border-gray-100 flex items-center justify-center mb-4 shadow-sm">
+                  <Droplets className="w-5 h-5 text-[#3aad4a]" />
+                </div>
+                <h3 className="font-bold text-[#0a2540] mb-2">{b.name}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-400 mt-8 max-w-2xl mx-auto">
+            Et filter ved tappestedet tilbageholder 99,9999 % af vandbårne bakterier – uanset type.
+          </p>
+        </div>
+      </section>
+
       {/* ─── PREVENTION ───────────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -143,16 +176,24 @@ export default function LegionellaPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { id: 'baclyser-neo-tl-3m', name: 'Baclyser® neo TL (3M)', desc: 'Vandhanefilter med laminar udløb – 93 dages beskyttelse' },
-              { id: 'baclyser-neo-tr-3m', name: 'Baclyser® neo TR (3M)', desc: 'Vandhanefilter med bruserudløb – 93 dages beskyttelse' },
-              { id: 'cblue-sc3',          name: 'cBlue SC3 brusehoved',  desc: 'Krom brusehoved med integreret Legionella-filter' },
+              { id: 'baclyser-neo-tl-3m', name: 'Baclyser® neo TL (3M)', desc: 'Vandhanefilter med laminar udløb – 93 dages beskyttelse', img: '/images/product-tl6.jpg' },
+              { id: 'baclyser-neo-tr-3m', name: 'Baclyser® neo TR (3M)', desc: 'Vandhanefilter med bruserudløb – 93 dages beskyttelse', img: '/images/product-tr5.jpg' },
+              { id: 'cblue-sc3',          name: 'cBlue SC3 brusehoved',  desc: 'Krom brusehoved med integreret Legionella-filter', img: 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png' },
             ].map(p => (
               <Link
                 key={p.id}
                 href={`/shop/${p.id}`}
                 className="group bg-gray-50 hover:bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-2xl p-6 transition-all hover:shadow-md"
               >
-                <ShieldCheck className="w-8 h-8 text-[#3aad4a] mb-4" aria-hidden="true" />
+                <div className="h-40 mb-4 flex items-center justify-center rounded-xl bg-white border border-gray-100 overflow-hidden p-3">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
                 <h3 className="font-bold text-[#0a2540] mb-2 group-hover:text-[#3aad4a] transition-colors">{p.name}</h3>
                 <p className="text-sm text-gray-500 mb-4">{p.desc}</p>
                 <span className="inline-flex items-center gap-1 text-sm font-semibold text-[#3aad4a]">
@@ -174,17 +215,17 @@ export default function LegionellaPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-[#0a2540] mb-5">Læs også</h2>
           <div className="grid sm:grid-cols-3 gap-4">
-            <Link href="/eca-vand" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
-              <p className="font-bold text-sm text-[#0a2540] mb-1">ECA-vand til biofilm-bekæmpelse</p>
-              <p className="text-xs text-gray-500">Kemikaliefri desinfektion mod Legionella</p>
+            <Link href="/faq" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
+              <p className="font-bold text-sm text-[#0a2540] mb-1">Spørgsmål & svar om bakterier</p>
+              <p className="text-xs text-gray-500">Kogepåbud, Legionella, filtre og meget mere</p>
             </Link>
-            <Link href="/omraader/hospitaler" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
-              <p className="font-bold text-sm text-[#0a2540] mb-1">Legionella på hospitaler</p>
-              <p className="text-xs text-gray-500">Beskyttelse for immunsvækkede patienter</p>
+            <Link href="/loesninger/filtre-paa-tappestedet" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
+              <p className="font-bold text-sm text-[#0a2540] mb-1">Bakteriefrit vand ved hanen</p>
+              <p className="text-xs text-gray-500">Filtre til vandhanen i hjemmet</p>
             </Link>
-            <Link href="/omraader/hoteller" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
-              <p className="font-bold text-sm text-[#0a2540] mb-1">Legionella på hoteller</p>
-              <p className="text-xs text-gray-500">Sikker vandhygiejne for gæster</p>
+            <Link href="/loesninger/brusefilter" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
+              <p className="font-bold text-sm text-[#0a2540] mb-1">Renere bruservand</p>
+              <p className="text-xs text-gray-500">Brusefilter til hud, hår og luftveje</p>
             </Link>
           </div>
         </div>

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { ArrowRight, CheckCircle, Filter, Droplets, Zap, Tag } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
+import ImageCarousel from '@/components/ImageCarousel'
 
 const solutionData = [
   {
@@ -12,10 +13,11 @@ const solutionData = [
     icon: Filter,
     iconBg: 'from-blue-600 to-blue-700',
     accentColor: 'blue',
-    imgSrc: '/images/filters-legionella.jpg',
+    imgSrc: '/images/solution-undervask.jpg',
     fallbackSrc: 'https://images.unsplash.com/photo-1612966809548-4f4a8e1c9e7d?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
-    imgBg: 'bg-gray-900',
+    imgBg: 'bg-white',
+    images: [] as string[],
     reverse: false,
   },
   {
@@ -27,7 +29,12 @@ const solutionData = [
     imgSrc: '/images/softener-talent100b.jpg',
     fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
-    imgBg: 'bg-[#4a6fa5]',
+    imgBg: 'bg-white',
+    images: [
+      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/2-3.png',
+      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/1-3.png',
+      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/3-3.png',
+    ] as string[],
     reverse: true,
   },
   {
@@ -39,7 +46,14 @@ const solutionData = [
     imgSrc: '/images/technician-system.jpg',
     fallbackSrc: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
-    imgBg: 'bg-gray-900',
+    imgBg: 'bg-white',
+    images: [
+      '/images/product-tr5.jpg',
+      '/images/product-tl6.jpg',
+      'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png',
+      '/images/as-tube-155.jpg',
+      'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
+    ] as string[],
     reverse: false,
   },
 ]
@@ -52,14 +66,17 @@ export default function SolutionsPage() {
       {/* ─── PAGE HERO ─────────────────────────────────────────── */}
       <section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
         <div className="absolute inset-0">
-          <img
-            src="/images/technician-system.jpg"
-            alt=""
-            className="w-full h-full object-cover object-top opacity-25"
-            onError={(e) => { e.currentTarget.style.display = 'none' }}
+          <video
+            src="/videos/loesninger-cover.mp4"
+            poster="/images/loesninger-cover-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/85 via-blue-900/75 to-blue-800/65" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/40" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
             {t('solutionsPage.hero.badge')}
@@ -150,24 +167,18 @@ export default function SolutionsPage() {
                 <ScrollReveal direction={sol.reverse ? 'left' : 'right'} duration={700} delay={100}>
                 <div className="relative pb-10 lg:pb-0">
                   <div className={`aspect-[5/4] rounded-3xl overflow-hidden shadow-2xl ${sol.imgBg}`}>
-                    <img
-                      src={sol.imgSrc}
-                      alt={t(`solutionsPage.${sol.key}.title`) as string}
-                      className={`w-full h-full ${sol.imgFit}`}
-                      onError={(e) => { e.currentTarget.src = sol.fallbackSrc }}
-                    />
-                  </div>
-                  {/* Stats pill */}
-                  <div className="absolute bottom-4 lg:-bottom-5 right-4 lg:-right-5 bg-white rounded-2xl p-4 shadow-xl border border-gray-100">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${sol.iconBg} flex items-center justify-center`}>
-                        <Icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-400">Garanti</p>
-                        <p className="text-sm font-bold text-gray-900">5 år inkl.</p>
-                      </div>
-                    </div>
+                    {sol.images && sol.images.length > 0 ? (
+                      <ImageCarousel
+                        images={sol.images.map((src) => ({ src, alt: t(`solutionsPage.${sol.key}.title`) as string }))}
+                      />
+                    ) : (
+                      <img
+                        src={sol.imgSrc}
+                        alt={t(`solutionsPage.${sol.key}.title`) as string}
+                        className={`w-full h-full ${sol.imgFit}`}
+                        onError={(e) => { e.currentTarget.src = sol.fallbackSrc }}
+                      />
+                    )}
                   </div>
                 </div>
                 </ScrollReveal>

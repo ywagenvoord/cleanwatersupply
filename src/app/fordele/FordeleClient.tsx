@@ -75,7 +75,6 @@ export default function FordelePage() {
           <div className="flex flex-wrap justify-center gap-8 md:gap-14">
             {[
               { value: '100%', label: page.hero.stat1 },
-              { value: '15 år', label: page.hero.stat2 },
               { value: '50%', label: page.hero.stat3 },
               { value: '2.900+', label: page.hero.stat4 },
             ].map((s, i) => (

@@ -40,7 +40,19 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
       <section className="relative min-h-[360px] flex items-end overflow-hidden">
-        <img src={sol.heroImg} alt={sol.label} className="absolute inset-0 w-full h-full object-cover" />
+        {sol.heroVideo ? (
+          <video
+            src={sol.heroVideo}
+            poster={sol.heroPoster ?? sol.heroImg}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <img src={sol.heroImg} alt={sol.label} className="absolute inset-0 w-full h-full object-cover" />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a2540] via-[#0a2540]/70 to-[#0a2540]/20" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full pb-12 pt-28">
           <nav className="flex items-center gap-1.5 text-xs text-white/60 mb-4">
@@ -58,20 +70,27 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── HVAD / HVORDAN ───────────────────────────────────── */}
       <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-          <div className="rounded-3xl border border-gray-100 bg-gray-50 p-8">
-            <div className="w-12 h-12 rounded-xl bg-white text-blue-700 flex items-center justify-center mb-5 shadow-sm">
-              <Info className="w-6 h-6" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 items-stretch">
+          {/* Venstre: to tekstkort i samme bredde, stablet */}
+          <div className="space-y-6">
+            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-8">
+              <div className="w-12 h-12 rounded-xl bg-white text-blue-700 flex items-center justify-center mb-5 shadow-sm">
+                <Info className="w-6 h-6" />
+              </div>
+              <h2 className="text-xl font-extrabold text-gray-900 mb-3">Hvad er det?</h2>
+              <p className="text-gray-600 leading-relaxed text-[15px]">{sol.what}</p>
             </div>
-            <h2 className="text-xl font-extrabold text-gray-900 mb-3">Hvad er det?</h2>
-            <p className="text-gray-600 leading-relaxed text-[15px]">{sol.what}</p>
+            <div className="rounded-3xl border border-gray-100 bg-gray-50 p-8">
+              <div className="w-12 h-12 rounded-xl bg-white text-blue-700 flex items-center justify-center mb-5 shadow-sm">
+                <Settings2 className="w-6 h-6" />
+              </div>
+              <h2 className="text-xl font-extrabold text-gray-900 mb-3">Sådan virker det</h2>
+              <p className="text-gray-600 leading-relaxed text-[15px]">{sol.how}</p>
+            </div>
           </div>
-          <div className="rounded-3xl border border-gray-100 bg-gray-50 p-8">
-            <div className="w-12 h-12 rounded-xl bg-white text-blue-700 flex items-center justify-center mb-5 shadow-sm">
-              <Settings2 className="w-6 h-6" />
-            </div>
-            <h2 className="text-xl font-extrabold text-gray-900 mb-3">Sådan virker det</h2>
-            <p className="text-gray-600 leading-relaxed text-[15px]">{sol.how}</p>
+          {/* Højre: cover-billede i fuld højde */}
+          <div className="relative rounded-3xl overflow-hidden border border-gray-100 min-h-[320px] md:min-h-full">
+            <img src={sol.heroImg} alt={sol.label} className="absolute inset-0 w-full h-full object-cover" />
           </div>
         </div>
       </section>

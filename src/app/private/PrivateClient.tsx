@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, CheckCircle, Sparkles, Wind, Filter } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import ProductCarousel from '@/components/ProductCarousel'
 
@@ -68,10 +68,30 @@ export default function PrivateClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
-                <Home className="w-3.5 h-3.5" />
-                {da ? 'Det private hjem' : 'The private home'}
-              </span>
+              <div className="flex items-center gap-3 mb-6 flex-wrap">
+                <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest">
+                  <Home className="w-3.5 h-3.5" />
+                  {da ? 'Det private hjem' : 'The private home'}
+                </span>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61580903496592"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-9 h-9 rounded-full bg-[#1877F2] hover:opacity-90 flex items-center justify-center text-white transition-all hover:-translate-y-0.5"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://www.instagram.com/cleanwatersupply/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-9 h-9 rounded-full bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5] hover:opacity-90 flex items-center justify-center text-white transition-all hover:-translate-y-0.5"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+              </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-[1.08]">
                 {da ? 'Rent og bakteriefrit vand til dit hjem' : 'Clean and bacteria-free water for your home'}
               </h1>
@@ -89,17 +109,21 @@ export default function PrivateClient() {
                   {da ? 'Kontakt os' : 'Contact us'}
                 </Link>
               </div>
-              <div className="mt-8 flex flex-wrap gap-6">
-                {(da
-                  ? ['Nem montering', 'Levering 2-3 hverdage', 'Medicinsk godkendt']
-                  : ['Easy installation', 'Delivery in 2-3 business days', 'Medically approved']
-                ).map((pt) => (
-                  <div key={pt} className="flex items-center gap-2 text-white/60 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-400 shrink-0" />
-                    {pt}
+              <div className="mt-8 flex flex-wrap gap-8">
+                {[
+                  { da: 'Nem montering', en: 'Easy installation', Icon: Wrench },
+                  { da: 'Levering 2-3 hverdage', en: 'Delivery in 2-3 business days', Icon: Truck },
+                  { da: 'Medicinsk godkendt', en: 'Medically approved', Icon: ShieldCheck },
+                ].map(({ da: dl, en: el, Icon }) => (
+                  <div key={dl} className="flex flex-col items-center gap-2 text-center">
+                    <span className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-green-400" />
+                    </span>
+                    <span className="text-white/70 text-sm">{da ? dl : el}</span>
                   </div>
                 ))}
               </div>
+
             </div>
 
             <div className="relative pb-10 lg:pb-0">

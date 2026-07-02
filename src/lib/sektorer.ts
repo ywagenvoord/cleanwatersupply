@@ -1,10 +1,14 @@
-export type ContactPerson = 'kenneth' | 'kristoffer'
+export type ContactPerson = 'kenneth' | 'kristoffer' | 'lotte'
 
 export interface Sektor {
   id: string
   title: string
   tagline: string
   heroImage: string
+  video?: string        // valgfri video-afsnit på siden (mp4)
+  videoPoster?: string  // poster-billede til video
+  videoHeading?: string // overskrift over videoen
+  videoBody?: string    // kort tekst under video-overskriften
   intro: string
   values: { title: string; body: string }[]
   problemHeading: string
@@ -18,7 +22,7 @@ export const sektorer: Sektor[] = [
     id: 'hoteller',
     title: 'Hoteller',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-cover.jpg',
+    heroImage: '/images/area-hoteller.jpg',
     intro: 'Hoteller – En overset risikofaktor',
     values: [
       {
@@ -50,7 +54,7 @@ export const sektorer: Sektor[] = [
     id: 'svoemmehaller',
     title: 'Svømmehaller',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-image1.jpg',
+    heroImage: '/images/area-svoemmehaller.jpg',
     intro: 'Svømmehaller – En overset risikofaktor',
     values: [
       {
@@ -82,7 +86,7 @@ export const sektorer: Sektor[] = [
     id: 'hospitaler',
     title: 'Hospitaler',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-image2.jpg',
+    heroImage: '/images/area-hospitaler.jpg',
     intro: 'Hospitaler – Hvor hver dråbe tæller for sikkerheden',
     values: [
       {
@@ -108,13 +112,13 @@ export const sektorer: Sektor[] = [
       'Opbyg tillid hos patienter og personale',
       'Forlæng installationernes levetid og reducer omkostninger',
     ],
-    contactPerson: 'kenneth',
+    contactPerson: 'lotte',
   },
   {
     id: 'campingpladser',
     title: 'Campingpladser',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-image3.jpg',
+    heroImage: '/images/area-campingpladser.jpg',
     intro: 'Campingpladser – En skjult risiko i det frie liv',
     values: [
       {
@@ -146,7 +150,7 @@ export const sektorer: Sektor[] = [
     id: 'det-private-hjem',
     title: 'Det private hjem',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-cover.jpg',
+    heroImage: '/images/area-det-private-hjem.jpg',
     intro: 'Rent vand – tryghed i hverdagen',
     values: [
       {
@@ -178,7 +182,7 @@ export const sektorer: Sektor[] = [
     id: 'foedevare',
     title: 'Fødevareindustri',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-image1.jpg',
+    heroImage: '/images/foedevare-groent.jpg',
     intro: 'ECA-vand: et sikkert og miljøvenligt valg til fødevareindustrien',
     values: [
       {
@@ -210,12 +214,16 @@ export const sektorer: Sektor[] = [
     id: 'landbruget',
     title: 'Landbrug',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
-    heroImage: 'https://cleanwatersupply.dk/wp-content/uploads/2026/04/health-showcase2-image3.jpg',
+    heroImage: '/images/area-landbruget.jpg',
+    video: '/videos/landbrug-cover.mp4',
+    videoPoster: '/images/landbrug-cover-poster.jpg',
+    videoHeading: 'Elektrolyseret vand i landbruget',
+    videoBody: 'Yverbetændelse (mastitis) er en af de dyreste sygdomme i mælkeproduktionen – med et gennemsnitligt tab på omkring 250 euro pr. ko om året. I videoen ser du, hvordan elektrolyseret vand (hypoklorsyre) kan erstatte jodbaserede produkter til pattedypning: lige så effektivt mod bakterier, men klorfrit, ugiftigt og for blot få cent pr. ko om året.',
     intro: 'ECA-vand i landbruget',
     values: [
       {
         title: 'Mikrobiologisk rent vand',
-        body: 'Rent drikkevand til dyrene øger drikkelysten og foderoptaget markant',
+        body: 'Bakteriefrit vand til dyrene øger drikkelysten og foderoptaget markant',
       },
       {
         title: 'Bedre dyrevelværd',

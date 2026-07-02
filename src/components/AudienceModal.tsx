@@ -1,22 +1,31 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { Home, Building2, X } from 'lucide-react'
-import { readAudience, writeAudience } from '@/lib/useAudience'
+import { writeAudience } from '@/lib/useAudience'
 
 export default function AudienceModal() {
   const [open, setOpen] = useState(false)
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
-    if (!readAudience()) setOpen(true)
+    // Vis kun automatisk pop-up på forsiden – dvs. ved første besøg og
+    // når man genindlæser (reloader) startsiden. Ikke når man klikker rundt.
+    if (pathname === '/') setOpen(true)
+    // …og altid når man klikker på logoet (sender en 'cws-open-audience'-hændelse)
+    const handler = () => setOpen(true)
+    window.addEventListener('cws-open-audience', handler)
+    return () => window.removeEventListener('cws-open-audience', handler)
+    // Kør kun ved mount (én gang pr. sideindlæsning) – ikke ved klient-navigation
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const choose = (value: 'privat' | 'erhverv') => {
     writeAudience(value)
     setOpen(false)
-    router.push(value === 'erhverv' ? '/erhverv' : '/private')
+    router.push(value === 'erhverv' ? '/' : '/private')
   }
 
   const close = () => {

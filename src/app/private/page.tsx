@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Privat – rent og sundt vand til dit hjem | Clean Water Supply',
   description:
-    'Vandløsninger til private hjem: bakteriefrit vand, rent drikkevand og kalkfrit vand. Nemme at installere og tilpasse til enhver bolig.',
+    'Vandløsninger til private hjem: bakteriefrit vand, bakteriefrit vand og kalkfrit vand. Nemme at installere og tilpasse til enhver bolig.',
   alternates: { canonical: `${SITE_URL}/private` },
   openGraph: {
     type: 'website',

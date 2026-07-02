@@ -118,6 +118,8 @@ export default function Footer() {
               {[
                 { href: '/about',     label: 'Om os' },
                 { href: '/business',  label: 'Erhverv' },
+                { href: '/montering', label: 'Montering' },
+                { href: '/faq',       label: 'FAQ' },
                 { href: '/contact',   label: 'Kontakt' },
               ].map((link) => (
                 <li key={link.href}>

@@ -7,6 +7,8 @@ export type SolutionInfo = {
   slug: string
   label: string
   heroImg: string
+  heroVideo?: string   // valgfri cover-video i hero'en (mp4)
+  heroPoster?: string  // poster-billede til video
   intro: string
   what: string
   how: string
@@ -64,6 +66,8 @@ export const SOLUTIONS: SolutionInfo[] = [
     slug: 'brusefilter',
     label: 'Brusefilter',
     heroImg: '/images/solution-brusefilter.jpg',
+    heroVideo: '/videos/brusefilter-cover.mp4',
+    heroPoster: '/images/brusefilter-cover-poster.jpg',
     intro: 'Renere bruservand – mildere mod hud, hår og luftveje.',
     what: 'Et brusefilter renser vandet i bruseren for klor, rust, bundfald og urenheder. Det fås som et komplet brusehoved med indbygget filter eller som et udskifteligt filter til dit eksisterende sæt – med varianter til C-vitamin eller kalkhæmmer.',
     how: 'Vandet løber gennem et aktivt kul-filter (ACF) i brusehovedet, der binder klor og urenheder, lige inden vandet rammer dig. Brusehovedet skrues på som en almindelig håndbruser, og filteret skiftes ca. hver 2.-3. måned.',

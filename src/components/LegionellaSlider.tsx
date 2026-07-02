@@ -13,7 +13,7 @@ const slides = [
     badge: 'Medicinsk godkendt',
     color: 'from-blue-900 to-[#0a2540]',
     accent: 'text-blue-300',
-    img: '/images/filters-legionella.jpg',
+    img: '/images/solution-tappested.jpg',
     position: 'object-center',
   },
   {
@@ -24,7 +24,7 @@ const slides = [
     badge: 'TALENT 100B',
     color: 'from-sky-900 to-[#0a2540]',
     accent: 'text-sky-300',
-    img: '/images/softener-talent100b.jpg',
+    img: '/images/solution-kalkanlaeg.jpg',
     position: 'object-center',
   },
   {
@@ -35,8 +35,8 @@ const slides = [
     badge: 'Erhverv',
     color: 'from-emerald-900 to-[#0a2540]',
     accent: 'text-emerald-300',
-    img: '/images/technician-system.jpg',
-    position: 'object-top',
+    img: '/images/anlaeg-tekniker.jpg',
+    position: 'object-center',
   },
 ]
 
@@ -100,7 +100,7 @@ export default function LegionellaSlider() {
               {[
                 { value: '99,9%', label: 'Bakteriefri' },
                 { value: '1000+', label: 'Hospitaler' },
-                { value: '5 år', label: 'Garanti' },
+                { value: '0,2 µm', label: 'Filtrering' },
               ].map((st) => (
                 <div key={st.label} className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center">
                   <p className="text-xl font-extrabold text-white">{st.value}</p>

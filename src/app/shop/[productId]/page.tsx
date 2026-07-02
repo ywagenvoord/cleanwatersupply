@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { PRODUCTS, getProduct, getRelated, type Product } from '@/lib/products'
-import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
+import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
+import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
 import BuyBox from './BuyBox'
+import AddonProducts from './AddonProducts'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
@@ -130,8 +131,12 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 /* ─── CATEGORY ICON ──────────────────────────────────────────────────────── */
 
 const CAT_ICONS = {
+  vandhane: Droplet,
+  bruser: ShowerHead,
+  vandkande: GlassWater,
   filtre: Filter,
   blosgoringsanlaeg: Waves,
+  anlaeg: Droplets,
 }
 
 /* ─── PAGE ───────────────────────────────────────────────────────────────── */
@@ -144,8 +149,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
   const CatIcon = CAT_ICONS[product.category] ?? Droplets
 
   const catLabel: Record<string, string> = {
+    vandhane: 'Vandhane',
+    bruser: 'Bruser',
+    vandkande: 'Vandkande',
     filtre: 'Filtre',
     blosgoringsanlaeg: 'Blødgøringsanlæg',
+    anlaeg: 'Anlæg',
   }
 
   const crumbs = [
@@ -215,7 +224,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Fordele ved blødt vand – udfylder venstre kolonne (kun blødgøringsanlæg) */}
               {product.category === 'blosgoringsanlaeg' && (
-                <div className="mt-6 rounded-3xl border border-gray-100 bg-gray-50 p-6">
+                <div className="mt-6 rounded-3xl border border-blue-100 bg-blue-50 p-6">
                   <h2 className="text-lg font-extrabold text-gray-900 mb-1">Derfor blødt vand</h2>
                   <p className="text-sm text-gray-600 leading-relaxed mb-5">
                     Hårdt, kalkholdigt vand slider på dit hjem – og på dig. Anlægget fjerner kalken via ionbytning, så du får blødt vand i hele huset. Det mærker du hver dag:
@@ -279,7 +288,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
               {/* Buy section */}
               <div className="rounded-2xl border-2 border-gray-100 bg-gray-50 p-6">
                 {/* Price */}
-                {product.comingSoon || product.price === undefined ? (
+                {product.quoteOnly ? (
+                  <div className="mb-5">
+                    <p className="text-2xl font-extrabold text-[#0a2540]">Kontakt for info</p>
+                    <p className="text-xs text-gray-400 mt-1">Pris og dimensionering efter behov</p>
+                  </div>
+                ) : product.comingSoon || product.price === undefined ? (
                   <div className="mb-5">
                     <p className="text-2xl font-extrabold text-gray-400">Kommer snart</p>
                     <p className="text-xs text-gray-400 mt-1">Kontakt os for opdateret leveringsdato</p>
@@ -289,7 +303,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                     <p className="text-3xl font-extrabold text-[#0a2540]">
                       {product.price.toLocaleString('da-DK')} kr
                     </p>
-                    <p className="text-xs text-gray-400 mt-1">Inkl. moms · Hurtig levering</p>
+                    <p className="text-xs text-gray-400 mt-1">{product.priceExMoms ? 'Ekskl. moms' : 'Inkl. moms'} · Hurtig levering</p>
                   </div>
                 )}
 
@@ -298,6 +312,24 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   🚚 Hurtig levering · 🔒 Sikker betaling · 💬 Gratis rådgivning
                 </p>
               </div>
+
+              {/* Tilbehør – kun på selve kalkanlæg-siderne (ikke på tilbehørets egne sider) */}
+              {product.category === 'blosgoringsanlaeg' && !product.addon && (
+                <AddonProducts products={ADDON_PRODUCTS} />
+              )}
+
+              {/* Bestil montering & upload billeder – kun kalkanlæg */}
+              {product.category === 'blosgoringsanlaeg' && !product.addon && (
+                <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+                  <h3 className="font-bold text-[#0a2540] mb-1.5">Bestil montering &amp; installering</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                    Du kan tilkøbe montering af dit nye blødgøringsanlæg. For at vi kan beregne den bedste pris, beder vi dig uploade billeder af installationsstedet.
+                  </p>
+                  <Link href="/montering" className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] hover:text-[#2e9a3d]">
+                    Bestil montering og upload dine billeder her <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              )}
 
               {/* Use cases */}
               {product.useCases.length > 0 && (

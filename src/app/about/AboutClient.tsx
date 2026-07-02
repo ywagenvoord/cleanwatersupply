@@ -2,7 +2,9 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Heart, Eye, Leaf, Lightbulb, ShieldCheck, Users, Star, Droplets } from 'lucide-react'
+import WaterBackground from '@/components/WaterBackground'
+import ImageCarousel from '@/components/ImageCarousel'
+import { ArrowRight, Heart, Eye, Leaf, Lightbulb, ShieldCheck, Users, Star, Droplets, Facebook, Instagram } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 
 const VALUE_ICONS = [ShieldCheck, Leaf, Lightbulb, Heart, Users, Star]
@@ -14,8 +16,14 @@ export default function AboutPage() {
   return (
     <main>
       {/* ─── HERO – SPLIT LAYOUT ──────────────────────────────── */}
-      <section className="bg-[#0a2540] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <section className="relative bg-[#0a2540] overflow-hidden">
+        <div className="absolute inset-0">
+          <WaterBackground />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540] via-[#0a2540]/85 to-[#0a2540]/40" />
+          <div className="absolute -top-32 -right-24 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 left-1/4 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left: content */}
             <div>
@@ -35,18 +43,43 @@ export default function AboutPage() {
                     <svg key={i} className={`w-5 h-5 ${i < 4 ? 'text-amber-400' : 'text-amber-400/50'} fill-current`} viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                   ))}
                 </div>
-                <span className="text-white/60 text-sm">4,5/5 baseret på 2.900+ anmeldelser</span>
+                <span className="text-white/70 text-sm">4,5/5 baseret på 2.900+ anmeldelser</span>
               </div>
             </div>
-            {/* Right: image in card */}
-            <div className="relative">
-              <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/10 aspect-[4/3]">
-                <img
-                  src="/images/team-owner.jpg"
-                  alt="Clean Water Supply team"
-                  className="w-full h-full object-cover object-top"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1559825481-12a05cc00344?w=900&q=80&fit=crop' }}
-                />
+
+            {/* Right: følg os */}
+            <div className="rounded-3xl bg-white/10 backdrop-blur-sm border border-white/15 p-8">
+              <h2 className="text-2xl font-extrabold text-white mb-2">Følg os</h2>
+              <p className="text-white/70 mb-6">Hold dig opdateret med nyheder, tips og løsninger på Facebook og Instagram.</p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61580903496592"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex-1 inline-flex items-center gap-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 px-5 py-4 text-white transition-all hover:-translate-y-0.5"
+                >
+                  <span className="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center shrink-0">
+                    <Facebook className="w-5 h-5 text-white" />
+                  </span>
+                  <span>
+                    <span className="block font-bold leading-tight">Facebook</span>
+                    <span className="block text-xs text-white/60">Følg os</span>
+                  </span>
+                </a>
+                <a
+                  href="https://www.instagram.com/cleanwatersupply/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex-1 inline-flex items-center gap-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/15 px-5 py-4 text-white transition-all hover:-translate-y-0.5"
+                >
+                  <span className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#feda75] via-[#d62976] to-[#4f5bd5] flex items-center justify-center shrink-0">
+                    <Instagram className="w-5 h-5 text-white" />
+                  </span>
+                  <span>
+                    <span className="block font-bold leading-tight">Instagram</span>
+                    <span className="block text-xs text-white/60">Følg os</span>
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -62,10 +95,9 @@ export default function AboutPage() {
             <div className="relative pb-10 lg:pb-0">
               <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/team-owner.jpg"
-                  alt="Clean Water Supply oprichter"
+                  src="/images/kenneth-kontor.jpg"
+                  alt="Kenneth fra Clean Water Supply"
                   className="w-full h-full object-cover object-center"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1559825481-12a05cc00344?w=800&q=80&fit=crop' }}
                 />
               </div>
               {/* Overlay card */}
@@ -73,7 +105,7 @@ export default function AboutPage() {
                 <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
                   <Heart className="w-5 h-5 text-emerald-600" />
                 </div>
-                <p className="text-sm font-bold text-gray-900 leading-snug">Rent vand er en menneskeret</p>
+                <p className="text-sm font-bold text-gray-900 leading-snug">Sundt vand til mennesker og dyr</p>
                 <p className="text-xs text-gray-400 mt-1">Clean Water Supply</p>
               </div>
             </div>
@@ -143,12 +175,15 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="relative order-2 lg:order-1 pb-14 lg:pb-0">
-              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gray-900">
-                <img
-                  src="/images/technician-system.jpg"
-                  alt="Clean Water Supply systeem"
-                  className="w-full h-full object-contain"
-                  onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800&q=80&fit=crop' }}
+              <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gray-100">
+                <ImageCarousel
+                  images={[
+                    { src: '/images/anlaeg-tekniker.jpg', alt: 'Clean Water Supply tekniker ved ECA-anlæg' },
+                    { src: '/images/sicursan-anlaeg.jpg', alt: 'Sicursan / Kirkmayer ECA-anlæg' },
+                    { src: '/images/softener-talent100b.jpg', alt: 'Blødgøringsanlæg' },
+                    { src: '/images/product-kalkbruser.jpg', alt: 'Brusehoved med vandfilter' },
+                    { src: '/images/product-tr5.jpg', alt: 'Baclyser filter' },
+                  ]}
                 />
               </div>
               {/* Stats overlay */}

@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Erhverv – Legionella-bekæmpelse & Kirkmayer HClO-anlæg | Clean Water Supply',
   description:
-    'B2B-vandhygiejne: medicinsk certificeret Legionella-bekæmpelse og Kirkmayers kemikaliefri HClO-anlæg (Anolyt) til hospitaler, hoteller, svømmehaller, fødevareindustri og landbrug – fjerner biofilm og sikrer rent drikkevand helt ud til hvert tappested og hvert dyr.',
+    'B2B-vandhygiejne: medicinsk certificeret Legionella-bekæmpelse og Kirkmayers kemikaliefri HClO-anlæg (Anolyt) til hospitaler, hoteller, svømmehaller, fødevareindustri og landbrug – fjerner biofilm og sikrer bakteriefrit vand helt ud til hvert tappested og hvert dyr.',
   alternates: { canonical: `${SITE_URL}/erhverv` },
   openGraph: {
     type: 'website',

@@ -46,7 +46,7 @@ export default function ErhvervClient() {
       title: da ? 'Kirkmayer-anlæg · HClO-generator' : 'Kirkmayer systems · HClO generator',
       featured: true,
       body: da
-        ? 'Kirkmayer-anlæggene er HClO-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkevandslinjerne, så dyrene får rent drikkevand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
+        ? 'Kirkmayer-anlæggene er HClO-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkelinjerne, så dyrene får bakteriefrit vand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
         : 'The Kirkmayer systems are HClO generators (BMI, LAMI and AMI series) that produce Anolyte – hypochlorous acid – on-site from only salt, water and electricity. A non-toxic disinfectant that eliminates bacteria, viruses and fungi within seconds. In agriculture the systems are especially strong for livestock such as poultry and pig production: they remove and prevent biofilm in the drinking water lines so the animals get clean drinking water. Bacteria are fought right at the animals, raising their welfare, health and living standard. The active substance is approved under ECHA Article 95.',
       specs: da
         ? ['Anolyt / HClO', 'Kemikaliefri – on-site', 'Fjerner biofilm i drikkelinjer']
@@ -92,7 +92,7 @@ export default function ErhvervClient() {
   const needs = [
     { Icon: ShieldCheck, label: da ? 'Vi skal sikre mod Legionella' : 'We need to protect against Legionella', target: '#anlaeg-legionella' },
     { Icon: Beaker, label: da ? 'Vi vil desinficere uden kemikalier' : 'We want chemical-free disinfection', target: '#anlaeg-eca' },
-    { Icon: Droplets, label: da ? 'Vi vil sikre rent drikkevand til vores dyr' : 'We want clean drinking water for our animals', target: '#anlaeg-eca' },
+    { Icon: Droplets, label: da ? 'Vi vil sikre bakteriefrit vand til vores dyr' : 'We want clean drinking water for our animals', target: '#anlaeg-eca' },
     { Icon: Layers, label: da ? 'Vi vil beskytte hele bygningen' : 'We want to protect the whole building', target: '#anlaeg-central' },
     { Icon: FileCheck2, label: da ? 'Vi har brug for dokumentation' : 'We need documentation', target: '#compliance' },
     { Icon: HelpCircle, label: da ? 'Vi er i tvivl – eller har et andet behov' : 'We are unsure – or have another need', target: '#kontakt' },
@@ -111,7 +111,7 @@ export default function ErhvervClient() {
       sectors: da ? 'Fødevareindustri · Mejeri · Svømmehaller' : 'Food industry · Dairy · Pools',
     },
     {
-      need: da ? 'Rent drikkevand til dyr' : 'Clean drinking water for animals',
+      need: da ? 'Bakteriefrit vand til dyr' : 'Clean drinking water for animals',
       system: da ? 'Kirkmayer HClO-anlæg' : 'Kirkmayer HClO systems',
       sectors: da ? 'Landbrug · Kyllinge- & svineproduktion' : 'Agriculture · Poultry & pig farming',
     },
@@ -321,6 +321,49 @@ export default function ErhvervClient() {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── VIDEO · HYPOKLORSYRE ──────────────────────────────── */}
+      <section className="py-20 bg-[#0a2540]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div>
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+                <Zap className="w-3.5 h-3.5" /> {da ? 'Video · ECA-vand' : 'Video · ECA water'}
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-5 leading-tight">
+                {da ? 'Se hvordan hypoklorsyre virker' : 'See how hypochlorous acid works'}
+              </h2>
+              <p className="text-white/70 leading-relaxed mb-7">
+                {da
+                  ? 'Hypoklorsyre (HOCl) er et kraftfuldt, men ikke-toksisk desinfektionsmiddel, der produceres on-site af salt, vand og strøm. Se, hvordan det bekæmper bakterier, vira og biofilm – helt uden kemikalier.'
+                  : 'Hypochlorous acid (HOCl) is a powerful yet non-toxic disinfectant produced on-site from salt, water and electricity. See how it fights bacteria, viruses and biofilm – completely chemical-free.'}
+              </p>
+              <ul className="space-y-3">
+                {(da
+                  ? ['Kemikaliefri desinfektion', 'Nedbryder biofilm i rør og systemer', 'Effektiv mod bakterier, vira og svampe']
+                  : ['Chemical-free disinfection', 'Breaks down biofilm in pipes and systems', 'Effective against bacteria, viruses and fungi']
+                ).map((pt) => (
+                  <li key={pt} className="flex items-center gap-3 text-white/80 text-sm">
+                    <CheckCircle className="w-5 h-5 text-green-400 shrink-0" /> {pt}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-black">
+              <video
+                controls
+                preload="metadata"
+                poster="/images/hypoklorsyre-poster.jpg"
+                className="w-full h-full block"
+                aria-label={da ? 'Video om hypoklorsyre' : 'Video about hypochlorous acid'}
+              >
+                <source src="/videos/hypoklorsyre.mp4" type="video/mp4" />
+              </video>
+            </div>
           </div>
         </div>
       </section>

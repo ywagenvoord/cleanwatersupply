@@ -80,7 +80,7 @@ export default function OrganizationJsonLd() {
           'Legionella',
           'Pseudomonas aeruginosa',
           'Vandhygiejne',
-          'Drikkevandsbehandling',
+          'Vandbehandling',
           'ECA-vand',
           'Hypochlorous acid',
           'Vandfiltrering',

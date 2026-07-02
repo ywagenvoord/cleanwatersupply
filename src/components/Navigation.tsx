@@ -18,13 +18,20 @@ export default function Navigation() {
   const [langOpen, setLangOpen] = useState(false)
   const [audOpen, setAudOpen] = useState(false)
 
-  const audienceLabel = audience === 'erhverv' ? 'Erhverv' : audience === 'privat' ? 'Privat' : 'Jeg handler som'
+  const audienceLabel = audience === 'erhverv' ? 'Erhverv' : audience === 'privat' ? 'Privat' : 'Privat/Erhverv'
 
   const chooseAudience = (value: 'privat' | 'erhverv') => {
     setAudience(value)
     setAudOpen(false)
-    router.push(value === 'erhverv' ? '/erhverv' : '/private')
+    router.push(value === 'erhverv' ? '/' : '/private')
   }
+
+  const loesningerChildren = [
+    { href: '/loesninger/filtre-paa-tappestedet', label: 'Håndvask' },
+    { href: '/loesninger/brusefilter', label: 'Bruser' },
+    { href: '/loesninger/filtre-i-vandforsyningen', label: 'Vandforsyningen' },
+    { href: '/loesninger/kalkanlaeg', label: 'Kalkanlæg' },
+  ]
 
   const omraaderChildren = [
     { href: '/omraader/hoteller', label: 'Hoteller' },
@@ -33,34 +40,34 @@ export default function Navigation() {
     { href: '/omraader/campingpladser', label: 'Campingpladser' },
     { href: '/omraader/foedevare', label: 'Fødevareindustri' },
     { href: '/omraader/landbruget', label: 'Landbrug' },
-    { href: '/omraader/det-private-hjem', label: 'Det private hjem' },
+    { href: '/spildevand', label: 'Spildevand' },
   ]
 
   type NavLink = { href: string; label: string; children?: { href: string; label: string }[] }
 
   // Erhverv (og standard): fuld, teknisk menu med Områder-dropdown
   const erhvervLinks: NavLink[] = [
-    { href: '/solutions', label: t('nav.solutions') },
-    { href: '/legionella', label: 'Legionella' },
+    { href: '/omraader', label: 'Løsninger', children: omraaderChildren },
     { href: '/eca-vand', label: 'ECA-VAND' },
-    { href: '/omraader', label: 'Områder', children: omraaderChildren },
+    { href: '/spildevand', label: 'Spildevand' },
     { href: '/about', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
 
   // Privat: forenklet, hjem-fokuseret menu
   const privatLinks: NavLink[] = [
-    { href: '/solutions', label: t('nav.solutions') },
-    { href: '/shop', label: t('nav.shop') },
-    { href: '/legionella', label: 'Legionella' },
+    { href: '/solutions', label: t('nav.solutions'), children: loesningerChildren },
+    { href: '/legionella', label: 'Bakterier' },
     { href: '/about', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
 
-  const navLinks: NavLink[] = audience === 'privat' ? privatLinks : erhvervLinks
+  const navLinks: NavLink[] = audience === 'erhverv' ? erhvervLinks : privatLinks
 
   // Hjem/logo: privat → den private forside; erhverv (og standard) → den originale forside
   const homeHref = audience === 'privat' ? '/private' : '/'
+  // Shop-knap følger valget: erhverv → erhvervs-shoppen, ellers privat-shoppen
+  const shopHref = audience === 'erhverv' ? '/shop/erhverv' : '/shop'
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a2540] shadow-lg" aria-label="Hovednavigation">
@@ -68,7 +75,12 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-24">
 
           {/* Logo */}
-          <Link href={homeHref} className="flex items-center" aria-label="Clean Water Supply – tilbage til forsiden">
+          <Link
+            href={homeHref}
+            onClick={() => window.dispatchEvent(new Event('cws-open-audience'))}
+            className="flex items-center"
+            aria-label="Clean Water Supply – tilbage til forsiden"
+          >
             <img
               src="/images/logo.png"
               alt="Clean Water Supply – Danmarks specialist i Legionella-filtre"
@@ -114,7 +126,7 @@ export default function Navigation() {
                           href={link.href}
                           className="block px-4 py-2.5 text-sm font-semibold text-green-400 hover:bg-white/10 border-t border-white/10"
                         >
-                          Alle områder →
+                          Se alle →
                         </Link>
                       </div>
                     </div>
@@ -132,8 +144,16 @@ export default function Navigation() {
 
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
+            {audience === 'erhverv' && (
+              <Link
+                href="/min-konto/login"
+                className="whitespace-nowrap px-4 py-2 rounded-full border border-white/25 text-white/85 hover:text-white hover:bg-white/10 text-sm font-semibold transition-colors"
+              >
+                Log ind
+              </Link>
+            )}
             <Link
-              href="/shop"
+              href={shopHref}
               className="px-5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
             >
               {t('nav.shop')}
@@ -157,9 +177,9 @@ export default function Navigation() {
               <button
                 onClick={() => setAudOpen(!audOpen)}
                 onBlur={() => setTimeout(() => setAudOpen(false), 150)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/10 transition-colors text-sm font-medium"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/10 transition-colors text-xs font-medium"
               >
-                {audience === 'erhverv' ? <Building2 className="w-4 h-4" /> : <Home className="w-4 h-4" />}
+                {audience === 'erhverv' ? <Building2 className="w-3.5 h-3.5" /> : <Home className="w-3.5 h-3.5" />}
                 <span>{audienceLabel}</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${audOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -250,8 +270,17 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
+          {audience === 'erhverv' && (
+            <Link
+              href="/min-konto/login"
+              onClick={() => setMobileOpen(false)}
+              className="block border border-white/25 text-white/85 text-center px-6 py-3 rounded-full text-sm font-semibold mt-3"
+            >
+              Log ind
+            </Link>
+          )}
           <Link
-            href="/shop"
+            href={shopHref}
             onClick={() => setMobileOpen(false)}
             className="block bg-[#3aad4a] text-white text-center px-6 py-3 rounded-full text-sm font-bold mt-3"
           >

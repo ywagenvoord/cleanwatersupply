@@ -19,7 +19,9 @@ export default function ProductJsonLd({ product }: { product: Product }) {
       '@type': 'Brand',
       name: 'Clean Water Supply',
     },
-    category: product.category === 'filtre' ? 'Vandfilter' : 'Blødgøringsanlæg',
+    category: product.category === 'blosgoringsanlaeg' ? 'Blødgøringsanlæg'
+      : product.category === 'anlaeg' ? 'Vandbehandlingsanlæg'
+      : 'Vandfilter',
     url,
   }
 

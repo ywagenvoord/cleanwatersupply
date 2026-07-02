@@ -6,23 +6,23 @@ import { SITE_URL } from '@/lib/site'
 const URL = `${SITE_URL}/solutions`
 
 export const metadata: Metadata = {
-  title: 'Vandbehandling – Komplette løsninger til erhverv & private',
+  title: 'Vandløsninger til det private hjem | Clean Water Supply',
   description:
-    'Skræddersyede vandbehandlingsløsninger: Legionella-filtre, blødgøringsanlæg, ECA-vand og drikkevandssystemer. Til hospitaler, hoteller, svømmehaller og private hjem.',
+    'Rent, blødt og bakteriefrit vand i hele hjemmet: vandfiltrering, blødgøringsanlæg og bakteriefrie filtre til hane og bruser. Til både byvand og egen brønd.',
   keywords: [
-    'vandbehandling',
-    'vandløsninger',
-    'kommerciel vandbehandling',
-    'industriel vandfiltrering',
-    'Legionella løsning',
-    'blødgøringsanlæg erhverv',
+    'vandløsninger hjem',
+    'vandfiltrering privat',
+    'blødgøringsanlæg hjem',
+    'bakteriefrit vand',
+    'kalkfrit vand',
+    'brøndvand filter',
   ],
   alternates: { canonical: URL },
   openGraph: {
     type: 'website',
     url: URL,
-    title: 'Vandbehandlingsløsninger | Clean Water Supply',
-    description: 'Komplette vandbehandlingsløsninger til erhverv og private i Danmark.',
+    title: 'Vandløsninger til det private hjem | Clean Water Supply',
+    description: 'Rent, blødt og bakteriefrit vand i hele hjemmet – vandfiltrering, blødgøringsanlæg og filtre til hane og bruser.',
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },

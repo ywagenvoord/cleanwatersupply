@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'HClO generator',
     'Baclyser filter',
     'Pseudomonas filter',
-    'rent drikkevand',
+    'bakteriefrit vand',
     'vandbehandling hospital',
     'vandhygiejne hotel',
     'kalkfilter',

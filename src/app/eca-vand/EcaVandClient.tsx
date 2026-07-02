@@ -120,7 +120,7 @@ export default function EcaVandPage() {
               },
               {
                 title: 'Omkostningseffektiv',
-                body: 'Anlægget renser effektivt drikkevandsystemer, foderanlæg, overflader mm. – alt på én gang',
+                body: 'Anlægget renser effektivt vandsystemer, foderanlæg, overflader mm. – alt på én gang',
               },
             ].map((item, i) => (
               <div key={i} className="bg-gray-50 rounded-2xl p-7 border border-gray-100">
@@ -180,7 +180,7 @@ export default function EcaVandPage() {
             </Link>
             <Link href="/omraader/landbruget" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
               <p className="font-bold text-sm text-[#0a2540] mb-1">ECA-vand i landbruget</p>
-              <p className="text-xs text-gray-500">Drikkevand til dyrene</p>
+              <p className="text-xs text-gray-500">Bakteriefrit vand til dyrene</p>
             </Link>
           </div>
         </div>

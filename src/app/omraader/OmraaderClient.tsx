@@ -25,11 +25,6 @@ const sectors = [
     desc: 'Sikker vandkvalitet til sæsonbetonede installationer',
   },
   {
-    title: 'Det private hjem',
-    slug: 'det-private-hjem',
-    desc: 'Rent og sikkert vand til hele familien',
-  },
-  {
     title: 'Fødevareindustri',
     slug: 'foedevare',
     desc: 'Kemikaliefri desinfektion til fødevareproduktion',
