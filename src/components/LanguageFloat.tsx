@@ -26,12 +26,6 @@ export default function LanguageFloat() {
             >
               <span>🇬🇧</span> English
             </button>
-            <button
-              onClick={() => { setLanguage('de'); setOpen(false) }}
-              className={`flex items-center gap-2.5 w-full text-left px-4 py-3 text-sm transition-colors ${language === 'de' ? 'text-green-400 font-semibold bg-white/10' : 'text-white/80 hover:bg-white/10 hover:text-white'}`}
-            >
-              <span>🇩🇪</span> Deutsch
-            </button>
           </div>
         )}
         <button
@@ -40,7 +34,7 @@ export default function LanguageFloat() {
           aria-label="Skift sprog"
           className="flex items-center gap-2 bg-[#0a2540] text-white shadow-lg border border-white/15 rounded-full pl-4 pr-3 py-2.5 text-sm font-semibold hover:bg-[#0e2f52] transition-colors"
         >
-          <span className="text-base leading-none">{language === 'da' ? '🇩🇰' : language === 'de' ? '🇩🇪' : '🇬🇧'}</span>
+          <span className="text-base leading-none">{language === 'da' ? '🇩🇰' : '🇬🇧'}</span>
           <span className="uppercase">{language}</span>
           <ChevronUp className={`w-3.5 h-3.5 transition-transform ${open ? '' : 'rotate-180'}`} />
         </button>

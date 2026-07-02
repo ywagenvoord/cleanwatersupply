@@ -21,17 +21,15 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(LANG_KEY)
-      if (saved === 'da' || saved === 'en' || saved === 'de') {
+      if (saved === 'da' || saved === 'en') {
         setLanguageState(saved)
         return
       }
     } catch {}
     if (typeof navigator !== 'undefined') {
       const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]
-      const lower = langs.map((l) => (l || '').toLowerCase())
-      if (lower.some((l) => l.startsWith('da'))) setLanguageState('da')
-      else if (lower.some((l) => l.startsWith('de'))) setLanguageState('de')
-      else setLanguageState('en')
+      const prefersDanish = langs.some((l) => l?.toLowerCase().startsWith('da'))
+      setLanguageState(prefersDanish ? 'da' : 'en')
     }
   }, [])
 
