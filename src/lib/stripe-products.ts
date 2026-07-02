@@ -46,7 +46,7 @@ export const STRIPE_MAPPING: Record<string, StripeData> = {
   'brusefilter-acf-amino-acid':    { productId: 'prod_UnZYN4UtvQ6BnU', paymentLink: 'https://buy.stripe.com/dRm7sK34f6H07QagSH4gg0K' },
 
   // Cartridge MF5 – filter til AS Tube (privat) – oprettet i Stripe live
-  'cartridge-sc3':                 { productId: 'prod_UnaAJsIRq1aYzQ', paymentLink: 'https://buy.stripe.com/00w9ASgV51mG1rM45V4gg0L' },
+  'cartridge-sc3':                 { productId: 'prod_UnaAJsIRq1aYzQ', paymentLink: 'https://buy.stripe.com/8x25kC34faXg7Qaauj4gg0P' },
 
   // Cartridge SC3 – filter til cBlue SC3 – oprettet i Stripe live
   'cblue-sc3-filter':              { productId: 'prod_UnaaX8MP0xbj9f', paymentLink: 'https://buy.stripe.com/cNi28q7kv0iC9Yi8mb4gg0M' },

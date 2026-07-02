@@ -1,7 +1,9 @@
 'use client'
 
-import React, { createContext, useContext, useState, ReactNode } from 'react'
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
 import { translations, Language } from '@/lib/translations'
+
+const LANG_KEY = 'cws-lang'
 
 interface LanguageContextType {
   language: Language
@@ -12,16 +14,44 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('da')
+  const [language, setLanguageState] = useState<Language>('da')
+
+  // Ved første besøg: brug gemt valg hvis det findes, ellers auto ud fra browseren
+  // (dansk browser → dansk, alle andre → engelsk). Manuelt valg i vælgeren huskes.
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(LANG_KEY)
+      if (saved === 'da' || saved === 'en' || saved === 'de') {
+        setLanguageState(saved)
+        return
+      }
+    } catch {}
+    if (typeof navigator !== 'undefined') {
+      const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]
+      const lower = langs.map((l) => (l || '').toLowerCase())
+      if (lower.some((l) => l.startsWith('da'))) setLanguageState('da')
+      else if (lower.some((l) => l.startsWith('de'))) setLanguageState('de')
+      else setLanguageState('en')
+    }
+  }, [])
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang)
+    try { localStorage.setItem(LANG_KEY, lang) } catch {}
+  }
 
   const t = (path: string): any => {
     const keys = path.split('.')
-    let value: any = translations[language]
-    for (const key of keys) {
-      if (value === undefined || value === null) return path
-      value = value[key]
+    const lookup = (lang: Language): any => {
+      let value: any = translations[lang]
+      for (const key of keys) {
+        if (value === undefined || value === null) return undefined
+        value = value[key]
+      }
+      return value
     }
-    return value ?? path
+    // Aktivt sprog → engelsk → dansk → nøglen (så intet vises tomt/i stykker)
+    return lookup(language) ?? lookup('en') ?? lookup('da') ?? path
   }
 
   return (

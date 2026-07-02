@@ -4,22 +4,20 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Lock, ArrowRight, Building2 } from 'lucide-react'
 import ShopClient from '../ShopClient'
-import { isB2bLoggedIn } from '@/lib/b2bDemo'
+import { useB2bLoggedIn } from '@/lib/useB2b'
 import type { Product } from '@/lib/products'
 
 export default function ErhvervShopGate({ products }: { products: Product[] }) {
-  const [state, setState] = useState<'loading' | 'in' | 'out'>('loading')
-
-  useEffect(() => {
-    setState(isB2bLoggedIn() ? 'in' : 'out')
-  }, [])
+  const loggedIn = useB2bLoggedIn()
+  const [ready, setReady] = useState(false)
+  useEffect(() => { setReady(true) }, [])
 
   // Undgå at flashe priser før vi ved om man er logget ind
-  if (state === 'loading') {
+  if (!ready) {
     return <div className="min-h-[60vh]" />
   }
 
-  if (state === 'out') {
+  if (!loggedIn) {
     return (
       <div className="min-h-[70vh] bg-gray-50 flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md text-center">

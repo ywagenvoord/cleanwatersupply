@@ -56,12 +56,25 @@ export default function TermsPage() {
 
         <h2>6. Fortrydelsesret</h2>
         <p>
-          Du har 14 dages fortrydelsesret regnet fra modtagelsen af varen. Returnering skal ske i original og ubrudt
-          emballage. Returomkostninger afholdes af køber, medmindre andet aftales.
+          Du har 14 dages fortrydelsesret, regnet fra den dag du modtager varen. Vil du fortryde købet, skal du give os
+          besked inden for fristen – send en e-mail til{' '}
+          <a href="mailto:info@cleanwatersupply.dk">info@cleanwatersupply.dk</a>. Du kan bruge den lovbestemte
+          standardfortrydelsesformular, men det er ikke et krav.
         </p>
         <p>
-          Send en e-mail til <a href="mailto:info@cleanwatersupply.dk">info@cleanwatersupply.dk</a> for at gøre brug af
-          fortrydelsesretten.
+          Du må gerne åbne emballagen og undersøge varen, som du ville kunne i en fysisk butik, uden at miste
+          fortrydelsesretten. Du hæfter dog for en eventuel værdiforringelse, hvis varen er håndteret ud over, hvad der
+          er nødvendigt for at fastslå dens art, egenskaber og måden, den fungerer på.
+        </p>
+        <p>
+          <strong>Undtagelse for forseglede hygiejneprodukter:</strong> Visse af vores produkter (fx filtre og patroner)
+          leveres forseglet af sundheds- og hygiejnemæssige årsager. Brydes forseglingen efter levering, bortfalder
+          fortrydelsesretten for den pågældende vare, jf. forbrugeraftalelovens § 18, stk. 2, nr. 5.
+        </p>
+        <p>
+          Fortryder du, skal varen sendes retur uden unødig forsinkelse og senest 14 dage efter, du har givet os besked.
+          Du afholder selv omkostningerne ved returnering, medmindre andet er aftalt. Vi refunderer betalingen, når vi har
+          modtaget varen retur – eller når du har dokumenteret, at den er sendt tilbage.
         </p>
 
         <h2>7. Reklamation</h2>

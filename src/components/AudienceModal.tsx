@@ -1,26 +1,34 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@clerk/nextjs'
 import { Home, Building2, X } from 'lucide-react'
 import { writeAudience } from '@/lib/useAudience'
 
 export default function AudienceModal() {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const pathname = usePathname()
+  const { isSignedIn, isLoaded } = useAuth()
 
   useEffect(() => {
-    // Vis kun automatisk pop-up på forsiden – dvs. ved første besøg og
-    // når man genindlæser (reloader) startsiden. Ikke når man klikker rundt.
-    if (pathname === '/') setOpen(true)
-    // …og altid når man klikker på logoet (sender en 'cws-open-audience'-hændelse)
-    const handler = () => setOpen(true)
+    if (!isLoaded) return
+    // Logget ind som erhverv → altid erhverv, aldrig mulighed for at vælge 'Privat'.
+    if (isSignedIn) {
+      writeAudience('erhverv')
+      setOpen(false)
+      return
+    }
+    // Vis kun automatisk pop-up på forsiden ved første besøg / reload – ikke ved klik rundt.
+    if (typeof window !== 'undefined' && window.location.pathname === '/') setOpen(true)
+  }, [isLoaded, isSignedIn])
+
+  useEffect(() => {
+    // Logo-klik åbner vælgeren – men aldrig for indloggede erhvervskunder.
+    const handler = () => { if (!isSignedIn) setOpen(true) }
     window.addEventListener('cws-open-audience', handler)
     return () => window.removeEventListener('cws-open-audience', handler)
-    // Kør kun ved mount (én gang pr. sideindlæsning) – ikke ved klient-navigation
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isSignedIn])
 
   const choose = (value: 'privat' | 'erhverv') => {
     writeAudience(value)

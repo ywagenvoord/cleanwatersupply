@@ -52,7 +52,7 @@ export default function PrivacyPage() {
 
         <h2>5. Videregivelse</h2>
         <p>
-          Vi deler kun data med betroede databehandlere: Stripe (betalingsbehandling), Vercel (hosting), FormSubmit
+          Vi deler kun data med betroede databehandlere: Stripe (betalingsbehandling), Netlify (hosting), FormSubmit
           (formularhåndtering). Alle har databehandleraftaler og overholder GDPR.
         </p>
 

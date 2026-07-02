@@ -1,15 +1,19 @@
 'use client'
 
 import { useCart } from '@/contexts/CartContext'
-import { X, Minus, Plus, ShoppingBag, ArrowRight, Trash2 } from 'lucide-react'
+import { X, Minus, Plus, ShoppingBag, ArrowRight, Trash2, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
 import RecommendedProducts from '@/components/RecommendedProducts'
+import { useB2bLoggedIn } from '@/lib/useB2b'
 
 export default function CartDrawer() {
   const { items, isOpen, setOpen, removeItem, updateQuantity, subtotal, itemCount } = useCart()
   const [checkingOut, setCheckingOut] = useState(false)
   const [error, setError] = useState('')
+
+  // Erhvervskunde (demo-login) → bestil på faktura i stedet for Stripe
+  const b2b = useB2bLoggedIn()
 
   async function handleCheckout() {
     setCheckingOut(true)
@@ -122,26 +126,42 @@ export default function CartDrawer() {
         {/* Footer */}
         {items.length > 0 && (
           <div className="border-t border-gray-100 p-5 space-y-3 bg-gray-50">
-            {error && (
+            {error && !b2b && (
               <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
                 {error}
               </p>
             )}
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-500">Subtotal</span>
+              <span className="text-sm text-gray-500">Subtotal{b2b ? ' (ekskl. moms)' : ''}</span>
               <span className="text-xl font-extrabold text-[#0a2540]">
                 {subtotal.toLocaleString('da-DK')} kr
               </span>
             </div>
-            <p className="text-xs text-gray-400">Fragt og moms beregnes ved kassen.</p>
-            <button
-              onClick={handleCheckout}
-              disabled={checkingOut}
-              className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
-            >
-              {checkingOut ? 'Indlæser...' : 'Til betaling'}
-              {!checkingOut && <ArrowRight className="w-4 h-4" />}
-            </button>
+            {b2b ? (
+              <>
+                <p className="text-xs text-gray-400">Erhvervspriser ekskl. moms. Betaling på faktura.</p>
+                <Link
+                  href="/cart#faktura"
+                  onClick={() => setOpen(false)}
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
+                >
+                  Bestil på faktura
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </>
+            ) : (
+              <>
+                <p className="text-xs text-gray-400">Fragt og moms beregnes ved kassen.</p>
+                <button
+                  onClick={handleCheckout}
+                  disabled={checkingOut}
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
+                >
+                  {checkingOut ? 'Indlæser...' : 'Til betaling'}
+                  {!checkingOut && <ArrowRight className="w-4 h-4" />}
+                </button>
+              </>
+            )}
             <Link
               href="/cart"
               onClick={() => setOpen(false)}

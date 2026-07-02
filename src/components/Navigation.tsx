@@ -6,16 +6,24 @@ import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
 import { useAudience } from '@/lib/useAudience'
+import { useB2bLoggedIn } from '@/lib/useB2b'
+import { useUser } from '@clerk/nextjs'
 import { Menu, X, ChevronDown, ShoppingBag, Home, Building2 } from 'lucide-react'
 
 export default function Navigation() {
-  const { t, language, setLanguage } = useLanguage()
+  const { t } = useLanguage()
   const { itemCount, setOpen: setCartOpen } = useCart()
   const pathname = usePathname()
   const router = useRouter()
   const [audience, setAudience] = useAudience()
+  const b2bLoggedIn = useB2bLoggedIn()
+  const { user } = useUser()
+  const firmaName =
+    ((user?.unsafeMetadata as any)?.firma?.firmanavn as string) ||
+    ((user?.publicMetadata as any)?.firma?.firmanavn as string) ||
+    user?.firstName ||
+    'Erhvervskonto'
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [langOpen, setLangOpen] = useState(false)
   const [audOpen, setAudOpen] = useState(false)
 
   const audienceLabel = audience === 'erhverv' ? 'Erhverv' : audience === 'privat' ? 'Privat' : 'Privat/Erhverv'
@@ -144,7 +152,7 @@ export default function Navigation() {
 
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
-            {audience === 'erhverv' && (
+            {audience === 'erhverv' && !b2bLoggedIn && (
               <Link
                 href="/min-konto/login"
                 className="whitespace-nowrap px-4 py-2 rounded-full border border-white/25 text-white/85 hover:text-white hover:bg-white/10 text-sm font-semibold transition-colors"
@@ -172,7 +180,8 @@ export default function Navigation() {
                 </span>
               )}
             </button>
-            {/* Audience switcher – far right */}
+            {/* Audience switcher – skjules når man er logget ind som erhverv */}
+            {!b2bLoggedIn && (
             <div className="relative">
               <button
                 onClick={() => setAudOpen(!audOpen)}
@@ -201,34 +210,20 @@ export default function Navigation() {
                 </div>
               )}
             </div>
-            {/* Language switcher – far right */}
-            <div className="relative">
-              <button
-                onClick={() => setLangOpen(!langOpen)}
-                onBlur={() => setTimeout(() => setLangOpen(false), 150)}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm font-medium"
+            )}
+            {/* Firmanavn – klikbar chip helt til højre, fører til Min konto */}
+            {b2bLoggedIn && (
+              <Link
+                href="/min-konto"
+                title={`${firmaName} – gå til min konto`}
+                className="flex items-center gap-2 pl-3 ml-1 border-l border-white/15 group"
               >
-                <span className="text-base leading-none">{language === 'da' ? '🇩🇰' : '🇬🇧'}</span>
-                <span className="uppercase">{language}</span>
-                <ChevronDown className={`w-3 h-3 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {langOpen && (
-                <div className="absolute right-0 mt-1 w-36 bg-[#0a2540] border border-white/15 rounded-xl shadow-xl overflow-hidden z-50">
-                  <button
-                    onClick={() => { setLanguage('da'); setLangOpen(false) }}
-                    className={`flex items-center gap-2.5 w-full text-left px-4 py-3 text-sm transition-colors ${language === 'da' ? 'text-green-400 font-semibold bg-white/10' : 'text-white/75 hover:bg-white/10 hover:text-white'}`}
-                  >
-                    <span>🇩🇰</span> Dansk
-                  </button>
-                  <button
-                    onClick={() => { setLanguage('en'); setLangOpen(false) }}
-                    className={`flex items-center gap-2.5 w-full text-left px-4 py-3 text-sm transition-colors ${language === 'en' ? 'text-green-400 font-semibold bg-white/10' : 'text-white/75 hover:bg-white/10 hover:text-white'}`}
-                  >
-                    <span>🇬🇧</span> English
-                  </button>
-                </div>
-              )}
-            </div>
+                <span className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 group-hover:border-[#3aad4a]/40 text-white/90 group-hover:text-white text-sm font-semibold whitespace-nowrap max-w-[200px] transition-colors">
+                  <Building2 className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                  <span className="truncate">{firmaName}</span>
+                </span>
+              </Link>
+            )}
           </div>
 
           {/* Mobile cart + menu */}
@@ -270,7 +265,7 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
-          {audience === 'erhverv' && (
+          {audience === 'erhverv' && !b2bLoggedIn && (
             <Link
               href="/min-konto/login"
               onClick={() => setMobileOpen(false)}
@@ -286,37 +281,36 @@ export default function Navigation() {
           >
             {t('nav.shop')}
           </Link>
-          <div className="pt-4 border-t border-white/10">
-            <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Jeg handler som</p>
-            <div className="flex gap-2">
-              <button
-                onClick={() => { chooseAudience('privat'); setMobileOpen(false) }}
-                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'privat' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
+          {b2bLoggedIn ? (
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Logget ind som</p>
+              <Link
+                href="/min-konto"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 px-1 text-white font-semibold"
               >
-                <Home className="w-4 h-4" /> Privat
-              </button>
-              <button
-                onClick={() => { chooseAudience('erhverv'); setMobileOpen(false) }}
-                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'erhverv' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
-              >
-                <Building2 className="w-4 h-4" /> Erhverv
-              </button>
+                <Building2 className="w-4 h-4 text-[#3aad4a]" /> {firmaName}
+              </Link>
             </div>
-          </div>
-          <div className="pt-4 border-t border-white/10 flex items-center gap-3">
-            <button
-              onClick={() => { setLanguage('da'); setMobileOpen(false) }}
-              className={`flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors ${language === 'da' ? 'text-green-400 bg-white/10' : 'text-white/60 hover:bg-white/10 hover:text-white'}`}
-            >
-              🇩🇰 DA
-            </button>
-            <button
-              onClick={() => { setLanguage('en'); setMobileOpen(false) }}
-              className={`flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors ${language === 'en' ? 'text-green-400 bg-white/10' : 'text-white/60 hover:bg-white/10 hover:text-white'}`}
-            >
-              🇬🇧 EN
-            </button>
-          </div>
+          ) : (
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Jeg handler som</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => { chooseAudience('privat'); setMobileOpen(false) }}
+                  className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'privat' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
+                >
+                  <Home className="w-4 h-4" /> Privat
+                </button>
+                <button
+                  onClick={() => { chooseAudience('erhverv'); setMobileOpen(false) }}
+                  className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'erhverv' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
+                >
+                  <Building2 className="w-4 h-4" /> Erhverv
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </nav>

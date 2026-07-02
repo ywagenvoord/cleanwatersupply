@@ -581,7 +581,7 @@ export default function HomePage() {
               {t('ctaBanner.cta1')}
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <a href="tel:+45XXXXXXXX" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white px-9 py-4 rounded-full font-semibold text-base transition-all">
+            <a href="tel:+4551215800" className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white px-9 py-4 rounded-full font-semibold text-base transition-all">
               {t('ctaBanner.cta2')}
             </a>
           </div>

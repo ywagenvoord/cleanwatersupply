@@ -1,11 +1,13 @@
 'use client'
 
 import { useCart } from '@/contexts/CartContext'
-import { ShoppingBag, Minus, Plus, Trash2, ArrowRight, ArrowLeft, ShieldCheck, Truck, CreditCard, CheckCircle2, Star, Award, Users, Clock } from 'lucide-react'
+import { ShoppingBag, Minus, Plus, Trash2, ArrowRight, ArrowLeft, ShieldCheck, Truck, CreditCard, CheckCircle2, Star, Award, Users, Clock, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import RecommendedProducts from '@/components/RecommendedProducts'
+import FakturaCheckout from './FakturaCheckout'
+import { useB2bLoggedIn } from '@/lib/useB2b'
 
 export default function CartPage() {
   return (
@@ -21,12 +23,16 @@ function CartPageContent() {
   const [error, setError] = useState('')
   const searchParams = useSearchParams()
   const success = searchParams.get('success') === 'true'
+  const ordreSendt = searchParams.get('ordre') === 'sendt'
 
-  // Clear cart after successful payment
+  // Erhvervskunde (demo-login) → bestil på faktura i stedet for Stripe
+  const b2b = useB2bLoggedIn()
+
+  // Clear cart after successful payment / faktura-ordre
   useEffect(() => {
-    if (success) clearCart()
+    if (success || ordreSendt) clearCart()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [success])
+  }, [success, ordreSendt])
 
   async function handleCheckout() {
     setCheckingOut(true)
@@ -62,6 +68,27 @@ function CartPageContent() {
             className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3 rounded-full font-bold text-sm"
           >
             Tilbage til shop
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </main>
+    )
+  }
+
+  if (ordreSendt) {
+    return (
+      <main className="min-h-[70vh] bg-gray-50 flex items-center justify-center px-4">
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-lg p-10 max-w-md text-center">
+          <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-5">
+            <FileText className="w-8 h-8 text-green-600" />
+          </div>
+          <h1 className="text-2xl font-extrabold text-[#0a2540] mb-3">Tak for din ordre!</h1>
+          <p className="text-gray-600 mb-7">Vi har modtaget jeres bestilling og vender tilbage med en ordrebekræftelse. Fakturaen sender vi efterfølgende.</p>
+          <Link
+            href="/shop/erhverv"
+            className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3 rounded-full font-bold text-sm"
+          >
+            Tilbage til erhvervsshop
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -145,54 +172,87 @@ function CartPageContent() {
 
                   <div className="space-y-3 mb-5 pb-5 border-b border-gray-100">
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Subtotal</span>
+                      <span className="text-gray-500">Subtotal{b2b ? ' (ekskl. moms)' : ''}</span>
                       <span className="font-semibold text-gray-900">{subtotal.toLocaleString('da-DK')} kr</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-500">Fragt</span>
-                      <span className="text-gray-400">Beregnes ved kassen</span>
+                      <span className="text-gray-400">{b2b ? 'Aftales ved bekræftelse' : 'Beregnes ved kassen'}</span>
                     </div>
                   </div>
 
                   <div className="flex justify-between items-baseline mb-6">
-                    <span className="text-base font-bold text-[#0a2540]">Total</span>
+                    <span className="text-base font-bold text-[#0a2540]">Total{b2b ? ' (ekskl. moms)' : ''}</span>
                     <span className="text-2xl font-extrabold text-[#0a2540]">{subtotal.toLocaleString('da-DK')} kr</span>
                   </div>
 
-                  {error && (
+                  {error && !b2b && (
                     <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-4">
                       {error}
                     </p>
                   )}
 
-                  <button
-                    onClick={handleCheckout}
-                    disabled={checkingOut}
-                    className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20 mb-3"
-                  >
-                    {checkingOut ? 'Indlæser betaling...' : 'Til betaling'}
-                    {!checkingOut && <ArrowRight className="w-4 h-4" />}
-                  </button>
+                  {b2b ? (
+                    <>
+                      <a
+                        href="#faktura"
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20 mb-3"
+                      >
+                        Bestil på faktura
+                        <ArrowRight className="w-4 h-4" />
+                      </a>
+                      <p className="text-xs text-center text-gray-400 mb-5">Betaling via faktura – ingen kortbetaling</p>
 
-                  <p className="text-xs text-center text-gray-400 mb-5">Sikker betaling via Stripe</p>
+                      <div className="space-y-2.5 pt-5 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <FileText className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Betaling på faktura</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <Award className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Erhvervspriser ekskl. moms</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <Truck className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Hurtig levering i hele DK</span>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        onClick={handleCheckout}
+                        disabled={checkingOut}
+                        className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20 mb-3"
+                      >
+                        {checkingOut ? 'Indlæser betaling...' : 'Til betaling'}
+                        {!checkingOut && <ArrowRight className="w-4 h-4" />}
+                      </button>
 
-                  <div className="space-y-2.5 pt-5 border-t border-gray-100">
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <ShieldCheck className="w-4 h-4 text-[#3aad4a] shrink-0" />
-                      <span>Sikker SSL-kryptering</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <Truck className="w-4 h-4 text-[#3aad4a] shrink-0" />
-                      <span>Hurtig levering i hele DK</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <CreditCard className="w-4 h-4 text-[#3aad4a] shrink-0" />
-                      <span>Kort & MobilePay</span>
-                    </div>
-                  </div>
+                      <p className="text-xs text-center text-gray-400 mb-5">Sikker betaling via Stripe</p>
+
+                      <div className="space-y-2.5 pt-5 border-t border-gray-100">
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <ShieldCheck className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Sikker SSL-kryptering</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <Truck className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Hurtig levering i hele DK</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                          <CreditCard className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                          <span>Kort & MobilePay</span>
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
+
+            {/* ─── ERHVERV: BESTIL PÅ FAKTURA ──────────────────────── */}
+            {b2b && <FakturaCheckout items={items} subtotal={subtotal} />}
 
             {/* ─── RECOMMENDED PRODUCTS (UPSELL) ───────────────────── */}
             <RecommendedProducts variant="grid" count={3} />

@@ -65,9 +65,32 @@ export async function POST(req: NextRequest) {
       shipping_address_collection: {
         allowed_countries: ['DK', 'SE', 'NO', 'DE', 'NL', 'BE'],
       },
+      // Fragtmuligheder: almindelig levering + "Afhent selv" ved butikken.
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 6900, currency: 'dkk' },
+            display_name: 'Levering',
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 0, currency: 'dkk' },
+            display_name: 'Afhent selv – Strømøvej 3, 8700 Horsens',
+          },
+        },
+      ],
+      custom_text: {
+        shipping_address: {
+          message:
+            'Vælger du "Afhent selv", kan varen hentes hos Clean Water Supply, Strømøvej 3, 8700 Horsens. Du får besked, når den er klar til afhentning.',
+        },
+      },
       billing_address_collection: 'required',
       phone_number_collection: { enabled: true },
-      success_url: `${origin}/cart?success=true`,
+      success_url: `${origin}/ordre-bekraeftelse?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url:  `${origin}/cart`,
       locale: 'da',
       allow_promotion_codes: true,
