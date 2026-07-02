@@ -13,7 +13,10 @@ export default function MinKontoGate({ children }: { children: ReactNode }) {
 
   if (!ready) return <div className="min-h-[60vh]" />
 
-  if (!loggedIn) {
+  // Preview-tilstand (chef-gennemgang): vis kontoen uden login
+  const previewOpen = process.env.NEXT_PUBLIC_PREVIEW_OPEN === '1'
+
+  if (!loggedIn && !previewOpen) {
     return (
       <div className="min-h-[70vh] bg-gray-50 flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md text-center">

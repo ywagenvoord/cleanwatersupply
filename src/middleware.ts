@@ -6,6 +6,8 @@ const isProtectedRoute = createRouteMatcher(['/shop/erhverv(.*)', '/min-konto(.*
 const isPublicAuthRoute = createRouteMatcher(['/min-konto/login(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
+  // Preview-tilstand: åben adgang (til chef-gennemgang) – ingen login-væg
+  if (process.env.NEXT_PUBLIC_PREVIEW_OPEN === '1') return
   if (isProtectedRoute(req) && !isPublicAuthRoute(req)) {
     await auth.protect()
   }
