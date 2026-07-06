@@ -85,7 +85,6 @@ export default function Navigation() {
           {/* Logo */}
           <Link
             href={homeHref}
-            onClick={() => window.dispatchEvent(new Event('cws-open-audience'))}
             className="flex items-center"
             aria-label="Clean Water Supply – tilbage til forsiden"
           >
