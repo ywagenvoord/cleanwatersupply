@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@clerk/nextjs'
 import { Home, Building2, X } from 'lucide-react'
-import { writeAudience } from '@/lib/useAudience'
+import { writeAudience, readAudience } from '@/lib/useAudience'
 
 export default function AudienceModal() {
   const [open, setOpen] = useState(false)
@@ -19,8 +19,12 @@ export default function AudienceModal() {
       setOpen(false)
       return
     }
-    // Vis kun automatisk pop-up på forsiden ved første besøg / reload – ikke ved klik rundt.
-    if (typeof window !== 'undefined' && window.location.pathname === '/') setOpen(true)
+    // Vis kun pop-up FØRSTE gang (indtil man har valgt). Har man allerede valgt
+    // privat/erhverv (eller sprunget over), husker vi det og viser den ikke igen.
+    // Vil man skifte, gør man det manuelt i vælgeren i menuen.
+    if (typeof window !== 'undefined' && window.location.pathname === '/' && readAudience() === null) {
+      setOpen(true)
+    }
   }, [isLoaded, isSignedIn])
 
   useEffect(() => {
