@@ -342,8 +342,8 @@ export default function HomePage() {
               { Icon: Wind, title: 'Spredes i luften', body: 'Den spredes gennem små vanddråber i luften, fx fra brusere, og kan indåndes og give infektioner.' },
               { Icon: Droplets, title: 'Rør & tanke', body: 'Den vokser hurtigt i rør og tanke, hvor vandet står stille og ikke skylles regelmæssigt.' },
             ].map(({ Icon, title, body }) => (
-              <div key={title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm">
-                <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center mb-4">
+              <div key={title} className="rounded-2xl border border-blue-100 bg-blue-50 p-7 shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-white text-blue-700 flex items-center justify-center mb-4">
                   <Icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
