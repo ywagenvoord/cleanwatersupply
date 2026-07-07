@@ -393,7 +393,7 @@ export const PRODUCTS: Product[] = [
     name: 'Cartridge MF5 – filter til AS Tube',
     tagline: 'Nyt filter til stålfilterhus SC3 (AS Tube) – 3 måneders levetid',
     category: 'bruser',
-    price: 1118.75,
+    price: 1120,
     imgSrc:   '/images/cartridge-sc3.jpg',
     imgLarge: '/images/cartridge-sc3.jpg',
     description: 'Løst udskiftningsfilter (MF5-patron med hulfibermembran) til AS Tube stålfilterhuset (SC3). Bevarer beskyttelsen – behold selve filterhuset.',
