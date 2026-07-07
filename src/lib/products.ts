@@ -369,7 +369,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'cartridge-mf5', productNr: '101471', name: 'Cartridge MF5 – patron til AS Tube',
     tagline: 'Udskiftningspatron (hulfibermembran) til AS Tube-filterhus',
-    badge: 'Udskiftningsfilter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 800,
+    badge: 'Udskiftningsfilter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
     imgSrc: '/images/mf5-cartridge.jpg', imgLarge: '/images/mf5-cartridge.jpg',
     description: 'Udskiftningspatron med hulfibermembran til AS Tube-filterhuset. Tilbageholder bakterier og partikler ved central indføring.',
     highlights: ['Hulfibermembran', 'Til AS Tube', 'Udskiftningspatron'],
@@ -615,7 +615,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'baclyser-s-3m', productNr: '102143', name: 'Baclyser® neo S (3M) – brusefilter',
     tagline: 'Medicinsk certificeret brusefilter – levetid ca. 93 dage',
-    badge: 'Medicinsk', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 425,
+    badge: 'Medicinsk', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 450,
     imgSrc: '/images/baclyser-s.jpg', imgLarge: '/images/baclyser-s.jpg',
     description: 'Medicinsk certificeret 0,2 µm brusefilter med lang levetid (ca. 3 måneder). Steril barriere mod Legionella og Pseudomonas ved bruseren.',
     highlights: ['0,2 µm membran', 'Medicinsk certificeret', 'Levetid ca. 93 dage'],
@@ -628,7 +628,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'as-wallshower-4m', productNr: '101443', name: 'AS Wallshower (4M)',
     tagline: 'Vægmonteret medicinsk brusefilter – levetid op til 4 måneder',
-    badge: 'Medicinsk', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 675,
+    badge: 'Medicinsk', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
     imgSrc: '/images/as-wallshower.jpg', imgLarge: '/images/as-wallshower.jpg',
     description: 'Vægmonteret brusefilter med 0,2 µm membran og lang levetid (op til 4 måneder) – til faste installationer med skærpede hygiejnekrav.',
     highlights: ['0,2 µm membran', 'Vægmonteret', 'Levetid op til 4 mdr.'],
@@ -839,7 +839,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'baclyser-il-3', productNr: '100883', name: 'Baclyser® IL 3 – inline-filter (3.000 l)',
     tagline: 'Medicinsk inline-filter til vandforsyningen – kapacitet 3.000 liter',
-    badge: 'Medicinsk', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 640,
+    badge: 'Medicinsk', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 625,
     imgSrc: '/images/baclyser-il.jpg', imgLarge: '/images/baclyser-il.jpg',
     description: 'Medicinsk inline-filter med 0,2 µm membran, der monteres i vandforsyningen og beskytter et tappested centralt. Kapacitet op til 3.000 liter.',
     highlights: ['0,2 µm membran', 'Inline / point-of-entry', 'Kapacitet 3.000 l'],
@@ -852,7 +852,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'baclyser-il-5', productNr: '100882', name: 'Baclyser® IL 5 – inline-filter (13.000 l)',
     tagline: 'Medicinsk inline-filter til vandforsyningen – kapacitet 13.000 liter',
-    badge: 'Medicinsk', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 940,
+    badge: 'Medicinsk', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 900,
     imgSrc: '/images/baclyser-il5.jpg', imgLarge: '/images/baclyser-il5.jpg',
     description: 'Medicinsk inline-filter med 0,2 µm membran og stor kapacitet (op til 13.000 liter). Til central beskyttelse i installationer med højt forbrug.',
     highlights: ['0,2 µm membran', 'Inline / point-of-entry', 'Kapacitet 13.000 l'],
@@ -865,7 +865,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hygienesiphon-g114', productNr: '100666', name: 'HygieneSiphon G 1¼"',
     tagline: 'Hygiejnevandlås mod bakterievækst i afløbet – G 1¼"',
-    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 425,
+    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 450,
     imgSrc: '/images/hygienesiphon.jpg', imgLarge: '/images/hygienesiphon.jpg',
     description: 'HygieneSiphon er en vandlås, der modvirker bakterievækst og tilbagesmitning fra afløbet ved håndvasken. Til indløb og håndvaskventil G 1¼".',
     highlights: ['Modvirker bakterievækst i afløb', 'G 1¼"', 'Til håndvask'],
@@ -878,7 +878,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hygienesiphon-g112', productNr: '100807', name: 'HygieneSiphon G 1½"',
     tagline: 'Hygiejnevandlås mod bakterievækst i afløbet – G 1½"',
-    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 425,
+    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 475,
     imgSrc: '/images/hygienesiphon.jpg', imgLarge: '/images/hygienesiphon.jpg',
     description: 'HygieneSiphon vandlås, der modvirker bakterievækst og tilbagesmitning fra afløbet ved håndvasken. Til indløb og håndvaskventil G 1½".',
     highlights: ['Modvirker bakterievækst i afløb', 'G 1½"', 'Til håndvask'],
@@ -891,7 +891,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hygienesiphon-pakke-g114', productNr: '100680', name: 'HygieneSiphon installationspakke G 1¼"',
     tagline: 'Komplet startpakke til HygieneSiphon – G 1¼"',
-    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 625,
+    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 700,
     imgSrc: '/images/hygienesiphon-pakke.jpg', imgLarge: '/images/hygienesiphon-pakke.jpg',
     description: 'Komplet installationspakke til HygieneSiphon med alt nødvendigt til første montering. Til G 1¼".',
     highlights: ['Komplet startpakke', 'G 1¼"', 'Klar til montering'],
@@ -904,7 +904,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'hygienesiphon-pakke-g112', productNr: '101470', name: 'HygieneSiphon installationspakke G 1½"',
     tagline: 'Komplet startpakke til HygieneSiphon – G 1½"',
-    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 625,
+    badge: 'Hygiejne', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 700,
     imgSrc: '/images/hygienesiphon-pakke.jpg', imgLarge: '/images/hygienesiphon-pakke.jpg',
     description: 'Komplet installationspakke til HygieneSiphon med alt nødvendigt til første montering. Til G 1½".',
     highlights: ['Komplet startpakke', 'G 1½"', 'Klar til montering'],
@@ -917,7 +917,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inlet-hygienesiphon-g114', productNr: '100669', name: 'Inlet til HygieneSiphon G 1¼"',
     tagline: 'Reservedel: indløb til HygieneSiphon – G 1¼"',
-    badge: 'Reservedel', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 195,
+    badge: 'Reservedel', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 200,
     imgSrc: '/images/inlet.jpg', imgLarge: '/images/inlet.jpg',
     description: 'Indløb (reservedel) til HygieneSiphon-vandlåsen. Til G 1¼".',
     highlights: ['Reservedel', 'G 1¼"', 'Til HygieneSiphon'],
@@ -930,7 +930,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'inlet-hygienesiphon-g112', productNr: '100923', name: 'Inlet til HygieneSiphon G 1½"',
     tagline: 'Reservedel: indløb til HygieneSiphon – G 1½"',
-    badge: 'Reservedel', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 195,
+    badge: 'Reservedel', category: 'filtre', audience: 'erhverv', priceExMoms: true, price: 200,
     imgSrc: '/images/inlet.jpg', imgLarge: '/images/inlet.jpg',
     description: 'Indløb (reservedel) til HygieneSiphon-vandlåsen. Til G 1½".',
     highlights: ['Reservedel', 'G 1½"', 'Til HygieneSiphon'],
