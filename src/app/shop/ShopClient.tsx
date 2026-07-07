@@ -7,7 +7,7 @@ import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskCo
 import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
-import { PRODUCTS, type Product } from '@/lib/products'
+import { PRODUCTS, shopPrice, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
@@ -105,11 +105,14 @@ const FITS_WITH: Record<string, { img: string; label: string }> = {
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
 }
 
-function ProductCard({ product, catColor }: { product: Product; catColor: string }) {
+function ProductCard({ product, catColor, showErhverv }: { product: Product; catColor: string; showErhverv: boolean }) {
   const c = COLOR[catColor as keyof typeof COLOR] ?? COLOR.blue
   const CatIcon = CATEGORIES.find(c => c.key === product.category)?.icon ?? Droplets
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
+
+  // Erhverv ser grossistpris (ekskl. moms), privat ser privatpris
+  const { amount: displayPrice, exMoms } = shopPrice(product, showErhverv)
 
   // Use live Stripe product ID if available, fallback to static mapping
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
@@ -117,12 +120,12 @@ function ProductCard({ product, catColor }: { product: Product; catColor: string
 
   function handleAdd(e: React.MouseEvent) {
     e.preventDefault()
-    if (!stripeProductId || !product.price) return
+    if (!stripeProductId || displayPrice == null) return
     addItem({
       id:              product.id,
       stripeProductId,
       name:            product.name,
-      price:           product.price,
+      price:           displayPrice,
       image:           product.imgSrc,
     })
     setAdded(true)
@@ -181,12 +184,12 @@ function ProductCard({ product, catColor }: { product: Product; catColor: string
         <div className="mt-4 pt-4 border-t border-gray-100">
           {product.quoteOnly ? (
             <p className="text-base font-bold text-[#0a2540]">Kontakt for info</p>
-          ) : product.comingSoon || product.price === undefined ? (
+          ) : product.comingSoon || displayPrice === undefined ? (
             <p className="text-base font-bold text-gray-400">Kommer snart</p>
           ) : (
             <p className="flex items-baseline gap-1.5">
-              <span className="text-xl font-extrabold text-[#0a2540]">{product.price.toLocaleString('da-DK')} kr</span>
-              <span className="text-[11px] font-medium text-gray-400">{product.priceExMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
+              <span className="text-xl font-extrabold text-[#0a2540]">{displayPrice.toLocaleString('da-DK')} kr</span>
+              <span className="text-[11px] font-medium text-gray-400">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
           )}
         </div>
@@ -374,7 +377,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filtered.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
-                <ProductCard product={product} catColor={catColor} />
+                <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} />
               </ScrollReveal>
             ))}
           </div>

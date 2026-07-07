@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
 import BuyBox from './BuyBox'
+import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
@@ -287,25 +288,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Buy section */}
               <div className="rounded-2xl border-2 border-gray-100 bg-gray-50 p-6">
-                {/* Price */}
-                {product.quoteOnly ? (
-                  <div className="mb-5">
-                    <p className="text-2xl font-extrabold text-[#0a2540]">Kontakt for info</p>
-                    <p className="text-xs text-gray-400 mt-1">Pris og dimensionering efter behov</p>
-                  </div>
-                ) : product.comingSoon || product.price === undefined ? (
-                  <div className="mb-5">
-                    <p className="text-2xl font-extrabold text-gray-400">Kommer snart</p>
-                    <p className="text-xs text-gray-400 mt-1">Kontakt os for opdateret leveringsdato</p>
-                  </div>
-                ) : (
-                  <div className="mb-5">
-                    <p className="text-3xl font-extrabold text-[#0a2540]">
-                      {product.price.toLocaleString('da-DK')} kr
-                    </p>
-                    <p className="text-xs text-gray-400 mt-1">{product.priceExMoms ? 'Ekskl. moms' : 'Inkl. moms'} · Hurtig levering</p>
-                  </div>
-                )}
+                {/* Price (erhverv ser grossistpris) */}
+                <ProductPrice product={product} />
 
                 <BuyBox product={product} />
                 <p className="text-xs text-gray-400 text-center mt-4">

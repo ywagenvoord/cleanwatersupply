@@ -5,7 +5,8 @@ import { useCart } from '@/contexts/CartContext'
 import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera } from 'lucide-react'
 import Link from 'next/link'
 import { getStripe } from '@/lib/stripe-products'
-import { INSTALLATION_PRICE, type Product } from '@/lib/products'
+import { INSTALLATION_PRICE, shopPrice, type Product } from '@/lib/products'
+import { useB2bLoggedIn } from '@/lib/useB2b'
 import { zoneForPostnummer, ZONE_INFO } from '@/lib/zones'
 
 /* ─── Montering-valg (radio) ─────────────────────────────────────── */
@@ -40,19 +41,21 @@ export default function BuyBox({ product }: { product: Product }) {
   const [postnummer, setPostnummer] = useState('')
   const [showTilbehor, setShowTilbehor] = useState(false)
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
+  const erhverv = useB2bLoggedIn()
+  const { amount: unitPrice } = shopPrice(product, erhverv)
   const stripe  = getStripe(product.id)
-  const buyable = stripe && !product.comingSoon && product.price !== undefined
+  const buyable = stripe && !product.comingSoon && unitPrice !== undefined
   const isSoftener = product.category === 'blosgoringsanlaeg'
-  const base  = product.price ?? 0
+  const base  = unitPrice ?? 0
   const total = base + (isSoftener && withInstall ? INSTALLATION_PRICE : 0)
 
   function handleAdd() {
-    if (!stripe || !product.price) return
+    if (!stripe || unitPrice == null) return
     addItem({
       id:              product.id,
       stripeProductId: stripe.productId,
       name:            product.name,
-      price:           product.price,
+      price:           unitPrice,
       image:           product.imgSrc,
     })
     setAdded(true)

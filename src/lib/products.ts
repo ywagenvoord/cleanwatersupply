@@ -20,7 +20,8 @@ export type Product = {
   quoteOnly?: boolean         // true = ingen pris/køb, vis "Kontakt for info"
   addon?: boolean             // true = tilbehør, skjules fra shop-oversigt; vises kun som tilkøb på kalkanlæg-siden
   // Price
-  price?: number          // DKK – undefined = "Kommer snart"
+  price?: number          // DKK – privatpris (typisk inkl. moms)
+  priceErhverv?: number   // DKK – erhvervs-/grossistpris (ekskl. moms), vises til indloggede erhvervskunder
   comingSoon?: boolean
   // Images
   imgSrc: string           // card thumbnail
@@ -48,6 +49,12 @@ const CWS = 'https://cleanwatersupply.dk/wp-content/uploads'
 // Pris for standard montering af blødgøringsanlæg (tillæg, inkl. moms). Kan ændres frit.
 export const INSTALLATION_PRICE = 2995
 
+/** Vælger den rigtige pris til visning/kurv: erhverv ser grossistpris (ekskl. moms), privat ser privatpris. */
+export function shopPrice(p: Product, erhverv: boolean): { amount?: number; exMoms: boolean } {
+  if (erhverv && p.priceErhverv != null) return { amount: p.priceErhverv, exMoms: true }
+  return { amount: p.price, exMoms: !!p.priceExMoms }
+}
+
 export const PRODUCTS: Product[] = [
   {
     id: 'baclyser-neo-tr-2m',
@@ -57,7 +64,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Medicinsk godkendt',
     category: 'vandhane',
     featured: true,
-    price: 623.75,
+    price: 623.75, priceErhverv: 375,
     imgSrc:   '/images/product-tr5.jpg',
     imgLarge: '/images/product-tr5.jpg',
     description: 'Medicinsk godkendt engangsfilter til håndvask med bruserudløb. Beskytter i op til 62 dage.',
@@ -93,7 +100,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Engangsfilter til håndvaskarmatur – 93 dage',
     badge: 'Medicinsk godkendt',
     category: 'vandhane',
-    price: 623.75,
+    price: 623.75, priceErhverv: 425,
     imgSrc:   '/images/product-tr5.jpg',
     imgLarge: '/images/product-tr5.jpg',
     description: 'Medicinsk godkendt engangsfilter til håndvask med bruserudløb. Beskytter i op til 93 dage.',
@@ -128,7 +135,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Medicinsk godkendt',
     category: 'vandhane',
     featured: true,
-    price: 561.25,
+    price: 561.25, priceErhverv: 375,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
     description: 'Medicinsk engangsfilter til håndvask med laminart udløb. Levetid op til 62 dage.',
@@ -163,7 +170,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Engangsfilter med laminar udløb – 93 dage',
     badge: 'Medicinsk godkendt',
     category: 'vandhane',
-    price: 623.75,
+    price: 623.75, priceErhverv: 425,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
     description: 'Medicinsk engangsfilter til håndvask med laminart udløb. Levetid op til 93 dage.',
@@ -209,7 +216,7 @@ export const PRODUCTS: Product[] = [
     name: 'Coupling M22',
     tagline: 'Hurtigkobling til indvendigt M22-gevind',
     category: 'vandhane',
-    price: 311.25,
+    price: 311.25, priceErhverv: 300,
     imgSrc:   `${CWS}/2025/08/1-300x300.png`,
     imgLarge: `${CWS}/2025/08/1-300x300.png`,
     description: 'Hurtigkobling til indvendigt M22-gevind. Værktøjsfri montering af Baclyser®-filtre.',
@@ -240,7 +247,7 @@ export const PRODUCTS: Product[] = [
     name: 'Coupling M24',
     tagline: 'Hurtigkobling til udvendigt M24-gevind',
     category: 'vandhane',
-    price: 311.25,
+    price: 311.25, priceErhverv: 300,
     imgSrc:   `${CWS}/2025/08/1-300x300.png`,
     imgLarge: `${CWS}/2025/08/1-300x300.png`,
     description: 'Hurtigkobling til udvendigt M24-gevind. Værktøjsfri montering af Baclyser®-filtre.',
@@ -272,7 +279,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Krom brusehoved med udskifteligt filter',
     category: 'bruser',
     featured: true,
-    price: 1118.75,
+    price: 1118.75, priceErhverv: 795,
     imgSrc:   `${CWS}/2025/10/Hjemmeside-2-300x300.png`,
     imgLarge: `${CWS}/2025/10/Hjemmeside-2.png`,
     description: 'Brusehoved i krom med udskifteligt filter. Legionella-beskyttelse i et elegant design.',
@@ -308,7 +315,7 @@ export const PRODUCTS: Product[] = [
     name: 'Cartridge SC3 – filter til cBlue SC3',
     tagline: 'Nyt udskiftningsfilter til cBlue SC3 brusehoved – 3 måneders levetid',
     category: 'bruser',
-    price: 623.75,
+    price: 623.75, priceErhverv: 550,
     imgSrc:   '/images/cblue-sc3-filter.jpg',
     imgLarge: '/images/cblue-sc3-filter.jpg',
     description: 'Løst udskiftningsfilter (hulfiberpatron) til cBlue SC3 brusehovedet. Bevarer Legionella-beskyttelsen – behold selve brusehovedet.',
@@ -340,7 +347,7 @@ export const PRODUCTS: Product[] = [
     name: 'AS Tube',
     tagline: 'Inline hulfibermembran patron',
     category: 'bruser',
-    price: 1618.75,
+    price: 1618.75, priceErhverv: 1195,
     imgSrc:   'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
     imgLarge: 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
     description: 'Udskifteligt inline-filter med hulfibermembran til professionelle installationer.',
@@ -644,7 +651,7 @@ export const PRODUCTS: Product[] = [
     name: 'Filtervandkande',
     tagline: 'Laica filterkande med Bi-flux® + MikroPLASTIK-STOP – 3 liter',
     category: 'vandkande',
-    price: 273.75,
+    price: 273.75, priceErhverv: 300,
     imgSrc:   'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     imgLarge: 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     description: 'Laica filterkande med 2-trins filtrering. Reducerer over 99,99 % mikroplast og fjerner klor, tungmetaller og pesticider. 3 liter, Made in EU.',
@@ -679,7 +686,7 @@ export const PRODUCTS: Product[] = [
     name: 'Løst filter til vandkande',
     tagline: 'Udskiftningspatron – 150 liters levetid',
     category: 'vandkande',
-    price: 56.25,
+    price: 56.25, priceErhverv: 50,
     imgSrc:   '/images/product-filter-udskift.jpg',
     imgLarge: '/images/product-filter-udskift.jpg',
     description: 'Original Bi-flux®-reservedel til vandkande. Fjerner kalk, klor og urenheder. Levetid 150 L.',
@@ -743,7 +750,7 @@ export const PRODUCTS: Product[] = [
     name: 'Filter Housing',
     tagline: 'Filterhus til rørledninger',
     category: 'filtre',
-    price: 498.75,
+    price: 498.75, priceErhverv: 475,
     imgSrc:   `${CWS}/2025/10/1-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/1-1-300x300.png`,
     description: 'Universelt filterhus til rørledning. Passer standard 10"-filterpatroner.',
@@ -776,7 +783,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Tostadigt filter – smag, sikkerhed & hygiejne',
     category: 'filtre',
     featured: true,
-    price: 749,
+    price: 749, priceErhverv: 875,
     imgSrc:   `${CWS}/2025/10/6-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/6-1-300x300.png`,
     description: 'Tostadigt filter: bedre smag og lugt, fjerner tungmetaller og medicinrester, mikrobiologisk sikkert.',
@@ -809,7 +816,7 @@ export const PRODUCTS: Product[] = [
     name: 'Aktivt Kulblokfilter 10-CL',
     tagline: 'Fjerner tungmetaller, medicinrester & klor',
     category: 'filtre',
-    price: 373.75,
+    price: 373.75, priceErhverv: 350,
     imgSrc:   `${CWS}/2025/10/3-1-300x300.png`,
     imgLarge: `${CWS}/2025/10/3-1-300x300.png`,
     description: 'Forbedrer vandets smag og lugt og fjerner tungmetaller og medicinrester.',
