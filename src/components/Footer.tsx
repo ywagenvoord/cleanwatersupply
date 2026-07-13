@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import NewsletterForm from '@/components/NewsletterForm'
 
 const SECTORS = [
   { id: 'hoteller',         label: 'Hoteller' },
@@ -150,6 +151,24 @@ export default function Footer() {
               ))}
             </ul>
           </nav>
+        </div>
+
+        {/* Nyhedsbrev */}
+        <div className="mt-14 pt-10 border-t border-white/5">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="max-w-md">
+              <h2 className="text-white font-semibold text-sm mb-2 uppercase tracking-wider">
+                Nyhedsbrev
+              </h2>
+              <p className="text-sm text-gray-400">
+                Få viden om vandhygiejne, nyheder og tilbud direkte i indbakken. Ingen spam – kun når
+                vi har noget, der er værd at dele.
+              </p>
+            </div>
+            <div className="w-full lg:max-w-md">
+              <NewsletterForm variant="footer" />
+            </div>
+          </div>
         </div>
       </div>
 

@@ -10,9 +10,10 @@ import {
   ArrowRight, CheckCircle, Droplets, Filter, Zap, Award,
   Wrench, Leaf, ShieldCheck, Star, Users, Clock, Building2,
   Home, ChevronRight, Quote, Truck,
-  Tractor, HeartPulse, Thermometer, Wind
+  Tractor, HeartPulse, Thermometer, Wind, Mail
 } from 'lucide-react'
 import LegionellaSlider from '@/components/LegionellaSlider'
+import NewsletterForm from '@/components/NewsletterForm'
 import ScrollReveal from '@/components/ScrollReveal'
 
 const SOLUTIONS_ICONS = [
@@ -559,6 +560,27 @@ export default function HomePage() {
               </div>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── NYHEDSBREV ────────────────────────────────────────── */}
+      <section className="py-24 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl border border-blue-100 shadow-sm p-8 md:p-12 text-center">
+            <div className="w-14 h-14 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mx-auto mb-6">
+              <Mail className="w-7 h-7" aria-hidden="true" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mb-4">
+              Hold dig opdateret på rent vand
+            </h2>
+            <p className="text-gray-600 mb-8 max-w-xl mx-auto">
+              Tilmeld dig vores nyhedsbrev og få viden om vandhygiejne, legionella-forebyggelse og
+              nye produkter – direkte i din indbakke.
+            </p>
+            <div className="max-w-lg mx-auto text-left">
+              <NewsletterForm variant="section" />
+            </div>
           </div>
         </div>
       </section>
