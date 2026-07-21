@@ -105,12 +105,22 @@ export default function QuizModal() {
 
         <div className="relative p-6">
           {/* Badge */}
-          <div className="inline-flex items-center gap-1.5 rounded-full bg-white/15 backdrop-blur px-3 py-1.5 mb-5 ring-1 ring-white/20">
-            <Sparkles className="w-3.5 h-3.5 text-green-300" strokeWidth={2.5} aria-hidden="true" />
-            <span className="text-[11px] font-extrabold text-white uppercase tracking-[0.16em]">
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-4 shadow-lg"
+            style={{
+              background: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
+              boxShadow: '0 4px 14px rgba(34,197,94,0.45)',
+            }}
+          >
+            <Sparkles className="w-4 h-4 text-white" strokeWidth={2.75} aria-hidden="true" />
+            <span className="text-[14px] font-black text-white uppercase tracking-[0.14em]">
               Konkurrence
             </span>
           </div>
+
+          <p className="text-[15px] font-bold text-white/90 mb-5 leading-snug">
+            Deltag gratis – vi trækker lod blandt alle deltagere
+          </p>
 
           {/* Præmie */}
           <div className="flex gap-4 items-center mb-5">

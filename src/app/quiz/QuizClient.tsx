@@ -86,9 +86,15 @@ export default function QuizClient() {
         {/* ── INTRO ── */}
         {phase === 'intro' && (
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#3aad4a] px-4 py-1.5 mb-6">
-              <Gift className="w-3.5 h-3.5 text-white" />
-              <span className="text-xs font-extrabold text-white uppercase tracking-[0.12em]">
+            <div
+              className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 mb-7"
+              style={{
+                background: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
+                boxShadow: '0 6px 20px rgba(34,197,94,0.4)',
+              }}
+            >
+              <Gift className="w-5 h-5 text-white" strokeWidth={2.5} />
+              <span className="text-lg md:text-xl font-black text-white uppercase tracking-[0.12em]">
                 Konkurrence
               </span>
             </div>
