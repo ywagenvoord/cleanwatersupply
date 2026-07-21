@@ -2,16 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { X, Droplets, ArrowRight } from 'lucide-react'
+import { X, Gift, ArrowRight } from 'lucide-react'
 import { readAudience } from '@/lib/useAudience'
-import { PRIZE, DEADLINE, DELAY_SECONDS, SEEN_KEY, QUESTIONS } from '@/lib/quiz'
+import { PRIZE_SHORT, DEADLINE, DELAY_SECONDS, SEEN_KEY, QUESTIONS } from '@/lib/quiz'
 
 /**
- * Lille "weblayer"-teaser. Indeholder ikke selve quizzen – den sender
- * besøgende videre til /quiz, hvor konkurrencen foregår.
+ * Diskret hjørne-popup ("weblayer") nede i højre hjørne.
+ * Indeholder ikke selve quizzen – sender besøgende videre til /quiz.
  */
 export default function QuizModal() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen]       = useState(false)
+  const [visible, setVisible] = useState(false)   // styrer ind-glidningen
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -19,13 +20,13 @@ export default function QuizModal() {
       if (localStorage.getItem(SEEN_KEY)) return
     } catch { return }
 
-    // Vis den ikke oven i quiz-siden selv
     if (window.location.pathname.startsWith('/quiz')) return
 
     const timer = setTimeout(() => {
-      // AudienceModal vises kun når audience === null – undgå to modaler på én gang
+      // AudienceModal vises kun når audience === null – undgå to popups på én gang
       if (readAudience() === null) return
       setOpen(true)
+      requestAnimationFrame(() => setVisible(true))
     }, DELAY_SECONDS * 1000)
 
     return () => clearTimeout(timer)
@@ -40,59 +41,78 @@ export default function QuizModal() {
 
   function dismiss() {
     try { localStorage.setItem(SEEN_KEY, '1') } catch {}
-    setOpen(false)
+    setVisible(false)
+    setTimeout(() => setOpen(false), 250)
   }
 
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden">
+    <div
+      role="dialog"
+      aria-label="Konkurrence – vandquiz"
+      className={`fixed bottom-5 right-5 z-[90] w-[calc(100%-2.5rem)] max-w-[340px]
+                  transition-all duration-300 ease-out
+                  ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+    >
+      <div className="relative bg-white rounded-2xl shadow-2xl ring-1 ring-black/5 overflow-hidden">
 
         <button
           onClick={dismiss}
           aria-label="Luk"
-          className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-white/80 hover:bg-gray-100 flex items-center justify-center text-gray-500 transition-colors"
+          className="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-white/90 hover:bg-gray-100 flex items-center justify-center text-gray-400 hover:text-gray-700 transition-colors shadow-sm"
         >
-          <X className="w-4 h-4" />
+          <X className="w-3.5 h-3.5" />
         </button>
 
-        <div className="bg-gradient-to-br from-[#0a2540] to-[#0d3a63] px-8 pt-9 pb-8 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 mb-4">
-            <Droplets className="w-3.5 h-3.5 text-green-400" />
-            <span className="text-[11px] font-bold text-green-400 uppercase tracking-widest">
-              Konkurrence
-            </span>
-          </div>
-
-          <h2 className="text-2xl font-extrabold text-white mb-3 leading-snug">
-            Hvor meget ved du<br />om rent vand?
-          </h2>
-          <p className="text-sm text-blue-100/80 leading-relaxed">
-            Tag vores quiz på {QUESTIONS.length} spørgsmål og vær med i lodtrækningen om{' '}
-            <strong className="text-white">{PRIZE}</strong>.
-          </p>
+        {/* Konkurrence-banner */}
+        <div className="bg-[#3aad4a] px-4 py-2 flex items-center gap-1.5">
+          <Gift className="w-3.5 h-3.5 text-white shrink-0" aria-hidden="true" />
+          <span className="text-[11px] font-extrabold text-white uppercase tracking-[0.12em]">
+            Konkurrence
+          </span>
         </div>
 
-        <div className="p-8 pt-7 text-center">
+        <div className="p-4">
+          <div className="flex gap-3.5 items-start">
+            {/* Præmie-billede */}
+            <div className="w-[74px] h-[74px] rounded-xl bg-gray-50 border border-gray-100 shrink-0 overflow-hidden">
+              <img
+                src="/images/product-tr5.jpg"
+                alt={PRIZE_SHORT}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="min-w-0">
+              <p className="text-[11px] font-bold text-[#3aad4a] uppercase tracking-wider mb-0.5">
+                Vind
+              </p>
+              <p className="text-[15px] font-extrabold text-[#0a2540] leading-tight">
+                {PRIZE_SHORT}
+              </p>
+              <p className="text-xs text-gray-500 mt-0.5">
+                Værdi <strong className="text-gray-700">625 kr</strong>
+              </p>
+            </div>
+          </div>
+
+          <p className="text-[13px] text-gray-600 leading-relaxed mt-3.5">
+            Svar rigtigt på {QUESTIONS.length} spørgsmål om rent vand – så er du med i
+            lodtrækningen.
+          </p>
+
           <Link
             href="/quiz"
             onClick={dismiss}
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-6 py-3.5 text-sm transition-colors"
+            className="mt-3.5 inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-[#0a2540] hover:bg-[#0d3050] text-white font-bold px-5 py-3 text-sm transition-colors"
           >
-            Start quizzen
+            Deltag i konkurrencen
             <ArrowRight className="w-4 h-4" />
           </Link>
 
-          <button
-            onClick={dismiss}
-            className="mt-3 text-xs text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            Nej tak
-          </button>
-
-          <p className="mt-4 text-[11px] text-gray-400">
-            Tager under 2 minutter · Vi trækker lod den {DEADLINE}
+          <p className="mt-2.5 text-[10.5px] text-gray-400 text-center">
+            Gratis · under 2 min · lodtrækning {DEADLINE}
           </p>
         </div>
       </div>

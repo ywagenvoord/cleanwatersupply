@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Droplets, Check, Loader2, Trophy, ChevronRight, ArrowRight } from 'lucide-react'
+import { Gift, Check, Loader2, Trophy, ChevronRight, ArrowRight } from 'lucide-react'
 import {
   QUESTIONS, PRIZE, PRIZE_SHORT, DEADLINE, BUNDLED_CONSENT, SEEN_KEY, scoreHeadline,
 } from '@/lib/quiz'
@@ -86,9 +86,9 @@ export default function QuizClient() {
         {/* ── INTRO ── */}
         {phase === 'intro' && (
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white border border-blue-100 px-4 py-1.5 mb-6">
-              <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
-              <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#3aad4a] px-4 py-1.5 mb-6">
+              <Gift className="w-3.5 h-3.5 text-white" />
+              <span className="text-xs font-extrabold text-white uppercase tracking-[0.12em]">
                 Konkurrence
               </span>
             </div>
@@ -96,12 +96,29 @@ export default function QuizClient() {
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-5 leading-tight">
               Hvor meget ved du<br />om rent vand?
             </h1>
-            <p className="text-lg text-gray-600 mb-3 max-w-lg mx-auto">
+            <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto">
               Tag vores korte vandquiz på {QUESTIONS.length} spørgsmål – og vær med i
-              lodtrækningen om <strong className="text-[#0a2540]">{PRIZE}</strong>.
+              lodtrækningen om præmien.
             </p>
+
+            {/* Præmien */}
+            <div className="inline-flex items-center gap-4 bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 mb-8 text-left">
+              <div className="w-16 h-16 rounded-xl bg-gray-50 border border-gray-100 shrink-0 overflow-hidden">
+                <img src="/images/product-tr5.jpg" alt={PRIZE_SHORT} className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p className="text-[11px] font-bold text-[#3aad4a] uppercase tracking-wider mb-0.5">
+                  Præmie
+                </p>
+                <p className="font-extrabold text-[#0a2540] leading-tight">{PRIZE_SHORT}</p>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Medicinsk godkendt vandfilter · værdi <strong className="text-gray-700">625 kr</strong>
+                </p>
+              </div>
+            </div>
+
             <p className="text-sm text-gray-500 mb-10">
-              Tager under 2 minutter · Vi trækker lod den {DEADLINE}
+              Gratis at deltage · tager under 2 minutter · vi trækker lod den {DEADLINE}
             </p>
 
             <button
