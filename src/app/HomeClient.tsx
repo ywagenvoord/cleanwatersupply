@@ -479,8 +479,8 @@ export default function HomePage() {
             <ScrollReveal direction="left" delay={0} className="h-full">
             <div className="relative rounded-3xl overflow-hidden min-h-[420px] group h-full">
               <img
-                src="/images/filters-legionella.jpg"
-                alt="Clean Water Supply filters"
+                src="/images/area-det-private-hjem.jpg"
+                alt="Moderne bruser i privat hjem med rent, bakteriefrit vand"
                 onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop' }}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -504,8 +504,8 @@ export default function HomePage() {
             <ScrollReveal direction="right" delay={120} className="h-full">
             <div className="relative rounded-3xl overflow-hidden min-h-[420px] group h-full">
               <img
-                src="/images/tradeshow.jpg"
-                alt="Clean Water Supply beurs"
+                src="/images/area-hoteller.jpg"
+                alt="Hotellobby – professionelle vandløsninger til erhverv"
                 onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&fit=crop' }}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />

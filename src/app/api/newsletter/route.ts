@@ -15,9 +15,10 @@ export const dynamic = 'force-dynamic'
  */
 export async function POST(req: NextRequest) {
   try {
-    const { email, consent } = (await req.json()) as {
+    const { email, consent, tags } = (await req.json()) as {
       email?: string
       consent?: boolean
+      tags?: string[]
     }
 
     const trimmed = (email || '').trim().toLowerCase()
@@ -65,6 +66,8 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           email_address: trimmed,
           status: 'pending', // 'pending' = double opt-in: Mailchimp sender bekræftelsesmail
+          // Tags gør det muligt at se, hvor tilmeldingen kom fra (fx quiz-konkurrencen)
+          ...(Array.isArray(tags) && tags.length ? { tags: tags.slice(0, 5) } : {}),
         }),
       },
     )
