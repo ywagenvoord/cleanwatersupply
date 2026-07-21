@@ -297,11 +297,11 @@ export default function QuizClient() {
               <Check className="w-8 h-8" />
             </div>
             <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-3">
-              Du er næsten med!
+              Du er med i konkurrencen!
             </h2>
             <p className="text-gray-600 mb-8 max-w-md mx-auto">
-              Vi har sendt dig en mail – klik på bekræftelseslinket, så er du med i lodtrækningen
-              om {PRIZE_SHORT}. Husk at tjekke spam-mappen, hvis den ikke dukker op.
+              Din tilmelding er registreret. Vi trækker lod den {DEADLINE} og giver vinderen
+              af {PRIZE_SHORT} besked på mail. Held og lykke!
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link

@@ -6,13 +6,20 @@ export const dynamic = 'force-dynamic'
 /**
  * Nyhedsbrevs-tilmelding via Mailchimp.
  *
- * Mailchimp sender selv bekræftelsesmail (double opt-in) og håndterer
- * afmelding — det er dét, GDPR kræver.
- *
  * Kræver i .env.local + Netlify:
  *   MAILCHIMP_API_KEY      (fx abc123...-us21 — datacenteret står efter bindestregen)
  *   MAILCHIMP_AUDIENCE_ID  (Audience → Settings → Audience name and defaults)
  */
+
+/**
+ * BEKRÆFTELSESMAIL (double opt-in)
+ *   false = tilmeldt med det samme, ingen bekræftelsesmail. Flest tilmeldinger.
+ *   true  = Mailchimp sender en bekræftelsesmail, som skal klikkes først.
+ *           Giver den stærkeste dokumentation for samtykket.
+ *
+ * Bemærk: ved false gemmer vi tidspunkt + IP som dokumentation i stedet.
+ */
+const DOUBLE_OPT_IN = false
 export async function POST(req: NextRequest) {
   try {
     const { email, consent, tags } = (await req.json()) as {
@@ -45,6 +52,12 @@ export async function POST(req: NextRequest) {
     }
 
     // Datacenteret er suffikset i nøglen, fx "...-us21"
+    // Besøgendes IP – bruges som dokumentation for samtykket
+    const signupIp =
+      req.headers.get('x-nf-client-connection-ip') ||
+      req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+      '127.0.0.1'
+
     const dc = apiKey.split('-')[1]
     if (!dc) {
       console.error('MAILCHIMP_API_KEY mangler datacenter-suffiks (fx -us21)')
@@ -65,7 +78,12 @@ export async function POST(req: NextRequest) {
         },
         body: JSON.stringify({
           email_address: trimmed,
-          status: 'pending', // 'pending' = double opt-in: Mailchimp sender bekræftelsesmail
+          status: DOUBLE_OPT_IN ? 'pending' : 'subscribed',
+          // Dokumentation for samtykket, når vi ikke bruger bekræftelsesmail
+          ...(DOUBLE_OPT_IN ? {} : {
+            ip_signup:        signupIp,
+            timestamp_signup: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          }),
           // Tags gør det muligt at se, hvor tilmeldingen kom fra (fx quiz-konkurrencen)
           ...(Array.isArray(tags) && tags.length ? { tags: tags.slice(0, 5) } : {}),
         }),

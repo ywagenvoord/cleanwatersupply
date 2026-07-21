@@ -56,10 +56,10 @@ export default function NewsletterForm({ variant = 'section' }: { variant?: Vari
         </div>
         <div>
           <p className={`font-semibold text-sm ${dark ? 'text-white' : 'text-[#0a2540]'}`}>
-            Tak – tjek din indbakke!
+            Tak for din tilmelding!
           </p>
           <p className={`text-xs mt-1 ${dark ? 'text-gray-400' : 'text-gray-600'}`}>
-            Vi har sendt dig en mail, hvor du bekræfter din tilmelding.
+            Du er nu tilmeldt nyhedsbrevet. Du kan altid afmelde igen.
           </p>
         </div>
       </div>
