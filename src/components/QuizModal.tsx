@@ -22,13 +22,34 @@ export default function QuizModal() {
 
     if (window.location.pathname.startsWith('/quiz')) return
 
-    const timer = setTimeout(() => {
-      if (readAudience() === null) return
+    /* AudienceModal vises kun når der endnu ikke er valgt privat/erhverv OG man
+       er på forsiden. Kun i den situation venter vi – ellers ville pop-up'en
+       blokere sig selv for evigt (fx hvis localStorage er ryddet). */
+    const audienceModalOpen = () =>
+      readAudience() === null && window.location.pathname === '/'
+
+    let retry: ReturnType<typeof setInterval> | undefined
+
+    const show = () => {
       setOpen(true)
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)))
+    }
+
+    const timer = setTimeout(() => {
+      if (!audienceModalOpen()) { show(); return }
+      // Vent til audience-vælgeren er væk, og vis den så
+      retry = setInterval(() => {
+        if (!audienceModalOpen()) {
+          if (retry) clearInterval(retry)
+          show()
+        }
+      }, 1500)
     }, DELAY_SECONDS * 1000)
 
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      if (retry) clearInterval(retry)
+    }
   }, [])
 
   useEffect(() => {
