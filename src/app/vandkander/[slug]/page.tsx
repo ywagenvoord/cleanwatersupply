@@ -61,7 +61,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <div className="relative rounded-[2rem] bg-white/70 backdrop-blur-sm ring-1 ring-white shadow-[0_20px_60px_-20px_rgba(10,37,64,0.25)] flex items-center justify-center p-10 min-h-[360px] overflow-hidden">
                 {/* indre glød bag produktet */}
                 <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#3aad4a]/20 to-[#284eff]/10 blur-2xl" />
+                  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#284eff]/25 to-[#3aad4a]/15 blur-2xl" />
                 </div>
                 {k.highlight && (
                   <span className="absolute top-5 left-5 z-10 rounded-full bg-[#3aad4a] text-white text-xs font-black px-3.5 py-1.5 shadow-lg shadow-green-500/30">
@@ -124,10 +124,10 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               {/* Trust-chips */}
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <BadgeCheck className="w-4 h-4 text-[#3aad4a]" /> Made in Italy
+                  <BadgeCheck className="w-4 h-4 text-[#284eff]" /> Made in Italy
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <Truck className="w-4 h-4 text-[#3aad4a]" /> Levering 2-3 hverdage
+                  <Truck className="w-4 h-4 text-[#284eff]" /> Levering 2-3 hverdage
                 </span>
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
                   <Leaf className="w-4 h-4 text-[#3aad4a]" /> Fri for engangsplast
@@ -147,9 +147,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               return (
                 <div
                   key={h.title}
-                  className="group rounded-2xl bg-white ring-1 ring-black/5 shadow-sm hover:shadow-xl hover:shadow-[#0a2540]/5 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col"
+                  className="group rounded-2xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-xl hover:shadow-[#284eff]/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col"
                 >
-                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center mb-3.5 shadow-lg shadow-green-500/20">
+                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#284eff] to-[#1b32c9] flex items-center justify-center mb-3.5 shadow-lg shadow-[#284eff]/25">
                     <Icon className="w-6 h-6 text-white" strokeWidth={2} />
                   </span>
                   <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{h.title}</h3>
@@ -191,8 +191,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {/* ─── SPECIFIKATIONER ───────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
         <div className="rounded-3xl bg-white ring-1 ring-black/5 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-[#0a2540] to-[#123a63] px-7 py-5 flex items-center gap-3">
-            <Sparkles className="w-5 h-5 text-[#7dd88a]" />
+          <div className="bg-gradient-to-r from-[#0a2540] via-[#173a7a] to-[#284eff] px-7 py-5 flex items-center gap-3">
+            <Sparkles className="w-5 h-5 text-[#9db8ff]" />
             <h2 className="text-white font-extrabold text-lg">Specifikationer</h2>
           </div>
           <dl className="divide-y divide-gray-100">
