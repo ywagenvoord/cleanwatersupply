@@ -240,20 +240,47 @@ export default function QuizClient() {
 
         {/* ── TILMELDING ── */}
         {phase === 'form' && (
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10">
-            <div className="w-14 h-14 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mb-5">
-              <Trophy className="w-7 h-7" />
+          <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 bg-white">
+
+            {/* Blå header med score + præmie */}
+            <div
+              className="relative p-8 md:p-9 overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, #284eff 0%, #3a5cff 50%, #1b32c9 100%)' }}
+            >
+              <div className="pointer-events-none absolute -top-16 -right-12 w-56 h-56 rounded-full opacity-40"
+                   style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 65%)' }} />
+              <div className="pointer-events-none absolute -bottom-20 -left-14 w-56 h-56 rounded-full opacity-30"
+                   style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.5) 0%, transparent 65%)' }} />
+
+              <div className="relative flex items-center gap-5">
+                <div className="flex-1">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur px-3 py-1 mb-3 ring-1 ring-white/20">
+                    <Trophy className="w-3.5 h-3.5 text-green-300" strokeWidth={2.5} />
+                    <span className="text-[11px] font-extrabold text-white uppercase tracking-[0.14em]">
+                      {score} / {QUESTIONS.length} rigtige
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                    {scoreHeadline(score, QUESTIONS.length)}
+                  </h2>
+                  <p className="text-blue-50/90 mt-2 text-sm leading-relaxed">
+                    Udfyld og deltag i lodtrækningen om <strong className="text-white">{PRIZE_SHORT}</strong> –
+                    vi trækker lod den {DEADLINE}.
+                  </p>
+                </div>
+
+                {/* Præmie-billede */}
+                <div className="relative shrink-0 hidden sm:block">
+                  <div className="absolute -inset-1.5 rounded-2xl bg-white/25 blur-lg" />
+                  <div className="relative w-[92px] h-[92px] rounded-2xl bg-white p-2 shadow-lg">
+                    <img src="/images/product-tr.png" alt={PRIZE_SHORT} className="w-full h-full object-contain" />
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">
-              {scoreHeadline(score, QUESTIONS.length)}
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Du fik <strong className="text-[#0a2540]">{score} ud af {QUESTIONS.length}</strong> rigtige.
-              Vær med i lodtrækningen om <strong>{PRIZE}</strong> – vi trækker lod den {DEADLINE}{' '}
-              og giver vinderen besked på mail.
-            </p>
-
+            {/* Formular på hvid */}
+            <div className="p-8 md:p-10">
             <form onSubmit={submit}>
               <div className="grid sm:grid-cols-2 gap-3 mb-3">
                 <div>
@@ -366,6 +393,7 @@ export default function QuizClient() {
                   Du kan til enhver tid afmelde nyhedsbrevet og få dine data slettet.</p>
               </div>
             )}
+            </div>
           </div>
         )}
 
