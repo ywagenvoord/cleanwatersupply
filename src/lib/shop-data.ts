@@ -18,7 +18,14 @@ export async function getMergedShopProducts(): Promise<Product[]> {
   for (const sp of stripeProducts) {
     const hardcoded = sp.cwsId ? PRODUCTS.find(p => p.id === sp.cwsId) : undefined
     if (hardcoded) {
-      merged.push({ ...hardcoded, price: sp.price, stripeProductId: sp.stripeProductId })
+      merged.push({
+        ...hardcoded,
+        price:           sp.price,
+        stripeProductId: sp.stripeProductId,
+        // Fald tilbage på Stripe-billedet, hvis produktet mangler et i koden
+        imgSrc:   hardcoded.imgSrc   || sp.images[0] || '',
+        imgLarge: hardcoded.imgLarge || sp.images[0] || '',
+      })
       usedHardcodedIds.add(hardcoded.id)
     } else {
       merged.push({

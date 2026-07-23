@@ -109,7 +109,8 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   const c = COLOR[catColor as keyof typeof COLOR] ?? COLOR.blue
   const CatIcon = CATEGORIES.find(c => c.key === product.category)?.icon ?? Droplets
   const { addItem } = useCart()
-  const [added, setAdded] = useState(false)
+  const [added, setAdded]       = useState(false)
+  const [imgFailed, setImgFailed] = useState(false)
 
   // Erhverv ser grossistpris (ekskl. moms), privat ser privatpris
   const { amount: displayPrice, exMoms } = shopPrice(product, showErhverv)
@@ -141,7 +142,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             {product.badge}
           </span>
         )}
-        {product.imgSrc ? (
+        {product.imgSrc && !imgFailed ? (
           <div className="h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-4">
             <img
               src={product.imgSrc}
@@ -150,6 +151,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               height={300}
               loading="lazy"
               decoding="async"
+              onError={() => setImgFailed(true)}
               className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500"
             />
           </div>
