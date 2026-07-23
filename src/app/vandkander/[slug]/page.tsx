@@ -1,8 +1,22 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Check, ChevronRight, Droplets } from 'lucide-react'
+import {
+  ArrowRight, Check, ChevronRight, Droplets,
+  Zap, Leaf, Recycle, Sparkles, ShieldCheck, GlassWater, Timer, Droplet,
+} from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
+
+const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
+  zap: Zap,
+  leaf: Leaf,
+  recycle: Recycle,
+  sparkles: Sparkles,
+  shield: ShieldCheck,
+  glass: GlassWater,
+  timer: Timer,
+  droplet: Droplet,
+}
 
 export function generateStaticParams() {
   return KANDER.map((k) => ({ slug: k.slug }))
@@ -96,6 +110,29 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Highlights-band */}
+      {k.highlights && k.highlights.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {k.highlights.map((h) => {
+              const Icon = HIGHLIGHT_ICONS[h.icon] ?? Droplets
+              return (
+                <div
+                  key={h.title}
+                  className="rounded-2xl bg-gradient-to-b from-blue-50/70 to-white ring-1 ring-blue-100/70 p-5 flex flex-col"
+                >
+                  <span className="w-11 h-11 rounded-xl bg-white ring-1 ring-blue-100 flex items-center justify-center mb-3">
+                    <Icon className="w-5 h-5 text-[#3aad4a]" strokeWidth={2} />
+                  </span>
+                  <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{h.title}</h3>
+                  <p className="text-[13px] text-gray-500 mt-1.5 leading-relaxed">{h.text}</p>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
+
       {/* Om produktet + fordele */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
         <div className="grid md:grid-cols-2 gap-8">
@@ -133,6 +170,21 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           </dl>
         </div>
       </section>
+
+      {/* Miljø / besparelse */}
+      {k.eco && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
+          <div className="rounded-3xl bg-gradient-to-br from-[#e9f7ec] to-white ring-1 ring-green-100 p-8 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <span className="w-14 h-14 shrink-0 rounded-2xl bg-white ring-1 ring-green-100 flex items-center justify-center">
+              <Leaf className="w-7 h-7 text-[#3aad4a]" strokeWidth={2} />
+            </span>
+            <div>
+              <h2 className="text-lg font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
+              <p className="text-gray-600 text-sm mt-1 leading-relaxed">{k.eco}</p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Tilbage / andre kander */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">

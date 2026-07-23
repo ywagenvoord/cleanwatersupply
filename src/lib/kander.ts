@@ -15,6 +15,8 @@ export type Kande = {
   specs: Spec[]
   filter?: string
   addon?: { name: string; art: string; img: string; life: string; blurb: string }
+  highlights?: { icon: string; title: string; text: string }[]
+  eco?: string
 }
 
 export const KANDER: Kande[] = [
@@ -53,6 +55,13 @@ export const KANDER: Kande[] = [
       life: '1 måned · ca. 150 L pr. filter',
       blurb: 'Det matchende udskiftningsfilter til Carmen – bevar rent vand med god smag.',
     },
+    highlights: [
+      { icon: 'zap', title: 'Hurtigfyldnings-låge', text: 'Fyld kanden direkte under hanen – hurtigt og nemt.' },
+      { icon: 'droplet', title: 'Passer i køleskabsdøren', text: 'Slank form, så du altid har koldt, filtreret vand ved hånden.' },
+      { icon: 'timer', title: 'Batterifri skift-indikator', text: 'Minder dig om, hvornår filteret skal skiftes – uden batterier.' },
+      { icon: 'shield', title: 'Bi-flux®-filter', text: '6-trins filtrering af klor, kalk og urenheder · Made in Italy.' },
+    ],
+    eco: 'Ét Bi-flux®-filter rækker til ca. 150 liter og erstatter mange engangs-plastflasker.',
   },
   {
     slug: 'mikroplastik-stop',
@@ -91,6 +100,13 @@ export const KANDER: Kande[] = [
       life: '1 måned · ca. 150 L pr. filter',
       blurb: 'Dobbelt-filtersættet der matcher MikroPLASTIK-STOP™ og fjerner mikroplast.',
     },
+    highlights: [
+      { icon: 'shield', title: 'Fjerner 99,99 % mikroplast', text: 'Testet af uafhængige laboratorier i Italien og Tyskland.' },
+      { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Fjerner ikke de nyttige mineraler, kroppen har brug for.' },
+      { icon: 'droplet', title: 'Dobbelt filtersystem', text: 'Bi-flux® + MikroPLASTIK-STOP™ samlet i én kande.' },
+      { icon: 'recycle', title: '100 % genanvendelig', text: 'Fødevaregodkendte materialer og genanvendelig emballage.' },
+    ],
+    eco: 'Reducér mikroplast og engangsflasker på én gang – filteret rækker til ca. 150 liter.',
   },
   {
     slug: 'glassmart',
@@ -126,6 +142,13 @@ export const KANDER: Kande[] = [
       life: 'Instant-filtrering med aktivt kul',
       blurb: 'Det matchende skivefilter til GlaSSmart-flasken – filtrerer, mens du drikker.',
     },
+    highlights: [
+      { icon: 'glass', title: 'Glasflaske', text: 'Glasset bevarer vandets naturlige karakter – 100 % genanvendeligt.' },
+      { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder eller drikker.' },
+      { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Forbedrer smagen og reducerer klor – uden at fjerne de nyttige mineraler.' },
+      { icon: 'sparkles', title: 'Tåler opvaskemaskine', text: 'Selve glasflasken kan gå i opvaskemaskinen. 100 % Made in Italy.' },
+    ],
+    eco: 'Med FAST DISK™ filtrerer du op til 120 liter om måneden og reducerer engangs-plastflasker med ca. 99 %.',
   },
 ]
 
