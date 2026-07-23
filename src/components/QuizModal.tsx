@@ -16,8 +16,13 @@ export default function QuizModal() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
+
+    // Under udvikling (localhost) vises pop-up'en ved hver reload, så den er nem
+    // at arbejde med. På det live site vises den kun én gang per besøgende.
+    const isDev = process.env.NODE_ENV !== 'production'
+
     try {
-      if (localStorage.getItem(SEEN_KEY)) return
+      if (!isDev && localStorage.getItem(SEEN_KEY)) return
     } catch { return }
 
     if (window.location.pathname.startsWith('/quiz')) return
@@ -98,59 +103,47 @@ export default function QuizModal() {
         <button
           onClick={dismiss}
           aria-label="Luk"
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur flex items-center justify-center text-white/80 hover:text-white transition-all duration-200 hover:rotate-90"
+          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-black/25 hover:bg-black/40 backdrop-blur flex items-center justify-center text-white/90 hover:text-white transition-all duration-200 hover:rotate-90"
         >
           <X className="w-4 h-4" strokeWidth={2.5} />
         </button>
 
-        <div className="relative p-6">
-          {/* Badge */}
+        {/* Lifestyle-billede: produktet monteret på hanen */}
+        <div className="relative h-[150px]">
+          <img
+            src="/images/baclyser-tl.jpg"
+            alt="Baclyser neo monteret på vandhane"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          {/* Gradient så teksten nedenunder glider ind */}
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1b32c9] to-transparent" />
+
+          {/* Konkurrence-badge */}
           <div
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-4 shadow-lg"
+            className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 shadow-lg"
             style={{
               background: 'linear-gradient(135deg, #4ade80 0%, #22c55e 100%)',
-              boxShadow: '0 4px 14px rgba(34,197,94,0.45)',
+              boxShadow: '0 4px 14px rgba(34,197,94,0.5)',
             }}
           >
-            <Sparkles className="w-4 h-4 text-white" strokeWidth={2.75} aria-hidden="true" />
-            <span className="text-[14px] font-black text-white uppercase tracking-[0.14em]">
+            <Sparkles className="w-3.5 h-3.5 text-white" strokeWidth={2.75} aria-hidden="true" />
+            <span className="text-[13px] font-black text-white uppercase tracking-[0.14em]">
               Konkurrence
             </span>
           </div>
+        </div>
 
-          <p className="text-[15px] font-bold text-white/90 mb-5 leading-snug">
-            Deltag gratis – vi trækker lod blandt alle deltagere
+        <div className="relative p-6 pt-4">
+          <p className="text-[11px] font-bold text-green-300 uppercase tracking-[0.16em]">
+            Vind · værdi 625 kr
+          </p>
+          <p className="text-[23px] font-extrabold text-white leading-tight tracking-[-0.02em] mt-1">
+            {PRIZE_SHORT}
           </p>
 
-          {/* Præmie */}
-          <div className="flex gap-4 items-center mb-5">
-            <div className="relative shrink-0">
-              <div className="absolute -inset-1.5 rounded-[20px] bg-white/25 blur-lg" />
-              <div className="relative w-[84px] h-[84px] rounded-[18px] bg-white p-1.5 shadow-lg">
-                <img
-                  src="/images/product-tr5.jpg"
-                  alt={PRIZE_SHORT}
-                  className="w-full h-full object-cover rounded-[13px] transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-            </div>
-
-            <div className="min-w-0">
-              <p className="text-[11px] font-bold text-green-300 uppercase tracking-[0.14em] mb-1">
-                Vind
-              </p>
-              <p className="text-[20px] font-extrabold text-white leading-[1.15] tracking-[-0.02em]">
-                {PRIZE_SHORT}
-              </p>
-              <p className="text-[12.5px] text-blue-100/70 mt-1.5">
-                Medicinsk godkendt · værdi{' '}
-                <span className="font-bold text-white">625 kr</span>
-              </p>
-            </div>
-          </div>
-
-          <p className="text-[14px] text-blue-50/90 leading-[1.6]">
+          <p className="text-[14px] text-blue-50/90 leading-[1.6] mt-3">
             Svar rigtigt på {QUESTIONS.length} spørgsmål om rent vand, og kom med i lodtrækningen.
+            Deltag gratis.
           </p>
 
           <Link
