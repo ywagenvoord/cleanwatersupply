@@ -46,6 +46,7 @@ const JUGS: Jug[] = [
       'Bevarer de nyttige mineralsalte i vandet',
       '“Flow ’n go” hæld-gennem-låg med støvbeskyttelse',
       'Fødevaregodkendte materialer · 100 % genanvendelig emballage',
+      'Fås kun i hvid',
     ],
   },
   {
