@@ -22,7 +22,7 @@ const JUGS: Jug[] = [
   {
     name: 'Filtervandkande Carmen',
     art: 'Art. J35-DA',
-    img: 'https://www.laica.com/wp-content/uploads/J35-DA.jpg',
+    img: '/images/kande-carmen.jpg',
     tagline: 'Klassisk, let og nem filtervandkande til hverdagen.',
     capacity: '2,3 L total · 1,2 L filtreret',
     points: [
