@@ -78,7 +78,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h2 className="text-xl font-extrabold text-[#0a2540] mb-3">Om {k.name.replace('Filtervandkande ', '')}</h2>
+            <h2 className="text-xl font-extrabold text-[#0a2540] mb-3">Om {k.name.replace('Vandkaraffel ', '')}</h2>
             <p className="text-gray-600 leading-relaxed">{k.intro}</p>
           </div>
           <div>

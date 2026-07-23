@@ -64,7 +64,7 @@ export default function PrivateClient() {
       href: '/vandkander',
       img: '/images/solution-vandkande.jpg',
       objPos: 'object-[center_35%]',
-      title: da ? 'Filtervandkande' : 'Water filter jug',
+      title: da ? 'Vandkaraffel' : 'Water carafe',
       body: da
         ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
         : 'Clean water as easy as pouring a glass. Filters limescale, chlorine and impurities – for better-tasting water, coffee and tea. No installation required.',

@@ -4,7 +4,7 @@ import { ArrowRight, Droplets } from 'lucide-react'
 import { KANDER } from '@/lib/kander'
 
 export const metadata: Metadata = {
-  title: 'Vandkander & filterflasker – rent vand uden installation | Clean Water Supply',
+  title: 'Vandkarafler & filterflasker – rent vand uden installation | Clean Water Supply',
   description:
     'Se vores Laica filtervandkander og filterflasker: Carmen, MikroPLASTIK-STOP og GlaSSmart glasflaske. Rent vand med god smag – helt uden installation.',
 }
@@ -20,7 +20,7 @@ export default function VandkanderPage() {
             <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">Til hjemmet</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-5 leading-tight">
-            Filtervandkander &amp; filterflasker
+            Vandkarafler &amp; filterflasker
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Rent vand med god smag – så nemt som at hælde op. Ingen installation, ingen værktøj.

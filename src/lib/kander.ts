@@ -1,4 +1,4 @@
-/* Data for filtervandkander & filterflasker – deles af oversigt og undersider. */
+/* Data for vandkarafler & filterflasker – deles af oversigt og undersider. */
 
 export type Spec = { label: string; value: string }
 
@@ -19,13 +19,13 @@ export type Kande = {
 export const KANDER: Kande[] = [
   {
     slug: 'carmen',
-    name: 'Filtervandkande Carmen',
+    name: 'Vandkaraffel Carmen',
     art: 'Art. J35-DA',
     img: '/images/kande-carmen-t.png',
-    tagline: 'Klassisk, let og nem filtervandkande til hverdagen.',
+    tagline: 'Klassisk, let og nem vandkaraffel til hverdagen.',
     capacity: '2,3 L total · 1,2 L filtreret',
     intro:
-      'Carmen er den enkle og pålidelige filtervandkande til den daglige husholdning. Den er let at håndtere, ' +
+      'Carmen er den enkle og pålidelige vandkaraffel til den daglige husholdning. Den er let at håndtere, ' +
       'har en praktisk hurtigfyldnings-låge, så du kan fylde den direkte under hanen, og dens slanke form passer ' +
       'perfekt i køleskabsdøren. Den batterifri skift-indikator minder dig om, hvornår filteret skal skiftes – ' +
       'helt uden batterier.',
@@ -48,14 +48,14 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'mikroplastik-stop',
-    name: 'Filtervandkande MikroPLASTIK-STOP™',
+    name: 'Vandkaraffel MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
     img: '/images/kande-mikroplastik-t.png',
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
     highlight: 'Fjerner 99,99 % mikroplast',
     intro:
-      'MikroPLASTIK-STOP™ er den første filtervandkande med et modulært dobbelt-filtersystem, der blokerer ' +
+      'MikroPLASTIK-STOP™ er den første vandkaraffel med et modulært dobbelt-filtersystem, der blokerer ' +
       'mikroplast. Bi-flux®-filteret reducerer hårdhed og uønskede stoffer, mens MikroPLASTIK-STOP™-filteret ' +
       'fjerner de mikroskopiske plastpartikler – uden at fjerne de nyttige mineralsalte, kroppen har brug for. ' +
       'Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland.',
