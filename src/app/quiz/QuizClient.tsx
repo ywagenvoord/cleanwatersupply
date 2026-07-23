@@ -83,38 +83,9 @@ export default function QuizClient() {
 
   const q = QUESTIONS[step]
 
-  const onQuiz = phase === 'quiz'
-
   return (
-    <main
-      className={`relative min-h-screen overflow-hidden ${
-        onQuiz ? '' : 'bg-gradient-to-b from-blue-50 to-white'
-      }`}
-    >
-      {/* Levende blå baggrund på spørgsmåls-skærmen */}
-      {onQuiz && (
-        <>
-          <video
-            src="/videos/hjem.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(10,37,64,0.94) 0%, rgba(27,50,201,0.90) 55%, rgba(40,78,255,0.88) 100%)',
-            }}
-          />
-        </>
-      )}
-
-      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <main className="relative min-h-screen bg-gradient-to-b from-blue-50 to-white overflow-hidden">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 pt-16 md:pt-24 pb-10">
 
         {/* ── INTRO ── */}
         {phase === 'intro' && (
@@ -428,6 +399,76 @@ export default function QuizClient() {
           </div>
         )}
       </div>
+
+      {/* Auto-rullende bånd med produktbilleder og video */}
+      <MediaMarquee />
     </main>
+  )
+}
+
+/* ── Rullende medie-bånd ──────────────────────────────────────── */
+
+type Media = { type: 'img' | 'video'; src: string; alt?: string }
+
+const MARQUEE_MEDIA: Media[] = [
+  { type: 'img',   src: '/images/solution-tappested.jpg', alt: 'Filter monteret på vandhane' },
+  { type: 'img',   src: '/images/product-tr.png',         alt: 'Baclyser neo TR' },
+  { type: 'video', src: '/videos/hjem.mp4' },
+  { type: 'img',   src: '/images/product-tr4.jpg',        alt: 'Baclyser neo TR' },
+  { type: 'img',   src: '/images/baclyser-tl.jpg',        alt: 'Filter i brug' },
+  { type: 'img',   src: '/images/product-tr5.jpg',        alt: 'Baclyser neo TR' },
+  { type: 'video', src: '/videos/brusefilter-cover.mp4' },
+  { type: 'img',   src: '/images/product-tr2.png',        alt: 'Baclyser neo TR' },
+]
+
+function MediaMarquee() {
+  // Dubler listen, så rullet er sømløst
+  const items = [...MARQUEE_MEDIA, ...MARQUEE_MEDIA]
+
+  return (
+    <div className="relative z-10 pb-14">
+      <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-5">
+        Rent vand – lige ved hanen
+      </p>
+
+      <div className="relative overflow-hidden">
+        {/* Bløde kanter i siderne */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
+
+        <div className="flex gap-4 w-max animate-[cws-marquee_45s_linear_infinite] hover:[animation-play-state:paused]">
+          {items.map((m, i) => (
+            <div
+              key={i}
+              className="relative w-[240px] h-[160px] rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-sm ring-1 ring-black/5"
+            >
+              {m.type === 'video' ? (
+                <video
+                  src={m.src}
+                  autoPlay muted loop playsInline preload="metadata"
+                  aria-hidden="true"
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={m.src}
+                  alt={m.alt || ''}
+                  className={`w-full h-full ${
+                    m.src.endsWith('.png') ? 'object-contain p-3' : 'object-cover'
+                  }`}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes cws-marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
   )
 }
