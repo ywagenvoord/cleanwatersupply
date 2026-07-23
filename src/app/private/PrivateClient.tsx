@@ -63,7 +63,7 @@ export default function PrivateClient() {
       slug: 'vandkande',
       href: '/vandkander',
       img: '/images/solution-vandkande.jpg',
-      objPos: 'object-[center_35%]',
+      objPos: 'object-[center_55%]',
       title: da ? 'Vandkande med filter' : 'Water filter jug',
       body: da
         ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
