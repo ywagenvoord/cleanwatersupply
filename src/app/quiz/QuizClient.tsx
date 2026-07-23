@@ -400,75 +400,78 @@ export default function QuizClient() {
         )}
       </div>
 
-      {/* Auto-rullende bånd med produktbilleder og video */}
-      <MediaMarquee />
+      {/* Billed-loop af konkurrence-produktet */}
+      <ProductLoop />
     </main>
   )
 }
 
-/* ── Rullende medie-bånd ──────────────────────────────────────── */
+/* ── Billed-loop (fade) af Baclyser neo TR ────────────────────── */
 
 type Media = { type: 'img' | 'video'; src: string; alt?: string }
 
-const MARQUEE_MEDIA: Media[] = [
-  { type: 'img',   src: '/images/solution-tappested.jpg', alt: 'Filter monteret på vandhane' },
+// KUN konkurrence-produktet – Baclyser neo TR
+const PRODUCT_MEDIA: Media[] = [
+  { type: 'img',   src: '/images/solution-tappested.jpg', alt: 'Baclyser neo TR monteret på vandhane' },
   { type: 'img',   src: '/images/product-tr.png',         alt: 'Baclyser neo TR' },
   { type: 'video', src: '/videos/hjem.mp4' },
   { type: 'img',   src: '/images/product-tr4.jpg',        alt: 'Baclyser neo TR' },
-  { type: 'img',   src: '/images/baclyser-tl.jpg',        alt: 'Filter i brug' },
   { type: 'img',   src: '/images/product-tr5.jpg',        alt: 'Baclyser neo TR' },
-  { type: 'video', src: '/videos/brusefilter-cover.mp4' },
-  { type: 'img',   src: '/images/product-tr2.png',        alt: 'Baclyser neo TR' },
 ]
 
-function MediaMarquee() {
-  // Dubler listen, så rullet er sømløst
-  const items = [...MARQUEE_MEDIA, ...MARQUEE_MEDIA]
+function ProductLoop() {
+  const [i, setI] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setI((n) => (n + 1) % PRODUCT_MEDIA.length), 3800)
+    return () => clearInterval(t)
+  }, [])
 
   return (
-    <div className="relative z-10 pb-14">
+    <div className="relative z-10 pb-16 px-4">
       <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-5">
-        Rent vand – lige ved hanen
+        Præmien: Baclyser® neo TR
       </p>
 
-      <div className="relative overflow-hidden">
-        {/* Bløde kanter i siderne */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-white to-transparent" />
+      <div className="relative mx-auto w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100 shadow-xl ring-1 ring-black/5">
+        {PRODUCT_MEDIA.map((m, idx) => (
+          <div
+            key={idx}
+            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+            style={{ opacity: idx === i ? 1 : 0 }}
+            aria-hidden={idx !== i}
+          >
+            {m.type === 'video' ? (
+              <video
+                src={m.src}
+                autoPlay muted loop playsInline preload="metadata"
+                aria-hidden="true"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <img
+                src={m.src}
+                alt={m.alt || ''}
+                className={`w-full h-full ${m.src.endsWith('.png') ? 'object-contain p-8 bg-white' : 'object-cover'}`}
+              />
+            )}
+          </div>
+        ))}
 
-        <div className="flex gap-4 w-max animate-[cws-marquee_45s_linear_infinite] hover:[animation-play-state:paused]">
-          {items.map((m, i) => (
-            <div
-              key={i}
-              className="relative w-[240px] h-[160px] rounded-2xl overflow-hidden bg-gray-100 shrink-0 shadow-sm ring-1 ring-black/5"
-            >
-              {m.type === 'video' ? (
-                <video
-                  src={m.src}
-                  autoPlay muted loop playsInline preload="metadata"
-                  aria-hidden="true"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <img
-                  src={m.src}
-                  alt={m.alt || ''}
-                  className={`w-full h-full ${
-                    m.src.endsWith('.png') ? 'object-contain p-3' : 'object-cover'
-                  }`}
-                />
-              )}
-            </div>
+        {/* Prikker */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+          {PRODUCT_MEDIA.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setI(idx)}
+              aria-label={`Vis billede ${idx + 1}`}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                idx === i ? 'w-5 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/80'
+              }`}
+            />
           ))}
         </div>
       </div>
-
-      <style>{`
-        @keyframes cws-marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-      `}</style>
     </div>
   )
 }
