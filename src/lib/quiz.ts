@@ -19,7 +19,7 @@ export const PRIZE_SHORT = 'Baclyser® neo TR'
 export const DEADLINE    = '31. august 2026'
 
 /** Sekunder før pop-up'en vises. */
-export const DELAY_SECONDS = 25
+export const DELAY_SECONDS = 12
 
 /** localStorage-nøgle, så pop-up'en kun vises én gang. */
 export const SEEN_KEY = 'cws-quiz-seen'
