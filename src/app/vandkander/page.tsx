@@ -89,34 +89,48 @@ export default function VandkanderPage() {
         {JUGS.map((j, i) => (
           <div
             key={j.name}
-            className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-white"
+            className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5"
           >
-            <div className={`relative min-h-[240px] bg-gray-50 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-              <img src={j.img} alt={j.name} className="absolute inset-0 w-full h-full object-cover" />
+            {/* Billede */}
+            <div className={`relative min-h-[260px] bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+              <span className="absolute top-5 left-5 w-9 h-9 rounded-full bg-white text-[#1b32c9] font-extrabold flex items-center justify-center shadow-md">
+                {i + 1}
+              </span>
+              <img src={j.img} alt={j.name} className="max-h-[220px] max-w-full object-contain" />
             </div>
-            <div className="p-8 md:p-10 flex flex-col justify-center">
-              <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{j.art}</p>
-              <h2 className="text-2xl font-extrabold text-[#0a2540] leading-tight">{j.name}</h2>
-              <p className="text-gray-600 mt-2">{j.tagline}</p>
 
-              {j.highlight && (
-                <span className="inline-flex self-start items-center gap-1.5 rounded-full bg-green-50 text-[#2e9a3d] text-xs font-bold px-3 py-1 mt-4">
-                  {j.highlight}
-                </span>
-              )}
+            {/* Tekst – blå */}
+            <div
+              className="relative p-8 md:p-10 flex flex-col justify-center overflow-hidden"
+              style={{ background: 'linear-gradient(135deg, #284eff 0%, #3a5cff 50%, #1b32c9 100%)' }}
+            >
+              <div className="pointer-events-none absolute -top-16 -right-12 w-52 h-52 rounded-full opacity-40"
+                   style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 65%)' }} />
 
-              {j.capacity && (
-                <p className="text-sm font-semibold text-gray-500 mt-4">{j.capacity}</p>
-              )}
+              <div className="relative">
+                <p className="text-[11px] font-bold text-green-300 uppercase tracking-[0.14em] mb-1">{j.art}</p>
+                <h2 className="text-2xl font-extrabold text-white leading-tight tracking-[-0.01em]">{j.name}</h2>
+                <p className="text-blue-100/85 mt-2">{j.tagline}</p>
 
-              <ul className="mt-4 space-y-2">
-                {j.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-[#3aad4a] mt-0.5 shrink-0" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
+                {j.highlight && (
+                  <span className="inline-flex self-start items-center gap-1.5 rounded-full bg-green-400 text-[#0a2540] text-xs font-black px-3 py-1 mt-4 shadow">
+                    {j.highlight}
+                  </span>
+                )}
+
+                {j.capacity && (
+                  <p className="text-sm font-bold text-white mt-4">{j.capacity}</p>
+                )}
+
+                <ul className="mt-4 space-y-2">
+                  {j.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2.5 text-sm text-blue-50/90">
+                      <Check className="w-4 h-4 text-green-300 mt-0.5 shrink-0" strokeWidth={2.5} />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         ))}
