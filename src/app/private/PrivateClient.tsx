@@ -59,6 +59,15 @@ export default function PrivateClient() {
         ? 'Fjerner bakterier i bruservandet – ligesom filtrene til vandhanen. Så den fine vandtåge, du indånder i badet, er ren og sikker at trække vejret i.'
         : 'Removes bacteria in the shower water – just like the tap filters. So the fine mist you breathe in the shower is clean and safe.',
     },
+    {
+      slug: 'vandkande',
+      href: '/shop/vandfilter-predator',
+      img: '/images/solution-vandkande.jpg',
+      title: da ? 'Filtervandkande' : 'Water filter jug',
+      body: da
+        ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
+        : 'Clean water as easy as pouring a glass. Filters limescale, chlorine and impurities – for better-tasting water, coffee and tea. No installation required.',
+    },
   ]
 
   return (
@@ -170,10 +179,10 @@ export default function PrivateClient() {
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
-            {solutions.map(({ img, title, body, slug }) => (
+            {solutions.map(({ img, title, body, slug, href }) => (
               <Link
                 key={title}
-                href={`/loesninger/${slug}`}
+                href={href ?? `/loesninger/${slug}`}
                 className="group relative aspect-[2/1] rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
               >
                 <img
