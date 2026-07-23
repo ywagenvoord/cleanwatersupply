@@ -17,6 +17,7 @@ export type Kande = {
   addon?: { name: string; art: string; img: string; life: string; blurb: string }
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
+  steps?: string[]
 }
 
 export const KANDER: Kande[] = [
@@ -62,6 +63,14 @@ export const KANDER: Kande[] = [
       { icon: 'shield', title: 'Bi-flux®-filter', text: '6-trins filtrering af klor, kalk og urenheder · Made in Italy.' },
     ],
     eco: 'Ét Bi-flux®-filter rækker til ca. 150 liter og erstatter mange engangs-plastflasker.',
+    steps: [
+      'Blød Bi-flux®-filteret i koldt vand i ca. 5-10 minutter',
+      'Skyl filteret under rindende vand i 10 sekunder',
+      'Sæt filteret fast i tragten inde i kanden',
+      'Fyld tragten med koldt vand via hurtigfyldnings-lågen',
+      'Lad vandet løbe gennem filteret ned i kanden',
+      'Nyd rent vand – og nulstil den batterifri skift-indikator',
+    ],
   },
   {
     slug: 'mikroplastik-stop',
@@ -107,6 +116,14 @@ export const KANDER: Kande[] = [
       { icon: 'recycle', title: '100 % genanvendelig', text: 'Fødevaregodkendte materialer og genanvendelig emballage.' },
     ],
     eco: 'Reducér mikroplast og engangsflasker på én gang – filteret rækker til ca. 150 liter.',
+    steps: [
+      'Blød Bi-flux®- og MikroPLASTIK-STOP™-filtrene i koldt vand i ca. 5-10 minutter',
+      'Skyl begge filtre under rindende vand',
+      'Monter begge filtre i tragten inde i kanden',
+      'Fyld tragten med koldt vand',
+      'Lad vandet løbe gennem dobbelt-filtersystemet',
+      'Nyd vand fri for mikroplast – med de nyttige mineraler bevaret',
+    ],
   },
   {
     slug: 'glassmart',
@@ -149,6 +166,14 @@ export const KANDER: Kande[] = [
       { icon: 'sparkles', title: 'Tåler opvaskemaskine', text: 'Selve glasflasken kan gå i opvaskemaskinen. 100 % Made in Italy.' },
     ],
     eco: 'Med FAST DISK™ filtrerer du op til 120 liter om måneden og reducerer engangs-plastflasker med ca. 99 %.',
+    steps: [
+      'Tag FAST DISK™-filteret ud af posen og skyl det under koldt vand i 30 sekunder',
+      'Sæt filteret i låget ved at dreje det med uret',
+      'Fyld GlaSSmart™-glasflasken med vand',
+      'Skru låget med FAST DISK™-filteret på',
+      'Hæld det filtrerede vand direkte i et glas',
+      'Nyd vand med god smag – og stil evt. flasken i køleskabet',
+    ],
   },
 ]
 

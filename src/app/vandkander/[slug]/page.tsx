@@ -188,6 +188,29 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* ─── SÅDAN BRUGER DU DEN ───────────────────────────── */}
+      {k.steps && k.steps.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <div className="text-center mb-8">
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Trin for trin</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan bruger du den</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {k.steps.map((step, i) => (
+              <div
+                key={step}
+                className="relative rounded-2xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 pt-7"
+              >
+                <span className="absolute -top-3.5 left-6 w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shadow-lg shadow-[#284eff]/25">
+                  {i + 1}
+                </span>
+                <p className="text-sm text-gray-700 leading-relaxed mt-1">{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ─── SPECIFIKATIONER ───────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
         <div className="rounded-3xl bg-white ring-1 ring-black/5 shadow-sm overflow-hidden">
