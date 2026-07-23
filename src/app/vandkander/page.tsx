@@ -51,7 +51,7 @@ const JUGS: Jug[] = [
   {
     name: 'GlaSSmart™ glas-filterflaske',
     art: 'FAST DISK™',
-    img: 'https://www.laica.com/wp-content/uploads/glassmart-lifestyle01.jpg',
+    img: '/images/glassmart-flaske.png',
     tagline: 'Filtrerer vandet med det samme – med dig på farten.',
     capacity: 'Glasflaske til on-the-go',
     points: [
