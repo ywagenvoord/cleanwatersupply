@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import {
   ArrowRight, Check, ChevronRight, Droplets,
   Zap, Leaf, Recycle, Sparkles, ShieldCheck, GlassWater, Timer, Droplet,
+  Truck, BadgeCheck,
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
 
@@ -38,91 +39,118 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
-      {/* Brødkrumme */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8">
-        <nav className="text-sm text-gray-400 flex items-center gap-1.5">
-          <Link href="/vandkander" className="hover:text-[#0a2540]">Vandkander</Link>
-          <ChevronRight className="w-3.5 h-3.5" />
-          <span className="text-gray-600">{k.name}</span>
-        </nav>
-      </div>
+      {/* ─── HERO ──────────────────────────────────────────── */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef8f1] via-[#f5fbff] to-white">
+        {/* Dekorative glød-blobs */}
+        <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
+        <div className="pointer-events-none absolute top-10 -right-24 w-96 h-96 rounded-full bg-[#284eff]/10 blur-3xl" />
 
-      {/* Hero */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          {/* Billede + tilkøbsfilter */}
-          <div className="flex flex-col gap-4">
-            <div className="relative rounded-3xl bg-gradient-to-br from-blue-50 to-white ring-1 ring-blue-100/70 flex items-center justify-center p-10 min-h-[340px]">
-              {k.highlight && (
-                <span className="absolute top-5 left-5 rounded-full bg-green-100 text-[#2e7d34] text-xs font-black px-3 py-1">
-                  {k.highlight}
-                </span>
-              )}
-              <img src={k.img} alt={k.name} className="max-h-[320px] max-w-full object-contain drop-shadow-xl" />
-            </div>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-7">
+          {/* Brødkrumme */}
+          <nav className="text-sm text-gray-400 flex items-center gap-1.5">
+            <Link href="/vandkander" className="hover:text-[#0a2540] transition-colors">Vandkander</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-gray-600">{k.name}</span>
+          </nav>
+        </div>
 
-            {/* Tilkøb: matchende filter – lige under produktbilledet */}
-            {k.addon && (
-              <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-4 flex items-center gap-4">
-                <div className="w-28 h-28 shrink-0 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 ring-1 ring-gray-100 flex items-center justify-center p-2.5">
-                  <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain drop-shadow" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Billede + tilkøbsfilter */}
+            <div className="flex flex-col gap-4">
+              <div className="relative rounded-[2rem] bg-white/70 backdrop-blur-sm ring-1 ring-white shadow-[0_20px_60px_-20px_rgba(10,37,64,0.25)] flex items-center justify-center p-10 min-h-[360px] overflow-hidden">
+                {/* indre glød bag produktet */}
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#3aad4a]/20 to-[#284eff]/10 blur-2xl" />
                 </div>
-                <div className="min-w-0 flex-1">
-                  <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
-                  <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5">{k.addon.name}</h2>
-                  <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
-                  <Link
-                    href="/shop"
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-xs px-4 py-2 mt-2.5 transition-colors"
-                  >
-                    Læg filter til <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                {k.highlight && (
+                  <span className="absolute top-5 left-5 z-10 rounded-full bg-[#3aad4a] text-white text-xs font-black px-3.5 py-1.5 shadow-lg shadow-green-500/30">
+                    {k.highlight}
+                  </span>
+                )}
+                <img src={k.img} alt={k.name} className="relative max-h-[320px] max-w-full object-contain drop-shadow-2xl" />
               </div>
-            )}
-          </div>
 
-          {/* Tekst */}
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-blue-50 border border-blue-100 px-3 py-1 mb-4">
-              <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
-              <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
+              {/* Tilkøb: matchende filter – lige under produktbilledet */}
+              {k.addon && (
+                <div className="rounded-2xl bg-white/80 backdrop-blur-sm ring-1 ring-black/5 shadow-lg shadow-[#0a2540]/5 p-4 flex items-center gap-4">
+                  <div className="w-28 h-28 shrink-0 rounded-xl bg-gradient-to-br from-[#eef8f1] to-white ring-1 ring-green-100/70 flex items-center justify-center p-2.5">
+                    <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain drop-shadow" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
+                    <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5">{k.addon.name}</h2>
+                    <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
+                    <Link
+                      href="/shop"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-xs px-4 py-2 mt-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
+                    >
+                      Læg filter til <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] leading-tight">{k.name}</h1>
-            <p className="text-lg text-gray-600 mt-3">{k.tagline}</p>
-            {k.capacity && <p className="text-base font-bold text-[#284eff] mt-4">{k.capacity}</p>}
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-7">
-              <Link
-                href="/shop"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-7 py-3.5 text-sm transition-colors"
-              >
-                Køb i shoppen <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-gray-300 hover:border-gray-400 text-[#0a2540] font-semibold px-7 py-3.5 text-sm transition-colors"
-              >
-                Få rådgivning
-              </Link>
+            {/* Tekst */}
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm ring-1 ring-green-100 px-3.5 py-1.5 mb-5 shadow-sm">
+                <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
+                <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{k.name}</h1>
+              <p className="text-lg text-gray-600 mt-4 leading-relaxed">{k.tagline}</p>
+              {k.capacity && (
+                <p className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] bg-blue-50 rounded-full px-4 py-1.5 mt-5">
+                  <Droplet className="w-3.5 h-3.5" /> {k.capacity}
+                </p>
+              )}
+
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+                >
+                  Køb i shoppen <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
+                >
+                  Få rådgivning
+                </Link>
+              </div>
+
+              {/* Trust-chips */}
+              <div className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                  <BadgeCheck className="w-4 h-4 text-[#3aad4a]" /> Made in Italy
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                  <Truck className="w-4 h-4 text-[#3aad4a]" /> Levering 2-3 hverdage
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                  <Leaf className="w-4 h-4 text-[#3aad4a]" /> Fri for engangsplast
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Highlights-band */}
+      {/* ─── HIGHLIGHTS ────────────────────────────────────── */}
       {k.highlights && k.highlights.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-4">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-2 pb-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {k.highlights.map((h) => {
               const Icon = HIGHLIGHT_ICONS[h.icon] ?? Droplets
               return (
                 <div
                   key={h.title}
-                  className="rounded-2xl bg-gradient-to-b from-blue-50/70 to-white ring-1 ring-blue-100/70 p-5 flex flex-col"
+                  className="group rounded-2xl bg-white ring-1 ring-black/5 shadow-sm hover:shadow-xl hover:shadow-[#0a2540]/5 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col"
                 >
-                  <span className="w-11 h-11 rounded-xl bg-white ring-1 ring-blue-100 flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5 text-[#3aad4a]" strokeWidth={2} />
+                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center mb-3.5 shadow-lg shadow-green-500/20">
+                    <Icon className="w-6 h-6 text-white" strokeWidth={2} />
                   </span>
                   <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{h.title}</h3>
                   <p className="text-[13px] text-gray-500 mt-1.5 leading-relaxed">{h.text}</p>
@@ -133,20 +161,26 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </section>
       )}
 
-      {/* Om produktet + fordele */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-xl font-extrabold text-[#0a2540] mb-3">Om {k.name.replace('Vandkande med filter ', '')}</h2>
+      {/* ─── OM + FORDELE ──────────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+        <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
+          <div className="rounded-3xl bg-gradient-to-br from-[#f5fbff] to-white ring-1 ring-blue-100/60 p-7 md:p-8">
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Om produktet</span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-3 leading-tight">
+              {k.name.replace('Vandkande med filter ', '')}
+            </h2>
             <p className="text-gray-600 leading-relaxed">{k.intro}</p>
           </div>
-          <div>
-            <h2 className="text-xl font-extrabold text-[#0a2540] mb-3">Fordele</h2>
-            <ul className="space-y-2.5">
+          <div className="rounded-3xl bg-gradient-to-br from-[#eef8f1] to-white ring-1 ring-green-100/70 p-7 md:p-8">
+            <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Fordele</span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-4 leading-tight">Derfor er den god</h2>
+            <ul className="space-y-3">
               {k.points.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-sm text-gray-600">
-                  <Check className="w-4 h-4 text-[#3aad4a] mt-0.5 shrink-0" strokeWidth={2.5} />
-                  <span>{p}</span>
+                <li key={p} className="flex items-start gap-3 text-sm text-gray-700">
+                  <span className="mt-0.5 w-5 h-5 shrink-0 rounded-full bg-[#3aad4a] flex items-center justify-center">
+                    <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="leading-relaxed">{p}</span>
                 </li>
               ))}
             </ul>
@@ -154,15 +188,19 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Specifikationer */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-        <div className="rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="bg-[#0a2540] px-6 py-4">
-            <h2 className="text-white font-extrabold">Specifikationer</h2>
+      {/* ─── SPECIFIKATIONER ───────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+        <div className="rounded-3xl bg-white ring-1 ring-black/5 shadow-sm overflow-hidden">
+          <div className="bg-gradient-to-r from-[#0a2540] to-[#123a63] px-7 py-5 flex items-center gap-3">
+            <Sparkles className="w-5 h-5 text-[#7dd88a]" />
+            <h2 className="text-white font-extrabold text-lg">Specifikationer</h2>
           </div>
           <dl className="divide-y divide-gray-100">
-            {k.specs.map((s) => (
-              <div key={s.label} className="flex items-center justify-between gap-4 px-6 py-3.5">
+            {k.specs.map((s, i) => (
+              <div
+                key={s.label}
+                className={`flex items-center justify-between gap-4 px-7 py-4 ${i % 2 === 1 ? 'bg-gray-50/60' : ''}`}
+              >
                 <dt className="text-sm text-gray-500">{s.label}</dt>
                 <dd className="text-sm font-semibold text-[#0a2540] text-right">{s.value}</dd>
               </div>
@@ -171,25 +209,51 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Miljø / besparelse */}
+      {/* ─── MILJØ / BESPARELSE ────────────────────────────── */}
       {k.eco && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
-          <div className="rounded-3xl bg-gradient-to-br from-[#e9f7ec] to-white ring-1 ring-green-100 p-8 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <span className="w-14 h-14 shrink-0 rounded-2xl bg-white ring-1 ring-green-100 flex items-center justify-center">
-              <Leaf className="w-7 h-7 text-[#3aad4a]" strokeWidth={2} />
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#e9f7ec] via-[#f0faf2] to-white ring-1 ring-green-100 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <div className="pointer-events-none absolute -bottom-16 -right-10 w-56 h-56 rounded-full bg-[#3aad4a]/10 blur-3xl" />
+            <span className="relative w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shadow-lg shadow-green-500/25">
+              <Leaf className="w-8 h-8 text-white" strokeWidth={2} />
             </span>
-            <div>
-              <h2 className="text-lg font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
-              <p className="text-gray-600 text-sm mt-1 leading-relaxed">{k.eco}</p>
+            <div className="relative">
+              <h2 className="text-xl font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
+              <p className="text-gray-600 text-sm md:text-base mt-1.5 leading-relaxed max-w-xl">{k.eco}</p>
             </div>
           </div>
         </section>
       )}
 
-      {/* Tilbage / andre kander */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="text-center">
-          <Link href="/vandkander" className="text-sm font-semibold text-gray-500 hover:text-[#0a2540]">
+      {/* ─── AFSLUTTENDE CTA ───────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+        <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#0a2540] to-[#123a63] p-9 md:p-12 text-center">
+          <div className="pointer-events-none absolute -top-16 -left-10 w-64 h-64 rounded-full bg-[#3aad4a]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -right-10 w-72 h-72 rounded-full bg-[#284eff]/20 blur-3xl" />
+          <h2 className="relative text-2xl md:text-3xl font-extrabold text-white mb-3">Klar til rent vand fra kanden?</h2>
+          <p className="relative text-blue-100/80 mb-7 max-w-xl mx-auto leading-relaxed">
+            Se {k.name.replace('Vandkande med filter ', '')} i shoppen, eller få gratis rådgivning om,
+            hvad der passer bedst til jer.
+          </p>
+          <div className="relative flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/shop"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+            >
+              Se i shoppen <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-4 text-sm transition-all"
+            >
+              Få gratis rådgivning
+            </Link>
+          </div>
+        </div>
+
+        {/* Tilbage */}
+        <div className="text-center mt-8">
+          <Link href="/vandkander" className="text-sm font-semibold text-gray-500 hover:text-[#0a2540] transition-colors">
             ← Se alle vandkander
           </Link>
         </div>
