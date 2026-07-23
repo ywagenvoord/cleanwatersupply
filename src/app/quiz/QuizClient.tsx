@@ -111,9 +111,9 @@ export default function QuizClient() {
               lodtrækningen om præmien.
             </p>
 
-            {/* Præmie-hero */}
+            {/* Præmie-hero (bredere end tekstkolonnen) */}
             <div
-              className="relative rounded-3xl overflow-hidden mb-8 text-left shadow-xl"
+              className="relative rounded-3xl overflow-hidden mb-8 text-left shadow-xl md:-mx-16 lg:-mx-32"
               style={{
                 background: 'linear-gradient(135deg, #284eff 0%, #3a5cff 45%, #1b32c9 100%)',
                 boxShadow: '0 20px 50px -15px rgba(40,78,255,0.45)',
