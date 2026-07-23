@@ -111,19 +111,55 @@ export default function QuizClient() {
               lodtrækningen om præmien.
             </p>
 
-            {/* Præmien */}
-            <div className="inline-flex items-center gap-4 bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-4 mb-8 text-left">
-              <div className="w-16 h-16 rounded-xl bg-gray-50 border border-gray-100 shrink-0 overflow-hidden">
-                <img src="/images/product-tr5.jpg" alt={PRIZE_SHORT} className="w-full h-full object-cover" />
-              </div>
-              <div>
-                <p className="text-[11px] font-bold text-[#3aad4a] uppercase tracking-wider mb-0.5">
-                  Præmie
-                </p>
-                <p className="font-extrabold text-[#0a2540] leading-tight">{PRIZE_SHORT}</p>
-                <p className="text-xs text-gray-500 mt-0.5">
-                  Medicinsk godkendt vandfilter · værdi <strong className="text-gray-700">625 kr</strong>
-                </p>
+            {/* Præmie-hero */}
+            <div
+              className="relative rounded-3xl overflow-hidden mb-8 text-left shadow-xl"
+              style={{
+                background: 'linear-gradient(135deg, #284eff 0%, #3a5cff 45%, #1b32c9 100%)',
+                boxShadow: '0 20px 50px -15px rgba(40,78,255,0.45)',
+              }}
+            >
+              {/* lysskær */}
+              <div className="pointer-events-none absolute -top-20 -right-16 w-72 h-72 rounded-full opacity-50"
+                   style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 65%)' }} />
+              <div className="pointer-events-none absolute -bottom-24 -left-16 w-72 h-72 rounded-full opacity-40"
+                   style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.5) 0%, transparent 65%)' }} />
+
+              <div className="relative grid md:grid-cols-2 gap-0 items-stretch">
+                {/* Stort billede: produktet monteret på hanen */}
+                <div className="relative min-h-[220px] md:min-h-[300px]">
+                  <img
+                    src="/images/baclyser-tl.jpg"
+                    alt="Baclyser neo monteret på vandhane"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4 rounded-full bg-white/95 backdrop-blur px-3.5 py-1.5 shadow-lg">
+                    <span className="text-xs font-black text-[#1b32c9] uppercase tracking-wider">Præmie</span>
+                  </div>
+                </div>
+
+                {/* Tekst + produktvinkler */}
+                <div className="p-7 md:p-8 flex flex-col justify-center">
+                  <p className="text-2xl md:text-3xl font-extrabold text-white leading-tight tracking-[-0.02em]">
+                    Baclyser® neo TR
+                  </p>
+                  <p className="text-blue-100/80 mt-2 text-sm leading-relaxed">
+                    Medicinsk godkendt vandfilter, der stopper Legionella og bakterier direkte ved
+                    hanen. Samme filter, som hospitaler bruger.
+                  </p>
+
+                  <div className="flex items-center gap-2.5 mt-5">
+                    {['product-tr.png', 'product-tr4.jpg', 'product-tr5.jpg'].map((img) => (
+                      <div key={img} className="w-14 h-14 rounded-xl bg-white p-1 shadow-md">
+                        <img src={`/images/${img}`} alt="" className="w-full h-full object-cover rounded-lg" />
+                      </div>
+                    ))}
+                    <div className="ml-auto text-right">
+                      <p className="text-[11px] text-blue-100/70 uppercase tracking-wider">Værdi</p>
+                      <p className="text-2xl font-extrabold text-white leading-none">625 kr</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
