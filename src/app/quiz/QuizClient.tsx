@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Gift, Check, Loader2, Trophy, ChevronRight, ArrowRight } from 'lucide-react'
 import {
@@ -406,27 +406,9 @@ export default function QuizClient() {
   )
 }
 
-/* ── Billed-loop (fade) af Baclyser neo TR ────────────────────── */
-
-type Media = { type: 'img' | 'video'; src: string; alt?: string }
-
-// KUN konkurrence-produktet – Baclyser neo TR
-const PRODUCT_MEDIA: Media[] = [
-  { type: 'img',   src: '/images/solution-tappested.jpg', alt: 'Baclyser neo TR monteret på vandhane' },
-  { type: 'img',   src: '/images/product-tr.png',         alt: 'Baclyser neo TR' },
-  { type: 'video', src: '/videos/hjem.mp4' },
-  { type: 'img',   src: '/images/product-tr4.jpg',        alt: 'Baclyser neo TR' },
-  { type: 'img',   src: '/images/product-tr5.jpg',        alt: 'Baclyser neo TR' },
-]
+/* ── Video-loop af konkurrence-produktet ──────────────────────── */
 
 function ProductLoop() {
-  const [i, setI] = useState(0)
-
-  useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % PRODUCT_MEDIA.length), 3800)
-    return () => clearInterval(t)
-  }, [])
-
   return (
     <div className="relative z-10 pb-16 px-4">
       <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-5">
@@ -434,43 +416,16 @@ function ProductLoop() {
       </p>
 
       <div className="relative mx-auto w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100 shadow-xl ring-1 ring-black/5">
-        {PRODUCT_MEDIA.map((m, idx) => (
-          <div
-            key={idx}
-            className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: idx === i ? 1 : 0 }}
-            aria-hidden={idx !== i}
-          >
-            {m.type === 'video' ? (
-              <video
-                src={m.src}
-                autoPlay muted loop playsInline preload="metadata"
-                aria-hidden="true"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src={m.src}
-                alt={m.alt || ''}
-                className={`w-full h-full ${m.src.endsWith('.png') ? 'object-contain p-8 bg-white' : 'object-cover'}`}
-              />
-            )}
-          </div>
-        ))}
-
-        {/* Prikker */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-          {PRODUCT_MEDIA.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setI(idx)}
-              aria-label={`Vis billede ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                idx === i ? 'w-5 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/80'
-              }`}
-            />
-          ))}
-        </div>
+        <video
+          src="/videos/hjem.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="w-full h-full object-cover"
+        />
       </div>
     </div>
   )
