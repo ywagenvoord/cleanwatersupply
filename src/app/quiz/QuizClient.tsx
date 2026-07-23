@@ -13,6 +13,8 @@ export default function QuizClient() {
   const [answers, setAnswers] = useState<number[]>([])
   const [picked, setPicked] = useState<number | null>(null)
 
+  const [name, setName]       = useState('')
+  const [phone, setPhone]     = useState('')
   const [email, setEmail]     = useState('')
   const [consent, setConsent] = useState(false)
   const [status, setStatus]   = useState<'idle' | 'loading' | 'error'>('idle')
@@ -60,6 +62,8 @@ export default function QuizClient() {
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
           email,
+          name,
+          phone,
           consent: BUNDLED_CONSENT ? true : consent,
           tags: ['Quiz-konkurrence'],
         }),
@@ -208,13 +212,44 @@ export default function QuizClient() {
             </h2>
             <p className="text-gray-600 mb-6">
               Du fik <strong className="text-[#0a2540]">{score} ud af {QUESTIONS.length}</strong> rigtige.
-              Vær med i lodtrækningen om <strong>{PRIZE}</strong> – vi trækker lod den {DEADLINE}
+              Vær med i lodtrækningen om <strong>{PRIZE}</strong> – vi trækker lod den {DEADLINE}{' '}
               og giver vinderen besked på mail.
             </p>
 
             <form onSubmit={submit}>
+              <div className="grid sm:grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label htmlFor="quiz-name" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    Navn
+                  </label>
+                  <input
+                    id="quiz-name"
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Dit navn"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="quiz-phone" className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    Telefon
+                  </label>
+                  <input
+                    id="quiz-phone"
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    placeholder="12 34 56 78"
+                    className="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]"
+                  />
+                </div>
+              </div>
+
               <label htmlFor="quiz-email" className="block text-sm font-semibold text-gray-700 mb-1.5">
-                Din e-mailadresse
+                E-mailadresse
               </label>
               <input
                 id="quiz-email"

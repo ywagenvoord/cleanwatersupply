@@ -22,10 +22,12 @@ export const dynamic = 'force-dynamic'
 const DOUBLE_OPT_IN = false
 export async function POST(req: NextRequest) {
   try {
-    const { email, consent, tags } = (await req.json()) as {
+    const { email, consent, tags, name, phone } = (await req.json()) as {
       email?: string
       consent?: boolean
       tags?: string[]
+      name?: string
+      phone?: string
     }
 
     const trimmed = (email || '').trim().toLowerCase()
@@ -79,6 +81,13 @@ export async function POST(req: NextRequest) {
         body: JSON.stringify({
           email_address: trimmed,
           status: DOUBLE_OPT_IN ? 'pending' : 'subscribed',
+          // Navn og telefon (Mailchimps standard merge-felter FNAME + PHONE)
+          ...((name || phone) ? {
+            merge_fields: {
+              ...(name  ? { FNAME: name.trim() }   : {}),
+              ...(phone ? { PHONE: phone.trim() }   : {}),
+            },
+          } : {}),
           // Dokumentation for samtykket, når vi ikke bruger bekræftelsesmail
           ...(DOUBLE_OPT_IN ? {} : {
             ip_signup:        signupIp,
