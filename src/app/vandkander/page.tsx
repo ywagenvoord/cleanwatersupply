@@ -1,69 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Check, Droplets } from 'lucide-react'
+import { ArrowRight, Droplets } from 'lucide-react'
+import { KANDER } from '@/lib/kander'
 
 export const metadata: Metadata = {
   title: 'Vandkander & filterflasker – rent vand uden installation | Clean Water Supply',
   description:
     'Se vores Laica filtervandkander og filterflasker: Carmen, MikroPLASTIK-STOP og GlaSSmart glasflaske. Rent vand med god smag – helt uden installation.',
 }
-
-type Jug = {
-  name: string
-  art: string
-  img: string
-  tagline: string
-  capacity?: string
-  points: string[]
-  highlight?: string
-}
-
-const JUGS: Jug[] = [
-  {
-    name: 'Filtervandkande Carmen',
-    art: 'Art. J35-DA',
-    img: '/images/kande-carmen-t.png',
-    tagline: 'Klassisk, let og nem filtervandkande til hverdagen.',
-    capacity: '2,3 L total · 1,2 L filtreret',
-    points: [
-      'Hurtigfyldnings-låge – fyld direkte under hanen',
-      'Passer i køleskabsdøren',
-      'Batterifri “eco-friendly” skift-indikator',
-      'Bruger Bi-flux®-filterpatron',
-      'Made in Italy',
-    ],
-  },
-  {
-    name: 'Filtervandkande MikroPLASTIK-STOP™',
-    art: 'Art. UFSBE02',
-    img: '/images/kande-mikroplastik-t.png',
-    tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
-    capacity: '3 L total · 2 L filtreret',
-    highlight: 'Fjerner 99,99 % mikroplast',
-    points: [
-      'Dobbelt filtersystem: Bi-flux® + MikroPLASTIK-STOP™',
-      'Fjerner >99,99 % af mikroplast ≥ 1 µm (testet af uafhængige labs)',
-      'Bevarer de nyttige mineralsalte i vandet',
-      '“Flow ’n go” hæld-gennem-låg med støvbeskyttelse',
-      'Fødevaregodkendte materialer · 100 % genanvendelig emballage',
-      'Fås kun i hvid',
-    ],
-  },
-  {
-    name: 'GlaSSmart™ glas-filterflaske',
-    art: 'FAST DISK™',
-    img: '/images/glassmart-flaske-t.png',
-    tagline: 'Filtrerer vandet med det samme – med dig på farten.',
-    capacity: 'Glasflaske til on-the-go',
-    points: [
-      'FAST DISK™ instant-filtrering med aktivt kul',
-      'Forbedrer smagen og reducerer klor',
-      'Bevarer mineralsalte',
-      'Glas bevarer vandets naturlige karakter · tåler opvaskemaskine',
-      'Reducerer plastflaske-forbrug med ca. 99 %',
-    ],
-  },
-]
 
 export default function VandkanderPage() {
   return (
@@ -85,49 +29,53 @@ export default function VandkanderPage() {
         </div>
       </section>
 
-      {/* Kander */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-8 space-y-8">
-        {JUGS.map((j, i) => (
-          <div
-            key={j.name}
-            className="grid md:grid-cols-5 gap-0 rounded-3xl overflow-hidden shadow-lg ring-1 ring-blue-100/70 bg-white"
-          >
-            {/* Billede – stort */}
-            <div className={`relative md:col-span-3 min-h-[320px] md:min-h-[400px] bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-8 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-              <img src={j.img} alt={j.name} className="max-h-[340px] max-w-full object-contain drop-shadow-xl" />
-            </div>
+      {/* Kort-grid */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {KANDER.map((k) => (
+            <Link
+              key={k.slug}
+              href={`/vandkander/${k.slug}`}
+              className="group flex flex-col rounded-3xl overflow-hidden bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+            >
+              {/* Billede */}
+              <div className="relative h-56 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-6">
+                {k.highlight && (
+                  <span className="absolute top-4 left-4 rounded-full bg-green-100 text-[#2e7d34] text-[11px] font-black px-3 py-1">
+                    {k.highlight}
+                  </span>
+                )}
+                <img
+                  src={k.img}
+                  alt={k.name}
+                  className="max-h-[200px] max-w-full object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
 
-            {/* Tekst – lyseblå, mørk skrift */}
-            <div className="md:col-span-2 p-8 md:p-9 flex flex-col justify-center bg-gradient-to-br from-blue-50/80 to-white">
-              <p className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-[0.14em] mb-1">{j.art}</p>
-              <h2 className="text-2xl font-extrabold text-[#0a2540] leading-tight tracking-[-0.01em]">{j.name}</h2>
-              <p className="text-gray-600 mt-2">{j.tagline}</p>
+              {/* Tekst */}
+              <div className="p-6 flex flex-col flex-1">
+                <p className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-wider mb-1">{k.art}</p>
+                <h2 className="text-lg font-extrabold text-[#0a2540] leading-tight">{k.name}</h2>
+                <p className="text-sm text-gray-500 mt-2 leading-relaxed">{k.tagline}</p>
 
-              {j.highlight && (
-                <span className="inline-flex self-start items-center gap-1.5 rounded-full bg-green-100 text-[#2e7d34] text-xs font-black px-3 py-1 mt-4">
-                  {j.highlight}
+                {k.capacity && (
+                  <p className="text-sm font-bold text-[#284eff] mt-3">{k.capacity}</p>
+                )}
+
+                <div className="flex-1" />
+
+                <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#0a2540] mt-5 group-hover:text-[#284eff] transition-colors">
+                  Læs mere
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </span>
-              )}
-
-              {j.capacity && (
-                <p className="text-sm font-bold text-[#284eff] mt-4">{j.capacity}</p>
-              )}
-
-              <ul className="mt-4 space-y-2">
-                {j.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-[#3aad4a] mt-0.5 shrink-0" strokeWidth={2.5} />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        ))}
+              </div>
+            </Link>
+          ))}
+        </div>
       </section>
 
       {/* Filtre-krydslink */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
         <div className="rounded-3xl bg-blue-50 border border-blue-100 p-8 text-center">
           <h2 className="text-xl font-extrabold text-[#0a2540] mb-2">Skal filteret skiftes?</h2>
           <p className="text-gray-600 mb-5 max-w-xl mx-auto">
@@ -144,7 +92,7 @@ export default function VandkanderPage() {
       </section>
 
       {/* CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
         <div className="rounded-3xl bg-[#0a2540] p-8 md:p-10 text-center">
           <h2 className="text-2xl font-extrabold text-white mb-3">Klar til rent vand fra kanden?</h2>
           <p className="text-blue-100/80 mb-6 max-w-xl mx-auto">
