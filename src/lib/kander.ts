@@ -14,6 +14,7 @@ export type Kande = {
   points: string[]
   specs: Spec[]
   filter?: string
+  addon?: { name: string; art: string; img: string; life: string; blurb: string }
 }
 
 export const KANDER: Kande[] = [
@@ -45,6 +46,13 @@ export const KANDER: Kande[] = [
       { label: 'Indhold', value: 'Kande + 1 Bi-flux®-filter + manual' },
     ],
     filter: 'Bi-flux®-filterpatron',
+    addon: {
+      name: 'Bi-flux® Universal-filter',
+      art: 'Art. F0M',
+      img: '/images/product-filter-udskift.jpg',
+      life: '1 måned · ca. 150 L pr. filter',
+      blurb: 'Det matchende udskiftningsfilter til Carmen – bevar rent vand med god smag.',
+    },
   },
   {
     slug: 'mikroplastik-stop',
@@ -76,6 +84,13 @@ export const KANDER: Kande[] = [
       { label: 'Indhold', value: 'Kande + 1 filter + manual' },
     ],
     filter: 'Bi-flux® + MikroPLASTIK-STOP™',
+    addon: {
+      name: 'Bi-flux® + MikroPLASTIK-STOP™-filter',
+      art: 'Art. UFSBE02',
+      img: '/images/product-filter-udskift.jpg',
+      life: '1 måned · ca. 150 L pr. filter',
+      blurb: 'Dobbelt-filtersættet der matcher MikroPLASTIK-STOP™ og fjerner mikroplast.',
+    },
   },
   {
     slug: 'glassmart',
@@ -104,6 +119,13 @@ export const KANDER: Kande[] = [
       { label: 'Made in', value: 'Italien' },
     ],
     filter: 'FAST DISK™-skivefilter',
+    addon: {
+      name: 'FAST DISK™-skivefilter',
+      art: 'Til GlaSSmart-flasken',
+      img: 'https://www.laica.com/wp-content/uploads/icon_fatdisk.jpg',
+      life: 'Instant-filtrering med aktivt kul',
+      blurb: 'Det matchende skivefilter til GlaSSmart-flasken – filtrerer, mens du drikker.',
+    },
   },
 ]
 

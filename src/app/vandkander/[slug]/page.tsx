@@ -112,23 +112,47 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* Krydslink filtre */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
-        <div className="rounded-3xl bg-blue-50 border border-blue-100 p-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
-          <div>
-            <h2 className="text-lg font-extrabold text-[#0a2540]">Filter: {k.filter}</h2>
-            <p className="text-gray-600 text-sm mt-1">Se udskiftningsfiltrene og hvornår de skal skiftes.</p>
+      {/* Tilkøb: matchende filter */}
+      {k.addon && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-6">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb</span>
+            <span className="h-px flex-1 bg-gray-100" />
           </div>
-          <Link
-            href="/vandkande-filtre"
-            className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0a2540] hover:bg-[#0d3050] text-white font-bold px-6 py-3 text-sm transition-colors"
-          >
-            Se filtre <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
+          <div className="rounded-3xl border border-gray-100 shadow-sm bg-white p-6 sm:p-7 flex flex-col sm:flex-row items-center gap-6">
+            {/* Filterbillede */}
+            <div className="w-32 h-32 shrink-0 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+              <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain" />
+            </div>
+            {/* Tekst */}
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-[11px] font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{k.addon.art}</p>
+              <h2 className="text-lg font-extrabold text-[#0a2540] leading-tight">{k.addon.name}</h2>
+              <p className="text-sm text-gray-600 mt-1.5">{k.addon.blurb}</p>
+              <p className="text-xs text-gray-400 mt-2">Levetid: <span className="font-semibold text-gray-600">{k.addon.life}</span></p>
+            </div>
+            {/* Handlinger */}
+            <div className="flex flex-col gap-2.5 w-full sm:w-auto shrink-0">
+              <Link
+                href="/shop"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-6 py-3 text-sm transition-colors"
+              >
+                Læg filter til <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/vandkande-filtre"
+                className="inline-flex items-center justify-center rounded-full border border-gray-300 hover:border-gray-400 text-[#0a2540] font-semibold px-6 py-3 text-sm transition-colors"
+              >
+                Se alle filtre
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
-        {/* Tilbage / andre kander */}
-        <div className="mt-8 text-center">
+      {/* Tilbage / andre kander */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-16">
+        <div className="text-center">
           <Link href="/vandkander" className="text-sm font-semibold text-gray-500 hover:text-[#0a2540]">
             ← Se alle vandkander
           </Link>
