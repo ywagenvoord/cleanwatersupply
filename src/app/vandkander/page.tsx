@@ -36,7 +36,7 @@ const JUGS: Jug[] = [
   {
     name: 'Filtervandkande MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
-    img: 'https://www.laica.com/wp-content/uploads/Caraffa-MikroPlastik.jpg',
+    img: '/images/kande-mikroplastik.jpg',
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
     highlight: 'Fjerner 99,99 % mikroplast',
