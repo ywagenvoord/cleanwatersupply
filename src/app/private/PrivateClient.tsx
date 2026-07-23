@@ -61,7 +61,7 @@ export default function PrivateClient() {
     },
     {
       slug: 'vandkande',
-      href: '/shop/vandfilter-predator',
+      href: '/vandkander',
       img: '/images/solution-vandkande.jpg',
       objPos: 'object-[center_35%]',
       title: da ? 'Filtervandkande' : 'Water filter jug',
@@ -71,7 +71,7 @@ export default function PrivateClient() {
     },
     {
       slug: 'vandkande-filtre',
-      href: '/shop/vandfilter-biflux-reservedel',
+      href: '/vandkande-filtre',
       img: '/images/product-filter-udskift.jpg',
       title: da ? 'Filtre til vandkande' : 'Jug filter cartridges',
       body: da
