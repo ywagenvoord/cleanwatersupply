@@ -22,7 +22,7 @@ const JUGS: Jug[] = [
   {
     name: 'Filtervandkande Carmen',
     art: 'Art. J35-DA',
-    img: '/images/kande-carmen.jpg',
+    img: '/images/kande-carmen-t.png',
     tagline: 'Klassisk, let og nem filtervandkande til hverdagen.',
     capacity: '2,3 L total · 1,2 L filtreret',
     points: [
@@ -36,7 +36,7 @@ const JUGS: Jug[] = [
   {
     name: 'Filtervandkande MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
-    img: '/images/kande-mikroplastik.jpg',
+    img: '/images/kande-mikroplastik-t.png',
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
     highlight: 'Fjerner 99,99 % mikroplast',
@@ -51,7 +51,7 @@ const JUGS: Jug[] = [
   {
     name: 'GlaSSmart™ glas-filterflaske',
     art: 'FAST DISK™',
-    img: '/images/glassmart-flaske.png',
+    img: '/images/glassmart-flaske-t.png',
     tagline: 'Filtrerer vandet med det samme – med dig på farten.',
     capacity: 'Glasflaske til on-the-go',
     points: [
