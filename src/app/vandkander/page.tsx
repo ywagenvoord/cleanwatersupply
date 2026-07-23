@@ -93,9 +93,6 @@ export default function VandkanderPage() {
           >
             {/* Billede – stort */}
             <div className={`relative md:col-span-3 min-h-[320px] md:min-h-[400px] bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-8 ${i % 2 === 1 ? 'md:order-2' : ''}`}>
-              <span className="absolute top-5 left-5 w-10 h-10 rounded-full bg-[#284eff] text-white font-extrabold flex items-center justify-center shadow-lg">
-                {i + 1}
-              </span>
               <img src={j.img} alt={j.name} className="max-h-[340px] max-w-full object-contain drop-shadow-xl" />
             </div>
 
