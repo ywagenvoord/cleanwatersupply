@@ -126,12 +126,12 @@ export default function QuizClient() {
                    style={{ background: 'radial-gradient(circle, rgba(74,222,128,0.5) 0%, transparent 65%)' }} />
 
               <div className="relative grid md:grid-cols-2 gap-0 items-stretch">
-                {/* Stort billede: produktet monteret på hanen */}
-                <div className="relative min-h-[220px] md:min-h-[300px]">
+                {/* Lifestyle: filteret monteret på køkkenhanen */}
+                <div className="relative min-h-[240px] md:min-h-[320px]">
                   <img
-                    src="/images/baclyser-tl.jpg"
-                    alt="Baclyser neo monteret på vandhane"
-                    className="absolute inset-0 w-full h-full object-cover"
+                    src="/images/solution-tappested.jpg"
+                    alt="Baclyser neo-filter monteret på vandhane"
+                    className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                   <div className="absolute top-4 left-4 rounded-full bg-white/95 backdrop-blur px-3.5 py-1.5 shadow-lg">
                     <span className="text-xs font-black text-[#1b32c9] uppercase tracking-wider">Præmie</span>

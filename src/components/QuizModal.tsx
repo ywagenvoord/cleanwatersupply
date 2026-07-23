@@ -108,12 +108,12 @@ export default function QuizModal() {
           <X className="w-4 h-4" strokeWidth={2.5} />
         </button>
 
-        {/* Lifestyle-billede: produktet monteret på hanen */}
-        <div className="relative h-[150px]">
+        {/* Lifestyle: filteret monteret på køkkenhanen */}
+        <div className="relative h-[165px]">
           <img
-            src="/images/baclyser-tl.jpg"
-            alt="Baclyser neo monteret på vandhane"
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            src="/images/solution-tappested.jpg"
+            alt="Baclyser neo-filter monteret på vandhane"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
           {/* Gradient så teksten nedenunder glider ind */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#1b32c9] to-transparent" />
