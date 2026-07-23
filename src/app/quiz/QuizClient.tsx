@@ -131,7 +131,7 @@ export default function QuizClient() {
                   <img
                     src="/images/solution-tappested.jpg"
                     alt="Baclyser neo-filter monteret på vandhane"
-                    className="absolute inset-0 w-full h-full object-cover object-[center_28%]"
+                    className="absolute inset-0 w-full h-full object-cover object-[center_18%]"
                   />
                   <div className="absolute top-4 left-4 rounded-full bg-white/95 backdrop-blur px-3.5 py-1.5 shadow-lg">
                     <span className="text-xs font-black text-[#1b32c9] uppercase tracking-wider">Præmie</span>
