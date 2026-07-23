@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Gift, Check, Loader2, Trophy, ChevronRight, ArrowRight } from 'lucide-react'
 import {
