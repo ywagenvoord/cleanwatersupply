@@ -83,9 +83,38 @@ export default function QuizClient() {
 
   const q = QUESTIONS[step]
 
+  const onQuiz = phase === 'quiz'
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <main
+      className={`relative min-h-screen overflow-hidden ${
+        onQuiz ? '' : 'bg-gradient-to-b from-blue-50 to-white'
+      }`}
+    >
+      {/* Levende blå baggrund på spørgsmåls-skærmen */}
+      {onQuiz && (
+        <>
+          <video
+            src="/videos/hjem.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'linear-gradient(135deg, rgba(10,37,64,0.94) 0%, rgba(27,50,201,0.90) 55%, rgba(40,78,255,0.88) 100%)',
+            }}
+          />
+        </>
+      )}
+
+      <div className="relative z-10 max-w-2xl mx-auto px-4 sm:px-6 py-16 md:py-24">
 
         {/* ── INTRO ── */}
         {phase === 'intro' && (
@@ -179,12 +208,14 @@ export default function QuizClient() {
 
         {/* ── SPØRGSMÅL ── */}
         {phase === 'quiz' && (
-          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 md:p-10">
+          <div className="bg-white rounded-3xl shadow-2xl ring-1 ring-black/5 p-8 md:p-10">
             <div className="flex items-center justify-between mb-6">
               <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">
                 Spørgsmål {step + 1} af {QUESTIONS.length}
               </span>
-              <span className="text-xs text-gray-400">Vind {PRIZE_SHORT}</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-bold text-[#1b32c9]">
+                <Gift className="w-3 h-3" /> Vind {PRIZE_SHORT}
+              </span>
             </div>
 
             <div className="flex gap-1.5 mb-8">
