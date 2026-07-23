@@ -400,8 +400,8 @@ export default function QuizClient() {
         )}
       </div>
 
-      {/* Billed-loop af konkurrence-produktet */}
-      <ProductLoop />
+      {/* Billed-loop af konkurrence-produktet – kun under spørgsmålene */}
+      {phase === 'quiz' && <ProductLoop />}
     </main>
   )
 }
