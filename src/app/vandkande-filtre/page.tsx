@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 type FilterType = {
   name: string
   art: string
+  img: string
   tagline: string
   best: string
   points: string[]
@@ -22,6 +23,7 @@ const FILTERS: FilterType[] = [
   {
     name: 'Bi-flux® Universal',
     art: 'Art. F0M',
+    img: '/images/product-filter-udskift.jpg',
     tagline: 'Det alsidige hverdagsfilter.',
     best: 'Bedst til: daglig brug, alsidig filtrering',
     life: '1 måned · ca. 150 L pr. filter',
@@ -35,6 +37,7 @@ const FILTERS: FilterType[] = [
   {
     name: 'Bi-flux® LimescaleSTOP',
     art: 'Art. H0L',
+    img: 'https://www.laica.com/wp-content/uploads/limescalestop-filter.webp',
     tagline: 'Mod kalk og hårdt vand.',
     best: 'Bedst til: områder med hårdt vand',
     life: '1 måned · ca. 150 L pr. filter',
@@ -49,6 +52,7 @@ const FILTERS: FilterType[] = [
   {
     name: 'Bi-flux® HealthExpert',
     art: 'Art. P3M',
+    img: 'https://www.laica.com/wp-content/uploads/healthexpert-prod.webp',
     tagline: 'Mod PFAS – med ekstra magnesium.',
     best: 'Bedst til: maksimal beskyttelse',
     life: '1 måned · ca. 150 L pr. filter',
@@ -63,6 +67,7 @@ const FILTERS: FilterType[] = [
   {
     name: 'FAST DISK™',
     art: 'Til GlaSSmart-flasken',
+    img: 'https://www.laica.com/wp-content/uploads/icon_fatdisk.jpg',
     tagline: 'Instant-filtrering til flasken.',
     best: 'Bedst til: on-the-go / GlaSSmart-flasken',
     life: 'Skivefilter til instant-filtrering',
@@ -101,8 +106,14 @@ export default function VandkandeFiltrePage() {
           {FILTERS.map((f) => (
             <div
               key={f.name}
-              className="rounded-3xl border border-gray-100 shadow-sm bg-white p-8 flex flex-col"
+              className="rounded-3xl border border-gray-100 shadow-sm bg-white overflow-hidden flex flex-col"
             >
+              {/* Billede */}
+              <div className="h-44 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6">
+                <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain" />
+              </div>
+
+              <div className="p-8 pt-6 flex flex-col flex-1">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{f.art}</p>
@@ -130,6 +141,7 @@ export default function VandkandeFiltrePage() {
               <p className="text-xs text-gray-400 mt-5 pt-4 border-t border-gray-100">
                 Levetid: <span className="font-semibold text-gray-600">{f.life}</span>
               </p>
+              </div>
             </div>
           ))}
         </div>
