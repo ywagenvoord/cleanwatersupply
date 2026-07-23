@@ -63,6 +63,7 @@ export default function PrivateClient() {
       slug: 'vandkande',
       href: '/shop/vandfilter-predator',
       img: '/images/solution-vandkande.jpg',
+      wide: true,
       title: da ? 'Filtervandkande' : 'Water filter jug',
       body: da
         ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
@@ -179,16 +180,20 @@ export default function PrivateClient() {
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
-            {solutions.map(({ img, title, body, slug, href }) => (
+            {solutions.map(({ img, title, body, slug, href, wide }) => (
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group relative aspect-[2/1] rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
+                className={`group relative rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300 ${
+                  wide ? 'sm:col-span-2 aspect-[2/1] sm:aspect-[3.4/1]' : 'aspect-[2/1]'
+                }`}
               >
                 <img
                   src={img}
                   alt={title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${
+                    wide ? 'object-[center_28%]' : 'object-center'
+                  }`}
                 />
                 <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5">
