@@ -56,26 +56,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'da_DK',
-    url: SITE_URL,
     siteName: 'Clean Water Supply',
     title: 'Clean Water Supply – Legionella-filtre & vandhygiejne i Danmark',
     description:
       'Medicinsk certificerede Legionella-filtre, blødgøringsanlæg og ECA-vand til hospitaler, hoteller og private hjem. ECHA Article 95 godkendt.',
-    images: [
-      {
-        url: '/images/og-default.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Clean Water Supply – vandhygiejne specialist',
-      },
-    ],
+    // Billede leveres af src/app/opengraph-image.tsx (genereres automatisk).
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Clean Water Supply – Legionella-filtre i Danmark',
     description:
       'Medicinsk certificerede vandfiltre og blødgøringsanlæg. ECHA Article 95 godkendt.',
-    images: ['/images/og-default.jpg'],
+    // Billede leveres af src/app/twitter-image.tsx.
   },
   // icons left to Next.js conventions (icon.tsx + apple-icon.tsx)
   formatDetection: {

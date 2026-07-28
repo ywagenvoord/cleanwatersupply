@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     title: 'Clean Water Supply – Legionella-filtre & vandhygiejne',
     description:
       'Medicinsk certificerede vandfiltre, blødgøringsanlæg og ECA-vand. 7 log retention mod Legionella, Pseudomonas og Staphylococcus.',
-    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'Clean Water Supply' }],
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },

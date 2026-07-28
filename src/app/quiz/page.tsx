@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: `Hvor meget ved du om rent vand?`,
     description:
       'Tag vandquizzen på 4 spørgsmål og deltag i konkurrencen om et medicinsk godkendt vandfilter.',
+    url: `${SITE_URL}/quiz`,
     type: 'website',
   },
 }
