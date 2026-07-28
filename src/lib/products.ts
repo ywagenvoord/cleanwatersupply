@@ -29,6 +29,7 @@ export type Product = {
   images?: string[]        // detail-galleri (flere vinkler) – første vises som hero
   lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
+  requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
   // Key selling points (shown as icon-bullet in detail hero)
   highlights: string[]
   // Bullet feature list
@@ -178,25 +179,27 @@ export const PRODUCTS: Product[] = [
     imgLarge: '/images/product-tl6.jpg',
     lifestyleImage: '/images/solution-tappested.jpg',
     lifestyleVideo: '/videos/hjem.mp4',
-    description: 'Hanefilter til hjemmet, der stopper Legionella og bakterier direkte ved håndvasken – med en blød, behagelig vandstråle. Op til 93 dages ren beskyttelse.',
-    longDescription: 'Baclyser® neo TL (3M) giver dig og din familie rent, bakteriefrit vand direkte fra hanen – med en blød, jævn vandstråle (laminar udløb), der er rar at bruge til hverdag. Det er det samme medicinsk godkendte filter, som hospitaler bruger, så du kan være helt tryg ved vandet, I drikker, laver mad med og børster tænder i. Med op til 93 dages levetid skal det kun skiftes ca. hvert kvartal – nemt og uden værktøj.',
-    highlights: ['Op til 93 dages levetid', 'Blød, behagelig vandstråle', 'Samme filter som hospitaler bruger'],
+    requiresCoupling: true,
+    description: 'Få rent, sikkert vand direkte fra hanen derhjemme. Filteret klikker fast på din vandhane og stopper bakterier – med en blød, behagelig vandstråle. Holder op til 93 dage.',
+    longDescription: 'Med Baclyser® neo TL får du og din familie rent, bakteriefrit vand direkte fra hanen – nemt og uden at tænke over det. Vandstrålen er blød og jævn, så den er rar at bruge, når I fylder vand i glasset, skyller grøntsager eller børster tænder. Det er faktisk det samme filter, som bruges på hospitaler, så du kan være helt tryg ved vandet til hele familien – også til de mindste og til nogen med et sart helbred. Filteret holder op til 93 dage og skiftes bare ved at klikke det gamle af og et nyt på – helt uden værktøj. Bemærk: for at sætte filteret på din vandhane skal du bruge en lille kobling, der passer til din hane. Du vælger den nemt her på siden (M22 eller M24).',
+    highlights: ['Rent vand direkte fra hanen', 'Blød, behagelig vandstråle', 'Samme filter som hospitaler bruger'],
     features: [
-      'Stopper Legionella, Pseudomonas og andre vandbårne bakterier (7 log)',
-      'Blød, jævn vandstråle (laminar udløb) – rar til hverdag',
-      'Rent vand til at drikke, madlavning og tandbørstning',
-      'Nem quick-release montering – helt uden værktøj',
-      'Op til 93 dages levetid – skift kun ca. hvert kvartal',
+      'Stopper 99,99999 % af bakterier som Legionella og Pseudomonas',
+      'Blød, behagelig vandstråle – rar at bruge til hverdag',
+      'Rent vand til at drikke, lave mad og børste tænder i',
+      'Skiftes på få sekunder – klik af, klik på, helt uden værktøj',
+      'Holder op til 93 dage (ca. hvert kvartal)',
     ],
     specs: [
-      { label: 'Membrantype',     value: 'Flad membran, 0,2 μm' },
-      { label: 'Retention',       value: '7 log-enheder' },
-      { label: 'Levetid',         value: '93 dage (3M)' },
-      { label: 'Udløb',           value: 'TL – laminar (blød stråle)' },
-      { label: 'Max. tryk',       value: '5 bar' },
-      { label: 'Max. temperatur', value: '60°C (70°C i ≤ 30 min)' },
+      { label: 'Beskytter mod',   value: 'Legionella, Pseudomonas m.fl.' },
+      { label: 'Renhed',          value: '99,99999 % (7 log)' },
+      { label: 'Holdbarhed',      value: 'Op til 93 dage' },
+      { label: 'Vandstråle',      value: 'Blød, jævn (laminar)' },
+      { label: 'Montering',       value: 'Klik-på via kobling (M22/M24)' },
+      { label: 'Maks. temperatur', value: '60°C (70°C i ≤ 30 min)' },
     ],
     faqs: [
+      { q: 'Skal jeg købe andet for at bruge filteret?', a: 'Ja – du skal bruge en lille kobling, der passer til din vandhane. Har din hane et indvendigt gevind, vælger du Coupling M22; har den et udvendigt gevind, vælger du Coupling M24. Koblingen købes én gang og bliver siddende, når du skifter filter.' },
       { q: 'Er filteret sikkert til hele familien?', a: 'Ja. Det er medicinsk godkendt og giver rent, bakteriefrit vand – også trygt for børn, ældre og personer med nedsat immunforsvar.' },
       { q: 'Hvor tit skal det skiftes?', a: 'Op til hver 93. dag (ca. hvert kvartal). Så nyder du rent vand hele tiden med minimal vedligeholdelse.' },
     ],

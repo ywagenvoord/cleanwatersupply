@@ -347,6 +347,55 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </div>
       </section>
 
+      {/* ─── HUSK KOBLING (nødvendigt tilbehør) ───────────────────── */}
+      {product.requiresCoupling && (() => {
+        const couplings = ['coupling-m22', 'coupling-m24']
+          .map((id) => getProduct(id))
+          .filter((c): c is Product => !!c)
+        if (couplings.length === 0) return null
+        return (
+          <section className="py-10 bg-amber-50/70 border-y border-amber-100">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-start gap-3 mb-6">
+                <span className="w-11 h-11 shrink-0 rounded-2xl bg-amber-400/90 flex items-center justify-center">
+                  <Wrench className="w-5 h-5 text-white" />
+                </span>
+                <div>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-[#0a2540]">Husk en kobling – den skal bruges til filteret</h2>
+                  <p className="text-gray-600 text-[15px] mt-1.5 leading-relaxed max-w-2xl">
+                    Filteret klikkes fast på din vandhane med en lille kobling. Vælg den, der passer til din hanes gevind –
+                    den købes kun én gang og bliver siddende, når du skifter filter.
+                  </p>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {couplings.map((c) => (
+                  <Link
+                    key={c.id}
+                    href={`/shop/${c.id}`}
+                    className="group flex items-center justify-between gap-4 rounded-2xl bg-white ring-1 ring-amber-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-5"
+                  >
+                    <div>
+                      <h3 className="font-extrabold text-[#0a2540]">{c.name}</h3>
+                      <p className="text-sm text-gray-500 mt-0.5">{c.tagline}</p>
+                      {c.price !== undefined && (
+                        <p className="text-base font-bold text-[#0a2540] mt-2">{c.price.toLocaleString('da-DK')} kr</p>
+                      )}
+                    </div>
+                    <span className="shrink-0 inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] group-hover:gap-2.5 transition-all">
+                      Se kobling <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+              <p className="text-xs text-gray-500 mt-4">
+                I tvivl om, hvilken kobling din hane skal bruge? <Link href="/contact" className="font-semibold text-[#284eff]">Kontakt os</Link>, så hjælper vi dig.
+              </p>
+            </div>
+          </section>
+        )
+      })()}
+
       {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
