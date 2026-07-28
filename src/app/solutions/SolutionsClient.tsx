@@ -33,7 +33,7 @@ const solutionData = [
     images: [
       '/images/blosgoringsanlaeg-100m.jpg',
       '/images/blosgoringsanlaeg-100bs.jpg',
-      '/images/blosgoringsanlaeg-100b.jpg',
+      '/images/blosgoringsanlaeg-100b-v2.jpg',
     ] as string[],
     reverse: true,
   },
