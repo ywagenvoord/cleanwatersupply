@@ -191,27 +191,38 @@ export default async function ProductDetailPage({ params }: { params: { productI
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
-            {/* LEFT: Product image */}
+            {/* LEFT: Product image / galleri (billeder + evt. stemningsbillede & video) */}
             <div className="relative">
-              {product.images && product.images.length > 0 ? (
-                <ProductGallery images={product.images} alt={product.name} />
-              ) : (
-                <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                  {product.imgLarge || product.imgSrc ? (
-                    <img
-                      src={product.imgLarge ?? product.imgSrc}
-                      alt={product.name}
-                      width={768}
-                      height={768}
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-full object-contain p-8"
-                    />
-                  ) : (
-                    <CatIcon className="w-32 h-32 text-gray-200" />
-                  )}
-                </div>
-              )}
+              {(() => {
+                const baseImgs = product.images && product.images.length > 0
+                  ? product.images
+                  : [product.imgLarge ?? product.imgSrc].filter(Boolean) as string[]
+                const galleryImgs = [
+                  ...baseImgs,
+                  ...(product.lifestyleImage ? [product.lifestyleImage] : []),
+                ]
+                const hasGallery = galleryImgs.length + (product.lifestyleVideo ? 1 : 0) > 1
+                if (hasGallery) {
+                  return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} alt={product.name} />
+                }
+                return (
+                  <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                    {product.imgLarge || product.imgSrc ? (
+                      <img
+                        src={product.imgLarge ?? product.imgSrc}
+                        alt={product.name}
+                        width={768}
+                        height={768}
+                        loading="eager"
+                        decoding="async"
+                        className="w-full h-full object-contain p-8"
+                      />
+                    ) : (
+                      <CatIcon className="w-32 h-32 text-gray-200" />
+                    )}
+                  </div>
+                )
+              })()}
               {/* Badge overlay */}
               {product.badge && (
                 <div className="absolute top-4 left-4">
@@ -335,45 +346,6 @@ export default async function ProductDetailPage({ params }: { params: { productI
           </div>
         </div>
       </section>
-
-      {/* ─── STEMNING: håndvask-billede + hjem-video ──────────────── */}
-      {(product.lifestyleImage || product.lifestyleVideo) && (
-        <section className="py-14 bg-gradient-to-b from-[#f5fbff] to-white border-y border-blue-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">Rent vand i hjemmet</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Nemt, sikkert og lige ved hånden</h2>
-            </div>
-            <div className="grid md:grid-cols-2 gap-6 items-stretch">
-              {product.lifestyleImage && (
-                <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3]">
-                  <img
-                    src={product.lifestyleImage}
-                    alt={`${product.name} – rent vand direkte fra hanen`}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-              {product.lifestyleVideo && (
-                <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3]">
-                  <video
-                    src={product.lifestyleVideo}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    aria-label="Rent vand i hjemmet"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
       <section className="py-16">
