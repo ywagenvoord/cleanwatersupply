@@ -198,8 +198,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   ? product.images
                   : [product.imgLarge ?? product.imgSrc].filter(Boolean) as string[]
                 const galleryImgs = [
-                  ...baseImgs,
                   ...(product.lifestyleImage ? [product.lifestyleImage] : []),
+                  ...baseImgs,
                 ]
                 const hasGallery = galleryImgs.length + (product.lifestyleVideo ? 1 : 0) > 1
                 if (hasGallery) {
