@@ -187,8 +187,10 @@ export default async function ProductDetailPage({ params }: { params: { productI
       </div>
 
       {/* ─── HERO SPLIT ───────────────────────────────────────────── */}
-      <section className="bg-white pt-8 pb-12 lg:pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef6ff] via-[#f5fbff] to-white pt-8 pb-12 lg:pb-16">
+        <div className="pointer-events-none absolute -top-28 -right-24 w-[28rem] h-[28rem] rounded-full bg-[#284eff]/10 blur-3xl" />
+        <div className="pointer-events-none absolute top-20 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
             {/* LEFT: Product image / galleri (billeder + evt. stemningsbillede & video) */}
@@ -294,16 +296,18 @@ export default async function ProductDetailPage({ params }: { params: { productI
               {product.highlights.length > 0 && (
                 <div className="grid gap-3 mb-8">
                   {product.highlights.map((h, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-blue-50 rounded-xl px-4 py-3">
-                      <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0" />
-                      <span className="text-sm font-semibold text-gray-800">{h}</span>
+                    <div key={i} className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-white ring-1 ring-blue-100 rounded-xl px-4 py-3">
+                      <span className="w-6 h-6 rounded-full bg-[#284eff] flex items-center justify-center shrink-0">
+                        <CheckCircle2 className="w-4 h-4 text-white" />
+                      </span>
+                      <span className="text-sm font-semibold text-[#0a2540]">{h}</span>
                     </div>
                   ))}
                 </div>
               )}
 
               {/* Buy section */}
-              <div className="rounded-2xl border-2 border-gray-100 bg-gray-50 p-6">
+              <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/70 to-white p-6 shadow-sm shadow-[#284eff]/5">
                 {/* Price (erhverv ser grossistpris) */}
                 <ProductPrice product={product} />
 
@@ -397,17 +401,20 @@ export default async function ProductDetailPage({ params }: { params: { productI
       })()}
 
       {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
-      <section className="py-16">
+      <section className="py-16 bg-gradient-to-b from-white to-[#f5fbff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
 
             {/* Features */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100">
-              <h2 className="text-xl font-extrabold text-gray-900 mb-6">Hvad er inkluderet</h2>
-              <ul className="space-y-3">
+            <div className="bg-white rounded-3xl p-8 ring-1 ring-blue-100/70 shadow-sm">
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Det får du</span>
+              <h2 className="text-xl font-extrabold text-[#0a2540] mt-1 mb-6">Hvad er inkluderet</h2>
+              <ul className="space-y-3.5">
                 {product.features.map((f, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
+                    <span className="mt-0.5 w-5 h-5 rounded-full bg-[#284eff] flex items-center justify-center shrink-0">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                    </span>
                     <span className="text-sm text-gray-700 leading-relaxed">{f}</span>
                   </li>
                 ))}
@@ -416,13 +423,15 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
             {/* Specs */}
             {product.specs.length > 0 && (
-              <div className="bg-white rounded-3xl p-8 border border-gray-100">
-                <h2 className="text-xl font-extrabold text-gray-900 mb-6">Tekniske specifikationer</h2>
-                <div className="divide-y divide-gray-50">
+              <div className="bg-white rounded-3xl ring-1 ring-blue-100/70 shadow-sm overflow-hidden">
+                <div className="bg-gradient-to-r from-[#0a2540] via-[#173a7a] to-[#284eff] px-8 py-5">
+                  <h2 className="text-white font-extrabold text-lg">Tekniske specifikationer</h2>
+                </div>
+                <div className="p-8 divide-y divide-blue-50">
                   {product.specs.map((spec, i) => (
-                    <div key={i} className="flex justify-between items-start gap-4 py-3 first:pt-0 last:pb-0">
+                    <div key={i} className={`flex justify-between items-start gap-4 py-3.5 first:pt-0 ${i % 2 === 1 ? '' : ''}`}>
                       <span className="text-sm text-gray-500 shrink-0 font-medium">{spec.label}</span>
-                      <span className="text-sm text-gray-900 font-semibold text-right">{spec.value}</span>
+                      <span className="text-sm text-[#0a2540] font-semibold text-right">{spec.value}</span>
                     </div>
                   ))}
                 </div>
@@ -434,9 +443,10 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── LONG DESCRIPTION ─────────────────────────────────────── */}
       {product.longDescription && (
-        <section className="py-12 bg-white border-y border-gray-100">
+        <section className="py-14 bg-white border-y border-blue-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-extrabold text-gray-900 mb-5">Om produktet</h2>
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Om produktet</span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1 mb-5">Det skal du vide</h2>
             <p className="text-gray-600 leading-relaxed text-[15px]">{product.longDescription}</p>
           </div>
         </section>
