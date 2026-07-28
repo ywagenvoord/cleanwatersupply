@@ -31,9 +31,9 @@ const solutionData = [
     imgFit: 'object-contain',
     imgBg: 'bg-white',
     images: [
-      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/2-3.png',
-      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/1-3.png',
-      'https://cleanwatersupply.dk/wp-content/uploads/2025/07/3-3.png',
+      '/images/blosgoringsanlaeg-100m.jpg',
+      '/images/blosgoringsanlaeg-100bs.jpg',
+      '/images/blosgoringsanlaeg-100b.jpg',
     ] as string[],
     reverse: true,
   },
@@ -50,7 +50,7 @@ const solutionData = [
     images: [
       '/images/product-tr5.jpg',
       '/images/product-tl6.jpg',
-      'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png',
+      '/images/cblue-sc3-2.jpg',
       '/images/as-tube-155.jpg',
       'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     ] as string[],

@@ -178,7 +178,7 @@ export default function LegionellaPage() {
             {[
               { id: 'baclyser-neo-tl-3m', name: 'Baclyser® neo TL (3M)', desc: 'Vandhanefilter med laminar udløb – 93 dages beskyttelse', img: '/images/product-tl6.jpg' },
               { id: 'baclyser-neo-tr-3m', name: 'Baclyser® neo TR (3M)', desc: 'Vandhanefilter med bruserudløb – 93 dages beskyttelse', img: '/images/product-tr5.jpg' },
-              { id: 'cblue-sc3',          name: 'cBlue SC3 brusehoved',  desc: 'Krom brusehoved med integreret Legionella-filter', img: 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png' },
+              { id: 'cblue-sc3',          name: 'cBlue SC3 brusehoved',  desc: 'Krom brusehoved med integreret Legionella-filter', img: '/images/cblue-sc3-2.jpg' },
             ].map(p => (
               <Link
                 key={p.id}
