@@ -26,6 +26,7 @@ export type Product = {
   // Images
   imgSrc: string           // card thumbnail
   imgLarge?: string        // detail hero
+  images?: string[]        // detail-galleri (flere vinkler) – første vises som hero
   // Key selling points (shown as icon-bullet in detail hero)
   highlights: string[]
   // Bullet feature list
@@ -280,8 +281,9 @@ export const PRODUCTS: Product[] = [
     category: 'bruser',
     featured: true,
     price: 1120, priceErhverv: 795,
-    imgSrc:   `${CWS}/2025/10/Hjemmeside-2-300x300.png`,
-    imgLarge: `${CWS}/2025/10/Hjemmeside-2.png`,
+    imgSrc:   '/images/cblue-sc3-1.jpg',
+    imgLarge: '/images/cblue-sc3-1.jpg',
+    images:   ['/images/cblue-sc3-1.jpg', '/images/cblue-sc3-2.jpg', '/images/cblue-sc3-3.jpg', '/images/cblue-sc3-4.jpg'],
     description: 'Brusehoved i krom med udskifteligt filter. Legionella-beskyttelse i et elegant design.',
     longDescription: 'cBlue SC3 forener premium krom brusehoveddesign med en integreret hulfiber-filterpatron. Brusehovedet er æstetisk og passer alle badeværelsesmiljøer, mens den udskiftelige filterpatron sikrer kontinuerlig Legionella-beskyttelse.',
     highlights: ['Krom design', 'Udskifteligt filter', '7 log Legionella-beskyttelse'],

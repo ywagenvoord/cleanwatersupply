@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
 import BuyBox from './BuyBox'
+import ProductGallery from './ProductGallery'
 import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
@@ -192,21 +193,25 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
             {/* LEFT: Product image */}
             <div className="relative">
-              <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
-                {product.imgLarge || product.imgSrc ? (
-                  <img
-                    src={product.imgLarge ?? product.imgSrc}
-                    alt={product.name}
-                    width={768}
-                    height={768}
-                    loading="eager"
-                    decoding="async"
-                    className="w-full h-full object-contain p-8"
-                  />
-                ) : (
-                  <CatIcon className="w-32 h-32 text-gray-200" />
-                )}
-              </div>
+              {product.images && product.images.length > 0 ? (
+                <ProductGallery images={product.images} alt={product.name} />
+              ) : (
+                <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                  {product.imgLarge || product.imgSrc ? (
+                    <img
+                      src={product.imgLarge ?? product.imgSrc}
+                      alt={product.name}
+                      width={768}
+                      height={768}
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-full object-contain p-8"
+                    />
+                  ) : (
+                    <CatIcon className="w-32 h-32 text-gray-200" />
+                  )}
+                </div>
+              )}
               {/* Badge overlay */}
               {product.badge && (
                 <div className="absolute top-4 left-4">
