@@ -101,10 +101,14 @@ export async function POST(req: NextRequest) {
 
     if (!res.ok) {
       const data = await res.json().catch(() => ({} as any))
-      // MIDLERTIDIG DEBUG: vis den præcise Mailchimp-fejl på formularen
-      const debugMsg = `DEBUG ${res.status} · dc:${dc} · list:...${audienceId.slice(-4)} · ${data?.title || ''} ${String(data?.detail || '').slice(0, 140)}`
+      if (res.status === 400) {
+        return NextResponse.json(
+          { error: 'E-mailadressen kunne ikke godkendes. Tjek den lige igen.' },
+          { status: 400 },
+        )
+      }
       console.error('Mailchimp-fejl:', res.status, JSON.stringify(data).slice(0, 300))
-      return NextResponse.json({ error: debugMsg }, { status: res.status || 500 })
+      return NextResponse.json({ error: 'Noget gik galt. Prøv igen om lidt.' }, { status: 500 })
     }
 
     // 2) Tilføj tag(s) via det dedikerede tags-endpoint – virker for BÅDE nye
