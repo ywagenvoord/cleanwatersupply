@@ -382,6 +382,45 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </section>
       )}
 
+      {/* ─── STEMNING: håndvask-billede + hjem-video ──────────────── */}
+      {(product.lifestyleImage || product.lifestyleVideo) && (
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">Rent vand i hjemmet</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Nemt, sikkert og lige ved hånden</h2>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6 items-stretch">
+              {product.lifestyleImage && (
+                <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3]">
+                  <img
+                    src={product.lifestyleImage}
+                    alt={`${product.name} – rent vand direkte fra hanen`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              {product.lifestyleVideo && (
+                <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3]">
+                  <video
+                    src={product.lifestyleVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-label="Rent vand i hjemmet"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── STANDARD INSTALLATION (kun blødgøringsanlæg) ─────────── */}
       {product.category === 'blosgoringsanlaeg' && (
         <section className="py-16 bg-gray-50 border-t border-gray-100">

@@ -27,6 +27,8 @@ export type Product = {
   imgSrc: string           // card thumbnail
   imgLarge?: string        // detail hero
   images?: string[]        // detail-galleri (flere vinkler) – første vises som hero
+  lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
+  lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
   // Key selling points (shown as icon-bullet in detail hero)
   highlights: string[]
   // Bullet feature list
@@ -174,6 +176,8 @@ export const PRODUCTS: Product[] = [
     price: 625, priceErhverv: 425,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
+    lifestyleImage: '/images/solution-tappested.jpg',
+    lifestyleVideo: '/videos/hjem.mp4',
     description: 'Hanefilter til hjemmet, der stopper Legionella og bakterier direkte ved håndvasken – med en blød, behagelig vandstråle. Op til 93 dages ren beskyttelse.',
     longDescription: 'Baclyser® neo TL (3M) giver dig og din familie rent, bakteriefrit vand direkte fra hanen – med en blød, jævn vandstråle (laminar udløb), der er rar at bruge til hverdag. Det er det samme medicinsk godkendte filter, som hospitaler bruger, så du kan være helt tryg ved vandet, I drikker, laver mad med og børster tænder i. Med op til 93 dages levetid skal det kun skiftes ca. hvert kvartal – nemt og uden værktøj.',
     highlights: ['Op til 93 dages levetid', 'Blød, behagelig vandstråle', 'Samme filter som hospitaler bruger'],
