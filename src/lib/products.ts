@@ -320,6 +320,7 @@ export const PRODUCTS: Product[] = [
     price: 625, priceErhverv: 550,
     imgSrc:   '/images/cblue-sc3-filter.jpg',
     imgLarge: '/images/cblue-sc3-filter.jpg',
+    images:   ['/images/cblue-sc3-filter.jpg', '/images/cblue-sc3-filter-membrane.jpg'],
     description: 'Løst udskiftningsfilter (hulfiberpatron) til cBlue SC3 brusehovedet. Bevarer Legionella-beskyttelsen – behold selve brusehovedet.',
     longDescription: 'Udskiftelig filterpatron til cBlue SC3-brusehovedet. Når patronen er opbrugt efter ca. 3 måneder, skiftes kun selve filteret – brusehovedet beholdes. Hulfibermembranen sikrer fortsat 7 log Legionella-beskyttelse direkte ved tappestedet.',
     highlights: ['Passer til cBlue SC3', '3 måneders levetid', '7 log Legionella-beskyttelse'],
