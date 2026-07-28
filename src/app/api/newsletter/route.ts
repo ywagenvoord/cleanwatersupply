@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createHash } from 'crypto'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -69,56 +70,69 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    const auth = `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`
+    // Subscriber-hash = MD5 af e-mail i småt. Bruges til upsert (PUT) + tags.
+    const hash = createHash('md5').update(trimmed.toLowerCase()).digest('hex')
+
+    // 1) Upsert medlemmet (PUT) – opretter nyt ELLER opdaterer eksisterende.
+    //    status_if_new sættes kun ved oprettelse, så vi ikke gen-tilmelder
+    //    nogen, der har frameldt sig.
     const res = await fetch(
-      `https://${dc}.api.mailchimp.com/3.0/lists/${audienceId}/members`,
+      `https://${dc}.api.mailchimp.com/3.0/lists/${audienceId}/members/${hash}`,
       {
-        method: 'POST',
-        headers: {
-          // Mailchimp bruger HTTP Basic — brugernavnet er ligegyldigt, nøglen er kodeordet
-          Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString('base64')}`,
-          'Content-Type': 'application/json',
-        },
+        method: 'PUT',
+        headers: { Authorization: auth, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email_address: trimmed,
-          status: DOUBLE_OPT_IN ? 'pending' : 'subscribed',
-          // Navn og telefon (Mailchimps standard merge-felter FNAME + PHONE)
+          status_if_new: DOUBLE_OPT_IN ? 'pending' : 'subscribed',
           ...((name || phone) ? {
             merge_fields: {
               ...(name  ? { FNAME: name.trim() }   : {}),
               ...(phone ? { PHONE: phone.trim() }   : {}),
             },
           } : {}),
-          // Dokumentation for samtykket, når vi ikke bruger bekræftelsesmail
           ...(DOUBLE_OPT_IN ? {} : {
             ip_signup:        signupIp,
             timestamp_signup: new Date().toISOString().slice(0, 19).replace('T', ' '),
           }),
-          // Tags gør det muligt at se, hvor tilmeldingen kom fra (fx quiz-konkurrencen)
-          ...(Array.isArray(tags) && tags.length ? { tags: tags.slice(0, 5) } : {}),
         }),
       },
     )
 
-    if (res.ok) {
-      return NextResponse.json({ ok: true })
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({} as any))
+      if (res.status === 400) {
+        return NextResponse.json(
+          { error: 'E-mailadressen kunne ikke godkendes. Tjek den lige igen.' },
+          { status: 400 },
+        )
+      }
+      console.error('Mailchimp-fejl:', res.status, JSON.stringify(data).slice(0, 300))
+      return NextResponse.json({ error: 'Noget gik galt. Prøv igen om lidt.' }, { status: 500 })
     }
 
-    const data = await res.json().catch(() => ({} as any))
-
-    // Allerede tilmeldt – det er ikke en fejl for brugeren
-    if (res.status === 400 && data?.title === 'Member Exists') {
-      return NextResponse.json({ ok: true })
+    // 2) Tilføj tag(s) via det dedikerede tags-endpoint – virker for BÅDE nye
+    //    og eksisterende medlemmer (fx "Quiz-konkurrence"), så alle deltagere
+    //    kan findes på tagget, når vinderen skal trækkes.
+    if (Array.isArray(tags) && tags.length) {
+      try {
+        await fetch(
+          `https://${dc}.api.mailchimp.com/3.0/lists/${audienceId}/members/${hash}/tags`,
+          {
+            method: 'POST',
+            headers: { Authorization: auth, 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              tags: tags.slice(0, 5).map((name) => ({ name, status: 'active' })),
+            }),
+          },
+        )
+      } catch (tagErr) {
+        // Tilmeldingen er lykkedes – et fejlet tag skal ikke vise brugeren en fejl.
+        console.error('Mailchimp tag-fejl:', tagErr)
+      }
     }
 
-    if (res.status === 400) {
-      return NextResponse.json(
-        { error: 'E-mailadressen kunne ikke godkendes. Tjek den lige igen.' },
-        { status: 400 },
-      )
-    }
-
-    console.error('Mailchimp-fejl:', res.status, JSON.stringify(data).slice(0, 300))
-    return NextResponse.json({ error: 'Noget gik galt. Prøv igen om lidt.' }, { status: 500 })
+    return NextResponse.json({ ok: true })
   } catch (e: any) {
     console.error('Newsletter error:', e)
     return NextResponse.json({ error: 'Noget gik galt. Prøv igen om lidt.' }, { status: 500 })
