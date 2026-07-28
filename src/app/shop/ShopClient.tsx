@@ -92,10 +92,10 @@ const COLOR = {
 /* ─── PRODUCT CARD ─────────────────────────────────────────────────────── */
 
 // Produkter der "passer til" et andet produkt – vises som lille rund markering
-const HOUSING_IMG = 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/1-1-300x300.png'
+const HOUSING_IMG = '/images/filter-housing.jpg'
 const JUG_IMG = 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915'
 const ASTUBE_IMG = 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg'
-const CBLUE_IMG = 'https://cleanwatersupply.dk/wp-content/uploads/2025/10/Hjemmeside-2-300x300.png'
+const CBLUE_IMG = '/images/cblue-sc3-1.jpg'
 const FITS_WITH: Record<string, { img: string; label: string }> = {
   'dualstage-mf-10-cl':           { img: HOUSING_IMG, label: 'Filter Housing' },
   'kulblokfilter-10-cl':          { img: HOUSING_IMG, label: 'Filter Housing' },
