@@ -57,6 +57,8 @@ export default function OrganizationJsonLd() {
         ],
         sameAs: [
           'https://cleanwatersupply.dk',
+          'https://www.facebook.com/profile.php?id=61580903496592',
+          'https://www.instagram.com/cleanwatersupply/',
         ],
         contactPoint: [
           {
