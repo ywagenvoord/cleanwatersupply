@@ -53,6 +53,14 @@ export async function getMergedShopProducts(): Promise<Product[]> {
     if (p.comingSoon || p.audience === 'erhverv') merged.push(p)
   }
 
+  // Bevar den kuraterede rækkefølge fra products.ts (så relaterede varer står
+  // sammen, uanset Stripe-rækkefølge og "kommer snart"-status). Stripe-only
+  // produkter uden en hardcodet plads lægges til sidst.
+  const orderIndex = new Map(PRODUCTS.map((p, i) => [p.id, i]))
+  merged.sort(
+    (a, b) => (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999),
+  )
+
   // Skjul tilbehør (vises kun som tilkøb på kalkanlæg-siden)
   return merged.filter(p => !p.addon)
 }
