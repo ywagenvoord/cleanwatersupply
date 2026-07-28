@@ -30,6 +30,7 @@ export type Product = {
   lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
   requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
+  variants?: { id: string; label: string; sub: string }[] // fx forskellige levetider (2M/3M)
   // Key selling points (shown as icon-bullet in detail hero)
   highlights: string[]
   // Bullet feature list
@@ -142,6 +143,10 @@ export const PRODUCTS: Product[] = [
     price: 565, priceErhverv: 375,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
+    variants: [
+      { id: 'baclyser-neo-tl-2m', label: '2 måneder', sub: 'Skift ca. hver 62. dag' },
+      { id: 'baclyser-neo-tl-3m', label: '3 måneder', sub: 'Skift ca. hver 93. dag' },
+    ],
     description: 'Medicinsk engangsfilter til håndvask med laminart udløb. Levetid op til 62 dage.',
     longDescription: 'Baclyser® neo TL (2M) leverer en jævn laminar vandstråle og samtidig sikker filtrering af alle vandbårne bakterier – inkl. Legionella og Pseudomonas. Den medicinske godkendelse og 62 dages levetid gør den ideel til hospitaler og plejehjem.',
     highlights: ['62 dages levetid', 'Laminar udløb (TL)', 'Medicinsk godkendt'],
@@ -180,6 +185,10 @@ export const PRODUCTS: Product[] = [
     lifestyleImage: '/images/solution-tappested.jpg',
     lifestyleVideo: '/videos/hjem.mp4',
     requiresCoupling: true,
+    variants: [
+      { id: 'baclyser-neo-tl-2m', label: '2 måneder', sub: 'Skift ca. hver 62. dag' },
+      { id: 'baclyser-neo-tl-3m', label: '3 måneder', sub: 'Skift ca. hver 93. dag' },
+    ],
     description: 'Få rent, sikkert vand direkte fra hanen derhjemme. Filteret klikker fast på din vandhane og stopper bakterier – med en blød, behagelig vandstråle. Holder op til 93 dage.',
     longDescription: 'Med Baclyser® neo TL får du og din familie rent, bakteriefrit vand direkte fra hanen – nemt og uden at tænke over det. Vandstrålen er blød og jævn, så den er rar at bruge, når I fylder vand i glasset, skyller grøntsager eller børster tænder. Det er faktisk det samme filter, som bruges på hospitaler, så du kan være helt tryg ved vandet til hele familien – også til de mindste og til nogen med et sart helbred. Filteret holder op til 93 dage og skiftes bare ved at klikke det gamle af og et nyt på – helt uden værktøj. Bemærk: for at sætte filteret på din vandhane skal du bruge en lille kobling, der passer til din hane. Du vælger den nemt her på siden (M22 eller M24).',
     highlights: ['Rent vand direkte fra hanen', 'Blød, behagelig vandstråle', 'Samme filter som hospitaler bruger'],

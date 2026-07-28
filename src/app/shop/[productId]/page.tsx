@@ -306,6 +306,44 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 </div>
               )}
 
+              {/* Vælg levetid (varianter, fx 2M / 3M) */}
+              {product.variants && product.variants.length > 1 && (
+                <div className="mb-6">
+                  <p className="text-sm font-bold text-[#0a2540] mb-1">Vælg levetid</p>
+                  <p className="text-xs text-gray-500 mb-3">Filteret fås i to udgaver – vælg den, der passer til dit forbrug. Samme filter, kun forskellig levetid.</p>
+                  <div className="grid grid-cols-2 gap-3">
+                    {product.variants.map((v) => {
+                      const isCurrent = v.id === product.id
+                      const inner = (
+                        <>
+                          <span className="text-base font-extrabold text-[#0a2540]">{v.label}</span>
+                          <span className="text-xs text-gray-500 mt-0.5">{v.sub}</span>
+                          {isCurrent && (
+                            <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#284eff]">
+                              <CheckCircle2 className="w-3.5 h-3.5" /> Valgt
+                            </span>
+                          )}
+                        </>
+                      )
+                      return isCurrent ? (
+                        <div key={v.id} className="flex flex-col rounded-2xl px-4 py-3 ring-2 ring-[#284eff] bg-blue-50/60">
+                          {inner}
+                        </div>
+                      ) : (
+                        <Link
+                          key={v.id}
+                          href={`/shop/${v.id}`}
+                          className="flex flex-col rounded-2xl px-4 py-3 ring-1 ring-gray-200 bg-white hover:ring-[#284eff] hover:-translate-y-0.5 transition-all"
+                        >
+                          {inner}
+                          <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-gray-400">Skift til denne →</span>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* Buy section */}
               <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/70 to-white p-6 shadow-sm shadow-[#284eff]/5">
                 {/* Price (erhverv ser grossistpris) */}
