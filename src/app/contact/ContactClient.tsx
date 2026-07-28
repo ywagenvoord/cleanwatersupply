@@ -24,7 +24,7 @@ const teamMembers = [
     role: 'Tekniker & Rejsemontør',
     phone: '+45 22 32 01 56',
     email: 'kristoffer@cleanwatersupply.dk',
-    photo: '',
+    photo: '/images/team-kristoffer.jpg',
   },
   {
     name: 'Camilla',
