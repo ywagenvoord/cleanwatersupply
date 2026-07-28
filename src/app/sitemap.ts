@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/privatlivspolitik`,   lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/handelsbetingelser`,  lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${SITE_URL}/returpolitik`,        lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ]
 
   const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map(p => ({
