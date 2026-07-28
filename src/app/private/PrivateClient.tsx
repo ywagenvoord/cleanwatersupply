@@ -1,14 +1,22 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
+import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 
 export default function PrivateClient() {
   const { language } = useLanguage()
   const da = language !== 'en'
+
+  // Konkurrence-banner vises indtil fristen (skjules automatisk bagefter).
+  const [showComp, setShowComp] = useState(false)
+  useEffect(() => {
+    setShowComp(Date.now() < DEADLINE_DATE.getTime())
+  }, [])
 
   // Curated, varied selection for the home (incl. the water carafe).
   const featuredIds = [
@@ -82,6 +90,30 @@ export default function PrivateClient() {
 
   return (
     <main>
+      {/* ─── KONKURRENCE-BANNER (indtil fristen) ───────────────── */}
+      {showComp && (
+        <Link
+          href="/quiz"
+          className="group block w-full bg-gradient-to-r from-[#284eff] to-[#1b32c9] text-white hover:brightness-110 transition"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-center gap-x-3 gap-y-1 flex-wrap text-center">
+            <Trophy className="w-4 h-4 shrink-0 text-yellow-300" />
+            <span className="text-sm font-bold">
+              {da
+                ? <>Konkurrence: Vind et {PRIZE_SHORT} – tag vandquizzen og deltag gratis</>
+                : <>Competition: Win a {PRIZE_SHORT} – take the water quiz and join for free</>}
+            </span>
+            <span className="hidden sm:inline text-xs text-blue-100/80">
+              {da ? `Frist ${DEADLINE}` : `Deadline ${DEADLINE}`}
+            </span>
+            <span className="inline-flex items-center gap-1 text-sm font-bold underline underline-offset-2">
+              {da ? 'Deltag' : 'Join'}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+            </span>
+          </div>
+        </Link>
+      )}
+
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <section className="bg-[#0a2540] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">

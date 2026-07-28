@@ -17,6 +17,8 @@ export const BUNDLED_CONSENT = true
 export const PRIZE       = 'et Baclyser® neo TR-filter (værdi 625 kr)'
 export const PRIZE_SHORT = 'Baclyser® neo TR'
 export const DEADLINE    = '31. august 2026'
+/** Maskinlæsbar slutdato – banner/CTA skjules automatisk efter denne dato. */
+export const DEADLINE_DATE = new Date('2026-08-31T23:59:59+02:00')
 
 /** Sekunder før pop-up'en vises. */
 export const DELAY_SECONDS = 12
