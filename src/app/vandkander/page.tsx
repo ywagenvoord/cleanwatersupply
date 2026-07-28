@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Droplets } from 'lucide-react'
 import { KANDER } from '@/lib/kander'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Vandkander med filter & filterflasker – rent vand uden installation | Clean Water Supply',
   description:
     'Se vores Laica filtervandkander og filterflasker: Carmen, MikroPLASTIK-STOP og GlaSSmart glasflaske. Rent vand med god smag – helt uden installation.',
+  alternates: { canonical: `${SITE_URL}/vandkander` },
 }
 
 export default function VandkanderPage() {

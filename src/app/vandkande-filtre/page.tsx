@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Check, Filter } from 'lucide-react'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Filtre til vandkande – Bi-flux®, kalk, PFAS & FAST DISK | Clean Water Supply',
   description:
     'Udskiftningsfiltre til Laica filtervandkander: Bi-flux® Universal, LimescaleSTOP (kalk), HealthExpert (PFAS + magnesium) og FAST DISK til flasken. Find det rette filter.',
+  alternates: { canonical: `${SITE_URL}/vandkande-filtre` },
 }
 
 type FilterType = {

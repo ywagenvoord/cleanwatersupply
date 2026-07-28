@@ -7,6 +7,7 @@ import {
   Truck, BadgeCheck,
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
+import { SITE_URL } from '@/lib/site'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -29,6 +30,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: `${k.name} | Clean Water Supply`,
     description: k.tagline,
+    alternates: { canonical: `${SITE_URL}/vandkander/${k.slug}` },
     openGraph: { title: k.name, description: k.tagline, type: 'website' },
   }
 }

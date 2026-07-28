@@ -53,13 +53,6 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  alternates: {
-    canonical: SITE_URL,
-    languages: {
-      'da-DK': SITE_URL,
-      'x-default': SITE_URL,
-    },
-  },
   openGraph: {
     type: 'website',
     locale: 'da_DK',
