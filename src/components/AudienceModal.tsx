@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@clerk/nextjs'
 import { Home, Building2, X } from 'lucide-react'
-import { writeAudience, readAudience } from '@/lib/useAudience'
+import { writeAudience } from '@/lib/useAudience'
+
+// Nøgle i sessionStorage: vælgeren vises kun én gang per browsersession.
+const SESSION_SEEN_KEY = 'cws-audience-modal-shown'
 
 export default function AudienceModal() {
   const [open, setOpen] = useState(false)
@@ -19,13 +22,25 @@ export default function AudienceModal() {
       setOpen(false)
       return
     }
-    // Vis kun pop-up FØRSTE gang (indtil man har valgt). Har man allerede valgt
-    // privat/erhverv (eller sprunget over), husker vi det og viser den ikke igen.
-    // Vil man skifte, gør man det manuelt i vælgeren i menuen.
-    if (typeof window !== 'undefined' && window.location.pathname === '/' && readAudience() === null) {
-      setOpen(true)
-    }
+    // Vis vælgeren når man LANDER på forsiden – én gang per browsersession, så
+    // alle der kommer ind via fx et Google-link ser, at der både er Privat og
+    // Erhverv. Den vises ikke igen ved intern navigation i samme session, og
+    // ikke ved refresh – men et nyt besøg (ny fane/session) viser den igen.
+    if (typeof window === 'undefined' || window.location.pathname !== '/') return
+    try {
+      if (sessionStorage.getItem(SESSION_SEEN_KEY)) return
+    } catch { /* sessionStorage utilgængelig – vis alligevel */ }
+    setOpen(true)
   }, [isLoaded, isSignedIn])
+
+  // Marker som vist i denne session + flag så quiz-popup'en kan vente på os.
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    ;(window as unknown as { __cwsAudienceModalOpen?: boolean }).__cwsAudienceModalOpen = open
+    if (open) {
+      try { sessionStorage.setItem(SESSION_SEEN_KEY, '1') } catch {}
+    }
+  }, [open])
 
   useEffect(() => {
     // Logo-klik åbner vælgeren – men aldrig for indloggede erhvervskunder.

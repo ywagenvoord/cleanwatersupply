@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { X, Sparkles, ArrowRight } from 'lucide-react'
-import { readAudience } from '@/lib/useAudience'
 import { PRIZE_SHORT, DEADLINE, DELAY_SECONDS, SEEN_KEY, QUESTIONS } from '@/lib/quiz'
 
 /**
@@ -31,7 +30,7 @@ export default function QuizModal() {
        er på forsiden. Kun i den situation venter vi – ellers ville pop-up'en
        blokere sig selv for evigt (fx hvis localStorage er ryddet). */
     const audienceModalOpen = () =>
-      readAudience() === null && window.location.pathname === '/'
+      !!(window as unknown as { __cwsAudienceModalOpen?: boolean }).__cwsAudienceModalOpen
 
     let retry: ReturnType<typeof setInterval> | undefined
 
