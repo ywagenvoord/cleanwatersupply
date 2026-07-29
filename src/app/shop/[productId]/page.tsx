@@ -211,7 +211,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 ]
                 const hasGallery = galleryImgs.length + (product.lifestyleVideo ? 1 : 0) > 1
                 if (hasGallery) {
-                  return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} alt={product.name} />
+                  return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} videoFirst={product.videoFirst} alt={product.name} />
                 }
                 return (
                   <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">

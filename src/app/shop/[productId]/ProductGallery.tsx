@@ -8,16 +8,17 @@ type MediaItem = { type: 'image' | 'video'; src: string }
 export default function ProductGallery({
   images,
   video,
+  videoFirst = false,
   alt,
 }: {
   images: string[]
   video?: string
+  videoFirst?: boolean
   alt: string
 }) {
-  const media: MediaItem[] = [
-    ...images.filter(Boolean).map((src) => ({ type: 'image' as const, src })),
-    ...(video ? [{ type: 'video' as const, src: video }] : []),
-  ]
+  const imageItems: MediaItem[] = images.filter(Boolean).map((src) => ({ type: 'image' as const, src }))
+  const videoItem: MediaItem[] = video ? [{ type: 'video' as const, src: video }] : []
+  const media: MediaItem[] = videoFirst ? [...videoItem, ...imageItems] : [...imageItems, ...videoItem]
   const [active, setActive] = useState(0)
   if (media.length === 0) return null
   const current = media[Math.min(active, media.length - 1)]

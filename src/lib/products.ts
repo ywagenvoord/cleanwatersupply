@@ -29,6 +29,7 @@ export type Product = {
   images?: string[]        // detail-galleri (flere vinkler) – første vises som hero
   lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
+  videoFirst?: boolean     // galleriet starter på videoen (autoafspiller ved landing)
   installVideo?: string    // monteringsvideo (vises som "Sådan monterer du"-sektion)
   showInstallation?: boolean // vis "Standard installation"-sektionen (samme montering som kalkanlæg)
   compatibleFilters?: string[] // produkt-ids på filtre/patroner der passer i produktet
@@ -332,6 +333,7 @@ export const PRODUCTS: Product[] = [
     imgLarge: '/images/cblue-sc3-2.jpg',
     images:   ['/images/cblue-sc3-2.jpg', '/images/cblue-sc3-1.jpg', '/images/cblue-sc3-3.jpg', '/images/cblue-sc3-4.jpg'],
     lifestyleVideo: '/videos/cblue-sc3-video.mp4',
+    videoFirst: true,
     description: 'Brusehoved i krom med udskifteligt filter. Legionella-beskyttelse i et elegant design.',
     longDescription: 'cBlue SC3 forener premium krom brusehoveddesign med en integreret hulfiber-filterpatron. Brusehovedet er æstetisk og passer alle badeværelsesmiljøer, mens den udskiftelige filterpatron sikrer kontinuerlig Legionella-beskyttelse.',
     highlights: ['Krom design', 'Udskifteligt filter', '7 log Legionella-beskyttelse'],
