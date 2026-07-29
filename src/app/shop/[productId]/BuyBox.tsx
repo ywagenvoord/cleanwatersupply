@@ -46,8 +46,9 @@ export default function BuyBox({ product }: { product: Product }) {
   const stripe  = getStripe(product.id)
   const buyable = stripe && !product.comingSoon && unitPrice !== undefined
   const isSoftener = product.category === 'blosgoringsanlaeg'
+  const showInstall = isSoftener || !!product.showInstallation
   const base  = unitPrice ?? 0
-  const total = base + (isSoftener && withInstall ? INSTALLATION_PRICE : 0)
+  const total = base + (showInstall && withInstall ? INSTALLATION_PRICE : 0)
 
   function handleAdd() {
     if (!stripe || unitPrice == null) return
@@ -62,8 +63,8 @@ export default function BuyBox({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 1500)
   }
 
-  /* Montering-vælger (kun blødgøringsanlæg med pris) */
-  const selector = isSoftener && buyable ? (
+  /* Montering-vælger (kalkanlæg + produkter med montering, med pris) */
+  const selector = showInstall && buyable ? (
     <div className="space-y-2 mb-4">
       <OptionCard
         selected={!withInstall}
@@ -83,7 +84,7 @@ export default function BuyBox({ product }: { product: Product }) {
         <span className="text-sm text-gray-500">I alt</span>
         <span className="text-xl font-extrabold text-[#0a2540]">{total.toLocaleString('da-DK')} kr</span>
       </div>
-      <p className="text-xs text-gray-400 px-1">Montering tilbydes kun sammen med et af vores kalkanlæg.</p>
+      <p className="text-xs text-gray-400 px-1">Montering tilbydes kun sammen med {isSoftener ? 'et af vores kalkanlæg' : 'et filterhus hos os'}.</p>
     </div>
   ) : null
 
@@ -145,12 +146,19 @@ export default function BuyBox({ product }: { product: Product }) {
         {showTilbehor && (
           <div className="mt-2.5">
             <ul className="space-y-1.5 text-gray-600">
-              <li className="flex justify-between gap-3">
-                <span>Forlængerslange 2 m (¾&quot;) – hvis anlægget står langt fra vandtilslutningen</span>
-                <span className="font-semibold text-gray-900 whitespace-nowrap">495 kr./stk.</span>
-              </li>
+              {isSoftener ? (
+                <li className="flex justify-between gap-3">
+                  <span>Forlængerslange 2 m (¾&quot;) – hvis anlægget står langt fra vandtilslutningen</span>
+                  <span className="font-semibold text-gray-900 whitespace-nowrap">495 kr./stk.</span>
+                </li>
+              ) : (
+                <li className="flex justify-between gap-3">
+                  <span>Bypass-ventil – gør senere filterskift nemt uden at lukke for vandet</span>
+                  <span className="font-semibold text-gray-900 whitespace-nowrap">Kontakt os</span>
+                </li>
+              )}
             </ul>
-            <p className="text-xs text-gray-400 mt-1.5">Ekskl. moms. Aftales sammen med monteringen. Vægbeslag kan tilkøbes nedenfor.</p>
+            <p className="text-xs text-gray-400 mt-1.5">Ekskl. moms. Aftales sammen med monteringen.{isSoftener ? ' Vægbeslag kan tilkøbes nedenfor.' : ''}</p>
           </div>
         )}
       </div>
@@ -226,7 +234,7 @@ export default function BuyBox({ product }: { product: Product }) {
   ) : null
 
   /* Med montering valgt → bestilles via kontakt (kræver teknikerbesøg) */
-  if (isSoftener && withInstall) {
+  if (showInstall && withInstall) {
     return (
       <div className="space-y-3">
         {zoneModal}
@@ -252,7 +260,7 @@ export default function BuyBox({ product }: { product: Product }) {
             added ? 'border-[#3aad4a] bg-[#3aad4a]/5 text-[#3aad4a]' : 'border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white'
           }`}
         >
-          {added ? (<><Check className="w-4 h-4" /> Tilføjet til kurv</>) : (<><ShoppingBag className="w-4 h-4" /> Tilføj kun anlægget til kurv</>)}
+          {added ? (<><Check className="w-4 h-4" /> Tilføjet til kurv</>) : (<><ShoppingBag className="w-4 h-4" /> Tilføj kun {isSoftener ? 'anlægget' : 'filterhuset'} til kurv</>)}
         </button>
         <p className="text-xs text-gray-400 text-center">Montering kræver et kort tjek af adresse og forhold – derfor bestilles den via kontakt.</p>
       </div>
