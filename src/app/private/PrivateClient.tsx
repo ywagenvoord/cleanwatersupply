@@ -374,6 +374,11 @@ export default function PrivateClient() {
                 {da ? 'Bestil montering' : 'Book installation'}
                 <ArrowRight className="w-4 h-4" />
               </Link>
+              <p className="text-xs text-gray-400 mt-4">
+                {da
+                  ? 'Bemærk: Vi monterer kun produkter, der er købt hos Clean Water Supply.'
+                  : 'Please note: We only install products purchased from Clean Water Supply.'}
+              </p>
             </div>
           </div>
         </div>
