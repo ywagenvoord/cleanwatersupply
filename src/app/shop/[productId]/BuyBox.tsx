@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
-import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { getStripe } from '@/lib/stripe-products'
 import { INSTALLATION_PRICE, shopPrice, type Product } from '@/lib/products'
@@ -40,6 +40,7 @@ export default function BuyBox({ product }: { product: Product }) {
   const [showZones, setShowZones]   = useState(false)
   const [postnummer, setPostnummer] = useState('')
   const [showTilbehor, setShowTilbehor] = useState(false)
+  const [buying, setBuying] = useState(false)
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
   const erhverv = useB2bLoggedIn()
   const { amount: unitPrice } = shopPrice(product, erhverv)
@@ -61,6 +62,29 @@ export default function BuyBox({ product }: { product: Product }) {
     })
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
+  }
+
+  // Køb nu → dynamisk Stripe Checkout med den AKTUELLE pris (aldrig et dødt link).
+  async function buyNow() {
+    if (!stripe || unitPrice == null || buying) return
+    setBuying(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ items: [{ stripeProductId: stripe.productId, quantity: 1 }] }),
+      })
+      const data = await res.json()
+      if (res.ok && data.url) {
+        window.location.href = data.url
+        return
+      }
+      setBuying(false)
+      alert(data.error || 'Kunne ikke starte betalingen. Prøv igen.')
+    } catch {
+      setBuying(false)
+      alert('Kunne ikke oprette forbindelse. Prøv igen.')
+    }
   }
 
   /* Montering-vælger (kalkanlæg + produkter med montering, med pris) */
@@ -271,15 +295,13 @@ export default function BuyBox({ product }: { product: Product }) {
   return (
     <div className="space-y-3">
       {selector}
-      <a
-        href={stripe!.paymentLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
+      <button
+        onClick={buyNow}
+        disabled={buying}
+        className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
       >
-        Køb nu
-        <ArrowRight className="w-4 h-4" />
-      </a>
+        {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Køb nu <ArrowRight className="w-4 h-4" /></>)}
+      </button>
       <button
         onClick={handleAdd}
         className={`w-full inline-flex items-center justify-center gap-2 border-2 py-3 px-6 rounded-full font-bold text-sm transition-all ${
