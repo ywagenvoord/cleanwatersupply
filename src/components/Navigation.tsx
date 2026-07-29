@@ -56,6 +56,7 @@ export default function Navigation() {
   // Erhverv (og standard): fuld, teknisk menu med Områder-dropdown
   const erhvervLinks: NavLink[] = [
     { href: '/omraader', label: 'Løsninger', children: omraaderChildren },
+    { href: '/legionella-anlaeg', label: 'Legionella-anlæg' },
     { href: '/eca-vand', label: 'ECA-VAND' },
     { href: '/spildevand', label: 'Spildevand' },
     { href: '/about', label: t('nav.about') },

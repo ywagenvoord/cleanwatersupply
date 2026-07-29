@@ -39,7 +39,7 @@ export default function ErhvervClient() {
         ? ['0,2 µm membran', 'Medicinsk certificeret', 'Barriere ved tappested']
         : ['0.2 µm membrane', 'Medically certified', 'Barrier at the outlet'],
       id: 'anlaeg-legionella',
-      href: '/legionella',
+      href: '/legionella-anlaeg',
     },
     {
       Icon: Zap,
