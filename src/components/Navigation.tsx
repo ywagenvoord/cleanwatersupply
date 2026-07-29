@@ -58,7 +58,6 @@ export default function Navigation() {
     { href: '/omraader', label: 'Løsninger', children: omraaderChildren },
     { href: '/legionella-anlaeg', label: 'Legionella-anlæg' },
     { href: '/eca-vand', label: 'ECA-VAND' },
-    { href: '/spildevand', label: 'Spildevand' },
     { href: '/about', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
