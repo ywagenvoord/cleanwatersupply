@@ -43,6 +43,21 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // Konkurrence-tilmeldinger skal have navn OG telefon (undgår tomme blanketter).
+    // Almindelig nyhedsbrevs-tilmelding (fx footer) kræver kun e-mail + samtykke.
+    const isCompetition = Array.isArray(tags) && tags.includes('Quiz-konkurrence')
+    if (isCompetition) {
+      if (!(name || '').trim()) {
+        return NextResponse.json({ error: 'Skriv dit navn.' }, { status: 400 })
+      }
+      if ((phone || '').replace(/\D/g, '').length < 8) {
+        return NextResponse.json(
+          { error: 'Indtast et gyldigt telefonnummer.' },
+          { status: 400 },
+        )
+      }
+    }
+
     const apiKey     = process.env.MAILCHIMP_API_KEY
     const audienceId = process.env.MAILCHIMP_AUDIENCE_ID
 

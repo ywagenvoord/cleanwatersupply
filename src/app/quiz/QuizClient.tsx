@@ -47,10 +47,23 @@ export default function QuizClient() {
     e.preventDefault()
     if (status === 'loading') return
 
-    if (BUNDLED_CONSENT && !consent) {
-      setStatus('error')
-      setMessage('Sæt flueben for at deltage i konkurrencen.')
-      return
+    // Alle felter skal udfyldes (trimmet, så mellemrum ikke tæller som svar)
+    const n  = name.trim()
+    const p  = phone.trim()
+    const em = email.trim()
+    const phoneDigits = p.replace(/\D/g, '')
+
+    if (!n) {
+      setStatus('error'); setMessage('Skriv dit navn.'); return
+    }
+    if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) {
+      setStatus('error'); setMessage('Indtast en gyldig e-mailadresse.'); return
+    }
+    if (phoneDigits.length < 8) {
+      setStatus('error'); setMessage('Indtast et gyldigt telefonnummer (mindst 8 cifre).'); return
+    }
+    if (!consent) {
+      setStatus('error'); setMessage('Sæt flueben for at deltage i konkurrencen.'); return
     }
 
     setStatus('loading')
@@ -61,9 +74,9 @@ export default function QuizClient() {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
-          email,
-          name,
-          phone,
+          email: em,
+          name:  n,
+          phone: p,
           consent: BUNDLED_CONSENT ? true : consent,
           tags: ['Quiz-konkurrence'],
         }),
