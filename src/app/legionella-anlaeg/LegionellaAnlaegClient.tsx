@@ -136,10 +136,6 @@ export default function LegionellaAnlaegClient() {
                   className="w-full h-[260px] sm:h-[340px] lg:h-[400px] object-contain"
                 />
               </div>
-              {/* Lille flydende billede */}
-              <div className="hidden sm:block absolute -top-6 -right-4 lg:-right-8 w-28 h-36 rounded-2xl overflow-hidden ring-4 ring-[#0a2540] shadow-xl rotate-3">
-                <img src="/images/legionella-anlaeg-7.jpg" alt="" className="w-full h-full object-cover" />
-              </div>
               {/* Flydende stat-kort */}
               <div className="absolute -bottom-5 -left-3 lg:-left-6 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-3">
                 <span className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shadow-lg shadow-green-500/25">
