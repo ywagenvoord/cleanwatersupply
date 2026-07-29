@@ -432,10 +432,10 @@ export const PRODUCTS: Product[] = [
   },
 
   {
-    id: 'cartridge-mf5', productNr: '101471', name: 'Cartridge MF5 – patron til AS Tube',
+    id: 'cartridge-mf5', productNr: '101471', name: 'Cartridge MF5 – patron til AS Tube', images: ['/images/cartridge-mf5-1.jpg', '/images/cartridge-mf5-2.jpg'],
     tagline: 'Udskiftningspatron (hulfibermembran) til AS Tube-filterhus',
     badge: 'Udskiftningsfilter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
-    imgSrc: '/images/mf5-cartridge.jpg', imgLarge: '/images/mf5-cartridge.jpg',
+    imgSrc: '/images/cartridge-mf5-1.jpg', imgLarge: '/images/cartridge-mf5-1.jpg',
     description: 'Udskiftningspatron med hulfibermembran til AS Tube-filterhuset. Tilbageholder bakterier og partikler ved central indføring.',
     highlights: ['Hulfibermembran', 'Til AS Tube', 'Udskiftningspatron'],
     features: ['Passer AS Tube-filterhus', 'Tilbageholder bakterier og partikler', 'Til point-of-entry'],
