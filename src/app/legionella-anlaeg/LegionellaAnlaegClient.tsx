@@ -74,33 +74,83 @@ export default function LegionellaAnlaegClient() {
   return (
     <main className="bg-white">
       {/* ─── HERO ──────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0a2540]">
-        <div className="pointer-events-none absolute -top-24 -right-24 w-[30rem] h-[30rem] rounded-full bg-[#284eff]/20 blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
-        <div className="pointer-events-none absolute bottom-0 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/15 blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-            </span>
-            {da ? 'Erhverv · Legionella-anlæg · kører 24/7' : 'Business · Legionella system · runs 24/7'}
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] max-w-3xl">
-            {da ? 'Legionella-anlæg der holder hele vandforsyningen ren og sikker' : 'A legionella system that keeps the whole water supply clean and safe'}
-          </h1>
-          <p className="text-lg text-white/70 mt-6 max-w-2xl leading-relaxed">
-            {da
-              ? 'Et centralt anlæg der løbende behandler vandet og holder rørnettet fri for bakterier og biofilm – så I undgår problemer med Legionella i hele vandforsyningen. Kemikaliefrit, automatisk og dokumenterbart, tilpasset jeres bygning.'
-              : 'A central system that continuously treats the water and keeps the pipework free of bacteria and biofilm – so you avoid Legionella problems across the whole water supply. Chemical-free, automatic and documentable, adapted to your building.'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 mt-9">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
-              {da ? 'Få et tilbud' : 'Get a quote'}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="#saadan" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
-              {da ? 'Se hvordan det virker' : 'See how it works'}
-            </Link>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0d3160] to-[#123a7a]">
+        <div className="pointer-events-none absolute -top-24 -right-24 w-[30rem] h-[30rem] rounded-full bg-[#284eff]/25 blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="pointer-events-none absolute -bottom-20 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/20 blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.06]"
+          style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+        />
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Tekst */}
+            <div>
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+                </span>
+                {da ? 'Erhverv · kører 24/7' : 'Business · runs 24/7'}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-white leading-[1.06]">
+                {da ? (
+                  <>Legionella-anlæg der holder <span className="text-[#5ed36e]">hele vandforsyningen</span> ren og sikker</>
+                ) : (
+                  <>A legionella system that keeps <span className="text-[#5ed36e]">the whole water supply</span> clean and safe</>
+                )}
+              </h1>
+              <p className="text-lg text-white/70 mt-5 leading-relaxed">
+                {da
+                  ? 'Et centralt anlæg der løbende behandler vandet og holder rørnettet fri for bakterier og biofilm – kemikaliefrit, automatisk og dokumenterbart.'
+                  : 'A central system that continuously treats the water and keeps the pipework free of bacteria and biofilm – chemical-free, automatic and documentable.'}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
+                  {da ? 'Få et tilbud' : 'Get a quote'}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="#saadan" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
+                  {da ? 'Se hvordan det virker' : 'See how it works'}
+                </Link>
+              </div>
+              {/* Quick trust-facts */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3 mt-8">
+                {[
+                  { Icon: Zap, t: da ? 'Kemikaliefri HClO' : 'Chemical-free HClO' },
+                  { Icon: ShieldCheck, t: da ? 'Automatisk drift' : 'Automatic operation' },
+                  { Icon: FileCheck, t: da ? 'Dokumenterbar' : 'Documentable' },
+                ].map(({ Icon, t }) => (
+                  <span key={t} className="inline-flex items-center gap-2 text-sm font-semibold text-white/80">
+                    <Icon className="w-4 h-4 text-green-400" /> {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Visuel */}
+            <div className="relative">
+              <div className="rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-2xl">
+                <img
+                  src="/images/legionella-anlaeg-3.jpg"
+                  alt={da ? 'Legionella-anlæg – SICURSAN styring installeret' : 'Legionella system – SICURSAN controller installed'}
+                  className="w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover"
+                />
+              </div>
+              {/* Lille flydende billede */}
+              <div className="hidden sm:block absolute -top-6 -right-4 lg:-right-8 w-28 h-36 rounded-2xl overflow-hidden ring-4 ring-[#0a2540] shadow-xl rotate-3">
+                <img src="/images/legionella-anlaeg-7.jpg" alt="" className="w-full h-full object-cover" />
+              </div>
+              {/* Flydende stat-kort */}
+              <div className="absolute -bottom-5 -left-3 lg:-left-6 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-3">
+                <span className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shadow-lg shadow-green-500/25">
+                  <ShieldCheck className="w-6 h-6 text-white" />
+                </span>
+                <div className="leading-tight">
+                  <p className="text-sm font-extrabold text-[#0a2540]">{da ? 'Rene rør – i hele bygningen' : 'Clean pipes – whole building'}</p>
+                  <p className="text-xs text-gray-500">{da ? 'Fjerner bakterier, vira & svampe' : 'Removes bacteria, viruses & fungi'}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
