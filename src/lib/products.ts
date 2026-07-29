@@ -454,7 +454,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Løst udskiftningsfilter til AS Tube – skift kun patronen, behold huset',
     badge: 'Løst filter',
     category: 'bruser',
-    price: 1120,
+    price: 800,
     images: ['/images/cartridge-mf5-1.jpg', '/images/cartridge-mf5-2.jpg'],
     imgSrc:   '/images/cartridge-mf5-1.jpg',
     imgLarge: '/images/cartridge-mf5-1.jpg',
