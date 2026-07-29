@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     'blødgøringsanlæg',
     'ECA-vand',
     'hypochlorous acid',
-    'HClO generator',
+    'HOCl generator',
     'Baclyser filter',
     'Pseudomonas filter',
     'bakteriefrit vand',

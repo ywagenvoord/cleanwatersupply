@@ -140,7 +140,7 @@ export default function EcaVandPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">Kirkmayer ECA-generatorer</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">ECHA Article 95 godkendte HClO-generatorer til on-site produktion af hypochlorous acid.</p>
+            <p className="text-gray-500 max-w-2xl mx-auto">ECHA Article 95 godkendte HOCl-generatorer til on-site produktion af hypochlorous acid.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[

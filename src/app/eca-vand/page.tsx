@@ -7,14 +7,14 @@ import { SITE_URL } from '@/lib/site'
 const URL = `${SITE_URL}/eca-vand`
 
 export const metadata: Metadata = {
-  title: 'ECA-vand & HClO – Kemikaliefri desinfektion',
+  title: 'ECA-vand & HOCl – Kemikaliefri desinfektion',
   description:
     'ECA-vand (elektrokemisk aktiveret vand) producerer hypochlorous acid på stedet. Effektiv kemikaliefri desinfektion til hospitaler, fødevareindustri og landbrug. ECHA Article 95 godkendt.',
   keywords: [
     'ECA-vand',
     'ECA vand',
     'hypochlorous acid',
-    'HClO generator',
+    'HOCl generator',
     'anolyt',
     'elektrokemisk aktiveret vand',
     'kemikaliefri desinfektion',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: URL,
-    title: 'ECA-vand – HClO desinfektion | Clean Water Supply',
+    title: 'ECA-vand – HOCl desinfektion | Clean Water Supply',
     description:
       'Kemikaliefri vandbehandling med hypochlorous acid. ECHA Article 95 godkendt teknologi til hospitaler, hoteller og fødevareindustri.',
     locale: 'da_DK',
@@ -45,12 +45,12 @@ export default function Page() {
       />
       <ArticleJsonLd
         url={URL}
-        headline="ECA-vand – Hypochlorous acid (HClO) til kemikaliefri desinfektion"
+        headline="ECA-vand – Hypochlorous acid (HOCl) til kemikaliefri desinfektion"
         description="ECA-vand med hypochlorous acid er en effektiv, kemikaliefri desinfektionsmetode til hospitaler, fødevareindustri og landbrug. ECHA Article 95 godkendt."
         image={`${SITE_URL}/opengraph-image`}
         datePublished="2025-01-15T08:00:00+01:00"
         dateModified={new Date().toISOString()}
-        keywords={['ECA-vand', 'hypochlorous acid', 'HClO', 'anolyt', 'kemikaliefri desinfektion', 'Kirkmayer', 'ECHA Article 95']}
+        keywords={['ECA-vand', 'hypochlorous acid', 'HOCl', 'anolyt', 'kemikaliefri desinfektion', 'Kirkmayer', 'ECHA Article 95']}
         about={['Hypochlorous acid', 'Elektrokemisk aktiveret vand', 'Anolyse', 'Kirkmayer', 'ECHA']}
       />
       <EcaVandClient />

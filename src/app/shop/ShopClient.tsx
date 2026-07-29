@@ -76,8 +76,8 @@ const CATEGORIES = [
     labelEn: 'Systems',
     icon: FlaskConical,
     color: 'emerald',
-    descDa: 'Professionelle vandbehandlingsanlæg – ECA-vand (Kirkmayer HClO-generatorer) til erhverv.',
-    descEn: 'Professional water treatment systems – ECA water (Kirkmayer HClO generators) for business.',
+    descDa: 'Professionelle vandbehandlingsanlæg – ECA-vand (Kirkmayer HOCl-generatorer) til erhverv.',
+    descEn: 'Professional water treatment systems – ECA water (Kirkmayer HOCl generators) for business.',
     imgSrc: '/images/sicursan-anlaeg.jpg',
   },
 ]

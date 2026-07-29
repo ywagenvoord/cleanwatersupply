@@ -17,8 +17,8 @@ export default function LegionellaAnlaegClient() {
       Icon: Zap,
       title: da ? 'Central behandling af vandet' : 'Central water treatment',
       body: da
-        ? 'Anlægget doserer HClO (hypoklorsyre) direkte ind i vandforsyningen og fjerner bakterier, vira og svampe i hele systemet – kemikaliefrit, produceret on-site af blot salt, vand og strøm.'
-        : 'The system doses HClO (hypochlorous acid) directly into the water supply and eliminates bacteria, viruses and fungi throughout the system – chemical-free, produced on-site from just salt, water and electricity.',
+        ? 'Anlægget doserer HOCl (hypoklorsyre) direkte ind i vandforsyningen og fjerner bakterier, vira og svampe i hele systemet – kemikaliefrit, produceret on-site af blot salt, vand og strøm.'
+        : 'The system doses HOCl (hypochlorous acid) directly into the water supply and eliminates bacteria, viruses and fungi throughout the system – chemical-free, produced on-site from just salt, water and electricity.',
     },
     {
       Icon: Droplets,
@@ -116,7 +116,7 @@ export default function LegionellaAnlaegClient() {
               {/* Quick trust-facts */}
               <div className="flex flex-wrap gap-x-6 gap-y-3 mt-8">
                 {[
-                  { Icon: Zap, t: da ? 'Kemikaliefri HClO' : 'Chemical-free HClO' },
+                  { Icon: Zap, t: da ? 'Kemikaliefri HOCl' : 'Chemical-free HOCl' },
                   { Icon: ShieldCheck, t: da ? 'Automatisk drift' : 'Automatic operation' },
                   { Icon: FileCheck, t: da ? 'Dokumenterbar' : 'Documentable' },
                 ].map(({ Icon, t }) => (

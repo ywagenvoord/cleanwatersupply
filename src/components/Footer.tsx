@@ -77,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { href: '/legionella',    label: 'Legionella-filtre' },
-                { href: '/eca-vand',      label: 'ECA-vand & HClO' },
+                { href: '/eca-vand',      label: 'ECA-vand & HOCl' },
                 { href: '/shop',          label: 'Shop alle produkter' },
                 { href: '/solutions',     label: 'Alle løsninger' },
                 { href: '/fordele',       label: 'Fordele' },

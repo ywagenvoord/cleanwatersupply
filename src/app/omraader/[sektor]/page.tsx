@@ -265,7 +265,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
                 />
               </div>
               <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm bg-gray-50 aspect-[2/3]">
-                <img src="/images/sicursan-anlaeg.jpg" alt="Kirkmayer HClO-anlæg (Sicursan)" className="w-full h-full object-contain" />
+                <img src="/images/sicursan-anlaeg.jpg" alt="Kirkmayer HOCl-anlæg (Sicursan)" className="w-full h-full object-contain" />
               </div>
             </div>
           </div>

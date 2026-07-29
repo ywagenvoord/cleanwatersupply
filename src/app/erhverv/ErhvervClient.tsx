@@ -43,14 +43,14 @@ export default function ErhvervClient() {
     },
     {
       Icon: Zap,
-      title: da ? 'Kirkmayer-anlæg · HClO-generator' : 'Kirkmayer systems · HClO generator',
+      title: da ? 'Kirkmayer-anlæg · HOCl-generator' : 'Kirkmayer systems · HOCl generator',
       featured: true,
       body: da
-        ? 'Kirkmayer-anlæggene er HClO-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkelinjerne, så dyrene får bakteriefrit vand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
-        : 'The Kirkmayer systems are HClO generators (BMI, LAMI and AMI series) that produce Anolyte – hypochlorous acid – on-site from only salt, water and electricity. A non-toxic disinfectant that eliminates bacteria, viruses and fungi within seconds. In agriculture the systems are especially strong for livestock such as poultry and pig production: they remove and prevent biofilm in the drinking water lines so the animals get clean drinking water. Bacteria are fought right at the animals, raising their welfare, health and living standard. The active substance is approved under ECHA Article 95.',
+        ? 'Kirkmayer-anlæggene er HOCl-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkelinjerne, så dyrene får bakteriefrit vand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
+        : 'The Kirkmayer systems are HOCl generators (BMI, LAMI and AMI series) that produce Anolyte – hypochlorous acid – on-site from only salt, water and electricity. A non-toxic disinfectant that eliminates bacteria, viruses and fungi within seconds. In agriculture the systems are especially strong for livestock such as poultry and pig production: they remove and prevent biofilm in the drinking water lines so the animals get clean drinking water. Bacteria are fought right at the animals, raising their welfare, health and living standard. The active substance is approved under ECHA Article 95.',
       specs: da
-        ? ['Anolyt / HClO', 'Kemikaliefri – on-site', 'Fjerner biofilm i drikkelinjer']
-        : ['Anolyte / HClO', 'Chemical-free – on-site', 'Removes biofilm in drinking lines'],
+        ? ['Anolyt / HOCl', 'Kemikaliefri – on-site', 'Fjerner biofilm i drikkelinjer']
+        : ['Anolyte / HOCl', 'Chemical-free – on-site', 'Removes biofilm in drinking lines'],
       id: 'anlaeg-eca',
       href: '/eca-vand',
     },
@@ -107,12 +107,12 @@ export default function ErhvervClient() {
     },
     {
       need: da ? 'Kemikaliefri desinfektion' : 'Chemical-free disinfection',
-      system: da ? 'Kirkmayer HClO-anlæg' : 'Kirkmayer HClO systems',
+      system: da ? 'Kirkmayer HOCl-anlæg' : 'Kirkmayer HOCl systems',
       sectors: da ? 'Fødevareindustri · Mejeri · Svømmehaller' : 'Food industry · Dairy · Pools',
     },
     {
       need: da ? 'Bakteriefrit vand til dyr' : 'Clean drinking water for animals',
-      system: da ? 'Kirkmayer HClO-anlæg' : 'Kirkmayer HClO systems',
+      system: da ? 'Kirkmayer HOCl-anlæg' : 'Kirkmayer HOCl systems',
       sectors: da ? 'Landbrug · Kyllinge- & svineproduktion' : 'Agriculture · Poultry & pig farming',
     },
     {
@@ -171,8 +171,8 @@ export default function ErhvervClient() {
               </h1>
               <p className="text-lg text-white/70 mb-10 leading-relaxed">
                 {da
-                  ? 'Med medicinsk certificerede Legionella-filtre og Kirkmayers HClO-anlæg leverer vi dokumenteret vandhygiejne til hospitaler, hoteller, svømmehaller, fødevareindustri og landbrug – helt ud til hvert tappested og hvert dyr.'
-                  : "With medically certified Legionella filters and Kirkmayer's HClO systems, we deliver documented water hygiene to hospitals, hotels, pools, the food industry and agriculture – right out to every outlet and every animal."}
+                  ? 'Med medicinsk certificerede Legionella-filtre og Kirkmayers HOCl-anlæg leverer vi dokumenteret vandhygiejne til hospitaler, hoteller, svømmehaller, fødevareindustri og landbrug – helt ud til hvert tappested og hvert dyr.'
+                  : "With medically certified Legionella filters and Kirkmayer's HOCl systems, we deliver documented water hygiene to hospitals, hotels, pools, the food industry and agriculture – right out to every outlet and every animal."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
