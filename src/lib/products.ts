@@ -158,7 +158,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Medicinsk godkendt',
     category: 'vandhane',
     featured: true,
-    price: 565, priceErhverv: 375,
+    price: 450, priceErhverv: 375,
     imgSrc:   '/images/product-tl6.jpg',
     imgLarge: '/images/product-tl6.jpg',
     lifestyleImage: '/images/solution-tappested.jpg',
