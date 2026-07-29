@@ -32,10 +32,15 @@ const nextConfig = {
       { source: '/de/aqua-free/:path*', destination: '/', permanent: true },
       { source: '/aqua-free/:path*',    destination: '/', permanent: true },
 
-      // ── Generelt: fjern sprogpræfiks og bevar resten af stien ──
-      // /en/eca-vand → /eca-vand, /de/omraader/hospitaler → /omraader/hospitaler, /en → /, /de → /
-      { source: '/en/:path*', destination: '/:path*', permanent: true },
-      { source: '/de/:path*', destination: '/:path*', permanent: true },
+      // ── Dybe stier: fjern sprogpræfiks, bevar resten af stien (mindst ét segment) ──
+      // /en/eca-vand → /eca-vand, /de/omraader/hospitaler → /omraader/hospitaler
+      { source: '/en/:path+', destination: '/:path+', permanent: true },
+      { source: '/de/:path+', destination: '/:path+', permanent: true },
+
+      // ── Bare sprogrødder → forsiden (statisk mål, så der ikke opstår redirect-loop) ──
+      // /en, /en/, /de, /de/  →  /
+      { source: '/en/:path*', destination: '/', permanent: true },
+      { source: '/de/:path*', destination: '/', permanent: true },
     ]
   },
 }
