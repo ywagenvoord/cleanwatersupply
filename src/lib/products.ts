@@ -31,6 +31,8 @@ export type Product = {
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
   installVideo?: string    // monteringsvideo (vises som "Sådan monterer du"-sektion)
   showInstallation?: boolean // vis "Standard installation"-sektionen (samme montering som kalkanlæg)
+  compatibleFilters?: string[] // produkt-ids på filtre/patroner der passer i produktet
+  alsoBought?: string[]        // kuraterede "Andre købte også"-produkt-ids (ellers auto-relaterede)
   requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
   variants?: { id: string; label: string; sub: string }[] // fx forskellige levetider (2M/3M)
   // Key selling points (shown as icon-bullet in detail hero)
@@ -803,6 +805,8 @@ export const PRODUCTS: Product[] = [
     imgLarge: '/images/filter-housing.jpg',
     lifestyleImage: '/images/solution-undervask.jpg',
     showInstallation: true,
+    compatibleFilters: ['dualstage-mf-10-cl', 'kulblokfilter-10-cl'],
+    alsoBought: ['baclyser-neo-tr-2m', 'cblue-sc3', 'blosgoringsanlaeg-100m'],
     description: 'Universelt filterhus til rørledning. Passer standard 10"-filterpatroner.',
     longDescription: 'Filter Housing er det alsidige filterhus til rørledningsmonterede filtre. Det passer alle standard 10" patroner – kulfiltre, kalkfiltre eller mikrofiltre – og er solidt bygget til driftstryk op til 8 bar.',
     highlights: ['Standard 10" patroner', 'Op til 8 bar drift', 'Hurtig serviceadgang'],

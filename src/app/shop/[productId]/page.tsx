@@ -147,7 +147,9 @@ export default async function ProductDetailPage({ params }: { params: { productI
   const product = await fetchProduct(params.productId)
   if (!product) notFound()
 
-  const related = getRelated(product, 3)
+  const related = product.alsoBought && product.alsoBought.length > 0
+    ? product.alsoBought.map((id) => getProduct(id)).filter((p): p is Product => !!p)
+    : getRelated(product, 3)
   const CatIcon = CAT_ICONS[product.category] ?? Droplets
 
   // Montering/installation: kalkanlæg + produkter med showInstallation (fx Filter Housing)
@@ -274,6 +276,48 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   </ul>
                 </div>
               )}
+
+              {/* Filtre der passer i produktet */}
+              {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
+                const filters = product.compatibleFilters
+                  .map((id) => getProduct(id))
+                  .filter((f): f is Product => !!f)
+                if (filters.length === 0) return null
+                return (
+                  <div className="mt-6 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white p-6">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Filter className="w-4 h-4 text-[#284eff]" />
+                      <h2 className="text-lg font-extrabold text-[#0a2540]">Filtre der passer i huset</h2>
+                    </div>
+                    <p className="text-sm text-gray-500 mb-4">Vælg den filterpatron, der passer til dit behov – alle passer i dette filterhus.</p>
+                    <div className="space-y-3">
+                      {filters.map((f) => (
+                        <Link
+                          key={f.id}
+                          href={`/shop/${f.id}`}
+                          className="group flex items-center gap-3 rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-3"
+                        >
+                          <div className="w-16 h-16 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
+                            {f.imgSrc ? (
+                              <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain" />
+                            ) : (
+                              <Filter className="w-6 h-6 text-gray-300" />
+                            )}
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
+                            <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{f.tagline}</p>
+                            {f.price !== undefined && (
+                              <p className="text-sm font-bold text-[#0a2540] mt-1">{f.price.toLocaleString('da-DK')} kr</p>
+                            )}
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-[#3aad4a] shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )
+              })()}
             </div>
 
             {/* RIGHT: Info + buy */}
@@ -652,7 +696,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
         <section className="py-16 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
-              <h2 className="text-2xl font-extrabold text-gray-900">Lignende produkter</h2>
+              <h2 className="text-2xl font-extrabold text-gray-900">{product.alsoBought && product.alsoBought.length > 0 ? 'Andre købte også …' : 'Lignende produkter'}</h2>
               <Link href="/shop" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5">
                 Se alle <ArrowRight className="w-4 h-4" />
               </Link>
