@@ -432,12 +432,12 @@ export const PRODUCTS: Product[] = [
   },
 
   {
-    id: 'cartridge-mf5', productNr: '101471', name: 'Cartridge MF5 – patron til AS Tube', images: ['/images/cartridge-mf5-1.jpg', '/images/cartridge-mf5-2.jpg'],
-    tagline: 'Udskiftningspatron (hulfibermembran) til AS Tube-filterhus',
-    badge: 'Udskiftningsfilter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
+    id: 'cartridge-mf5', productNr: '101471', name: 'Løst filter til AS Tube (MF5)', images: ['/images/cartridge-mf5-1.jpg', '/images/cartridge-mf5-2.jpg'],
+    tagline: 'Løst udskiftningsfilter til AS Tube – skift kun patronen, behold huset',
+    badge: 'Løst filter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
     imgSrc: '/images/cartridge-mf5-1.jpg', imgLarge: '/images/cartridge-mf5-1.jpg',
-    description: 'Udskiftningspatron med hulfibermembran til AS Tube-filterhuset. Tilbageholder bakterier og partikler ved central indføring.',
-    highlights: ['Hulfibermembran', 'Til AS Tube', 'Udskiftningspatron'],
+    description: 'Løst udskiftningsfilter (hulfibermembran-patron) til AS Tube-filterhuset. Når patronen er opbrugt, skifter du kun selve filteret og beholder huset. Tilbageholder bakterier og partikler ved central indføring.',
+    highlights: ['Løst udskiftningsfilter', 'Passer AS Tube-huset', 'Skift kun patronen'],
     features: ['Passer AS Tube-filterhus', 'Tilbageholder bakterier og partikler', 'Til point-of-entry'],
     specs: [{ label: 'Type', value: 'Hulfibermembran-patron' }, { label: 'Passer til', value: 'AS Tube (101466)' }],
     faqs: [{ q: 'Hvad passer den til?', a: 'MF5 er udskiftningspatronen til AS Tube-filterhuset.' }],
