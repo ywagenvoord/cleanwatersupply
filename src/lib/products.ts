@@ -403,6 +403,8 @@ export const PRODUCTS: Product[] = [
     price: 1620, priceErhverv: 1195,
     imgSrc:   'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
     imgLarge: 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg',
+    lifestyleVideo: '/videos/as-tube-video.mp4',
+    videoFirst: true,
     description: 'Udskifteligt inline-filter med hulfibermembran til professionelle installationer.',
     longDescription: 'AS Tube er en udskiftelig hulfibermembran-patron til inline filterinstallationer. Den leverer dokumenteret 7 log-retention og er valideret til medicinsk og hospitalsbrug.',
     highlights: ['Hulfibermembran 0,2 μm', '7 log retention', 'Til professionelle anlæg'],
