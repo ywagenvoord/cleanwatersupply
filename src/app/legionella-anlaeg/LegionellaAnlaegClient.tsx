@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import ScrollReveal from '@/components/ScrollReveal'
 import {
   ShieldCheck, ArrowRight, Layers, Droplets, Zap, Thermometer,
   Wind, CheckCircle2, Building2, FileCheck, Phone,
@@ -13,25 +14,25 @@ export default function LegionellaAnlaegClient() {
 
   const barriers = [
     {
-      Icon: Layers,
-      title: da ? 'Central barriere' : 'Central barrier',
+      Icon: Zap,
+      title: da ? 'Central behandling af vandet' : 'Central water treatment',
       body: da
-        ? 'Et inline hulfibermembran-filteranlæg (AS Tube) monteres centralt i vandforsyningen (point-of-entry) og tilbageholder bakterier og partikler, før vandet fordeles i bygningen.'
-        : 'An inline hollow-fibre filtration system (AS Tube) is installed centrally (point-of-entry) and retains bacteria and particles before the water is distributed through the building.',
+        ? 'Anlægget doserer HClO (hypoklorsyre) direkte ind i vandforsyningen og fjerner bakterier, vira og svampe i hele systemet – kemikaliefrit, produceret on-site af blot salt, vand og strøm.'
+        : 'The system doses HClO (hypochlorous acid) directly into the water supply and eliminates bacteria, viruses and fungi throughout the system – chemical-free, produced on-site from just salt, water and electricity.',
+    },
+    {
+      Icon: Droplets,
+      title: da ? 'Rene rør uden biofilm' : 'Clean pipes without biofilm',
+      body: da
+        ? 'Den løbende behandling forhindrer, at biofilm og bakterier sætter sig i rørnettet. Problemet fjernes ved kilden – i hele vandforsyningen – i stedet for kun ved det enkelte tappested.'
+        : 'The continuous treatment prevents biofilm and bacteria from building up in the pipework. The problem is removed at the source – across the whole supply – instead of only at the individual outlet.',
     },
     {
       Icon: ShieldCheck,
-      title: da ? 'Barriere ved tappestedet' : 'Barrier at the outlet',
+      title: da ? 'Sikker, overvåget drift' : 'Safe, monitored operation',
       body: da
-        ? 'Medicinsk certificerede 0,2 µm Baclyser®-filtre danner en steril barriere direkte på armatur og bruser – præcis dér, hvor risikoen for smitte er størst.'
-        : 'Medically certified 0.2 µm Baclyser® filters form a sterile barrier directly on taps and showers – exactly where the risk of infection is greatest.',
-    },
-    {
-      Icon: Zap,
-      title: da ? 'Løbende desinfektion' : 'Continuous disinfection',
-      body: da
-        ? 'Til centrale systemer kan Kirkmayer HClO-dosering holde rørnet og drikkelinjer fri for biofilm – kemikaliefrit, produceret on-site af salt, vand og strøm.'
-        : 'For central systems, Kirkmayer HClO dosing keeps pipework and drinking lines free of biofilm – chemical-free, produced on-site from salt, water and electricity.',
+        ? 'Automatisk styring og dosering sikrer en stabil og dokumenterbar drift døgnet rundt, så I undgår problemer med bakterier i vandet – uden at nogen skal håndtere farlig kemi.'
+        : 'Automatic control and dosing ensure stable, documentable operation around the clock, so you avoid problems with bacteria in the water – without anyone handling hazardous chemicals.',
     },
   ]
 
@@ -74,20 +75,23 @@ export default function LegionellaAnlaegClient() {
     <main className="bg-white">
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-[#0a2540]">
-        <div className="pointer-events-none absolute -top-24 -right-24 w-[30rem] h-[30rem] rounded-full bg-[#284eff]/20 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-0 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/15 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 -right-24 w-[30rem] h-[30rem] rounded-full bg-[#284eff]/20 blur-3xl animate-pulse" style={{ animationDuration: '6s' }} />
+        <div className="pointer-events-none absolute bottom-0 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/15 blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            {da ? 'Erhverv · Legionella-anlæg' : 'Business · Legionella system'}
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            </span>
+            {da ? 'Erhverv · Legionella-anlæg · kører 24/7' : 'Business · Legionella system · runs 24/7'}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] max-w-3xl">
-            {da ? 'Legionella-anlæg der sikrer hele bygningen' : 'A legionella system that protects the whole building'}
+            {da ? 'Legionella-anlæg der holder hele vandforsyningen ren og sikker' : 'A legionella system that keeps the whole water supply clean and safe'}
           </h1>
           <p className="text-lg text-white/70 mt-6 max-w-2xl leading-relaxed">
             {da
-              ? 'Komplet, flertrins beskyttelse mod Legionella – fra en central barriere i vandforsyningen til medicinsk certificerede filtre ved hvert tappested. Dokumenterbart, sikkert og tilpasset jeres bygning.'
-              : 'Complete, multi-stage protection against Legionella – from a central barrier in the water supply to medically certified filters at every outlet. Documentable, safe and adapted to your building.'}
+              ? 'Et centralt anlæg der løbende behandler vandet og holder rørnettet fri for bakterier og biofilm – så I undgår problemer med Legionella i hele vandforsyningen. Kemikaliefrit, automatisk og dokumenterbart, tilpasset jeres bygning.'
+              : 'A central system that continuously treats the water and keeps the pipework free of bacteria and biofilm – so you avoid Legionella problems across the whole water supply. Chemical-free, automatic and documentable, adapted to your building.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 mt-9">
             <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
@@ -110,8 +114,8 @@ export default function LegionellaAnlaegClient() {
               <h2 className="text-3xl font-extrabold text-[#0a2540] mt-1.5 mb-4">{da ? 'Hvorfor et legionella-anlæg?' : 'Why a legionella system?'}</h2>
               <p className="text-gray-600 leading-relaxed">
                 {da
-                  ? 'Legionella trives i stillestående vand mellem 30 og 40 °C og bliver farlig, når den spredes via små vanddråber, der indåndes – fx i brusere – og kan give alvorlige luftvejsinfektioner. I bygninger med mange tappesteder, lange rørføringer eller perioder med lavt forbrug er risikoen særligt høj. Et legionella-anlæg fjerner og forebygger risikoen både centralt og helt ude ved tappestedet.'
-                  : 'Legionella thrives in stagnant water between 30 and 40 °C and becomes dangerous when spread via small water droplets that are inhaled – e.g. in showers – and can cause serious respiratory infections. In buildings with many outlets, long pipe runs or periods of low usage, the risk is especially high. A legionella system removes and prevents the risk both centrally and right at the outlet.'}
+                  ? 'Legionella trives i stillestående vand mellem 30 og 40 °C og bliver farlig, når den spredes via små vanddråber, der indåndes – fx i brusere – og kan give alvorlige luftvejsinfektioner. I bygninger med lange rørføringer eller perioder med lavt forbrug sætter bakterierne sig som biofilm i rørnettet. Et legionella-anlæg behandler vandet centralt og holder hele rørnettet rent, så problemet fjernes ved kilden – ikke først, når det er opstået.'
+                  : 'Legionella thrives in stagnant water between 30 and 40 °C and becomes dangerous when spread via small water droplets that are inhaled – e.g. in showers – and can cause serious respiratory infections. In buildings with long pipe runs or periods of low usage, the bacteria settle as biofilm in the pipework. A legionella system treats the water centrally and keeps the entire pipe network clean, so the problem is removed at the source – not only once it has arisen.'}
               </p>
             </div>
             <div className="rounded-3xl bg-gradient-to-br from-[#f5fbff] to-white ring-1 ring-blue-100/70 p-7">
@@ -140,23 +144,27 @@ export default function LegionellaAnlaegClient() {
       {/* ─── SÅDAN VIRKER ANLÆGGET (flertrins) ─────────────────── */}
       <section id="saadan" className="py-16 md:py-20 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">{da ? 'Flertrins beskyttelse' : 'Multi-stage protection'}</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mt-1.5">{da ? 'Sådan sikrer anlægget jeres vand' : 'How the system secures your water'}</h2>
-            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{da ? 'Vi kombinerer barrierer, så Legionella bekæmpes både før vandet fordeles og helt ude ved brugeren.' : 'We combine barriers so Legionella is fought both before the water is distributed and right at the user.'}</p>
-          </div>
+          <ScrollReveal direction="up">
+            <div className="text-center mb-12">
+              <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">{da ? 'Central behandling' : 'Central treatment'}</span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mt-1.5">{da ? 'Sådan holder anlægget jeres vand rent og sikkert' : 'How the system keeps your water clean and safe'}</h2>
+              <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{da ? 'Anlægget behandler vandet centralt og forebygger, at bakterier og biofilm sætter sig i rørnettet – så hele vandforsyningen holdes ren.' : 'The system treats the water centrally and prevents bacteria and biofilm from settling in the pipework – keeping the whole water supply clean.'}</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6">
             {barriers.map(({ Icon, title, body }, i) => (
-              <div key={title} className="relative rounded-3xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-7">
-                <span className="absolute -top-3.5 left-7 w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shadow-lg shadow-[#284eff]/25">
-                  {i + 1}
-                </span>
-                <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#284eff] to-[#1b32c9] flex items-center justify-center mb-4 mt-2 shadow-lg shadow-[#284eff]/20">
-                  <Icon className="w-6 h-6 text-white" strokeWidth={2} />
-                </span>
-                <h3 className="text-lg font-extrabold text-[#0a2540] leading-tight">{title}</h3>
-                <p className="text-[15px] text-gray-600 mt-2 leading-relaxed">{body}</p>
-              </div>
+              <ScrollReveal key={title} direction="up" delay={i * 100} className="h-full">
+                <div className="relative h-full rounded-3xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 p-7">
+                  <span className="absolute -top-3.5 left-7 w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shadow-lg shadow-[#284eff]/25">
+                    {i + 1}
+                  </span>
+                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#284eff] to-[#1b32c9] flex items-center justify-center mb-4 mt-2 shadow-lg shadow-[#284eff]/20">
+                    <Icon className="w-6 h-6 text-white" strokeWidth={2} />
+                  </span>
+                  <h3 className="text-lg font-extrabold text-[#0a2540] leading-tight">{title}</h3>
+                  <p className="text-[15px] text-gray-600 mt-2 leading-relaxed">{body}</p>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -170,16 +178,18 @@ export default function LegionellaAnlaegClient() {
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mt-1.5">{da ? 'Derfor vælger erhverv vores anlæg' : 'Why businesses choose our system'}</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
-            {benefits.map(({ Icon, title, body }) => (
-              <div key={title} className="flex gap-4 rounded-3xl bg-white ring-1 ring-blue-100/70 shadow-sm p-6">
-                <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shrink-0 shadow-lg shadow-green-500/20">
-                  <Icon className="w-6 h-6 text-white" strokeWidth={2} />
-                </span>
-                <div>
-                  <h3 className="text-lg font-extrabold text-[#0a2540] leading-tight">{title}</h3>
-                  <p className="text-[15px] text-gray-600 mt-1.5 leading-relaxed">{body}</p>
+            {benefits.map(({ Icon, title, body }, i) => (
+              <ScrollReveal key={title} direction="up" delay={i * 80} className="h-full">
+                <div className="flex h-full gap-4 rounded-3xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6">
+                  <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shrink-0 shadow-lg shadow-green-500/20">
+                    <Icon className="w-6 h-6 text-white" strokeWidth={2} />
+                  </span>
+                  <div>
+                    <h3 className="text-lg font-extrabold text-[#0a2540] leading-tight">{title}</h3>
+                    <p className="text-[15px] text-gray-600 mt-1.5 leading-relaxed">{body}</p>
+                  </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -209,16 +219,18 @@ export default function LegionellaAnlaegClient() {
             <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{da ? 'Eksempler på installerede anlæg – styring, salt/syre-tanke og filtre monteret centralt i teknikrummet.' : 'Examples of installed systems – controller, brine/acid tanks and filters fitted centrally in the plant room.'}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-              <div key={n} className="rounded-2xl overflow-hidden ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg transition-all duration-300 bg-gray-50">
-                <img
-                  src={`/images/legionella-anlaeg-${n}.jpg`}
-                  alt={da ? `Installeret legionella-anlæg ${n}` : `Installed legionella system ${n}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover aspect-[3/4]"
-                />
-              </div>
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n, i) => (
+              <ScrollReveal key={n} direction="up" delay={(i % 4) * 80}>
+                <div className="group rounded-2xl overflow-hidden ring-1 ring-blue-100/70 shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-50">
+                  <img
+                    src={`/images/legionella-anlaeg-${n}.jpg`}
+                    alt={da ? `Installeret legionella-anlæg ${n}` : `Installed legionella system ${n}`}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover aspect-[3/4] group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
