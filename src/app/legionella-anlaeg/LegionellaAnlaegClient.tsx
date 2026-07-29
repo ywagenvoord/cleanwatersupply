@@ -200,6 +200,30 @@ export default function LegionellaAnlaegClient() {
         </div>
       </section>
 
+      {/* ─── ANLÆGGET I DRIFT (galleri) ────────────────────────── */}
+      <section className="py-16 md:py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">{da ? 'Fra virkeligheden' : 'From the field'}</span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mt-1.5">{da ? 'Anlægget i drift' : 'The system in operation'}</h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{da ? 'Eksempler på installerede anlæg – styring, salt/syre-tanke og filtre monteret centralt i teknikrummet.' : 'Examples of installed systems – controller, brine/acid tanks and filters fitted centrally in the plant room.'}</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+              <div key={n} className="rounded-2xl overflow-hidden ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg transition-all duration-300 bg-gray-50">
+                <img
+                  src={`/images/legionella-anlaeg-${n}.jpg`}
+                  alt={da ? `Installeret legionella-anlæg ${n}` : `Installed legionella system ${n}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover aspect-[3/4]"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── CTA ───────────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
