@@ -31,6 +31,7 @@ export type Product = {
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
   videoFirst?: boolean     // galleriet starter på videoen (autoafspiller ved landing)
   installVideo?: string    // monteringsvideo (vises som "Sådan monterer du"-sektion)
+  installNote?: string     // monteringsvejledning (vises som "Montering"-afsnit)
   showInstallation?: boolean // vis "Standard installation"-sektionen (samme montering som kalkanlæg)
   compatibleFilters?: string[] // produkt-ids på filtre/patroner der passer i produktet
   alsoBought?: string[]        // kuraterede "Andre købte også"-produkt-ids (ellers auto-relaterede)
@@ -436,6 +437,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Løst udskiftningsfilter til AS Tube – skift kun patronen, behold huset',
     badge: 'Løst filter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795,
     imgSrc: '/images/cartridge-mf5-1.jpg', imgLarge: '/images/cartridge-mf5-1.jpg',
+    installNote: 'Filteret skal presses godt ind i huset. Det kan føles en smule forkert undervejs, men det er helt normalt – monteringen kræver lidt kræfter, for at filteret sidder tæt. Vær opmærksom på at vende filteret rigtigt, så pilen (gennemstrømningen) peger den rigtige vej, før du presser det på plads.',
     description: 'Løst udskiftningsfilter (hulfibermembran-patron) til AS Tube-filterhuset. Når patronen er opbrugt, skifter du kun selve filteret og beholder huset. Tilbageholder bakterier og partikler ved central indføring.',
     highlights: ['Løst udskiftningsfilter', 'Passer AS Tube-huset', 'Skift kun patronen'],
     features: ['Passer AS Tube-filterhus', 'Tilbageholder bakterier og partikler', 'Til point-of-entry'],

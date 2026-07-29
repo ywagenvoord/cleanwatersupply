@@ -561,6 +561,23 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </section>
       )}
 
+      {/* ─── MONTERING (monteringsvejledning) ─────────────────────── */}
+      {product.installNote && (
+        <section className="py-12 bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl bg-gradient-to-br from-amber-50 to-white ring-1 ring-amber-100 p-7 flex gap-4">
+              <span className="w-12 h-12 shrink-0 rounded-2xl bg-amber-400/90 flex items-center justify-center shadow-lg shadow-amber-500/20">
+                <Wrench className="w-6 h-6 text-white" />
+              </span>
+              <div>
+                <h2 className="text-xl font-extrabold text-[#0a2540] mb-2">Montering</h2>
+                <p className="text-gray-700 leading-relaxed text-[15px]">{product.installNote}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── STANDARD INSTALLATION (kalkanlæg + showInstallation) ──── */}
       {showInstall && (
         <section className="py-16 bg-gray-50 border-t border-gray-100">
