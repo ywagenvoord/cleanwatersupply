@@ -129,11 +129,11 @@ export default function LegionellaAnlaegClient() {
 
             {/* Visuel */}
             <div className="relative">
-              <div className="rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-2xl">
+              <div className="rounded-[2rem] overflow-hidden ring-1 ring-white/15 shadow-2xl bg-white p-4 sm:p-6">
                 <img
-                  src="/images/legionella-anlaeg-3.jpg"
-                  alt={da ? 'Legionella-anlæg – SICURSAN styring installeret' : 'Legionella system – SICURSAN controller installed'}
-                  className="w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover"
+                  src="/images/legionella-anlaeg-hero.jpg"
+                  alt={da ? 'Legionella-anlæg – Kirkmayer SICURSAN styreenhed' : 'Legionella system – Kirkmayer SICURSAN controller'}
+                  className="w-full h-[260px] sm:h-[340px] lg:h-[400px] object-contain"
                 />
               </div>
               {/* Lille flydende billede */}
