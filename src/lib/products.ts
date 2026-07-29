@@ -30,6 +30,7 @@ export type Product = {
   lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
   installVideo?: string    // monteringsvideo (vises som "Sådan monterer du"-sektion)
+  showInstallation?: boolean // vis "Standard installation"-sektionen (samme montering som kalkanlæg)
   requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
   variants?: { id: string; label: string; sub: string }[] // fx forskellige levetider (2M/3M)
   // Key selling points (shown as icon-bullet in detail hero)
@@ -800,6 +801,7 @@ export const PRODUCTS: Product[] = [
     price: 500, priceErhverv: 475,
     imgSrc:   '/images/filter-housing.jpg',
     imgLarge: '/images/filter-housing.jpg',
+    showInstallation: true,
     description: 'Universelt filterhus til rørledning. Passer standard 10"-filterpatroner.',
     longDescription: 'Filter Housing er det alsidige filterhus til rørledningsmonterede filtre. Det passer alle standard 10" patroner – kulfiltre, kalkfiltre eller mikrofiltre – og er solidt bygget til driftstryk op til 8 bar.',
     highlights: ['Standard 10" patroner', 'Op til 8 bar drift', 'Hurtig serviceadgang'],

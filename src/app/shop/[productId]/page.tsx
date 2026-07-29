@@ -150,6 +150,10 @@ export default async function ProductDetailPage({ params }: { params: { productI
   const related = getRelated(product, 3)
   const CatIcon = CAT_ICONS[product.category] ?? Droplets
 
+  // Montering/installation: kalkanlæg + produkter med showInstallation (fx Filter Housing)
+  const isSoftener = product.category === 'blosgoringsanlaeg'
+  const showInstall = isSoftener || !!product.showInstallation
+
   const catLabel: Record<string, string> = {
     vandhane: 'Vandhane',
     bruser: 'Bruser',
@@ -360,12 +364,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <AddonProducts products={ADDON_PRODUCTS} />
               )}
 
-              {/* Bestil montering & upload billeder – kun kalkanlæg */}
-              {product.category === 'blosgoringsanlaeg' && !product.addon && (
+              {/* Bestil montering & upload billeder – kalkanlæg + produkter med showInstallation */}
+              {showInstall && !product.addon && (
                 <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
                   <h3 className="font-bold text-[#0a2540] mb-1.5">Bestil montering &amp; installering</h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                    Du kan tilkøbe montering af dit nye blødgøringsanlæg. For at vi kan beregne den bedste pris, beder vi dig uploade billeder af installationsstedet.
+                    Du kan tilkøbe montering af {isSoftener ? 'dit nye blødgøringsanlæg' : 'dit nye filterhus'}. For at vi kan beregne den bedste pris, beder vi dig uploade billeder af installationsstedet.
                   </p>
                   <Link href="/montering" className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] hover:text-[#2e9a3d]">
                     Bestil montering og upload dine billeder her <ArrowRight className="w-3.5 h-3.5" />
@@ -513,8 +517,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </section>
       )}
 
-      {/* ─── STANDARD INSTALLATION (kun blødgøringsanlæg) ─────────── */}
-      {product.category === 'blosgoringsanlaeg' && (
+      {/* ─── STANDARD INSTALLATION (kalkanlæg + showInstallation) ──── */}
+      {showInstall && (
         <section className="py-16 bg-gray-50 border-t border-gray-100">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
@@ -524,12 +528,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <div className="flex items-center gap-2 text-green-300 text-xs font-bold uppercase tracking-widest mb-2">
                   <Wrench className="w-4 h-4" /> Tilkøb
                 </div>
-                <h2 className="text-2xl font-extrabold">Standard installation af kalkanlæg</h2>
+                <h2 className="text-2xl font-extrabold">{isSoftener ? 'Standard installation af kalkanlæg' : 'Standard installation af filterhus'}</h2>
                 <p className="text-white/70 text-[15px] mt-2 max-w-2xl">
-                  Vælg vores standard installation, så sørger vi for en komplet og professionel montering af dit nye anlæg – korrekt installeret og klar til brug fra dag ét.
+                  Vælg vores standard installation, så sørger vi for en komplet og professionel montering{isSoftener ? ' af dit nye anlæg' : ' af dit nye filterhus på rørledningen'} – korrekt installeret og klar til brug fra dag ét.
                 </p>
                 <p className="text-green-300 text-xs font-semibold mt-3">
-                  Monteringen tilbydes kun i kombination med køb af et af vores kalkanlæg.
+                  Monteringen tilbydes kun i kombination med køb af {isSoftener ? 'et af vores kalkanlæg' : 'et filterhus hos os'}.
                 </p>
               </div>
 
@@ -538,15 +542,24 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <div>
                   <h3 className="font-bold text-gray-900 mb-4">Inkluderet i installationen</h3>
                   <ul className="space-y-2.5">
-                    {[
-                      'Indskæring og tilslutning på hovedvandledningen (koldt vand)',
-                      'Montering og opsætning på gulv, hylde eller plan overflade',
-                      'Tilslutning med medfølgende slanger (op til 1 meter)',
-                      'Tilslutning til eksisterende afløb',
-                      'Måling af vandets hårdhed og korrekt indstilling efter lokale forhold',
-                      'Kontrolmåling af vandet før og efter installation',
-                      'Påfyldning af første omgang regenereringssalt',
-                    ].map((item) => (
+                    {(isSoftener
+                      ? [
+                          'Indskæring og tilslutning på hovedvandledningen (koldt vand)',
+                          'Montering og opsætning på gulv, hylde eller plan overflade',
+                          'Tilslutning med medfølgende slanger (op til 1 meter)',
+                          'Tilslutning til eksisterende afløb',
+                          'Måling af vandets hårdhed og korrekt indstilling efter lokale forhold',
+                          'Kontrolmåling af vandet før og efter installation',
+                          'Påfyldning af første omgang regenereringssalt',
+                        ]
+                      : [
+                          'Indskæring og tilslutning af filterhuset på rørledningen (koldt vand)',
+                          'Montering på væg eller plan overflade med god serviceadgang',
+                          'Tilslutning med medfølgende fittings',
+                          'Montering af første filterpatron',
+                          'Trykprøvning og kontrol for tæthed efter installation',
+                        ]
+                    ).map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-700 leading-relaxed">{item}</span>
@@ -559,12 +572,20 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <div>
                   <h3 className="font-bold text-gray-900 mb-4">Forudsætninger</h3>
                   <ul className="space-y-2.5 mb-7">
-                    {[
-                      'Adressen ligger inden for 50 km fra Horsens (ellers kørselstillæg)',
-                      'Plads til anlægget på gulv eller hylde',
-                      'Velfungerende afløb maks. 1 meter fra anlægget',
-                      'Slangerne er 1 meter – længere afstand kræver et længere slangesæt',
-                    ].map((item) => (
+                    {(isSoftener
+                      ? [
+                          'Adressen ligger inden for 50 km fra Horsens (ellers kørselstillæg)',
+                          'Plads til anlægget på gulv eller hylde',
+                          'Velfungerende afløb maks. 1 meter fra anlægget',
+                          'Slangerne er 1 meter – længere afstand kræver et længere slangesæt',
+                        ]
+                      : [
+                          'Adressen ligger inden for 50 km fra Horsens (ellers kørselstillæg)',
+                          'Adgang til rørledningen med plads til filterhuset',
+                          'Mulighed for at lukke for vandet under installationen',
+                          'God serviceadgang til senere patronskift',
+                        ]
+                    ).map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <ChevronRight className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
                         <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
@@ -574,11 +595,18 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
                   <h3 className="font-bold text-gray-900 mb-4">Ekstra tilkøb</h3>
                   <ul className="space-y-2.5">
-                    {[
-                      'Vægbeslag til vægmontering',
-                      '2 meter tilslutningsslangesæt',
-                      'Ekstra kørsel ud over 50 km fra Horsens',
-                    ].map((item) => (
+                    {(isSoftener
+                      ? [
+                          'Vægbeslag til vægmontering',
+                          '2 meter tilslutningsslangesæt',
+                          'Ekstra kørsel ud over 50 km fra Horsens',
+                        ]
+                      : [
+                          'Ekstra filterpatroner',
+                          'Bypass-ventil til nem service',
+                          'Ekstra kørsel ud over 50 km fra Horsens',
+                        ]
+                    ).map((item) => (
                       <li key={item} className="flex items-start gap-3">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#3aad4a] shrink-0 mt-2" />
                         <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
@@ -592,7 +620,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <div className="px-8 pb-8">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-blue-50 rounded-2xl p-5">
                   <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
-                    I tvivl om forholdene hos jer? Vi rådgiver gerne og finder den rette løsning. Kontakt os for pris og book installation sammen med dit anlæg.
+                    I tvivl om forholdene hos jer? Vi rådgiver gerne og finder den rette løsning. Kontakt os for pris og book installation sammen med dit{isSoftener ? ' anlæg' : ' filterhus'}.
                   </p>
                   <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors shrink-0">
                     Kontakt os
