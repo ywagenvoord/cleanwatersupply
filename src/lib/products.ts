@@ -29,6 +29,7 @@ export type Product = {
   images?: string[]        // detail-galleri (flere vinkler) – første vises som hero
   lifestyleImage?: string  // stemningsbillede (fx moderne håndvask) på produktsiden
   lifestyleVideo?: string  // video (fx forsidens hjem-video) på produktsiden
+  installVideo?: string    // monteringsvideo (vises som "Sådan monterer du"-sektion)
   requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
   variants?: { id: string; label: string; sub: string }[] // fx forskellige levetider (2M/3M)
   // Key selling points (shown as icon-bullet in detail hero)
@@ -261,6 +262,7 @@ export const PRODUCTS: Product[] = [
     price: 129, priceErhverv: 129,
     imgSrc:   '/images/coupling-m22.jpg',
     imgLarge:   '/images/coupling-m22.jpg',
+    installVideo: '/videos/coupling-montering.mp4',
     description: 'Hurtigkobling til indvendigt M22-gevind. Værktøjsfri montering af Baclyser®-filtre.',
     longDescription: 'Coupling M22 er hurtigkoblingen der passer indvendige M22 IG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj og er fremstillet i kvalitetsmessing.',
     highlights: ['M22 indvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],
@@ -292,6 +294,7 @@ export const PRODUCTS: Product[] = [
     price: 129, priceErhverv: 129,
     imgSrc:   '/images/coupling-m24.jpg',
     imgLarge:   '/images/coupling-m24.jpg',
+    installVideo: '/videos/coupling-montering.mp4',
     description: 'Hurtigkobling til udvendigt M24-gevind. Værktøjsfri montering af Baclyser®-filtre.',
     longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24 AG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj.',
     highlights: ['M24 udvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],

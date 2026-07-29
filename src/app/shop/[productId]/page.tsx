@@ -389,6 +389,29 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </div>
       </section>
 
+      {/* ─── SÅDAN MONTERER DU (monteringsvideo) ──────────────────── */}
+      {product.installVideo && (
+        <section className="py-12 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">Video</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan monterer du den</h2>
+              <p className="text-gray-500 mt-2">Se hvor nemt koblingen sættes på – helt uden værktøj.</p>
+            </div>
+            <div className="rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 bg-black">
+              <video
+                src={product.installVideo}
+                controls
+                playsInline
+                preload="metadata"
+                aria-label="Monteringsvideo"
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── HUSK KOBLING (nødvendigt tilbehør) ───────────────────── */}
       {product.requiresCoupling && (() => {
         const couplings = ['coupling-m22', 'coupling-m24']
