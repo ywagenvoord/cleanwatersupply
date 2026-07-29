@@ -4,7 +4,7 @@ import { SITE_URL } from '@/lib/site'
 
 
 export const metadata: Metadata = {
-  title: { absolute: 'Clean Water Supply | Vandhygiejne & Legionella-filtre i Danmark' },
+  title: { absolute: 'Clean Water Supply - En sikker løsning til bakteriefrit vand' },
   description:
     'Medicinsk certificerede Legionella-filtre, blødgøringsanlæg og ECA-vand til hospitaler, hoteller og private hjem. ECHA Article 95 godkendt – 7 log retention.',
   alternates: { canonical: SITE_URL },
