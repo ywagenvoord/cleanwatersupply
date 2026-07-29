@@ -325,6 +325,60 @@ export default function PrivateClient() {
         </div>
       </section>
 
+      {/* ─── AUTORISERET VVS-INSTALLATØR ───────────────────────── */}
+      <section className="py-16 lg:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            {/* Billede */}
+            <div className="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5">
+              <img
+                src="/images/autoriseret-vvs.jpg"
+                alt={da ? 'Autoriseret VVS-installatør fra Clean Water Supply' : 'Certified plumber from Clean Water Supply'}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Tekst */}
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 ring-1 ring-blue-100 px-4 py-1.5 mb-5">
+                <ShieldCheck className="w-4 h-4 text-[#284eff]" />
+                <span className="text-[11px] font-bold text-[#284eff] uppercase tracking-widest">
+                  {da ? 'Autoriseret VVS-installatør' : 'Certified plumber'}
+                </span>
+              </span>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] leading-tight mb-4">
+                {da ? 'Professionel og sikker installation' : 'Professional and safe installation'}
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                {da
+                  ? 'Vi installerer ikke bare – vi gør det ordentligt. Clean Water Supply er autoriseret VVS-installatør, så din nye vandløsning bliver monteret professionelt, sikkert og efter alle gældende regler. Du er i trygge hænder hele vejen – fra bestilling til færdig, kontrolleret installation.'
+                  : 'We don’t just install – we do it right. Clean Water Supply is a certified plumbing installer, so your new water solution is fitted professionally, safely and to all applicable standards. You’re in safe hands from order to finished, tested installation.'}
+              </p>
+              <ul className="space-y-3">
+                {[
+                  da ? 'Autoriseret VVS-installatør – lovligt og korrekt udført' : 'Certified plumber – legal and correct',
+                  da ? 'Sikker montering, trykprøvet og klar til brug fra dag ét' : 'Safe, pressure-tested installation, ready from day one',
+                  da ? 'Tryghed hele vejen – vi rådgiver og står bag arbejdet' : 'Peace of mind throughout – we advise and stand behind our work',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 w-6 h-6 rounded-full bg-[#3aad4a] flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-3.5 h-3.5 text-white" />
+                    </span>
+                    <span className="text-[15px] text-gray-700 leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/montering"
+                className="inline-flex items-center gap-2 mt-8 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-7 py-3.5 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+              >
+                {da ? 'Bestil montering' : 'Book installation'}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── CTA ───────────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
