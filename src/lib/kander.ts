@@ -19,6 +19,7 @@ export type Kande = {
   eco?: string
   steps?: string[]
   lifestyle?: string[]
+  gallery?: string[]
 }
 
 export const KANDER: Kande[] = [
@@ -177,6 +178,12 @@ export const KANDER: Kande[] = [
       'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
     lifestyle: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg'],
+    gallery: [
+      '/images/glassmart-bottle.jpg',
+      '/images/glassmart-filter-pack.jpg',
+      '/images/glassmart-box-front.jpg',
+      '/images/glassmart-box-back.jpg',
+    ],
   },
 ]
 

@@ -58,7 +58,15 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Billede + tilkøbsfilter */}
             <div className="flex flex-col gap-4">
-              <KandeGallery images={[k.img, ...(k.lifestyle ?? [])]} alt={k.name} highlight={k.highlight} />
+              <KandeGallery
+                items={[
+                  { src: k.img },
+                  ...(k.lifestyle ?? []).map((src) => ({ src, cover: true })),
+                  ...(k.gallery ?? []).map((src) => ({ src })),
+                ]}
+                alt={k.name}
+                highlight={k.highlight}
+              />
 
               {/* Tilkøb: matchende filter – lige under produktbilledet */}
               {k.addon && (

@@ -2,22 +2,22 @@
 
 import { useState } from 'react'
 
+type Item = { src: string; cover?: boolean }
+
 export default function KandeGallery({
-  images,
+  items,
   alt,
   highlight,
 }: {
-  images: string[]
+  items: Item[]
   alt: string
   highlight?: string
 }) {
-  const imgs = images.filter(Boolean)
+  const imgs = items.filter((it) => it.src)
   const [active, setActive] = useState(0)
   if (imgs.length === 0) return null
   const idx = Math.min(active, imgs.length - 1)
   const current = imgs[idx]
-  // Billede 0 = produktet (vises helt); øvrige = livsstilsfotos (fylder rammen).
-  const isProduct = idx === 0
 
   return (
     <div>
@@ -28,21 +28,21 @@ export default function KandeGallery({
             {highlight}
           </span>
         )}
-        {isProduct ? (
-          <div className="w-full h-full flex items-center justify-center p-8">
-            <img src={current} alt={alt} className="max-h-full max-w-full object-contain drop-shadow-2xl" />
-          </div>
+        {current.cover ? (
+          <img src={current.src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
         ) : (
-          <img src={current} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
+          <div className="w-full h-full flex items-center justify-center p-8">
+            <img src={current.src} alt={alt} className="max-h-full max-w-full object-contain drop-shadow-2xl" />
+          </div>
         )}
       </div>
 
       {/* Miniaturer */}
       {imgs.length > 1 && (
         <div className="mt-3.5 grid grid-cols-4 gap-3">
-          {imgs.map((src, i) => (
+          {imgs.map((it, i) => (
             <button
-              key={src}
+              key={it.src}
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Vis billede ${i + 1}`}
@@ -51,9 +51,9 @@ export default function KandeGallery({
               }`}
             >
               <img
-                src={src}
+                src={it.src}
                 alt=""
-                className={i === 0 ? 'max-h-full max-w-full object-contain p-1.5' : 'w-full h-full object-cover'}
+                className={it.cover ? 'w-full h-full object-cover' : 'max-h-full max-w-full object-contain p-1.5'}
               />
             </button>
           ))}
