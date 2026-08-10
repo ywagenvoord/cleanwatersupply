@@ -7,6 +7,7 @@ import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
 import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
+import FilterAddToCart from './FilterAddToCart'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
@@ -433,20 +434,21 @@ export default async function ProductDetailPage({ params }: { params: { productI
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {filters.map((f) => (
-                  <Link
+                  <div
                     key={f.id}
-                    href={`/shop/${f.id}`}
-                    className="group flex flex-col rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden"
+                    className="group flex flex-col rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-xl transition-all overflow-hidden"
                   >
-                    <div className="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-50">
+                    <Link href={`/shop/${f.id}`} className="block h-56 bg-white flex items-center justify-center p-6 border-b border-gray-50">
                       {f.imgSrc ? (
                         <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
                       ) : (
                         <Filter className="w-12 h-12 text-gray-200" />
                       )}
-                    </div>
+                    </Link>
                     <div className="flex flex-col flex-1 p-6">
-                      <h3 className="text-base font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
+                      <Link href={`/shop/${f.id}`} className="hover:text-[#284eff] transition-colors">
+                        <h3 className="text-base font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
+                      </Link>
                       <p className="text-sm text-gray-500 mt-1">{f.tagline}</p>
                       {f.removes && (
                         <p className="text-sm text-[#2e9a3d] mt-3 leading-snug flex items-start gap-1.5 flex-1">
@@ -454,16 +456,19 @@ export default async function ProductDetailPage({ params }: { params: { productI
                           <span>{f.removes}</span>
                         </p>
                       )}
-                      <div className="flex items-center justify-between mt-5 pt-4 border-t border-gray-100">
-                        {f.price !== undefined && (
-                          <span className="text-lg font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
-                        )}
-                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] group-hover:gap-2.5 transition-all">
-                          Se filter <ArrowRight className="w-4 h-4" />
-                        </span>
+                      <div className="mt-5 pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-between mb-3">
+                          {f.price !== undefined && (
+                            <span className="text-lg font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
+                          )}
+                          <Link href={`/shop/${f.id}`} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] hover:gap-2.5 transition-all">
+                            Se filter <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
+                        <FilterAddToCart id={f.id} name={f.name} price={f.price} image={f.imgSrc} />
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </div>
