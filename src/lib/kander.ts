@@ -177,9 +177,8 @@ export const KANDER: Kande[] = [
       'Stil karaflen i køleskabet – så har du altid koldt, filtreret vand klar',
       'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
-    lifestyle: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg'],
+    lifestyle: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg', '/images/glassmart-life-3.jpg'],
     gallery: [
-      '/images/glassmart-bottle.jpg',
       '/images/glassmart-filter-pack.jpg',
       '/images/glassmart-box-front.jpg',
       '/images/glassmart-box-back.jpg',
