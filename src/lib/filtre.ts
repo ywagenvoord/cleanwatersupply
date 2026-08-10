@@ -10,6 +10,7 @@ export type Filter = {
   images?: string[]
   price?: number
   varenr?: string
+  pack?: string
   tagline: string
   best: string
   life: string
@@ -23,6 +24,7 @@ export type Filter = {
 export const FILTRE: Filter[] = [
   {
     slug: 'bi-flux-universal',
+    pack: '2 stk. i pakken',
     price: 89,
     varenr: 'LAI-1006',
     name: 'Bi-flux® Universal',
@@ -52,6 +54,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-limescalestop',
+    pack: '2 stk. i pakken',
     price: 99,
     varenr: 'LAI-1005',
     name: 'Bi-flux® LimescaleSTOP',
@@ -82,6 +85,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-healthexpert',
+    pack: '2 stk. i pakken',
     price: 109,
     varenr: 'LAI-1004',
     name: 'Bi-flux® HealthExpert',
@@ -113,6 +117,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'fast-disk',
+    pack: '3 stk. i pakken',
     price: 89,
     varenr: 'LAI-1003',
     name: 'FAST DISK™',

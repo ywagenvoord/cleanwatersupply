@@ -67,6 +67,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                 <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
                   <span className="text-3xl font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
                   <span className="text-sm text-gray-400">inkl. moms</span>
+                  {f.pack && <span className="text-sm font-bold text-[#2e9a3d]">· {f.pack}</span>}
                   {f.varenr && <span className="text-xs text-gray-400">· Varenr. {f.varenr}</span>}
                 </div>
               )}
