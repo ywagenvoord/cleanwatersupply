@@ -476,6 +476,61 @@ export default async function ProductDetailPage({ params }: { params: { productI
         )
       })()}
 
+      {/* ─── KANDER DER PASSER TIL FILTERET ──────────────────────── */}
+      {product.compatibleJugs && product.compatibleJugs.length > 0 && (() => {
+        const jugs = product.compatibleJugs
+          .map((id) => getProduct(id))
+          .filter((j): j is Product => !!j)
+        if (jugs.length === 0) return null
+        return (
+          <section className="py-14 bg-white border-b border-blue-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-1.5">
+                <GlassWater className="w-4 h-4 text-[#284eff]" />
+                <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Passer til</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Kander der passer til dette filter</h2>
+              <p className="text-gray-500 mb-8 max-w-2xl">
+                Bi-flux®-filteret passer i disse Laica-filterkander – og i de fleste Brita®-kander.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {jugs.map((j) => (
+                  <div
+                    key={j.id}
+                    className="group flex flex-col sm:flex-row rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-xl transition-all overflow-hidden"
+                  >
+                    <Link href={`/shop/${j.id}`} className="sm:w-2/5 h-56 sm:h-auto bg-white flex items-center justify-center p-5 border-b sm:border-b-0 sm:border-r border-gray-50">
+                      {j.imgSrc ? (
+                        <img src={j.imgSrc} alt={j.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                      ) : (
+                        <GlassWater className="w-12 h-12 text-gray-200" />
+                      )}
+                    </Link>
+                    <div className="flex flex-col flex-1 p-6">
+                      <Link href={`/shop/${j.id}`} className="hover:text-[#284eff] transition-colors">
+                        <h3 className="text-base font-extrabold text-[#0a2540] leading-tight">{j.name}</h3>
+                      </Link>
+                      <p className="text-sm text-gray-500 mt-1 flex-1">{j.tagline}</p>
+                      <div className="mt-4 pt-4 border-t border-gray-100">
+                        <div className="flex items-center justify-between mb-3">
+                          {j.price !== undefined && (
+                            <span className="text-lg font-extrabold text-[#0a2540]">{j.price.toLocaleString('da-DK')} kr</span>
+                          )}
+                          <Link href={`/shop/${j.id}`} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] hover:gap-2.5 transition-all">
+                            Se kande <ArrowRight className="w-4 h-4" />
+                          </Link>
+                        </div>
+                        <FilterAddToCart id={j.id} name={j.name} price={j.price} image={j.imgSrc} />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
+
       {/* ─── SÅDAN MONTERER DU (monteringsvideo) ──────────────────── */}
       {product.installVideo && (
         <section className="py-12 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">

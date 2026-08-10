@@ -34,6 +34,7 @@ export type Product = {
   installNote?: string     // monteringsvejledning (vises som "Montering"-afsnit)
   showInstallation?: boolean // vis "Standard installation"-sektionen (samme montering som kalkanlæg)
   compatibleFilters?: string[] // produkt-ids på filtre/patroner der passer i produktet
+  compatibleJugs?: string[]    // produkt-ids på kander/karafler som dette filter passer i
   alsoBought?: string[]        // kuraterede "Andre købte også"-produkt-ids (ellers auto-relaterede)
   requiresCoupling?: boolean // filteret kræver en kobling (M22/M24) for at kunne monteres
   variants?: { id: string; label: string; sub: string }[] // fx forskellige levetider (2M/3M)
@@ -761,6 +762,48 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    id: 'kande-mikroplastik',
+    productNr: 'UFSBE02',
+    name: 'MikroPLASTIK-STOP™ filterkande',
+    tagline: 'Kande med dobbelt filter, der stopper mikroplast · 3 liter',
+    category: 'vandkande',
+    price: 349,
+    imgSrc:   '/images/kande-mikroplastik-hvid.jpg',
+    imgLarge: '/images/kande-mikroplastik-hvid.jpg',
+    badge: 'Fjerner 99,99 % mikroplast',
+    description: 'MikroPLASTIK-STOP™ er den første filterkande med et dobbelt filtersystem, der stopper mikroplast. Bi-flux®-filteret reducerer klor, kalk og tungmetaller, mens MikroPLASTIK-STOP™-filteret fjerner mere end 99,99 % af mikroplasten – uden at fjerne de nyttige mineraler.',
+    longDescription: 'MikroPLASTIK-STOP™ er den første vandkande med et modulært dobbelt-filtersystem, der er skabt til at blokere mikroplast.\n\nBi-flux®-filteret reducerer klor, kalk, tungmetaller og andre uønskede stoffer, mens MikroPLASTIK-STOP™-filteret fjerner de mikroskopiske plastpartikler – og bevarer samtidig de mineralsalte, kroppen har brug for. Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland.\n\nKanden rummer 3 liter (2 liter filtreret), har et praktisk “flow ’n go” hæld-gennem-låg med støvbeskyttelse og er lavet af fødevaregodkendte materialer med 100 % genanvendelig emballage.',
+    highlights: ['Fjerner >99,99 % mikroplast', 'Dobbelt filtersystem: Bi-flux® + MikroPLASTIK-STOP™', 'Bevarer nyttige mineraler'],
+    features: [
+      'Dobbelt filtersystem: Bi-flux® + MikroPLASTIK-STOP™',
+      'Fjerner >99,99 % af mikroplast (≥ 1 µm) – testet af uafhængige labs',
+      'Reducerer også klor, kalk og tungmetaller',
+      'Bevarer de nyttige mineralsalte i vandet',
+      '“Flow ’n go” hæld-gennem-låg med støvbeskyttelse',
+      '3 liter total / 2 liter filtreret · fødevaregodkendte materialer',
+      'Leveres med 1 filter · produceret i EU',
+    ],
+    specs: [
+      { label: 'Total kapacitet',     value: '3 liter' },
+      { label: 'Filtreret kapacitet', value: '2 liter' },
+      { label: 'Filtrering',          value: 'Bi-flux® + MikroPLASTIK-STOP™' },
+      { label: 'Mikroplast-reduktion', value: 'Over 99,99 %' },
+      { label: 'Farve',               value: 'Hvid' },
+      { label: 'Indhold',             value: 'Kande + 1 filter + manual' },
+      { label: 'Varenr.',             value: 'UFSBE02' },
+      { label: 'Oprindelse',          value: 'Produceret i EU' },
+    ],
+    faqs: [
+      { q: 'Hvad fjerner kanden?', a: 'Det dobbelte filtersystem reducerer klor, kalk og tungmetaller og fjerner over 99,99 % af mikroplasten – uden at fjerne de nyttige mineraler.' },
+      { q: 'Hvor tit skal filteret skiftes?', a: 'Skift filteret løbende (typisk ca. hver måned ved normalt forbrug) for at bevare den bedste effekt og smag.' },
+      { q: 'Kan jeg bruge andre bi-flux®-filtre?', a: 'Ja. Kanden bruger en bi-flux®-patron, så du kan også vælge fx Universal, LimescaleSTOP eller HealthExpert efter behov.' },
+    ],
+    useCases: ['Private hjem', 'Børnefamilier', 'Kontorer'],
+    compatibleFilters: ['filter-biflux-universal', 'filter-biflux-limescale', 'filter-biflux-healthexpert'],
+    alsoBought: ['kande-carmen', 'filter-biflux-universal'],
+  },
+
+  {
     id: 'filter-biflux-universal',
     productNr: 'F0M',
     name: 'Bi-flux® Universal – filter til vandkande',
@@ -794,6 +837,7 @@ export const PRODUCTS: Product[] = [
       { q: 'Hvor tit skal det skiftes?', a: 'Ét filter rækker til ca. 150 liter – typisk omkring én måned ved normalt forbrug.' },
     ],
     useCases: ['Private hjem', 'Kontorer', 'Børnefamilier'],
+    compatibleJugs: ['kande-carmen', 'kande-mikroplastik'],
     alsoBought: ['kande-carmen', 'filter-biflux-limescale'],
   },
 
@@ -831,6 +875,7 @@ export const PRODUCTS: Product[] = [
       { q: 'Passer det i Brita®-kander?', a: 'Ja, det passer også til Brita®-kander – en LAICA-Key til Brita medfølger.' },
     ],
     useCases: ['Hårdt vand-områder', 'Private hjem', 'Kontorer'],
+    compatibleJugs: ['kande-carmen', 'kande-mikroplastik'],
     alsoBought: ['kande-carmen', 'filter-biflux-universal'],
   },
 
@@ -876,6 +921,7 @@ export const PRODUCTS: Product[] = [
       { q: 'Er filteret medicinsk udstyr?', a: 'Nej. Bi-flux® HealthExpert er et vandfilter til husholdningsbrug og er ikke medicinsk udstyr.' },
     ],
     useCases: ['Maksimal beskyttelse', 'Private hjem', 'Børnefamilier'],
+    compatibleJugs: ['kande-carmen', 'kande-mikroplastik'],
     alsoBought: ['kande-carmen', 'filter-biflux-universal'],
   },
 
