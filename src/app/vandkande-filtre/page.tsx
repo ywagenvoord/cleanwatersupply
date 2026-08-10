@@ -69,7 +69,7 @@ const FILTERS: FilterType[] = [
   {
     name: 'FAST DISK™',
     art: 'Til GlaSSmart-flasken',
-    img: 'https://www.laica.com/wp-content/uploads/icon_fatdisk.jpg',
+    img: '/images/fast-disk.jpg',
     tagline: 'Instant-filtrering til flasken.',
     best: 'Bedst til: on-the-go / GlaSSmart-flasken',
     life: 'Skivefilter til instant-filtrering',
@@ -111,7 +111,7 @@ export default function VandkandeFiltrePage() {
               className="rounded-3xl border border-gray-100 shadow-sm bg-white overflow-hidden flex flex-col"
             >
               {/* Billede */}
-              <div className="h-44 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-6">
+              <div className="h-60 bg-white flex items-center justify-center p-4">
                 <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain" />
               </div>
 
