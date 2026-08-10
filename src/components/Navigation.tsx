@@ -39,6 +39,7 @@ export default function Navigation() {
     { href: '/loesninger/brusefilter', label: 'Bruser' },
     { href: '/loesninger/filtre-i-vandforsyningen', label: 'Vandforsyningen' },
     { href: '/loesninger/kalkanlaeg', label: 'Kalkanlæg' },
+    { href: '/vandkander', label: 'Vandkaraffel' },
   ]
 
   const omraaderChildren = [
