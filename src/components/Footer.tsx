@@ -141,6 +141,7 @@ export default function Footer() {
                 { name: 'JVT', url: 'https://www.jvt.dk' },
                 { name: 'Aqua Free', url: 'https://www.aqua-free.com' },
                 { name: 'Kirkmayer', url: 'https://www.kirkmayer.com' },
+                { name: 'Laica', url: 'https://www.laica.com' },
               ].map((p) => (
                 <li key={p.name}>
                   <a href={p.url} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-white transition-colors flex items-center gap-1.5 group">
