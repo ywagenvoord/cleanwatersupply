@@ -718,7 +718,7 @@ export const PRODUCTS: Product[] = [
     name: 'Carmen Slim filterkande',
     tagline: 'Slank Laica-filterkande med Bi-flux® – rent vand med god smag hver dag',
     category: 'vandkande',
-    price: 189,
+    price: 225,
     priceNote: 'Stop med at slæbe flaskevand hjem: ét filter (følger med) giver ca. 150 liter rent vand – svarende til omkring 300 halvlitersflasker. Fast pris, ingen abonnement.',
     imgSrc:   '/images/kande-carmen-1.jpg',
     imgLarge: '/images/kande-carmen-1.jpg',
