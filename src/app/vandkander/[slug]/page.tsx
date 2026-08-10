@@ -55,7 +55,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Billede + tilkøbsfilter */}
             <div className="flex flex-col gap-4">
               <KandeGallery images={[k.img, ...(k.lifestyle ?? [])]} alt={k.name} highlight={k.highlight} />
