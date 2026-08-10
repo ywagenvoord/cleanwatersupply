@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { ArrowRight, Check, ChevronRight, Filter, BadgeCheck, Truck, Droplets } from 'lucide-react'
 import { FILTRE, getFilter } from '@/lib/filtre'
 import { SITE_URL } from '@/lib/site'
+import ProductGallery from '@/components/ProductGallery'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -40,9 +41,8 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Billede */}
-            <div className="rounded-[2rem] bg-gray-50 ring-1 ring-gray-100 shadow-[0_24px_70px_-24px_rgba(10,37,64,0.2)] flex items-center justify-center p-10 h-[400px] md:h-[500px]">
-              <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain drop-shadow-2xl" />
-            </div>
+            <ProductGallery items={(f.images ?? [f.img]).map((src) => ({ src }))} alt={f.name} />
+
 
             {/* Tekst */}
             <div>

@@ -7,6 +7,7 @@ export type Filter = {
   name: string
   art: string
   img: string
+  images?: string[]
   tagline: string
   best: string
   life: string
@@ -107,6 +108,7 @@ export const FILTRE: Filter[] = [
     name: 'FAST DISK™',
     art: 'Til GlaSSmart-karaflen',
     img: '/images/fast-disk.jpg',
+    images: ['/images/fast-disk.jpg', '/images/fast-disk-pack.jpg'],
     glassmart: true,
     tagline: 'Instant-filtrering til GlaSSmart-karaflen.',
     best: 'Bedst til: GlaSSmart-glaskaraflen i køleskabet',

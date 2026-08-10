@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
-import KandeGallery from './KandeGallery'
+import ProductGallery from '@/components/ProductGallery'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -58,7 +58,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Billede + tilkøbsfilter */}
             <div className="flex flex-col gap-4">
-              <KandeGallery
+              <ProductGallery
                 items={[
                   { src: k.img },
                   ...(k.lifestyle ?? []).map((src) => ({ src, cover: true })),

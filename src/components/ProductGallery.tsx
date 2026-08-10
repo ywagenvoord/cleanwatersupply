@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 type Item = { src: string; cover?: boolean }
 
-export default function KandeGallery({
+export default function ProductGallery({
   items,
   alt,
   highlight,
