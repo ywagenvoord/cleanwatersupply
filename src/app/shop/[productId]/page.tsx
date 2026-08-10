@@ -296,9 +296,9 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   <div className="mt-6 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white p-6">
                     <div className="flex items-center gap-2 mb-1">
                       <Filter className="w-4 h-4 text-[#284eff]" />
-                      <h2 className="text-lg font-extrabold text-[#0a2540]">Filtre der passer i huset</h2>
+                      <h2 className="text-lg font-extrabold text-[#0a2540]">{product.category === 'vandkande' ? 'Tilkøb: filtre der passer til kanden' : 'Filtre der passer i huset'}</h2>
                     </div>
-                    <p className="text-sm text-gray-500 mb-4">Vælg den filterpatron, der passer til dit behov – alle passer i dette filterhus.</p>
+                    <p className="text-sm text-gray-500 mb-4">Vælg den filterpatron, der passer til dit behov – alle passer i {product.category === 'vandkande' ? 'denne kande' : 'dette filterhus'}.</p>
                     <div className="space-y-3">
                       {filters.map((f) => (
                         <Link
