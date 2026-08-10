@@ -84,6 +84,14 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </p>
               )}
 
+              {k.price != null && (
+                <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
+                  <span className="text-3xl font-extrabold text-[#0a2540]">{k.price.toLocaleString('da-DK')} kr</span>
+                  <span className="text-sm text-gray-400">inkl. moms</span>
+                  {k.varenr && <span className="text-xs text-gray-400">· Varenr. {k.varenr}</span>}
+                </div>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Link
                   href="/shop"

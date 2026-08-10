@@ -63,6 +63,14 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                 <span className="rounded-full bg-gray-100 text-gray-600 text-[11px] font-bold px-3 py-1.5 uppercase tracking-wide">{f.best.replace('Bedst til: ', '')}</span>
               </div>
 
+              {f.price != null && (
+                <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
+                  <span className="text-3xl font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
+                  <span className="text-sm text-gray-400">inkl. moms</span>
+                  {f.varenr && <span className="text-xs text-gray-400">· Varenr. {f.varenr}</span>}
+                </div>
+              )}
+
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Link
                   href="/shop"

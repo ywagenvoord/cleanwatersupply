@@ -8,6 +8,8 @@ export type Filter = {
   art: string
   img: string
   images?: string[]
+  price?: number
+  varenr?: string
   tagline: string
   best: string
   life: string
@@ -21,6 +23,8 @@ export type Filter = {
 export const FILTRE: Filter[] = [
   {
     slug: 'bi-flux-universal',
+    price: 89,
+    varenr: 'LAI-1006',
     name: 'Bi-flux® Universal',
     art: 'Art. F0M',
     img: '/images/product-filter-udskift.jpg',
@@ -48,6 +52,8 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-limescalestop',
+    price: 99,
+    varenr: 'LAI-1005',
     name: 'Bi-flux® LimescaleSTOP',
     art: 'Art. H0L',
     img: 'https://www.laica.com/wp-content/uploads/limescalestop-filter.webp',
@@ -76,6 +82,8 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-healthexpert',
+    price: 109,
+    varenr: 'LAI-1004',
     name: 'Bi-flux® HealthExpert',
     art: 'Art. P3M',
     img: 'https://www.laica.com/wp-content/uploads/healthexpert-prod.webp',
@@ -105,6 +113,8 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'fast-disk',
+    price: 89,
+    varenr: 'LAI-1003',
     name: 'FAST DISK™',
     art: 'Til GlaSSmart-karaflen',
     img: '/images/fast-disk.jpg',

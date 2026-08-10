@@ -8,6 +8,8 @@ export type Kande = {
   art: string
   img: string
   tagline: string
+  price?: number
+  varenr?: string
   capacity?: string
   highlight?: string
   intro: string
@@ -26,6 +28,8 @@ export type Kande = {
 export const KANDER: Kande[] = [
   {
     slug: 'carmen',
+    price: 189,
+    varenr: 'LAI-1007',
     name: 'Vandkande med filter Carmen',
     art: 'Art. J35-DA',
     img: '/images/kande-carmen-t.png',
@@ -77,6 +81,8 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'mikroplastik-stop',
+    price: 349,
+    varenr: 'LAI-1001',
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
     img: '/images/kande-mikroplastik-t.png',
@@ -130,6 +136,8 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'glassmart',
+    price: 199,
+    varenr: 'LAI-1002',
     name: 'GlaSSmart™ glas-filterkaraffel',
     art: 'FAST DISK™',
     img: '/images/glassmart-flaske-t.png',
