@@ -239,7 +239,6 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {k.eco && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
           <div className="relative overflow-hidden rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <div className="pointer-events-none absolute -bottom-16 -right-10 w-56 h-56 rounded-full bg-[#3aad4a]/10 blur-3xl" />
             <span className="relative w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shadow-lg shadow-green-500/25">
               <Leaf className="w-8 h-8 text-white" strokeWidth={2} />
             </span>
@@ -247,6 +246,28 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <h2 className="text-xl font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
               <p className="text-gray-600 text-sm md:text-base mt-1.5 leading-relaxed max-w-xl">{k.eco}</p>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── LIFESTYLE / I BRUG ────────────────────────────── */}
+      {k.lifestyle && k.lifestyle.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <div className="text-center mb-8">
+            <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">I hverdagen</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Se den i brug</h2>
+          </div>
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+            {k.lifestyle.map((src, i) => (
+              <div key={src} className="overflow-hidden rounded-3xl ring-1 ring-gray-200 shadow-sm">
+                <img
+                  src={src}
+                  alt={`${k.name} – i brug ${i + 1}`}
+                  className="w-full aspect-[3/2] object-cover"
+                  loading="lazy"
+                />
+              </div>
+            ))}
           </div>
         </section>
       )}
