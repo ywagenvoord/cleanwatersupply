@@ -134,7 +134,7 @@ export const KANDER: Kande[] = [
     art: 'FAST DISK™',
     img: '/images/glassmart-flaske-t.png',
     tagline: 'Altid koldt, filtreret vand – klar i køleskabet.',
-    capacity: 'Slank – passer i køleskabsdøren',
+    capacity: 'Passer i de fleste køleskabe',
     intro:
       'GlaSSmart™ forener elegant design med FAST DISK™ instant-filtrering. Aktivt kul-teknologien filtrerer ' +
       'vandet i det øjeblik, du hælder – forbedrer smagen og reducerer klor, mens de nyttige mineralsalte ' +
@@ -143,7 +143,8 @@ export const KANDER: Kande[] = [
       '100 % genanvendeligt og tåler opvaskemaskine.',
     points: [
       'Altid koldt, filtreret vand – klar i køleskabet',
-      'Slankt design – passer i de fleste køleskabsdøre',
+      'Passer i de fleste køleskabe – kan både stå op og ligge ned',
+      'Kan ligge ned uden at lække, når blot låget er lukket korrekt',
       'FAST DISK™ instant-filtrering med aktivt kul',
       'Forbedrer smagen og reducerer klor · bevarer mineralsalte',
       'Glas · tåler opvaskemaskine · 100 % genanvendeligt',
@@ -164,7 +165,7 @@ export const KANDER: Kande[] = [
       blurb: 'De matchende skivefiltre til GlaSSmart-karaflen – filtrerer, mens du hælder.',
     },
     highlights: [
-      { icon: 'droplet', title: 'Altid koldt vand', text: 'Den slanke karaffel passer i køleskabet, så du altid har koldt, filtreret vand klar.' },
+      { icon: 'droplet', title: 'Passer i køleskabet', text: 'Passer i de fleste køleskabe og kan både stå op og ligge ned – luk blot låget korrekt, så den er tæt. Altid koldt, filtreret vand klar.' },
       { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder.' },
       { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Forbedrer smagen og reducerer klor – uden at fjerne de nyttige mineraler.' },
       { icon: 'glass', title: 'Glas · tåler opvask', text: 'Glasset bevarer vandets naturlige karakter, tåler opvaskemaskine og er 100 % genanvendeligt.' },
