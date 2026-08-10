@@ -595,7 +595,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Om produktet</span>
             <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1 mb-5">Det skal du vide</h2>
-            <p className="text-gray-600 leading-relaxed text-[15px]">{product.longDescription}</p>
+            <p className="text-gray-600 leading-relaxed text-[15px] whitespace-pre-line">{product.longDescription}</p>
           </div>
         </section>
       )}
