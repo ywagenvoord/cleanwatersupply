@@ -69,17 +69,17 @@ const FILTERS: FilterType[] = [
   },
   {
     name: 'FAST DISK™',
-    art: 'Til GlaSSmart-flasken',
+    art: 'Til GlaSSmart-karaflen',
     img: '/images/fast-disk.jpg',
     glassmart: true,
-    tagline: 'Instant-filtrering til flasken.',
-    best: 'Bedst til: on-the-go / GlaSSmart-flasken',
+    tagline: 'Instant-filtrering til GlaSSmart-karaflen.',
+    best: 'Bedst til: GlaSSmart-glaskaraflen i køleskabet',
     life: 'Skivefilter til instant-filtrering',
     points: [
-      'Filtrerer øjeblikkeligt, mens du drikker/hælder',
+      'Filtrerer øjeblikkeligt, mens du hælder',
       'Aktivt kul-mikrofilament – forbedrer smagen og reducerer klor',
       'Bevarer mineralsalte',
-      'Reducerer plastflaske-forbrug med ca. 99 %',
+      'Altid koldt, filtreret vand klar i køleskabet',
     ],
   },
 ]

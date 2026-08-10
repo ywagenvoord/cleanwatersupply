@@ -127,52 +127,53 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'glassmart',
-    name: 'GlaSSmart™ glas-filterflaske',
+    name: 'GlaSSmart™ glas-filterkaraffel',
     art: 'FAST DISK™',
     img: '/images/glassmart-flaske-t.png',
-    tagline: 'Filtrerer vandet med det samme – med dig på farten.',
-    capacity: 'Glasflaske til on-the-go',
+    tagline: 'Altid koldt, filtreret vand – klar i køleskabet.',
+    capacity: 'Slank – passer i køleskabsdøren',
     intro:
       'GlaSSmart™ forener elegant design med FAST DISK™ instant-filtrering. Aktivt kul-teknologien filtrerer ' +
-      'vandet i det øjeblik, du hælder eller drikker – forbedrer smagen og reducerer klor, mens de nyttige ' +
-      'mineralsalte bevares. Glaskroppen bevarer vandets naturlige karakter, er 100 % genanvendelig og tåler ' +
-      'opvaskemaskine. Et bæredygtigt alternativ til engangsplastflasker.',
+      'vandet i det øjeblik, du hælder – forbedrer smagen og reducerer klor, mens de nyttige mineralsalte ' +
+      'bevares. Den slanke glaskaraffel er skabt til at stå i køleskabet og passer i de fleste køleskabsdøre, ' +
+      'så du altid har koldt, filtreret vand lige ved hånden. Glasset bevarer vandets naturlige karakter, er ' +
+      '100 % genanvendeligt og tåler opvaskemaskine.',
     points: [
+      'Altid koldt, filtreret vand – klar i køleskabet',
+      'Slankt design – passer i de fleste køleskabsdøre',
       'FAST DISK™ instant-filtrering med aktivt kul',
-      'Forbedrer smagen og reducerer klor',
-      'Bevarer mineralsalte',
-      'Glas bevarer vandets naturlige karakter · tåler opvaskemaskine',
-      'Reducerer plastflaske-forbrug med ca. 99 %',
+      'Forbedrer smagen og reducerer klor · bevarer mineralsalte',
+      'Glas · tåler opvaskemaskine · 100 % genanvendeligt',
     ],
     specs: [
-      { label: 'Type', value: 'Glas-filterflaske' },
+      { label: 'Type', value: 'Glas-filterkaraffel' },
       { label: 'Filtrering', value: 'FAST DISK™ (aktivt kul)' },
       { label: 'Materiale', value: 'Glas · 100 % genanvendelig' },
-      { label: 'Opvaskemaskine', value: 'Ja (selve flasken)' },
-      { label: 'Made in', value: 'Italien' },
+      { label: 'Opvaskemaskine', value: 'Ja (selve karaflen)' },
+      { label: 'Made in', value: 'EU' },
     ],
     filter: 'FAST DISK™-skivefilter',
     addon: {
       name: 'FAST DISK™-skivefilter',
-      art: 'Til GlaSSmart-flasken',
-      img: 'https://www.laica.com/wp-content/uploads/icon_fatdisk.jpg',
+      art: 'Til GlaSSmart-karaflen',
+      img: '/images/fast-disk.jpg',
       life: 'Instant-filtrering med aktivt kul',
-      blurb: 'Det matchende skivefilter til GlaSSmart-flasken – filtrerer, mens du drikker.',
+      blurb: 'Det matchende skivefilter til GlaSSmart-karaflen – filtrerer, mens du hælder.',
     },
     highlights: [
-      { icon: 'glass', title: 'Glasflaske', text: 'Glasset bevarer vandets naturlige karakter – 100 % genanvendeligt.' },
-      { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder eller drikker.' },
+      { icon: 'droplet', title: 'Altid koldt vand', text: 'Den slanke karaffel passer i køleskabet, så du altid har koldt, filtreret vand klar.' },
+      { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder.' },
       { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Forbedrer smagen og reducerer klor – uden at fjerne de nyttige mineraler.' },
-      { icon: 'sparkles', title: 'Tåler opvaskemaskine', text: 'Selve glasflasken kan gå i opvaskemaskinen. 100 % Made in EU.' },
+      { icon: 'glass', title: 'Glas · tåler opvask', text: 'Glasset bevarer vandets naturlige karakter, tåler opvaskemaskine og er 100 % genanvendeligt.' },
     ],
     eco: 'Med FAST DISK™ filtrerer du op til 120 liter om måneden og reducerer engangs-plastflasker med ca. 99 %.',
     steps: [
       'Tag FAST DISK™-filteret ud af posen og skyl det under koldt vand i 30 sekunder',
       'Sæt filteret i låget ved at dreje det med uret',
-      'Fyld GlaSSmart™-glasflasken med vand',
+      'Fyld GlaSSmart™-karaflen med vand',
       'Skru låget med FAST DISK™-filteret på',
-      'Hæld det filtrerede vand direkte i et glas',
-      'Nyd vand med god smag – og stil evt. flasken i køleskabet',
+      'Stil karaflen i køleskabet – så har du altid koldt, filtreret vand klar',
+      'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
   },
 ]
