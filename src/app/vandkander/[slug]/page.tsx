@@ -42,10 +42,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
   return (
     <main className="bg-white">
       {/* ─── HERO ──────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef8f1] via-[#f5fbff] to-white">
-        {/* Dekorative glød-blobs */}
-        <div className="pointer-events-none absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
-        <div className="pointer-events-none absolute top-10 -right-24 w-96 h-96 rounded-full bg-[#284eff]/10 blur-3xl" />
+      <section className="relative overflow-hidden bg-white">
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-7">
           {/* Brødkrumme */}
@@ -60,11 +57,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Billede + tilkøbsfilter */}
             <div className="flex flex-col gap-4">
-              <div className="relative rounded-[2rem] bg-white/70 backdrop-blur-sm ring-1 ring-white shadow-[0_20px_60px_-20px_rgba(10,37,64,0.25)] flex items-center justify-center p-10 min-h-[360px] overflow-hidden">
-                {/* indre glød bag produktet */}
-                <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                  <div className="w-64 h-64 rounded-full bg-gradient-to-br from-[#284eff]/25 to-[#3aad4a]/15 blur-2xl" />
-                </div>
+              <div className="relative rounded-[2rem] bg-gray-50 ring-1 ring-gray-100 shadow-[0_20px_60px_-20px_rgba(10,37,64,0.15)] flex items-center justify-center p-10 min-h-[360px] overflow-hidden">
                 {k.highlight && (
                   <span className="absolute top-5 left-5 z-10 rounded-full bg-[#3aad4a] text-white text-xs font-black px-3.5 py-1.5 shadow-lg shadow-green-500/30">
                     {k.highlight}
@@ -75,7 +68,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
               {/* Tilkøb: matchende filter – lige under produktbilledet */}
               {k.addon && (
-                <div className="rounded-2xl bg-gradient-to-br from-[#eef8f1] to-white ring-2 ring-[#3aad4a]/25 shadow-lg shadow-[#3aad4a]/10 p-5">
+                <div className="rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5">
                   <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
                     Skal du være dækket ind fra start?
                   </p>
@@ -104,14 +97,14 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
             {/* Tekst */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur-sm ring-1 ring-green-100 px-3.5 py-1.5 mb-5 shadow-sm">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 mb-5 shadow-sm">
                 <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
                 <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{k.name}</h1>
               <p className="text-lg text-gray-600 mt-4 leading-relaxed">{k.tagline}</p>
               {k.capacity && (
-                <p className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] bg-blue-50 rounded-full px-4 py-1.5 mt-5">
+                <p className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] bg-gray-100 rounded-full px-4 py-1.5 mt-5">
                   <Droplet className="w-3.5 h-3.5" /> {k.capacity}
                 </p>
               )}
@@ -157,7 +150,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               return (
                 <div
                   key={h.title}
-                  className="group rounded-2xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-xl hover:shadow-[#284eff]/10 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col"
+                  className="group rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-xl hover:shadow-gray-300/40 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col"
                 >
                   <span className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#284eff] to-[#1b32c9] flex items-center justify-center mb-3.5 shadow-lg shadow-[#284eff]/25">
                     <Icon className="w-6 h-6 text-white" strokeWidth={2} />
@@ -174,14 +167,14 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {/* ─── OM + FORDELE ──────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
-          <div className="rounded-3xl bg-gradient-to-br from-[#f5fbff] to-white ring-1 ring-blue-100/60 p-7 md:p-8">
+          <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-7 md:p-8">
             <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Om produktet</span>
             <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-3 leading-tight">
               {k.name.replace('Vandkande med filter ', '')}
             </h2>
             <p className="text-gray-600 leading-relaxed">{k.intro}</p>
           </div>
-          <div className="rounded-3xl bg-gradient-to-br from-[#eef8f1] to-white ring-1 ring-green-100/70 p-7 md:p-8">
+          <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-7 md:p-8">
             <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Fordele</span>
             <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-4 leading-tight">Derfor er den god</h2>
             <ul className="space-y-3">
@@ -209,7 +202,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
             {k.steps.map((step, i) => (
               <div
                 key={step}
-                className="relative rounded-2xl bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 pt-7"
+                className="relative rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 pt-7"
               >
                 <span className="absolute -top-3.5 left-6 w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shadow-lg shadow-[#284eff]/25">
                   {i + 1}
@@ -224,7 +217,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {/* ─── SPECIFIKATIONER ───────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
         <div className="rounded-3xl bg-white ring-1 ring-black/5 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-[#0a2540] via-[#173a7a] to-[#284eff] px-7 py-5 flex items-center gap-3">
+          <div className="bg-[#0a2540] px-7 py-5 flex items-center gap-3">
             <Sparkles className="w-5 h-5 text-[#9db8ff]" />
             <h2 className="text-white font-extrabold text-lg">Specifikationer</h2>
           </div>
@@ -245,7 +238,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {/* ─── MILJØ / BESPARELSE ────────────────────────────── */}
       {k.eco && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#e9f7ec] via-[#f0faf2] to-white ring-1 ring-green-100 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+          <div className="relative overflow-hidden rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <div className="pointer-events-none absolute -bottom-16 -right-10 w-56 h-56 rounded-full bg-[#3aad4a]/10 blur-3xl" />
             <span className="relative w-16 h-16 shrink-0 rounded-2xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center shadow-lg shadow-green-500/25">
               <Leaf className="w-8 h-8 text-white" strokeWidth={2} />
