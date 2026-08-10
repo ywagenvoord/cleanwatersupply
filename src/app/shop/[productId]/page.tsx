@@ -46,6 +46,15 @@ async function fetchProduct(idOrStripeId: string): Promise<Product | undefined> 
   const sp = stripeProducts.find(p => p.stripeProductId === idOrStripeId)
   if (!sp) return undefined
 
+  // Hvis Stripe-produktet er koblet til et hardcodet produkt via cws_id,
+  // så vis det rige indhold – også når man tilgår via Stripe-id-URL'en.
+  if (sp.cwsId) {
+    const enriched = getProduct(sp.cwsId)
+    if (enriched) {
+      return { ...enriched, price: sp.price, stripeProductId: sp.stripeProductId }
+    }
+  }
+
   return {
     id:              sp.stripeProductId,
     name:            sp.name,
