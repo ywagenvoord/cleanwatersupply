@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { PRODUCTS } from '@/lib/products'
 import { sektorer } from '@/lib/sektorer'
+import { KANDER } from '@/lib/kander'
+import { FILTRE } from '@/lib/filtre'
 import { SITE_URL } from '@/lib/site'
 
 
@@ -20,6 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/fordele`,     lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/business`,    lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/omraader`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE_URL}/vandkander`,       lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/vandkande-filtre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/about`,       lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/contact`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/privatlivspolitik`,   lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
@@ -41,5 +45,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:        0.8,
   }))
 
-  return [...staticRoutes, ...productRoutes, ...sectorRoutes]
+  const kandeRoutes: MetadataRoute.Sitemap = KANDER.map(k => ({
+    url:            `${SITE_URL}/vandkander/${k.slug}`,
+    lastModified:   now,
+    changeFrequency: 'monthly',
+    priority:        0.75,
+  }))
+
+  const filterRoutes: MetadataRoute.Sitemap = FILTRE.map(f => ({
+    url:            `${SITE_URL}/vandkande-filtre/${f.slug}`,
+    lastModified:   now,
+    changeFrequency: 'monthly',
+    priority:        0.75,
+  }))
+
+  return [...staticRoutes, ...productRoutes, ...sectorRoutes, ...kandeRoutes, ...filterRoutes]
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Check, Filter } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
+import { FILTRE } from '@/lib/filtre'
 
 export const metadata: Metadata = {
   title: 'Filtre til vandkande – Bi-flux®, kalk, PFAS & FAST DISK | Clean Water Supply',
@@ -9,80 +10,6 @@ export const metadata: Metadata = {
     'Udskiftningsfiltre til Laica filtervandkander: Bi-flux® Universal, LimescaleSTOP (kalk), HealthExpert (PFAS + magnesium) og FAST DISK til flasken. Find det rette filter.',
   alternates: { canonical: `${SITE_URL}/vandkande-filtre` },
 }
-
-type FilterType = {
-  name: string
-  art: string
-  img: string
-  tagline: string
-  best: string
-  points: string[]
-  life: string
-  brita?: boolean
-  glassmart?: boolean
-}
-
-const FILTERS: FilterType[] = [
-  {
-    name: 'Bi-flux® Universal',
-    art: 'Art. F0M',
-    img: '/images/product-filter-udskift.jpg',
-    tagline: 'Det alsidige hverdagsfilter.',
-    best: 'Bedst til: daglig brug, alsidig filtrering',
-    life: '1 måned · ca. 150 L pr. filter',
-    points: [
-      'Reducerer klor, visse tungmetaller, pesticider og forebygger kalk',
-      'Bevarer de nyttige mineralsalte (calcium, magnesium, kalium)',
-      '6-trins filtrering ved kontrolleret hastighed',
-      '100 % BPA-fri · Made in EU · testet af uafhængige labs',
-    ],
-  },
-  {
-    name: 'Bi-flux® LimescaleSTOP',
-    art: 'Art. H0L',
-    img: 'https://www.laica.com/wp-content/uploads/limescalestop-filter.webp',
-    tagline: 'Mod kalk og hårdt vand.',
-    best: 'Bedst til: områder med hårdt vand',
-    life: '1 måned · ca. 150 L pr. filter',
-    brita: true,
-    points: [
-      'Reducerer kalk og hårdhed med op til 90 %',
-      'Reducerer også mikroplast, tungmetaller og klor (5-trins)',
-      'Giver let, blødt vand med bedre smag',
-      'Passer også til Brita®-kander (LAICA-Key medfølger)',
-    ],
-  },
-  {
-    name: 'Bi-flux® HealthExpert',
-    art: 'Art. P3M',
-    img: 'https://www.laica.com/wp-content/uploads/healthexpert-prod.webp',
-    tagline: 'Mod PFAS – med ekstra magnesium.',
-    best: 'Bedst til: maksimal beskyttelse',
-    life: '1 måned · ca. 150 L pr. filter',
-    brita: true,
-    points: [
-      'Reducerer PFAS (“evighedskemikalier”) med op til 92 %',
-      'Øger magnesium-indholdet i vandet (godt for hjerte & hjerne)',
-      'Reducerer også mikroplast, klor, kalk og tungmetaller (5-trins)',
-      'Passer også til Brita®-kander (LAICA-Key medfølger)',
-    ],
-  },
-  {
-    name: 'FAST DISK™',
-    art: 'Til GlaSSmart-karaflen',
-    img: '/images/fast-disk.jpg',
-    glassmart: true,
-    tagline: 'Instant-filtrering til GlaSSmart-karaflen.',
-    best: 'Bedst til: GlaSSmart-glaskaraflen i køleskabet',
-    life: 'Skivefilter til instant-filtrering',
-    points: [
-      'Filtrerer øjeblikkeligt, mens du hælder',
-      'Aktivt kul-mikrofilament – forbedrer smagen og reducerer klor',
-      'Bevarer mineralsalte',
-      'Altid koldt, filtreret vand klar i køleskabet',
-    ],
-  },
-]
 
 export default function VandkandeFiltrePage() {
   return (
@@ -107,10 +34,11 @@ export default function VandkandeFiltrePage() {
       {/* Filtre-grid */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-8">
         <div className="grid md:grid-cols-2 gap-6">
-          {FILTERS.map((f) => (
-            <div
-              key={f.name}
-              className="rounded-3xl border border-gray-100 shadow-sm bg-white overflow-hidden flex flex-col"
+          {FILTRE.map((f) => (
+            <Link
+              key={f.slug}
+              href={`/vandkande-filtre/${f.slug}`}
+              className="group rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all bg-white overflow-hidden flex flex-col"
             >
               {/* Billede */}
               <div className="h-60 bg-white flex items-center justify-center p-4">
@@ -118,40 +46,45 @@ export default function VandkandeFiltrePage() {
               </div>
 
               <div className="p-8 pt-6 flex flex-col flex-1">
-              <div className="flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{f.art}</p>
-                  <h2 className="text-xl font-extrabold text-[#0a2540] leading-tight">{f.name}</h2>
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{f.art}</p>
+                    <h2 className="text-xl font-extrabold text-[#0a2540] leading-tight">{f.name}</h2>
+                  </div>
+                  {f.brita && (
+                    <span className="shrink-0 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
+                      Passer også Brita®
+                    </span>
+                  )}
+                  {f.glassmart && (
+                    <span className="shrink-0 rounded-full bg-[#3aad4a]/10 text-[#3aad4a] text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
+                      Passer til GlaSSmart
+                    </span>
+                  )}
                 </div>
-                {f.brita && (
-                  <span className="shrink-0 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
-                    Passer også Brita®
+
+                <p className="text-gray-600 mt-2">{f.tagline}</p>
+                <p className="text-[13px] font-semibold text-[#0a2540] mt-3">{f.best}</p>
+
+                <ul className="mt-4 space-y-2 flex-1">
+                  {f.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-gray-600">
+                      <Check className="w-4 h-4 text-[#3aad4a] mt-0.5 shrink-0" />
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex items-center justify-between mt-5 pt-4 border-t border-gray-100">
+                  <p className="text-xs text-gray-400">
+                    Levetid: <span className="font-semibold text-gray-600">{f.life}</span>
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-sm font-bold text-[#3aad4a] group-hover:gap-2 transition-all">
+                    Se filter <ArrowRight className="w-4 h-4" />
                   </span>
-                )}
-                {f.glassmart && (
-                  <span className="shrink-0 rounded-full bg-[#3aad4a]/10 text-[#3aad4a] text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
-                    Passer til GlaSSmart
-                  </span>
-                )}
+                </div>
               </div>
-
-              <p className="text-gray-600 mt-2">{f.tagline}</p>
-              <p className="text-[13px] font-semibold text-[#0a2540] mt-3">{f.best}</p>
-
-              <ul className="mt-4 space-y-2 flex-1">
-                {f.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2 text-sm text-gray-600">
-                    <Check className="w-4 h-4 text-[#3aad4a] mt-0.5 shrink-0" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <p className="text-xs text-gray-400 mt-5 pt-4 border-t border-gray-100">
-                Levetid: <span className="font-semibold text-gray-600">{f.life}</span>
-              </p>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
