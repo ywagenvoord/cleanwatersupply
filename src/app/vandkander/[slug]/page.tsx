@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
+import KandeGallery from './KandeGallery'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -57,14 +58,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Billede + tilkøbsfilter */}
             <div className="flex flex-col gap-4">
-              <div className="relative rounded-[2rem] bg-gray-50 ring-1 ring-gray-100 shadow-[0_20px_60px_-20px_rgba(10,37,64,0.15)] flex items-center justify-center p-10 min-h-[360px] overflow-hidden">
-                {k.highlight && (
-                  <span className="absolute top-5 left-5 z-10 rounded-full bg-[#3aad4a] text-white text-xs font-black px-3.5 py-1.5 shadow-lg shadow-green-500/30">
-                    {k.highlight}
-                  </span>
-                )}
-                <img src={k.img} alt={k.name} className="relative max-h-[320px] max-w-full object-contain drop-shadow-2xl" />
-              </div>
+              <KandeGallery images={[k.img, ...(k.lifestyle ?? [])]} alt={k.name} highlight={k.highlight} />
 
               {/* Tilkøb: matchende filter – lige under produktbilledet */}
               {k.addon && (
@@ -246,28 +240,6 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <h2 className="text-xl font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
               <p className="text-gray-600 text-sm md:text-base mt-1.5 leading-relaxed max-w-xl">{k.eco}</p>
             </div>
-          </div>
-        </section>
-      )}
-
-      {/* ─── LIFESTYLE / I BRUG ────────────────────────────── */}
-      {k.lifestyle && k.lifestyle.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-          <div className="text-center mb-8">
-            <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">I hverdagen</span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Se den i brug</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-            {k.lifestyle.map((src, i) => (
-              <div key={src} className="overflow-hidden rounded-3xl ring-1 ring-gray-200 shadow-sm">
-                <img
-                  src={src}
-                  alt={`${k.name} – i brug ${i + 1}`}
-                  className="w-full aspect-[3/2] object-cover"
-                  loading="lazy"
-                />
-              </div>
-            ))}
           </div>
         </section>
       )}
