@@ -438,9 +438,9 @@ export default async function ProductDetailPage({ params }: { params: { productI
                     key={f.id}
                     className="group flex flex-col rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-xl transition-all overflow-hidden"
                   >
-                    <Link href={`/shop/${f.id}`} className="block h-56 bg-white flex items-center justify-center p-6 border-b border-gray-50">
+                    <Link href={`/shop/${f.id}`} className="block h-56 bg-white flex items-center justify-center p-3 border-b border-gray-50 overflow-hidden">
                       {f.imgSrc ? (
-                        <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                        <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain scale-[1.35] group-hover:scale-150 transition-transform duration-500" />
                       ) : (
                         <Filter className="w-12 h-12 text-gray-200" />
                       )}
