@@ -83,8 +83,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     Køb 3 nye filtre med til udskiftning – så er du klar fra dag ét.
                   </p>
                   <div className="flex items-center gap-4">
-                    <div className="w-24 h-24 shrink-0 rounded-xl bg-white ring-1 ring-green-100/70 flex items-center justify-center p-2.5">
-                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain drop-shadow" />
+                    <div className="w-32 h-32 shrink-0 rounded-xl bg-white flex items-center justify-center p-2">
+                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>

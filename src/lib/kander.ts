@@ -154,11 +154,11 @@ export const KANDER: Kande[] = [
     ],
     filter: 'FAST DISK™-skivefilter',
     addon: {
-      name: 'FAST DISK™-skivefilter',
+      name: 'FAST DISK™ · 3 filtre',
       art: 'Til GlaSSmart-karaflen',
-      img: '/images/fast-disk.jpg',
-      life: 'Instant-filtrering med aktivt kul',
-      blurb: 'Det matchende skivefilter til GlaSSmart-karaflen – filtrerer, mens du hælder.',
+      img: '/images/fast-disk-pack.jpg',
+      life: 'Ca. 3 måneders filtreret vand',
+      blurb: 'De matchende skivefiltre til GlaSSmart-karaflen – filtrerer, mens du hælder.',
     },
     highlights: [
       { icon: 'droplet', title: 'Altid koldt vand', text: 'Den slanke karaffel passer i køleskabet, så du altid har koldt, filtreret vand klar.' },
