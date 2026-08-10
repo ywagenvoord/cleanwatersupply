@@ -286,53 +286,6 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 </div>
               )}
 
-              {/* Filtre der passer i produktet */}
-              {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
-                const filters = product.compatibleFilters
-                  .map((id) => getProduct(id))
-                  .filter((f): f is Product => !!f)
-                if (filters.length === 0) return null
-                return (
-                  <div className="mt-6 rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50/60 to-white p-6">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Filter className="w-4 h-4 text-[#284eff]" />
-                      <h2 className="text-lg font-extrabold text-[#0a2540]">{product.category === 'vandkande' ? 'Tilkøb: filtre der passer til kanden' : 'Filtre der passer i huset'}</h2>
-                    </div>
-                    <p className="text-sm text-gray-500 mb-4">Vælg den filterpatron, der passer til dit behov – alle passer i {product.category === 'vandkande' ? 'denne kande' : 'dette filterhus'}.</p>
-                    <div className="space-y-3">
-                      {filters.map((f) => (
-                        <Link
-                          key={f.id}
-                          href={`/shop/${f.id}`}
-                          className="group flex items-center gap-3 rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-3"
-                        >
-                          <div className="w-16 h-16 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
-                            {f.imgSrc ? (
-                              <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain" />
-                            ) : (
-                              <Filter className="w-6 h-6 text-gray-300" />
-                            )}
-                          </div>
-                          <div className="min-w-0 flex-1">
-                            <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
-                            <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{f.tagline}</p>
-                            {f.removes && (
-                              <p className="text-xs text-[#2e9a3d] mt-1 leading-snug flex items-start gap-1">
-                                <ShieldCheck className="w-3.5 h-3.5 mt-0.5 shrink-0" />
-                                <span>{f.removes}</span>
-                              </p>
-                            )}
-                            {f.price !== undefined && (
-                              <p className="text-sm font-bold text-[#0a2540] mt-1">{f.price.toLocaleString('da-DK')} kr</p>
-                            )}
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-[#3aad4a] shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )
-              })()}
             </div>
 
             {/* RIGHT: Info + buy */}
@@ -457,6 +410,66 @@ export default async function ProductDetailPage({ params }: { params: { productI
           </div>
         </div>
       </section>
+
+      {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
+      {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
+        const filters = product.compatibleFilters
+          .map((id) => getProduct(id))
+          .filter((f): f is Product => !!f)
+        if (filters.length === 0) return null
+        const isKande = product.category === 'vandkande'
+        return (
+          <section className="py-14 bg-gradient-to-b from-[#f5fbff] to-white border-y border-blue-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center gap-2 mb-1.5">
+                <Filter className="w-4 h-4 text-[#284eff]" />
+                <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Tilkøb</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">
+                {isKande ? 'Filtre der passer til kanden' : 'Filtre der passer i huset'}
+              </h2>
+              <p className="text-gray-500 mb-8 max-w-2xl">
+                Vælg den filterpatron, der passer til dit behov – alle passer i {isKande ? 'denne kande' : 'dette filterhus'}.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {filters.map((f) => (
+                  <Link
+                    key={f.id}
+                    href={`/shop/${f.id}`}
+                    className="group flex flex-col rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden"
+                  >
+                    <div className="h-56 bg-white flex items-center justify-center p-6 border-b border-gray-50">
+                      {f.imgSrc ? (
+                        <img src={f.imgSrc} alt={f.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                      ) : (
+                        <Filter className="w-12 h-12 text-gray-200" />
+                      )}
+                    </div>
+                    <div className="flex flex-col flex-1 p-6">
+                      <h3 className="text-base font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
+                      <p className="text-sm text-gray-500 mt-1">{f.tagline}</p>
+                      {f.removes && (
+                        <p className="text-sm text-[#2e9a3d] mt-3 leading-snug flex items-start gap-1.5 flex-1">
+                          <ShieldCheck className="w-4 h-4 mt-0.5 shrink-0" />
+                          <span>{f.removes}</span>
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between mt-5 pt-4 border-t border-gray-100">
+                        {f.price !== undefined && (
+                          <span className="text-lg font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
+                        )}
+                        <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] group-hover:gap-2.5 transition-all">
+                          Se filter <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )
+      })()}
 
       {/* ─── SÅDAN MONTERER DU (monteringsvideo) ──────────────────── */}
       {product.installVideo && (
