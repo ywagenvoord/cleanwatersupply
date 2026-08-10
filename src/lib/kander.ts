@@ -38,7 +38,7 @@ export const KANDER: Kande[] = [
       'Passer i køleskabsdøren',
       'Batterifri “eco-friendly” skift-indikator',
       'Bruger Bi-flux®-filterpatron',
-      'Made in Italy',
+      'Made in EU',
     ],
     specs: [
       { label: 'Total kapacitet', value: '2,3 liter' },
@@ -60,7 +60,7 @@ export const KANDER: Kande[] = [
       { icon: 'zap', title: 'Hurtigfyldnings-låge', text: 'Fyld kanden direkte under hanen – hurtigt og nemt.' },
       { icon: 'droplet', title: 'Passer i køleskabsdøren', text: 'Slank form, så du altid har koldt, filtreret vand ved hånden.' },
       { icon: 'timer', title: 'Batterifri skift-indikator', text: 'Minder dig om, hvornår filteret skal skiftes – uden batterier.' },
-      { icon: 'shield', title: 'Bi-flux®-filter', text: '6-trins filtrering af klor, kalk og urenheder · Made in Italy.' },
+      { icon: 'shield', title: 'Bi-flux®-filter', text: '6-trins filtrering af klor, kalk og urenheder · Made in EU.' },
     ],
     eco: 'Ét Bi-flux®-filter rækker til ca. 150 liter og erstatter mange engangs-plastflasker.',
     steps: [
@@ -163,7 +163,7 @@ export const KANDER: Kande[] = [
       { icon: 'glass', title: 'Glasflaske', text: 'Glasset bevarer vandets naturlige karakter – 100 % genanvendeligt.' },
       { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder eller drikker.' },
       { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Forbedrer smagen og reducerer klor – uden at fjerne de nyttige mineraler.' },
-      { icon: 'sparkles', title: 'Tåler opvaskemaskine', text: 'Selve glasflasken kan gå i opvaskemaskinen. 100 % Made in Italy.' },
+      { icon: 'sparkles', title: 'Tåler opvaskemaskine', text: 'Selve glasflasken kan gå i opvaskemaskinen. 100 % Made in EU.' },
     ],
     eco: 'Med FAST DISK™ filtrerer du op til 120 liter om måneden og reducerer engangs-plastflasker med ca. 99 %.',
     steps: [

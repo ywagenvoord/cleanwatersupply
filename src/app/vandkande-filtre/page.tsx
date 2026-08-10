@@ -34,7 +34,7 @@ const FILTERS: FilterType[] = [
       'Reducerer klor, visse tungmetaller, pesticider og forebygger kalk',
       'Bevarer de nyttige mineralsalte (calcium, magnesium, kalium)',
       '6-trins filtrering ved kontrolleret hastighed',
-      '100 % BPA-fri · Made in Italy · testet af uafhængige labs',
+      '100 % BPA-fri · Made in EU · testet af uafhængige labs',
     ],
   },
   {
