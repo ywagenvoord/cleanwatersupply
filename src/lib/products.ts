@@ -714,7 +714,7 @@ export const PRODUCTS: Product[] = [
     name: 'Filtervandkande',
     tagline: 'Laica filterkande med Bi-flux® + MikroPLASTIK-STOP – 3 liter',
     category: 'vandkande',
-    price: 275, priceErhverv: 300,
+    price: 349, priceErhverv: 300,
     imgSrc:   'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     imgLarge: 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
     description: 'Laica filterkande med 2-trins filtrering. Reducerer over 99,99 % mikroplast og fjerner klor, tungmetaller og pesticider. 3 liter, Made in EU.',
