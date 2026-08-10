@@ -316,6 +316,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
                           <div className="min-w-0 flex-1">
                             <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{f.name}</h3>
                             <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{f.tagline}</p>
+                            {f.removes && (
+                              <p className="text-xs text-[#2e9a3d] mt-1 leading-snug flex items-start gap-1">
+                                <ShieldCheck className="w-3.5 h-3.5 mt-0.5 shrink-0" />
+                                <span>{f.removes}</span>
+                              </p>
+                            )}
                             {f.price !== undefined && (
                               <p className="text-sm font-bold text-[#0a2540] mt-1">{f.price.toLocaleString('da-DK')} kr</p>
                             )}

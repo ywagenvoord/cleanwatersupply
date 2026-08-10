@@ -55,6 +55,8 @@ export type Product = {
   stripeProductId?: string
   // Kort sælgende linje vist lige under prisen på produktsiden
   priceNote?: string
+  // Forbrugervenlig linje: hvad produktet fjerner / beskytter mod (vist på filter-tilkøb)
+  removes?: string
 }
 
 const CWS = 'https://cleanwatersupply.dk/wp-content/uploads'
@@ -763,6 +765,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'F0M',
     name: 'Bi-flux® Universal – filter til vandkande',
     tagline: 'Det alsidige hverdagsfilter · 2 stk. i pakken',
+    removes: 'Fjerner klor, kalk og tungmetaller – for rent vand med bedre smag hver dag.',
     category: 'filtre',
     price: 89,
     imgSrc:   '/images/product-filter-udskift.jpg',
@@ -799,6 +802,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'H0L',
     name: 'Bi-flux® LimescaleSTOP – filter til vandkande',
     tagline: 'Mod kalk og hårdt vand · 2 stk. i pakken',
+    removes: 'Fjerner kalk og hårdhed – og også mikroplast, tungmetaller og klor. Blødere vand, mindre kalk i kande og glas.',
     category: 'filtre',
     price: 99,
     imgSrc:   'https://www.laica.com/wp-content/uploads/limescalestop-filter.webp',
@@ -835,6 +839,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'P3M',
     name: 'Bi-flux® HealthExpert – filter til vandkande',
     tagline: 'Mod PFAS – med ekstra magnesium · 2 stk. i pakken',
+    removes: 'Fjerner PFAS (“evighedskemikalier”), mikroplast, klor og tungmetaller – og tilfører magnesium.',
     category: 'filtre',
     price: 109,
     imgSrc:   'https://www.laica.com/wp-content/uploads/healthexpert-prod.webp',
