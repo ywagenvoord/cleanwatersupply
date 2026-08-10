@@ -709,41 +709,6 @@ export const PRODUCTS: Product[] = [
   },
 
   {
-    id: 'vandfilter-predator',
-    productNr: '11101',
-    name: 'Filtervandkande',
-    tagline: 'Laica filterkande med Bi-flux® + MikroPLASTIK-STOP – 3 liter',
-    category: 'vandkande',
-    price: 349, priceErhverv: 300,
-    imgSrc:   'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
-    imgLarge: 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915',
-    description: 'Laica filterkande med 2-trins filtrering. Reducerer over 99,99 % mikroplast og fjerner klor, tungmetaller og pesticider. 3 liter, Made in EU.',
-    longDescription: 'Filterkande fra Laica med patenteret modulært filtersystem i to trin. Bi-flux®-filteret reducerer klor, tungmetaller, pesticider, herbicider, trihalomethaner og andre kemiske forurenende stoffer – og bevarer samtidig vandets vigtige mineraler. MikroPLASTIK-STOP-filteret reducerer over 99,99 % af mikroplasten og filtrerer partikler ned til 0,1 mikron, hvilket også blokerer mikroorganismer som Legionella- og Coli-bakterier. Kanden rummer 3 liter (2 liter filtreret vand), har et praktisk Quick-Fill-låg og en analog timer, der minder dig om filterskift. Made in EU.',
-    highlights: ['Reducerer >99,99 % mikroplast', 'Blokerer Legionella & Coli (>0,1 mikron)', '3 liter · Made in EU'],
-    features: [
-      'Bi-flux®: reducerer klor, tungmetaller, pesticider, herbicider og trihalomethaner',
-      'MikroPLASTIK-STOP: reducerer over 99,99 % af mikroplast',
-      'Filtrerer partikler ned til 0,1 mikron – blokerer mikroorganismer som Legionella og Coli',
-      'Bevarer vandets vigtige mineraler',
-      'Analog timer til filterskift · praktisk Quick-Fill-låg',
-    ],
-    specs: [
-      { label: 'Kapacitet',          value: '3 liter total / 2 liter filtreret' },
-      { label: 'Filtrering',         value: 'Bi-flux® + MikroPLASTIK-STOP' },
-      { label: 'Mikroplast-reduktion', value: 'Over 99,99 %' },
-      { label: 'Partikelfiltrering', value: 'Ned til 0,1 mikron' },
-      { label: 'Inkluderet',         value: '3 Bi-flux®-patroner + 1 MikroPLASTIK-STOP' },
-      { label: 'Oprindelse',         value: 'Made in EU' },
-    ],
-    faqs: [
-      { q: 'Hvad reducerer kanden?', a: 'Bi-flux® reducerer klor, tungmetaller, pesticider og herbicider, mens MikroPLASTIK-STOP reducerer over 99,99 % af mikroplast og blokerer mikroorganismer som Legionella og Coli (partikler over 0,1 mikron).' },
-      { q: 'Hvad følger med?', a: 'Kanden leveres med 3 Bi-flux®-patroner og 1 MikroPLASTIK-STOP-filter.' },
-    ],
-    useCases: ['Private hjem', 'Kontorer', 'Børnefamilier'],
-    stripePaymentLink: 'https://buy.stripe.com/00w28q9sD9Tcb2m6e34gg0b',
-  },
-
-  {
     id: 'vandfilter-biflux-reservedel',
     productNr: '11103',
     name: 'Løst filter til vandkande',

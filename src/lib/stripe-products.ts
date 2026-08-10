@@ -18,7 +18,6 @@ export const STRIPE_MAPPING: Record<string, StripeData> = {
   'dualstage-mf-10-cl':            { productId: 'prod_USJ9b68PGUpyKy', paymentLink: 'https://buy.stripe.com/7sY9ASawHe9sb2m8mb4gg08' },
   'kulblokfilter-10-cl':           { productId: 'prod_USJ9oRtxZfExew', paymentLink: 'https://buy.stripe.com/6oU8wObAL6H01rMcCr4gg09' },
   'vandfilter-biflux-reservedel':  { productId: 'prod_USJ9wTiZe0YzTS', paymentLink: 'https://buy.stripe.com/4gM5kC20b9Tc3zU8mb4gg0a' },
-  'vandfilter-predator':           { productId: 'prod_USJ94pYuYuMUrh', paymentLink: 'https://buy.stripe.com/00w28q9sD9Tcb2m6e34gg0b' },
   'as-tube':                       { productId: 'prod_USJ994hO6mUnXC', paymentLink: 'https://buy.stripe.com/7sY00igV58P84DY8mb4gg0c' },
   'blosgoringsanlaeg-100m':        { productId: 'prod_USJ9VnrMWHnwvl', paymentLink: 'https://buy.stripe.com/7sYaEW48jd5odau9qf4gg0d' },
 

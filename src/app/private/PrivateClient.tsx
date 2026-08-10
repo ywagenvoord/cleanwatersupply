@@ -28,7 +28,6 @@ export default function PrivateClient() {
     'dualstage-mf-10-cl',
     'kulblokfilter-10-cl',
     'filter-housing',
-    'vandfilter-predator',
   ]
   const products = featuredIds
     .map((id) => PRODUCTS.find((p) => p.id === id))
