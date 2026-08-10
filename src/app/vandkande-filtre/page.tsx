@@ -19,6 +19,7 @@ type FilterType = {
   points: string[]
   life: string
   brita?: boolean
+  glassmart?: boolean
 }
 
 const FILTERS: FilterType[] = [
@@ -70,6 +71,7 @@ const FILTERS: FilterType[] = [
     name: 'FAST DISK™',
     art: 'Til GlaSSmart-flasken',
     img: '/images/fast-disk.jpg',
+    glassmart: true,
     tagline: 'Instant-filtrering til flasken.',
     best: 'Bedst til: on-the-go / GlaSSmart-flasken',
     life: 'Skivefilter til instant-filtrering',
@@ -124,6 +126,11 @@ export default function VandkandeFiltrePage() {
                 {f.brita && (
                   <span className="shrink-0 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
                     Passer også Brita®
+                  </span>
+                )}
+                {f.glassmart && (
+                  <span className="shrink-0 rounded-full bg-[#3aad4a]/10 text-[#3aad4a] text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">
+                    Passer til GlaSSmart
                   </span>
                 )}
               </div>
