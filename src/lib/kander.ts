@@ -20,6 +20,7 @@ export type Kande = {
   steps?: string[]
   lifestyle?: string[]
   gallery?: string[]
+  lifestyleEnd?: string[]
 }
 
 export const KANDER: Kande[] = [
@@ -177,12 +178,13 @@ export const KANDER: Kande[] = [
       'Stil karaflen i køleskabet – så har du altid koldt, filtreret vand klar',
       'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
-    lifestyle: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg', '/images/glassmart-life-3.jpg'],
+    lifestyle: ['/images/glassmart-life-3.jpg'],
     gallery: [
       '/images/glassmart-filter-pack.jpg',
       '/images/glassmart-box-front.jpg',
       '/images/glassmart-box-back.jpg',
     ],
+    lifestyleEnd: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg'],
   },
 ]
 

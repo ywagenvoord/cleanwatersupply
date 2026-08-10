@@ -63,6 +63,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   { src: k.img },
                   ...(k.lifestyle ?? []).map((src) => ({ src, cover: true })),
                   ...(k.gallery ?? []).map((src) => ({ src })),
+                  ...(k.lifestyleEnd ?? []).map((src) => ({ src, cover: true })),
                 ]}
                 alt={k.name}
                 highlight={k.highlight}
