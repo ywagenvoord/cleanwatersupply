@@ -726,7 +726,7 @@ export const PRODUCTS: Product[] = [
     badge: 'Made in EU',
     description: 'Carmen er den enkle, pålidelige filterkande til den daglige husholdning. Bi-flux®-filteret reducerer klor, kalk, tungmetaller og mikroplast – og bevarer de nyttige mineraler. Slank form, der passer i køleskabsdøren.',
     longDescription: 'Carmen Slim er Laicas klassiske filterkande til hverdagen – let at håndtere og nem at fylde. Den praktiske QuickFill-låge lader dig fylde kanden direkte under hanen, og den slanke form er designet til at passe i køleskabsdøren, så du altid har koldt, filtreret vand ved hånden. Bi-flux®-filterpatronen giver 6-trins filtrering, der reducerer klor, kalk, tungmetaller, pesticider og mikroplast, mens de vigtige mineralsalte (calcium, magnesium, kalium) bevares. Den elektroniske skift-indikator på håndtaget minder dig om, hvornår filteret skal skiftes – ét filter rækker til ca. 150 liter / ca. 1 måned. Fødevaregodkendte materialer, 100 % genanvendelig emballage. Made in EU.',
-    highlights: ['Bi-flux® 6-trins filtrering', 'Udskifteligt filter', 'Passer i køleskabsdøren · Made in EU'],
+    highlights: ['Bi-flux® 6-trins filtrering', 'Udskifteligt filter', 'Passer i køleskabsdøren', 'Made in EU'],
     features: [
       'Udskifteligt filter – skift blot patronen, når indikatoren minder dig om det',
       'QuickFill-låge – fyld kanden direkte under hanen',
