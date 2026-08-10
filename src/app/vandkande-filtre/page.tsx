@@ -49,7 +49,7 @@ export default function VandkandeFiltrePage() {
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{f.art}</p>
-                    <h2 className="text-xl font-extrabold text-[#0a2540] leading-tight">{f.name}</h2>
+                    <h2 className="text-xl font-extrabold text-[#0a2540] leading-tight">{f.name}{f.titleSuffix ? ` ${f.titleSuffix}` : ''}</h2>
                   </div>
                   {f.brita && (
                     <span className="shrink-0 rounded-full bg-gray-100 text-gray-500 text-[10px] font-bold px-2.5 py-1 uppercase tracking-wide">

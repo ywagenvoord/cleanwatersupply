@@ -14,7 +14,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const f = getFilter(params.slug)
   if (!f) return { title: 'Ikke fundet', robots: { index: false, follow: false } }
   return {
-    title: `${f.name} – filter til vandkande | Clean Water Supply`,
+    title: `${f.name}${f.titleSuffix ? ' ' + f.titleSuffix : ''} – filter til vandkande | Clean Water Supply`,
     description: f.description.slice(0, 155),
     alternates: { canonical: `${SITE_URL}/vandkande-filtre/${f.slug}` },
     openGraph: { title: f.name, description: f.tagline, type: 'website' },
@@ -50,7 +50,12 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                 <Filter className="w-3.5 h-3.5 text-[#3aad4a]" />
                 <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{f.art}</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{f.name}</h1>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">
+                {f.name}
+                {f.titleSuffix && (
+                  <span className="block text-2xl md:text-3xl font-bold text-gray-400 mt-1">{f.titleSuffix}</span>
+                )}
+              </h1>
               <p className="text-lg text-gray-600 mt-4 leading-relaxed">{f.tagline}</p>
 
               <div className="flex flex-wrap gap-2 mt-5">
@@ -160,7 +165,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
               </div>
               <div className="px-5 pb-5">
                 <p className="text-[10px] font-bold text-[#3aad4a] uppercase tracking-wider">{o.art}</p>
-                <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight mt-0.5">{o.name}</h3>
+                <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight mt-0.5">{o.name}{o.titleSuffix ? ` ${o.titleSuffix}` : ''}</h3>
                 <p className="text-xs text-gray-500 mt-1">{o.tagline}</p>
               </div>
             </Link>

@@ -5,6 +5,7 @@ export type FilterSpec = { label: string; value: string }
 export type Filter = {
   slug: string
   name: string
+  titleSuffix?: string
   art: string
   img: string
   images?: string[]
@@ -120,7 +121,8 @@ export const FILTRE: Filter[] = [
     pack: '3 stk. i pakken',
     price: 89,
     varenr: 'LAI-1003',
-    name: 'Filter til GlaSSmart 3-pack',
+    name: 'Filter til GlaSSmart',
+    titleSuffix: '3-pack',
     art: 'FAST DISK™',
     img: '/images/fast-disk.jpg',
     images: ['/images/fast-disk.jpg', '/images/fast-disk-pack.jpg'],
