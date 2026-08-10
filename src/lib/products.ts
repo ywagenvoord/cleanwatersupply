@@ -53,6 +53,8 @@ export type Product = {
   stripePaymentLink?: string
   // Live Stripe product ID (set when fetched from Stripe at request time)
   stripeProductId?: string
+  // Kort sælgende linje vist lige under prisen på produktsiden
+  priceNote?: string
 }
 
 const CWS = 'https://cleanwatersupply.dk/wp-content/uploads'
@@ -710,14 +712,15 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'kande-carmen',
-    productNr: 'J35-DA',
+    productNr: 'J35-AD',
     name: 'Carmen Slim filterkande',
     tagline: 'Slank Laica-filterkande med Bi-flux® – rent vand med god smag hver dag',
     category: 'vandkande',
     price: 189,
+    priceNote: 'Stop med at slæbe flaskevand hjem: ét filter (følger med) giver ca. 150 liter rent vand – svarende til omkring 300 halvlitersflasker. Fast pris, ingen abonnement.',
     imgSrc:   '/images/kande-carmen-1.jpg',
     imgLarge: '/images/kande-carmen-1.jpg',
-    images: ['/images/kande-carmen-1.jpg', '/images/kande-carmen-box.jpg'],
+    images: ['/images/kande-carmen-1.jpg', '/images/kande-carmen-pour.jpg', '/images/kande-carmen-fridge.jpg', '/images/kande-carmen-box.jpg'],
     badge: 'Made in EU',
     description: 'Carmen er den enkle, pålidelige filterkande til den daglige husholdning. Bi-flux®-filteret reducerer klor, kalk, tungmetaller og mikroplast – og bevarer de nyttige mineraler. Slank form, der passer i køleskabsdøren.',
     longDescription: 'Carmen Slim er Laicas klassiske filterkande til hverdagen – let at håndtere og nem at fylde. Den praktiske QuickFill-låge lader dig fylde kanden direkte under hanen, og den slanke form er designet til at passe i køleskabsdøren, så du altid har koldt, filtreret vand ved hånden. Bi-flux®-filterpatronen giver 6-trins filtrering, der reducerer klor, kalk, tungmetaller, pesticider og mikroplast, mens de vigtige mineralsalte (calcium, magnesium, kalium) bevares. Den elektroniske skift-indikator på håndtaget minder dig om, hvornår filteret skal skiftes – ét filter rækker til ca. 150 liter / ca. 1 måned. Fødevaregodkendte materialer, 100 % genanvendelig emballage. Made in EU.',
@@ -736,9 +739,12 @@ export const PRODUCTS: Product[] = [
       { label: 'Filtreret kapacitet', value: '1,2 liter' },
       { label: 'Filtrering',    value: 'Bi-flux® Universal-patron' },
       { label: 'Filterlevetid', value: 'Ca. 150 liter / 1 måned' },
-      { label: 'Indikator',     value: 'Elektronisk skift-indikator' },
+      { label: 'Indikator',     value: 'Aftagelig elektronisk skift-indikator' },
+      { label: 'Mål (H×B×D)',   value: '27,6 × 27,4 × 9,4 cm' },
+      { label: 'Vægt',          value: '0,6 kg' },
       { label: 'Farve',         value: 'Hvid' },
       { label: 'Indhold',       value: 'Kande + 1 Bi-flux®-filter + manual' },
+      { label: 'Varenr.',       value: 'J35-AD' },
       { label: 'Oprindelse',    value: 'Made in EU' },
     ],
     faqs: [

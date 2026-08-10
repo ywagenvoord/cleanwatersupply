@@ -406,6 +406,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 {/* Price (erhverv ser grossistpris) */}
                 <ProductPrice product={product} />
 
+                {product.priceNote && (
+                  <p className="mb-5 -mt-1 text-sm leading-relaxed text-[#0a2540]/80">
+                    {product.priceNote}
+                  </p>
+                )}
+
                 <BuyBox product={product} />
                 <p className="text-xs text-gray-400 text-center mt-4">
                   🚚 Hurtig levering · 🔒 Sikker betaling · 💬 Gratis rådgivning
