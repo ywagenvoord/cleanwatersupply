@@ -357,6 +357,7 @@ export default function BuyBox({ product }: { product: Product }) {
         <div className="space-y-2.5">
           {upsell.map((u) => {
             const on = chosen.has(u.id)
+            const qty = u.pack.match(/\d+/)?.[0]
             return (
               <button
                 key={u.id}
@@ -364,16 +365,16 @@ export default function BuyBox({ product }: { product: Product }) {
                 onClick={() => toggleUpsell(u.id)}
                 className={`w-full flex items-center gap-3 rounded-2xl border-2 p-3 text-left transition-all ${on ? 'border-[#3aad4a] bg-[#3aad4a]/5' : 'border-gray-200 hover:border-gray-300'}`}
               >
-                <div className="w-14 h-14 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
+                <div className="relative w-14 h-14 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
                   {u.img ? <img src={u.img} alt={u.name} className="max-h-full max-w-full object-contain" /> : <ShoppingBag className="w-5 h-5 text-gray-300" />}
+                  {qty && (
+                    <span className="absolute -top-1.5 -right-1.5 bg-[#0a2540] text-white text-[10px] font-black rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center shadow">×{qty}</span>
+                  )}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
                   {u.blurb && <p className="text-xs text-gray-500 mt-0.5 leading-snug">{u.blurb}</p>}
-                  <p className="mt-1 flex items-baseline flex-wrap gap-x-1.5">
-                    <span className={`text-sm font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</span>
-                    {u.pack && <span className="text-[11px] font-bold text-[#2e9a3d] bg-[#3aad4a]/10 rounded-full px-2 py-0.5">{u.pack}</span>}
-                  </p>
+                  <p className={`text-sm mt-1 font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</p>
                 </div>
                 <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? 'border-[#3aad4a] bg-[#3aad4a] text-white' : 'border-gray-300 text-transparent'}`}>
                   <Check className="w-4 h-4" />
