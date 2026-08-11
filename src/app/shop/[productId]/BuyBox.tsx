@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useCart } from '@/contexts/CartContext'
 import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera, Loader2 } from 'lucide-react'
 import Link from 'next/link'
@@ -325,9 +326,9 @@ export default function BuyBox({ product }: { product: Product }) {
   /* Standard (uden montering / ikke-anlæg) */
   const chosenSum = upsell.filter((u) => chosen.has(u.id)).reduce((a, u) => a + u.price, 0)
   const grandTotal = (unitPrice ?? 0) + chosenSum
-  const upsellModal = showUpsell ? (
+  const upsellModal = showUpsell && typeof document !== 'undefined' ? createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4"
       onClick={() => { if (!buying) setShowUpsell(false) }}
     >
       <div
@@ -389,7 +390,8 @@ export default function BuyBox({ product }: { product: Product }) {
           Nej tak – fortsæt uden tilbehør
         </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   ) : null
 
   return (
