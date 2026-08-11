@@ -113,13 +113,13 @@ export default function FakturaCheckout({
         </p>
 
         <form
-          action="https://formsubmit.co/caj@cleanwatersupply.dk"
+          action="https://formsubmit.co/ksj@cleanwatersupply.dk"
           method="POST"
           className="space-y-4"
         >
           {/* FormSubmit-indstillinger */}
           <input type="hidden" name="_subject" value="Ny erhvervsordre (faktura)" />
-          <input type="hidden" name="_cc" value="ksj@cleanwatersupply.dk" />
+          <input type="hidden" name="_cc" value="pj@cleanwatersupply.dk" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           {nextUrl && <input type="hidden" name="_next" value={nextUrl} />}

@@ -62,7 +62,7 @@ export default function ContactPage() {
     setErrorMsg('')
 
     try {
-      const res = await fetch('https://formsubmit.co/ajax/caj@cleanwatersupply.dk', {
+      const res = await fetch('https://formsubmit.co/ajax/ksj@cleanwatersupply.dk', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
@@ -74,7 +74,7 @@ export default function ContactPage() {
           _subject: `Ny henvendelse fra ${formData.name} – ${formData.type || 'Generel'}`,
           _template: 'table',
           _captcha: 'false',
-          _cc: 'ksj@cleanwatersupply.dk',
+          _cc: 'pj@cleanwatersupply.dk',
         }),
       })
       const data = await res.json()

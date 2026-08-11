@@ -13,14 +13,14 @@ export default function MonteringForm({ nextUrl }: { nextUrl: string }) {
 
   return (
     <form
-      action="https://formsubmit.co/caj@cleanwatersupply.dk"
+      action="https://formsubmit.co/ksj@cleanwatersupply.dk"
       method="POST"
       encType="multipart/form-data"
       className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-4"
     >
       {/* FormSubmit-indstillinger */}
       <input type="hidden" name="_subject" value="Nyt monteringssted – billeder til vurdering" />
-      <input type="hidden" name="_cc" value="ksj@cleanwatersupply.dk" />
+      <input type="hidden" name="_cc" value="pj@cleanwatersupply.dk" />
       <input type="hidden" name="_captcha" value="false" />
       <input type="hidden" name="_template" value="table" />
       <input type="hidden" name="_next" value={nextUrl} />

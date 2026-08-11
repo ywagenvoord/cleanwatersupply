@@ -6,7 +6,7 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // Modtager af ordre-mails (jer)
-const ORDER_EMAIL_TO = 'caj@cleanwatersupply.dk'
+const ORDER_EMAIL_TO = ['ksj@cleanwatersupply.dk', 'pj@cleanwatersupply.dk']
 // Afsender – Resends fælles domæne virker uden domæneopsætning
 const ORDER_EMAIL_FROM = 'Clean Water Supply <onboarding@resend.dev>'
 
