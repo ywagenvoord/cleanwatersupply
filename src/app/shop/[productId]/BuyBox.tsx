@@ -5,7 +5,7 @@ import { useCart } from '@/contexts/CartContext'
 import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { getStripe } from '@/lib/stripe-products'
-import { INSTALLATION_PRICE, shopPrice, type Product } from '@/lib/products'
+import { INSTALLATION_PRICE, shopPrice, getProduct, type Product } from '@/lib/products'
 import { useB2bLoggedIn } from '@/lib/useB2b'
 import { zoneForPostnummer, ZONE_INFO } from '@/lib/zones'
 
@@ -41,6 +41,8 @@ export default function BuyBox({ product }: { product: Product }) {
   const [postnummer, setPostnummer] = useState('')
   const [showTilbehor, setShowTilbehor] = useState(false)
   const [buying, setBuying] = useState(false)
+  const [showUpsell, setShowUpsell] = useState(false)
+  const [chosen, setChosen] = useState<Set<string>>(new Set())
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
   const erhverv = useB2bLoggedIn()
   const { amount: unitPrice } = shopPrice(product, erhverv)
@@ -64,15 +66,44 @@ export default function BuyBox({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 1500)
   }
 
+  // Filtre der kan tilbydes som "Tilføj også" ved køb (upsell)
+  const upsell = (product.compatibleFilters ?? [])
+    .map((id) => {
+      const p = getProduct(id)
+      const s = getStripe(id)
+      return p && s
+        ? { id, name: p.name, price: p.price ?? 0, img: p.imgSrc, stripeProductId: s.productId }
+        : null
+    })
+    .filter((x): x is { id: string; name: string; price: number; img: string; stripeProductId: string } => !!x)
+
+  function toggleUpsell(id: string) {
+    setChosen((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id); else next.add(id)
+      return next
+    })
+  }
+
+  // "Køb nu": har produktet tilbehør, så vis upsell-pop-up først – ellers direkte til betaling.
+  function startBuy() {
+    if (upsell.length > 0) { setShowUpsell(true); return }
+    buyNow()
+  }
+
   // Køb nu → dynamisk Stripe Checkout med den AKTUELLE pris (aldrig et dødt link).
-  async function buyNow() {
+  async function buyNow(extraStripeIds: string[] = []) {
     if (!stripe || unitPrice == null || buying) return
     setBuying(true)
     try {
+      const items = [
+        { stripeProductId: stripe.productId, quantity: 1 },
+        ...extraStripeIds.map((id) => ({ stripeProductId: id, quantity: 1 })),
+      ]
       const res = await fetch('/api/checkout', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ items: [{ stripeProductId: stripe.productId, quantity: 1 }] }),
+        body:    JSON.stringify({ items }),
       })
       const data = await res.json()
       if (res.ok && data.url) {
@@ -292,11 +323,81 @@ export default function BuyBox({ product }: { product: Product }) {
   }
 
   /* Standard (uden montering / ikke-anlæg) */
+  const chosenSum = upsell.filter((u) => chosen.has(u.id)).reduce((a, u) => a + u.price, 0)
+  const grandTotal = (unitPrice ?? 0) + chosenSum
+  const upsellModal = showUpsell ? (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      onClick={() => { if (!buying) setShowUpsell(false) }}
+    >
+      <div
+        className="relative bg-white rounded-3xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-auto p-6"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          type="button"
+          onClick={() => setShowUpsell(false)}
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600"
+          aria-label="Luk"
+        >
+          <X className="w-4 h-4" />
+        </button>
+        <h3 className="text-xl font-extrabold text-[#0a2540] mb-1">Tilføj også?</h3>
+        <p className="text-sm text-gray-500 mb-5">
+          Filtre der passer til {product.name} – læg dem i samme ordre, så du er dækket fra start og sparer en ekstra levering.
+        </p>
+        <div className="space-y-2.5">
+          {upsell.map((u) => {
+            const on = chosen.has(u.id)
+            return (
+              <button
+                key={u.id}
+                type="button"
+                onClick={() => toggleUpsell(u.id)}
+                className={`w-full flex items-center gap-3 rounded-2xl border-2 p-3 text-left transition-all ${on ? 'border-[#3aad4a] bg-[#3aad4a]/5' : 'border-gray-200 hover:border-gray-300'}`}
+              >
+                <div className="w-14 h-14 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
+                  {u.img ? <img src={u.img} alt={u.name} className="max-h-full max-w-full object-contain" /> : <ShoppingBag className="w-5 h-5 text-gray-300" />}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
+                  <p className="text-sm text-gray-500 mt-0.5">{u.price.toLocaleString('da-DK')} kr</p>
+                </div>
+                <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? 'border-[#3aad4a] bg-[#3aad4a] text-white' : 'border-gray-300 text-transparent'}`}>
+                  <Check className="w-4 h-4" />
+                </span>
+              </button>
+            )
+          })}
+        </div>
+        <div className="flex items-center justify-between mt-5 mb-4">
+          <span className="text-sm text-gray-500">I alt</span>
+          <span className="text-xl font-extrabold text-[#0a2540]">{grandTotal.toLocaleString('da-DK')} kr</span>
+        </div>
+        <button
+          onClick={() => buyNow(Array.from(chosen))}
+          disabled={buying}
+          className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 text-white py-4 px-6 rounded-full font-bold text-sm transition-all"
+        >
+          {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Fortsæt til betaling <ArrowRight className="w-4 h-4" /></>)}
+        </button>
+        <button
+          onClick={() => buyNow([])}
+          disabled={buying}
+          className="w-full text-center text-sm text-gray-400 hover:text-gray-600 mt-3 disabled:opacity-60"
+        >
+          Nej tak – fortsæt uden tilbehør
+        </button>
+      </div>
+    </div>
+  ) : null
+
   return (
     <div className="space-y-3">
+      {upsellModal}
       {selector}
       <button
-        onClick={buyNow}
+        onClick={startBuy}
         disabled={buying}
         className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
       >
