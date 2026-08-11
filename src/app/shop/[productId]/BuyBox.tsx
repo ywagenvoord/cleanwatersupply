@@ -73,10 +73,14 @@ export default function BuyBox({ product }: { product: Product }) {
       const p = getProduct(id)
       const s = getStripe(id)
       return p && s
-        ? { id, name: p.name, price: p.price ?? 0, img: p.imgSrc, stripeProductId: s.productId, blurb: p.removes ?? p.tagline ?? '' }
+        ? {
+            id, name: p.name, price: p.price ?? 0, img: p.imgSrc, stripeProductId: s.productId,
+            blurb: p.removes ?? p.tagline ?? '',
+            pack: p.specs.find((sp) => sp.label === 'Pakke')?.value ?? '',
+          }
         : null
     })
-    .filter((x): x is { id: string; name: string; price: number; img: string; stripeProductId: string; blurb: string } => !!x)
+    .filter((x): x is { id: string; name: string; price: number; img: string; stripeProductId: string; blurb: string; pack: string } => !!x)
 
   function toggleUpsell(id: string) {
     setChosen((prev) => {
@@ -366,7 +370,10 @@ export default function BuyBox({ product }: { product: Product }) {
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
                   {u.blurb && <p className="text-xs text-gray-500 mt-0.5 leading-snug">{u.blurb}</p>}
-                  <p className={`text-sm mt-1 font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</p>
+                  <p className="mt-1 flex items-baseline flex-wrap gap-x-1.5">
+                    <span className={`text-sm font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</span>
+                    {u.pack && <span className="text-[11px] font-bold text-[#2e9a3d] bg-[#3aad4a]/10 rounded-full px-2 py-0.5">{u.pack}</span>}
+                  </p>
                 </div>
                 <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? 'border-[#3aad4a] bg-[#3aad4a] text-white' : 'border-gray-300 text-transparent'}`}>
                   <Check className="w-4 h-4" />
