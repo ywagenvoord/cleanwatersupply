@@ -41,7 +41,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Billede */}
-            <ProductGallery items={(f.images ?? [f.img]).map((src) => ({ src }))} alt={f.name} />
+            <ProductGallery items={(f.images ?? [f.img]).map((src) => ({ src }))} alt={f.name} bare />
 
 
             {/* Tekst */}
