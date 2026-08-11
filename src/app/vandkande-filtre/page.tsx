@@ -41,8 +41,8 @@ export default function VandkandeFiltrePage() {
               className="group rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all bg-white overflow-hidden flex flex-col"
             >
               {/* Billede */}
-              <div className="h-72 bg-white flex items-center justify-center p-3">
-                <img src={f.img} alt={f.name} className="h-full w-full object-contain" />
+              <div className="h-64 bg-white flex items-center justify-center p-4">
+                <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain" />
               </div>
 
               <div className="p-8 pt-6 flex flex-col flex-1">
