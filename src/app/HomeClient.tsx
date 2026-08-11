@@ -365,8 +365,8 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="lg:text-right">
-                <Link href="/shop" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-7 py-4 rounded-full text-base font-bold transition-colors">
-                  Se vores produkter
+                <Link href="/anlaeg" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-7 py-4 rounded-full text-base font-bold transition-colors">
+                  Se vores anlæg
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>

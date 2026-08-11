@@ -507,8 +507,8 @@ export default function ErhvervClient() {
               {da ? 'Kontakt vores erhvervsteam' : 'Contact our business team'}
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/shop" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
-              {da ? 'Se alle produkter' : 'See all products'}
+            <Link href="/anlaeg" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
+              {da ? 'Se vores anlæg' : 'See our systems'}
             </Link>
           </div>
         </div>

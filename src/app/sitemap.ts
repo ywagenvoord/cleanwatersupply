@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/solutions`,   lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/legionella`,  lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/legionella-anlaeg`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE_URL}/anlaeg`,      lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/faq`,         lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/montering`,   lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/eca-vand`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
