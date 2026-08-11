@@ -73,10 +73,10 @@ export default function BuyBox({ product }: { product: Product }) {
       const p = getProduct(id)
       const s = getStripe(id)
       return p && s
-        ? { id, name: p.name, price: p.price ?? 0, img: p.imgSrc, stripeProductId: s.productId }
+        ? { id, name: p.name, price: p.price ?? 0, img: p.imgSrc, stripeProductId: s.productId, blurb: p.removes ?? p.tagline ?? '' }
         : null
     })
-    .filter((x): x is { id: string; name: string; price: number; img: string; stripeProductId: string } => !!x)
+    .filter((x): x is { id: string; name: string; price: number; img: string; stripeProductId: string; blurb: string } => !!x)
 
   function toggleUpsell(id: string) {
     setChosen((prev) => {
@@ -365,7 +365,8 @@ export default function BuyBox({ product }: { product: Product }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
-                  <p className={`text-sm mt-0.5 font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</p>
+                  {u.blurb && <p className="text-xs text-gray-500 mt-0.5 leading-snug">{u.blurb}</p>}
+                  <p className={`text-sm mt-1 font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</p>
                 </div>
                 <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? 'border-[#3aad4a] bg-[#3aad4a] text-white' : 'border-gray-300 text-transparent'}`}>
                   <Check className="w-4 h-4" />
