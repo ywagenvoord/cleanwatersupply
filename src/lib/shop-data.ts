@@ -4,6 +4,13 @@
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import { PRODUCTS, type Product } from '@/lib/products'
 
+// Stripe-only produkter (uden hardcodet match) der skal have en anden kategori
+// end default 'filtre' – fx GlaSSmart-karaffel og FAST DISK-filter hører til vandkande.
+const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
+  'prod_V2wHIQrdoXx6RG': 'vandkande', // FAST DISK™ filter til GlaSSmart
+  'prod_V2wFs5adWhY4cF': 'vandkande', // GlaSSmart™ glas-filterkaraffel
+}
+
 export async function getMergedShopProducts(): Promise<Product[]> {
   const stripeProducts = await getActiveStripeProducts()
 
@@ -33,7 +40,7 @@ export async function getMergedShopProducts(): Promise<Product[]> {
         name:            sp.name,
         tagline:         'Tilgængelig via Stripe',
         description:     sp.description || sp.name,
-        category:        'filtre',
+        category:        STRIPE_ONLY_CATEGORY[sp.stripeProductId] ?? 'filtre',
         price:           sp.price,
         imgSrc:          sp.images[0] || '',
         imgLarge:        sp.images[0] || '',
