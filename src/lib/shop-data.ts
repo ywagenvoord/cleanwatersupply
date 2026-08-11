@@ -63,7 +63,13 @@ export async function getMergedShopProducts(): Promise<Product[]> {
   // Bevar den kuraterede rækkefølge fra products.ts (så relaterede varer står
   // sammen, uanset Stripe-rækkefølge og "kommer snart"-status). Stripe-only
   // produkter uden en hardcodet plads lægges til sidst.
-  const orderIndex = new Map(PRODUCTS.map((p, i) => [p.id, i]))
+  const orderIndex = new Map<string, number>(PRODUCTS.map((p, i) => [p.id, i]))
+  // Placer de generiske Laica-produkter (uden hardcodet match) sammen med vandkande-gruppen
+  const laicaAnchor = orderIndex.get('germ-stop-filter') ?? orderIndex.get('mikroplastik-stop-filter')
+  if (laicaAnchor != null) {
+    orderIndex.set('prod_V2wFs5adWhY4cF', laicaAnchor + 0.4) // GlaSSmart™ glas-filterkaraffel
+    orderIndex.set('prod_V2wHIQrdoXx6RG', laicaAnchor + 0.5) // FAST DISK™ filter til GlaSSmart
+  }
   merged.sort(
     (a, b) => (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999),
   )

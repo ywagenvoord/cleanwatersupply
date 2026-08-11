@@ -960,6 +960,19 @@ export const PRODUCTS: Product[] = [
   },
 
   {
+    id: 'germ-stop-filter', productNr: '11102', name: 'Germ Stop Filter (reservedel)',
+    tagline: 'Udskiftningsfilter til vandkande – levetid op til 1 år (1.000 l)',
+    badge: 'Reservedel', category: 'vandkande', audience: 'erhverv', priceExMoms: true, price: 100, priceErhverv: 100,
+    imgSrc: '/images/placeholder-product.jpg', imgLarge: '/images/placeholder-product.jpg',
+    description: 'Reservedelsfilter til vandkande med lang levetid – op til 1 år eller ca. 1.000 liter.',
+    highlights: ['Levetid op til 1 år', 'Kapacitet ca. 1.000 l', 'Reservedel til vandkande'],
+    features: ['Passer til vandkande', 'Lang levetid', 'Nem udskiftning'],
+    specs: [{ label: 'Type', value: 'Udskiftningsfilter' }, { label: 'Levetid', value: 'Op til 1 år / 1.000 l' }, { label: 'VVS-nr.', value: '930240162' }],
+    faqs: [],
+    useCases: ['Kontorer', 'Klinikker', 'Private hjem'],
+  },
+
+  {
     id: 'filter-housing',
     productNr: '501428',
     name: 'Filter Housing',
@@ -1367,18 +1380,6 @@ export const PRODUCTS: Product[] = [
   },
 
   // ─── NYE ERHVERVSPRODUKTER (fra prisliste – grossistpriser, billeder følger) ───
-  {
-    id: 'germ-stop-filter', productNr: '11102', name: 'Germ Stop Filter (reservedel)',
-    tagline: 'Udskiftningsfilter til vandkande – levetid op til 1 år (1.000 l)',
-    badge: 'Reservedel', category: 'vandkande', audience: 'erhverv', priceExMoms: true, price: 100, priceErhverv: 100,
-    imgSrc: '/images/placeholder-product.jpg', imgLarge: '/images/placeholder-product.jpg',
-    description: 'Reservedelsfilter til vandkande med lang levetid – op til 1 år eller ca. 1.000 liter.',
-    highlights: ['Levetid op til 1 år', 'Kapacitet ca. 1.000 l', 'Reservedel til vandkande'],
-    features: ['Passer til vandkande', 'Lang levetid', 'Nem udskiftning'],
-    specs: [{ label: 'Type', value: 'Udskiftningsfilter' }, { label: 'Levetid', value: 'Op til 1 år / 1.000 l' }, { label: 'VVS-nr.', value: '930240162' }],
-    faqs: [],
-    useCases: ['Kontorer', 'Klinikker', 'Private hjem'],
-  },
   {
     id: 'manuel-adapter-m22', productNr: '100688', name: 'Manuel adapter M22 (indvendig)',
     tagline: 'Adapter til manuel montering på M22 indvendigt gevind',
