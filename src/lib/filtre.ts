@@ -20,6 +20,7 @@ export type Filter = {
   glassmart?: boolean
   description: string
   specs: FilterSpec[]
+  howTo?: string[]   // "Sådan skifter du filteret"-trin
 }
 
 export const FILTRE: Filter[] = [
@@ -147,6 +148,11 @@ export const FILTRE: Filter[] = [
       { label: 'Reducerer', value: 'Klor · forbedrer smag og lugt' },
       { label: 'Bevarer', value: 'Nyttige mineralsalte' },
       { label: 'Oprindelse', value: 'Made in EU' },
+    ],
+    howTo: [
+      'Skru låget af karaflen, drej det brugte filter mod uret, og tag det ud ved at trække det opad.',
+      'Skyl det nye filter under rindende, koldt drikkevand i ca. 30 sekunder.',
+      'Sæt det nye filter i holderen i låget ved at trykke let og dreje det med uret.',
     ],
   },
 ]
