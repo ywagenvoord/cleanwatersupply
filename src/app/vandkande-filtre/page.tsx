@@ -48,7 +48,7 @@ export default function VandkandeFiltrePage() {
               <div className="p-8 pt-6 flex flex-col flex-1">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">{f.art}</p>
+                    <p className="text-xs font-bold text-[#3aad4a] uppercase tracking-wider mb-1">Løst filter</p>
                     <h2 className="text-xl font-extrabold text-[#0a2540] leading-tight">{f.name}{f.titleSuffix ? ` ${f.titleSuffix}` : ''}</h2>
                   </div>
                   {f.brita && (
