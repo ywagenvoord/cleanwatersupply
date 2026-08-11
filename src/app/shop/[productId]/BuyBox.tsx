@@ -365,11 +365,8 @@ export default function BuyBox({ product }: { product: Product }) {
                 onClick={() => toggleUpsell(u.id)}
                 className={`w-full flex items-center gap-3 rounded-2xl border-2 p-3 text-left transition-all ${on ? 'border-[#3aad4a] bg-[#3aad4a]/5' : 'border-gray-200 hover:border-gray-300'}`}
               >
-                <div className="relative w-14 h-14 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
+                <div className="w-14 h-14 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
                   {u.img ? <img src={u.img} alt={u.name} className="max-h-full max-w-full object-contain" /> : <ShoppingBag className="w-5 h-5 text-gray-300" />}
-                  {qty && (
-                    <span className="absolute -top-1.5 -right-1.5 bg-[#0a2540] text-white text-[10px] font-black rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center shadow">×{qty}</span>
-                  )}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
