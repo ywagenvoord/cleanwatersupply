@@ -108,6 +108,24 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* ─── SÅDAN SKIFTER DU FILTERET ────────────────────── */}
+      {f.howTo && f.howTo.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-7 md:p-9">
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Guide</span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-6">Sådan skifter du filteret</h2>
+            <ol className="space-y-4">
+              {f.howTo.map((step, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="mt-0.5 w-8 h-8 shrink-0 rounded-full bg-[#3aad4a] text-white flex items-center justify-center font-extrabold text-sm">{i + 1}</span>
+                  <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       {/* ─── OM + DET FILTRERER ───────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-start">
@@ -149,24 +167,6 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
           </dl>
         </div>
       </section>
-
-      {/* ─── SÅDAN SKIFTER DU FILTERET ────────────────────── */}
-      {f.howTo && f.howTo.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-          <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-7 md:p-9">
-            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Guide</span>
-            <h2 className="text-2xl font-extrabold text-[#0a2540] mt-1.5 mb-6">Sådan skifter du filteret</h2>
-            <ol className="space-y-4">
-              {f.howTo.map((step, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <span className="mt-0.5 w-8 h-8 shrink-0 rounded-full bg-[#3aad4a] text-white flex items-center justify-center font-extrabold text-sm">{i + 1}</span>
-                  <p className="text-gray-700 leading-relaxed pt-1">{step}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-      )}
 
       {/* ─── ANDRE FILTRE ─────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
