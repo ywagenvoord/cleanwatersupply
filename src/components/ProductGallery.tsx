@@ -8,12 +8,10 @@ export default function ProductGallery({
   items,
   alt,
   highlight,
-  bare,
 }: {
   items: Item[]
   alt: string
   highlight?: string
-  bare?: boolean   // uden kort-baggrund/ring/skygge – billedet går i et med siden
 }) {
   const imgs = items.filter((it) => it.src)
   const [active, setActive] = useState(0)
@@ -24,7 +22,7 @@ export default function ProductGallery({
   return (
     <div>
       {/* Hovedbillede – stort */}
-      <div className={`relative rounded-[2rem] overflow-hidden h-[440px] md:h-[560px] ${bare ? '' : 'bg-gray-50 ring-1 ring-gray-100 shadow-[0_24px_70px_-24px_rgba(10,37,64,0.25)]'}`}>
+      <div className="relative rounded-[2rem] bg-gray-50 ring-1 ring-gray-100 shadow-[0_24px_70px_-24px_rgba(10,37,64,0.25)] overflow-hidden h-[440px] md:h-[560px]">
         {highlight && (
           <span className="absolute top-5 left-5 z-10 rounded-full bg-[#3aad4a] text-white text-xs font-black px-3.5 py-1.5 shadow-lg shadow-green-500/30">
             {highlight}
