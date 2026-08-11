@@ -9,6 +9,7 @@ import { PRODUCTS, type Product } from '@/lib/products'
 const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
   'prod_V2wHIQrdoXx6RG': 'vandkande', // FAST DISK™ filter til GlaSSmart
   'prod_V2wFs5adWhY4cF': 'vandkande', // GlaSSmart™ glas-filterkaraffel
+  'prod_V2wDbJ1i8O20Kj': 'vandkande', // MikroPLASTIK-STOP filterkande + 1 Bi-flux
 }
 
 export async function getMergedShopProducts(): Promise<Product[]> {
@@ -67,6 +68,7 @@ export async function getMergedShopProducts(): Promise<Product[]> {
   // Placer de generiske Laica-produkter (uden hardcodet match) sammen med vandkande-gruppen
   const laicaAnchor = orderIndex.get('germ-stop-filter') ?? orderIndex.get('mikroplastik-stop-filter')
   if (laicaAnchor != null) {
+    orderIndex.set('prod_V2wDbJ1i8O20Kj', laicaAnchor + 0.3) // MikroPLASTIK-STOP filterkande
     orderIndex.set('prod_V2wFs5adWhY4cF', laicaAnchor + 0.4) // GlaSSmart™ glas-filterkaraffel
     orderIndex.set('prod_V2wHIQrdoXx6RG', laicaAnchor + 0.5) // FAST DISK™ filter til GlaSSmart
   }
