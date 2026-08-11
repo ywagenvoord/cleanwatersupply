@@ -758,7 +758,7 @@ export const PRODUCTS: Product[] = [
     ],
     useCases: ['Private hjem', 'Kontorer', 'Børnefamilier'],
     compatibleFilters: ['filter-biflux-universal', 'filter-biflux-limescale', 'filter-biflux-healthexpert'],
-    alsoBought: ['filter-biflux-universal', 'vandfilter-biflux-reservedel'],
+    alsoBought: ['filter-biflux-universal', 'filter-biflux-limescale'],
   },
 
   {
@@ -924,37 +924,6 @@ export const PRODUCTS: Product[] = [
     useCases: ['Maksimal beskyttelse', 'Private hjem', 'Børnefamilier'],
     compatibleJugs: ['kande-carmen', 'kande-mikroplastik'],
     alsoBought: ['kande-carmen', 'filter-biflux-universal'],
-  },
-
-  {
-    id: 'vandfilter-biflux-reservedel',
-    productNr: '11103',
-    name: 'Løst filter til vandkande',
-    tagline: 'Udskiftningspatron – 150 liters levetid',
-    category: 'vandkande',
-    price: 60, priceErhverv: 50,
-    imgSrc:   '/images/product-filter-udskift.jpg',
-    imgLarge: '/images/product-filter-udskift.jpg',
-    description: 'Original Bi-flux®-reservedel til vandkande. Fjerner kalk, klor og urenheder. Levetid 150 L.',
-    longDescription: 'Bi-flux® universal filterpatron passer i de fleste standard vandkander. Den 6-trins filtrering kombinerer aktivt kul og ionbytning og leverer 150 liter renset vand pr. patron.',
-    highlights: ['Universal Bi-flux®', '150 liters levetid', 'Snap-on montering'],
-    features: [
-      'Original Bi-flux® 6-trins filtrering',
-      'Fjerner: kalk, klor, tungmetaller, mikroplast',
-      'Bevarer mineraler: calcium, magnesium, kalium',
-      'Levetid: ca. 150 liter',
-      'Snap-on – ingen værktøj',
-    ],
-    specs: [
-      { label: 'Type',         value: 'Bi-flux® reservedel' },
-      { label: 'Kapacitet',    value: '150 liter' },
-      { label: 'Kompatibel',   value: 'Universal vandkande-fitting' },
-    ],
-    faqs: [
-      { q: 'Passer patronen i alle kander?', a: 'Den passer i de fleste standard vandkander med universal-fitting.' },
-    ],
-    useCases: ['Private hjem', 'Kontorer'],
-    stripePaymentLink: 'https://buy.stripe.com/4gM5kC20b9Tc3zU8mb4gg0a',
   },
 
   {

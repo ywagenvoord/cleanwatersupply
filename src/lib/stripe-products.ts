@@ -17,7 +17,6 @@ export const STRIPE_MAPPING: Record<string, StripeData> = {
   'filter-housing':                { productId: 'prod_USJ9LxApP21zsD', paymentLink: 'https://buy.stripe.com/3cI6oG48jaXg8UecCr4gg07' },
   'dualstage-mf-10-cl':            { productId: 'prod_USJ9b68PGUpyKy', paymentLink: 'https://buy.stripe.com/7sY9ASawHe9sb2m8mb4gg08' },
   'kulblokfilter-10-cl':           { productId: 'prod_USJ9oRtxZfExew', paymentLink: 'https://buy.stripe.com/6oU8wObAL6H01rMcCr4gg09' },
-  'vandfilter-biflux-reservedel':  { productId: 'prod_USJ9wTiZe0YzTS', paymentLink: 'https://buy.stripe.com/4gM5kC20b9Tc3zU8mb4gg0a' },
   'kande-carmen':                  { productId: 'prod_V2wPTqJRnKDYJu', paymentLink: '' },
   'kande-mikroplastik':            { productId: 'prod_V2wDbJ1i8O20Kj', paymentLink: '' },
   'filter-biflux-universal':       { productId: 'prod_V2wMXNiLmbLutN', paymentLink: '' },

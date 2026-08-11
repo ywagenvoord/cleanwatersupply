@@ -99,7 +99,6 @@ const CBLUE_IMG = '/images/cblue-sc3-1.jpg'
 const FITS_WITH: Record<string, { img: string; label: string }> = {
   'dualstage-mf-10-cl':           { img: HOUSING_IMG, label: 'Filter Housing' },
   'kulblokfilter-10-cl':          { img: HOUSING_IMG, label: 'Filter Housing' },
-  'vandfilter-biflux-reservedel': { img: JUG_IMG,     label: 'Vandkande' },
   'cartridge-mf5':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cartridge-sc3':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },

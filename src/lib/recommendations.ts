@@ -26,7 +26,6 @@ const CROSS_SELL: Record<string, string[]> = {
   'as-tube':                       ['filter-housing', 'dualstage-mf-10-cl'],
 
   // Pitcher filter → matching pitcher
-  'vandfilter-biflux-reservedel':  ['baclyser-neo-tl-2m', 'cblue-sc3'],
 
   // Big systems → small accessories
   'blosgoringsanlaeg-100m':        ['filter-housing', 'kulblokfilter-10-cl', 'cblue-sc3'],
