@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:        0.8,
   }))
 
-  const kandeRoutes: MetadataRoute.Sitemap = KANDER.map(k => ({
+  const kandeRoutes: MetadataRoute.Sitemap = KANDER.filter(k => k.slug !== 'carmen').map(k => ({
     url:            `${SITE_URL}/vandkander/${k.slug}`,
     lastModified:   now,
     changeFrequency: 'monthly',

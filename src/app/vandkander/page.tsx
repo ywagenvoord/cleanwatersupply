@@ -37,7 +37,7 @@ export default function VandkanderPage() {
           {KANDER.map((k) => (
             <Link
               key={k.slug}
-              href={`/vandkander/${k.slug}`}
+              href={k.slug === 'carmen' ? '/shop/kande-carmen' : `/vandkander/${k.slug}`}
               className="group flex flex-col rounded-3xl overflow-hidden bg-white ring-1 ring-blue-100/70 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               {/* Billede */}

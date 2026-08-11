@@ -11,6 +11,9 @@ const nextConfig = {
   // sider der har skiftet slug). Uden disse rammer Google-resultater en 404.
   async redirects() {
     return [
+      // Carmen: kande-siden og shop-siden er samlet til én – shop-siden (med flere billeder)
+      { source: '/vandkander/carmen', destination: '/shop/kande-carmen', permanent: true },
+
       // ── Sider der har skiftet slug/struktur (SKAL stå før de generelle regler) ──
       { source: '/en/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
       { source: '/de/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
