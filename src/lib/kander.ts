@@ -85,7 +85,7 @@ export const KANDER: Kande[] = [
     varenr: 'LAI-1001',
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
-    img: '/images/kande-mikroplastik-hvid.jpg',
+    img: '/images/kande-mikroplastik-t.png',
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
     highlight: 'Fjerner 99,99 % mikroplast',
