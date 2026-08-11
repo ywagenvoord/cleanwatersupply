@@ -30,7 +30,7 @@ export const FILTRE: Filter[] = [
     varenr: 'LAI-1006',
     name: 'Bi-flux® Universal',
     art: 'Art. F0M',
-    img: '/images/filter-biflux-universal.jpg',
+    img: '/images/filter-biflux-universal.png',
     tagline: 'Det alsidige hverdagsfilter.',
     best: 'Bedst til: daglig brug, alsidig filtrering',
     life: '1 måned · ca. 150 L pr. filter',
