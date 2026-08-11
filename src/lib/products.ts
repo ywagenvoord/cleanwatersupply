@@ -813,6 +813,7 @@ export const PRODUCTS: Product[] = [
     price: 89,
     imgSrc:   '/images/filter-biflux-universal.png',
     imgLarge: '/images/filter-biflux-universal-lg.png',
+    images: ['/images/filter-biflux-universal-lg.png', '/images/filter-biflux-universal-box.png'],
     description: 'Bi-flux® Universal er Laicas alsidige hverdagsfilter til filtervandkander. 6-trins filtrering reducerer klor, visse tungmetaller og pesticider og forebygger kalk – og bevarer de nyttige mineraler. Passer i Carmen og de fleste Laica-kander. 2 stk. i pakken.',
     longDescription: 'Bi-flux® Universal er Laicas alsidige hverdagsfilter til filtervandkander. Med 6-trins filtrering ved kontrolleret hastighed reducerer det klor, visse tungmetaller og pesticider og forebygger kalk – samtidig med at de nyttige mineralsalte (calcium, magnesium og kalium) bevares. 100 % BPA-fri og Made in EU. Ét filter rækker til ca. 150 liter / ca. 1 måned. Leveres i pakke med 2 filtre.',
     highlights: ['Reducerer klor, kalk, tungmetaller & pesticider', 'Bevarer nyttige mineraler', '2 stk. i pakken · Made in EU'],
