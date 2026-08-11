@@ -124,7 +124,7 @@ export const FILTRE: Filter[] = [
     name: 'Filter til GlaSSmart',
     titleSuffix: '3-pack',
     art: 'FAST DISK™',
-    img: '/images/fast-disk.jpg',
+    img: '/images/fast-disk-card.jpg',
     images: ['/images/fast-disk.jpg', '/images/fast-disk-pack.jpg'],
     glassmart: true,
     tagline: 'Instant-filtrering til GlaSSmart-karaflen.',
