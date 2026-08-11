@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useAudience } from '@/lib/useAudience'
 import { ArrowRight, CheckCircle, Filter, Droplets, Zap, Tag } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import ImageCarousel from '@/components/ImageCarousel'
@@ -58,8 +59,62 @@ const solutionData = [
   },
 ]
 
+/* Erhvervs-varianter af de hjem-orienterede tekster (kun dansk).
+   Bruges når audience === 'erhverv', ellers falder vi tilbage på de private tekster. */
+const ERHVERV_OVERRIDES: Record<string, string | string[]> = {
+  'solutionsPage.hero.badge': 'Løsninger til erhverv',
+  'solutionsPage.hero.headline': 'Rent, blødt og bakteriefrit vand i hele ejendommen',
+  'solutionsPage.hero.subheadline':
+    'Fra kalkfrit vand til bakteriefrie filtre – vi gør vandet i jeres ejendom renere, blødere og sikrere. Løsninger til bygninger og installationer af enhver størrelse.',
+
+  'solutionsPage.filtration.headline': 'Rent og sikkert bakteriefrit vand i hele ejendommen',
+  'solutionsPage.filtration.description':
+    'Vores vandfiltre fjerner uønskede stoffer fra vandet i jeres bygning – uanset om I er på kommunalt vand eller egen boring. Filteret monteres centralt i rørledningen, så hvert eneste tappested i ejendommen leverer rent vand.',
+  'solutionsPage.filtration.benefits': [
+    'Fjerner bakterier, virus og parasitter',
+    'Fjerner tungmetaller og pesticider',
+    'Bedre smag og lugt på vandet',
+    'Central montering i rørledningen',
+    'Rent vand ved hvert tappested',
+    'Til både kommunalt vand og egen boring',
+  ],
+  'solutionsPage.filtration.useCases': ['Hele ejendommen', 'Kontorer & institutioner', 'Egen boring', 'Produktion & køkken'],
+
+  'solutionsPage.softening.headline': 'Blødt vand i hele ejendommen – uden kalk',
+  'solutionsPage.softening.description':
+    'Hårdt, kalkholdigt vand slider på rør, installationer og driftsudstyr. Vores blødgøringsanlæg fjerner kalken via ionbytning, så I får blødt vand i hele ejendommen: mindre kalk, lavere energiforbrug og længere levetid på udstyr og installationer.',
+  'solutionsPage.softening.benefits': [
+    'Mindre kalk på armaturer, fliser og udstyr',
+    'Lavere energiforbrug på opvarmning af vand',
+    'Mindre sæbe og rengøringsmiddel',
+    'Forlænger levetiden på installationer og udstyr',
+    'Beskytter rør og varmtvandsbeholdere',
+    'Lavt vedligehold – service kun hvert 2. år',
+  ],
+  'solutionsPage.softening.useCases': ['Hele ejendommen', 'Hoteller & restauranter', 'Områder med hårdt vand', 'Produktion'],
+
+  'solutionsPage.drinking.description':
+    'Vores filtre monteres direkte på hane eller bruser og danner en barriere mod bakterier på det sidste stykke frem til tappestedet – dér, hvor risikoen er størst. Ideelt til hoteller, plejehjem, hospitaler og andre steder med sårbare brugere.',
+  'solutionsPage.drinking.benefits': [
+    'Filtrerer bakterier fra ved hane og bruser',
+    'Ekstra tryghed for sårbare brugere',
+    'Renere vand til bad og hår',
+    'Nem, værktøjsfri montering',
+    'Ingen ændring af jeres vandinstallation',
+    'Medicinsk certificeret kvalitet',
+  ],
+  'solutionsPage.drinking.useCases': ['Hoteller', 'Plejehjem & hospitaler', 'Svømmehaller', 'Kontorer & institutioner'],
+
+  'solutionsPage.bottomCta.headline': 'Ikke sikker på hvilken løsning der passer til jeres ejendom?',
+  'solutionsPage.bottomCta.subheadline': 'Kontakt os, så hjælper vi jer med at finde den rigtige løsning til netop jeres installation.',
+}
+
 export default function SolutionsPage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
+  const [audience] = useAudience()
+  const erh = audience === 'erhverv' && language !== 'en'
+  // Erhvervs-tekst hvis den findes, ellers den almindelige (private) tekst
+  const tx = (key: string): any => (erh && key in ERHVERV_OVERRIDES ? ERHVERV_OVERRIDES[key] : t(key))
 
   return (
     <main>
@@ -79,13 +134,13 @@ export default function SolutionsPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/15 to-black/40" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
-            {t('solutionsPage.hero.badge')}
+            {tx('solutionsPage.hero.badge')}
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-            {t('solutionsPage.hero.headline')}
+            {tx('solutionsPage.hero.headline')}
           </h1>
           <p className="text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-            {t('solutionsPage.hero.subheadline')}
+            {tx('solutionsPage.hero.subheadline')}
           </p>
         </div>
       </section>
@@ -93,8 +148,8 @@ export default function SolutionsPage() {
       {/* ─── SOLUTIONS ─────────────────────────────────────────── */}
       {solutionData.map((sol) => {
         const Icon = sol.icon
-        const benefits: string[] = t(`solutionsPage.${sol.key}.benefits`)
-        const useCases: string[] = t(`solutionsPage.${sol.key}.useCases`)
+        const benefits: string[] = tx(`solutionsPage.${sol.key}.benefits`)
+        const useCases: string[] = tx(`solutionsPage.${sol.key}.useCases`)
 
         const accentText: Record<string, string> = {
           blue: 'text-blue-700',
@@ -125,10 +180,10 @@ export default function SolutionsPage() {
                   </div>
 
                   <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-5 leading-tight">
-                    {t(`solutionsPage.${sol.key}.headline`)}
+                    {tx(`solutionsPage.${sol.key}.headline`)}
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-8">
-                    {t(`solutionsPage.${sol.key}.description`)}
+                    {tx(`solutionsPage.${sol.key}.description`)}
                   </p>
 
                   {/* Benefits */}
@@ -196,10 +251,10 @@ export default function SolutionsPage() {
         </div>
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-5">
-            {t('solutionsPage.bottomCta.headline')}
+            {tx('solutionsPage.bottomCta.headline')}
           </h2>
           <p className="text-blue-100/80 mb-9 text-lg">
-            {t('solutionsPage.bottomCta.subheadline')}
+            {tx('solutionsPage.bottomCta.subheadline')}
           </p>
           <Link href="/contact" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
             {t('solutionsPage.bottomCta.cta')}
