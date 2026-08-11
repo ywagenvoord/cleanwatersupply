@@ -7,10 +7,11 @@ import { SITE_URL } from '@/lib/site'
 const URL = `${SITE_URL}/legionella`
 
 export const metadata: Metadata = {
-  title: 'Legionella-filtre til brusere & vandhaner',
+  title: 'Legionellabekæmpelse – filtre & forebyggelse til bruser og vandhane',
   description:
-    'Beskyt mod Legionella i brusebade og vandhaner. Medicinsk certificerede filtre med 7 log retention – dokumenteret effektive mod Legionella pneumophila. Læs om risiko, symptomer og forebyggelse.',
+    'Legionellabekæmpelse der virker: medicinsk certificerede point-of-use filtre med 7 log retention mod Legionella pneumophila – plus forebyggelse, risiko og symptomer. Til brusere og vandhaner i hjem og erhverv.',
   keywords: [
+    'Legionellabekæmpelse',
     'Legionella',
     'Legionella filter',
     'Legionella forebyggelse',
@@ -25,9 +26,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'article',
     url: URL,
-    title: 'Legionella – Forebyggelse & filtre | Clean Water Supply',
+    title: 'Legionellabekæmpelse – forebyggelse & filtre | Clean Water Supply',
     description:
-      'Alt om Legionella-risiko, forebyggelse og medicinsk certificerede point-of-use filtre med 7 log retention.',
+      'Alt om Legionellabekæmpelse: risiko, forebyggelse og medicinsk certificerede point-of-use filtre med 7 log retention.',
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },
@@ -44,13 +45,13 @@ export default function Page() {
       />
       <ArticleJsonLd
         url={URL}
-        headline="Legionella – Forebyggelse, filtre & beskyttelse"
-        description="Beskyt mod Legionella i brusebade og vandhaner med medicinsk certificerede point-of-use filtre. 7 log retention dokumenteret mod Legionella pneumophila."
+        headline="Legionellabekæmpelse – forebyggelse, filtre & beskyttelse"
+        description="Legionellabekæmpelse i brusebade og vandhaner med medicinsk certificerede point-of-use filtre. 7 log retention dokumenteret mod Legionella pneumophila."
         image={`${URL}/opengraph-image`}
         datePublished="2025-01-15T08:00:00+01:00"
         dateModified={new Date().toISOString()}
-        keywords={['Legionella', 'Legionella filter', 'Legionærsyge', 'Pseudomonas', 'biofilm', 'point-of-use filter']}
-        about={['Legionella pneumophila', 'Vandhygiejne', 'Legionærsyge', 'Pseudomonas aeruginosa']}
+        keywords={['Legionellabekæmpelse', 'Legionella', 'Legionella filter', 'Legionærsyge', 'Pseudomonas', 'biofilm', 'point-of-use filter']}
+        about={['Legionellabekæmpelse', 'Legionella pneumophila', 'Vandhygiejne', 'Legionærsyge', 'Pseudomonas aeruginosa']}
       />
       <LegionellaClient />
     </>

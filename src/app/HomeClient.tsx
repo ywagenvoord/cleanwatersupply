@@ -119,7 +119,7 @@ export default function HomePage() {
         <div className="overflow-hidden border-y border-white/30 bg-white/10 backdrop-blur-sm py-3">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, round) =>
-            ['Legionella bekæmpelse', 'Bakteriefrit vand', 'Miljøvenlig løsning',
+            ['Legionellabekæmpelse', 'Bakteriefrit vand', 'Miljøvenlig løsning',
              'Nem montering', 'Filter løsninger', 'Blødgøringsanlæg',
              'ISO 9001:2015', 'ISO 13485:2016', 'ISO 140010:2015',
              'Løsninger til erhverv', 'Løsninger til private'].map((cert) => (

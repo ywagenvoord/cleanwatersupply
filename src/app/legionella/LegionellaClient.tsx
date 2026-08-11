@@ -19,10 +19,10 @@ export default function LegionellaPage() {
             LEGIONELLA
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
-            Legionella – en skjult risiko i vand
+            Legionellabekæmpelse – stop en skjult risiko i vandet
           </h1>
           <p className="text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-            Kend risikoen og tag ansvar
+            Kend risikoen – og få effektiv Legionellabekæmpelse med filtre ved hver hane og bruser.
           </p>
         </div>
       </section>
@@ -119,7 +119,7 @@ export default function LegionellaPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-6 text-center">
-              Effektiv Legionella bekæmpelse
+              Effektiv Legionellabekæmpelse
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg text-center mb-10">
               De mest effektive forebyggende foranstaltninger er: Hold varmtvand på mindst 55-60°C i hele systemet. Hold koldt vand under 20°C. Skyl regelmæssigt installationer der bruges sjældent. Installér automatiske cirkulationssystemer i større ejendomme. Brug Legionella-filtre ved vandhaner og brusere som ekstra sikkerhed.
