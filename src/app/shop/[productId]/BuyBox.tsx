@@ -343,9 +343,12 @@ export default function BuyBox({ product }: { product: Product }) {
         >
           <X className="w-4 h-4" />
         </button>
-        <h3 className="text-xl font-extrabold text-[#0a2540] mb-1">Tilføj også?</h3>
-        <p className="text-sm text-gray-500 mb-5">
-          Filtre der passer til {product.name} – læg dem i samme ordre, så du er dækket fra start og sparer en ekstra levering.
+        <span className="inline-block text-[11px] font-black uppercase tracking-widest text-[#3aad4a] mb-2">Gør det komplet</span>
+        <h3 className="text-xl font-extrabold text-[#0a2540] mb-1.5">Vil du tilføje ekstra filtre?</h3>
+        <p className="text-sm text-gray-600 mb-5 leading-relaxed">
+          Læg filtre der passer til <span className="font-semibold text-[#0a2540]">{product.name}</span> i samme ordre – så er du{' '}
+          <span className="font-bold text-[#3aad4a]">dækket fra start</span> og{' '}
+          <span className="font-bold text-[#284eff]">sparer en ekstra levering</span>.
         </p>
         <div className="space-y-2.5">
           {upsell.map((u) => {
@@ -362,7 +365,7 @@ export default function BuyBox({ product }: { product: Product }) {
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-[#0a2540] leading-tight">{u.name}</p>
-                  <p className="text-sm text-gray-500 mt-0.5">{u.price.toLocaleString('da-DK')} kr</p>
+                  <p className={`text-sm mt-0.5 font-bold ${on ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>{on ? '+ ' : ''}{u.price.toLocaleString('da-DK')} kr</p>
                 </div>
                 <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 ${on ? 'border-[#3aad4a] bg-[#3aad4a] text-white' : 'border-gray-300 text-transparent'}`}>
                   <Check className="w-4 h-4" />
@@ -371,9 +374,21 @@ export default function BuyBox({ product }: { product: Product }) {
             )
           })}
         </div>
-        <div className="flex items-center justify-between mt-5 mb-4">
-          <span className="text-sm text-gray-500">I alt</span>
-          <span className="text-xl font-extrabold text-[#0a2540]">{grandTotal.toLocaleString('da-DK')} kr</span>
+        <div className="rounded-2xl bg-gray-50 border border-gray-100 p-4 mt-5 mb-4 space-y-1.5">
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-gray-500">{product.name}</span>
+            <span className="font-semibold text-[#0a2540]">{(unitPrice ?? 0).toLocaleString('da-DK')} kr</span>
+          </div>
+          {chosenSum > 0 && (
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-[#2e9a3d] font-medium">Tilbehør ({chosen.size} valgt)</span>
+              <span className="font-bold text-[#2e9a3d]">+ {chosenSum.toLocaleString('da-DK')} kr</span>
+            </div>
+          )}
+          <div className="flex items-baseline justify-between pt-2 border-t border-gray-200">
+            <span className="text-sm font-bold text-[#0a2540]">I alt</span>
+            <span className="text-2xl font-extrabold text-[#0a2540]">{grandTotal.toLocaleString('da-DK')} kr</span>
+          </div>
         </div>
         <button
           onClick={() => buyNow(Array.from(chosen))}
