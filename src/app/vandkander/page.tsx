@@ -43,7 +43,7 @@ export default function VandkanderPage() {
               {/* Billede */}
               <div className="relative h-56 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-6">
                 {k.highlight && (
-                  <span className="absolute top-4 left-4 rounded-full bg-green-100 text-[#2e7d34] text-[11px] font-black px-3 py-1">
+                  <span className="absolute top-4 left-4 z-10 rounded-full bg-green-100 text-[#2e7d34] text-[11px] font-black px-3 py-1">
                     {k.highlight}
                   </span>
                 )}
