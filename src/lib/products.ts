@@ -71,6 +71,22 @@ export function shopPrice(p: Product, erhverv: boolean): { amount?: number; exMo
   return { amount: p.price, exMoms: !!p.priceExMoms }
 }
 
+/** Aqua Free medicinsk godkendte filtre/enheder (ikke rent tilbehør) – vises med "Medicinsk godkendt"-mærkat. */
+export const MEDICAL_PRODUCT_IDS = new Set<string>([
+  // vandhane
+  'baclyser-neo-tl-2m', 'baclyser-neo-tl-3m', 'baclyser-neo-tr-2m', 'baclyser-neo-tr-3m',
+  'baclyser-tl-1m', 'baclyser-tl-2m', 'baclyser-tl-3m',
+  'baclyser-tr-1m', 'baclyser-tr-2m', 'baclyser-tr-3m', 'as-tap-2m',
+  // bruser
+  'as-tube', 'as-shower-2m', 'as-shower-chrome-2m', 'as-wallshower-4m',
+  'baclyser-s-1m', 'baclyser-s-2m', 'baclyser-s-3m-hoved', 'baclyser-s-3m',
+  'baclyser-neo-s-2m', 'baclyser-neo-s-4m',
+  'cblue-sc3', 'cblue-sc3-filter', 'cblue-sc5', 'cartridge-mf5', 'cartridge-sc3',
+  // filtre
+  'baclyser-ent-1m', 'baclyser-il-3', 'baclyser-il-5', 'baclyser-il-dent-6m', 'baclyser-wg-3m',
+  'woundlyser', 'as-fill-season',
+])
+
 export const PRODUCTS: Product[] = [
   {
     id: 'baclyser-neo-tr-2m',

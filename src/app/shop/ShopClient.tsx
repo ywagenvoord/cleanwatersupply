@@ -7,7 +7,7 @@ import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskCo
 import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
-import { PRODUCTS, shopPrice, type Product } from '@/lib/products'
+import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
@@ -126,6 +126,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
   const detailHref = DETAIL_LINK_OVERRIDES[product.id] ?? `/shop/${product.id}`
+  const isMedical = MEDICAL_PRODUCT_IDS.has(product.id)
 
   function handleAdd(e: React.MouseEvent) {
     e.preventDefault()
@@ -145,7 +146,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full">
       {/* Image / icon top */}
       <Link href={detailHref} className="block relative">
-        {product.badge && (
+        {product.badge && !/medicinsk/i.test(product.badge) && (
           <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${c.badge}`}>
             {product.badge}
           </span>
@@ -176,6 +177,12 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
         </Link>
         <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">{product.tagline}</p>
+
+        {isMedical && (
+          <span className="mt-2.5 inline-flex items-center gap-1 self-start rounded-full bg-[#3aad4a]/10 text-[#2e7d34] text-[10px] font-bold px-2 py-1 uppercase tracking-wide">
+            <ShieldCheck className="w-3 h-3" /> Medicinsk godkendt
+          </span>
+        )}
 
         {FITS_WITH[product.id] && (
           <div className="mt-2.5 inline-flex items-center gap-1.5 self-start rounded-full border border-gray-200 bg-gray-50 py-1 pl-1 pr-2.5">
