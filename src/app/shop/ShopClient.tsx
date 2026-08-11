@@ -105,6 +105,12 @@ const FITS_WITH: Record<string, { img: string; label: string }> = {
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
 }
 
+// Produkter der skal linke til en dedikeret side i stedet for standard /shop/{id}.
+// Nøgle = produkt-id (for Stripe-only produkter er det Stripe-produkt-id'et).
+const DETAIL_LINK_OVERRIDES: Record<string, string> = {
+  'prod_V2wFs5adWhY4cF': '/vandkander/glassmart', // GlaSSmart glas-filterkaraffel
+}
+
 function ProductCard({ product, catColor, showErhverv }: { product: Product; catColor: string; showErhverv: boolean }) {
   const c = COLOR[catColor as keyof typeof COLOR] ?? COLOR.blue
   const CatIcon = CATEGORIES.find(c => c.key === product.category)?.icon ?? Droplets
@@ -118,6 +124,9 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   // Use live Stripe product ID if available, fallback to static mapping
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
   const buyable = !!stripeProductId && !product.comingSoon
+
+  // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
+  const detailHref = DETAIL_LINK_OVERRIDES[product.id] ?? `/shop/${product.id}`
 
   function handleAdd(e: React.MouseEvent) {
     e.preventDefault()
@@ -136,7 +145,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   return (
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full">
       {/* Image / icon top */}
-      <Link href={`/shop/${product.id}`} className="block relative">
+      <Link href={detailHref} className="block relative">
         {product.badge && (
           <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${c.badge}`}>
             {product.badge}
@@ -164,7 +173,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
-        <Link href={`/shop/${product.id}`}>
+        <Link href={detailHref}>
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
         </Link>
         <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">{product.tagline}</p>
@@ -200,7 +209,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         <div className="mt-3 space-y-2">
           {product.quoteOnly ? (
             <Link
-              href={`/shop/${product.id}`}
+              href={detailHref}
               className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
             >
               Kontakt for info
@@ -209,7 +218,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           ) : buyable ? (
             <>
               <Link
-                href={`/shop/${product.id}`}
+                href={detailHref}
                 className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all"
               >
                 Se vare
@@ -228,7 +237,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             </>
           ) : product.comingSoon ? (
             <Link
-              href={`/shop/${product.id}`}
+              href={detailHref}
               className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-4 rounded-xl text-sm font-bold transition-all"
             >
               Kommer snart
@@ -236,7 +245,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             </Link>
           ) : (
             <Link
-              href={`/shop/${product.id}`}
+              href={detailHref}
               className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 py-3 px-4 rounded-xl text-sm font-bold transition-all"
             >
               Se produkt
