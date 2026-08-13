@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { SOLUTIONS, getSolution } from '@/lib/solutions'
 import { getProduct } from '@/lib/products'
 import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart } from 'lucide-react'
+import ScrollReveal from '@/components/ScrollReveal'
 import { SITE_URL } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -70,30 +71,42 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── SÆLGENDE HOOK ────────────────────────────────────── */}
       {sol.sell && (
-        <section className="py-14 md:py-16 bg-[#0a2540]">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl md:text-4xl font-extrabold text-white leading-tight mb-4">{sol.sell.hook}</h2>
-            <p className="text-blue-100/80 text-lg leading-relaxed max-w-2xl mx-auto">{sol.sell.hookSub}</p>
-          </div>
+        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0d3a6e] to-[#0a2540]">
+          <div className="pointer-events-none absolute -top-28 -right-28 w-[32rem] h-[32rem] rounded-full bg-[#284eff]/20 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-28 -left-28 w-96 h-96 rounded-full bg-[#3aad4a]/15 blur-3xl" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+          <ScrollReveal>
+            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-7">
+                <Droplets className="w-3.5 h-3.5" /> Blødt vand
+              </span>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">{sol.sell.hook}</h2>
+              <p className="text-blue-100/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">{sol.sell.hookSub}</p>
+            </div>
+          </ScrollReveal>
         </section>
       )}
 
       {/* ─── GENKENDELIGE FRUSTRATIONER ───────────────────────── */}
       {sol.sell && (
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mb-8">
+            <div className="max-w-2xl mb-10">
               <span className="section-badge">Kan du genkende det?</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Hårdt vand lister sig ind alle steder</h2>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-[#0a2540] leading-tight tracking-tight">Hårdt vand lister sig ind alle steder</h2>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {sol.sell.pains.map((p) => (
-                <div key={p} className="flex items-start gap-3 rounded-2xl bg-gray-50 border border-gray-100 p-5">
-                  <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <p className="text-sm text-gray-700 leading-relaxed">{p}</p>
-                </div>
-              ))}
-            </div>
+            <ScrollReveal>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {sol.sell.pains.map((p) => (
+                  <div key={p} className="flex items-start gap-4 rounded-2xl bg-gray-50/70 ring-1 ring-gray-100 p-5 transition-all hover:bg-white hover:ring-gray-200 hover:shadow-md">
+                    <span className="w-9 h-9 shrink-0 rounded-full bg-red-50 text-red-400 flex items-center justify-center">
+                      <XCircle className="w-5 h-5" />
+                    </span>
+                    <p className="text-[15px] text-gray-700 leading-relaxed pt-1.5">{p}</p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
@@ -127,44 +140,52 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── FORVANDLINGEN (sælgende) ─────────────────────────── */}
       {sol.sell && (
-        <section className="py-16 bg-gradient-to-b from-blue-50/60 to-white">
+        <section className="py-20 bg-gradient-to-b from-[#f5faff] to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mb-10">
+            <div className="max-w-2xl mb-12">
               <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> Forvandlingen</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Sådan føles hverdagen med blødt vand</h2>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-[#0a2540] leading-tight tracking-tight">Sådan føles hverdagen med blødt vand</h2>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {sol.sell.transform.map((b) => (
-                <div key={b.title} className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
-                  <Heart className="w-6 h-6 text-[#3aad4a] mb-3" />
-                  <h3 className="font-bold text-gray-900 mb-1.5">{b.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
-                </div>
-              ))}
-            </div>
+            <ScrollReveal>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sol.sell.transform.map((b) => (
+                  <div key={b.title} className="group rounded-3xl bg-white ring-1 ring-gray-100 shadow-sm p-7 transition-all hover:shadow-xl hover:-translate-y-1">
+                    <span className="w-12 h-12 rounded-2xl bg-[#3aad4a]/10 text-[#2e9a3d] flex items-center justify-center mb-5 transition-colors group-hover:bg-[#3aad4a] group-hover:text-white">
+                      <Heart className="w-6 h-6" />
+                    </span>
+                    <h3 className="font-extrabold text-[#0a2540] text-[17px] mb-2">{b.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
 
       {/* ─── DET BETALER SIG SELV ─────────────────────────────── */}
       {sol.sell && (
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mb-10">
+            <div className="max-w-2xl mb-12">
               <span className="section-badge"><Coins className="w-3.5 h-3.5" /> Økonomi</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Det betaler sig selv over tid</h2>
+              <h2 className="text-2xl md:text-4xl font-extrabold text-[#0a2540] leading-tight tracking-tight">Det betaler sig selv over tid</h2>
             </div>
-            <div className="grid sm:grid-cols-2 gap-5">
-              {sol.sell.savings.map((b) => (
-                <div key={b.title} className="flex gap-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 p-6">
-                  <Coins className="w-6 h-6 text-[#2e9a3d] shrink-0 mt-0.5" />
-                  <div>
-                    <h3 className="font-bold text-gray-900 mb-1.5">{b.title}</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+            <ScrollReveal>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {sol.sell.savings.map((b) => (
+                  <div key={b.title} className="flex gap-4 rounded-3xl bg-gradient-to-br from-emerald-50 to-white ring-1 ring-emerald-100 p-7 transition-shadow hover:shadow-md">
+                    <span className="w-11 h-11 shrink-0 rounded-2xl bg-white text-[#2e9a3d] ring-1 ring-emerald-100 flex items-center justify-center">
+                      <Coins className="w-5 h-5" />
+                    </span>
+                    <div>
+                      <h3 className="font-extrabold text-[#0a2540] mb-1.5">{b.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
@@ -194,29 +215,33 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── NEMT & TRYGT (sælgende) ──────────────────────────── */}
       {sol.sell && (
-        <section className="py-14 bg-blue-50/50">
+        <section className="py-16 bg-gradient-to-b from-white to-[#f5faff]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-8 md:p-10">
-              <div className="flex items-center gap-2 mb-6">
-                <ShieldCheck className="w-5 h-5 text-[#3aad4a]" />
-                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">Nemt at få – og nemt at leve med</h2>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {sol.sell.reassure.map((r) => (
-                  <div key={r} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
-                    <p className="text-sm text-gray-700 leading-relaxed">{r}</p>
-                  </div>
-                ))}
-              </div>
-              {products[0] && (
-                <div className="mt-8">
-                  <Link href={`/shop/${products[0].id}`} className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
-                    Se blødgøringsanlægget <ArrowRight className="w-4 h-4" />
-                  </Link>
+            <ScrollReveal>
+              <div className="rounded-[2rem] bg-white ring-1 ring-gray-100 shadow-[0_24px_70px_-30px_rgba(10,37,64,0.25)] p-8 md:p-12">
+                <div className="flex items-center gap-2.5 mb-7">
+                  <span className="w-10 h-10 rounded-2xl bg-[#3aad4a]/10 text-[#2e9a3d] flex items-center justify-center">
+                    <ShieldCheck className="w-5 h-5" />
+                  </span>
+                  <h2 className="text-xl md:text-2xl font-extrabold text-[#0a2540]">Nemt at få – og nemt at leve med</h2>
                 </div>
-              )}
-            </div>
+                <div className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                  {sol.sell.reassure.map((r) => (
+                    <div key={r} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
+                      <p className="text-[15px] text-gray-700 leading-relaxed">{r}</p>
+                    </div>
+                  ))}
+                </div>
+                {products[0] && (
+                  <div className="mt-9">
+                    <Link href={`/shop/${products[0].id}`} className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">
+                      Se blødgøringsanlægget <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
