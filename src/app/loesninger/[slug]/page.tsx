@@ -71,17 +71,20 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── SÆLGENDE HOOK ────────────────────────────────────── */}
       {sol.sell && (
-        <section className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0d3a6e] to-[#0a2540]">
-          <div className="pointer-events-none absolute -top-28 -right-28 w-[32rem] h-[32rem] rounded-full bg-[#284eff]/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-28 -left-28 w-96 h-96 rounded-full bg-[#3aad4a]/15 blur-3xl" />
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+        <section className="py-16 md:py-20 bg-gradient-to-b from-[#eef6ff] to-white">
           <ScrollReveal>
-            <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-7">
-                <Droplets className="w-3.5 h-3.5" /> Blødt vand
-              </span>
-              <h2 className="text-3xl md:text-5xl font-extrabold text-white leading-[1.1] tracking-tight mb-6">{sol.sell.hook}</h2>
-              <p className="text-blue-100/80 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">{sol.sell.hookSub}</p>
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white via-[#f4f9ff] to-[#eefaf1] ring-1 ring-blue-100/70 shadow-[0_30px_80px_-40px_rgba(10,37,64,0.22)] px-6 py-14 md:px-16 md:py-20 text-center">
+                <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#284eff]/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/10 blur-3xl" />
+                <div className="relative">
+                  <span className="inline-flex items-center gap-2 bg-white text-[#2e9a3d] ring-1 ring-[#3aad4a]/20 shadow-sm text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-7">
+                    <Droplets className="w-3.5 h-3.5" /> Blødt vand
+                  </span>
+                  <h2 className="text-3xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.1] tracking-tight mb-6">{sol.sell.hook}</h2>
+                  <p className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">{sol.sell.hookSub}</p>
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </section>
@@ -96,10 +99,10 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
               <h2 className="text-2xl md:text-4xl font-extrabold text-[#0a2540] leading-tight tracking-tight">Hårdt vand lister sig ind alle steder</h2>
             </div>
             <ScrollReveal>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-5">
                 {sol.sell.pains.map((p) => (
-                  <div key={p} className="flex items-start gap-4 rounded-2xl bg-gray-50/70 ring-1 ring-gray-100 p-5 transition-all hover:bg-white hover:ring-gray-200 hover:shadow-md">
-                    <span className="w-9 h-9 shrink-0 rounded-full bg-red-50 text-red-400 flex items-center justify-center">
+                  <div key={p} className="flex items-start gap-4 rounded-3xl bg-[#fff7f6] ring-1 ring-rose-100/70 p-6 transition-all hover:shadow-md hover:-translate-y-0.5">
+                    <span className="w-10 h-10 shrink-0 rounded-full bg-white text-rose-400 ring-1 ring-rose-100 flex items-center justify-center">
                       <XCircle className="w-5 h-5" />
                     </span>
                     <p className="text-[15px] text-gray-700 leading-relaxed pt-1.5">{p}</p>
@@ -149,7 +152,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
             <ScrollReveal>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {sol.sell.transform.map((b) => (
-                  <div key={b.title} className="group rounded-3xl bg-white ring-1 ring-gray-100 shadow-sm p-7 transition-all hover:shadow-xl hover:-translate-y-1">
+                  <div key={b.title} className="group rounded-3xl bg-gradient-to-b from-white to-[#f7fbff] ring-1 ring-blue-100/60 shadow-sm p-7 transition-all hover:shadow-xl hover:-translate-y-1">
                     <span className="w-12 h-12 rounded-2xl bg-[#3aad4a]/10 text-[#2e9a3d] flex items-center justify-center mb-5 transition-colors group-hover:bg-[#3aad4a] group-hover:text-white">
                       <Heart className="w-6 h-6" />
                     </span>
