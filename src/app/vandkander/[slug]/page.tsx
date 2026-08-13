@@ -10,6 +10,7 @@ import { KANDER, getKande } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
 import KandeBuy from './KandeBuy'
+import GlaSSmartVideoModal from './GlaSSmartVideoModal'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -43,6 +44,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
+      {k.slug === 'glassmart' && <GlaSSmartVideoModal />}
       {/* ─── HERO ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">
 
