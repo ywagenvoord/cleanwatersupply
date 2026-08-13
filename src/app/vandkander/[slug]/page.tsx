@@ -9,6 +9,7 @@ import {
 import { KANDER, getKande } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
+import KandeBuy from './KandeBuy'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -92,20 +93,24 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
-                >
-                  Køb i shoppen <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
-                >
-                  Få rådgivning
-                </Link>
-              </div>
+              {k.stripeProductId && k.price != null ? (
+                <KandeBuy stripeProductId={k.stripeProductId} name={k.name} price={k.price} image={k.img} />
+              ) : (
+                <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                  <Link
+                    href="/shop"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+                  >
+                    Køb i shoppen <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
+                  >
+                    Få rådgivning
+                  </Link>
+                </div>
+              )}
 
               {/* Trust-chips */}
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-7">

@@ -10,6 +10,7 @@ export type Kande = {
   tagline: string
   price?: number
   varenr?: string
+  stripeProductId?: string   // gør kanden købbar direkte fra kande-siden
   capacity?: string
   highlight?: string
   intro: string
@@ -83,6 +84,7 @@ export const KANDER: Kande[] = [
     slug: 'mikroplastik-stop',
     price: 349,
     varenr: 'LAI-1001',
+    stripeProductId: 'prod_V2wDbJ1i8O20Kj',
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
     img: '/images/kande-mikroplastik-t.png',
@@ -138,6 +140,7 @@ export const KANDER: Kande[] = [
     slug: 'glassmart',
     price: 199,
     varenr: 'LAI-1002',
+    stripeProductId: 'prod_V2wFs5adWhY4cF',
     name: 'GlaSSmart™ glas-filterkaraffel',
     art: 'FAST DISK™',
     img: '/images/glassmart-flaske-t.png',
