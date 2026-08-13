@@ -169,6 +169,11 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                       <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
                       <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5">{k.addon.name}</h2>
                       <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
+                      {k.addon.price != null && (
+                        <p className="text-base font-extrabold text-[#0a2540] mt-1.5">
+                          {k.addon.price.toLocaleString('da-DK')} kr <span className="text-xs font-medium text-gray-400">inkl. moms</span>
+                        </p>
+                      )}
                     </div>
                   </div>
                   <Link

@@ -19,7 +19,7 @@ export type Kande = {
   points: string[]
   specs: Spec[]
   filter?: string
-  addon?: { name: string; art: string; img: string; life: string; blurb: string }
+  addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number }
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
@@ -178,6 +178,7 @@ export const KANDER: Kande[] = [
       img: '/images/fast-disk-pack.jpg',
       life: 'Ca. 3 måneders filtreret vand',
       blurb: 'De matchende skivefiltre til GlaSSmart-karaflen – filtrerer, mens du hælder.',
+      price: 89,
     },
     highlights: [
       { icon: 'droplet', title: 'Passer i køleskabet', text: 'Passer i de fleste køleskabe og kan både stå op og ligge ned – luk blot låget korrekt, så den er tæt. Altid koldt, filtreret vand klar.' },
