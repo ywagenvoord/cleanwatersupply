@@ -3,6 +3,16 @@
 
 export type SolutionBenefit = { title: string; body: string }
 
+// Ekstra sælgende indhold (bruges hvor vi vil sælge hårdt – fx kalkanlæg)
+export type SolutionSell = {
+  hook: string
+  hookSub: string
+  pains: string[]                 // "Kan du genkende det?"
+  transform: SolutionBenefit[]    // forvandlingen / hverdagen med løsningen
+  savings: SolutionBenefit[]      // "Det betaler sig selv"
+  reassure: string[]              // nemt & trygt
+}
+
 export type SolutionInfo = {
   slug: string
   label: string
@@ -14,6 +24,7 @@ export type SolutionInfo = {
   how: string
   everyday: SolutionBenefit[]
   productIds: string[]
+  sell?: SolutionSell  // valgfrit ekstra salgs-lag
 }
 
 export const SOLUTIONS: SolutionInfo[] = [
@@ -46,6 +57,38 @@ export const SOLUTIONS: SolutionInfo[] = [
       { title: 'Beskytter dit hjem', body: 'Mindre kalk i rør, varmtvandsbeholder og hvidevarer forlænger levetiden og sænker energiforbruget.' },
     ],
     productIds: ['blosgoringsanlaeg-100m', 'blosgoringsanlaeg-100bs', 'blosgoringsanlaeg-100b'],
+    sell: {
+      hook: 'Når du først har mærket blødt vand, kan du ikke gå tilbage.',
+      hookSub: 'Hårdt, kalkholdigt vand slider på dit hjem – og på dig. Et blødgøringsanlæg fjerner kalken ved kilden, så hver eneste dråbe i huset bliver blød. Forskellen mærker du allerede efter det første bad.',
+      pains: [
+        'Hvide kalkrande på bruseglas, fliser og armaturer – uanset hvor meget du skrubber.',
+        'Håndklæder og tøj, der føles stive og kradsende efter vask.',
+        'Tør, stram hud og hår, der er svært at rede efter badet.',
+        'Kalk der stopper elkedel, kaffemaskine og bruser til.',
+        'Mere og mere sæbe, shampoo og vaskemiddel – der stadig ikke skummer rigtigt.',
+        'Hvidevarer og varmtvandsbeholder, der ældes før tid af kalkaflejringer.',
+      ],
+      transform: [
+        { title: 'Silkeblød hud & hår', body: 'Uden kalk skyller sæben helt af. Huden føles blød og smidig, og håret bliver let at rede – forskellen mærker du allerede fra det første brusebad.' },
+        { title: 'Et bad der nærmest bliver rent af sig selv', body: 'Ingen kalkrande på glas, fliser og armaturer. Overfladerne bliver blanke – og bliver ved med at være det med langt mindre skrubben.' },
+        { title: 'Blødere håndklæder og tøj', body: 'Vasketøj vasket i blødt vand bliver blødt og fluffy igen – uden stivhed og med mindre skyllemiddel.' },
+        { title: 'Glas og bestik der skinner', body: 'Slut med matte glas og kalkslør fra opvaskemaskinen. Alt kommer ud blankt.' },
+        { title: 'Ro i maskineriet', body: 'Kalkfrit vand skåner elkedel, kaffemaskine, vaskemaskine og varmtvandsbeholder – de holder længere og kører mere effektivt.' },
+        { title: 'Mindre kemi i hjemmet', body: 'Du får brug for markant mindre sæbe, shampoo og rengøringsmiddel – bedre for både pengepung og miljø.' },
+      ],
+      savings: [
+        { title: 'Mindre sæbe & produkt', body: 'Blødt vand skummer bedre, så du typisk bruger op til halvt så meget shampoo, sæbe og vaskemiddel.' },
+        { title: 'Længere levetid på hvidevarer', body: 'Kalk slider på vaskemaskine, opvasker og varmtvandsbeholder. Blødt vand udskyder dyre reparationer og udskiftninger.' },
+        { title: 'Lavere energiregning', body: 'Bare få millimeter kalk på et varmelegeme øger energiforbruget mærkbart. Kalkfrit vand varmer mere effektivt – det ses på regningen.' },
+        { title: 'Færre timer på rengøring', body: 'Ingen kalk at skrubbe væk betyder mindre tid brugt på badeværelse og køkken hver uge.' },
+      ],
+      reassure: [
+        'Kompakt alt-i-ét-anlæg, der ikke fylder meget.',
+        'Fuldautomatisk – regenererer selv med salt, så du ikke skal gøre noget.',
+        'Lavt vedligehold – typisk kun service ca. hvert 2. år.',
+        'Professionel montering kan tilkøbes, så det er installeret korrekt fra dag ét.',
+      ],
+    },
   },
   {
     slug: 'filtre-i-vandforsyningen',

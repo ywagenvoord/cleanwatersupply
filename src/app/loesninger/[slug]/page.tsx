@@ -3,7 +3,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { SOLUTIONS, getSolution } from '@/lib/solutions'
 import { getProduct } from '@/lib/products'
-import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles } from 'lucide-react'
+import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 
 export function generateStaticParams() {
@@ -68,6 +68,36 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* ─── SÆLGENDE HOOK ────────────────────────────────────── */}
+      {sol.sell && (
+        <section className="py-14 md:py-16 bg-[#0a2540]">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-2xl md:text-4xl font-extrabold text-white leading-tight mb-4">{sol.sell.hook}</h2>
+            <p className="text-blue-100/80 text-lg leading-relaxed max-w-2xl mx-auto">{sol.sell.hookSub}</p>
+          </div>
+        </section>
+      )}
+
+      {/* ─── GENKENDELIGE FRUSTRATIONER ───────────────────────── */}
+      {sol.sell && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl mb-8">
+              <span className="section-badge">Kan du genkende det?</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Hårdt vand lister sig ind alle steder</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {sol.sell.pains.map((p) => (
+                <div key={p} className="flex items-start gap-3 rounded-2xl bg-gray-50 border border-gray-100 p-5">
+                  <XCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                  <p className="text-sm text-gray-700 leading-relaxed">{p}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── HVAD / HVORDAN ───────────────────────────────────── */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 items-stretch">
@@ -95,26 +125,101 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* ─── HVERDAGSFORDELE ──────────────────────────────────── */}
-      <section className="py-16 bg-blue-50/50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-2xl mb-10">
-            <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> I hverdagen</span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Sådan hjælper det dig i hverdagen</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-5">
-            {sol.everyday.map((b) => (
-              <div key={b.title} className="flex gap-4 rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
-                <CheckCircle2 className="w-6 h-6 text-[#3aad4a] shrink-0 mt-0.5" />
-                <div>
+      {/* ─── FORVANDLINGEN (sælgende) ─────────────────────────── */}
+      {sol.sell && (
+        <section className="py-16 bg-gradient-to-b from-blue-50/60 to-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl mb-10">
+              <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> Forvandlingen</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Sådan føles hverdagen med blødt vand</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {sol.sell.transform.map((b) => (
+                <div key={b.title} className="rounded-2xl bg-white border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+                  <Heart className="w-6 h-6 text-[#3aad4a] mb-3" />
                   <h3 className="font-bold text-gray-900 mb-1.5">{b.title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* ─── DET BETALER SIG SELV ─────────────────────────────── */}
+      {sol.sell && (
+        <section className="py-16 bg-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl mb-10">
+              <span className="section-badge"><Coins className="w-3.5 h-3.5" /> Økonomi</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Det betaler sig selv over tid</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {sol.sell.savings.map((b) => (
+                <div key={b.title} className="flex gap-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 p-6">
+                  <Coins className="w-6 h-6 text-[#2e9a3d] shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1.5">{b.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── HVERDAGSFORDELE (kun uden sælgende lag) ──────────── */}
+      {!sol.sell && (
+        <section className="py-16 bg-blue-50/50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-2xl mb-10">
+              <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> I hverdagen</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 leading-tight">Sådan hjælper det dig i hverdagen</h2>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {sol.everyday.map((b) => (
+                <div key={b.title} className="flex gap-4 rounded-2xl bg-white border border-gray-100 p-6 shadow-sm">
+                  <CheckCircle2 className="w-6 h-6 text-[#3aad4a] shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1.5">{b.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{b.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── NEMT & TRYGT (sælgende) ──────────────────────────── */}
+      {sol.sell && (
+        <section className="py-14 bg-blue-50/50">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-8 md:p-10">
+              <div className="flex items-center gap-2 mb-6">
+                <ShieldCheck className="w-5 h-5 text-[#3aad4a]" />
+                <h2 className="text-xl md:text-2xl font-extrabold text-gray-900">Nemt at få – og nemt at leve med</h2>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {sol.sell.reassure.map((r) => (
+                  <div key={r} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
+                    <p className="text-sm text-gray-700 leading-relaxed">{r}</p>
+                  </div>
+                ))}
+              </div>
+              {products[0] && (
+                <div className="mt-8">
+                  <Link href={`/shop/${products[0].id}`} className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
+                    Se blødgøringsanlægget <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── PRODUKTER ────────────────────────────────────────── */}
       {products.length > 0 && (
