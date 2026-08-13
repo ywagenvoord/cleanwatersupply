@@ -11,6 +11,7 @@ export type Kande = {
   price?: number
   varenr?: string
   stripeProductId?: string   // gør kanden købbar direkte fra kande-siden
+  ogImage?: string           // delebillede (1200×630) til Facebook/social preview
   capacity?: string
   highlight?: string
   intro: string
@@ -141,6 +142,7 @@ export const KANDER: Kande[] = [
     price: 199,
     varenr: 'LAI-1002',
     stripeProductId: 'prod_V2wFs5adWhY4cF',
+    ogImage: '/images/glassmart-og.jpg',
     name: 'GlaSSmart™ glas-filterkaraffel',
     art: 'FAST DISK™',
     img: '/images/glassmart-flaske-t.png',
