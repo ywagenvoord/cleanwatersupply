@@ -34,17 +34,28 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: `${k.name} | Clean Water Supply`,
     description: k.tagline,
     alternates: { canonical: `${SITE_URL}/vandkander/${k.slug}` },
-    openGraph: {
-      title: k.name,
-      description: k.tagline,
-      type: 'website',
-      url: `${SITE_URL}/vandkander/${k.slug}`,
-      locale: 'da_DK',
-      siteName: 'Clean Water Supply',
-      images: k.ogImage ? [{ url: `${SITE_URL}${k.ogImage}`, width: 1200, height: 630, alt: k.name }] : undefined,
-    },
+    openGraph: k.ogVideo
+      ? {
+          type: 'video.other',
+          title: k.name,
+          description: k.tagline,
+          url: `${SITE_URL}/vandkander/${k.slug}`,
+          locale: 'da_DK',
+          siteName: 'Clean Water Supply',
+          videos: [{ url: `${SITE_URL}${k.ogVideo}`, secureUrl: `${SITE_URL}${k.ogVideo}`, type: 'video/mp4', width: 1080, height: 1920 }],
+          images: k.ogImage ? [{ url: `${SITE_URL}${k.ogImage}`, width: 1200, height: 630, alt: k.name }] : undefined,
+        }
+      : {
+          type: 'website',
+          title: k.name,
+          description: k.tagline,
+          url: `${SITE_URL}/vandkander/${k.slug}`,
+          locale: 'da_DK',
+          siteName: 'Clean Water Supply',
+          images: k.ogImage ? [{ url: `${SITE_URL}${k.ogImage}`, width: 1200, height: 630, alt: k.name }] : undefined,
+        },
     twitter: {
-      card: 'summary_large_image',
+      card: k.ogVideo ? 'player' : 'summary_large_image',
       title: k.name,
       description: k.tagline,
       images: k.ogImage ? [`${SITE_URL}${k.ogImage}`] : undefined,
