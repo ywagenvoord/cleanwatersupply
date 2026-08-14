@@ -56,6 +56,8 @@ export type Product = {
   stripeProductId?: string
   // Kort sælgende linje vist lige under prisen på produktsiden
   priceNote?: string
+  // Anbefalet husstandsstørrelse (fx blødgøringsanlæg) – så folk kan matche deres familie
+  recommendedFor?: string
   // Forbrugervenlig linje: hvad produktet fjerner / beskytter mod (vist på filter-tilkøb)
   removes?: string
 }
@@ -1203,6 +1205,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Blødt vand i hele huset – kompakt alt-i-ét anlæg',
     badge: 'Kompakt',
     category: 'blosgoringsanlaeg',
+    recommendedFor: '1–4 personer',
     featured: true,
     price: 11250,
     imgSrc:   '/images/blosgoringsanlaeg-100m.jpg',

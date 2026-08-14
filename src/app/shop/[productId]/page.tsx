@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
-import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt } from 'lucide-react'
+import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users } from 'lucide-react'
 import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
 import ProductPrice from './ProductPrice'
@@ -357,6 +357,21 @@ export default async function ProductDetailPage({ params }: { params: { productI
                         </Link>
                       )
                     })}
+                  </div>
+                </div>
+              )}
+
+              {/* Anbefalet husstandsstørrelse */}
+              {product.recommendedFor && (
+                <div className="mb-6 flex items-start gap-3.5 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
+                  <span className="w-10 h-10 shrink-0 rounded-xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center">
+                    <Users className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-extrabold text-[#0a2540]">Anbefales til husstande på {product.recommendedFor}</p>
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                      Dimensioneret til en almindelig husstand på {product.recommendedFor} – passer til lejligheder, rækkehuse og mindre huse. Er I flere, eller har I et højt vandforbrug? Kontakt os, så finder vi den rette størrelse.
+                    </p>
                   </div>
                 </div>
               )}
