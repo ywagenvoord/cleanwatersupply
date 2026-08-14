@@ -3,9 +3,12 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { SOLUTIONS, getSolution } from '@/lib/solutions'
 import { getProduct } from '@/lib/products'
-import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart } from 'lucide-react'
+import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart, ShowerHead, Shirt, Hand, Coffee, WashingMachine } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import { SITE_URL } from '@/lib/site'
+
+// Små ikoner der matcher kalkanlæg-frustrationerne (samme rækkefølge som pains)
+const PAIN_ICONS = [ShowerHead, Shirt, Hand, Coffee, Droplets, WashingMachine]
 
 export function generateStaticParams() {
   return SOLUTIONS.map((s) => ({ slug: s.slug }))
@@ -100,14 +103,17 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
             </div>
             <ScrollReveal>
               <div className="grid sm:grid-cols-2 gap-5">
-                {sol.sell.pains.map((p) => (
-                  <div key={p} className="flex items-start gap-4 rounded-3xl bg-[#fff7f6] ring-1 ring-rose-100/70 p-6 transition-all hover:shadow-md hover:-translate-y-0.5">
-                    <span className="w-10 h-10 shrink-0 rounded-full bg-white text-rose-400 ring-1 ring-rose-100 flex items-center justify-center">
-                      <XCircle className="w-5 h-5" />
-                    </span>
-                    <p className="text-[15px] text-gray-700 leading-relaxed pt-1.5">{p}</p>
-                  </div>
-                ))}
+                {sol.sell.pains.map((p, i) => {
+                  const PainIcon = PAIN_ICONS[i] ?? XCircle
+                  return (
+                    <div key={p} className="flex items-start gap-4 rounded-3xl bg-[#fff7f6] ring-1 ring-rose-100/70 p-6 transition-all hover:shadow-md hover:-translate-y-0.5">
+                      <span className="w-10 h-10 shrink-0 rounded-full bg-white text-rose-400 ring-1 ring-rose-100 flex items-center justify-center">
+                        <PainIcon className="w-5 h-5" strokeWidth={2} />
+                      </span>
+                      <p className="text-[15px] text-gray-700 leading-relaxed pt-1.5">{p}</p>
+                    </div>
+                  )
+                })}
               </div>
             </ScrollReveal>
           </div>
