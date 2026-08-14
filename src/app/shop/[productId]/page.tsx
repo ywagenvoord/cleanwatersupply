@@ -257,6 +257,21 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 </div>
               )}
 
+              {/* Anbefalet husstandsstørrelse */}
+              {product.recommendedFor && (
+                <div className="mt-6 flex items-start gap-3.5 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
+                  <span className="w-10 h-10 shrink-0 rounded-xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center">
+                    <Users className="w-5 h-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-extrabold text-[#0a2540]">Anbefales til husstande på {product.recommendedFor}</p>
+                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                      Dimensioneret til en almindelig husstand på {product.recommendedFor} – passer til lejligheder, rækkehuse og mindre huse. Er I flere, eller har I et højt vandforbrug? Kontakt os, så finder vi den rette størrelse.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Fordele ved blødt vand – udfylder venstre kolonne (kun blødgøringsanlæg) */}
               {product.category === 'blosgoringsanlaeg' && (
                 <div className="mt-6 rounded-3xl border border-blue-100 bg-blue-50 p-6">
@@ -357,21 +372,6 @@ export default async function ProductDetailPage({ params }: { params: { productI
                         </Link>
                       )
                     })}
-                  </div>
-                </div>
-              )}
-
-              {/* Anbefalet husstandsstørrelse */}
-              {product.recommendedFor && (
-                <div className="mb-6 flex items-start gap-3.5 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
-                  <span className="w-10 h-10 shrink-0 rounded-xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center">
-                    <Users className="w-5 h-5" />
-                  </span>
-                  <div>
-                    <p className="text-sm font-extrabold text-[#0a2540]">Anbefales til husstande på {product.recommendedFor}</p>
-                    <p className="text-xs text-gray-600 mt-1 leading-relaxed">
-                      Dimensioneret til en almindelig husstand på {product.recommendedFor} – passer til lejligheder, rækkehuse og mindre huse. Er I flere, eller har I et højt vandforbrug? Kontakt os, så finder vi den rette størrelse.
-                    </p>
                   </div>
                 </div>
               )}
