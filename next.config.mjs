@@ -27,8 +27,11 @@ const nextConfig = {
       { source: '/product-category/:path*', destination: '/shop', permanent: true },
       { source: '/kategori/:path*',         destination: '/shop', permanent: true },
       { source: '/butik/:path*',            destination: '/shop', permanent: true },
-      // WordPress REST API-endpoints (crawlet af Google, ingen side)
-      { source: '/wp-json/:path*', destination: '/', permanent: true },
+      // WordPress REST API + backend-endpoints (crawlet af Google, ingen side)
+      { source: '/wp-json/:path*',  destination: '/', permanent: true },
+      { source: '/wp-admin/:path*', destination: '/', permanent: true },
+      { source: '/wp-login.php',    destination: '/', permanent: true },
+      { source: '/xmlrpc.php',      destination: '/', permanent: true },
 
       // ── Konkrete gamle URL'er fundet i Search Console (404) ──
       // Gamle sektor-sider (flad sti + /en/ /de/-præfiks) → /omraader/<sektor>
@@ -39,6 +42,9 @@ const nextConfig = {
       { source: '/alle-produkter/filter/vandkande/:rest*',              destination: '/vandkander', permanent: true },
       // WooCommerce "tak for din ordre"-side → forsiden (transaktionsside uden SEO-værdi)
       { source: '/order-received/:rest*', destination: '/', permanent: true },
+      // Gamle cBlue-preview/produktsider (flad + sprogpræfiks) → cBlue SC3-produktsiden
+      { source: '/:lang(en|de)/cblue/:rest*', destination: '/shop/cblue-sc3', permanent: true },
+      { source: '/cblue/:rest*',              destination: '/shop/cblue-sc3', permanent: true },
 
       // ── Sider der har skiftet slug/struktur (SKAL stå før de generelle regler) ──
       { source: '/en/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
