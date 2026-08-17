@@ -337,9 +337,9 @@ export default function ContactPage() {
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">Mød teamet</h2>
             <p className="text-gray-500">Vi er klar til at hjælpe dig</p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {teamMembers.map((member) => (
-              <div key={member.name} className="bg-white rounded-3xl border border-gray-100 p-8 text-center shadow-sm hover:shadow-lg transition-shadow">
+              <div key={member.name} className="bg-white rounded-3xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
                 {member.photo ? (
                   <img
                     src={member.photo}
