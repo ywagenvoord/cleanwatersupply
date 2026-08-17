@@ -13,13 +13,6 @@ const teamMembers = [
     photo: '/images/team-kenneth.jpg',
   },
   {
-    name: 'Lotte',
-    role: 'Salg / Sygeplejerske',
-    phone: '+45 21 98 40 99',
-    email: 'lm@cleanwatersupply.dk',
-    photo: '/images/team-lotte.jpg',
-  },
-  {
     name: 'Kristoffer',
     role: 'Tekniker & Rejsemontør',
     phone: '+45 22 32 01 56',

@@ -1,4 +1,4 @@
-export type ContactPerson = 'kenneth' | 'kristoffer' | 'lotte'
+export type ContactPerson = 'kenneth' | 'kristoffer'
 
 export interface Sektor {
   id: string
@@ -112,7 +112,7 @@ export const sektorer: Sektor[] = [
       'Opbyg tillid hos patienter og personale',
       'Forlæng installationernes levetid og reducer omkostninger',
     ],
-    contactPerson: 'lotte',
+    contactPerson: 'kenneth',
   },
   {
     id: 'campingpladser',

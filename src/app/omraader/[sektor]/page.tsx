@@ -58,13 +58,6 @@ const staff = {
     email: 'kristoffer@cleanwatersupply.dk',
     photo: '/images/team-kristoffer.jpg',
   },
-  lotte: {
-    name: 'Lotte',
-    role: 'Salg / Sygeplejerske',
-    phone: '+45 21 98 40 99',
-    email: 'lm@cleanwatersupply.dk',
-    photo: '/images/team-lotte.jpg',
-  },
 }
 
 // Konkrete eksempler (udfordring → løsning) pr. område – typiske situationer
