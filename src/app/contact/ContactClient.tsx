@@ -344,10 +344,10 @@ export default function ContactPage() {
                   <img
                     src={member.photo}
                     alt={member.name}
-                    className="w-32 h-32 rounded-3xl object-cover object-top mx-auto mb-5"
+                    className="w-full aspect-square rounded-3xl object-cover object-top mb-5 bg-gray-100"
                   />
                 ) : (
-                  <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-[#0a2540] to-blue-700 flex items-center justify-center mx-auto mb-5">
+                  <div className="w-full aspect-square rounded-3xl bg-gradient-to-br from-[#0a2540] to-blue-700 flex items-center justify-center mb-5">
                     <span className="text-4xl font-extrabold text-white">{member.name[0]}</span>
                   </div>
                 )}
