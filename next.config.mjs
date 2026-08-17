@@ -27,6 +27,18 @@ const nextConfig = {
       { source: '/product-category/:path*', destination: '/shop', permanent: true },
       { source: '/kategori/:path*',         destination: '/shop', permanent: true },
       { source: '/butik/:path*',            destination: '/shop', permanent: true },
+      // WordPress REST API-endpoints (crawlet af Google, ingen side)
+      { source: '/wp-json/:path*', destination: '/', permanent: true },
+
+      // ── Konkrete gamle URL'er fundet i Search Console (404) ──
+      // Gamle sektor-sider (flad sti + /en/ /de/-præfiks) → /omraader/<sektor>
+      { source: '/:lang(en|de)/:sektor(hoteller|svoemmehaller|hospitaler|campingpladser|foedevare|landbruget)/:rest*', destination: '/omraader/:sektor', permanent: true },
+      { source: '/:sektor(hoteller|svoemmehaller|hospitaler|campingpladser|foedevare|landbruget)/:rest*',              destination: '/omraader/:sektor', permanent: true },
+      // Gammelt vandkande-filter-listing → vandkande-oversigten
+      { source: '/:lang(en|de)/alle-produkter/filter/vandkande/:rest*', destination: '/vandkander', permanent: true },
+      { source: '/alle-produkter/filter/vandkande/:rest*',              destination: '/vandkander', permanent: true },
+      // WooCommerce "tak for din ordre"-side → forsiden (transaktionsside uden SEO-værdi)
+      { source: '/order-received/:rest*', destination: '/', permanent: true },
 
       // ── Sider der har skiftet slug/struktur (SKAL stå før de generelle regler) ──
       { source: '/en/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
