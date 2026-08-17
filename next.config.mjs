@@ -14,6 +14,20 @@ const nextConfig = {
       // Carmen: kande-siden og shop-siden er samlet til én – shop-siden (med flere billeder)
       { source: '/vandkander/carmen', destination: '/shop/kande-carmen', permanent: true },
 
+      // ── Gamle WordPress/WooCommerce-stier fra den forrige side (rammer ellers 404) ──
+      // Databerblade og medie-filer lå under /wp-content/uploads/ og /uploads/
+      { source: '/wp-content/:path*', destination: '/shop', permanent: true },
+      { source: '/uploads/:path*',    destination: '/shop', permanent: true },
+      // WooCommerce produkt- og kategori-permalinks (DA + EN varianter)
+      { source: '/produkt/:path*',          destination: '/shop', permanent: true },
+      { source: '/vare/:path*',             destination: '/shop', permanent: true },
+      { source: '/product/:path*',          destination: '/shop', permanent: true },
+      { source: '/produkt-kategori/:path*', destination: '/shop', permanent: true },
+      { source: '/vare-kategori/:path*',    destination: '/shop', permanent: true },
+      { source: '/product-category/:path*', destination: '/shop', permanent: true },
+      { source: '/kategori/:path*',         destination: '/shop', permanent: true },
+      { source: '/butik/:path*',            destination: '/shop', permanent: true },
+
       // ── Sider der har skiftet slug/struktur (SKAL stå før de generelle regler) ──
       { source: '/en/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
       { source: '/de/omraader/det-private-hjem/:path*', destination: '/private', permanent: true },
