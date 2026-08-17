@@ -49,14 +49,14 @@ const staff = {
     role: 'Stifter & indehaver',
     phone: '+45 51 21 58 00',
     email: 'ksj@cleanwatersupply.dk',
-    photo: '/images/team-kenneth.jpg',
+    photo: '/images/team-kenneth-sq.jpg',
   },
   kristoffer: {
     name: 'Kristoffer',
     role: 'Tekniker & Rejsemontør',
     phone: '+45 22 32 01 56',
     email: 'kristoffer@cleanwatersupply.dk',
-    photo: '/images/team-kristoffer.jpg',
+    photo: '/images/team-kristoffer-sq.jpg',
   },
 }
 

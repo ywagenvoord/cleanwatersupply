@@ -10,28 +10,28 @@ const teamMembers = [
     role: 'Stifter & indehaver',
     phone: '+45 51 21 58 00',
     email: 'ksj@cleanwatersupply.dk',
-    photo: '/images/team-kenneth.jpg',
+    photo: '/images/team-kenneth-sq.jpg',
   },
   {
     name: 'Kristoffer',
     role: 'Tekniker & Rejsemontør',
     phone: '+45 22 32 01 56',
     email: 'kristoffer@cleanwatersupply.dk',
-    photo: '/images/team-kristoffer.jpg',
+    photo: '/images/team-kristoffer-sq.jpg',
   },
   {
     name: 'Camilla',
     role: 'Marketing',
     phone: '+45 40 73 70 53',
     email: 'caj@cleanwatersupply.dk',
-    photo: '/images/team-camilla-v2.jpg',
+    photo: '/images/team-camilla-sq.jpg',
   },
   {
     name: 'Heidi',
     role: 'Bogholderi',
     phone: null,
     email: 'bogholderi@cleanwatersupply.dk',
-    photo: '/images/team-heidi.jpg',
+    photo: '/images/team-heidi-sq.jpg',
   },
 ]
 
