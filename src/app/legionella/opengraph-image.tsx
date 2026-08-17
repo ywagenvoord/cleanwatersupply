@@ -41,6 +41,8 @@ export default function LegionellaOg() {
         <div
           style={{
             display: 'flex',
+            alignItems: 'center',
+            gap: 10,
             background: 'rgba(239, 68, 68, 0.15)',
             border: '1px solid rgba(239, 68, 68, 0.6)',
             borderRadius: 999,
@@ -54,7 +56,13 @@ export default function LegionellaOg() {
             marginTop: 50,
           }}
         >
-          ⚠ Legionella-risiko
+          {/* Tegnet advarselstrekant – undgår emoji (som Satori ikke kan tegne uden ekstern fetch → 500) */}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3 L22 20 H2 Z" fill="#fca5a5" />
+            <rect x="11" y="9" width="2" height="6" rx="1" fill="#0a2540" />
+            <rect x="11" y="16" width="2" height="2" rx="1" fill="#0a2540" />
+          </svg>
+          Legionella-risiko
         </div>
 
         {/* Headline */}
