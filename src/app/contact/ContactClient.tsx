@@ -339,7 +339,7 @@ export default function ContactPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {teamMembers.map((member) => (
-              <div key={member.name} className="bg-white rounded-3xl border border-gray-100 p-6 text-center shadow-sm hover:shadow-lg transition-shadow">
+              <div key={member.name} className="bg-white rounded-3xl border border-gray-100 p-5 text-center shadow-sm hover:shadow-lg transition-shadow">
                 {member.photo ? (
                   <img
                     src={member.photo}
@@ -356,17 +356,17 @@ export default function ContactPage() {
                 {member.phone && (
                   <a
                     href={`tel:${member.phone.replace(/\s/g, '')}`}
-                    className="flex items-center justify-center gap-2 text-gray-500 hover:text-[#0a2540] text-sm mb-2 transition-colors"
+                    className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs mb-2 transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-[#3aad4a]" />
+                    <Phone className="w-3.5 h-3.5 text-[#3aad4a]" />
                     {member.phone}
                   </a>
                 )}
                 <a
                   href={`mailto:${member.email}`}
-                  className="flex items-center justify-center gap-2 text-gray-500 hover:text-[#0a2540] text-sm transition-colors break-all"
+                  className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs transition-colors whitespace-nowrap"
                 >
-                  <Mail className="w-4 h-4 text-[#3aad4a] shrink-0" />
+                  <Mail className="w-3.5 h-3.5 text-[#3aad4a] shrink-0" />
                   {member.email}
                 </a>
               </div>
