@@ -35,7 +35,7 @@ export const FILTRE: Filter[] = [
     images: ['/images/filter-biflux-universal-lg.png', '/images/filter-biflux-universal-box.png'],
     tagline: 'Det alsidige hverdagsfilter.',
     best: 'Bedst til: daglig brug, alsidig filtrering',
-    life: '1 måned · ca. 150 L pr. filter',
+    life: 'ca. 1 måned / 150 L pr. filter',
     points: [
       'Reducerer klor, visse tungmetaller, pesticider og forebygger kalk',
       'Bevarer de nyttige mineralsalte (calcium, magnesium, kalium)',
@@ -65,7 +65,7 @@ export const FILTRE: Filter[] = [
     img: 'https://www.laica.com/wp-content/uploads/limescalestop-filter.webp',
     tagline: 'Mod kalk og hårdt vand.',
     best: 'Bedst til: områder med hårdt vand',
-    life: '1 måned · ca. 150 L pr. filter',
+    life: 'ca. 1 måned / 150 L pr. filter',
     brita: true,
     points: [
       'Reducerer kalk og hårdhed med op til 90 %',
@@ -97,7 +97,7 @@ export const FILTRE: Filter[] = [
     images: ['/images/healthexpert-cartridge.png', '/images/healthexpert-box.png'],
     tagline: 'Mod PFAS – med ekstra magnesium.',
     best: 'Bedst til: maksimal beskyttelse',
-    life: '1 måned · ca. 150 L pr. filter',
+    life: 'ca. 1 måned / 150 L pr. filter',
     brita: true,
     points: [
       'Reducerer PFAS (“evighedskemikalier”) med op til 92 %',

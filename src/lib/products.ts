@@ -58,7 +58,7 @@ export type Product = {
   priceNote?: string
   // Anbefalet husstandsstørrelse (fx blødgøringsanlæg) – så folk kan matche deres familie
   recommendedFor?: string
-  // Filterets levetid – vises tydeligt øverst på produktsiden (fx "1 måned · ca. 150 liter pr. filter")
+  // Filterets levetid – vises tydeligt øverst på produktsiden (fx "ca. 1 måned / 150 L pr. filter")
   lifespan?: string
   // Forbrugervenlig linje: hvad produktet fjerner / beskytter mod (vist på filter-tilkøb)
   removes?: string
@@ -830,7 +830,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'F0M',
     name: 'Bi-flux® Universal – filter til vandkande',
     tagline: 'Det alsidige hverdagsfilter · 2 stk. i pakken',
-    lifespan: '1 måned · ca. 150 liter pr. filter',
+    lifespan: 'ca. 1 måned / 150 L pr. filter',
     removes: 'Fjerner klor, kalk og tungmetaller – for rent vand med bedre smag hver dag.',
     category: 'vandkande',
     price: 89,
@@ -850,7 +850,7 @@ export const PRODUCTS: Product[] = [
     specs: [
       { label: 'Type',      value: 'Bi-flux® udskiftningsfilter' },
       { label: 'Pakke',     value: '2 stk. i pakken' },
-      { label: 'Levetid',   value: '1 måned · ca. 150 liter pr. filter' },
+      { label: 'Levetid',   value: 'ca. 1 måned / 150 L pr. filter' },
       { label: 'Reducerer', value: 'Klor, tungmetaller, pesticider, kalk' },
       { label: 'Materiale', value: '100 % BPA-fri' },
       { label: 'Varenr.',   value: 'F0M' },
@@ -870,7 +870,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'H0L',
     name: 'Bi-flux® LimescaleSTOP – filter til vandkande',
     tagline: 'Mod kalk og hårdt vand · 2 stk. i pakken',
-    lifespan: '1 måned · ca. 150 liter pr. filter',
+    lifespan: 'ca. 1 måned / 150 L pr. filter',
     removes: 'Fjerner kalk og hårdhed – og også mikroplast, tungmetaller og klor. Blødere vand, mindre kalk i kande og glas.',
     category: 'vandkande',
     price: 99,
@@ -890,7 +890,7 @@ export const PRODUCTS: Product[] = [
     specs: [
       { label: 'Type',            value: 'Bi-flux® udskiftningsfilter' },
       { label: 'Pakke',           value: '2 stk. i pakken' },
-      { label: 'Levetid',         value: '1 måned · ca. 150 liter pr. filter' },
+      { label: 'Levetid',         value: 'ca. 1 måned / 150 L pr. filter' },
       { label: 'Reducerer',       value: 'Kalk (op til 90 %), mikroplast, tungmetaller, klor' },
       { label: 'Kompatibilitet',  value: 'Laica- og Brita®-kander (LAICA-Key medfølger)' },
       { label: 'Varenr.',         value: 'H0L' },
@@ -910,7 +910,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'P3M',
     name: 'Bi-flux® HealthExpert – filter til vandkande',
     tagline: 'Mod PFAS – med ekstra magnesium · 2 stk. i pakken',
-    lifespan: '1 måned · ca. 150 liter pr. filter',
+    lifespan: 'ca. 1 måned / 150 L pr. filter',
     removes: 'Fjerner PFAS (“evighedskemikalier”), mikroplast, klor og tungmetaller – og tilfører magnesium.',
     category: 'vandkande',
     price: 109,
@@ -935,7 +935,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Filtrering',     value: '5-trins hastighedskontrolleret' },
       { label: 'Reducerer',      value: 'PFAS (op til 92 %), mikroplast, klor, kalk, tungmetaller, pesticider' },
       { label: 'Tilfører',       value: 'Magnesium' },
-      { label: 'Levetid',        value: '1 måned · ca. 150 liter pr. filter' },
+      { label: 'Levetid',        value: 'ca. 1 måned / 150 L pr. filter' },
       { label: 'Kompatibilitet', value: 'Laica- og Brita®-kander (LAICA-Key medfølger)' },
       { label: 'Vægt',           value: '0,1 kg pr. filter' },
       { label: 'Varenr.',        value: 'P3M' },
