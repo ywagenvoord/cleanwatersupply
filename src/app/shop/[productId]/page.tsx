@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
-import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users } from 'lucide-react'
+import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
 import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
 import ProductPrice from './ProductPrice'
@@ -317,7 +317,17 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-3">
                 {product.name}
               </h1>
-              <p className="text-lg text-gray-500 font-medium mb-6">{product.tagline}</p>
+              <p className="text-lg text-gray-500 font-medium mb-4">{product.tagline}</p>
+
+              {/* Levetid – tydeligt øverst */}
+              {product.lifespan && (
+                <div className="inline-flex items-center gap-2.5 self-start bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2 mb-6">
+                  <span className="w-7 h-7 rounded-full bg-[#3aad4a] flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-white" />
+                  </span>
+                  <span className="text-sm font-bold text-[#0a2540]">Holder {product.lifespan}</span>
+                </div>
+              )}
 
               {/* Short description */}
               <p className="text-gray-700 leading-relaxed mb-8 text-[15px]">
