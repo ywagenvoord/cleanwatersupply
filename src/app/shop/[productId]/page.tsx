@@ -166,6 +166,17 @@ export default async function ProductDetailPage({ params }: { params: { productI
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
 
+  // Levetid vist tydeligt øverst: eksplicit lifespan, ellers hentet fra "Levetid"-specen.
+  // Vises kun på filtre (ikke selve kanderne) og kun hvis værdien er en reel varighed.
+  const lifespanText = (
+    product.lifespan ??
+    product.specs?.find((s) => /^\s*levetid\s*$/i.test(s.label))?.value
+  )
+  const showLifespan =
+    !!lifespanText &&
+    !product.id.startsWith('kande-') &&
+    /(dag|uge|måned|år|liter)/i.test(lifespanText)
+
   const catLabel: Record<string, string> = {
     vandhane: 'Vandhane',
     bruser: 'Bruser',
@@ -320,12 +331,12 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <p className="text-lg text-gray-500 font-medium mb-4">{product.tagline}</p>
 
               {/* Levetid – tydeligt øverst */}
-              {product.lifespan && (
+              {showLifespan && (
                 <div className="inline-flex items-center gap-2.5 self-start bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2 mb-6">
                   <span className="w-7 h-7 rounded-full bg-[#3aad4a] flex items-center justify-center shrink-0">
                     <Clock className="w-4 h-4 text-white" />
                   </span>
-                  <span className="text-sm font-bold text-[#0a2540]">Holder {product.lifespan}</span>
+                  <span className="text-sm font-bold text-[#0a2540]">Holder {lifespanText}</span>
                 </div>
               )}
 
