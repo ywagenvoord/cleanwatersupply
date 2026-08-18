@@ -19,7 +19,7 @@ export type Kande = {
   points: string[]
   specs: Spec[]
   filter?: string
-  addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number }
+  addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number; link?: string }
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
@@ -65,6 +65,7 @@ export const KANDER: Kande[] = [
       img: '/images/product-filter-udskift.jpg',
       life: '1 måned · ca. 150 L pr. filter',
       blurb: 'Det matchende udskiftningsfilter til Carmen – bevar rent vand med god smag.',
+      link: '/vandkande-filtre/bi-flux-universal',
     },
     highlights: [
       { icon: 'zap', title: 'Hurtigfyldnings-låge', text: 'Fyld kanden direkte under hanen – hurtigt og nemt.' },
@@ -121,6 +122,7 @@ export const KANDER: Kande[] = [
       img: '/images/product-filter-udskift.jpg',
       life: '1 måned · ca. 150 L pr. filter',
       blurb: 'Dobbelt-filtersættet der matcher MikroPLASTIK-STOP™ og fjerner mikroplast.',
+      link: '/shop/mikroplastik-stop-filter',
     },
     highlights: [
       { icon: 'shield', title: 'Fjerner 99,99 % mikroplast', text: 'Testet af uafhængige laboratorier i Italien og Tyskland.' },
@@ -179,6 +181,7 @@ export const KANDER: Kande[] = [
       life: 'Ca. 3 måneders filtreret vand',
       blurb: 'De matchende skivefiltre til GlaSSmart-karaflen – filtrerer, mens du hælder.',
       price: 89,
+      link: '/vandkande-filtre/fast-disk',
     },
     highlights: [
       { icon: 'droplet', title: 'Passer i køleskabet', text: 'Passer i de fleste køleskabe og kan både stå op og ligge ned – luk blot låget korrekt, så den er tæt. Altid koldt, filtreret vand klar.' },

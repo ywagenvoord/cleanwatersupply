@@ -161,13 +161,16 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   <p className="text-[13px] text-gray-600 mt-1 mb-4">
                     Køb 3 nye filtre med til udskiftning – så er du klar fra dag ét.
                   </p>
-                  <div className="flex items-center gap-4">
+                  <Link
+                    href={k.addon.link ?? '/shop'}
+                    className="group flex items-center gap-4 rounded-xl -m-1 p-1 hover:bg-white/70 transition-colors"
+                  >
                     <div className="w-32 h-32 shrink-0 rounded-xl bg-white flex items-center justify-center p-2">
-                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain" />
+                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
-                      <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5">{k.addon.name}</h2>
+                      <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5 group-hover:text-[#2e9a3d] transition-colors">{k.addon.name}</h2>
                       <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
                       {k.addon.price != null && (
                         <p className="text-base font-extrabold text-[#0a2540] mt-1.5">
@@ -175,12 +178,12 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                         </p>
                       )}
                     </div>
-                  </div>
+                  </Link>
                   <Link
-                    href="/shop"
+                    href={k.addon.link ?? '/shop'}
                     className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
                   >
-                    Læg filtre til <ArrowRight className="w-4 h-4" />
+                    Se filteret <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               )}
