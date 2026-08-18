@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, Check, ChevronRight, Filter, BadgeCheck, Truck, Droplets } from 'lucide-react'
+import { ArrowRight, Check, ChevronRight, Filter, BadgeCheck, Truck, Droplets, Clock } from 'lucide-react'
 import { FILTRE, getFilter } from '@/lib/filtre'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
@@ -58,6 +58,15 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
               </h1>
               <p className="text-lg text-gray-600 mt-4 leading-relaxed">{f.tagline}</p>
 
+              {/(dag|uge|måned|år|liter)/i.test(f.life) && (
+                <div className="mt-5 flex w-fit items-center gap-2.5 bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2">
+                  <span className="w-7 h-7 rounded-full bg-[#3aad4a] flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-white" />
+                  </span>
+                  <span className="text-sm font-bold text-[#0a2540]">Holder {f.life}</span>
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-2 mt-5">
                 {f.brita && (
                   <span className="rounded-full bg-gray-100 text-gray-500 text-[11px] font-bold px-3 py-1.5 uppercase tracking-wide">Passer også Brita®</span>
@@ -93,9 +102,11 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
               </div>
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
-                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
-                  <Droplets className="w-4 h-4 text-[#284eff]" /> {f.life}
-                </span>
+                {!/(dag|uge|måned|år|liter)/i.test(f.life) && (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
+                    <Droplets className="w-4 h-4 text-[#284eff]" /> {f.life}
+                  </span>
+                )}
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-gray-500">
                   <BadgeCheck className="w-4 h-4 text-[#284eff]" /> Made in EU
                 </span>
