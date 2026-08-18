@@ -94,6 +94,7 @@ export const FILTRE: Filter[] = [
     name: 'Bi-flux® HealthExpert',
     art: 'Art. P3M',
     img: '/images/healthexpert-cartridge.png',
+    images: ['/images/healthexpert-cartridge.png', '/images/healthexpert-box.png'],
     tagline: 'Mod PFAS – med ekstra magnesium.',
     best: 'Bedst til: maksimal beskyttelse',
     life: '1 måned · ca. 150 L pr. filter',
