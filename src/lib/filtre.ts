@@ -93,7 +93,7 @@ export const FILTRE: Filter[] = [
     varenr: 'LAI-1004',
     name: 'Bi-flux® HealthExpert',
     art: 'Art. P3M',
-    img: 'https://www.laica.com/wp-content/uploads/healthexpert-prod.webp',
+    img: '/images/healthexpert-cartridge.png',
     tagline: 'Mod PFAS – med ekstra magnesium.',
     best: 'Bedst til: maksimal beskyttelse',
     life: '1 måned · ca. 150 L pr. filter',
