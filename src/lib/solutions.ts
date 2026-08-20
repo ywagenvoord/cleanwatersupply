@@ -48,7 +48,7 @@ export const SOLUTIONS: SolutionInfo[] = [
     slug: 'kalkanlaeg',
     label: 'Kalkanlæg',
     heroImg: '/images/solution-kalkanlaeg.jpg',
-    ogImage: '/images/og-gratis-montering-tekniker.jpg',
+    ogImage: '/images/og-gratis-montering-wide.jpg',
     intro: 'Blødt vand i hele huset – en forskel, du mærker hver eneste dag.',
     what: 'Et kalkanlæg (blødgøringsanlæg) fjerner kalken fra vandet via ionbytning, hvor calcium og magnesium udskiftes med natrium. Resultatet er blødt vand ved hvert eneste tappested i boligen – fra bruser og køkken til vaskemaskine og hvidevarer.',
     how: 'Vandet ledes gennem en harpiksbeholder, der binder kalken. Anlægget regenererer automatisk med salt, så det altid yder optimalt, og det fås som kompakt alt-i-ét-løsning, der ikke fylder meget.',
