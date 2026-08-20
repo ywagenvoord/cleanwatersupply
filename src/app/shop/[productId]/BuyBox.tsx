@@ -157,7 +157,7 @@ export default function BuyBox({ product }: { product: Product }) {
       />
       {monteringGratis && (
         <p className="text-xs text-[#3aad4a] font-semibold px-1">
-          🎉 Gratis montering i kampagneperioden – du sparer {INSTALLATION_PRICE.toLocaleString('da-DK')} kr. Kørsel tillægges fortsat i grøn og rød zone.
+          🎉 Gratis montering i kampagneperioden – du sparer {INSTALLATION_PRICE.toLocaleString('da-DK')} kr. Kørsel tillægges fortsat uden for blå zone.
         </p>
       )}
       <div className="flex items-baseline justify-between pt-1 px-1">

@@ -7,6 +7,7 @@ import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instag
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
+import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 
 export default function PrivateClient() {
   const { language } = useLanguage()
@@ -210,6 +211,9 @@ export default function PrivateClient() {
           </div>
         </div>
       </section>
+
+      {/* ─── KAMPAGNE: GRATIS MONTERING ────────────────────────── */}
+      <GratisMonteringBanner className="pt-14" />
 
       {/* ─── SOLUTIONS FOR THE HOME ────────────────────────────── */}
       <section className="pt-6 pb-16 bg-white">

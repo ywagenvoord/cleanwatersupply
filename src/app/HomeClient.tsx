@@ -13,7 +13,6 @@ import {
   Tractor, HeartPulse, Thermometer, Wind, Mail
 } from 'lucide-react'
 import LegionellaSlider from '@/components/LegionellaSlider'
-import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import NewsletterForm from '@/components/NewsletterForm'
 import ScrollReveal from '@/components/ScrollReveal'
 
@@ -133,9 +132,6 @@ export default function HomePage() {
         </div>
         </div>
       </section>
-
-      {/* ─── KAMPAGNE: GRATIS MONTERING ────────────────────────── */}
-      <GratisMonteringBanner className="pt-16" />
 
       {/* ─── OMRÅDER (AREA SELECTOR) ───────────────────────────── */}
       <section className="py-20 bg-gray-50">

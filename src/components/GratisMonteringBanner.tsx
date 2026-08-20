@@ -35,7 +35,7 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
               Vi monterer dit blødgøringsanlæg gratis – til og med {GRATIS_MONTERING.endLabel}.
             </p>
             <p className="text-[11px] text-white/60 mt-1.5 flex items-center gap-1.5">
-              <MapPin className="w-3 h-3" /> Kørsel tillægges fortsat i grøn og rød zone.
+              <MapPin className="w-3 h-3" /> Kørsel tillægges fortsat uden for blå zone.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
             </p>
             <p className="text-sm text-white/70 mt-3 flex items-center gap-2">
               <MapPin className="w-4 h-4 shrink-0" />
-              Tilbuddet gælder til og med {GRATIS_MONTERING.endLabel}. Kørsel tillægges fortsat i grøn og rød zone.
+              Tilbuddet gælder til og med {GRATIS_MONTERING.endLabel}. Kørsel tillægges fortsat uden for blå zone.
             </p>
 
             {showCtas && (
