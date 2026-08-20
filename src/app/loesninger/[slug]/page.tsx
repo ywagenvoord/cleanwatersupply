@@ -23,7 +23,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const ogImages = useCampaign
     ? [{ url: sol.ogImage!, width: 1200, height: 630, alt: `${sol.label} – gratis montering` }]
     : [{ url: sol.heroImg, alt: sol.label }]
-  const ogTitle = useCampaign ? 'Køb nu' : `${sol.label} | Clean Water Supply`
+  const ogTitle = useCampaign ? 'KØB NU!  |  Blødgøringsanlæg  |  CLEAN WATER SUPPLY' : `${sol.label} | Clean Water Supply`
   return {
     title: `${sol.label} – sådan hjælper det dig i hverdagen | Clean Water Supply`,
     description: sol.intro,
