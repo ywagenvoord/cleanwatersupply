@@ -8,6 +8,7 @@ import ProductGallery from './ProductGallery'
 import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
 import FilterAddToCart from './FilterAddToCart'
+import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
@@ -406,6 +407,10 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   <p className="mb-5 -mt-1 text-sm leading-relaxed text-[#0a2540]/80">
                     {product.priceNote}
                   </p>
+                )}
+
+                {isSoftener && !product.addon && (
+                  <GratisMonteringBanner variant="compact" className="mb-4" showCtas={false} />
                 )}
 
                 <BuyBox product={product} />

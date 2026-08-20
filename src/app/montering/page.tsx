@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Camera, CheckCircle2, MapPin, Ruler, Droplets, ArrowRight } from 'lucide-react'
 import MonteringForm from './MonteringForm'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import { SITE_URL } from '@/lib/site'
 
 const URL = `${SITE_URL}/montering`
@@ -56,6 +57,8 @@ export default function MonteringPage({ searchParams }: { searchParams: { sent?:
           </p>
         </div>
       </section>
+
+      <GratisMonteringBanner className="pt-14" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {sent && (

@@ -9,11 +9,12 @@ import { getStripe } from '@/lib/stripe-products'
 import { INSTALLATION_PRICE, shopPrice, getProduct, type Product } from '@/lib/products'
 import { useB2bLoggedIn } from '@/lib/useB2b'
 import { zoneForPostnummer, ZONE_INFO } from '@/lib/zones'
+import { isGratisMonteringActive } from '@/lib/campaign'
 
 /* ─── Montering-valg (radio) ─────────────────────────────────────── */
 function OptionCard({
-  selected, onClick, title, sub, price,
-}: { selected: boolean; onClick: () => void; title: string; sub: string; price: number }) {
+  selected, onClick, title, sub, price, oldPrice, badge,
+}: { selected: boolean; onClick: () => void; title: string; sub: string; price: number; oldPrice?: number; badge?: string }) {
   return (
     <button
       type="button"
@@ -26,10 +27,18 @@ function OptionCard({
         {selected && <span className="w-2.5 h-2.5 rounded-full bg-[#3aad4a]" />}
       </span>
       <span className="flex-1 min-w-0">
-        <span className="block text-sm font-bold text-gray-900">{title}</span>
+        <span className="flex items-center gap-2 text-sm font-bold text-gray-900">
+          {title}
+          {badge && <span className="inline-block rounded-full bg-[#3aad4a] text-white text-[10px] font-bold px-2 py-0.5 uppercase tracking-wide">{badge}</span>}
+        </span>
         <span className="block text-xs text-gray-500">{sub}</span>
       </span>
-      <span className="text-sm font-extrabold text-[#0a2540] shrink-0">{price.toLocaleString('da-DK')} kr</span>
+      <span className="shrink-0 text-right">
+        {oldPrice !== undefined && (
+          <span className="block text-xs text-gray-400 line-through">{oldPrice.toLocaleString('da-DK')} kr</span>
+        )}
+        <span className="text-sm font-extrabold text-[#0a2540]">{price.toLocaleString('da-DK')} kr</span>
+      </span>
     </button>
   )
 }
@@ -52,7 +61,9 @@ export default function BuyBox({ product }: { product: Product }) {
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
   const base  = unitPrice ?? 0
-  const total = base + (showInstall && withInstall ? INSTALLATION_PRICE : 0)
+  const monteringGratis = showInstall && isGratisMonteringActive()
+  const installCost = monteringGratis ? 0 : INSTALLATION_PRICE
+  const total = base + (showInstall && withInstall ? installCost : 0)
 
   function handleAdd() {
     if (!stripe || unitPrice == null) return
@@ -137,9 +148,18 @@ export default function BuyBox({ product }: { product: Product }) {
         selected={withInstall}
         onClick={() => setWithInstall(true)}
         title="Med montering"
-        sub={`Med standard montering (+${INSTALLATION_PRICE.toLocaleString('da-DK')} kr.)`}
-        price={base + INSTALLATION_PRICE}
+        sub={monteringGratis
+          ? `Standard montering – normalt ${INSTALLATION_PRICE.toLocaleString('da-DK')} kr.`
+          : `Med standard montering (+${INSTALLATION_PRICE.toLocaleString('da-DK')} kr.)`}
+        price={base + installCost}
+        oldPrice={monteringGratis ? base + INSTALLATION_PRICE : undefined}
+        badge={monteringGratis ? 'Gratis nu' : undefined}
       />
+      {monteringGratis && (
+        <p className="text-xs text-[#3aad4a] font-semibold px-1">
+          🎉 Gratis montering i kampagneperioden – du sparer {INSTALLATION_PRICE.toLocaleString('da-DK')} kr. Kørsel tillægges fortsat i grøn og rød zone.
+        </p>
+      )}
       <div className="flex items-baseline justify-between pt-1 px-1">
         <span className="text-sm text-gray-500">I alt</span>
         <span className="text-xl font-extrabold text-[#0a2540]">{total.toLocaleString('da-DK')} kr</span>
