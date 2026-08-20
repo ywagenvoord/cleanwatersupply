@@ -6,6 +6,7 @@ import { getProduct } from '@/lib/products'
 import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart, ShowerHead, Shirt, Hand, Coffee, WashingMachine } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
 import { SITE_URL } from '@/lib/site'
+import { isGratisMonteringActive } from '@/lib/campaign'
 
 // Små ikoner der matcher kalkanlæg-frustrationerne (samme rækkefølge som pains)
 const PAIN_ICONS = [ShowerHead, Shirt, Hand, Coffee, Droplets, WashingMachine]
@@ -18,15 +19,20 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const sol = getSolution(params.slug)
   if (!sol) return { title: 'Løsning ikke fundet', robots: { index: false, follow: false } }
   const url = `${SITE_URL}/loesninger/${sol.slug}`
+  const useCampaign = !!sol.ogImage && isGratisMonteringActive()
+  const ogImages = useCampaign
+    ? [{ url: sol.ogImage!, width: 1200, height: 630, alt: `${sol.label} – gratis montering` }]
+    : [{ url: sol.heroImg, alt: sol.label }]
   return {
     title: `${sol.label} – sådan hjælper det dig i hverdagen | Clean Water Supply`,
     description: sol.intro,
     alternates: { canonical: url },
     openGraph: {
       type: 'website', url, title: `${sol.label} | Clean Water Supply`,
-      description: sol.intro, images: [{ url: sol.heroImg, alt: sol.label }],
+      description: sol.intro, images: ogImages,
       locale: 'da_DK', siteName: 'Clean Water Supply',
     },
+    twitter: { card: 'summary_large_image', images: ogImages.map((i) => i.url) },
   }
 }
 
