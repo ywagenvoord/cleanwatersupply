@@ -21,7 +21,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const url = `${SITE_URL}/loesninger/${sol.slug}`
   const useCampaign = !!sol.ogImage && isGratisMonteringActive()
   const ogImages = useCampaign
-    ? [{ url: sol.ogImage!, width: 1200, height: 630, alt: `${sol.label} – gratis montering` }]
+    ? [{ url: sol.ogImage!, width: 1080, height: 1080, alt: `${sol.label} – gratis montering` }]
     : [{ url: sol.heroImg, alt: sol.label }]
   return {
     title: `${sol.label} – sådan hjælper det dig i hverdagen | Clean Water Supply`,
