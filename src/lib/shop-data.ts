@@ -76,9 +76,20 @@ export async function getMergedShopProducts(): Promise<Product[]> {
   // Laica-produkterne (vandkande-kategorien: kander, karaffel, bi-flux-filtre, FAST DISK)
   // skal ligge øverst i shoppen – behold den kuraterede rækkefølge inden for hver gruppe.
   const laicaRank = (p: Product) => (p.category === 'vandkande' ? 0 : 1)
+  // Inden for Laica-gruppen: kander/karafler først, derefter filtrene.
+  const kandeRank = (p: Product) => {
+    if (p.category !== 'vandkande') return 0
+    const isKande =
+      p.id.startsWith('kande-') ||
+      /glassmart/i.test(p.id) ||
+      p.id === 'prod_V2wFs5adWhY4cF' // GlaSSmart-karaffel (Stripe-only)
+    return isKande ? 0 : 1
+  }
   merged.sort((a, b) => {
     const r = laicaRank(a) - laicaRank(b)
     if (r !== 0) return r
+    const k = kandeRank(a) - kandeRank(b)
+    if (k !== 0) return k
     return (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999)
   })
 
