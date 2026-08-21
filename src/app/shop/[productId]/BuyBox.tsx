@@ -56,8 +56,11 @@ export default function BuyBox({ product }: { product: Product }) {
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
   const erhverv = useB2bLoggedIn()
   const { amount: unitPrice } = shopPrice(product, erhverv)
+  // Foretræk live Stripe-id (sat af fetchProduct via cws_id-match) over statisk mapping,
+  // så nye Stripe-produkter er købbare uden at skulle tilføjes i STRIPE_MAPPING.
   const stripe  = getStripe(product.id)
-  const buyable = stripe && !product.comingSoon && unitPrice !== undefined
+  const stripeProductId = product.stripeProductId ?? stripe?.productId
+  const buyable = !!stripeProductId && !product.comingSoon && unitPrice !== undefined
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
   const base  = unitPrice ?? 0
@@ -66,10 +69,10 @@ export default function BuyBox({ product }: { product: Product }) {
   const total = base + (showInstall && withInstall ? installCost : 0)
 
   function handleAdd() {
-    if (!stripe || unitPrice == null) return
+    if (!stripeProductId || unitPrice == null) return
     addItem({
       id:              product.id,
-      stripeProductId: stripe.productId,
+      stripeProductId: stripeProductId,
       name:            product.name,
       price:           unitPrice,
       image:           product.imgSrc,
@@ -109,11 +112,11 @@ export default function BuyBox({ product }: { product: Product }) {
 
   // Køb nu → dynamisk Stripe Checkout med den AKTUELLE pris (aldrig et dødt link).
   async function buyNow(extraStripeIds: string[] = []) {
-    if (!stripe || unitPrice == null || buying) return
+    if (!stripeProductId || unitPrice == null || buying) return
     setBuying(true)
     try {
       const items = [
-        { stripeProductId: stripe.productId, quantity: 1 },
+        { stripeProductId: stripeProductId, quantity: 1 },
         ...extraStripeIds.map((id) => ({ stripeProductId: id, quantity: 1 })),
       ]
       const res = await fetch('/api/checkout', {
