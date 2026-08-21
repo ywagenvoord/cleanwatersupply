@@ -73,9 +73,14 @@ export async function getMergedShopProducts(): Promise<Product[]> {
     orderIndex.set('prod_V2wFs5adWhY4cF', laicaAnchor + 0.4) // GlaSSmart™ glas-filterkaraffel
     orderIndex.set('prod_V2wHIQrdoXx6RG', laicaAnchor + 0.5) // FAST DISK™ filter til GlaSSmart
   }
-  merged.sort(
-    (a, b) => (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999),
-  )
+  // Laica-produkterne (vandkande-kategorien: kander, karaffel, bi-flux-filtre, FAST DISK)
+  // skal ligge øverst i shoppen – behold den kuraterede rækkefølge inden for hver gruppe.
+  const laicaRank = (p: Product) => (p.category === 'vandkande' ? 0 : 1)
+  merged.sort((a, b) => {
+    const r = laicaRank(a) - laicaRank(b)
+    if (r !== 0) return r
+    return (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999)
+  })
 
   // Skjul tilbehør (vises kun som tilkøb på kalkanlæg-siden)
   return merged.filter(p => !p.addon)
