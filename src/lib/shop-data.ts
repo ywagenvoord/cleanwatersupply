@@ -55,10 +55,11 @@ export async function getMergedShopProducts(): Promise<Product[]> {
     }
   }
 
-  // Tilføj hardcodede produkter, der ikke er i Stripe: "kommer snart" + alle erhverv-produkter
+  // Tilføj hardcodede produkter, der ikke er i Stripe: "kommer snart", alle erhverv-produkter
+  // samt alle blødgøringsanlæg (bestilles via kontakt/montering, også uden Stripe-checkout).
   for (const p of PRODUCTS) {
     if (usedHardcodedIds.has(p.id)) continue
-    if (p.comingSoon || p.audience === 'erhverv') merged.push(p)
+    if (p.comingSoon || p.audience === 'erhverv' || p.category === 'blosgoringsanlaeg') merged.push(p)
   }
 
   // Bevar den kuraterede rækkefølge fra products.ts (så relaterede varer står
