@@ -23,14 +23,14 @@ export async function GET(req: NextRequest) {
     // Idempotent: findes koden allerede?
     const existing = await stripe.promotionCodes.list({ code: CODE, limit: 1 })
     if (existing.data.length > 0) {
-      const pc = existing.data[0]
+      const pc = existing.data[0] as any
       return NextResponse.json({
         ok: true,
         status: 'findes allerede',
         code: pc.code,
         active: pc.active,
         promotionCodeId: pc.id,
-        couponId: typeof pc.coupon === 'string' ? pc.coupon : pc.coupon.id,
+        couponId: typeof pc.coupon === 'string' ? pc.coupon : pc.coupon?.id,
       })
     }
 
@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
       coupon: coupon.id,
       code: CODE,
       active: true,
-    })
+    } as any)
 
     return NextResponse.json({
       ok: true,
