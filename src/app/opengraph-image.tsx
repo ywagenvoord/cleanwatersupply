@@ -73,6 +73,8 @@ export default function OpengraphImage() {
         >
           <div
             style={{
+              display: 'flex',
+              flexDirection: 'column',
               color: 'white',
               fontSize: 78,
               fontWeight: 900,
@@ -81,9 +83,8 @@ export default function OpengraphImage() {
               maxWidth: 950,
             }}
           >
-            Legionella-filtre &
-            <br />
-            vandhygiejne i Danmark
+            <span>Legionella-filtre &</span>
+            <span>vandhygiejne i Danmark</span>
           </div>
           <div
             style={{

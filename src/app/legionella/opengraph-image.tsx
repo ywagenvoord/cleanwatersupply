@@ -68,6 +68,8 @@ export default function LegionellaOg() {
         {/* Headline */}
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
             color: 'white',
             fontSize: 84,
             fontWeight: 900,
@@ -77,8 +79,7 @@ export default function LegionellaOg() {
             maxWidth: 1000,
           }}
         >
-          Beskyt dig mod
-          <br />
+          <span>Beskyt dig mod</span>
           <span style={{ color: '#3aad4a' }}>Legionella i vandet</span>
         </div>
 

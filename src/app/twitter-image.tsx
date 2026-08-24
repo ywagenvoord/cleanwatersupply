@@ -44,10 +44,9 @@ export default function TwitterImage() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', flex: 1, marginTop: 40 }}>
-          <div style={{ color: 'white', fontSize: 78, fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.03em', maxWidth: 950 }}>
-            Legionella-filtre &
-            <br />
-            vandhygiejne i Danmark
+          <div style={{ display: 'flex', flexDirection: 'column', color: 'white', fontSize: 78, fontWeight: 900, lineHeight: 1.05, letterSpacing: '-0.03em', maxWidth: 950 }}>
+            <span>Legionella-filtre &</span>
+            <span>vandhygiejne i Danmark</span>
           </div>
           <div style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: 28, marginTop: 28, maxWidth: 850, lineHeight: 1.35 }}>
             Medicinsk certificeret · 7 log retention · ECHA Article 95
