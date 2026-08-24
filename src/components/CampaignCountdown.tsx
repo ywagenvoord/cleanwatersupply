@@ -19,7 +19,10 @@ const pad = (n: number) => n.toString().padStart(2, '0')
  * Live nedtælling til kampagnens slutdato. Viser intet, når tiden er udløbet,
  * eller før den er hydreret på klienten (undgår hydration-mismatch).
  */
-export default function CampaignCountdown({ className = '' }: { className?: string }) {
+export default function CampaignCountdown({
+  className = '',
+  size = 'md',
+}: { className?: string; size?: 'sm' | 'md' }) {
   const target = GRATIS_MONTERING.end.getTime()
   const [now, setNow] = useState<number | null>(null)
 
@@ -41,19 +44,23 @@ export default function CampaignCountdown({ className = '' }: { className?: stri
     [s, 'sek'],
   ]
 
+  const sm = size === 'sm'
+  const boxCls = sm
+    ? 'min-w-[46px] rounded-lg bg-white/15 border border-white/20 px-1.5 py-1.5 text-center'
+    : 'min-w-[62px] rounded-xl bg-white/15 border border-white/20 px-2 py-2 text-center'
+  const numCls = sm ? 'block text-lg font-extrabold leading-none tabular-nums' : 'block text-2xl font-extrabold leading-none tabular-nums'
+  const labelCls = sm ? 'block text-[9px] font-semibold uppercase tracking-wide text-white/60 mt-0.5' : 'block text-[10px] font-semibold uppercase tracking-wide text-white/60 mt-1'
+
   return (
     <div className={className}>
-      <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-2">
+      <p className={`font-bold uppercase tracking-widest text-white/70 ${sm ? 'text-[10px] mb-1.5' : 'text-xs mb-2'}`}>
         Tilbuddet slutter om
       </p>
-      <div className="flex gap-2.5">
+      <div className={`flex ${sm ? 'gap-1.5' : 'gap-2.5'}`}>
         {units.map(([value, label]) => (
-          <div
-            key={label}
-            className="min-w-[62px] rounded-xl bg-white/15 border border-white/20 px-2 py-2 text-center"
-          >
-            <span className="block text-2xl font-extrabold leading-none tabular-nums">{pad(value)}</span>
-            <span className="block text-[10px] font-semibold uppercase tracking-wide text-white/60 mt-1">{label}</span>
+          <div key={label} className={boxCls}>
+            <span className={numCls}>{pad(value)}</span>
+            <span className={labelCls}>{label}</span>
           </div>
         ))}
       </div>

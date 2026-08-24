@@ -38,6 +38,7 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
             <p className="text-[11px] text-white/60 mt-1.5 flex items-center gap-1.5">
               <MapPin className="w-3 h-3" /> Kørsel tillægges fortsat uden for blå zone.
             </p>
+            <CampaignCountdown size="sm" className="mt-3" />
           </div>
         </div>
       </div>

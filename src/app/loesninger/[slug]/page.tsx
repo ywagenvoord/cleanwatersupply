@@ -5,6 +5,7 @@ import { SOLUTIONS, getSolution } from '@/lib/solutions'
 import { getProduct } from '@/lib/products'
 import { ArrowRight, ChevronRight, CheckCircle2, Droplets, Info, Settings2, Sparkles, XCircle, Coins, ShieldCheck, Heart, ShowerHead, Shirt, Hand, Coffee, WashingMachine } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
+import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import { SITE_URL } from '@/lib/site'
 import { isGratisMonteringActive } from '@/lib/campaign'
 
@@ -78,6 +79,9 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
           <p className="text-lg text-blue-100/90 max-w-2xl leading-relaxed">{sol.intro}</p>
         </div>
       </section>
+
+      {/* ─── KAMPAGNE: GRATIS MONTERING (kun kalkanlæg) ────────── */}
+      {sol.slug === 'kalkanlaeg' && <GratisMonteringBanner className="pt-14" />}
 
       {/* ─── SÆLGENDE HOOK ────────────────────────────────────── */}
       {sol.sell && (
