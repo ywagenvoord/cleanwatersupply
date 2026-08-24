@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic'
 // Kunden indtaster koden i Stripe Checkout (rabatkode-feltet er allerede aktivt).
 const TOKEN = 'rabat2026create'
 
-const CODE = 'JÆGER25'
+const CODE = 'FAM25'
 const PERCENT_OFF = 25
 
 export async function GET(req: NextRequest) {
