@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Wrench, Sparkles, ArrowRight, MapPin } from 'lucide-react'
 import { isGratisMonteringActive, GRATIS_MONTERING } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
+import CampaignCountdown from '@/components/CampaignCountdown'
 
 type Props = {
   /** 'full' = stor sektion (forside/anlæg). 'compact' = slankt kort (produktsider). */
@@ -68,6 +69,8 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
               <MapPin className="w-4 h-4 shrink-0" />
               Tilbuddet gælder til og med {GRATIS_MONTERING.endLabel}. Kørsel tillægges fortsat uden for blå zone.
             </p>
+
+            <CampaignCountdown className="mt-6" />
 
             {showCtas && (
               <div className="flex flex-wrap gap-3 mt-7">
