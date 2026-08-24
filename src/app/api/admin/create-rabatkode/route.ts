@@ -8,8 +8,9 @@ export const dynamic = 'force-dynamic'
 // Kunden indtaster koden i Stripe Checkout (rabatkode-feltet er allerede aktivt).
 const TOKEN = 'rabat2026create'
 
-const CODE = 'FAM25'
-const PERCENT_OFF = 25
+const CODE = 'FAM30'
+const PERCENT_OFF = 30
+const DEACTIVATE_CODES = ['FAM25'] // gamle koder der skal slås fra
 
 export async function GET(req: NextRequest) {
   if (req.nextUrl.searchParams.get('token') !== TOKEN) {
@@ -20,6 +21,18 @@ export async function GET(req: NextRequest) {
   const stripe = new Stripe(key, { apiVersion: '2024-04-10' as any })
 
   try {
+    // Deaktivér gamle koder (fx FAM25), så kun den nye gælder.
+    const deactivated: string[] = []
+    for (const oldCode of DEACTIVATE_CODES) {
+      const old = await stripe.promotionCodes.list({ code: oldCode, limit: 5 })
+      for (const pc of old.data) {
+        if (pc.active) {
+          await stripe.promotionCodes.update(pc.id, { active: false })
+          deactivated.push(pc.code)
+        }
+      }
+    }
+
     // Idempotent: findes koden allerede?
     const existing = await stripe.promotionCodes.list({ code: CODE, limit: 1 })
     if (existing.data.length > 0) {
@@ -29,6 +42,7 @@ export async function GET(req: NextRequest) {
         status: 'findes allerede',
         code: pc.code,
         active: pc.active,
+        deactivated,
         promotionCodeId: pc.id,
         couponId: typeof pc.coupon === 'string' ? pc.coupon : pc.coupon?.id,
       })
@@ -53,6 +67,7 @@ export async function GET(req: NextRequest) {
       status: 'oprettet',
       code: promo.code,
       percentOff: PERCENT_OFF,
+      deactivated,
       promotionCodeId: promo.id,
       couponId: coupon.id,
     })
