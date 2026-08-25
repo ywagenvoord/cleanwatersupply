@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   description:
     'Sådan bruger du Bright Water til desinfektion af drikkevand i vandtanke: dosering, sikkerhed, opbevaring og produktinformation.',
   alternates: { canonical: `${SITE_URL}/bright-water` },
-  // QR-landingsside – holdes ude af søgeindeks indtil produktet er lanceret.
-  robots: { index: false, follow: true },
 }
 
 const doseTable = [
