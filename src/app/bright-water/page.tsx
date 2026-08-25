@@ -3,7 +3,7 @@ import Link from 'next/link'
 import {
   Droplets, ClipboardList, ShieldAlert, Info, FileText, Phone,
   CheckCircle2, ThermometerSun, ArrowRight, Beaker,
-  Caravan, Truck, Sailboat, Ship, Warehouse,
+  Caravan, Truck, Sailboat, Ship, Warehouse, Lightbulb,
 } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 
@@ -129,6 +129,16 @@ export default function BrightWaterGuide() {
               </table>
             </div>
             <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1 dl pr. 100 liter vand · 1 liter pr. 1.000 liter vand (blandingsforhold 1:1000).</p>
+
+            {/* Fun fact – målebæger i låget */}
+            <div className="mt-4 flex items-start gap-3 rounded-2xl bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 p-4">
+              <Lightbulb className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
+              <p className="text-sm text-gray-700 leading-relaxed">
+                <span className="font-bold text-[#0a2540]">Fun fact:</span> Låget på 1-liters dunken
+                rummer ca. 10 ml – præcis nok til 10 liter vand. Ét fyldt låg pr. 10 liter, så du
+                slipper for at måle op.
+              </p>
+            </div>
           </div>
         </div>
       </section>
