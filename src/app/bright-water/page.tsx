@@ -15,15 +15,17 @@ export const metadata: Metadata = {
 
 const doseTable = [
   { tank: '10 liter vand', dose: '10 ml' },
-  { tank: '50 liter vand', dose: '50 ml' },
-  { tank: '100 liter vand', dose: '100 ml' },
-  { tank: '500 liter vand', dose: '500 ml' },
+  { tank: '50 liter vand', dose: '½ dl (50 ml)' },
+  { tank: '100 liter vand', dose: '1 dl (100 ml)' },
+  { tank: '500 liter vand', dose: '5 dl (½ liter)' },
   { tank: '1.000 liter vand', dose: '1 liter' },
+  { tank: '5.000 liter vand', dose: '5 liter' },
+  { tank: '10.000 liter vand', dose: '10 liter' },
 ]
 
 const steps = [
   { t: 'Mål vandmængden', b: 'Find ud af, hvor mange liter drikkevand din tank indeholder.' },
-  { t: 'Doser 1,0 ml pr. liter', b: 'Tilsæt 1,0 ml Bright Water (500 mg/L) for hver liter vand i tanken.' },
+  { t: 'Doser 1 dl pr. 100 liter', b: 'Tilsæt 1,0 ml Bright Water (500 mg/L) pr. liter vand – dvs. 1 dl pr. 100 liter eller 1 liter pr. 1.000 liter.' },
   { t: 'Rør rundt', b: 'Bland produktet godt, så det fordeles jævnt i hele vandmængden.' },
   { t: 'Luk til', b: 'Luk tanken og emballagen godt til efter brug.' },
 ]
@@ -116,7 +118,7 @@ export default function BrightWaterGuide() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1,0 ml Bright Water pr. liter vand (blandingsforhold 1:1000).</p>
+          <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1 dl pr. 100 liter vand · 1 liter pr. 1.000 liter vand (blandingsforhold 1:1000).</p>
 
           {/* BLANDINGSFORHOLD PR. DUNK */}
           <div className="mt-10 flex items-center gap-3 mb-6">
