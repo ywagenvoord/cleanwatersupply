@@ -22,10 +22,17 @@ const doseTable = [
 ]
 
 const steps = [
-  { t: 'Mål vandmængden', b: 'Find ud af, hvor mange liter vand din tank indeholder.' },
-  { t: 'Doser 1,0 ml pr. liter', b: 'Tilsæt 1,0 ml Bright Water for hver liter vand i tanken.' },
+  { t: 'Mål vandmængden', b: 'Find ud af, hvor mange liter drikkevand din tank indeholder.' },
+  { t: 'Doser 1,0 ml pr. liter', b: 'Tilsæt 1,0 ml Bright Water (500 mg/L) for hver liter vand i tanken.' },
   { t: 'Rør rundt', b: 'Bland produktet godt, så det fordeles jævnt i hele vandmængden.' },
   { t: 'Luk til', b: 'Luk tanken og emballagen godt til efter brug.' },
+]
+
+// Blandingsforhold: 1,0 ml pr. liter vand = 1:1000.
+const dunke = [
+  { size: '1 liter dunk', water: 'op til 1.000 liter vand' },
+  { size: '5 liter dunk', water: 'op til 5.000 liter vand' },
+  { size: '20 liter dunk', water: 'op til 20.000 liter vand' },
 ]
 
 export default function BrightWaterGuide() {
@@ -74,8 +81,9 @@ export default function BrightWaterGuide() {
           <div className="mt-6 flex items-start gap-3 rounded-2xl bg-blue-50/60 ring-1 ring-blue-100 p-4">
             <Info className="w-5 h-5 text-[#284eff] shrink-0 mt-0.5" />
             <p className="text-sm text-gray-600 leading-relaxed">
-              Doseringen på 1,0 ml pr. liter giver ca. 0,5 ppm aktivt klor i det behandlede vand –
-              den maksimalt tilladte koncentration for drikkevand. Læs altid etiketten før brug.
+              Ved en produktkoncentration på 500 mg/L giver 1,0 ml pr. liter ca. 0,5 ppm aktivt klor
+              i det behandlede vand. Koncentrationen i det behandlede drikkevand må ikke overstige
+              0,5 mg/L (0,5 ppm). Læs altid etiketten før brug.
             </p>
           </div>
         </div>
@@ -108,7 +116,25 @@ export default function BrightWaterGuide() {
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1,0 ml Bright Water pr. liter vand.</p>
+          <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1,0 ml Bright Water pr. liter vand (blandingsforhold 1:1000).</p>
+
+          {/* BLANDINGSFORHOLD PR. DUNK */}
+          <div className="mt-10 flex items-center gap-3 mb-6">
+            <span className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center">
+              <Droplets className="w-5 h-5" />
+            </span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540]">Blandingsforhold pr. dunk</h2>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {dunke.map((d) => (
+              <div key={d.size} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5 text-center">
+                <p className="font-extrabold text-[#0a2540] text-lg">{d.size}</p>
+                <p className="text-sm text-[#3aad4a] font-bold mt-1">1,0 ml pr. liter</p>
+                <p className="text-sm text-gray-600 mt-2 leading-relaxed">Behandler {d.water}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-3">Fås i 1, 5 og 20 liter. Blandingsforholdet er ens: 1,0 ml Bright Water pr. liter drikkevand.</p>
         </div>
       </section>
 
@@ -159,8 +185,9 @@ export default function BrightWaterGuide() {
           <div className="rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm divide-y divide-blue-50">
             {[
               ['Produkttype', 'PT5 – desinfektion af drikkevand'],
+              ['Formuleringstype', 'AL – andre væsker'],
               ['Indhold', '500 mg/l aktivt klor frigivet fra hypoklorsyre'],
-              ['Maks. koncentration i behandlet vand', '0,5 ppm'],
+              ['Maks. koncentration i behandlet vand', '0,5 mg/l (0,5 ppm)'],
               ['PR-nr.', '4332417'],
               ['UFI', '3XQP-M6FR-E00E-9UTW'],
               ['Godkendelsesindehaver', 'Pureclean.eu ApS, Runddelsvej 17, 8930 Randers'],
