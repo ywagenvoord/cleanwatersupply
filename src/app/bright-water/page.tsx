@@ -38,13 +38,13 @@ const dunke = [
   { size: '20 liter dunk', water: 'op til 20.000 liter vand' },
 ]
 
-// Typiske anvendelsesområder med vejledende tankstørrelse og dosering (1,0 ml/liter).
+// Typiske anvendelsesområder med vejledende tankstørrelse og dosering (1,0 ml/liter · 1 låg ≈ 10 ml).
 const omraader = [
-  { Icon: Caravan, sted: 'Campingvogn', tank: 'ca. 40 liter tank', dose: 'ca. ½ dl (40 ml)' },
-  { Icon: Truck, sted: 'Autocamper', tank: 'ca. 100 liter tank', dose: '1 dl (100 ml)' },
-  { Icon: Sailboat, sted: 'Sejlbåd / motorbåd', tank: 'ca. 200 liter tank', dose: '2 dl (200 ml)' },
-  { Icon: Ship, sted: 'Større fartøj / husbåd', tank: 'ca. 500 liter tank', dose: '5 dl (½ liter)' },
-  { Icon: Warehouse, sted: 'Land- & gårdtank (IBC)', tank: 'ca. 1.000 liter tank', dose: '1 liter' },
+  { Icon: Caravan, sted: 'Campingvogn', tank: 'ca. 40 liter tank', dose: 'ca. ½ dl (40 ml)', laag: '≈ 4 låg' },
+  { Icon: Truck, sted: 'Autocamper', tank: 'ca. 100 liter tank', dose: '1 dl (100 ml)', laag: '≈ 10 låg' },
+  { Icon: Sailboat, sted: 'Sejlbåd / motorbåd', tank: 'ca. 200 liter tank', dose: '2 dl (200 ml)', laag: '≈ 20 låg' },
+  { Icon: Ship, sted: 'Større fartøj / husbåd', tank: 'ca. 500 liter tank', dose: '5 dl (½ liter)', laag: '' },
+  { Icon: Warehouse, sted: 'Land- & gårdtank (IBC)', tank: 'ca. 1.000 liter tank', dose: '1 liter', laag: '' },
 ]
 
 export default function BrightWaterGuide() {
@@ -155,17 +155,20 @@ export default function BrightWaterGuide() {
           <p className="text-gray-600 mb-6 leading-relaxed max-w-3xl">
             Bright Water giver rent, sikkert drikkevand i vandtanke – fx på campingvogn, autocamper og
             sejlbåd. Herunder er vejledende tankstørrelser og dosering. Mål altid din egen tank og
-            regn med 1,0 ml pr. liter (1 dl pr. 100 liter).
+            regn med 1,0 ml pr. liter (1 dl pr. 100 liter) – eller nemt: 1 låg (10 ml) pr. 10 liter vand.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {omraader.map(({ Icon, sted, tank, dose }) => (
+            {omraader.map(({ Icon, sted, tank, dose, laag }) => (
               <div key={sted} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5">
                 <div className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-3">
                   <Icon className="w-5 h-5" />
                 </div>
                 <p className="font-bold text-[#0a2540]">{sted}</p>
                 <p className="text-sm text-gray-500 mt-0.5">{tank}</p>
-                <p className="text-sm font-bold text-[#3aad4a] mt-2">Dosering: {dose}</p>
+                <p className="text-sm font-bold text-[#3aad4a] mt-2">
+                  Dosering: {dose}
+                  {laag && <span className="text-gray-400 font-normal"> · {laag}</span>}
+                </p>
               </div>
             ))}
             {/* Fås i-kort som del af samme grid, så rækken fyldes ud */}
