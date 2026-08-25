@@ -11,6 +11,8 @@ import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
 import KandeBuy from './KandeBuy'
 import GlaSSmartVideoModal from './GlaSSmartVideoModal'
+import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -69,6 +71,22 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
+      <LaicaProductJsonLd
+        name={k.name}
+        path={`/vandkander/${k.slug}`}
+        image={k.ogImage || k.img}
+        description={k.tagline}
+        price={k.price}
+        sku={k.varenr}
+        category="Vandkande med filter"
+      />
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Forside', url: SITE_URL },
+          { name: 'Vandkander', url: `${SITE_URL}/vandkander` },
+          { name: k.name, url: `${SITE_URL}/vandkander/${k.slug}` },
+        ]}
+      />
       {k.slug === 'glassmart' && <GlaSSmartVideoModal />}
       {/* ─── HERO ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">

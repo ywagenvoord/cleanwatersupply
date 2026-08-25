@@ -5,6 +5,8 @@ import { ArrowRight, Check, ChevronRight, Filter, BadgeCheck, Truck, Droplets, C
 import { FILTRE, getFilter } from '@/lib/filtre'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
+import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
+import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -28,6 +30,22 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
+      <LaicaProductJsonLd
+        name={f.name}
+        path={`/vandkande-filtre/${f.slug}`}
+        image={f.images?.[0] || f.img}
+        description={f.description.slice(0, 300)}
+        price={f.price}
+        sku={f.varenr}
+        category="Vandfilter til vandkande"
+      />
+      <BreadcrumbJsonLd
+        crumbs={[
+          { name: 'Forside', url: SITE_URL },
+          { name: 'Vandkande-filtre', url: `${SITE_URL}/vandkande-filtre` },
+          { name: f.name, url: `${SITE_URL}/vandkande-filtre/${f.slug}` },
+        ]}
+      />
       {/* ─── HERO ─────────────────────────────────────────── */}
       <section className="bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-7">
