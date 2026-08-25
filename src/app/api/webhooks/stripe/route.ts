@@ -71,6 +71,28 @@ export async function POST(req: NextRequest) {
     const shippingAmount = session.total_details?.amount_shipping
     const subject = `Ny ordre – ${kr(session.amount_total)}`
 
+    // Hent den automatisk oprettede faktura (til bogholderiet)
+    let invoicePdf: string | undefined
+    let invoiceUrl: string | undefined
+    let invoiceNumber: string | undefined
+    try {
+      const invId = typeof session.invoice === 'string' ? session.invoice : session.invoice?.id
+      if (invId) {
+        const inv = await stripe.invoices.retrieve(invId)
+        invoicePdf = inv.invoice_pdf || undefined
+        invoiceUrl = inv.hosted_invoice_url || undefined
+        invoiceNumber = inv.number || undefined
+      }
+    } catch { /* faktura evt. ikke klar endnu – ignorér */ }
+
+    const invoiceBlock = invoicePdf || invoiceUrl
+      ? `<div style="margin:18px 0;padding:14px 16px;background:#eef6ff;border-radius:10px;font-size:14px;">
+          <strong>Faktura${invoiceNumber ? ` ${invoiceNumber}` : ''}</strong> (til bogholderiet):<br>
+          ${invoicePdf ? `<a href="${invoicePdf}" style="color:#185fa5;">Download faktura (PDF)</a>` : ''}
+          ${invoiceUrl ? ` &nbsp;·&nbsp; <a href="${invoiceUrl}" style="color:#185fa5;">Se faktura online</a>` : ''}
+        </div>`
+      : ''
+
     const html = `
       <div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#0a2540;">
         <div style="background:#0a2540;color:#fff;padding:20px 24px;border-radius:14px 14px 0 0;">
@@ -93,6 +115,8 @@ export async function POST(req: NextRequest) {
             ${shippingAmount != null ? `<tr><td style="color:#888;padding:2px 0;">Fragt</td><td style="text-align:right;">${kr(shippingAmount)}</td></tr>` : ''}
             <tr><td style="font-weight:bold;padding:8px 0 0;">I alt</td><td style="text-align:right;font-weight:bold;padding:8px 0 0;font-size:16px;">${kr(session.amount_total)}</td></tr>
           </table>
+
+          ${invoiceBlock}
 
           <h2 style="font-size:15px;margin:22px 0 10px;">Kunde</h2>
           <table style="width:100%;font-size:14px;">

@@ -62,6 +62,9 @@ export async function POST(req: NextRequest) {
       mode: 'payment',
       line_items: lineItems,
       adaptive_pricing: { enabled: false },
+      // Opret automatisk en Stripe-faktura (med fakturanummer + PDF) ved hvert køb,
+      // så den kan sendes til bogholderiet.
+      invoice_creation: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ['DK', 'SE', 'NO', 'DE', 'NL', 'BE'],
       },
