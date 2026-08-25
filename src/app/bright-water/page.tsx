@@ -3,6 +3,7 @@ import Link from 'next/link'
 import {
   Droplets, ClipboardList, ShieldAlert, Info, FileText, Phone,
   CheckCircle2, ThermometerSun, ArrowRight, Beaker,
+  Caravan, Truck, Sailboat, Ship, Warehouse,
 } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 
@@ -35,6 +36,15 @@ const dunke = [
   { size: '1 liter dunk', water: 'op til 1.000 liter vand' },
   { size: '5 liter dunk', water: 'op til 5.000 liter vand' },
   { size: '20 liter dunk', water: 'op til 20.000 liter vand' },
+]
+
+// Typiske anvendelsesområder med vejledende tankstørrelse og dosering (1,0 ml/liter).
+const omraader = [
+  { Icon: Caravan, sted: 'Campingvogn', tank: 'ca. 40 liter tank', dose: 'ca. ½ dl (40 ml)' },
+  { Icon: Truck, sted: 'Autocamper', tank: 'ca. 100 liter tank', dose: '1 dl (100 ml)' },
+  { Icon: Sailboat, sted: 'Sejlbåd / motorbåd', tank: 'ca. 200 liter tank', dose: '2 dl (200 ml)' },
+  { Icon: Ship, sted: 'Større fartøj / husbåd', tank: 'ca. 500 liter tank', dose: '5 dl (½ liter)' },
+  { Icon: Warehouse, sted: 'Land- & gårdtank (IBC)', tank: 'ca. 1.000 liter tank', dose: '1 liter' },
 ]
 
 export default function BrightWaterGuide() {
@@ -137,6 +147,38 @@ export default function BrightWaterGuide() {
             ))}
           </div>
           <p className="text-xs text-gray-500 mt-3">Fås i 1, 5 og 20 liter. Blandingsforholdet er ens: 1,0 ml Bright Water pr. liter drikkevand.</p>
+        </div>
+      </section>
+
+      {/* ANVENDELSESOMRÅDER */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-3 mb-3">
+            <span className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center">
+              <Droplets className="w-5 h-5" />
+            </span>
+            <h2 className="text-2xl font-extrabold text-[#0a2540]">Hvor bruges Bright Water?</h2>
+          </div>
+          <p className="text-gray-600 mb-8 leading-relaxed">
+            Bright Water er ideel til rent drikkevand i vandtanke – fx på campingvogn, autocamper og
+            sejlbåd. Herunder er vejledende tankstørrelser og dosering. Mål altid din egen tank og
+            regn med 1,0 ml pr. liter (1 dl pr. 100 liter).
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {omraader.map(({ Icon, sted, tank, dose }) => (
+              <div key={sted} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5">
+                <div className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <p className="font-bold text-[#0a2540]">{sted}</p>
+                <p className="text-sm text-gray-500 mt-0.5">{tank}</p>
+                <p className="text-sm font-bold text-[#3aad4a] mt-2">Dosering: {dose}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 mt-4">
+            Tankstørrelserne er vejledende og varierer fra model til model – tjek din egen tanks volumen.
+          </p>
         </div>
       </section>
 
