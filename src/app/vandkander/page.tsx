@@ -5,9 +5,13 @@ import { KANDER } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Vandkander med filter & filterflasker – rent vand uden installation | Clean Water Supply',
+  title: 'Filterkander & filterflasker – Laica vandkande med filter | Clean Water Supply',
   description:
-    'Se vores Laica filtervandkander og filterflasker: Carmen, MikroPLASTIK-STOP og GlaSSmart glasflaske. Rent vand med god smag – helt uden installation.',
+    'Køb filterkande fra Laica: Carmen, MikroPLASTIK-STOP og GlaSSmart. En vandkande med filter giver rent vand med god smag – helt uden installation.',
+  keywords: [
+    'filterkande', 'filterkander', 'vandkande med filter', 'Laica filterkande',
+    'filtervandkande', 'vandfilterkande', 'filterkande test', 'køb filterkande',
+  ],
   alternates: { canonical: `${SITE_URL}/vandkander` },
 }
 
@@ -22,11 +26,11 @@ export default function VandkanderPage() {
             <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">Til hjemmet</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-5 leading-tight">
-            Vandkander med filter &amp; filterflasker
+            Filterkander &amp; filterflasker
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Rent vand med god smag – så nemt som at hælde op. Ingen installation, ingen værktøj.
-            Vælg den løsning, der passer til dit hjem og dit forbrug.
+            En filterkande (vandkande med filter) giver rent vand med god smag – så nemt som at hælde op.
+            Ingen installation, ingen værktøj. Vælg den filterkande, der passer til dit hjem og dit forbrug.
           </p>
         </div>
       </section>
