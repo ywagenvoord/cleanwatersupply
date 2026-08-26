@@ -34,7 +34,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!k) return { title: 'Ikke fundet', robots: { index: false, follow: false } }
   return {
     title: `${k.name} | Clean Water Supply`,
-    description: k.tagline,
+    description: `${k.tagline} Filtrér vandet nemt med ${k.name} fra Laica – rent vand med god smag, uden installation.`.slice(0, 160),
+    keywords: [k.name, 'Laica', 'filterkande', 'vandkande med filter', 'filtervandkande', 'rent vand', 'filter til vandkande'],
     alternates: { canonical: `${SITE_URL}/vandkander/${k.slug}` },
     openGraph: k.ogVideo
       ? {

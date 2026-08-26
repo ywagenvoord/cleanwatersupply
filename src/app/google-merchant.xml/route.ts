@@ -6,7 +6,12 @@ import { SITE_URL } from '@/lib/site'
 // Udvid ved at tilføje flere slugs til FEED_SLUGS.
 export const dynamic = 'force-static'
 
-const FEED_SLUGS = ['glassmart']
+const FEED_SLUGS = ['glassmart', 'mikroplastik-stop', 'carmen']
+
+// Nogle kander har deres kanoniske produktside i shoppen frem for /vandkander/[slug].
+const LINK_OVERRIDE: Record<string, string> = {
+  carmen: '/shop/kande-carmen',
+}
 
 function esc(s: string): string {
   return s
@@ -26,7 +31,7 @@ export async function GET() {
 
   const itemXml = items
     .map((k: any) => {
-      const link = `${SITE_URL}/vandkander/${k.slug}`
+      const link = `${SITE_URL}${LINK_OVERRIDE[k.slug] || `/vandkander/${k.slug}`}`
       const image = abs(k.img)
       const extra = abs(k.ogImage)
       const desc = (k.intro || k.tagline || '').replace(/\s+/g, ' ').trim()
