@@ -85,30 +85,27 @@ export default function BuyBox({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 1500)
   }
 
-  /* Antal-vælger (− / antal / +) */
-  const qtyPicker = (
-    <div className="flex items-center gap-3 mb-3">
-      <span className="text-sm font-bold text-[#0a2540]">Antal</span>
-      <div className="inline-flex items-center rounded-full border-2 border-gray-200 overflow-hidden">
-        <button
-          type="button"
-          onClick={() => setQty((q) => Math.max(1, q - 1))}
-          aria-label="Færre"
-          className="w-9 h-9 flex items-center justify-center text-[#0a2540] hover:bg-gray-100 disabled:text-gray-300"
-          disabled={qty <= 1}
-        >
-          <Minus className="w-4 h-4" />
-        </button>
-        <span className="w-10 text-center text-sm font-extrabold text-[#0a2540] select-none">{qty}</span>
-        <button
-          type="button"
-          onClick={() => setQty((q) => Math.min(99, q + 1))}
-          aria-label="Flere"
-          className="w-9 h-9 flex items-center justify-center text-[#0a2540] hover:bg-gray-100"
-        >
-          <Plus className="w-4 h-4" />
-        </button>
-      </div>
+  /* Antal-vælger (− / antal / +) – til brug ved siden af "Læg i kurv" */
+  const qtyStepper = (
+    <div className="flex items-center rounded-xl border-2 border-gray-200 shrink-0">
+      <button
+        type="button"
+        onClick={() => setQty((q) => Math.max(1, q - 1))}
+        aria-label="Færre"
+        disabled={qty <= 1}
+        className="h-full px-3.5 flex items-center text-[#0a2540] hover:bg-gray-50 disabled:text-gray-300 rounded-l-lg"
+      >
+        <Minus className="w-4 h-4" />
+      </button>
+      <span className="w-9 text-center text-sm font-extrabold text-[#0a2540] select-none">{qty}</span>
+      <button
+        type="button"
+        onClick={() => setQty((q) => Math.min(99, q + 1))}
+        aria-label="Flere"
+        className="h-full px-3.5 flex items-center text-[#0a2540] hover:bg-gray-50 rounded-r-lg"
+      >
+        <Plus className="w-4 h-4" />
+      </button>
     </div>
   )
 
@@ -492,27 +489,31 @@ export default function BuyBox({ product }: { product: Product }) {
     <div className="space-y-3">
       {upsellModal}
       {selector}
-      {!showInstall && qtyPicker}
+      {/* Antal + Læg i kurv side om side */}
+      <div className="flex items-stretch gap-3">
+        {qtyStepper}
+        <button
+          onClick={handleAdd}
+          className={`flex-1 inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl font-bold text-sm transition-all ${
+            added
+              ? 'bg-[#2e9a3d] text-white'
+              : 'bg-[#3aad4a] hover:bg-[#2e9a3d] text-white hover:shadow-lg hover:shadow-green-500/20'
+          }`}
+        >
+          {added ? (
+            <><Check className="w-4 h-4" /> Tilføjet til kurv</>
+          ) : (
+            <><ShoppingBag className="w-4 h-4" /> Læg i kurv</>
+          )}
+        </button>
+      </div>
+      {/* Køb nu – direkte til betaling */}
       <button
         onClick={startBuy}
         disabled={buying}
-        className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
+        className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white disabled:opacity-60 py-3 px-6 rounded-xl font-bold text-sm transition-all"
       >
         {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Køb nu <ArrowRight className="w-4 h-4" /></>)}
-      </button>
-      <button
-        onClick={handleAdd}
-        className={`w-full inline-flex items-center justify-center gap-2 border-2 py-3 px-6 rounded-full font-bold text-sm transition-all ${
-          added
-            ? 'border-[#3aad4a] bg-[#3aad4a]/5 text-[#3aad4a]'
-            : 'border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white'
-        }`}
-      >
-        {added ? (
-          <><Check className="w-4 h-4" /> Tilføjet til kurv</>
-        ) : (
-          <><ShoppingBag className="w-4 h-4" /> Tilføj til kurv</>
-        )}
       </button>
     </div>
   )
