@@ -928,7 +928,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'filter-biflux-healthexpert',
     productNr: 'P3M',
-    name: 'Bi-flux® HealthExpert – filter til vandkande',
+    name: 'Bi-flux® HealthExpert – Filter',
     tagline: 'Mod PFAS – med ekstra magnesium · 2 stk. i pakken',
     priceNote: 'Ca. 2 kr. om dagen for renere, sundere vand – uden dyre flasker.',
     lifespan: 'ca. 1 måned / 150 L pr. filter',
