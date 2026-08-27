@@ -300,6 +300,24 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 </div>
               )}
 
+              {/* Førstegangs-guide – udfylder venstre kolonne under billederne */}
+              {product.firstUse && product.firstUse.length > 0 && (
+                <div className="mt-6 rounded-3xl border border-blue-100 bg-gradient-to-b from-[#f5fbff] to-white p-6 shadow-sm">
+                  <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Kom godt i gang</span>
+                  <h2 className="text-lg font-extrabold text-[#0a2540] mt-1 mb-4">Sådan tager du filteret i brug første gang</h2>
+                  <ol className="space-y-3">
+                    {product.firstUse.map((step, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-xs font-black flex items-center justify-center shrink-0 shadow-md">
+                          {i + 1}
+                        </span>
+                        <p className="text-sm text-gray-700 leading-relaxed">{step}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
               {/* Fordele ved blødt vand – udfylder venstre kolonne (kun blødgøringsanlæg) */}
               {product.category === 'blosgoringsanlaeg' && (
                 <div className="mt-6 rounded-3xl border border-blue-100 bg-blue-50 p-6">
@@ -504,31 +522,6 @@ export default async function ProductDetailPage({ params }: { params: { productI
             {product.sellStory.closing && (
               <p className="text-center text-xl md:text-2xl font-extrabold mt-10">{product.sellStory.closing}</p>
             )}
-          </div>
-        </section>
-      )}
-
-      {/* ─── FØRSTEGANGS-BRUG (guide) ────────────────────────────── */}
-      {product.firstUse && product.firstUse.length > 0 && (
-        <section className="py-11 bg-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Kom godt i gang</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan tager du filteret i brug første gang</h2>
-              <p className="text-gray-500 mt-2 text-sm">Nemt – klar på få minutter.</p>
-            </div>
-            <div className="rounded-3xl bg-gradient-to-b from-[#f5fbff] to-white ring-1 ring-blue-100 shadow-sm p-6 sm:p-8">
-              <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
-                {product.firstUse.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3.5">
-                    <span className="w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shrink-0 shadow-md">
-                      {i + 1}
-                    </span>
-                    <p className="text-sm text-gray-700 leading-relaxed pt-1.5">{step}</p>
-                  </li>
-                ))}
-              </ol>
-            </div>
           </div>
         </section>
       )}
