@@ -105,22 +105,29 @@ export const KANDER: Kande[] = [
       'MikroPLASTIK-STOP™ er den første vandkande med filter med et modulært dobbelt-filtersystem, der blokerer ' +
       'mikroplast. Bi-flux®-filteret reducerer hårdhed og uønskede stoffer, mens MikroPLASTIK-STOP™-filteret ' +
       'fjerner de mikroskopiske plastpartikler – uden at fjerne de nyttige mineralsalte, kroppen har brug for. ' +
-      'Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland.',
+      'Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland. ' +
+      'Kanden er bygget på Laica Predator – med automatisk Quickfill-låg til hurtig påfyldning, en batterifri ' +
+      'analog skift-tæller og en aftagelig elektronisk indikator for filterets levetid. Made in Italy.',
     points: [
-      'Dobbelt filtersystem: Bi-flux® + MikroPLASTIK-STOP™',
+      'Dobbelt, modulært filtersystem: Bi-flux® + MikroPLASTIK-STOP™',
       'Fjerner >99,99 % af mikroplast ≥ 1 µm (testet af uafhængige labs)',
       'Bevarer de nyttige mineralsalte i vandet',
-      '“Flow ’n go” hæld-gennem-låg med støvbeskyttelse',
-      'Fødevaregodkendte materialer · 100 % genanvendelig emballage',
+      'Automatisk “Quickfill”-låg – fyld hurtigt direkte under hanen',
+      'Batterifri analog skift-tæller + aftagelig elektronisk levetidsindikator',
+      'Fødevaregodkendte materialer · 100 % genanvendelig emballage · Made in Italy',
       'Fås kun i hvid',
     ],
     specs: [
+      { label: 'Model', value: 'Laica Predator' },
       { label: 'Total kapacitet', value: '3 liter' },
       { label: 'Filtreret kapacitet', value: '2 liter' },
       { label: 'Mål (H×B×D)', value: '27,8 × 27,8 × 11,4 cm' },
       { label: 'Vægt', value: '0,95 kg' },
       { label: 'Farve', value: 'Hvid' },
-      { label: 'Indhold', value: 'Kande + 1 filter + manual' },
+      { label: 'Filtreringssystem', value: 'Dobbelt modulært (Bi-flux® + MikroPLASTIK-STOP™)' },
+      { label: 'Made in', value: 'Italien' },
+      { label: 'EAN', value: '8013240705941' },
+      { label: 'Indhold', value: 'Kande + 1 Bi-flux®-filter + 1 MikroPLASTIK-STOP™-filter + manual' },
     ],
     filter: 'Bi-flux® + MikroPLASTIK-STOP™',
     addon: {
