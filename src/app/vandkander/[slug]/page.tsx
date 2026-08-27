@@ -291,8 +291,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         <section className="py-12 bg-gradient-to-b from-white to-blue-50/40">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
             <div className="text-center mb-10">
-              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Trin for trin</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan bruger du den</h2>
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Samlingsguide</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan samler du den</h2>
               <p className="text-gray-500 mt-2 text-sm">Fra pakke til friskt vand på få minutter.</p>
             </div>
 
