@@ -272,9 +272,18 @@ export default function BuyBox({ product }: { product: Product }) {
     )
   }
 
-  /* Midlertidigt udsolgt – status vises tydeligt under produktnavnet */
+  /* Midlertidigt udsolgt – vis knapper deaktiveret (status vises under navnet) */
   if (soldOut) {
-    return null
+    return (
+      <div className="space-y-3" aria-hidden="true">
+        <span className="w-full inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-400 py-4 px-6 rounded-full font-bold text-sm cursor-not-allowed select-none">
+          Køb nu <ArrowRight className="w-4 h-4" />
+        </span>
+        <span className="w-full inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-400 py-3 px-6 rounded-full font-bold text-sm cursor-not-allowed select-none">
+          <ShoppingBag className="w-4 h-4" /> Læg i kurv
+        </span>
+      </div>
+    )
   }
 
   /* Ikke købbar online (kommer snart / intet betalingslink) */
