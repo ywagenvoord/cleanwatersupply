@@ -2,7 +2,7 @@
 // eller mangler. Nøgle = Stripe-produkt-id, værdi = lokalt billede i /public.
 export const STRIPE_IMAGE_OVERRIDE: Record<string, string> = {
   // MikroPLASTIK-STOP: Stripe-billedet viste ved en fejl Carmen-kanden.
-  'prod_V2wDbJ1i8O20Kj': '/images/kande-mikroplastik-t.png',
+  'prod_V2wDbJ1i8O20Kj': '/images/kande-mikroplastik-stop.jpg',
 }
 
 export function overrideImage(stripeProductId: string, fallback: string): string {
