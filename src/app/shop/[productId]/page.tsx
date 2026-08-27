@@ -222,7 +222,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
       </div>
 
       {/* ─── HERO SPLIT ───────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef6ff] via-[#f5fbff] to-white pt-8 pb-12 lg:pb-16">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#eef6ff] via-[#f5fbff] to-white pt-6 pb-6 lg:pb-8">
         <div className="pointer-events-none absolute -top-28 -right-24 w-[28rem] h-[28rem] rounded-full bg-[#284eff]/10 blur-3xl" />
         <div className="pointer-events-none absolute top-20 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -462,9 +462,9 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── SÆLGENDE STORY (fx sundhed) ─────────────────────────── */}
       {product.sellStory && (
-        <section className="py-16 bg-gradient-to-b from-[#0a2540] to-[#12305a] text-white">
+        <section className="py-11 bg-gradient-to-b from-[#0a2540] to-[#12305a] text-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-10">
+            <div className="text-center max-w-2xl mx-auto mb-7">
               {product.sellStory.eyebrow && (
                 <span className="text-[11px] font-black text-[#7aa8ff] uppercase tracking-widest">{product.sellStory.eyebrow}</span>
               )}
@@ -684,7 +684,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
       })()}
 
       {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-white to-[#f5fbff]">
+      <section className="py-11 bg-gradient-to-b from-white to-[#f5fbff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
 
@@ -870,7 +870,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── FAQ ──────────────────────────────────────────────────── */}
       {product.faqs.length > 0 && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-11 bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-extrabold text-gray-900 mb-8 text-center">Ofte stillede spørgsmål</h2>
             <div className="space-y-3">
