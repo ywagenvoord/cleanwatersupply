@@ -83,8 +83,9 @@ export async function getMergedShopProducts(): Promise<Product[]> {
     if (p.category !== 'vandkande') return 0
     const isKande =
       p.id.startsWith('kande-') ||
-      /glassmart/i.test(p.id) ||
-      p.id === 'prod_V2wFs5adWhY4cF' // GlaSSmart-karaffel (Stripe-only)
+      /glassmart|mikroplastik/i.test(p.id) ||
+      p.id === 'prod_V2wFs5adWhY4cF' || // GlaSSmart-karaffel (Stripe-only)
+      p.id === 'prod_V2wDbJ1i8O20Kj'    // MikroPLASTIK-STOP filterkande (Stripe-only)
     return isKande ? 0 : 1
   }
   merged.sort((a, b) => {
