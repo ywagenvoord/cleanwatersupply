@@ -796,6 +796,13 @@ export const PRODUCTS: Product[] = [
     price: 349,
     imgSrc:   '/images/kande-mikroplastik-stop.jpg',
     imgLarge: '/images/kande-mikroplastik-stop.jpg',
+    images: [
+      '/images/kande-mikroplastik-stop.jpg',
+      '/images/kande-mikroplastik-stop-b.jpg',
+      '/images/kande-mikroplastik-stop-c.jpg',
+      '/images/kande-mikroplastik-stop-d.jpg',
+      '/images/kande-mikroplastik-stop-e.jpg',
+    ],
     badge: 'Fjerner 99,99 % mikroplast',
     description: 'MikroPLASTIK-STOP™ er den første filterkande med et dobbelt filtersystem, der stopper mikroplast. Bi-flux®-filteret reducerer klor, kalk og tungmetaller, mens MikroPLASTIK-STOP™-filteret fjerner mere end 99,99 % af mikroplasten – uden at fjerne de nyttige mineraler.',
     longDescription: 'MikroPLASTIK-STOP™ er den første vandkande med et modulært dobbelt-filtersystem, der er skabt til at blokere mikroplast.\n\nBi-flux®-filteret reducerer klor, kalk, tungmetaller og andre uønskede stoffer, mens MikroPLASTIK-STOP™-filteret fjerner de mikroskopiske plastpartikler – og bevarer samtidig de mineralsalte, kroppen har brug for. Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland.\n\nKanden rummer 3 liter (2 liter filtreret), har et praktisk “flow ’n go” hæld-gennem-låg med støvbeskyttelse og er lavet af fødevaregodkendte materialer med 100 % genanvendelig emballage.',

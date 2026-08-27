@@ -91,6 +91,12 @@ export const KANDER: Kande[] = [
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
     img: '/images/kande-mikroplastik-stop.jpg',
+    gallery: [
+      '/images/kande-mikroplastik-stop-b.jpg',
+      '/images/kande-mikroplastik-stop-c.jpg',
+      '/images/kande-mikroplastik-stop-d.jpg',
+      '/images/kande-mikroplastik-stop-e.jpg',
+    ],
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
     highlight: 'Fjerner 99,99 % mikroplast',

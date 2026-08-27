@@ -109,6 +109,7 @@ const FITS_WITH: Record<string, { img: string; label: string }> = {
 // Nøgle = produkt-id (for Stripe-only produkter er det Stripe-produkt-id'et).
 const DETAIL_LINK_OVERRIDES: Record<string, string> = {
   'prod_V2wFs5adWhY4cF': '/vandkander/glassmart', // GlaSSmart glas-filterkaraffel
+  'prod_V2wDbJ1i8O20Kj': '/vandkander/mikroplastik-stop', // MikroPLASTIK-STOP filterkande (rig side)
 }
 
 function ProductCard({ product, catColor, showErhverv }: { product: Product; catColor: string; showErhverv: boolean }) {
