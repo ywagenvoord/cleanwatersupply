@@ -801,7 +801,6 @@ export const PRODUCTS: Product[] = [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',
-      '/images/kande-mikroplastik-stop-e.jpg',
     ],
     badge: 'Fjerner 99,99 % mikroplast',
     description: 'MikroPLASTIK-STOP™ er den første filterkande med et dobbelt filtersystem, der stopper mikroplast. Bi-flux®-filteret reducerer klor, kalk og tungmetaller, mens MikroPLASTIK-STOP™-filteret fjerner mere end 99,99 % af mikroplasten – uden at fjerne de nyttige mineraler.',

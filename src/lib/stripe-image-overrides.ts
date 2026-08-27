@@ -9,7 +9,6 @@ export const STRIPE_GALLERY_OVERRIDE: Record<string, string[]> = {
     '/images/kande-mikroplastik-stop-b.jpg',
     '/images/kande-mikroplastik-stop-c.jpg',
     '/images/kande-mikroplastik-stop-d.jpg',
-    '/images/kande-mikroplastik-stop-e.jpg',
   ],
 }
 

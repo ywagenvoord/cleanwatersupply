@@ -97,7 +97,6 @@ export const KANDER: Kande[] = [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',
-      '/images/kande-mikroplastik-stop-e.jpg',
     ],
     tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
     capacity: '3 L total · 2 L filtreret',
