@@ -63,7 +63,6 @@ export default function BuyBox({ product }: { product: Product }) {
   const stripeProductId = product.stripeProductId ?? stripe?.productId
   const stock = stockFor(product)
   const soldOut = !!product.soldOut || !!stock
-  const restockLabel = product.restockLabel ?? stock?.restockLabel
   const buyable = !!stripeProductId && !product.comingSoon && unitPrice !== undefined && !soldOut
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
@@ -273,14 +272,9 @@ export default function BuyBox({ product }: { product: Product }) {
     )
   }
 
-  /* Midlertidigt udsolgt */
+  /* Midlertidigt udsolgt – status vises tydeligt under produktnavnet */
   if (soldOut) {
-    return (
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="inline-flex items-center rounded-full bg-red-50 text-red-700 font-bold text-xs px-2.5 py-1 ring-1 ring-red-200">Udsolgt</span>
-        {restockLabel && <span className="text-xs text-gray-500">på lager igen {restockLabel}</span>}
-      </div>
-    )
+    return null
   }
 
   /* Ikke købbar online (kommer snart / intet betalingslink) */

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
 import { overrideImage, galleryFor, videoFor } from '@/lib/stripe-image-overrides'
+import { stockFor } from '@/lib/stock'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
 import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
@@ -182,6 +183,11 @@ export default async function ProductDetailPage({ params }: { params: { productI
   // Montering/installation: kalkanlæg + produkter med showInstallation (fx Filter Housing)
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
+
+  // Udsolgt-status (central styring i stock.ts)
+  const stock = stockFor(product)
+  const soldOut = !!product.soldOut || !!stock
+  const restockLabel = product.restockLabel ?? stock?.restockLabel
 
   // Levetid vist tydeligt øverst: eksplicit lifespan, ellers hentet fra "Levetid"-specen.
   // Vises kun på filtre (ikke selve kanderne) og kun hvis værdien er en reel varighed.
@@ -363,6 +369,16 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight mb-3">
                 {product.name}
               </h1>
+
+              {soldOut && (
+                <div className="inline-flex items-center gap-2.5 rounded-xl bg-red-50 ring-1 ring-red-200 px-4 py-2.5 mb-4">
+                  <span className="inline-flex items-center rounded-full bg-red-600 text-white font-black text-xs uppercase tracking-wide px-3 py-1">Udsolgt</span>
+                  {restockLabel && (
+                    <span className="text-sm font-semibold text-red-700">Forventet på lager igen {restockLabel}</span>
+                  )}
+                </div>
+              )}
+
               <p className="text-lg text-gray-500 font-medium mb-4">{product.tagline}</p>
 
               {/* Levetid – tydeligt øverst */}
