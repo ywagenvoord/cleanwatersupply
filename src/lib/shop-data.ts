@@ -4,6 +4,7 @@
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { stockFor } from '@/lib/stock'
+import { overrideImage } from '@/lib/stripe-image-overrides'
 
 // Stripe-only produkter (uden hardcodet match) der skal have en anden kategori
 // end default 'filtre' – fx GlaSSmart-karaffel og FAST DISK-filter hører til vandkande.
@@ -44,8 +45,8 @@ export async function getMergedShopProducts(): Promise<Product[]> {
         description:     sp.description || sp.name,
         category:        STRIPE_ONLY_CATEGORY[sp.stripeProductId] ?? 'filtre',
         price:           sp.price,
-        imgSrc:          sp.images[0] || '',
-        imgLarge:        sp.images[0] || '',
+        imgSrc:          overrideImage(sp.stripeProductId, sp.images[0] || ''),
+        imgLarge:        overrideImage(sp.stripeProductId, sp.images[0] || ''),
         highlights:      [],
         features:        [],
         specs:           [],
