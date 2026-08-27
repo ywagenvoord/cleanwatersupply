@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Wrench, Sparkles } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Sparkles } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -218,6 +218,23 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         <div className="flex-1" />
 
+        {/* ── KAMPAGNE (rullende) ───────────────────────────────── */}
+        {freeMontering && (
+          <div className="mt-4 overflow-hidden rounded-full bg-gradient-to-r from-[#3aad4a] to-[#2e9a3d] shadow-md shadow-green-500/25 py-1.5">
+            <div className="animate-marquee inline-flex whitespace-nowrap" style={{ animationDuration: '9s' }}>
+              {[0, 1].map((g) => (
+                <span key={g} className="inline-flex">
+                  {[0, 1, 2].map((i) => (
+                    <span key={i} className="mx-4 text-[11px] font-black uppercase tracking-wider text-white">
+                      ✨ Kampagne · Gratis montering · Spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr ✨
+                    </span>
+                  ))}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
           {product.quoteOnly ? (
@@ -234,14 +251,6 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             <p className="mt-1.5 text-xs font-semibold text-red-600">
               Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
             </p>
-          )}
-          {freeMontering && (
-            <div className="mt-2.5 flex items-center gap-2 rounded-lg bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 px-2.5 py-1.5">
-              <Wrench className="w-3.5 h-3.5 text-[#2e9a3d] shrink-0" />
-              <p className="text-[12px] font-bold text-[#2e7d34] leading-tight">
-                Kampagne: Fri montering<span className="font-semibold text-[#3aad4a]"> · spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
-              </p>
-            </div>
           )}
           {stockLeft != null && stockLeft > 0 && (
             <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
