@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useCart } from '@/contexts/CartContext'
-import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, X, ChevronDown, Camera, Loader2 } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Check, Phone, Wrench, MapPin, Plus, Minus, X, ChevronDown, Camera, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 import { getStripe } from '@/lib/stripe-products'
 import { INSTALLATION_PRICE, shopPrice, getProduct, type Product } from '@/lib/products'
@@ -54,6 +54,7 @@ export default function BuyBox({ product }: { product: Product }) {
   const [buying, setBuying] = useState(false)
   const [showUpsell, setShowUpsell] = useState(false)
   const [chosen, setChosen] = useState<Set<string>>(new Set())
+  const [qty, setQty] = useState(1)
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
   const erhverv = useB2bLoggedIn()
   const { amount: unitPrice } = shopPrice(product, erhverv)
@@ -79,10 +80,37 @@ export default function BuyBox({ product }: { product: Product }) {
       name:            product.name,
       price:           unitPrice,
       image:           product.imgSrc,
-    })
+    }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }
+
+  /* Antal-vælger (− / antal / +) */
+  const qtyPicker = (
+    <div className="flex items-center gap-3 mb-3">
+      <span className="text-sm font-bold text-[#0a2540]">Antal</span>
+      <div className="inline-flex items-center rounded-full border-2 border-gray-200 overflow-hidden">
+        <button
+          type="button"
+          onClick={() => setQty((q) => Math.max(1, q - 1))}
+          aria-label="Færre"
+          className="w-9 h-9 flex items-center justify-center text-[#0a2540] hover:bg-gray-100 disabled:text-gray-300"
+          disabled={qty <= 1}
+        >
+          <Minus className="w-4 h-4" />
+        </button>
+        <span className="w-10 text-center text-sm font-extrabold text-[#0a2540] select-none">{qty}</span>
+        <button
+          type="button"
+          onClick={() => setQty((q) => Math.min(99, q + 1))}
+          aria-label="Flere"
+          className="w-9 h-9 flex items-center justify-center text-[#0a2540] hover:bg-gray-100"
+        >
+          <Plus className="w-4 h-4" />
+        </button>
+      </div>
+    </div>
+  )
 
   // Filtre der kan tilbydes som "Tilføj også" ved køb (upsell)
   const upsell = (product.compatibleFilters ?? [])
@@ -119,7 +147,7 @@ export default function BuyBox({ product }: { product: Product }) {
     setBuying(true)
     try {
       const items = [
-        { stripeProductId: stripeProductId, quantity: 1 },
+        { stripeProductId: stripeProductId, quantity: qty },
         ...extraStripeIds.map((id) => ({ stripeProductId: id, quantity: 1 })),
       ]
       const res = await fetch('/api/checkout', {
@@ -464,6 +492,7 @@ export default function BuyBox({ product }: { product: Product }) {
     <div className="space-y-3">
       {upsellModal}
       {selector}
+      {!showInstall && qtyPicker}
       <button
         onClick={startBuy}
         disabled={buying}
