@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Sparkles } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -165,11 +165,6 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         {soldOut && (
           <span className="absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white">
             Udsolgt
-          </span>
-        )}
-        {freeMontering && (
-          <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30">
-            <Sparkles className="w-3 h-3" /> Gratis montering
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
