@@ -890,6 +890,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'H0L',
     name: 'Bi-flux® LimescaleSTOP – filter til vandkande',
     tagline: 'Mod kalk og hårdt vand · 2 stk. i pakken',
+    priceNote: '2 filtre i pakken – kun 49,50 kr. pr. filter.',
     lifespan: 'ca. 1 måned / 150 L pr. filter',
     removes: 'Fjerner kalk og hårdhed – og også mikroplast, tungmetaller og klor. Blødere vand, mindre kalk i kande og glas.',
     category: 'vandkande',

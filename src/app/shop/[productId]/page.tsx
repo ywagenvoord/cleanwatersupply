@@ -461,9 +461,10 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <ProductPrice product={product} />
 
                 {product.priceNote && (
-                  <p className="mb-5 -mt-1 text-sm leading-relaxed text-[#0a2540]/80">
-                    {product.priceNote}
-                  </p>
+                  <div className="mb-5 mt-1 inline-flex items-center gap-1.5 rounded-full bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/25 px-3 py-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#2e9a3d] shrink-0" />
+                    <span className="text-[13px] font-bold text-[#2e7d34] leading-snug">{product.priceNote}</span>
+                  </div>
                 )}
 
                 {isSoftener && !product.addon && (
