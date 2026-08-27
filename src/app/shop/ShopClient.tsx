@@ -168,7 +168,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           </span>
         )}
         {freeMontering && (
-          <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-gradient-to-r from-[#3aad4a] to-[#2e9a3d] text-white shadow-lg shadow-green-500/30">
+          <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/30">
             <Sparkles className="w-3 h-3" /> Gratis montering
           </span>
         )}
@@ -220,7 +220,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── KAMPAGNE (rullende) ───────────────────────────────── */}
         {freeMontering && (
-          <div className="mt-4 overflow-hidden rounded-full bg-gradient-to-r from-[#3aad4a] to-[#2e9a3d] shadow-md shadow-green-500/25 py-1.5">
+          <div className="mt-4 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-700 shadow-md shadow-blue-500/25 py-1.5">
             <div className="animate-marquee inline-flex whitespace-nowrap" style={{ animationDuration: '26s' }}>
               {[0, 1].map((g) => (
                 <span key={g} className="inline-flex">
