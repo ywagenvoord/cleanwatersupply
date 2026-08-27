@@ -13,6 +13,7 @@ export type Kande = {
   stripeProductId?: string   // gør kanden købbar direkte fra kande-siden
   ogImage?: string           // delebillede (1200×630) til Facebook/social preview
   ogVideo?: string           // Open Graph-video (mp4) til social preview
+  video?: string             // produktvideo (mp4) vist i galleriet
   capacity?: string
   highlight?: string
   intro: string
@@ -91,6 +92,7 @@ export const KANDER: Kande[] = [
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
     art: 'Art. UFSBE02',
     img: '/images/kande-mikroplastik-stop.jpg',
+    video: '/videos/mikroplastik-stop.mp4',
     gallery: [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',

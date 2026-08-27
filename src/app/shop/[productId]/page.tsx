@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
-import { overrideImage, galleryFor } from '@/lib/stripe-image-overrides'
+import { overrideImage, galleryFor, videoFor } from '@/lib/stripe-image-overrides'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
 import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
@@ -69,6 +69,7 @@ async function fetchProduct(idOrStripeId: string): Promise<Product | undefined> 
     imgSrc:          overrideImage(sp.stripeProductId, sp.images[0] || ''),
     imgLarge:        overrideImage(sp.stripeProductId, sp.images[0] || ''),
     images:          galleryFor(sp.stripeProductId) ?? (sp.images.length ? sp.images : undefined),
+    lifestyleVideo:  videoFor(sp.stripeProductId),
     highlights:      [],
     features:        [],
     specs:           [],

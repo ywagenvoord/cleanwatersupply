@@ -25,3 +25,12 @@ export function overrideImage(stripeProductId: string, fallback: string): string
 export function galleryFor(stripeProductId: string): string[] | undefined {
   return STRIPE_GALLERY_OVERRIDE[stripeProductId]
 }
+
+// Produktvideo (mp4) for Stripe-only produkter.
+export const STRIPE_VIDEO_OVERRIDE: Record<string, string> = {
+  'prod_V2wDbJ1i8O20Kj': '/videos/mikroplastik-stop.mp4',
+}
+
+export function videoFor(stripeProductId: string): string | undefined {
+  return STRIPE_VIDEO_OVERRIDE[stripeProductId]
+}
