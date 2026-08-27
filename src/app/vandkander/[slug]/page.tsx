@@ -296,6 +296,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <p className="text-gray-500 mt-2 text-sm">Fra pakke til friskt vand på få minutter.</p>
             </div>
 
+            <div className="rounded-3xl bg-white ring-1 ring-blue-100 shadow-sm p-6 sm:p-9">
             <div className="relative">
               {/* Vandret forbindelseslinje (vises når alle trin står på én række) */}
               <div className="hidden lg:block absolute top-[26px] left-[8%] right-[8%] border-t-2 border-dashed border-blue-200" />
@@ -325,6 +326,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   )
                 })}
               </ol>
+            </div>
             </div>
           </div>
         </section>
