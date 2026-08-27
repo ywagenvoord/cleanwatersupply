@@ -496,31 +496,31 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── SÆLGENDE STORY (fx sundhed) ─────────────────────────── */}
       {product.sellStory && (
-        <section className="py-11 bg-gradient-to-b from-[#0a2540] to-[#12305a] text-white">
+        <section className="py-11 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-7">
               {product.sellStory.eyebrow && (
-                <span className="text-[11px] font-black text-[#7aa8ff] uppercase tracking-widest">{product.sellStory.eyebrow}</span>
+                <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{product.sellStory.eyebrow}</span>
               )}
-              <h2 className="text-3xl md:text-4xl font-extrabold mt-2 mb-4 leading-tight">{product.sellStory.heading}</h2>
-              <p className="text-blue-100/90 text-lg leading-relaxed">{product.sellStory.intro}</p>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-2 mb-3 leading-tight">{product.sellStory.heading}</h2>
+              <p className="text-gray-600 text-[15px] leading-relaxed">{product.sellStory.intro}</p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid sm:grid-cols-2 gap-4">
               {product.sellStory.cards.map((c) => {
                 const Icon = STORY_ICONS[c.icon] ?? Droplets
                 return (
-                  <div key={c.title} className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
-                    <span className="w-12 h-12 rounded-xl bg-[#3aad4a] flex items-center justify-center mb-4 shadow-lg shadow-green-500/20">
-                      <Icon className="w-6 h-6 text-white" strokeWidth={2.2} />
+                  <div key={c.title} className="rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm p-5">
+                    <span className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] flex items-center justify-center mb-3">
+                      <Icon className="w-5 h-5 text-white" strokeWidth={2.2} />
                     </span>
-                    <h3 className="text-lg font-extrabold mb-1.5 leading-snug">{c.title}</h3>
-                    <p className="text-blue-100/80 text-sm leading-relaxed">{c.text}</p>
+                    <h3 className="text-[15px] font-extrabold text-[#0a2540] mb-1 leading-snug">{c.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{c.text}</p>
                   </div>
                 )
               })}
             </div>
             {product.sellStory.closing && (
-              <p className="text-center text-xl md:text-2xl font-extrabold mt-10">{product.sellStory.closing}</p>
+              <p className="text-center text-lg font-extrabold text-[#0a2540] mt-7">{product.sellStory.closing}</p>
             )}
           </div>
         </section>
