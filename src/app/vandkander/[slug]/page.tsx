@@ -25,6 +25,9 @@ const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   droplet: Droplet,
 }
 
+// Ikoner til trin-for-trin tidslinjen (går på skift efter trinnets nummer)
+const STEP_ICONS = [Droplets, Droplet, Recycle, GlassWater, Timer, Heart]
+
 export function generateStaticParams() {
   return KANDER.map((k) => ({ slug: k.slug }))
 }
@@ -283,25 +286,41 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {/* ─── SÅDAN BRUGER DU DEN ───────────────────────────── */}
+      {/* ─── SÅDAN BRUGER DU DEN – tidslinje ───────────────── */}
       {k.steps && k.steps.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-          <div className="text-center mb-8">
-            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Trin for trin</span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan bruger du den</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {k.steps.map((step, i) => (
-              <div
-                key={step}
-                className="relative rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 pt-7"
-              >
-                <span className="absolute -top-3.5 left-6 w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shadow-lg shadow-[#284eff]/25">
-                  {i + 1}
-                </span>
-                <p className="text-sm text-gray-700 leading-relaxed mt-1">{step}</p>
-              </div>
-            ))}
+        <section className="py-12 bg-gradient-to-b from-white to-blue-50/40">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-10">
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Trin for trin</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan bruger du den</h2>
+              <p className="text-gray-500 mt-2 text-sm">Fra pakke til friskt vand på få minutter.</p>
+            </div>
+
+            <ol className="relative ml-5 sm:ml-6 border-l-2 border-dashed border-blue-200 space-y-7">
+              {k.steps.map((step, i) => {
+                const Icon = STEP_ICONS[i % STEP_ICONS.length]
+                const last = i === k.steps!.length - 1
+                return (
+                  <li key={step} className="relative pl-8 sm:pl-10">
+                    <span
+                      className={`absolute -left-[1.4rem] sm:-left-[1.55rem] top-0 w-11 h-11 rounded-full text-white flex items-center justify-center shadow-lg ring-4 ring-white ${
+                        last
+                          ? 'bg-gradient-to-br from-[#3aad4a] to-[#2e9a3d] shadow-green-500/30'
+                          : 'bg-gradient-to-br from-[#284eff] to-[#1b32c9] shadow-[#284eff]/30'
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" strokeWidth={2.2} />
+                    </span>
+                    <div className="rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-md transition-shadow p-5">
+                      <p className={`text-[11px] font-black uppercase tracking-widest mb-1 ${last ? 'text-[#2e9a3d]' : 'text-[#284eff]'}`}>
+                        {last ? 'Færdig' : `Trin ${i + 1}`}
+                      </p>
+                      <p className="text-sm text-gray-700 leading-relaxed">{step}</p>
+                    </div>
+                  </li>
+                )
+              })}
+            </ol>
           </div>
         </section>
       )}
