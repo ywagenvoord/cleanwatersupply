@@ -3,6 +3,8 @@ import { SITE_URL } from '@/lib/site'
 
 
 export default function robots(): MetadataRoute.Robots {
+  // AI-svarmaskiner (ChatGPT, Perplexity, Googles AI-svar m.fl.) må gerne læse
+  // og citere sitet – det er en forudsætning for GEO (Generative Engine Optimization).
   return {
     rules: [
       {
@@ -15,14 +17,6 @@ export default function robots(): MetadataRoute.Robots {
           '/_next/',
           '/admin/',
         ],
-      },
-      {
-        userAgent: 'GPTBot',
-        disallow: ['/'],
-      },
-      {
-        userAgent: 'CCBot',
-        disallow: ['/'],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/montering`,   lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/eca-vand`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/bright-water`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/rent-vand`,   lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/spildevand`,  lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/fordele`,     lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/business`,    lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
