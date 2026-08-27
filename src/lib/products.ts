@@ -899,7 +899,7 @@ export const PRODUCTS: Product[] = [
     images: ['/images/filter-limescalestop-v2.jpg', '/images/limescalestop-kalkfri.png', '/images/limescalestop-cartridge.png'],
     description: 'Bi-flux® LimescaleSTOP er udviklet til områder med hårdt vand. Det reducerer kalk og hårdhed med op til 90 % og filtrerer samtidig mikroplast, tungmetaller og klor – for let, blødt vand med bedre smag. Passer også til Brita®-kander. 2 stk. i pakken.',
     longDescription: 'Bi-flux® LimescaleSTOP er udviklet til områder med hårdt vand. Det reducerer kalk og hårdhed med op til 90 % og filtrerer samtidig mikroplast, tungmetaller og klor i 5 trin – for let, blødt vand med bedre smag. Passer i Laica-kander og også til Brita®-kander (LAICA-Key medfølger). Ét filter rækker til ca. 150 liter / ca. 1 måned. Leveres i pakke med 2 filtre.',
-    highlights: ['Reducerer kalk & hårdhed op til 90 %', 'Også mikroplast, tungmetaller & klor', 'Passer også Brita® · 2-pak'],
+    highlights: ['Reducerer kalk & hårdhed op til 90 %', 'Reducerer også mikroplast, tungmetaller & klor', 'Passer også Brita® · 2-pak'],
     features: [
       'Reducerer kalk og hårdhed med op til 90 %',
       'Reducerer også mikroplast, tungmetaller og klor (5-trins)',
