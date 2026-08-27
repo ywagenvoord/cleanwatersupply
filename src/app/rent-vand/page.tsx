@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Droplets, CheckCircle2, ArrowRight, ShieldCheck, GlassWater, FlaskConical } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
+import { getKande } from '@/lib/kander'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
@@ -57,6 +58,14 @@ const FAQS = [
   },
 ]
 
+// Laica-filterkander der løfter drikkeoplevelsen (sælgende produktsektion)
+const FEATURED = [
+  { slug: 'mikroplastik-stop', link: '/vandkander/mikroplastik-stop', sell: 'Stopper >99,99 % mikroplast – rent vand du kan smage forskel på.' },
+  { slug: 'glassmart', link: '/vandkander/glassmart', sell: 'Elegant glaskaraffel med altid koldt, filtreret vand i køleskabet.' },
+  { slug: 'carmen', link: '/shop/kande-carmen', sell: 'Den enkle hverdagskande – bedre smag, mindre klor og kalk.' },
+].map(({ slug, link, sell }) => ({ k: getKande(slug), link, sell }))
+  .filter((x): x is { k: NonNullable<ReturnType<typeof getKande>>; link: string; sell: string } => !!x.k)
+
 const solutions = [
   { Icon: GlassWater, title: 'Filterkander', text: 'Rent vand med god smag – uden installation.', href: '/vandkander' },
   { Icon: ShieldCheck, title: 'Filter mod Legionella', text: 'Bakteriefrit vand ved hane og bruser.', href: '/legionella' },
@@ -110,8 +119,47 @@ export default function RentVandPage() {
         </div>
       </section>
 
+      {/* PRODUKTER – filterkander der løfter drikkeoplevelsen */}
+      <section className="py-12 bg-gradient-to-b from-white to-blue-50/50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-2">Rent vand med god smag – hver dag</h2>
+          <p className="text-gray-600 mb-7 max-w-2xl leading-relaxed">
+            Den nemmeste vej til rent drikkevand derhjemme er en Laica filterkande. Den renser vandet,
+            mens du hælder – bedre smag, mindre klor, kalk og mikroplast, helt uden installation.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {FEATURED.map(({ k, link, sell }) => (
+              <div key={k.slug} className="group flex flex-col bg-white rounded-3xl ring-1 ring-blue-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden">
+                <Link href={link} className="block h-52 bg-gradient-to-br from-blue-50 to-white flex items-center justify-center p-6">
+                  <img src={k.img} alt={k.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </Link>
+                <div className="flex flex-col flex-1 p-5">
+                  <Link href={link}>
+                    <h3 className="font-extrabold text-[#0a2540] text-[15px] leading-snug hover:text-[#284eff] transition-colors">{k.name}</h3>
+                  </Link>
+                  <p className="text-sm text-gray-500 mt-1.5 leading-relaxed flex-1">{sell}</p>
+                  <div className="mt-4 flex items-center justify-between">
+                    {k.price != null && (
+                      <span className="text-lg font-extrabold text-[#0a2540]">{k.price.toLocaleString('da-DK')} kr</span>
+                    )}
+                    <Link href={link} className="inline-flex items-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2 transition-all hover:shadow-md">
+                      Se produkt <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-6">
+            <Link href="/vandkander" className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a] hover:gap-2.5 transition-all">
+              Se alle filterkander <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section className="py-10 bg-gradient-to-b from-white to-blue-50/50">
+      <section className="py-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-extrabold text-[#0a2540] mb-6">Spørgsmål og svar om rent vand</h2>
           <div className="space-y-4">
