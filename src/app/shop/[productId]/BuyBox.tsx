@@ -276,18 +276,9 @@ export default function BuyBox({ product }: { product: Product }) {
   /* Midlertidigt udsolgt */
   if (soldOut) {
     return (
-      <div className="space-y-2.5">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="inline-flex items-center rounded-full bg-red-50 text-red-700 font-bold text-xs px-2.5 py-1 ring-1 ring-red-200">Udsolgt</span>
-          {restockLabel && <span className="text-xs text-gray-500">på lager igen {restockLabel}</span>}
-        </div>
-        <Link
-          href="/contact"
-          className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-6 rounded-full font-bold text-sm transition-all"
-        >
-          <Phone className="w-4 h-4" />
-          Få besked, når varen er på lager
-        </Link>
+      <div className="flex items-center gap-2 flex-wrap">
+        <span className="inline-flex items-center rounded-full bg-red-50 text-red-700 font-bold text-xs px-2.5 py-1 ring-1 ring-red-200">Udsolgt</span>
+        {restockLabel && <span className="text-xs text-gray-500">på lager igen {restockLabel}</span>}
       </div>
     )
   }
