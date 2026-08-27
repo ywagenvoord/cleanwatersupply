@@ -9,6 +9,7 @@ export type Kande = {
   img: string
   tagline: string
   price?: number
+  stockLeft?: number         // vis lav-lager-besked (fx "Kun 1 tilbage på lager")
   varenr?: string
   stripeProductId?: string   // gør kanden købbar direkte fra kande-siden
   ogImage?: string           // delebillede (1200×630) til Facebook/social preview
@@ -87,6 +88,7 @@ export const KANDER: Kande[] = [
   {
     slug: 'mikroplastik-stop',
     price: 349,
+    stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
     name: 'Vandkande med filter MikroPLASTIK-STOP™',
