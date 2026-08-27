@@ -146,7 +146,7 @@ export const KANDER: Kande[] = [
     ],
     eco: 'Reducér mikroplast og engangsflasker på én gang – filteret rækker til ca. 150 liter.',
     steps: [
-      'Blød Bi-flux®- og MikroPLASTIK-STOP™-filtrene i koldt vand i ca. 10-15 minutter',
+      'Læg begge filtre (Bi-flux® og MikroPLASTIK-STOP™) i blød i en skål eller balje med rent, koldt vand, så de begge er dækket – i ca. 10-15 minutter',
       'Skyl begge filtre under rindende vand',
       'Monter begge filtre i tragten inde i kanden',
       'Fyld tragten med koldt vand',
