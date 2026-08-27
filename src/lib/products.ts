@@ -974,8 +974,7 @@ export const PRODUCTS: Product[] = [
       'Læg filteret i blød i en skål eller balje med koldt vand i 10-15 minutter, så det er helt dækket.',
       'Skyl filteret grundigt under rindende, koldt vand.',
       'Sæt filteret fast i tragten inde i kanden.',
-      'Fyld tragten med koldt vand, og lad det løbe igennem.',
-      'Hæld de første 1-2 kander vand ud for at skylle filteret igennem – derefter er vandet klar til at drikke.',
+      'Fyld tragten med koldt vand, og lad det løbe igennem – så er vandet klar.',
     ],
     sellStory: {
       eyebrow: 'Sundere vand – helt enkelt',
