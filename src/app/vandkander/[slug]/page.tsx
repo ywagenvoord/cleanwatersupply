@@ -115,25 +115,6 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 alt={k.name}
                 highlight={k.highlight}
               />
-
-              {k.video && (
-                <div className="flex items-start gap-3">
-                  <div className="w-[190px] shrink-0 rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
-                    <video
-                      src={k.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      controls
-                      className="w-full h-auto block"
-                    />
-                  </div>
-                  <p className="text-sm text-gray-500 leading-relaxed pt-1">
-                    Se {k.name} i brug – tryk på lyd, hvis du vil høre med.
-                  </p>
-                </div>
-              )}
             </div>
 
             {/* Tekst */}
@@ -189,6 +170,26 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   <Leaf className="w-4 h-4 text-[#3aad4a]" /> Fri for engangsplast
                 </span>
               </div>
+
+              {/* Produktvideo – lille ramme over tilkøbsboksen */}
+              {k.video && (
+                <div className="mt-8 flex items-start gap-3">
+                  <div className="w-[170px] shrink-0 rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
+                    <video
+                      src={k.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      controls
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                  <p className="text-sm text-gray-500 leading-relaxed pt-1">
+                    Se {k.name} i brug – tryk på lyd, hvis du vil høre med.
+                  </p>
+                </div>
+              )}
 
               {/* Tilkøb: matchende filter – under teksten */}
               {k.addon && (
