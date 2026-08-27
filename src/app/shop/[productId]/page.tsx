@@ -31,6 +31,10 @@ export function generateStaticParams() {
 
 /* ─── DATA FETCH (hardcoded → Stripe fallback) ───────────────────────────── */
 
+const STORY_ICONS: Record<string, typeof ShieldCheck> = {
+  shield: ShieldCheck, heart: Heart, glass: GlassWater, spark: Sparkles, drop: Droplets, zap: Zap,
+}
+
 async function fetchProduct(idOrStripeId: string): Promise<Product | undefined> {
   // 1. Try hardcoded list first (fast, rich content)
   const hardcoded = getProduct(idOrStripeId)
@@ -455,6 +459,38 @@ export default async function ProductDetailPage({ params }: { params: { productI
           </div>
         </div>
       </section>
+
+      {/* ─── SÆLGENDE STORY (fx sundhed) ─────────────────────────── */}
+      {product.sellStory && (
+        <section className="py-16 bg-gradient-to-b from-[#0a2540] to-[#12305a] text-white">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              {product.sellStory.eyebrow && (
+                <span className="text-[11px] font-black text-[#7aa8ff] uppercase tracking-widest">{product.sellStory.eyebrow}</span>
+              )}
+              <h2 className="text-3xl md:text-4xl font-extrabold mt-2 mb-4 leading-tight">{product.sellStory.heading}</h2>
+              <p className="text-blue-100/90 text-lg leading-relaxed">{product.sellStory.intro}</p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-5">
+              {product.sellStory.cards.map((c) => {
+                const Icon = STORY_ICONS[c.icon] ?? Droplets
+                return (
+                  <div key={c.title} className="rounded-2xl bg-white/5 ring-1 ring-white/10 p-6">
+                    <span className="w-12 h-12 rounded-xl bg-[#3aad4a] flex items-center justify-center mb-4 shadow-lg shadow-green-500/20">
+                      <Icon className="w-6 h-6 text-white" strokeWidth={2.2} />
+                    </span>
+                    <h3 className="text-lg font-extrabold mb-1.5 leading-snug">{c.title}</h3>
+                    <p className="text-blue-100/80 text-sm leading-relaxed">{c.text}</p>
+                  </div>
+                )
+              })}
+            </div>
+            {product.sellStory.closing && (
+              <p className="text-center text-xl md:text-2xl font-extrabold mt-10">{product.sellStory.closing}</p>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
       {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {

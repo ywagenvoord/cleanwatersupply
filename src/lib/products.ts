@@ -52,6 +52,14 @@ export type Product = {
   faqs: FAQ[]
   // Use cases
   useCases: string[]
+  // Bespoke sælgende "story"-sektion (vises kun på produkter, der har den)
+  sellStory?: {
+    eyebrow?: string
+    heading: string
+    intro: string
+    cards: { icon: string; title: string; text: string }[]
+    closing?: string
+  }
   // Shopify integration (optional)
   shopify?: { componentId: string; productId: string }
   // Stripe Payment Link (optional)
@@ -920,6 +928,7 @@ export const PRODUCTS: Product[] = [
     productNr: 'P3M',
     name: 'Bi-flux® HealthExpert – filter til vandkande',
     tagline: 'Mod PFAS – med ekstra magnesium · 2 stk. i pakken',
+    priceNote: 'Ca. 2 kr. om dagen for renere, sundere vand – uden dyre flasker.',
     lifespan: 'ca. 1 måned / 150 L pr. filter',
     removes: 'Fjerner PFAS (“evighedskemikalier”), mikroplast, klor og tungmetaller – og tilfører magnesium.',
     category: 'vandkande',
@@ -959,6 +968,18 @@ export const PRODUCTS: Product[] = [
       { q: 'Er filteret medicinsk udstyr?', a: 'Nej. Bi-flux® HealthExpert er et vandfilter til husholdningsbrug og er ikke medicinsk udstyr.' },
     ],
     useCases: ['Maksimal beskyttelse', 'Private hjem', 'Børnefamilier'],
+    sellStory: {
+      eyebrow: 'Sundhed i hver tår',
+      heading: 'Rent vand, der giver noget tilbage',
+      intro: 'HealthExpert er ikke bare et filter. Det fjerner det, du helst vil undgå i vandet – og tilfører magnesium, som kroppen elsker. Så det vand, du og din familie alligevel drikker hele dagen, gør en lille forskel for helbredet.',
+      cards: [
+        { icon: 'shield', title: 'Stopper “evighedskemikalier” (PFAS)', text: 'PFAS er menneskeskabte kemikalier, der kan blive i drikkevandet i årevis og mistænkes for at være skadelige for helbredet. HealthExpert reducerer dem med op til 92 % – du fjerner dem helt automatisk, hver gang du hælder et glas.' },
+        { icon: 'heart', title: 'Ekstra magnesium til krop og hoved', text: 'De fleste filtre fjerner kun. Dette giver også noget tilbage: magnesium, der understøtter hjerte, muskler og et klart hoved. Sundt vand – uden at du skal huske en pille.' },
+        { icon: 'glass', title: 'Vand, børnene faktisk gider drikke', text: 'Klor, kalk og mikroplast forsvinder, så vandet smager rent og friskt. Ingen bismag – bare koldt, godt vand direkte fra kanden.' },
+        { icon: 'spark', title: 'Nemt, billigt og grønt', text: 'Passer i din Laica- eller Brita®-kande. Ét filter holder en måned – få kroner om dagen mod dyre flasker og bjerge af plastik.' },
+      ],
+      closing: 'Skift ét lille filter – og drik dig til en sundere hverdag. Din krop mærker forskellen.',
+    },
     compatibleJugs: ['kande-carmen', 'kande-mikroplastik'],
     alsoBought: ['kande-carmen', 'filter-biflux-universal'],
   },
