@@ -209,7 +209,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
               {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
               {k.video && (
-                <div className="mt-8 w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
+                <>
+                <h2 className="mt-8 mb-3 text-lg font-extrabold text-[#0a2540]">Tryghed til hele familien</h2>
+                <div className="w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
                   <video
                     src={k.video}
                     autoPlay
@@ -220,6 +222,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     className="w-full h-[380px] object-cover block"
                   />
                 </div>
+                </>
               )}
 
             </div>
