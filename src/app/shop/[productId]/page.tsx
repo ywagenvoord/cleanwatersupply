@@ -35,6 +35,15 @@ const STORY_ICONS: Record<string, typeof ShieldCheck> = {
   shield: ShieldCheck, heart: Heart, glass: GlassWater, spark: Sparkles, drop: Droplets, zap: Zap,
 }
 
+// Fangende hero-highlights: ikon + farve skifter pr. punkt
+const HL_ICONS = [ShieldCheck, Heart, Droplets, Sparkles]
+const HL_COLORS = [
+  'from-[#3aad4a] to-[#2e9a3d]',
+  'from-rose-500 to-rose-600',
+  'from-[#284eff] to-[#1b32c9]',
+  'from-amber-400 to-amber-500',
+]
+
 async function fetchProduct(idOrStripeId: string): Promise<Product | undefined> {
   // 1. Try hardcoded list first (fast, rich content)
   const hardcoded = getProduct(idOrStripeId)
@@ -353,17 +362,24 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 {product.description}
               </p>
 
-              {/* Key highlights */}
+              {/* Key highlights – fangende ikon-kort */}
               {product.highlights.length > 0 && (
-                <div className="grid gap-3 mb-8">
-                  {product.highlights.map((h, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-white ring-1 ring-blue-100 rounded-xl px-4 py-3">
-                      <span className="w-6 h-6 rounded-full bg-[#284eff] flex items-center justify-center shrink-0">
-                        <CheckCircle2 className="w-4 h-4 text-white" />
-                      </span>
-                      <span className="text-sm font-semibold text-[#0a2540]">{h}</span>
-                    </div>
-                  ))}
+                <div className="grid gap-2.5 mb-8">
+                  {product.highlights.map((h, i) => {
+                    const Icon = HL_ICONS[i % HL_ICONS.length]
+                    const color = HL_COLORS[i % HL_COLORS.length]
+                    return (
+                      <div
+                        key={i}
+                        className="group flex items-center gap-3.5 bg-white ring-1 ring-blue-100 rounded-2xl px-4 py-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                      >
+                        <span className={`w-11 h-11 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform`}>
+                          <Icon className="w-5 h-5 text-white" strokeWidth={2.3} />
+                        </span>
+                        <span className="text-[15px] font-extrabold text-[#0a2540] leading-snug">{h}</span>
+                      </div>
+                    )
+                  })}
                 </div>
               )}
 
