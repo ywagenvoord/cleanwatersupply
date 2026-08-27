@@ -3,7 +3,9 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Wrench, Sparkles } from 'lucide-react'
+import { isGratisMonteringActive } from '@/lib/campaign'
+import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
 import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
@@ -130,6 +132,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   // Use live Stripe product ID if available, fallback to static mapping
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
   const stockLeft = !soldOut ? lowStockFor({ stripeProductId, id: product.id }) : undefined
+  const freeMontering = product.category === 'blosgoringsanlaeg' && isGratisMonteringActive()
   const buyable = !!stripeProductId && !product.comingSoon && !soldOut
 
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
@@ -162,6 +165,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         {soldOut && (
           <span className="absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white">
             Udsolgt
+          </span>
+        )}
+        {freeMontering && (
+          <span className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-gradient-to-r from-[#3aad4a] to-[#2e9a3d] text-white shadow-lg shadow-green-500/30">
+            <Sparkles className="w-3 h-3" /> Gratis montering
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
@@ -226,6 +234,14 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             <p className="mt-1.5 text-xs font-semibold text-red-600">
               Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
             </p>
+          )}
+          {freeMontering && (
+            <div className="mt-2.5 flex items-center gap-2 rounded-lg bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 px-2.5 py-1.5">
+              <Wrench className="w-3.5 h-3.5 text-[#2e9a3d] shrink-0" />
+              <p className="text-[12px] font-bold text-[#2e7d34] leading-tight">
+                Kampagne: Fri montering<span className="font-semibold text-[#3aad4a]"> · spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
+              </p>
+            </div>
           )}
           {stockLeft != null && stockLeft > 0 && (
             <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
