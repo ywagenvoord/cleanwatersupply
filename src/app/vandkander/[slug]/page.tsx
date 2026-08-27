@@ -207,9 +207,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </span>
               </div>
 
-              {/* Produktvideo – ramme i højre kolonne */}
+              {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
               {k.video && (
-                <div className="mt-8 w-[225px] rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
+                <div className="mt-8 w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
                   <video
                     src={k.video}
                     autoPlay
@@ -217,7 +217,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     muted
                     playsInline
                     controls
-                    className="w-full h-[400px] object-cover block"
+                    className="w-full h-[380px] object-cover block"
                   />
                 </div>
               )}
