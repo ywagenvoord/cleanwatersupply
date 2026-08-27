@@ -10,6 +10,7 @@ import { INSTALLATION_PRICE, shopPrice, getProduct, type Product } from '@/lib/p
 import { useB2bLoggedIn } from '@/lib/useB2b'
 import { zoneForPostnummer, ZONE_INFO } from '@/lib/zones'
 import { isGratisMonteringActive } from '@/lib/campaign'
+import { stockFor } from '@/lib/stock'
 
 /* ─── Montering-valg (radio) ─────────────────────────────────────── */
 function OptionCard({
@@ -60,7 +61,10 @@ export default function BuyBox({ product }: { product: Product }) {
   // så nye Stripe-produkter er købbare uden at skulle tilføjes i STRIPE_MAPPING.
   const stripe  = getStripe(product.id)
   const stripeProductId = product.stripeProductId ?? stripe?.productId
-  const buyable = !!stripeProductId && !product.comingSoon && unitPrice !== undefined
+  const stock = stockFor(product)
+  const soldOut = !!product.soldOut || !!stock
+  const restockLabel = product.restockLabel ?? stock?.restockLabel
+  const buyable = !!stripeProductId && !product.comingSoon && unitPrice !== undefined && !soldOut
   const isSoftener = product.category === 'blosgoringsanlaeg'
   const showInstall = isSoftener || !!product.showInstallation
   const base  = unitPrice ?? 0
@@ -264,6 +268,27 @@ export default function BuyBox({ product }: { product: Product }) {
           className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-3 px-6 rounded-full font-bold text-sm transition-all"
         >
           Få et uforpligtende tilbud
+        </Link>
+      </div>
+    )
+  }
+
+  /* Midlertidigt udsolgt */
+  if (soldOut) {
+    return (
+      <div className="space-y-3">
+        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-center">
+          <p className="text-sm font-extrabold text-red-700">Udsolgt</p>
+          {restockLabel && (
+            <p className="text-xs text-red-600 mt-0.5">Forventet på lager igen {restockLabel}</p>
+          )}
+        </div>
+        <Link
+          href="/contact"
+          className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-3 px-6 rounded-full font-bold text-sm transition-all"
+        >
+          <Phone className="w-4 h-4" />
+          Få besked, når varen er på lager
         </Link>
       </div>
     )

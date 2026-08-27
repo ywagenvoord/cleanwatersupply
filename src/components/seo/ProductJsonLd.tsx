@@ -32,7 +32,10 @@ export default function ProductJsonLd({ product }: { product: Product }) {
       url,
       priceCurrency: 'DKK',
       price: product.price,
-      availability: 'https://schema.org/InStock',
+      availability: product.soldOut
+        ? 'https://schema.org/BackOrder'
+        : 'https://schema.org/InStock',
+      ...(product.soldOut && product.restockISO ? { availabilityStarts: product.restockISO } : {}),
       itemCondition: 'https://schema.org/NewCondition',
       seller: {
         '@type': 'Organization',

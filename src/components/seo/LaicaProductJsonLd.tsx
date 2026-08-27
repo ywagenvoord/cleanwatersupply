@@ -15,6 +15,8 @@ export default function LaicaProductJsonLd({
   mpn,
   category = 'Vandfilter',
   brand = 'Laica',
+  soldOut = false,
+  restockISO,
 }: {
   name: string
   path: string            // fx "/vandkander/glassmart"
@@ -25,6 +27,8 @@ export default function LaicaProductJsonLd({
   mpn?: string
   category?: string
   brand?: string
+  soldOut?: boolean
+  restockISO?: string
 }) {
   const url = `${SITE_URL}${path}`
   const img = image ? (image.startsWith('http') ? image : `${SITE_URL}${image}`) : undefined
@@ -49,7 +53,10 @@ export default function LaicaProductJsonLd({
       url,
       priceCurrency: 'DKK',
       price,
-      availability: 'https://schema.org/InStock',
+      availability: soldOut
+        ? 'https://schema.org/BackOrder'
+        : 'https://schema.org/InStock',
+      ...(soldOut && restockISO ? { availabilityStarts: restockISO } : {}),
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'Clean Water Supply' },
       shippingDetails: {

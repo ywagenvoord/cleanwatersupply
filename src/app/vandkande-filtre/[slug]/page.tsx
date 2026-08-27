@@ -7,6 +7,7 @@ import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import { stockFor } from '@/lib/stock'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -27,6 +28,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
   const f = getFilter(params.slug)
   if (!f) notFound()
   const others = FILTRE.filter((x) => x.slug !== f.slug)
+  const stock = stockFor({ name: f.name, varenr: f.varenr })
 
   return (
     <main className="bg-white">
@@ -38,6 +40,8 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
         price={f.price}
         sku={f.varenr}
         category="Vandfilter til vandkande"
+        soldOut={!!stock}
+        restockISO={stock?.restockISO}
       />
       <BreadcrumbJsonLd
         crumbs={[
@@ -75,6 +79,13 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                 )}
               </h1>
               <p className="text-lg text-gray-600 mt-4 leading-relaxed">{f.tagline}</p>
+
+              {stock && (
+                <div className="mt-5 flex w-fit items-center gap-2.5 rounded-xl bg-red-50 ring-1 ring-red-200 px-4 py-2.5">
+                  <span className="text-sm font-extrabold text-red-700">Udsolgt</span>
+                  <span className="text-sm text-red-600">· forventet på lager igen {stock.restockLabel}</span>
+                </div>
+              )}
 
               {/(dag|uge|måned|år|liter)/i.test(f.life) && (
                 <div className="mt-5 flex w-fit items-center gap-2.5 bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2">

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
 import { getStripe } from '@/lib/stripe-products'
+import { stockFor } from '@/lib/stock'
 import { ShoppingBag, Check } from 'lucide-react'
 
 /* Lille "Tilføj til kurv"-knap til filter-tilkøb-kortene (kurven er client-side). */
@@ -12,6 +13,17 @@ export default function FilterAddToCart({
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const stripe = getStripe(id)
+  const stock = stockFor({ id, name })
+  if (stock) {
+    return (
+      <div className="w-full text-center">
+        <span className="inline-flex w-full items-center justify-center gap-2 py-3 px-5 rounded-full font-bold text-sm bg-gray-100 text-gray-400 cursor-not-allowed">
+          Udsolgt
+        </span>
+        <p className="mt-1 text-xs font-semibold text-red-600">Forventet på lager igen {stock.restockLabel}</p>
+      </div>
+    )
+  }
   if (!stripe || price == null) return null
 
   function add() {

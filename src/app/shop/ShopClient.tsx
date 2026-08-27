@@ -9,6 +9,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
 import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
+import { stockFor } from '@/lib/stock'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
 
@@ -120,9 +121,14 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   // Erhverv ser grossistpris (ekskl. moms), privat ser privatpris
   const { amount: displayPrice, exMoms } = shopPrice(product, showErhverv)
 
+  // Midlertidigt udsolgt (central styring)
+  const stock = stockFor(product)
+  const soldOut = !!product.soldOut || !!stock
+  const restockLabel = product.restockLabel ?? stock?.restockLabel
+
   // Use live Stripe product ID if available, fallback to static mapping
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
-  const buyable = !!stripeProductId && !product.comingSoon
+  const buyable = !!stripeProductId && !product.comingSoon && !soldOut
 
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
   const detailHref = DETAIL_LINK_OVERRIDES[product.id] ?? `/shop/${product.id}`
@@ -146,9 +152,14 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full">
       {/* Image / icon top */}
       <Link href={detailHref} className="block relative">
-        {product.badge && !/medicinsk/i.test(product.badge) && (
+        {product.badge && !/medicinsk/i.test(product.badge) && !soldOut && (
           <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${c.badge}`}>
             {product.badge}
+          </span>
+        )}
+        {soldOut && (
+          <span className="absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white">
+            Udsolgt
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
@@ -209,6 +220,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               <span className="text-[11px] font-medium text-gray-400">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
           )}
+          {soldOut && (
+            <p className="mt-1.5 text-xs font-semibold text-red-600">
+              Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
+            </p>
+          )}
         </div>
 
         {/* ── CTA ───────────────────────────────────────────────── */}
@@ -240,6 +256,19 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               >
                 {added ? <><Check className="w-3.5 h-3.5" /> Tilføjet</> : <><ShoppingBag className="w-3.5 h-3.5" /> Tilføj til kurv</>}
               </button>
+            </>
+          ) : soldOut ? (
+            <>
+              <Link
+                href={detailHref}
+                className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all"
+              >
+                Se vare
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+              <span className="w-full inline-flex items-center justify-center gap-2 bg-gray-100 text-gray-400 py-3 px-4 rounded-xl text-sm font-bold cursor-not-allowed">
+                Udsolgt
+              </span>
             </>
           ) : product.comingSoon ? (
             <Link

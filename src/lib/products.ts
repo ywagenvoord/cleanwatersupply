@@ -23,6 +23,10 @@ export type Product = {
   price?: number          // DKK – privatpris (typisk inkl. moms)
   priceErhverv?: number   // DKK – erhvervs-/grossistpris (ekskl. moms), vises til indloggede erhvervskunder
   comingSoon?: boolean
+  // Midlertidigt udsolgt (styres centralt via src/lib/stock.ts)
+  soldOut?: boolean
+  restockISO?: string     // forventet lager-dato (YYYY-MM-DD) til JSON-LD
+  restockLabel?: string   // forventet lager-dato, vist til kunden
   // Images
   imgSrc: string           // card thumbnail
   imgLarge?: string        // detail hero

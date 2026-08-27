@@ -3,6 +3,7 @@
 
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import { PRODUCTS, type Product } from '@/lib/products'
+import { stockFor } from '@/lib/stock'
 
 // Stripe-only produkter (uden hardcodet match) der skal have en anden kategori
 // end default 'filtre' – fx GlaSSmart-karaffel og FAST DISK-filter hører til vandkande.
@@ -92,6 +93,12 @@ export async function getMergedShopProducts(): Promise<Product[]> {
     if (k !== 0) return k
     return (orderIndex.get(a.id) ?? 9999) - (orderIndex.get(b.id) ?? 9999)
   })
+
+  // Markér midlertidigt udsolgte produkter (central styring i stock.ts)
+  for (const p of merged) {
+    const s = stockFor(p)
+    if (s) { p.soldOut = true; p.restockISO = s.restockISO; p.restockLabel = s.restockLabel }
+  }
 
   // Skjul tilbehør (vises kun som tilkøb på kalkanlæg-siden)
   return merged.filter(p => !p.addon)
