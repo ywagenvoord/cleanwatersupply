@@ -508,6 +508,31 @@ export default async function ProductDetailPage({ params }: { params: { productI
         </section>
       )}
 
+      {/* ─── FØRSTEGANGS-BRUG (guide) ────────────────────────────── */}
+      {product.firstUse && product.firstUse.length > 0 && (
+        <section className="py-11 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Kom godt i gang</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Sådan tager du filteret i brug første gang</h2>
+              <p className="text-gray-500 mt-2 text-sm">Nemt – klar på få minutter.</p>
+            </div>
+            <div className="rounded-3xl bg-gradient-to-b from-[#f5fbff] to-white ring-1 ring-blue-100 shadow-sm p-6 sm:p-8">
+              <ol className="grid sm:grid-cols-2 gap-x-8 gap-y-5">
+                {product.firstUse.map((step, i) => (
+                  <li key={i} className="flex items-start gap-3.5">
+                    <span className="w-9 h-9 rounded-full bg-gradient-to-br from-[#284eff] to-[#1b32c9] text-white text-sm font-black flex items-center justify-center shrink-0 shadow-md">
+                      {i + 1}
+                    </span>
+                    <p className="text-sm text-gray-700 leading-relaxed pt-1.5">{step}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
       {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
         const filters = product.compatibleFilters

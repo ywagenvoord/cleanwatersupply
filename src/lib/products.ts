@@ -52,6 +52,8 @@ export type Product = {
   faqs: FAQ[]
   // Use cases
   useCases: string[]
+  // Førstegangs-brug (fx iblødlægning af filter) – vises som guide på produktsiden
+  firstUse?: string[]
   // Bespoke sælgende "story"-sektion (vises kun på produkter, der har den)
   sellStory?: {
     eyebrow?: string
@@ -968,6 +970,13 @@ export const PRODUCTS: Product[] = [
       { q: 'Er filteret medicinsk udstyr?', a: 'Nej. Bi-flux® HealthExpert er et vandfilter til husholdningsbrug og er ikke medicinsk udstyr.' },
     ],
     useCases: ['Maksimal beskyttelse', 'Private hjem', 'Børnefamilier'],
+    firstUse: [
+      'Læg filteret i blød i en skål eller balje med koldt vand i 10-15 minutter, så det er helt dækket.',
+      'Skyl filteret grundigt under rindende, koldt vand.',
+      'Sæt filteret fast i tragten inde i kanden.',
+      'Fyld tragten med koldt vand, og lad det løbe igennem.',
+      'Hæld de første 1-2 kander vand ud for at skylle filteret igennem – derefter er vandet klar til at drikke.',
+    ],
     sellStory: {
       eyebrow: 'Sundere vand – helt enkelt',
       heading: 'Hvad gør filteret – forklaret i børnehøjde',
