@@ -24,6 +24,16 @@ const RULES: Rule[] = [
   },
 ]
 
+// Lav-lager-besked ("Kun X tilbage på lager"), keyet på Stripe-produkt-id eller produkt-id.
+const LOW_STOCK: Record<string, number> = {
+  'prod_V2wDbJ1i8O20Kj': 1, // MikroPLASTIK-STOP filterkande
+}
+
+export function lowStockFor(p: { stripeProductId?: string; id?: string }): number | undefined {
+  const key = p.stripeProductId || p.id
+  return key ? LOW_STOCK[key] : undefined
+}
+
 export function stockFor(p: {
   id?: string
   name?: string

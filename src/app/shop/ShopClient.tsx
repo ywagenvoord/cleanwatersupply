@@ -9,7 +9,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
 import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
-import { stockFor } from '@/lib/stock'
+import { stockFor, lowStockFor } from '@/lib/stock'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
 
@@ -129,6 +129,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
   // Use live Stripe product ID if available, fallback to static mapping
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
+  const stockLeft = !soldOut ? lowStockFor({ stripeProductId, id: product.id }) : undefined
   const buyable = !!stripeProductId && !product.comingSoon && !soldOut
 
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
@@ -224,6 +225,15 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           {soldOut && (
             <p className="mt-1.5 text-xs font-semibold text-red-600">
               Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
+            </p>
+          )}
+          {stockLeft != null && stockLeft > 0 && (
+            <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+              </span>
+              {stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${stockLeft} tilbage på lager`}
             </p>
           )}
         </div>
