@@ -221,7 +221,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         {/* ── KAMPAGNE (rullende) ───────────────────────────────── */}
         {freeMontering && (
           <div className="mt-4 overflow-hidden rounded-full bg-gradient-to-r from-[#3aad4a] to-[#2e9a3d] shadow-md shadow-green-500/25 py-1.5">
-            <div className="animate-marquee inline-flex whitespace-nowrap" style={{ animationDuration: '9s' }}>
+            <div className="animate-marquee inline-flex whitespace-nowrap" style={{ animationDuration: '26s' }}>
               {[0, 1].map((g) => (
                 <span key={g} className="inline-flex">
                   {[0, 1, 2].map((i) => (
