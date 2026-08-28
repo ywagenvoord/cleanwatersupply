@@ -4,11 +4,11 @@ import Stripe from 'stripe'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-// Engangs: sæt ny pris (375 kr) på MikroPLASTIK-STOP-kanden i Stripe.
-// Opretter en ny pris og gør den til default. Den gamle 349-pris arkiveres.
-const TOKEN = 'mikroplastik375'
+// Engangs: sæt ny pris (399 kr) på MikroPLASTIK-STOP-kanden i Stripe.
+// Opretter en ny pris og gør den til default. Den gamle pris arkiveres.
+const TOKEN = 'mikroplastik399'
 const PRODUCT_ID = 'prod_V2wDbJ1i8O20Kj' // MikroPLASTIK-STOP filterkande
-const NEW_PRICE_OERE = 37500 // 375 kr
+const NEW_PRICE_OERE = 39900 // 399 kr
 
 export async function GET(req: NextRequest) {
   if (req.nextUrl.searchParams.get('token') !== TOKEN) {

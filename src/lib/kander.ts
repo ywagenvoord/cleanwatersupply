@@ -87,7 +87,7 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'mikroplastik-stop',
-    price: 375,
+    price: 399,
     stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
