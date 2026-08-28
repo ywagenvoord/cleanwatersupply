@@ -28,7 +28,7 @@ const teamMembers = [
   },
   {
     name: 'Heidi',
-    role: 'Bogholderi',
+    role: 'Bogholder',
     phone: null,
     email: 'bogholderi@cleanwatersupply.dk',
     photo: '/images/team-heidi-sq.jpg',
