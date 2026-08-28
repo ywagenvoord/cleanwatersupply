@@ -803,7 +803,7 @@ export const PRODUCTS: Product[] = [
     name: 'MikroPLASTIK-STOP™ filterkande',
     tagline: 'Kande med dobbelt filter, der stopper mikroplast · 3 liter',
     category: 'vandkande',
-    price: 349,
+    price: 375,
     imgSrc:   '/images/kande-mikroplastik-stop.jpg',
     imgLarge: '/images/kande-mikroplastik-stop.jpg',
     images: [
