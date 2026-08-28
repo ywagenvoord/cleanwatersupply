@@ -8,6 +8,7 @@ const teamMembers = [
   {
     name: 'Kenneth',
     role: 'Stifter & indehaver',
+    roleEn: 'Founder & Owner',
     phone: '+45 51 21 58 00',
     email: 'ksj@cleanwatersupply.dk',
     photo: '/images/team-kenneth-sq.jpg',
@@ -15,13 +16,15 @@ const teamMembers = [
   {
     name: 'Kristoffer',
     role: 'Tekniker & Rejsemontør',
+    roleEn: 'Technician & Field Service Engineer',
     phone: '+45 22 32 01 56',
     email: 'kristoffer@cleanwatersupply.dk',
     photo: '/images/team-kristoffer-sq.jpg',
   },
   {
     name: 'Camilla',
-    role: 'Sale & Marketing Manager',
+    role: 'Salg & Marketingchef',
+    roleEn: 'Sale & Marketing Manager',
     phone: '+45 40 73 70 53',
     email: 'caj@cleanwatersupply.dk',
     photo: '/images/team-camilla-sq.jpg',
@@ -29,6 +32,7 @@ const teamMembers = [
   {
     name: 'Heidi',
     role: 'Bogholder',
+    roleEn: 'Accountant',
     phone: null,
     email: 'bogholderi@cleanwatersupply.dk',
     photo: '/images/team-heidi-sq.jpg',
@@ -352,7 +356,8 @@ export default function ContactPage() {
                   </div>
                 )}
                 <p className="font-bold text-[#0a2540] text-xl">{member.name}</p>
-                <p className="text-[#3aad4a] text-sm font-medium mb-4">{member.role}</p>
+                <p className="text-[#3aad4a] text-sm font-medium">{member.role}</p>
+                <p className="text-gray-400 text-xs italic mb-4">{member.roleEn}</p>
                 {member.phone && (
                   <a
                     href={`tel:${member.phone.replace(/\s/g, '')}`}
