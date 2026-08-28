@@ -23,7 +23,7 @@ const teamMembers = [
   },
   {
     name: 'Camilla',
-    role: 'Salg & Marketingchef',
+    role: 'Salg & Marketing Manager',
     roleEn: 'Sale & Marketing Manager',
     phone: '+45 40 73 70 53',
     email: 'caj@cleanwatersupply.dk',
