@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Test din viden om Legionella, bakterier og rent vand i vores korte vandquiz – og vær med i lodtrækningen om et medicinsk godkendt vandfilter.',
   alternates: { canonical: `${SITE_URL}/quiz` },
   openGraph: {
-    title: `Hvor meget ved du om rent vand?`,
+    title: `Hvor meget ved du om bakterier i dit drikkevand?`,
     description:
       'Tag vandquizzen på 4 spørgsmål og deltag i konkurrencen om et medicinsk godkendt vandfilter.',
     url: `${SITE_URL}/quiz`,
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Hvor meget ved du om rent vand?',
+    title: 'Hvor meget ved du om bakterier i dit drikkevand?',
     description: 'Tag vandquizzen og vind et medicinsk godkendt vandfilter.',
     images: ['/images/og-quiz-v3.jpg'],
   },
