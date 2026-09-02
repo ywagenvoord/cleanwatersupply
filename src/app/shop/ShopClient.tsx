@@ -168,7 +168,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
-          <div className="h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-4">
+          <div className="h-40 sm:h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-3 sm:p-4">
             <img
               src={product.imgSrc}
               alt={product.name}
@@ -181,14 +181,14 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             />
           </div>
         ) : (
-          <div className={`h-64 bg-gradient-to-br ${c.icon} flex items-center justify-center`}>
+          <div className={`h-40 sm:h-64 bg-gradient-to-br ${c.icon} flex items-center justify-center`}>
             <CatIcon className="w-16 h-16 text-white/30" />
           </div>
         )}
       </Link>
 
       {/* Content */}
-      <div className="p-5 flex flex-col flex-1">
+      <div className="p-3 sm:p-5 flex flex-col flex-1">
         <Link href={detailHref}>
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
         </Link>
@@ -451,7 +451,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
           </div>
 
           {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 [&>*]:min-w-0">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
             {filtered.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
                 <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} />
