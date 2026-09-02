@@ -154,7 +154,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full min-w-0">
       {/* Image / icon top */}
       <Link href={detailHref} className="block relative">
         {product.badge && !/medicinsk/i.test(product.badge) && !soldOut && (
@@ -215,7 +215,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── KAMPAGNE (rullende) ───────────────────────────────── */}
         {freeMontering && (
-          <div className="mt-4 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-700 shadow-md shadow-blue-500/25 py-1.5">
+          <div className="mt-4 w-full min-w-0 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-700 shadow-md shadow-blue-500/25 py-1.5">
             <div className="animate-marquee inline-flex whitespace-nowrap" style={{ animationDuration: '26s' }}>
               {[0, 1].map((g) => (
                 <span key={g} className="inline-flex">
@@ -451,7 +451,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
           </div>
 
           {/* Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 [&>*]:min-w-0">
             {filtered.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
                 <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} />
