@@ -19,8 +19,8 @@ type Rule = {
 const RULES: Rule[] = [
   {
     keywords: ['fast disk', 'fast-disk', 'lai-1003', 'healthexpert', 'health expert', 'lai-1004'],
-    restockISO: '2026-09-03',
-    restockLabel: '3. september 2026',
+    restockISO: '2026-09-09',
+    restockLabel: '9. september 2026',
   },
 ]
 
