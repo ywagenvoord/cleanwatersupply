@@ -53,14 +53,14 @@ export default function ProductGallery({
 
       {/* Miniaturer */}
       {media.length > 1 && (
-        <div className="mt-4 grid grid-cols-4 gap-3">
+        <div className="mt-4 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none sm:grid sm:grid-cols-4 sm:overflow-visible sm:mx-0 sm:px-0">
           {media.map((m, i) => (
             <button
               key={m.src}
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Vis ${m.type === 'video' ? 'video' : `billede ${i + 1}`}`}
-              className={`relative aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center ring-2 transition-all ${
+              className={`relative w-16 h-16 shrink-0 sm:w-auto sm:h-auto sm:aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center ring-2 transition-all ${
                 active === i ? 'ring-[#3aad4a]' : 'ring-transparent hover:ring-gray-200'
               }`}
             >
