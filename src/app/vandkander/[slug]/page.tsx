@@ -105,7 +105,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         </div>
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start [&>*]:min-w-0">
             {/* Billede */}
             <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
               <ProductGallery

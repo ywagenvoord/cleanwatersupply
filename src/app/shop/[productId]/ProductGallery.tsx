@@ -53,7 +53,7 @@ export default function ProductGallery({
 
       {/* Miniaturer */}
       {media.length > 1 && (
-        <div className="mt-4 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none sm:grid sm:grid-cols-4 sm:overflow-visible sm:mx-0 sm:px-0">
+        <div className="mt-4 min-w-0 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none sm:grid sm:grid-cols-4 sm:overflow-visible sm:mx-0 sm:px-0">
           {media.map((m, i) => (
             <button
               key={m.src}

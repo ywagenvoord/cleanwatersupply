@@ -241,7 +241,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
         <div className="pointer-events-none absolute -top-28 -right-24 w-[28rem] h-[28rem] rounded-full bg-[#284eff]/10 blur-3xl" />
         <div className="pointer-events-none absolute top-20 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start [&>*]:min-w-0">
 
             {/* LEFT: Product image / galleri (billeder + evt. stemningsbillede & video) */}
             <div className="relative">

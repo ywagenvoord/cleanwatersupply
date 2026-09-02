@@ -49,7 +49,7 @@ export default function ProductGallery({
 
       {/* Miniaturer */}
       {imgs.length > 1 && (
-        <div className="mt-3.5 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none md:grid md:grid-cols-4 md:overflow-visible md:mx-0 md:px-0">
+        <div className="mt-3.5 min-w-0 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none md:grid md:grid-cols-4 md:overflow-visible md:mx-0 md:px-0">
           {imgs.map((it, i) => (
             <button
               key={it.src}
