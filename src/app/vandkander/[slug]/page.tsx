@@ -106,8 +106,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Billede + tilkøbsfilter */}
-            <div className="flex flex-col gap-4">
+            {/* Billede */}
+            <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
               <ProductGallery
                 items={[
                   { src: k.img },
@@ -118,46 +118,10 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 alt={k.name}
                 highlight={k.highlight}
               />
-
-              {/* Tilkøb: matchende filter – under produktbillederne */}
-              {k.addon && (
-                <div className="rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5">
-                  <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
-                    Skal du være dækket ind fra start?
-                  </p>
-                  <p className="text-[13px] text-gray-600 mt-1 mb-4">
-                    Køb 3 nye filtre med til udskiftning – så er du klar fra dag ét.
-                  </p>
-                  <Link
-                    href={k.addon.link ?? '/shop'}
-                    className="group flex items-center gap-4 rounded-xl -m-1 p-1 hover:bg-white/70 transition-colors"
-                  >
-                    <div className="w-32 h-32 shrink-0 rounded-xl bg-white flex items-center justify-center p-2">
-                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
-                      <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5 group-hover:text-[#2e9a3d] transition-colors">{k.addon.name}</h2>
-                      <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
-                      {k.addon.price != null && (
-                        <p className="text-base font-extrabold text-[#0a2540] mt-1.5">
-                          {k.addon.price.toLocaleString('da-DK')} kr <span className="text-xs font-medium text-gray-400">inkl. moms</span>
-                        </p>
-                      )}
-                    </div>
-                  </Link>
-                  <Link
-                    href={k.addon.link ?? '/shop'}
-                    className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
-                  >
-                    Se filteret <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              )}
             </div>
 
             {/* Tekst */}
-            <div>
+            <div className="order-2 md:order-none md:col-start-2 md:row-start-1 md:row-span-2">
               <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 mb-5 shadow-sm">
                 <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
                 <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
@@ -244,6 +208,44 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               )}
 
             </div>
+
+            {/* Tilkøb: matchende filter – under billedet (desktop) / under køb (mobil) */}
+            {k.addon && (
+              <div className="order-3 md:order-none md:col-start-1 md:row-start-2">
+                <div className="rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5">
+                  <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
+                    Skal du være dækket ind fra start?
+                  </p>
+                  <p className="text-[13px] text-gray-600 mt-1 mb-4">
+                    Køb 3 nye filtre med til udskiftning – så er du klar fra dag ét.
+                  </p>
+                  <Link
+                    href={k.addon.link ?? '/shop'}
+                    className="group flex items-center gap-4 rounded-xl -m-1 p-1 hover:bg-white/70 transition-colors"
+                  >
+                    <div className="w-32 h-32 shrink-0 rounded-xl bg-white flex items-center justify-center p-2">
+                      <img src={k.addon.img} alt={k.addon.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[10px] font-black text-[#2e9a3d] uppercase tracking-widest">Tilkøb · filter</p>
+                      <h2 className="text-sm font-extrabold text-[#0a2540] leading-snug mt-0.5 group-hover:text-[#2e9a3d] transition-colors">{k.addon.name}</h2>
+                      <p className="text-xs text-gray-500 mt-1">{k.addon.life}</p>
+                      {k.addon.price != null && (
+                        <p className="text-base font-extrabold text-[#0a2540] mt-1.5">
+                          {k.addon.price.toLocaleString('da-DK')} kr <span className="text-xs font-medium text-gray-400">inkl. moms</span>
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                  <Link
+                    href={k.addon.link ?? '/shop'}
+                    className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
+                  >
+                    Se filteret <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
