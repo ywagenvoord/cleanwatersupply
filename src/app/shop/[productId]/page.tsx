@@ -258,7 +258,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} videoFirst={product.videoFirst} alt={product.name} />
                 }
                 return (
-                  <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                  <div className="h-64 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                     {product.imgLarge || product.imgSrc ? (
                       <img
                         src={product.imgLarge ?? product.imgSrc}
@@ -267,7 +267,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                         height={768}
                         loading="eager"
                         decoding="async"
-                        className="w-full h-full object-contain p-8"
+                        className="w-full h-full object-contain p-4 sm:p-8"
                       />
                     ) : (
                       <CatIcon className="w-32 h-32 text-gray-200" />
@@ -383,7 +383,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Levetid – tydeligt øverst */}
               {showLifespan && (
-                <div className="inline-flex items-center gap-2.5 self-start bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2 mb-6">
+                <div className="order-1 lg:order-none inline-flex items-center gap-2.5 self-start bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 rounded-full pl-3 pr-4 py-2 mb-6">
                   <span className="w-7 h-7 rounded-full bg-[#3aad4a] flex items-center justify-center shrink-0">
                     <Clock className="w-4 h-4 text-white" />
                   </span>
@@ -392,13 +392,13 @@ export default async function ProductDetailPage({ params }: { params: { productI
               )}
 
               {/* Short description */}
-              <p className="text-gray-700 leading-relaxed mb-8 text-[15px]">
+              <p className="order-1 lg:order-none text-gray-700 leading-relaxed mb-8 text-[15px]">
                 {product.description}
               </p>
 
               {/* Key highlights – fangende ikon-kort */}
               {product.highlights.length > 0 && (
-                <div className="grid gap-2.5 mb-8">
+                <div className="order-1 lg:order-none grid gap-2.5 mb-8">
                   {product.highlights.map((h, i) => {
                     const Icon = HL_ICONS[i % HL_ICONS.length]
                     const color = HL_COLORS[i % HL_COLORS.length]
@@ -479,12 +479,14 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Tilbehør – kun på selve kalkanlæg-siderne (ikke på tilbehørets egne sider) */}
               {product.category === 'blosgoringsanlaeg' && !product.addon && (
-                <AddonProducts products={ADDON_PRODUCTS} />
+                <div className="order-2 lg:order-none">
+                  <AddonProducts products={ADDON_PRODUCTS} />
+                </div>
               )}
 
               {/* Bestil montering & upload billeder – kalkanlæg + produkter med showInstallation */}
               {showInstall && !product.addon && (
-                <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-5">
+                <div className="order-2 lg:order-none mt-6 rounded-2xl border border-gray-200 bg-white p-5">
                   <h3 className="font-bold text-[#0a2540] mb-1.5">Bestil montering &amp; installering</h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-3">
                     Du kan tilkøbe montering af {isSoftener ? 'dit nye blødgøringsanlæg' : 'dit nye filterhus'}. For at vi kan beregne den bedste pris, beder vi dig uploade billeder af installationsstedet.
@@ -497,7 +499,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Use cases */}
               {product.useCases.length > 0 && (
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="order-2 lg:order-none mt-6 flex flex-wrap gap-2">
                   <span className="text-xs text-gray-400 font-medium w-full mb-1">Anvendes til:</span>
                   {product.useCases.map((uc, i) => (
                     <span key={i} className="text-xs bg-white border border-gray-200 text-gray-600 px-3 py-1 rounded-full font-medium">
