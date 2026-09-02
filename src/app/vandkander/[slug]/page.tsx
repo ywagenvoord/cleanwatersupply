@@ -107,7 +107,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start [&>*]:min-w-0">
             {/* Billede */}
-            <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
+            <div className="order-2 md:order-none md:col-start-1 md:row-start-1">
               <ProductGallery
                 items={[
                   { src: k.img },
@@ -121,7 +121,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
             </div>
 
             {/* Tekst */}
-            <div className="order-2 md:order-none md:col-start-2 md:row-start-1 md:row-span-2">
+            <div className="order-1 md:order-none md:col-start-2 md:row-start-1 md:row-span-2">
               <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 mb-5 shadow-sm">
                 <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
                 <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
