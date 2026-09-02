@@ -25,6 +25,7 @@ export default function Navigation() {
     'Erhvervskonto'
   const [mobileOpen, setMobileOpen] = useState(false)
   const [audOpen, setAudOpen] = useState(false)
+  const [mobileSub, setMobileSub] = useState<string | null>(null)
 
   const audienceLabel = audience === 'erhverv' ? 'Erhverv' : audience === 'privat' ? 'Privat' : 'Privat/Erhverv'
 
@@ -254,16 +255,57 @@ export default function Navigation() {
       {mobileOpen && (
         <div className="lg:hidden bg-[#0a2540] border-t border-white/10 px-4 pt-4 pb-6 space-y-1">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMobileOpen(false)}
-              className={`block px-4 py-3 rounded-lg text-sm font-medium uppercase tracking-wide transition-colors ${
-                pathname === link.href ? 'text-white bg-white/15' : 'text-white/75 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              {link.label}
-            </Link>
+            link.children ? (
+              <div key={link.href}>
+                <div className="flex items-stretch">
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`flex-1 block px-4 py-3 rounded-lg text-sm font-medium uppercase tracking-wide transition-colors ${
+                      pathname === link.href ? 'text-white bg-white/15' : 'text-white/75 hover:bg-white/10 hover:text-white'
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    type="button"
+                    aria-label={`Vis undermenu for ${link.label}`}
+                    aria-expanded={mobileSub === link.href}
+                    onClick={() => setMobileSub(mobileSub === link.href ? null : link.href)}
+                    className="px-4 flex items-center text-white/70 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileSub === link.href ? 'rotate-180' : ''}`} />
+                  </button>
+                </div>
+                {mobileSub === link.href && (
+                  <div className="mt-1 mb-2 ml-3 pl-3 border-l border-white/10 space-y-0.5">
+                    {link.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        onClick={() => setMobileOpen(false)}
+                        className={`block px-4 py-2.5 rounded-lg text-sm transition-colors ${
+                          pathname === c.href ? 'text-white bg-white/15' : 'text-white/70 hover:bg-white/10 hover:text-white'
+                        }`}
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block px-4 py-3 rounded-lg text-sm font-medium uppercase tracking-wide transition-colors ${
+                  pathname === link.href ? 'text-white bg-white/15' : 'text-white/75 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
           {audience === 'erhverv' && !b2bLoggedIn && (
             <Link
