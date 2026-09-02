@@ -258,7 +258,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} videoFirst={product.videoFirst} alt={product.name} />
                 }
                 return (
-                  <div className="h-56 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                  <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                     {product.imgLarge || product.imgSrc ? (
                       <img
                         src={product.imgLarge ?? product.imgSrc}
@@ -267,7 +267,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                         height={768}
                         loading="eager"
                         decoding="async"
-                        className="w-full h-full object-contain p-4 sm:p-8"
+                        className="w-full h-full object-contain p-8"
                       />
                     ) : (
                       <CatIcon className="w-32 h-32 text-gray-200" />
