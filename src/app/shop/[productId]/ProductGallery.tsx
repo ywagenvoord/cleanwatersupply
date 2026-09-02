@@ -26,7 +26,7 @@ export default function ProductGallery({
   return (
     <div>
       {/* Hovedmedie */}
-      <div className="h-64 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="h-56 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
         {current.type === 'image' ? (
           <img
             src={current.src}

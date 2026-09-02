@@ -258,7 +258,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   return <ProductGallery images={galleryImgs} video={product.lifestyleVideo} videoFirst={product.videoFirst} alt={product.name} />
                 }
                 return (
-                  <div className="h-64 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                  <div className="h-56 sm:h-auto sm:aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
                     {product.imgLarge || product.imgSrc ? (
                       <img
                         src={product.imgLarge ?? product.imgSrc}
