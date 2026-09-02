@@ -244,7 +244,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start [&>*]:min-w-0">
 
             {/* LEFT: Product image / galleri (billeder + evt. stemningsbillede & video) */}
-            <div className="relative order-2 lg:order-none">
+            <div className="relative order-1 lg:order-none">
               {(() => {
                 const baseImgs = product.images && product.images.length > 0
                   ? product.images
@@ -357,7 +357,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
             </div>
 
             {/* RIGHT: Info + buy */}
-            <div className="flex flex-col order-1 lg:order-none">
+            <div className="flex flex-col order-2 lg:order-none">
               {/* Category pill */}
               <div className="flex items-center gap-2 mb-4">
                 <CatIcon className="w-4 h-4 text-blue-600" />
