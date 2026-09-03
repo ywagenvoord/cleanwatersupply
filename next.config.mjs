@@ -12,8 +12,8 @@ const nextConfig = {
   async redirects() {
     return [
       // ── Én produktside per produkt: /shop-dubletter → de kanoniske sider ──
-      // Kander → /vandkander (rige sider)
-      { source: '/shop/kande-carmen',            destination: '/vandkander/carmen', permanent: true },
+      // Kander → /vandkander (rige sider). Carmen er dog rigest som shop-side:
+      { source: '/vandkander/carmen',            destination: '/shop/kande-carmen', permanent: true },
       { source: '/shop/kande-mikroplastik',      destination: '/vandkander/mikroplastik-stop', permanent: true },
       { source: '/shop/prod_V2wDbJ1i8O20Kj',     destination: '/vandkander/mikroplastik-stop', permanent: true },
       { source: '/shop/prod_V2wFs5adWhY4cF',     destination: '/vandkander/glassmart', permanent: true },
