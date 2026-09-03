@@ -23,6 +23,9 @@ import { SITE_URL } from '@/lib/site'
 const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
   'prod_V2wHIQrdoXx6RG': {
     category: 'vandkande',
+    imgSrc: '/images/fast-disk-pack.jpg',
+    imgLarge: '/images/fast-disk-pack.jpg',
+    images: ['/images/fast-disk-pack.jpg', '/images/fast-disk-single.jpg', '/images/glassmart-filter-pack.jpg'],
     tagline: 'Udskiftningsfiltre til GlaSSmart™ · 3 stk. · reducerer klor, mikroplast & pesticider',
     priceNote: 'Pakken indeholder 3 filtre – ca. 3 måneders forbrug.',
     description:
