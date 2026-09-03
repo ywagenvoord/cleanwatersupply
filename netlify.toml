@@ -32,3 +32,6 @@
     X-Content-Type-Options   = "nosniff"
     Referrer-Policy          = "strict-origin-when-cross-origin"
     Permissions-Policy       = "camera=(), microphone=(), geolocation=()"
+    # Tillad eksplicit indeksering – overskriver evt. noindex fra Netlifys
+    # "bloker søgemaskiner"-indstilling, så Google MÅ indeksere siden.
+    X-Robots-Tag             = "index, follow"
