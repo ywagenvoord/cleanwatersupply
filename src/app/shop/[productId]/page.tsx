@@ -400,6 +400,24 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 </div>
               )}
 
+              {/* Hvad er inkluderet – udfylder venstre kolonne under billederne */}
+              {product.features.length > 0 && (
+                <div className="mt-6 rounded-3xl border border-blue-100 bg-gradient-to-b from-[#f5fbff] to-white p-6 shadow-sm">
+                  <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Det får du</span>
+                  <h2 className="text-lg font-extrabold text-[#0a2540] mt-1 mb-4">Hvad er inkluderet</h2>
+                  <ul className="space-y-3">
+                    {product.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <span className="mt-0.5 w-5 h-5 rounded-full bg-[#284eff] flex items-center justify-center shrink-0">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+                        </span>
+                        <span className="text-sm text-gray-700 leading-relaxed">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
             </div>
 
             {/* RIGHT: Info + buy */}
@@ -782,46 +800,26 @@ export default async function ProductDetailPage({ params }: { params: { productI
         )
       })()}
 
-      {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
-      <section className="pt-2 pb-11 bg-gradient-to-b from-white to-[#f5fbff]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
-
-            {/* Features */}
-            <div className="bg-white rounded-3xl p-8 ring-1 ring-blue-100/70 shadow-sm">
-              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Det får du</span>
-              <h2 className="text-xl font-extrabold text-[#0a2540] mt-1 mb-6">Hvad er inkluderet</h2>
-              <ul className="space-y-3.5">
-                {product.features.map((f, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className="mt-0.5 w-5 h-5 rounded-full bg-[#284eff] flex items-center justify-center shrink-0">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-white" />
-                    </span>
-                    <span className="text-sm text-gray-700 leading-relaxed">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Specs */}
-            {product.specs.length > 0 && (
-              <div className="bg-white rounded-3xl ring-1 ring-blue-100/70 shadow-sm overflow-hidden">
-                <div className="bg-gradient-to-r from-[#0a2540] via-[#173a7a] to-[#284eff] px-8 py-5">
-                  <h2 className="text-white font-extrabold text-lg">Tekniske specifikationer</h2>
-                </div>
-                <div className="p-8 divide-y divide-blue-50">
-                  {product.specs.map((spec, i) => (
-                    <div key={i} className={`flex justify-between items-start gap-4 py-3.5 first:pt-0 ${i % 2 === 1 ? '' : ''}`}>
-                      <span className="text-sm text-gray-500 shrink-0 font-medium">{spec.label}</span>
-                      <span className="text-sm text-[#0a2540] font-semibold text-right">{spec.value}</span>
-                    </div>
-                  ))}
-                </div>
+      {/* ─── SPECS (features vises nu i venstre kolonne under billederne) ─── */}
+      {product.specs.length > 0 && (
+        <section className="pt-2 pb-11 bg-gradient-to-b from-white to-[#f5fbff]">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-3xl ring-1 ring-blue-100/70 shadow-sm overflow-hidden">
+              <div className="bg-gradient-to-r from-[#0a2540] via-[#173a7a] to-[#284eff] px-8 py-5">
+                <h2 className="text-white font-extrabold text-lg">Tekniske specifikationer</h2>
               </div>
-            )}
+              <div className="p-8 divide-y divide-blue-50">
+                {product.specs.map((spec, i) => (
+                  <div key={i} className="flex justify-between items-start gap-4 py-3.5 first:pt-0">
+                    <span className="text-sm text-gray-500 shrink-0 font-medium">{spec.label}</span>
+                    <span className="text-sm text-[#0a2540] font-semibold text-right">{spec.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ─── LONG DESCRIPTION ─────────────────────────────────────── */}
       {product.longDescription && (
