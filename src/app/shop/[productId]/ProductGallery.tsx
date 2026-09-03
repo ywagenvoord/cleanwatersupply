@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type MediaItem = { type: 'image' | 'video'; src: string }
 
@@ -26,7 +26,7 @@ export default function ProductGallery({
   return (
     <div>
       {/* Hovedmedie */}
-      <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="group relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
         {current.type === 'image' ? (
           <img
             src={current.src}
@@ -48,6 +48,32 @@ export default function ProductGallery({
             aria-label={alt}
             className="w-full h-full object-cover"
           />
+        )}
+
+        {media.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="Forrige billede"
+              onClick={() => setActive((active - 1 + media.length) % media.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white shadow-md ring-1 ring-gray-200 flex items-center justify-center text-[#0a2540] transition-all hover:scale-105"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              aria-label="Næste billede"
+              onClick={() => setActive((active + 1) % media.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-white shadow-md ring-1 ring-gray-200 flex items-center justify-center text-[#0a2540] transition-all hover:scale-105"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+              {media.map((_, i) => (
+                <span key={i} className={`h-1.5 rounded-full transition-all ${active === i ? 'w-5 bg-[#0a2540]' : 'w-1.5 bg-gray-300'}`} />
+              ))}
+            </div>
+          </>
         )}
       </div>
 
