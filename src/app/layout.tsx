@@ -5,7 +5,7 @@ import Providers from '@/components/Providers'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import AudienceModal from '@/components/AudienceModal'
-import QuizModal from '@/components/QuizModal'
+import MonteringModal from '@/components/MonteringModal'
 import LanguageFloat from '@/components/LanguageFloat'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
@@ -115,7 +115,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           <Footer />
           <AudienceModal />
-          <QuizModal />
+          <MonteringModal />
           <LanguageFloat />
         </Providers>
       </body>
