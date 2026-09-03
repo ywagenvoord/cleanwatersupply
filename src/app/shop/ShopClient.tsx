@@ -105,6 +105,10 @@ const FITS_WITH: Record<string, { img: string; label: string }> = {
   'cartridge-mf5':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cartridge-sc3':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
+  // Filterkander → hvilket filter der passer til dem
+  'kande-carmen':                 { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filter' },
+  'prod_V2wDbJ1i8O20Kj':          { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filter' }, // MikroPLASTIK-STOP
+  'prod_V2wFs5adWhY4cF':          { img: '/images/fast-disk-pack.jpg',          label: 'FAST DISK™-filter' }, // GlaSSmart
 }
 
 // Produkter der skal linke til en dedikeret side i stedet for standard /shop/{id}.
