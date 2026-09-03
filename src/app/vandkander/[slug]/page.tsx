@@ -202,33 +202,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </a>
               )}
 
-              {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
-              {k.video && (
-                <>
-                <h2 className="mt-8 mb-3 text-lg font-extrabold text-[#0a2540] flex items-center gap-2">
-                  Tryghed til hele familien
-                  <Heart className="w-5 h-5 text-[#e0245e] fill-[#e0245e]" />
-                </h2>
-                <div className="w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
-                  <video
-                    src={k.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    className="w-full h-[380px] object-cover block"
-                  />
-                </div>
-                </>
-              )}
-
-            </div>
-
-            {/* Tilkøb: matchende filter – under billedet (desktop) / under køb (mobil) */}
-            {k.addon && (
-              <div className="order-3 md:order-none md:col-start-1 md:row-start-2">
-                <div className="rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5">
+              {/* Tilkøb: matchende filter – under brugsanvisningen */}
+              {k.addon && (
+                <div className="mt-5 rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5 max-w-md">
                   <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
                     Skal du være dækket ind fra start?
                   </p>
@@ -260,8 +236,31 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     Se filteret <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
-              </div>
-            )}
+              )}
+
+              {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
+              {k.video && (
+                <>
+                <h2 className="mt-8 mb-3 text-lg font-extrabold text-[#0a2540] flex items-center gap-2">
+                  Tryghed til hele familien
+                  <Heart className="w-5 h-5 text-[#e0245e] fill-[#e0245e]" />
+                </h2>
+                <div className="w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
+                  <video
+                    src={k.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                    className="w-full h-[380px] object-cover block"
+                  />
+                </div>
+                </>
+              )}
+
+            </div>
+
           </div>
         </div>
       </section>
