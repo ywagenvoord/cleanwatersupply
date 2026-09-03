@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Play } from 'lucide-react'
+import { Play, ChevronLeft, ChevronRight } from 'lucide-react'
 
 type Item = { src: string; cover?: boolean; video?: boolean }
 
@@ -44,6 +44,32 @@ export default function ProductGallery({
           <div className="w-full h-full flex items-center justify-center p-8">
             <img src={current.src} alt={alt} className="max-h-full max-w-full object-contain drop-shadow-2xl" />
           </div>
+        )}
+
+        {imgs.length > 1 && (
+          <>
+            <button
+              type="button"
+              aria-label="Forrige billede"
+              onClick={() => setActive((idx - 1 + imgs.length) % imgs.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/85 hover:bg-white shadow-md ring-1 ring-gray-200 flex items-center justify-center text-[#0a2540] transition-all hover:scale-105"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              aria-label="Næste billede"
+              onClick={() => setActive((idx + 1) % imgs.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-white/85 hover:bg-white shadow-md ring-1 ring-gray-200 flex items-center justify-center text-[#0a2540] transition-all hover:scale-105"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5">
+              {imgs.map((_, i) => (
+                <span key={i} className={`h-1.5 rounded-full transition-all ${idx === i ? 'w-5 bg-[#0a2540]' : 'w-1.5 bg-gray-300'}`} />
+              ))}
+            </div>
+          </>
         )}
       </div>
 
