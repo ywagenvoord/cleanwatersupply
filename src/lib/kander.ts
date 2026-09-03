@@ -15,6 +15,7 @@ export type Kande = {
   ogImage?: string           // delebillede (1200×630) til Facebook/social preview
   ogVideo?: string           // Open Graph-video (mp4) til social preview
   video?: string             // produktvideo (mp4) vist i galleriet
+  manual?: string            // brugsanvisning (PDF) til download
   capacity?: string
   highlight?: string
   intro: string
@@ -158,6 +159,7 @@ export const KANDER: Kande[] = [
   },
   {
     slug: 'glassmart',
+    manual: '/manuals/glassmart-manual.pdf',
     price: 199,
     varenr: 'LAI-1002',
     stripeProductId: 'prod_V2wFs5adWhY4cF',

@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation'
 import {
   ArrowRight, Check, ChevronRight, Droplets,
   Zap, Leaf, Recycle, Sparkles, ShieldCheck, GlassWater, Timer, Droplet,
-  Truck, BadgeCheck, Heart,
+  Truck, BadgeCheck, Heart, FileText,
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
@@ -185,6 +185,22 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   <Leaf className="w-4 h-4 text-[#3aad4a]" /> Fri for engangsplast
                 </span>
               </div>
+
+              {/* Brugsanvisning (PDF) */}
+              {k.manual && (
+                <a
+                  href={k.manual}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2.5 rounded-xl border border-gray-200 bg-white hover:border-[#284eff]/40 hover:bg-blue-50/40 px-4 py-3 text-sm font-semibold text-[#0a2540] transition-all"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-[#284eff]/10 text-[#284eff] flex items-center justify-center shrink-0">
+                    <FileText className="w-4 h-4" />
+                  </span>
+                  Download brugsanvisning (PDF)
+                  <ArrowRight className="w-4 h-4 text-gray-400" />
+                </a>
+              )}
 
               {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
               {k.video && (
