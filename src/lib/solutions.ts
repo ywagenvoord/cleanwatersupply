@@ -21,6 +21,8 @@ export type SolutionInfo = {
   heroVideo?: string   // valgfri cover-video i hero'en (mp4)
   heroPoster?: string  // poster-billede til video
   intro: string
+  seoTitle?: string        // valgfri søgeords-optimeret <title> (ellers bruges label)
+  seoDescription?: string  // valgfri søgeords-optimeret meta description (ellers intro)
   what: string
   how: string
   everyday: SolutionBenefit[]
@@ -34,6 +36,8 @@ export const SOLUTIONS: SolutionInfo[] = [
     label: 'Filtre på tappestedet',
     heroImg: '/images/solution-tappested.jpg',
     intro: 'Rent, sikkert vand præcis dér, hvor du bruger det – lige ved hanen.',
+    seoTitle: 'Vandfilter til hanen – rent drikkevand direkte fra vandhanen | Clean Water Supply',
+    seoDescription: 'Vandfilter til vandhanen, der giver rent, sikkert drikkevand ved tappestedet. Nem montering uden VVS – filtrerer bakterier og urenheder direkte ved hanen.',
     what: 'Et filter på tappestedet (point-of-use) sættes direkte på vandhanen og renser vandet i det øjeblik, du tapper det. Vores Baclyser®-filtre er medicinsk certificerede og danner en steril barriere mod bakterier som Legionella og Pseudomonas – uden at du skal ændre på resten af installationen.',
     how: 'Vandet presses gennem en fin 0,2 µm membran, der tilbageholder bakterier og urenheder helt ude ved udløbet. Filteret klikkes på med en kobling uden værktøj og skiftes med faste intervaller (fx hver 62. eller 93. dag), så beskyttelsen altid er i top.',
     everyday: [
@@ -50,6 +54,8 @@ export const SOLUTIONS: SolutionInfo[] = [
     heroImg: '/images/solution-kalkanlaeg.jpg',
     ogImage: '/images/og-gratis-montering-wide.jpg',
     intro: 'Blødt vand i hele huset – en forskel, du mærker hver eneste dag.',
+    seoTitle: 'Blødgøringsanlæg & kalkanlæg – blødt vand i hele huset | Clean Water Supply',
+    seoDescription: 'Blødgøringsanlæg (kalkanlæg) der fjerner kalk og giver blødt vand i hele huset – mindre kalk, mindre sæbe og længere levetid på rør, hvidevarer og varmtvandsbeholder.',
     what: 'Et kalkanlæg (blødgøringsanlæg) fjerner kalken fra vandet via ionbytning, hvor calcium og magnesium udskiftes med natrium. Resultatet er blødt vand ved hvert eneste tappested i boligen – fra bruser og køkken til vaskemaskine og hvidevarer.',
     how: 'Vandet ledes gennem en harpiksbeholder, der binder kalken. Anlægget regenererer automatisk med salt, så det altid yder optimalt, og det fås som kompakt alt-i-ét-løsning, der ikke fylder meget.',
     everyday: [
@@ -97,6 +103,8 @@ export const SOLUTIONS: SolutionInfo[] = [
     label: 'Filtre i vandforsyningen',
     heroImg: '/images/solution-undervask.jpg',
     intro: 'Central rensning, før vandet overhovedet når frem til hanerne.',
+    seoTitle: 'Centralt vandfilter til hele huset – rent vand fra alle haner | Clean Water Supply',
+    seoDescription: 'Centralt vandfilter til vandforsyningen, der renser vandet ét sted, før det når hanerne. Rent vand i hele huset – fjerner klor, partikler og urenheder.',
     what: 'Inline-filtre monteres direkte i vandforsyningen og renser vandet centralt, så hvert tappested i hjemmet leverer rent vand – uden at du skal tænke over det. Ét anlæg dækker hele boligen.',
     how: 'Vandet føres gennem et filterhus eller en hulfibermembran-patron (fx AS Tube), der tilbageholder partikler, bakterier, tungmetaller og urenheder, før vandet fordeles ud i huset. Filterpatronen skiftes efter behov.',
     everyday: [
@@ -114,6 +122,8 @@ export const SOLUTIONS: SolutionInfo[] = [
     heroVideo: '/videos/brusefilter-cover.mp4',
     heroPoster: '/images/brusefilter-cover-poster.jpg',
     intro: 'Renere bruservand – mildere mod hud, hår og luftveje.',
+    seoTitle: 'Brusefilter mod klor & kalk – blødere hud og hår | Clean Water Supply',
+    seoDescription: 'Brusefilter der reducerer klor og kalk i bruservandet – blødere hud, lettere hår og renere damp. Nem montering på bruseren, vælg C-vitamin eller kalkhæmmer.',
     what: 'Et brusefilter renser vandet i bruseren for klor, rust, bundfald og urenheder. Det fås som et komplet brusehoved med indbygget filter eller som et udskifteligt filter til dit eksisterende sæt – med varianter til C-vitamin eller kalkhæmmer.',
     how: 'Vandet løber gennem et aktivt kul-filter (ACF) i brusehovedet, der binder klor og urenheder, lige inden vandet rammer dig. Brusehovedet skrues på som en almindelig håndbruser, og filteret skiftes ca. hver 2.-3. måned.',
     everyday: [

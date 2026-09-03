@@ -26,8 +26,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     : [{ url: sol.heroImg, alt: sol.label }]
   const ogTitle = useCampaign ? 'KØB NU!  |  Blødgøringsanlæg  |  CLEAN WATER SUPPLY' : `${sol.label} | Clean Water Supply`
   return {
-    title: `${sol.label} – sådan hjælper det dig i hverdagen | Clean Water Supply`,
-    description: sol.intro,
+    title: sol.seoTitle ?? `${sol.label} – sådan hjælper det dig i hverdagen | Clean Water Supply`,
+    description: sol.seoDescription ?? sol.intro,
     alternates: { canonical: url },
     openGraph: {
       type: 'website', url, title: ogTitle,
