@@ -18,6 +18,51 @@ import FaqJsonLd from '@/components/seo/FaqJsonLd'
 
 import { SITE_URL } from '@/lib/site'
 
+// Rigt indhold til Stripe-only produkter uden hardcodet match (fx FAST DISK),
+// så deres produktside ikke står tom. Data fra Laica-databladet.
+const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
+  'prod_V2wHIQrdoXx6RG': {
+    category: 'vandkande',
+    tagline: 'Udskiftningsfiltre til GlaSSmart™ · 3 stk. · reducerer klor, mikroplast & pesticider',
+    priceNote: 'Pakken indeholder 3 filtre – ca. 3 måneders forbrug.',
+    description:
+      'FAST DISK™ er et italiensk-fremstillet filter, der filtrerer vandet øjeblikkeligt. Med aktivt kul reducerer det klor og forbedrer smagen – og bevarer samtidig de nyttige mineralsalte, der naturligt findes i postevandet. Passer til GlaSSmart™ glas-filterkaraffel. 3 filtre i pakken.',
+    longDescription:
+      'FAST DISK™ bruger en dynamisk, selektiv filtrering, hvor vandet renses øjeblikkeligt, mens det løber igennem. Teknologien med aktivt kul reducerer klor og forbedrer vandets smag og lugt – uden at fjerne de nyttige mineralsalte, kroppen har brug for.\n\nFilteret reducerer klor, pesticider, mikroplast og klorholdige organiske opløsningsmidler. (De nævnte stoffer er ikke nødvendigvis til stede i dansk postevand.)\n\nHvert filter holder ca. 1 måned eller op til 120 liter. Pakken med 3 filtre rækker dermed til omkring 3 måneder. FAST DISK™ passer til GlaSSmart™ glas-filterkaraffel og er fremstillet i Italien.',
+    highlights: [
+      'Reducerer klor, pesticider & mikroplast',
+      'Bevarer de nyttige mineralsalte i vandet',
+      'Filtrerer øjeblikkeligt – dynamisk selektiv filtrering',
+    ],
+    features: [
+      'Aktivt kul reducerer klor og forbedrer vandets smag',
+      'Reducerer klor, pesticider, mikroplast og klorholdige organiske opløsningsmidler',
+      'Bevarer de nyttige mineralsalte, der naturligt findes i postevandet',
+      'Øjeblikkelig, dynamisk selektiv filtrering',
+      'Passer til GlaSSmart™ glas-filterkaraffel',
+      'Fremstillet i Italien · 3 filtre i pakken',
+    ],
+    specs: [
+      { label: 'Indhold', value: '3 filtre pr. pakke' },
+      { label: 'Levetid pr. filter', value: 'Ca. 1 måned / 120 liter' },
+      { label: 'Levetid i alt', value: 'Op til 360 liter / ca. 3 måneder' },
+      { label: 'Filtrering', value: 'Aktivt kul – dynamisk selektiv' },
+      { label: 'Reducerer', value: 'Klor, pesticider, mikroplast, klorholdige opløsningsmidler' },
+      { label: 'Passer til', value: 'GlaSSmart™ glas-filterkaraffel' },
+      { label: 'Varenr.', value: 'LAI-1003' },
+      { label: 'EAN', value: '8013240707334' },
+      { label: 'Oprindelse', value: 'Fremstillet i Italien' },
+    ],
+    faqs: [
+      { q: 'Hvor længe holder ét filter?', a: 'Hvert FAST DISK™-filter holder ca. 1 måned eller op til 120 liter vand. Pakken med 3 filtre rækker altså til omkring 3 måneder / 360 liter.' },
+      { q: 'Hvad reducerer filteret?', a: 'FAST DISK™ reducerer klor, pesticider, mikroplast og klorholdige organiske opløsningsmidler – og bevarer samtidig de nyttige mineralsalte i vandet. De nævnte stoffer er ikke nødvendigvis til stede i dansk postevand.' },
+      { q: 'Hvilken karaffel passer filteret til?', a: 'FAST DISK™ passer til GlaSSmart™ glas-filterkaraffel.' },
+      { q: 'Fjerner filteret de sunde mineraler?', a: 'Nej. Teknologien med aktivt kul reducerer klor og urenheder, men bevarer de nyttige mineralsalte, der naturligt findes i postevandet.' },
+    ],
+    useCases: ['Hjem', 'Kontor', 'Frisk drikkevand i køleskabet'],
+  },
+}
+
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 
 // allow on-demand rendering for new Stripe products
@@ -90,6 +135,7 @@ async function fetchProduct(idOrStripeId: string): Promise<Product | undefined> 
     faqs:            [],
     useCases:        [],
     stripeProductId: sp.stripeProductId,
+    ...(STRIPE_CONTENT_OVERRIDE[sp.stripeProductId] ?? {}),
   }
 }
 
