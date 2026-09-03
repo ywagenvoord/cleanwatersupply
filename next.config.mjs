@@ -11,8 +11,17 @@ const nextConfig = {
   // sider der har skiftet slug). Uden disse rammer Google-resultater en 404.
   async redirects() {
     return [
-      // Carmen: kande-siden og shop-siden er samlet til én – shop-siden (med flere billeder)
-      { source: '/vandkander/carmen', destination: '/shop/kande-carmen', permanent: true },
+      // ── Én produktside per produkt: /shop-dubletter → de kanoniske sider ──
+      // Kander → /vandkander (rige sider)
+      { source: '/shop/kande-carmen',            destination: '/vandkander/carmen', permanent: true },
+      { source: '/shop/kande-mikroplastik',      destination: '/vandkander/mikroplastik-stop', permanent: true },
+      { source: '/shop/prod_V2wDbJ1i8O20Kj',     destination: '/vandkander/mikroplastik-stop', permanent: true },
+      { source: '/shop/prod_V2wFs5adWhY4cF',     destination: '/vandkander/glassmart', permanent: true },
+      // Filtre → /vandkande-filtre (dedikerede sider)
+      { source: '/shop/filter-biflux-universal',    destination: '/vandkande-filtre/bi-flux-universal', permanent: true },
+      { source: '/shop/filter-biflux-limescale',    destination: '/vandkande-filtre/bi-flux-limescalestop', permanent: true },
+      { source: '/shop/filter-biflux-healthexpert', destination: '/vandkande-filtre/bi-flux-healthexpert', permanent: true },
+      { source: '/shop/prod_V2wHIQrdoXx6RG',        destination: '/vandkande-filtre/fast-disk', permanent: true },
 
       // ── Gamle WordPress/WooCommerce-stier fra den forrige side (rammer ellers 404) ──
       // Databerblade og medie-filer lå under /wp-content/uploads/ og /uploads/

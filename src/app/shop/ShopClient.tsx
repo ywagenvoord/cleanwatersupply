@@ -114,8 +114,15 @@ const FITS_WITH: Record<string, { img: string; label: string; text?: string }> =
 // Produkter der skal linke til en dedikeret side i stedet for standard /shop/{id}.
 // Nøgle = produkt-id (for Stripe-only produkter er det Stripe-produkt-id'et).
 const DETAIL_LINK_OVERRIDES: Record<string, string> = {
+  // Kander → de rige /vandkander-sider
   'prod_V2wFs5adWhY4cF': '/vandkander/glassmart', // GlaSSmart glas-filterkaraffel
-  'prod_V2wDbJ1i8O20Kj': '/vandkander/mikroplastik-stop', // MikroPLASTIK-STOP filterkande (rig side)
+  'prod_V2wDbJ1i8O20Kj': '/vandkander/mikroplastik-stop', // MikroPLASTIK-STOP filterkande
+  'kande-carmen':        '/vandkander/carmen',
+  // Filtre → de dedikerede /vandkande-filtre-sider
+  'filter-biflux-universal':    '/vandkande-filtre/bi-flux-universal',
+  'filter-biflux-limescale':    '/vandkande-filtre/bi-flux-limescalestop',
+  'filter-biflux-healthexpert': '/vandkande-filtre/bi-flux-healthexpert',
+  'prod_V2wHIQrdoXx6RG':        '/vandkande-filtre/fast-disk', // FAST DISK
 }
 
 function ProductCard({ product, catColor, showErhverv }: { product: Product; catColor: string; showErhverv: boolean }) {

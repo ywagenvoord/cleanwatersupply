@@ -4,6 +4,7 @@ export type FilterSpec = { label: string; value: string }
 
 export type Filter = {
   slug: string
+  cwsId?: string     // nøgle til Stripe-produkt (til direkte "Læg i kurv")
   name: string
   titleSuffix?: string
   art: string
@@ -26,6 +27,7 @@ export type Filter = {
 export const FILTRE: Filter[] = [
   {
     slug: 'bi-flux-universal',
+    cwsId: 'filter-biflux-universal',
     pack: '2 stk. i pakken',
     price: 89,
     varenr: 'LAI-1006',
@@ -57,6 +59,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-limescalestop',
+    cwsId: 'filter-biflux-limescale',
     pack: '2 stk. i pakken',
     price: 99,
     varenr: 'LAI-1005',
@@ -89,6 +92,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'bi-flux-healthexpert',
+    cwsId: 'filter-biflux-healthexpert',
     pack: '2 stk. i pakken',
     price: 109,
     varenr: 'LAI-1004',
@@ -122,6 +126,7 @@ export const FILTRE: Filter[] = [
   },
   {
     slug: 'fast-disk',
+    cwsId: 'fast-disk',
     pack: '3 stk. i pakken',
     price: 89,
     varenr: 'LAI-1003',
@@ -129,7 +134,7 @@ export const FILTRE: Filter[] = [
     titleSuffix: '3-pack',
     art: 'FAST DISK™',
     img: '/images/fast-disk-card.png',
-    images: ['/images/fast-disk.png', '/images/fast-disk-pack.jpg'],
+    images: ['/images/fast-disk-pack.jpg', '/images/fast-disk-single.jpg', '/images/glassmart-filter-pack.jpg'],
     glassmart: true,
     tagline: 'Instant-filtrering til GlaSSmart-karaflen.',
     best: 'Bedst til: GlaSSmart-glaskaraflen i køleskabet',

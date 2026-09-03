@@ -22,6 +22,7 @@ export const STRIPE_MAPPING: Record<string, StripeData> = {
   'filter-biflux-universal':       { productId: 'prod_V2wMXNiLmbLutN', paymentLink: '' },
   'filter-biflux-limescale':       { productId: 'prod_V2wL6AYWrva1IO', paymentLink: '' },
   'filter-biflux-healthexpert':    { productId: 'prod_V2wJ7p8aJ9zKMK', paymentLink: '' },
+  'fast-disk':                     { productId: 'prod_V2wHIQrdoXx6RG', paymentLink: '' },
   'as-tube':                       { productId: 'prod_USJ994hO6mUnXC', paymentLink: 'https://buy.stripe.com/7sY00igV58P84DY8mb4gg0c' },
   'blosgoringsanlaeg-100m':        { productId: 'prod_USJ9VnrMWHnwvl', paymentLink: 'https://buy.stripe.com/7sYaEW48jd5odau9qf4gg0d' },
 

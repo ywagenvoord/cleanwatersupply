@@ -8,6 +8,7 @@ import ProductGallery from '@/components/ProductGallery'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import { stockFor } from '@/lib/stock'
+import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -115,13 +116,12 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Link
-                  href="/shop"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
-                >
-                  Køb i shoppen <ArrowRight className="w-4 h-4" />
-                </Link>
+              <div className="flex flex-col sm:flex-row items-stretch gap-3 mt-8">
+                {f.cwsId && (
+                  <div className="sm:flex-1 [&>button]:py-4 [&>button]:rounded-full">
+                    <FilterAddToCart id={f.cwsId} name={f.name} price={f.price} image={f.img} />
+                  </div>
+                )}
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
