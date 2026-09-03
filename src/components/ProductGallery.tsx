@@ -75,14 +75,14 @@ export default function ProductGallery({
 
       {/* Miniaturer */}
       {imgs.length > 1 && (
-        <div className="mt-3.5 min-w-0 flex gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none md:grid md:grid-cols-4 md:overflow-visible md:mx-0 md:px-0">
+        <div className="mt-3.5 min-w-0 flex flex-wrap gap-3 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none md:overflow-visible md:mx-0 md:px-0">
           {imgs.map((it, i) => (
             <button
               key={it.src}
               type="button"
               onClick={() => setActive(i)}
               aria-label={it.video ? 'Vis video' : `Vis billede ${i + 1}`}
-              className={`relative w-16 h-16 shrink-0 md:w-auto md:h-24 rounded-2xl overflow-hidden bg-white flex items-center justify-center ring-2 transition-all ${
+              className={`relative w-16 h-16 shrink-0 md:w-20 md:h-20 rounded-2xl overflow-hidden bg-white flex items-center justify-center ring-2 transition-all ${
                 active === i ? 'ring-[#3aad4a]' : 'ring-gray-200 hover:ring-gray-300'
               }`}
             >
