@@ -14,6 +14,14 @@ const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
   'prod_V2wDbJ1i8O20Kj': 'vandkande', // MikroPLASTIK-STOP filterkande + 1 Bi-flux
 }
 
+// Kort, sælgende beskrivelse på shop-kortet for Stripe-only produkter
+// (ellers vises kun "Tilgængelig via Stripe"). Holdes på 1-2 linjer.
+const SHOP_TAGLINES: Record<string, string> = {
+  'prod_V2wDbJ1i8O20Kj': 'Reducerer mikroplast, kalk & klor · inkl. 1 Bi-flux®-filter · rent vand fra første dag',
+  'prod_V2wFs5adWhY4cF': 'Elegant glas-karaffel med filter · altid koldt, filtreret vand klar i køleskabet',
+  'prod_V2wHIQrdoXx6RG': 'Udskiftningsfiltre til GlaSSmart · 3 stk. · frisk, filtreret vand hele tiden',
+}
+
 export async function getMergedShopProducts(): Promise<Product[]> {
   const stripeProducts = await getActiveStripeProducts()
 
@@ -41,7 +49,7 @@ export async function getMergedShopProducts(): Promise<Product[]> {
       merged.push({
         id:              sp.stripeProductId,
         name:            sp.name,
-        tagline:         'Tilgængelig via Stripe',
+        tagline:         SHOP_TAGLINES[sp.stripeProductId] ?? 'Tilgængelig via Stripe',
         description:     sp.description || sp.name,
         category:        STRIPE_ONLY_CATEGORY[sp.stripeProductId] ?? 'filtre',
         price:           sp.price,
