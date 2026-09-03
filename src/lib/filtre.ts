@@ -40,18 +40,18 @@ export const FILTRE: Filter[] = [
       'Reducerer klor, visse tungmetaller, pesticider og forebygger kalk',
       'Bevarer de nyttige mineralsalte (calcium, magnesium, kalium)',
       '6-trins filtrering ved kontrolleret hastighed',
-      '100 % BPA-fri · Made in EU · testet af uafhængige labs',
+      'BPA-fri (lovkrav) · Made in EU · testet af uafhængige labs',
     ],
     description:
       'Bi-flux® Universal er Laicas alsidige hverdagsfilter til filtervandkander. Med 6-trins filtrering ved ' +
       'kontrolleret hastighed reducerer det klor, visse tungmetaller og pesticider og forebygger kalk – samtidig ' +
-      'med at de nyttige mineralsalte (calcium, magnesium og kalium) bevares. 100 % BPA-fri og Made in EU.',
+      'med at de nyttige mineralsalte (calcium, magnesium og kalium) bevares. BPA-fri, som loven kræver, og Made in EU.',
     specs: [
       { label: 'Type', value: 'Bi-flux® udskiftningsfilter' },
       { label: 'Varenr.', value: 'F0M' },
       { label: 'Levetid', value: '1 måned · ca. 150 liter' },
       { label: 'Reducerer', value: 'Klor, tungmetaller, pesticider, kalk' },
-      { label: 'Materiale', value: '100 % BPA-fri' },
+      { label: 'Materiale', value: 'BPA-fri (lovkrav)' },
       { label: 'Oprindelse', value: 'Made in EU' },
     ],
   },
@@ -143,7 +143,7 @@ export const FILTRE: Filter[] = [
     description:
       'FAST DISK™ er Laicas skivefilter til GlaSSmart-glaskaraflen. Det aktive kul-mikrofilament filtrerer ' +
       'vandet øjeblikkeligt, mens du hælder – forbedrer smagen og reducerer klor, mens de nyttige mineralsalte ' +
-      'bevares. Et bæredygtigt valg, der reducerer engangs-plastflasker med ca. 99 %. Made in EU.',
+      'bevares. Ét års filtreret vand svarer til ca. 1.200 færre 1,5 L-plastflasker. Made in EU.',
     specs: [
       { label: 'Type', value: 'Skivefilter (aktivt kul)' },
       { label: 'Passer til', value: 'GlaSSmart™-glaskaraffel' },

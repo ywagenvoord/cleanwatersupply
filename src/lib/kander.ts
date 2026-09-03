@@ -48,7 +48,7 @@ export const KANDER: Kande[] = [
     points: [
       'Hurtigfyldnings-låge – fyld direkte under hanen',
       'Passer i køleskabsdøren',
-      'Batterifri “eco-friendly” skift-indikator',
+      'Batterifri skift-indikator',
       'Bruger Bi-flux®-filterpatron',
       'Made in EU',
     ],

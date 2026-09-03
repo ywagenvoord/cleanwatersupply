@@ -119,7 +119,7 @@ export default function HomePage() {
         <div className="overflow-hidden border-y border-white/30 bg-white/10 backdrop-blur-sm py-3">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, round) =>
-            ['Legionellabekæmpelse', 'Bakteriefrit vand', 'Miljøvenlig løsning',
+            ['Legionellabekæmpelse', 'Bakteriefrit vand', 'Kemikaliefri desinfektion',
              'Nem montering', 'Filter løsninger', 'Blødgøringsanlæg',
              'ISO 9001:2015', 'ISO 13485:2016', 'ISO 140010:2015',
              'Løsninger til erhverv', 'Løsninger til private'].map((cert) => (
@@ -387,7 +387,7 @@ export default function HomePage() {
               { num: 3,  color: '#4C9F38', Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre bakteriefrit vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
               { num: 6,  color: '#26BDE2', Icon: Droplets, title: 'Rent vand og sanitet', body: 'Vi forbedrer vandkvaliteten i installationer, hvor bakteriekontrol er afgørende, med dokumenterbare løsninger.' },
               { num: 9,  color: '#FD6925', Icon: Building2, title: 'Industri & innovation', body: 'Vores produkter og anlæg styrker den tekniske infrastruktur og en mere fremtidssikret vandbehandling.' },
-              { num: 12, color: '#BF8B2E', Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores bæredygtige løsninger understøtter en ansvarlig og ressourceeffektiv tilgang til vandbehandling.' },
+              { num: 12, color: '#BF8B2E', Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores løsninger understøtter en ansvarlig og effektiv tilgang til vandbehandling.' },
               { num: 15, color: '#56C02B', Icon: Tractor, title: 'Livet på landet', body: 'Vi begrænser bakteriespredning i landbruget og styrker sundere dyre- og fødevaresystemer.' },
             ].map(({ num, color, Icon, title, body }) => (
               <div key={title} className="rounded-2xl border border-gray-100 bg-white p-7 shadow-sm hover:shadow-md transition-shadow">

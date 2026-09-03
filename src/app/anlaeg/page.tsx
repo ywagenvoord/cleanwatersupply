@@ -175,7 +175,7 @@ export default function AnlaegPage() {
               { Icon: Zap, title: 'Kemikaliefrit', body: 'Produceres on-site af salt, vand og strøm – ingen opbevaring af farlig kemi.' },
               { Icon: Droplets, title: 'Rene rør uden biofilm', body: 'Løbende behandling forhindrer bakterier og biofilm i hele rørnettet.' },
               { Icon: FileCheck, title: 'Dokumenterbar drift', body: 'Automatisk styring og målbar effekt gør det nemt at leve op til hygiejnekrav.' },
-              { Icon: Leaf, title: 'Bæredygtigt', body: 'Energivenligt, nedbrydes hurtigt og efterlader ingen skadelige rester.' },
+              { Icon: Leaf, title: 'Skånsom i brug', body: 'Fremstilles af salt, vand og strøm – ingen kemikalierester at opbevare eller håndtere.' },
             ].map(({ Icon, title, body }) => (
               <div key={title} className="bg-gray-50 rounded-2xl border border-gray-100 p-7">
                 <div className="w-12 h-12 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center mb-4">

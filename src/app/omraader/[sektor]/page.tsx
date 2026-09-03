@@ -90,7 +90,7 @@ const HELP_EXAMPLES: Record<string, { problem: string; solution: string }[]> = {
     { problem: 'Krav om effektiv, men kemikaliefri desinfektion', solution: 'ECA-vand (hypoklorsyre) desinficerer overflader og udstyr effektivt – produceret på stedet af salt, vand og strøm.' },
     { problem: 'Biofilm i procesvand og installationer', solution: 'ECA-vand nedbryder biofilmen, som bakterier gemmer sig i.' },
     { problem: 'Bakterier i produktionsvandet', solution: 'Filtrering og desinfektion sikrer mikrobiologisk rent vand i produktionen.' },
-    { problem: 'Bæredygtigheds- og arbejdsmiljøhensyn', solution: 'En skånsom løsning uden skrappe kemikalier – bedre for både medarbejdere og miljø.' },
+    { problem: 'Arbejdsmiljø- og sikkerhedshensyn', solution: 'En skånsom løsning uden skrappe kemikalier – bedre for medarbejderne.' },
   ],
   landbruget: [
     { problem: 'Yverbetændelse (mastitis) i besætningen', solution: 'Elektrolyseret vand kan erstatte jodbaseret pattedypning – lige så effektivt, men klorfrit og for få cent pr. ko om året.' },

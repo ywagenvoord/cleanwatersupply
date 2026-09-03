@@ -34,8 +34,8 @@ export const sektorer: Sektor[] = [
         body: 'Reducerer behovet for kemisk rengøring og sænker vedligeholdelsesomkostningerne',
       },
       {
-        title: 'Bæredygtig og ansvarlig drift',
-        body: 'Sterile filtre minimerer vandspild og miljøbelastning',
+        title: 'Ansvarlig og driftssikker løsning',
+        body: 'Sterile filtre med lang levetid og lavt vedligehold',
       },
     ],
     problemHeading: 'Vandhygiejne i hoteller – en overset risikofaktor',
@@ -66,8 +66,8 @@ export const sektorer: Sektor[] = [
         body: 'Rene installationer reducerer behovet for kemisk rengøring og nedetid',
       },
       {
-        title: 'Bæredygtig og ansvarlig drift',
-        body: 'Sterile filtre minimerer vandforbrug, kemikaliebrug og miljøpåvirkning',
+        title: 'Ansvarlig og driftssikker løsning',
+        body: 'Sterile filtre med lang levetid og minimalt vedligehold',
       },
     ],
     problemHeading: 'Rent vand – en del af den gode brugeroplevelse',
@@ -141,7 +141,7 @@ export const sektorer: Sektor[] = [
       'Forebyg sygdomsudbrud og Legionella-risiko',
       'Dokumentér hygiejnestandard over for gæster og myndigheder',
       'Reducer driftsomkostninger',
-      'Styrk dit brand med bæredygtige løsninger',
+      'Styrk dit brand med driftssikre løsninger',
       'Forlæng vandinstallationernes levetid',
     ],
     contactPerson: 'kristoffer',
@@ -162,7 +162,7 @@ export const sektorer: Sektor[] = [
         body: 'Effektiv løsning til stillestående vand i gæsteværelser og sommerhuse',
       },
       {
-        title: 'Nem, effektiv og bæredygtig beskyttelse',
+        title: 'Nem og effektiv beskyttelse',
         body: 'Sterile filtre med minimal vedligeholdelse og lang levetid',
       },
     ],
@@ -183,7 +183,7 @@ export const sektorer: Sektor[] = [
     title: 'Fødevareindustri',
     tagline: 'Brug filter – Kend risikoen og tag ansvar',
     heroImage: '/images/foedevare-groent.jpg',
-    intro: 'ECA-vand: et sikkert og miljøvenligt valg til fødevareindustrien',
+    intro: 'ECA-vand: et sikkert og kemikaliefrit valg til fødevareindustrien',
     values: [
       {
         title: 'Effektiv desinfektion',
@@ -230,8 +230,8 @@ export const sektorer: Sektor[] = [
         body: 'Færre bakterier i vandinstallationerne giver sundere dyr og lavere medicinomkostninger',
       },
       {
-        title: 'Bæredygtig løsning',
-        body: 'Kemikaliefri desinfektion der er sikker for dyr, medarbejdere og miljø',
+        title: 'Skånsom løsning',
+        body: 'Kemikaliefri desinfektion der er sikker for dyr og medarbejdere',
       },
     ],
     problemHeading: 'Mikrobiologisk rent vand forøger indtjeningen',
@@ -242,7 +242,7 @@ export const sektorer: Sektor[] = [
       'Større drikkelyst og foderoptag',
       'Lavere medicinomkostninger',
       'Bedre dyrevelværd og hygiejne',
-      'Kemikaliefri og bæredygtig løsning',
+      'Kemikaliefri løsning',
     ],
     contactPerson: 'kristoffer',
   },

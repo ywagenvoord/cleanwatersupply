@@ -32,7 +32,7 @@ export default function EcaVandPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mb-6">
-              Fremtidens bæredygtige desinfektion
+              Effektiv desinfektion – skånsom i brug
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg">
               Elektrolyseret vand er en innovativ teknologi, der skaber to nyttige væsker: et kraftfuldt, men skånsomt rengøringsmiddel og et særdeles effektivt desinfektionsmiddel. Disse væsker produceres ved at tilføre en lille mængde salt til vand og sende en elektrisk strøm igennem det – en proces kaldet elektrolyse. Den første væske, Anolyt, indeholder hypoklorsyre og fungerer som et stærkt desinfektionsmiddel, der hurtigt dræber bakterier, vira, svampe og sporer. Faktisk har det vist sig at være op til 80% mere effektivt end traditionelt klorbaseret desinfektionsmiddel. Den anden væske, Katolyt, indeholder natriumhydroxid og er et alsidigt rengøringsmiddel, der effektivt opløser fedt og snavs uden at skumme.
@@ -50,14 +50,14 @@ export default function EcaVandPage() {
               },
               {
                 icon: Leaf,
-                title: 'Sikkerhed for dyr og miljø',
-                body: 'Miljøvenligt, nedbrydes hurtigt, ingen skadelige rester',
+                title: 'Skånsom i brug',
+                body: 'Fremstilles af vand og salt – ingen kemikalierester at opbevare eller håndtere',
                 color: 'from-emerald-500 to-emerald-600',
               },
               {
                 icon: Zap,
-                title: 'Bæredygtighed',
-                body: 'Energivenlig og kemikaliefri løsning til fremtiden',
+                title: 'Kemikaliefri proces',
+                body: 'Fremstilles på stedet af vand og salt – ingen kemikalier at købe eller transportere',
                 color: 'from-[#0a2540] to-blue-800',
               },
             ].map((card, i) => {
@@ -83,7 +83,7 @@ export default function EcaVandPage() {
             <div>
               <h2 className="text-3xl font-extrabold text-[#0a2540] mb-6">En sikker løsning</h2>
               <p className="text-gray-600 leading-relaxed text-lg">
-                I fødevareindustrien og landbruget er hygiejne ikke til forhandling. Men hvordan sikrer man en effektiv desinfektion uden at belaste mennesker eller miljø? Svaret kan være ECA-vand – en innovativ teknologi, der kombinerer høj effektivitet med bæredygtige løsninger. Hos Clean Water Supply leverer vi fuldautomatiske anlæg til kunder på tværs af hele Danmark.
+                I fødevareindustrien og landbruget er hygiejne ikke til forhandling. Men hvordan sikrer man en effektiv desinfektion uden skrappe kemikalier? Svaret kan være ECA-vand – en innovativ teknologi, der kombinerer høj effektivitet med en skånsom proces. Hos Clean Water Supply leverer vi fuldautomatiske anlæg til kunder på tværs af hele Danmark.
               </p>
             </div>
             <div className="bg-gradient-to-br from-[#0a2540] to-blue-800 rounded-3xl p-10 text-white text-center shadow-xl">
@@ -103,7 +103,7 @@ export default function EcaVandPage() {
               Biofilm &amp; Bakteriedannelse
             </h2>
             <p className="text-gray-600 leading-relaxed text-lg">
-              Biofilm er en slimet belægning af både dødt og levende materiale, der sætter sig fast på overflader i vandinstallationer. Denne belægning danner et beskyttende lag, hvor bakterier og andre mikroorganismer kan trives og formere sig. Over tid kan biofilm føre til en række problemer, herunder dårlig lugt og smag i vandet, øget korrosion af rør og udstyr samt en reduktion af iltindholdet i vandet. Fjernelse af biofilm er en udfordring, da de fleste bakterier gemmer sig inde i det beskyttende lag, hvilket gør dem resistente over for mange traditionelle rengørings- og desinfektionsmetoder. For at sikre en effektiv bekæmpelse af bakterier i vandinstallationer skal biofilmen først nedbrydes. ECA-vand er en effektiv og miljøvenlig løsning, der både opløser biofilmen og dræber bakterierne uden brug af skadelige kemikalier.
+              Biofilm er en slimet belægning af både dødt og levende materiale, der sætter sig fast på overflader i vandinstallationer. Denne belægning danner et beskyttende lag, hvor bakterier og andre mikroorganismer kan trives og formere sig. Over tid kan biofilm føre til en række problemer, herunder dårlig lugt og smag i vandet, øget korrosion af rør og udstyr samt en reduktion af iltindholdet i vandet. Fjernelse af biofilm er en udfordring, da de fleste bakterier gemmer sig inde i det beskyttende lag, hvilket gør dem resistente over for mange traditionelle rengørings- og desinfektionsmetoder. For at sikre en effektiv bekæmpelse af bakterier i vandinstallationer skal biofilmen først nedbrydes. ECA-vand er en effektiv løsning, der både opløser biofilmen og dræber bakterierne uden brug af skrappe kemikalier.
             </p>
           </div>
 

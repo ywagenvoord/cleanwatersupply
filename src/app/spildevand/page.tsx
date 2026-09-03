@@ -7,24 +7,24 @@ import { SITE_URL } from '@/lib/site'
 const URL = `${SITE_URL}/spildevand`
 
 export const metadata: Metadata = {
-  title: 'Spildevand – bæredygtig desinfektion med Kirkmayer HOCl',
+  title: 'Spildevand – klorfri desinfektion med Kirkmayer HOCl',
   description:
     'Vi løser spildevandsprojekter med Kirkmayer HOCl-anlæg, der producerer hypoklorsyre (HOCl) på stedet – effektiv, klorfri desinfektion uden skadelige kemikalier.',
   alternates: { canonical: URL },
   openGraph: {
     type: 'website', url: URL,
     title: 'Spildevand – desinfektion med HOCl | Clean Water Supply',
-    description: 'Bæredygtig desinfektion af spildevand med Kirkmayer HOCl-anlæg.',
+    description: 'Klorfri desinfektion af spildevand med Kirkmayer HOCl-anlæg.',
     locale: 'da_DK', siteName: 'Clean Water Supply',
   },
 }
 
 const BENEFITS = [
-  { Icon: Leaf,        title: 'Klor- og kemikaliefri', body: 'Desinfektion uden skadelige kemikalier – skånsomt mod mennesker og miljø.' },
+  { Icon: Leaf,        title: 'Klor- og kemikaliefri', body: 'Desinfektion uden skrappe kemikalier – skånsom i brug.' },
   { Icon: Zap,         title: 'Produceres på stedet',  body: 'HOCl dannes on-site af blot salt, vand og strøm – ingen transport eller lager af farlige stoffer.' },
   { Icon: ShieldCheck, title: 'Effektiv desinfektion', body: 'Hypoklorsyre bekæmper bakterier, vira, svampe og sporer hurtigt og effektivt.' },
   { Icon: FlaskConical,title: 'ECHA Article 95-godkendt', body: 'Kirkmayer HOCl-generatorerne er godkendte til professionel brug.' },
-  { Icon: Recycle,     title: 'Bæredygtigt',           body: 'En mere miljøvenlig løsning end traditionelle klorbaserede metoder.' },
+  { Icon: Recycle,     title: 'Klorfri metode',        body: 'Et alternativ til traditionelle klorbaserede metoder – uden lager af farlige klorprodukter.' },
   { Icon: Droplets,    title: 'Skalerbart',            body: 'Anlæg tilpasses projektets størrelse og behov – fra mindre anlæg til større installationer.' },
 ]
 
