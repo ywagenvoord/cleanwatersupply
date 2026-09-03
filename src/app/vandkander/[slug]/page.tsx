@@ -119,6 +119,22 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 alt={k.name}
                 highlight={k.highlight}
               />
+
+              {/* Brugsanvisning (PDF) – under billederne */}
+              {k.manual && (
+                <a
+                  href={k.manual}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex items-center gap-2.5 rounded-xl border border-gray-200 bg-white hover:border-[#284eff]/40 hover:bg-blue-50/40 px-4 py-3 text-sm font-semibold text-[#0a2540] transition-all"
+                >
+                  <span className="w-8 h-8 rounded-lg bg-[#284eff]/10 text-[#284eff] flex items-center justify-center shrink-0">
+                    <FileText className="w-4 h-4" />
+                  </span>
+                  Download brugsanvisning (PDF)
+                  <ArrowRight className="w-4 h-4 text-gray-400" />
+                </a>
+              )}
             </div>
 
             {/* Tekst */}
@@ -187,23 +203,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </span>
               </div>
 
-              {/* Brugsanvisning (PDF) */}
-              {k.manual && (
-                <a
-                  href={k.manual}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2.5 rounded-xl border border-gray-200 bg-white hover:border-[#284eff]/40 hover:bg-blue-50/40 px-4 py-3 text-sm font-semibold text-[#0a2540] transition-all"
-                >
-                  <span className="w-8 h-8 rounded-lg bg-[#284eff]/10 text-[#284eff] flex items-center justify-center shrink-0">
-                    <FileText className="w-4 h-4" />
-                  </span>
-                  Download brugsanvisning (PDF)
-                  <ArrowRight className="w-4 h-4 text-gray-400" />
-                </a>
-              )}
-
-              {/* Tilkøb: matchende filter – under brugsanvisningen */}
+              {/* Tilkøb: matchende filter */}
               {k.addon && (
                 <div className="mt-5 rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5 max-w-md">
                   <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
