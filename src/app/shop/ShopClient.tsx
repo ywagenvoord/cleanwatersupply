@@ -99,15 +99,15 @@ const HOUSING_IMG = '/images/filter-housing.jpg'
 const JUG_IMG = 'https://laicahu.cdn.shoprenter.hu/custom/laicahu/image/cache/w360h360q100/kepek/termekkepek/UFSAA02/UFSAA02_Img02.jpg?lastmod=0.1757576915'
 const ASTUBE_IMG = 'https://technolab.nl/wp-content/uploads/2024/04/AS-TUBE-Cartridge-MF5.jpg'
 const CBLUE_IMG = '/images/cblue-sc3-1.jpg'
-const FITS_WITH: Record<string, { img: string; label: string }> = {
+const FITS_WITH: Record<string, { img: string; label: string; text?: string }> = {
   'dualstage-mf-10-cl':           { img: HOUSING_IMG, label: 'Filter Housing' },
   'kulblokfilter-10-cl':          { img: HOUSING_IMG, label: 'Filter Housing' },
   'cartridge-mf5':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cartridge-sc3':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
-  // Filterkander → hvilket filter der passer til dem
-  'kande-carmen':                 { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filter' },
-  'prod_V2wDbJ1i8O20Kj':          { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filter' }, // MikroPLASTIK-STOP
+  // Filterkander → hvilket/hvor mange filtre der passer til dem
+  'kande-carmen':                 { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filtre', text: 'Vælg mellem 3 Bi-flux®-filtre' },
+  'prod_V2wDbJ1i8O20Kj':          { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filtre', text: 'Vælg mellem 3 Bi-flux®-filtre' }, // MikroPLASTIK-STOP
   'prod_V2wFs5adWhY4cF':          { img: '/images/fast-disk-pack.jpg',          label: 'FAST DISK™-filter' }, // GlaSSmart
 }
 
@@ -211,7 +211,9 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               alt={FITS_WITH[product.id].label}
               className="w-5 h-5 rounded-full object-contain bg-white border border-gray-200"
             />
-            <span className="text-[11px] font-medium text-gray-500">Passer til <span className="font-semibold text-gray-700">{FITS_WITH[product.id].label}</span></span>
+            <span className="text-[11px] font-medium text-gray-500">{FITS_WITH[product.id].text
+              ? <span className="font-semibold text-gray-700">{FITS_WITH[product.id].text}</span>
+              : <>Passer til <span className="font-semibold text-gray-700">{FITS_WITH[product.id].label}</span></>}</span>
           </div>
         )}
 
