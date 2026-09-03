@@ -7,6 +7,7 @@ import {
   Truck, BadgeCheck, Heart, FileText,
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
+import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
 import KandeBuy from './KandeBuy'
@@ -229,12 +230,21 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                       )}
                     </div>
                   </Link>
-                  <Link
-                    href={k.addon.link ?? '/shop'}
-                    className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
-                  >
-                    Se filteret <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  {k.addon.cwsId && k.addon.price != null ? (
+                    <div className="mt-4 [&>button]:rounded-full [&>button]:py-2.5">
+                      <FilterAddToCart id={k.addon.cwsId} name={k.addon.name} price={k.addon.price} image={k.addon.img} />
+                      <Link href={k.addon.link ?? '/shop'} className="mt-2 block text-center text-[13px] font-semibold text-[#2e9a3d] hover:underline">
+                        Se filteret →
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link
+                      href={k.addon.link ?? '/shop'}
+                      className="mt-4 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all hover:shadow-lg hover:shadow-green-500/25 hover:-translate-y-0.5"
+                    >
+                      Se filteret <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               )}
 

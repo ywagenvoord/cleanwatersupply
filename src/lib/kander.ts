@@ -22,7 +22,7 @@ export type Kande = {
   points: string[]
   specs: Spec[]
   filter?: string
-  addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number; link?: string }
+  addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number; link?: string; cwsId?: string }
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
@@ -68,6 +68,8 @@ export const KANDER: Kande[] = [
       img: '/images/product-filter-udskift.jpg',
       life: '1 måned · ca. 150 L pr. filter',
       blurb: 'Det matchende udskiftningsfilter til Carmen – bevar rent vand med god smag.',
+      price: 89,
+      cwsId: 'filter-biflux-universal',
       link: '/vandkande-filtre/bi-flux-universal',
     },
     highlights: [
@@ -199,6 +201,7 @@ export const KANDER: Kande[] = [
       life: 'Ca. 3 måneders filtreret vand',
       blurb: 'De matchende skivefiltre til GlaSSmart-karaflen – filtrerer, mens du hælder.',
       price: 89,
+      cwsId: 'fast-disk',
       link: '/vandkande-filtre/fast-disk',
     },
     highlights: [
