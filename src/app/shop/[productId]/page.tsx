@@ -783,7 +783,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
       })()}
 
       {/* ─── FEATURES + SPECS ─────────────────────────────────────── */}
-      <section className="py-11 bg-gradient-to-b from-white to-[#f5fbff]">
+      <section className="pt-2 pb-11 bg-gradient-to-b from-white to-[#f5fbff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 items-start">
 
