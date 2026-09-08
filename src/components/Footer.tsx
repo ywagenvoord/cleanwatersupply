@@ -38,7 +38,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm font-semibold text-green-400 italic mb-3">
-              ECHA Article 95 godkendt · 7 log retention · Made in EU
+              Aktivstofleverandøren er opført på ECHA’s artikel 95-liste for PT5 · Made in EU
             </p>
             <a
               href="https://www.aqua-free.com"

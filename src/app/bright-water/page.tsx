@@ -217,11 +217,11 @@ export default function BrightWaterGuide() {
             </div>
             <div className="rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm divide-y divide-blue-50">
               {[
-                ['Godkendt navn', 'Bright Water®'],
+                ['Produktnavn', 'Bright Water®'],
                 ['Produkttype og anvendelse', 'PT5 – desinfektion af drikkevand i vandtanke'],
                 ['Aktivstof', 'Aktivt klor frigivet fra hypoklorsyre'],
                 ['Koncentration af aktivstof', '500 mg/l'],
-                ['Godkendelsesnummer', 'Indsættes fra den endelige godkendelse'],
+                ['Registrerings-nr.', '1003-4'],
                 ['PR-nr.', '4332417'],
                 ['UFI', '3XQP-M6FR-E00E-9UTW'],
                 ['Godkendelsesindehaver', 'Pureclean.eu ApS'],
