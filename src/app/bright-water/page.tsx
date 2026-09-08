@@ -216,7 +216,7 @@ export default function BrightWaterGuide() {
               <h2 className="text-2xl font-extrabold text-[#0a2540]">Produktinformation</h2>
             </div>
             <div className="rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm divide-y divide-blue-50">
-              {[
+              {([
                 ['Produktnavn', 'Bright Water®'],
                 ['Produkttype og anvendelse', 'PT5 – desinfektion af drikkevand i vandtanke'],
                 ['Aktivstof', 'Aktivt klor frigivet fra hypoklorsyre'],
@@ -227,10 +227,10 @@ export default function BrightWaterGuide() {
                 ['EAN · 1 liter', '5745001564001'],
                 ['EAN · 5 liter', '5745001564018'],
                 ['EAN · 20 liter', '5745001564025'],
-                ['Godkendelsesindehaver', 'Pureclean.eu ApS'],
+                ['Godkendelsesindehaver', <a href="https://pureclean.eu" target="_blank" rel="noopener noreferrer" className="text-[#284eff] font-semibold hover:underline">Pureclean.eu ApS</a>],
                 ['Adresse', 'Runddelsvej 17, 8930 Randers NØ, Danmark'],
                 ['Distribueret af', 'Clean Water Supply ApS, Strømøvej 3, 8700 Horsens'],
-              ].map(([k, v]) => (
+              ] as [string, string | JSX.Element][]).map(([k, v]) => (
                 <div key={k} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-4 px-5 py-3">
                   <span className="text-sm font-bold text-[#0a2540] sm:w-56 shrink-0">{k}</span>
                   <span className="text-sm text-gray-600">{v}</span>
