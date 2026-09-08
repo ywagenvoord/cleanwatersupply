@@ -46,7 +46,7 @@ const FAQS = [
   },
   {
     q: 'Hvordan får man rent vand i sommerhus, campingvogn eller båd?',
-    a: 'I vandtanke på campingvogn, autocamper og båd holdes vandet rent med et desinfektionsmiddel til drikkevand. Bright Water doseres 1,0 ml pr. liter vand (1 dl pr. 100 liter) og holder tankvandet frit for bakterier, så det er sikkert at drikke.',
+    a: 'I vandtanke på campingvogn, autocamper og båd kan man bruge et desinfektionsmiddel til drikkevand. Bright Water er beregnet til desinfektion af drikkevand i vandtanke og doseres 1,0 ml pr. liter vand.',
   },
   {
     q: 'Hvordan sikrer man rent vand mod Legionella?',
@@ -69,7 +69,7 @@ const FEATURED = [
 const solutions = [
   { Icon: GlassWater, title: 'Filterkander', text: 'Rent vand med god smag – uden installation.', href: '/vandkander' },
   { Icon: ShieldCheck, title: 'Filter mod Legionella', text: 'Bakteriefrit vand ved hane og bruser.', href: '/legionella' },
-  { Icon: FlaskConical, title: 'Bright Water til vandtanke', text: 'Rent drikkevand i campingvogn, autocamper og båd.', href: '/bright-water' },
+  { Icon: FlaskConical, title: 'Bright Water til vandtanke', text: 'Desinfektion af drikkevand i campingvogn, autocamper og båd.', href: '/bright-water' },
 ]
 
 export default function RentVandPage() {

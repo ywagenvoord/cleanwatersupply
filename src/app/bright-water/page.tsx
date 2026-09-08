@@ -2,32 +2,31 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import {
   Droplets, ClipboardList, ShieldAlert, Info, FileText, Phone,
-  CheckCircle2, ThermometerSun, ArrowRight, Beaker,
-  Caravan, Truck, Sailboat, Ship, Warehouse, Lightbulb,
+  ThermometerSun, ArrowRight, Beaker,
+  Caravan, Truck, Sailboat, Ship, Warehouse,
 } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Bright Water® – brugsvejledning & produktinformation',
+  title: 'Bright Water® – dosering og produktinformation',
   description:
-    'Sådan bruger du Bright Water til desinfektion af drikkevand i vandtanke: dosering, sikkerhed, opbevaring og produktinformation.',
+    'Til desinfektion af drikkevand i vandtanke. Dosering: 1,0 ml Bright Water (500 mg/L) pr. liter vand.',
   alternates: { canonical: `${SITE_URL}/bright-water` },
 }
 
 const doseTable = [
   { tank: '10 liter vand', dose: '10 ml' },
-  { tank: '50 liter vand', dose: '½ dl (50 ml)' },
-  { tank: '100 liter vand', dose: '1 dl (100 ml)' },
-  { tank: '500 liter vand', dose: '5 dl (½ liter)' },
+  { tank: '20 liter vand', dose: '20 ml' },
+  { tank: '40 liter vand', dose: '40 ml' },
+  { tank: '100 liter vand', dose: '100 ml' },
+  { tank: '200 liter vand', dose: '200 ml' },
+  { tank: '500 liter vand', dose: '500 ml' },
   { tank: '1.000 liter vand', dose: '1 liter' },
-  { tank: '5.000 liter vand', dose: '5 liter' },
-  { tank: '10.000 liter vand', dose: '10 liter' },
 ]
 
 const steps = [
   { t: 'Mål vandmængden', b: 'Find ud af, hvor mange liter drikkevand din tank indeholder.' },
-  { t: 'Doser 1 dl pr. 100 liter', b: 'Tilsæt 1,0 ml Bright Water (500 mg/L) pr. liter vand – dvs. 1 dl pr. 100 liter eller 1 liter pr. 1.000 liter.' },
-  { t: 'Rør rundt', b: 'Bland produktet godt, så det fordeles jævnt i hele vandmængden.' },
+  { t: 'Doser 1,0 ml pr. liter vand', b: 'Tilsæt 1,0 ml Bright Water (500 mg/L) pr. liter vand – dvs. 100 ml pr. 100 liter eller 1 liter pr. 1.000 liter.' },
   { t: 'Luk til', b: 'Luk tanken og emballagen godt til efter brug.' },
 ]
 
@@ -38,13 +37,13 @@ const dunke = [
   { size: '20 liter dunk', water: 'op til 20.000 liter vand' },
 ]
 
-// Typiske anvendelsesområder med vejledende tankstørrelse og dosering (1,0 ml/liter · 1 låg ≈ 10 ml).
+// Typiske anvendelsesområder med vejledende tankstørrelse og dosering (1,0 ml pr. liter vand).
 const omraader = [
-  { Icon: Caravan, sted: 'Campingvogn', tank: 'ca. 40 liter tank', dose: 'ca. ½ dl (40 ml)', laag: '≈ 4 låg' },
-  { Icon: Truck, sted: 'Autocamper', tank: 'ca. 100 liter tank', dose: '1 dl (100 ml)', laag: '≈ 10 låg' },
-  { Icon: Sailboat, sted: 'Sejlbåd / motorbåd', tank: 'ca. 200 liter tank', dose: '2 dl (200 ml)', laag: '≈ 20 låg' },
-  { Icon: Ship, sted: 'Større fartøj / husbåd', tank: 'ca. 500 liter tank', dose: '5 dl (½ liter)', laag: '' },
-  { Icon: Warehouse, sted: 'Land- & gårdtank (IBC)', tank: 'ca. 1.000 liter tank', dose: '1 liter', laag: '' },
+  { Icon: Caravan, sted: 'Campingvogn', tank: 'Fx 40 liter tank', dose: '40 ml' },
+  { Icon: Truck, sted: 'Autocamper', tank: 'Fx 100 liter tank', dose: '100 ml' },
+  { Icon: Sailboat, sted: 'Sejlbåd / motorbåd', tank: 'Fx 200 liter tank', dose: '200 ml' },
+  { Icon: Ship, sted: 'Større fartøj / husbåd', tank: 'Fx 500 liter tank', dose: '500 ml' },
+  { Icon: Warehouse, sted: 'Land- & gårdtank (IBC)', tank: 'Fx 1.000 liter tank', dose: '1 liter' },
 ]
 
 export default function BrightWaterGuide() {
@@ -59,11 +58,10 @@ export default function BrightWaterGuide() {
             PT5 · Vand-desinfektion
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0a2540] mb-4">
-            Bright Water® – brugsvejledning
+            Bright Water® – dosering og produktinformation
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Til desinfektion af drikkevand i vandtanke. Her finder du dosering, anvendelse,
-            sikkerhed og al produktinformation.
+            Til desinfektion af drikkevand i vandtanke. Dosering: 1,0 ml Bright Water (500 mg/L) pr. liter vand.
           </p>
         </div>
       </section>
@@ -95,9 +93,9 @@ export default function BrightWaterGuide() {
             <div className="mt-4 flex items-start gap-3 rounded-2xl bg-blue-50/60 ring-1 ring-blue-100 p-4">
               <Info className="w-5 h-5 text-[#284eff] shrink-0 mt-0.5" />
               <p className="text-sm text-gray-600 leading-relaxed">
-                Ved en produktkoncentration på 500 mg/L giver 1,0 ml pr. liter ca. 0,5 ppm aktivt klor
-                i det behandlede vand. Koncentrationen i det behandlede drikkevand må ikke overstige
-                0,5 mg/L (0,5 ppm). Læs altid etiketten før brug.
+                Ved en produktkoncentration på 500 mg/L svarer en dosering på 1,0 ml pr. liter vand
+                beregningsmæssigt til 0,5 mg/L aktivt klor i det behandlede vand. Koncentrationen i det
+                behandlede drikkevand må ikke overstige 0,5 mg/L (0,5 ppm).
               </p>
             </div>
           </div>
@@ -128,17 +126,7 @@ export default function BrightWaterGuide() {
                 </tbody>
               </table>
             </div>
-            <p className="text-xs text-gray-500 mt-3">Tommelfingerregel: 1 dl pr. 100 liter vand · 1 liter pr. 1.000 liter vand (blandingsforhold 1:1000).</p>
-
-            {/* Fun fact – målebæger i låget */}
-            <div className="mt-4 flex items-start gap-3 rounded-2xl bg-[#3aad4a]/10 ring-1 ring-[#3aad4a]/30 p-4">
-              <Lightbulb className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
-              <p className="text-sm text-gray-700 leading-relaxed">
-                <span className="font-bold text-[#0a2540]">Fun fact:</span> Låget på 1-liters dunken
-                rummer ca. 10 ml – præcis nok til 10 liter vand. Ét fyldt låg pr. 10 liter, så du
-                slipper for at måle op.
-              </p>
-            </div>
+            <p className="text-xs text-gray-500 mt-3">Dosering: 1,0 ml pr. liter vand · 1 liter Bright Water pr. 1.000 liter vand (blandingsforhold 1:1000).</p>
           </div>
         </div>
       </section>
@@ -153,12 +141,12 @@ export default function BrightWaterGuide() {
             <h2 className="text-2xl font-extrabold text-[#0a2540]">Hvor bruges Bright Water?</h2>
           </div>
           <p className="text-gray-600 mb-6 leading-relaxed max-w-3xl">
-            Bright Water giver rent, sikkert drikkevand i vandtanke – fx på campingvogn, autocamper og
-            sejlbåd. Herunder er vejledende tankstørrelser og dosering. Mål altid din egen tank og
-            regn med 1,0 ml pr. liter (1 dl pr. 100 liter) – eller nemt: 1 låg (10 ml) pr. 10 liter vand.
+            Bright Water er beregnet til desinfektion af drikkevand i vandtanke, eksempelvis i
+            campingvogne, autocampere og både. Herunder er vejledende tankstørrelser og dosering.
+            Mål altid din egen tank og regn med 1,0 ml pr. liter vand.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {omraader.map(({ Icon, sted, tank, dose, laag }) => (
+            {omraader.map(({ Icon, sted, tank, dose }) => (
               <div key={sted} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5">
                 <div className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-3">
                   <Icon className="w-5 h-5" />
@@ -167,7 +155,6 @@ export default function BrightWaterGuide() {
                 <p className="text-sm text-gray-500 mt-0.5">{tank}</p>
                 <p className="text-sm font-bold text-[#3aad4a] mt-2">
                   Dosering: {dose}
-                  {laag && <span className="text-gray-400 font-normal"> · {laag}</span>}
                 </p>
               </div>
             ))}
@@ -204,10 +191,10 @@ export default function BrightWaterGuide() {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {[
-                { Icon: FileText, t: 'Kun i originalemballage', b: 'Opbevar altid produktet i den originale beholder – godt lukket.' },
-                { Icon: ThermometerSun, t: 'Undgå sol & varme', b: 'Undgå direkte sollys. Tåler ikke temperaturer over 60 °C.' },
-                { Icon: ShieldAlert, t: 'Kan være korrosivt', b: 'Produktet kan være korrosivt på visse metaller.' },
-                { Icon: Droplets, t: 'Holdbarhed', b: 'Uåbnet: 1 år efter fremstillingsdato (se flasken). Efter åbning: 6 måneder.' },
+                { Icon: FileText, t: 'Opbevaring', b: 'Opbevar produktet i den originale, tæt tillukkede emballage. Undgå direkte sollys.' },
+                { Icon: ThermometerSun, t: 'Temperatur', b: 'Må ikke udsættes for temperaturer over 60 °C.' },
+                { Icon: ShieldAlert, t: 'Metaller', b: 'Produktet kan være korrosivt over for bløde metaller.' },
+                { Icon: Droplets, t: 'Holdbarhed', b: 'Uåbnet: 1 år efter fremstillingsdatoen. Efter åbning: 6 måneder.' },
               ].map(({ Icon, t, b }) => (
                 <div key={t} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-4">
                   <div className="w-10 h-10 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-3">
@@ -230,13 +217,15 @@ export default function BrightWaterGuide() {
             </div>
             <div className="rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm divide-y divide-blue-50">
               {[
-                ['Produkttype', 'PT5 – desinfektion af drikkevand'],
-                ['Formuleringstype', 'AL – andre væsker'],
-                ['Indhold', '500 mg/l aktivt klor frigivet fra hypoklorsyre'],
-                ['Maks. koncentration i behandlet vand', '0,5 mg/l (0,5 ppm)'],
+                ['Godkendt navn', 'Bright Water®'],
+                ['Produkttype og anvendelse', 'PT5 – desinfektion af drikkevand i vandtanke'],
+                ['Aktivstof', 'Aktivt klor frigivet fra hypoklorsyre'],
+                ['Koncentration af aktivstof', '500 mg/l'],
+                ['Godkendelsesnummer', 'Indsættes fra den endelige godkendelse'],
                 ['PR-nr.', '4332417'],
                 ['UFI', '3XQP-M6FR-E00E-9UTW'],
-                ['Godkendelsesindehaver', 'Pureclean.eu ApS, Runddelsvej 17, 8930 Randers'],
+                ['Godkendelsesindehaver', 'Pureclean.eu ApS'],
+                ['Adresse', 'Runddelsvej 17, 8930 Randers NØ, Danmark'],
                 ['Distribueret af', 'Clean Water Supply ApS, Strømøvej 3, 8700 Horsens'],
               ].map(([k, v]) => (
                 <div key={k} className="flex flex-col sm:flex-row sm:items-baseline gap-0.5 sm:gap-4 px-5 py-3">
@@ -280,10 +269,11 @@ export default function BrightWaterGuide() {
               </span>
             </Link>
           </div>
-          <p className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-6 text-center">
-            <CheckCircle2 className="w-4 h-4 text-[#3aad4a] shrink-0" />
-            Læs altid produktets etiket før brug.
-          </p>
+          <div className="mt-8 rounded-2xl bg-[#0a2540] text-white p-5 text-center ring-1 ring-[#0a2540]">
+            <p className="text-sm font-bold leading-relaxed">
+              Biocider skal anvendes på forsvarlig vis. Læs altid mærkningen og produktoplysningerne før anvendelse.
+            </p>
+          </div>
         </div>
       </section>
     </main>
