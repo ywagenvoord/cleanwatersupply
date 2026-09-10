@@ -45,7 +45,7 @@ function OptionCard({
 }
 
 export default function BuyBox({ product }: { product: Product }) {
-  const { addItem } = useCart()
+  const { addItem, items: cartItems } = useCart()
   const [added, setAdded]           = useState(false)
   const [withInstall, setWithInstall] = useState(true)
   const [showZones, setShowZones]   = useState(false)
@@ -141,12 +141,15 @@ export default function BuyBox({ product }: { product: Product }) {
   // Køb nu → dynamisk Stripe Checkout med den AKTUELLE pris (aldrig et dødt link).
   async function buyNow(extraStripeIds: string[] = []) {
     if (!stripeProductId || unitPrice == null || buying) return
+    // Læg produktet i kurven og gå til kassen med HELE kurven (aldrig tom kurv til kassen)
+    addItem({ id: product.id, stripeProductId, name: product.name, price: unitPrice, image: product.imgSrc }, qty)
     setBuying(true)
     try {
-      const items = [
-        { stripeProductId: stripeProductId, quantity: qty },
-        ...extraStripeIds.map((id) => ({ stripeProductId: id, quantity: 1 })),
-      ]
+      const map = new Map<string, number>()
+      for (const it of cartItems) map.set(it.stripeProductId, (map.get(it.stripeProductId) ?? 0) + it.quantity)
+      map.set(stripeProductId, (map.get(stripeProductId) ?? 0) + qty)
+      for (const id of extraStripeIds) map.set(id, (map.get(id) ?? 0) + 1)
+      const items = Array.from(map, ([id, quantity]) => ({ stripeProductId: id, quantity }))
       const res = await fetch('/api/checkout', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },

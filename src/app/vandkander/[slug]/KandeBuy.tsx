@@ -8,7 +8,7 @@ import { ArrowRight, ShoppingBag, Check, Loader2, Minus, Plus } from 'lucide-rea
 export default function KandeBuy({
   stripeProductId, name, price, image,
 }: { stripeProductId: string; name: string; price: number; image?: string }) {
-  const { addItem } = useCart()
+  const { addItem, items } = useCart()
   const [added, setAdded] = useState(false)
   const [buying, setBuying] = useState(false)
   const [qty, setQty] = useState(1)
@@ -21,12 +21,18 @@ export default function KandeBuy({
 
   async function buyNow() {
     if (buying) return
+    // Læg produktet i kurven og gå til kassen med HELE kurven (aldrig tom kurv til kassen)
+    addItem({ id: stripeProductId, stripeProductId, name, price, image: image ?? '' }, qty)
     setBuying(true)
     try {
+      const map = new Map<string, number>()
+      for (const it of items) map.set(it.stripeProductId, (map.get(it.stripeProductId) ?? 0) + it.quantity)
+      map.set(stripeProductId, (map.get(stripeProductId) ?? 0) + qty)
+      const checkoutItems = Array.from(map, ([id, quantity]) => ({ stripeProductId: id, quantity }))
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: [{ stripeProductId, quantity: qty }] }),
+        body: JSON.stringify({ items: checkoutItems }),
       })
       const data = await res.json()
       if (res.ok && data.url) {
