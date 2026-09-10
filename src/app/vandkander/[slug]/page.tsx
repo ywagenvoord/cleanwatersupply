@@ -209,40 +209,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </span>
               </div>
 
-              {/* Tilkøb: filtre der passer i kanden / matchende filter */}
-              {k.compatFilters && k.compatFilters.length > 0 ? (
-                <div className="mt-5 rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5 max-w-md">
-                  <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
-                    Vælg det filter, der passer til dit vand
-                  </p>
-                  <p className="text-[13px] text-gray-600 mt-1 mb-4">
-                    Alle tre Bi-flux®-filtre passer i kanden – skift efter dit behov.
-                  </p>
-                  <div className="space-y-3">
-                    {k.compatFilters.map((slug) => {
-                      const f = getFilter(slug)
-                      if (!f) return null
-                      return (
-                        <div key={f.slug} className="flex items-center gap-3 rounded-xl bg-white ring-1 ring-gray-100 p-2.5">
-                          <Link href={`/vandkande-filtre/${f.slug}`} className="w-14 h-14 shrink-0 rounded-lg bg-gray-50 flex items-center justify-center p-1.5">
-                            <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain" />
-                          </Link>
-                          <div className="min-w-0 flex-1">
-                            <Link href={`/vandkande-filtre/${f.slug}`} className="block text-[13px] font-extrabold text-[#0a2540] leading-snug hover:text-[#2e9a3d] transition-colors">{f.name}</Link>
-                            <p className="text-[11px] text-gray-500 leading-snug truncate">{f.tagline}</p>
-                            {f.price != null && <p className="text-sm font-extrabold text-[#0a2540] mt-0.5">{f.price.toLocaleString('da-DK')} kr</p>}
-                          </div>
-                          {f.cwsId && f.price != null && (
-                            <div className="shrink-0 [&>button]:rounded-full [&>button]:px-3.5 [&>button]:py-2 [&>button]:text-xs [&>button]:whitespace-nowrap">
-                              <FilterAddToCart id={f.cwsId} name={f.name} price={f.price} image={f.img} />
-                            </div>
-                          )}
-                        </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              ) : k.addon ? (
+              {/* Tilkøb: matchende filter (kun kander uden filter-række nedenfor) */}
+              {!(k.compatFilters && k.compatFilters.length > 0) && k.addon && (
                 <div className="mt-5 rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5 max-w-md">
                   <p className="text-sm font-extrabold text-[#0a2540] leading-snug">
                     Skal du være dækket ind fra start?
@@ -284,7 +252,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     </Link>
                   )}
                 </div>
-              ) : null}
+              )}
 
 
             </div>
@@ -292,6 +260,54 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* ─── FILTRE DER PASSER I KANDEN (vandret, under hero) ─ */}
+      {k.compatFilters && k.compatFilters.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-1 pb-4">
+          <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-5 sm:p-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
+              <div>
+                <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Vælg dit filter</span>
+                <h2 className="text-lg font-extrabold text-[#0a2540] leading-tight">Filtre der passer i kanden</h2>
+              </div>
+              <p className="text-[13px] text-gray-500">Alle tre Bi-flux®-filtre passer – skift efter dit behov.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {k.compatFilters.map((slug) => {
+                const f = getFilter(slug)
+                if (!f) return null
+                return (
+                  <div key={f.slug} className="rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm p-4 flex flex-col">
+                    <Link href={`/vandkande-filtre/${f.slug}`} className="group flex items-center gap-3 mb-3">
+                      <span className="w-16 h-16 shrink-0 rounded-xl bg-gray-50 flex items-center justify-center p-1.5">
+                        <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block text-sm font-extrabold text-[#0a2540] leading-snug group-hover:text-[#2e9a3d] transition-colors">{f.name}</span>
+                        <span className="block text-[12px] text-gray-500 leading-snug">{f.tagline}</span>
+                      </span>
+                    </Link>
+                    {f.price != null && (
+                      <p className="text-base font-extrabold text-[#0a2540] mb-3">{f.price.toLocaleString('da-DK')} kr <span className="text-xs font-medium text-gray-400">inkl. moms</span></p>
+                    )}
+                    <div className="mt-auto">
+                      {f.cwsId && f.price != null ? (
+                        <div className="[&>button]:rounded-full [&>button]:py-2.5">
+                          <FilterAddToCart id={f.cwsId} name={f.name} price={f.price} image={f.img} />
+                        </div>
+                      ) : (
+                        <Link href={`/vandkande-filtre/${f.slug}`} className="w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5">
+                          Se filteret <ArrowRight className="w-4 h-4" />
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── HIGHLIGHTS ────────────────────────────────────── */}
       {k.highlights && k.highlights.length > 0 && (
