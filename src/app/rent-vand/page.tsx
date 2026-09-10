@@ -60,7 +60,7 @@ const FAQS = [
 
 // Laica-filterkander der løfter drikkeoplevelsen (sælgende produktsektion)
 const FEATURED = [
-  { slug: 'mikroplastik-stop', link: '/vandkander/mikroplastik-stop', sell: 'Stopper >99,99 % mikroplast – rent vand du kan smage forskel på.' },
+  { slug: 'mikroplastik-stop', link: '/vandkander/mikroplastik-stop', sell: 'Antibakterielt filter der beskytter mod bakterier – trygt drikkevand til hele familien.' },
   { slug: 'glassmart', link: '/vandkander/glassmart', sell: 'Elegant glaskaraffel med altid koldt, filtreret vand i køleskabet.' },
   { slug: 'carmen', link: '/shop/kande-carmen', sell: 'Den enkle hverdagskande – bedre smag, mindre klor og kalk.' },
 ].map(({ slug, link, sell }) => ({ k: getKande(slug), link, sell }))

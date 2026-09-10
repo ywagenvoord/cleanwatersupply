@@ -94,33 +94,33 @@ export const KANDER: Kande[] = [
     stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
-    name: 'Vandkande med filter MikroPLASTIK-STOP™',
-    art: 'Art. UFSBE02',
+    name: 'Vandkande med filter Germ-Stop™',
+    art: 'Laica Predator',
     img: '/images/kande-mikroplastik-stop.jpg',
-    video: '/videos/mikroplastik-stop.mp4',
     gallery: [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',
     ],
-    tagline: 'Den første kande med dobbelt filter, der stopper mikroplast.',
+    tagline: 'Tryghed i hver tår – kanden med antibakterielt filter til hele familien.',
     capacity: '3 L total · 2 L filtreret',
-    highlight: 'Fjerner 99,99 % mikroplast',
+    highlight: 'Beskytter mod bakterier',
     intro:
-      'MikroPLASTIK-STOP™ er den første vandkande med filter med et modulært dobbelt-filtersystem, der blokerer ' +
-      'mikroplast. Bi-flux®-filteret reducerer hårdhed og uønskede stoffer, mens MikroPLASTIK-STOP™-filteret ' +
-      'fjerner de mikroskopiske plastpartikler – uden at fjerne de nyttige mineralsalte, kroppen har brug for. ' +
-      'Effektiviteten er testet af uafhængige laboratorier i Italien og Tyskland. ' +
-      'Kanden er bygget på Laica Predator – med automatisk Quickfill-låg til hurtig påfyldning, en batterifri ' +
-      'analog skift-tæller og en aftagelig elektronisk indikator for filterets levetid. Made in Italy.',
+      'Som forælder vil du det allerbedste for dine børn – også når de rækker op efter et glas vand. ' +
+      'Germ-Stop™ er vandkanden med et antibakterielt filter, der beskytter mod bakterier i vandet, så de mindste ' +
+      'kan drikke trygt. Filteret renser samtidig vandet for kalk, klor og uønskede stoffer – uden at fjerne de ' +
+      'nyttige mineralsalte, som kroppen har brug for. ' +
+      'Kanden er bygget på den robuste Laica Predator med automatisk Quickfill-låg til hurtig påfyldning og en ' +
+      'batterifri skift-tæller, så du altid ved, hvornår filteret skal skiftes. Rent, trygt vand – lige ved ' +
+      'hånden hele dagen. Made in Italy.',
     points: [
-      'Dobbelt, modulært filtersystem: Bi-flux® + MikroPLASTIK-STOP™',
-      'Fjerner >99,99 % af mikroplast ≥ 1 µm (testet af uafhængige labs)',
-      'Bevarer de nyttige mineralsalte i vandet',
+      'Antibakterielt filter – beskytter mod bakterier i vandet',
+      'Trygt drikkevand til hele familien, også de mindste',
+      'Renser for kalk, klor og uønskede stoffer',
+      'Bevarer de nyttige mineralsalte, kroppen har brug for',
       'Automatisk “Quickfill”-låg – fyld hurtigt direkte under hanen',
-      'Batterifri analog skift-tæller + aftagelig elektronisk levetidsindikator',
-      'Fødevaregodkendte materialer · 100 % genanvendelig emballage · Made in Italy',
-      'Fås kun i hvid',
+      'Batterifri skift-tæller, så du aldrig er i tvivl om filterskift',
+      'Fødevaregodkendte materialer · Made in Italy',
     ],
     specs: [
       { label: 'Model', value: 'Laica Predator' },
@@ -129,34 +129,33 @@ export const KANDER: Kande[] = [
       { label: 'Mål (H×B×D)', value: '27,8 × 27,8 × 11,4 cm' },
       { label: 'Vægt', value: '0,95 kg' },
       { label: 'Farve', value: 'Hvid' },
-      { label: 'Filtreringssystem', value: 'Dobbelt modulært (Bi-flux® + MikroPLASTIK-STOP™)' },
+      { label: 'Filter', value: 'Germ-Stop™ antibakterielt filter' },
       { label: 'Made in', value: 'Italien' },
-      { label: 'EAN', value: '8013240705941' },
-      { label: 'Indhold', value: 'Kande + 1 Bi-flux®-filter + 1 MikroPLASTIK-STOP™-filter + manual' },
+      { label: 'Indhold', value: 'Kande + 1 Germ-Stop™-filter + manual' },
     ],
-    filter: 'Bi-flux® + MikroPLASTIK-STOP™',
+    filter: 'Germ-Stop™ antibakterielt filter',
     addon: {
-      name: 'Bi-flux® + MikroPLASTIK-STOP™-filter',
-      art: 'Art. UFSBE02',
+      name: 'Germ-Stop™ udskiftningsfilter',
+      art: 'Til Germ-Stop-kanden',
       img: '/images/product-filter-udskift.jpg',
       life: '1 måned · ca. 150 L pr. filter',
-      blurb: 'Dobbelt-filtersættet der matcher MikroPLASTIK-STOP™ og fjerner mikroplast.',
+      blurb: 'Det matchende udskiftningsfilter til Germ-Stop – bevar det trygge, bakteriebeskyttede vand.',
       link: '/shop/mikroplastik-stop-filter',
     },
     highlights: [
-      { icon: 'shield', title: 'Fjerner 99,99 % mikroplast', text: 'Testet af uafhængige laboratorier i Italien og Tyskland.' },
+      { icon: 'shield', title: 'Beskytter mod bakterier', text: 'Antibakterielt filter, der giver tryghed i hver tår – også for de mindste.' },
+      { icon: 'droplet', title: 'Trygt til børnefamilier', text: 'Rent vand, som hele familien kan drikke uden bekymring.' },
       { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Fjerner ikke de nyttige mineraler, kroppen har brug for.' },
-      { icon: 'droplet', title: 'Dobbelt filtersystem', text: 'Bi-flux® + MikroPLASTIK-STOP™ samlet i én kande.' },
-      { icon: 'recycle', title: '100 % genanvendelig', text: 'Fødevaregodkendte materialer og genanvendelig emballage.' },
+      { icon: 'timer', title: 'Nem i hverdagen', text: 'Quickfill-låg og batterifri skift-tæller gør det let at holde vandet rent.' },
     ],
-    eco: 'Reducér mikroplast og engangsflasker på én gang – filteret rækker til ca. 150 liter.',
+    eco: 'Tryghed for familien og færre engangs-plastflasker på én gang – filteret rækker til ca. 150 liter.',
     steps: [
-      'Læg begge filtre (Bi-flux® og MikroPLASTIK-STOP™) i blød i en skål eller balje med rent, koldt vand, så de begge er dækket – i ca. 10-15 minutter',
-      'Skyl begge filtre under rindende vand',
-      'Monter begge filtre i tragten inde i kanden',
-      'Fyld tragten med koldt vand',
-      'Lad vandet løbe gennem dobbelt-filtersystemet',
-      'Nyd vand fri for mikroplast – med de nyttige mineraler bevaret',
+      'Læg Germ-Stop™-filteret i blød i en skål med rent, koldt vand i ca. 10-15 minutter',
+      'Skyl filteret under rindende vand',
+      'Monter filteret i tragten inde i kanden',
+      'Fyld tragten med koldt vand via Quickfill-låget',
+      'Lad vandet løbe gennem det antibakterielle filter',
+      'Nyd rent, trygt vand – med de nyttige mineraler bevaret',
     ],
   },
   {

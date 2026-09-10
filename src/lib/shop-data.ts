@@ -17,7 +17,7 @@ const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
 // Kort, sælgende beskrivelse på shop-kortet for Stripe-only produkter
 // (ellers vises kun "Tilgængelig via Stripe"). Holdes på 1-2 linjer.
 const SHOP_TAGLINES: Record<string, string> = {
-  'prod_V2wDbJ1i8O20Kj': 'Reducerer mikroplast, kalk & klor · inkl. 1 Bi-flux®-filter · rent vand fra første dag',
+  'prod_V2wDbJ1i8O20Kj': 'Antibakterielt filter, der beskytter mod bakterier · trygt drikkevand til hele familien',
   'prod_V2wFs5adWhY4cF': 'Elegant glas-karaffel med filter · altid koldt, filtreret vand klar i køleskabet',
   'prod_V2wHIQrdoXx6RG': 'Udskiftningsfiltre til GlaSSmart · 3 stk. · frisk, filtreret vand hele tiden',
 }
