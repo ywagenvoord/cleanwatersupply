@@ -112,6 +112,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <ProductGallery
                 items={[
                   { src: k.img },
+                  ...(k.video ? [{ src: k.video, video: true }] : []),
                   ...(k.lifestyle ?? []).map((src) => ({ src, cover: true })),
                   ...(k.gallery ?? []).map((src) => ({ src })),
                   ...(k.lifestyleEnd ?? []).map((src) => ({ src, cover: true })),
@@ -252,26 +253,6 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              {/* Produktvideo – ramme i højre kolonne, matcher tilkøbsboksens størrelse */}
-              {k.video && (
-                <>
-                <h2 className="mt-8 mb-3 text-lg font-extrabold text-[#0a2540] flex items-center gap-2">
-                  Tryghed til hele familien
-                  <Heart className="w-5 h-5 text-[#e0245e] fill-[#e0245e]" />
-                </h2>
-                <div className="w-full rounded-2xl overflow-hidden ring-1 ring-gray-200 bg-black shadow-sm">
-                  <video
-                    src={k.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    controls
-                    className="w-full h-[380px] object-cover block"
-                  />
-                </div>
-                </>
-              )}
 
             </div>
 
