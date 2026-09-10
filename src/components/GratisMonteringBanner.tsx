@@ -53,16 +53,16 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
         <div className="absolute right-24 bottom-[-60px] w-40 h-40 rounded-full bg-white/5" />
         <div className="absolute left-[-40px] bottom-[-50px] w-48 h-48 rounded-full bg-[#3aad4a]/20" />
 
-        <div className="relative grid md:grid-cols-[1.4fr,1fr] gap-8 items-center p-8 md:p-12">
+        <div className="relative grid md:grid-cols-[1.4fr,1fr] gap-6 items-center p-6 md:p-8">
           <div>
-            <span className="inline-flex items-center gap-2 bg-[#3aad4a] text-white text-xs font-bold px-4 py-1.5 rounded-full mb-5 uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" /> Tidsbegrænset tilbud
+            <span className="inline-flex items-center gap-2 bg-[#3aad4a] text-white text-[11px] font-bold px-3.5 py-1 rounded-full mb-3.5 uppercase tracking-widest">
+              <Sparkles className="w-3 h-3" /> Tidsbegrænset tilbud
             </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold leading-[1.05] mb-4">
-              Gratis montering<br />
-              <span className="text-white/85 text-2xl md:text-3xl font-bold">af dit blødgøringsanlæg</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold leading-[1.1] mb-2.5">
+              Gratis montering{' '}
+              <span className="text-white/85 text-lg md:text-xl font-bold">af dit blødgøringsanlæg</span>
             </h2>
-            <p className="text-lg text-white/90 max-w-xl">
+            <p className="text-sm md:text-base text-white/90 max-w-xl">
               Køb et blødgøringsanlæg nu, og vi monterer det <strong className="text-white">helt gratis</strong> – du sparer{' '}
               <span className="whitespace-nowrap font-bold">{pris} kr.</span>
             </p>
@@ -71,10 +71,10 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
               Tilbuddet gælder til og med {GRATIS_MONTERING.endLabel}. Kørsel tillægges fortsat uden for blå zone.
             </p>
 
-            <CampaignCountdown className="mt-6" />
+            <CampaignCountdown className="mt-4" />
 
             {showCtas && (
-              <div className="flex flex-wrap gap-3 mt-7">
+              <div className="flex flex-wrap gap-3 mt-5">
                 <Link
                   href="/shop/blosgoringsanlaeg-100m"
                   className="inline-flex items-center justify-center gap-2 bg-white text-[#0a2540] hover:bg-white/90 py-3 px-6 rounded-xl text-sm font-bold transition-all hover:-translate-y-0.5 hover:shadow-lg"
@@ -93,11 +93,11 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
 
           {/* pris-visual */}
           <div className="hidden md:flex justify-center">
-            <div className="relative w-52 h-52 rounded-full bg-white/10 border border-white/20 flex flex-col items-center justify-center text-center">
-              <Wrench className="w-8 h-8 text-white/80 mb-1" />
-              <span className="text-white/60 text-sm line-through">{pris} kr.</span>
-              <span className="text-5xl font-extrabold leading-none mt-1">0 kr.</span>
-              <span className="text-white/80 text-sm font-semibold mt-1">montering</span>
+            <div className="relative w-36 h-36 rounded-full bg-white/10 border border-white/20 flex flex-col items-center justify-center text-center">
+              <Wrench className="w-6 h-6 text-white/80 mb-0.5" />
+              <span className="text-white/60 text-xs line-through">{pris} kr.</span>
+              <span className="text-3xl font-extrabold leading-none mt-0.5">0 kr.</span>
+              <span className="text-white/80 text-xs font-semibold mt-0.5">montering</span>
             </div>
           </div>
         </div>
