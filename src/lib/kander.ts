@@ -5,6 +5,7 @@ export type Spec = { label: string; value: string }
 export type Kande = {
   slug: string
   name: string
+  heading?: string           // følelsesladet H1 på produktsiden (name bruges stadig i kurv/kort/meta)
   art: string
   img: string
   tagline: string
@@ -96,6 +97,7 @@ export const KANDER: Kande[] = [
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
     name: 'Vandkande med filter Germ-stop',
+    heading: 'Rent vand, dine børn kan drikke trygt',
     art: 'Laica Predator',
     img: '/images/kande-germ-stop.png',
     gallery: [
