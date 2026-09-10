@@ -465,19 +465,19 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
               {/* Key highlights – fangende ikon-kort */}
               {product.highlights.length > 0 && (
-                <div className="order-1 lg:order-none grid gap-2.5 mb-8">
+                <div className="order-1 lg:order-none grid gap-2 mb-6">
                   {product.highlights.map((h, i) => {
                     const Icon = HL_ICONS[i % HL_ICONS.length]
                     const color = HL_COLORS[i % HL_COLORS.length]
                     return (
                       <div
                         key={i}
-                        className="group flex items-center gap-3.5 bg-white ring-1 ring-blue-100 rounded-2xl px-4 py-3 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                        className="group flex items-center gap-2.5 bg-white ring-1 ring-blue-100 rounded-xl px-3 py-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
                       >
-                        <span className={`w-11 h-11 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shrink-0 shadow-md group-hover:scale-105 transition-transform`}>
-                          <Icon className="w-5 h-5 text-white" strokeWidth={2.3} />
+                        <span className={`w-7 h-7 rounded-lg bg-gradient-to-br ${color} flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform`}>
+                          <Icon className="w-3.5 h-3.5 text-white" strokeWidth={2.3} />
                         </span>
-                        <span className="text-[15px] font-extrabold text-[#0a2540] leading-snug">{h}</span>
+                        <span className="text-[13px] font-bold text-[#0a2540] leading-snug">{h}</span>
                       </div>
                     )
                   })}
