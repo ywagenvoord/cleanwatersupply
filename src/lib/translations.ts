@@ -228,30 +228,30 @@ export const translations = {
     aboutPage: {
       hero: {
         badge: 'Om Clean Water Supply',
-        headline: 'Rent vand er ikke et privilegium – det er en selvfølge',
-        subheadline: 'Hos Clean Water Supply arbejder vi passioneret for at sikre, at alle har adgang til rent, sikkert og sundt vand – uanset behov og størrelse.',
+        headline: 'Rent, sikkert vand til dig og din familie',
+        subheadline: 'Hos Clean Water Supply hjælper vi danske familier med rent, bakteriefrit drikkevand i hverdagen – så du trygt kan give det bedste vand til dem, du holder mest af.',
       },
       mission: {
         badge: 'Vores mission',
-        headline: 'Vi er her for at gøre bakteriefrit vand tilgængeligt for alle',
-        body: 'Clean Water Supply blev grundlagt i 2023 med én klar vision: at levere vandløsninger af højeste kvalitet til alle – uanset størrelse, behov eller budget. Vi tror på, at bakteriefrit og sikkert vand er en grundlæggende rettighed, ikke et privilegium for de få.',
-        body2: 'Allerede inden grundlæggelsen i 2023 – og lige siden – har vi arbejdet hårdt og målrettet på at kunne præsentere de bedste løsninger, der lever op til vores kunders behov. Vi kombinerer den nyeste teknologi med personlig service og et dybt engagement i kvalitet, og vi er stolte af hvert eneste anlæg, vi installerer, og hvert eneste samarbejde, vi indgår. Vi leverer også løsninger til landbruget, hvor rent, bakteriefrit vand beskytter dyrene mod bakterier og sygdomme og styrker deres sundhed og trivsel.',
+        headline: 'Tryghed ved hanen – for hele familien',
+        body: 'Clean Water Supply blev grundlagt i 2023 med ét klart formål: at gøre rent, bakteriefrit drikkevand til en naturlig del af hverdagen i danske hjem. Vandet, vi drikker, laver mad med og giver vores børn, skal man kunne stole på – og det er præcis den tryghed, vi arbejder for.',
+        body2: 'Vi hjælper familier med at få sikkert vand direkte fra hanen med gennemprøvede, certificerede løsninger og personlig rådgivning – fra det rette filter til det færdige blødgøringsanlæg. Vi kombinerer moderne teknologi med tæt service og et grundigt fokus på kvalitet, og vi står bag hver eneste løsning, vi leverer. Samme høje standard bringer vi med ud til erhverv og landbrug, hvor rent, bakteriefrit vand beskytter både mennesker og dyr mod bakterier og sygdom.',
       },
       vision: {
         badge: 'Vores vision',
-        headline: 'Et Danmark med bakteriefrit vand til alle',
-        body: 'Vi arbejder mod en fremtid, hvor alle hjem og virksomheder i Danmark har adgang til bakteriefrit og sikkert vand. Vores vision er at blive Danmarks foretrukne leverandør af vandbehandlingsløsninger – bygget på tillid, kvalitet og innovation.',
+        headline: 'Et Danmark hvor rent vand er en selvfølge',
+        body: 'Vi arbejder mod en fremtid, hvor enhver familie trygt kan drikke vandet fra deres egen hane. Vores vision er at blive danske hjems foretrukne valg, når det gælder rent og sikkert vand – bygget på tillid, dokumenteret kvalitet og nærværende service.',
       },
       values: {
         badge: 'Vores værdier',
         headline: 'Det vi tror på',
         items: [
-          { title: 'Kvalitet', description: 'Vi går aldrig på kompromis med kvaliteten af vores produkter og service. Certificering og godkendelse er ikke forhandlingsbart.' },
-          { title: 'Kvalitet & ansvar', description: 'Vi prioriterer effektive løsninger af høj kvalitet i alt, hvad vi gør. Fremtiden starter med de valg vi træffer i dag.' },
+          { title: 'Sikkerhed', description: 'Familiens sundhed kommer først. Vores løsninger er dokumenterede og certificerede, så du trygt kan stole på vandet i dit hjem.' },
+          { title: 'Kvalitet', description: 'Vi går aldrig på kompromis med kvaliteten af vores produkter og service. Certificering og godkendelse er ikke til forhandling.' },
           { title: 'Innovation', description: 'Vi holder os konstant opdateret med den nyeste teknologi inden for vandbehandling og deler den viden med vores kunder.' },
-          { title: 'Tillid', description: 'Vi bygger langvarige relationer baseret på ærlighed, transparens og opfyldelse af vores løfter.' },
-          { title: 'Service', description: 'Vi er altid klar til at hjælpe vores kunder med professionel og personlig service – før, under og efter installation.' },
-          { title: 'Tilgængelighed', description: 'Vi tror på, at rent vand skal være tilgængeligt for alle – ikke kun de privilegerede. Det driver alt vi gør.' },
+          { title: 'Tillid', description: 'Vi bygger langvarige relationer baseret på ærlighed, åbenhed og opfyldelse af vores løfter.' },
+          { title: 'Service', description: 'Vi er altid klar til at hjælpe med professionel og personlig rådgivning – før, under og efter installation.' },
+          { title: 'Tilgængelighed', description: 'Vi tror på, at rent vand skal være en selvfølge for alle familier – ikke et privilegium for de få. Det driver alt, vi gør.' },
         ],
       },
       sustainability: {
@@ -267,7 +267,7 @@ export const translations = {
       },
       cta: {
         headline: 'Bliv en del af Clean Water Supply-familien',
-        subheadline: 'Kontakt os og find ud af, hvordan vi kan hjælpe dig med rent vand af høj kvalitet.',
+        subheadline: 'Kontakt os, og find ud af, hvordan vi giver dit hjem rent, sikkert vand – hver dag.',
         button: 'Kontakt os i dag',
       },
     },
@@ -677,30 +677,30 @@ export const translations = {
     aboutPage: {
       hero: {
         badge: 'About Clean Water Supply',
-        headline: 'Clean water is not a privilege – it is a given',
-        subheadline: 'At Clean Water Supply, we work passionately to ensure that everyone has access to clean, safe, and healthy water – regardless of need or scale.',
+        headline: 'Clean, safe water for you and your family',
+        subheadline: 'At Clean Water Supply, we help families get clean, bacteria-free drinking water every day – so you can give the very best water to the people you love, with complete peace of mind.',
       },
       mission: {
         badge: 'Our Mission',
-        headline: 'We are here to make bacteria-free water accessible to all',
-        body: 'Clean Water Supply was founded in 2023 with one clear vision: to deliver water solutions of the highest quality to everyone – regardless of size, need, or budget. We believe that bacteria-free and safe water is a fundamental right, not a privilege for the few.',
-        body2: "Even before our founding in 2023 – and ever since – we have worked hard and purposefully to be able to present the best solutions that meet our customers' needs. We combine the latest technology with personal service and a deep commitment to quality, and we are proud of every system we install and every collaboration we enter. We also deliver solutions for agriculture, where clean, bacteria-free drinking water protects animals from bacteria and disease and strengthens their health and welfare.",
+        headline: 'Peace of mind at the tap – for the whole family',
+        body: 'Clean Water Supply was founded in 2023 with one clear purpose: to make clean, bacteria-free drinking water a natural part of everyday life in Danish homes. The water we drink, cook with and give our children should be something we can trust – and that is exactly the peace of mind we work for.',
+        body2: "We help families get safe water straight from the tap with proven, certified solutions and personal guidance – from the right filter to a complete water softening system. We combine modern technology with close service and a thorough focus on quality, and we stand behind every solution we deliver. We bring that same high standard to business and agriculture, where clean, bacteria-free water protects both people and animals from bacteria and disease.",
       },
       vision: {
         badge: 'Our Vision',
-        headline: 'A Denmark with bacteria-free water for all',
-        body: "We are working towards a future where all homes and businesses in Denmark have access to bacteria-free, safe water. Our vision is to become Denmark's preferred provider of water treatment solutions – built on trust, quality, and innovation.",
+        headline: 'A Denmark where clean water is a given',
+        body: "We are working towards a future where every family can safely drink the water from their own tap. Our vision is to become the first choice of Danish homes for clean, safe water – built on trust, documented quality, and attentive service.",
       },
       values: {
         badge: 'Our Values',
         headline: 'What we believe in',
         items: [
+          { title: 'Safety', description: 'Your family\'s health comes first. Our solutions are documented and certified, so you can trust the water in your home.' },
           { title: 'Quality', description: 'We never compromise on the quality of our products and service. Certification and approval are non-negotiable.' },
-          { title: 'Quality & responsibility', description: 'We prioritize effective, high-quality solutions in everything we do. The future starts with the choices we make today.' },
           { title: 'Innovation', description: 'We constantly keep up to date with the latest technology in water treatment and share that knowledge with our customers.' },
           { title: 'Trust', description: 'We build long-lasting relationships based on honesty, transparency, and keeping our promises.' },
-          { title: 'Service', description: 'We are always ready to help our customers with professional and personal service – before, during, and after installation.' },
-          { title: 'Accessibility', description: 'We believe clean water should be accessible to all – not just the privileged. That drives everything we do.' },
+          { title: 'Service', description: 'We are always ready to help with professional and personal guidance – before, during, and after installation.' },
+          { title: 'Accessibility', description: 'We believe clean water should be a given for every family – not a privilege for the few. That drives everything we do.' },
         ],
       },
       sustainability: {
@@ -716,7 +716,7 @@ export const translations = {
       },
       cta: {
         headline: 'Become part of the Clean Water Supply family',
-        subheadline: 'Contact us and find out how we can help you with clean, high-quality water.',
+        subheadline: 'Contact us and find out how we bring your home clean, safe water – every day.',
         button: 'Contact us today',
       },
     },
