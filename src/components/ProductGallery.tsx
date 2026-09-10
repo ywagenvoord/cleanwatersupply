@@ -38,7 +38,7 @@ export default function ProductGallery({
             muted
             playsInline
             preload="metadata"
-            className="absolute inset-0 w-full h-full object-contain bg-black"
+            className="absolute inset-0 w-full h-full object-cover"
           />
         ) : current.cover ? (
           <img src={current.src} alt={alt} className="absolute inset-0 w-full h-full object-cover" />
