@@ -358,22 +358,22 @@ export default function ContactPage() {
                 <p className="font-bold text-[#0a2540] text-xl">{member.name}</p>
                 <p className="text-[#3aad4a] text-sm font-medium">{member.role}</p>
                 <p className="text-gray-400 text-xs italic mb-4">{member.roleEn}</p>
+                <a
+                  href={`mailto:${member.email}`}
+                  className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs mb-2 transition-colors whitespace-nowrap"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#3aad4a] shrink-0" />
+                  {member.email}
+                </a>
                 {member.phone && (
                   <a
                     href={`tel:${member.phone.replace(/\s/g, '')}`}
-                    className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs mb-2 transition-colors"
+                    className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#3aad4a]" />
                     {member.phone}
                   </a>
                 )}
-                <a
-                  href={`mailto:${member.email}`}
-                  className="flex items-center justify-center gap-1.5 text-gray-500 hover:text-[#0a2540] text-xs transition-colors whitespace-nowrap"
-                >
-                  <Mail className="w-3.5 h-3.5 text-[#3aad4a] shrink-0" />
-                  {member.email}
-                </a>
               </div>
             ))}
           </div>
