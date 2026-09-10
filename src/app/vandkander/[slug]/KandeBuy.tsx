@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
-import { ArrowRight, ShoppingBag, Check, Loader2 } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Check, Loader2, Minus, Plus } from 'lucide-react'
 
 /* Køb direkte fra kande-siden: "Køb nu" (dynamisk Stripe Checkout) + "Tilføj til kurv". */
 export default function KandeBuy({
@@ -11,9 +11,10 @@ export default function KandeBuy({
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [buying, setBuying] = useState(false)
+  const [qty, setQty] = useState(1)
 
   function add() {
-    addItem({ id: stripeProductId, stripeProductId, name, price, image: image ?? '' })
+    addItem({ id: stripeProductId, stripeProductId, name, price, image: image ?? '' }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }
@@ -25,7 +26,7 @@ export default function KandeBuy({
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: [{ stripeProductId, quantity: 1 }] }),
+        body: JSON.stringify({ items: [{ stripeProductId, quantity: qty }] }),
       })
       const data = await res.json()
       if (res.ok && data.url) {
@@ -41,7 +42,31 @@ export default function KandeBuy({
   }
 
   return (
-    <div className="flex flex-col sm:flex-row gap-3 mt-8">
+    <div className="mt-8">
+      <div className="flex items-center gap-3 mb-3">
+        <span className="text-sm font-semibold text-gray-600">Antal</span>
+        <div className="inline-flex items-center gap-2">
+          <button
+            type="button"
+            aria-label="Færre"
+            onClick={() => setQty((q) => Math.max(1, q - 1))}
+            disabled={qty <= 1}
+            className="w-9 h-9 rounded-full ring-1 ring-gray-200 bg-white text-[#0a2540] flex items-center justify-center hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+          >
+            <Minus className="w-4 h-4" />
+          </button>
+          <span className="w-7 text-center text-base font-extrabold text-[#0a2540] tabular-nums">{qty}</span>
+          <button
+            type="button"
+            aria-label="Flere"
+            onClick={() => setQty((q) => Math.min(20, q + 1))}
+            className="w-9 h-9 rounded-full ring-1 ring-gray-200 bg-white text-[#0a2540] flex items-center justify-center hover:bg-gray-50 transition-colors"
+          >
+            <Plus className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+      <div className="flex flex-col sm:flex-row gap-3">
       <button
         onClick={buyNow}
         disabled={buying}
@@ -57,6 +82,7 @@ export default function KandeBuy({
       >
         {added ? (<><Check className="w-4 h-4" /> Tilføjet til kurv</>) : (<><ShoppingBag className="w-4 h-4" /> Tilføj til kurv</>)}
       </button>
+      </div>
     </div>
   )
 }
