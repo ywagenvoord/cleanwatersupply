@@ -264,7 +264,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
       {/* ─── FILTRE DER PASSER I KANDEN (vandret, under hero) ─ */}
       {k.compatFilters && k.compatFilters.length > 0 && (
         <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 sm:-mt-12 pb-4">
-          <div className="rounded-3xl bg-gray-50 p-5 sm:p-6">
+          <div className="rounded-3xl bg-blue-50/40 ring-1 ring-[#284eff]/20 p-5 sm:p-6">
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
               <div>
                 <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Vælg dit filter</span>
