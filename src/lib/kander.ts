@@ -99,6 +99,7 @@ export const KANDER: Kande[] = [
     name: 'Germ-Stop Filterkande',
     art: 'Laica Predator',
     img: '/images/kande-germ-stop.png',
+    video: '/videos/germ-stop.mp4',
     gallery: [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',
