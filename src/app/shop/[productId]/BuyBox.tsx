@@ -489,7 +489,8 @@ export default function BuyBox({ product }: { product: Product }) {
     <div className="space-y-3">
       {upsellModal}
       {selector}
-      {/* Antal + Læg i kurv side om side */}
+      {/* Antal + Læg i kurv + Køb nu samlet i én boks */}
+      <div className="rounded-3xl ring-1 ring-gray-200 bg-gray-50 shadow-sm p-4 sm:p-5 space-y-3">
       <div className="flex items-stretch gap-3">
         {qtyStepper}
         <button
@@ -515,6 +516,7 @@ export default function BuyBox({ product }: { product: Product }) {
       >
         {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Køb nu <ArrowRight className="w-4 h-4" /></>)}
       </button>
+      </div>
     </div>
   )
 }
