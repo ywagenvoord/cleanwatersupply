@@ -36,6 +36,25 @@ export default function PrivateClient() {
 
   const solutions = [
     {
+      slug: 'vandkande',
+      href: '/vandkander',
+      img: '/images/solution-vandkande.jpg',
+      objPos: 'object-[center_72%]',
+      title: da ? 'Vandkande med filter' : 'Water filter jug',
+      body: da
+        ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
+        : 'Clean water as easy as pouring a glass. Filters limescale, chlorine and impurities – for better-tasting water, coffee and tea. No installation required.',
+    },
+    {
+      slug: 'vandkande-filtre',
+      href: '/vandkande-filtre',
+      img: '/images/product-filter-udskift.jpg',
+      title: da ? 'Filtre til vandkande' : 'Jug filter cartridges',
+      body: da
+        ? 'Udskiftningsfiltre (Bi-flux®) til vandkanden. Skift filteret, og bevar rent vand med god smag – holder ca. 150 liter pr. filter.'
+        : 'Bi-flux® replacement cartridges for the water jug. Swap the filter to keep clean, great-tasting water – around 150 litres per cartridge.',
+    },
+    {
       slug: 'filtre-paa-tappestedet',
       img: '/images/solution-tappested.jpg',
       title: da ? 'Filtre på tappestedet' : 'Filters at the tap',
@@ -66,25 +85,6 @@ export default function PrivateClient() {
       body: da
         ? 'Fjerner bakterier i bruservandet – ligesom filtrene til vandhanen. Så den fine vandtåge, du indånder i badet, er ren og sikker at trække vejret i.'
         : 'Removes bacteria in the shower water – just like the tap filters. So the fine mist you breathe in the shower is clean and safe.',
-    },
-    {
-      slug: 'vandkande',
-      href: '/vandkander',
-      img: '/images/solution-vandkande.jpg',
-      objPos: 'object-[center_72%]',
-      title: da ? 'Vandkande med filter' : 'Water filter jug',
-      body: da
-        ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
-        : 'Clean water as easy as pouring a glass. Filters limescale, chlorine and impurities – for better-tasting water, coffee and tea. No installation required.',
-    },
-    {
-      slug: 'vandkande-filtre',
-      href: '/vandkande-filtre',
-      img: '/images/product-filter-udskift.jpg',
-      title: da ? 'Filtre til vandkande' : 'Jug filter cartridges',
-      body: da
-        ? 'Udskiftningsfiltre (Bi-flux®) til vandkanden. Skift filteret, og bevar rent vand med god smag – holder ca. 150 liter pr. filter.'
-        : 'Bi-flux® replacement cartridges for the water jug. Swap the filter to keep clean, great-tasting water – around 150 litres per cartridge.',
     },
   ]
 
