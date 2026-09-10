@@ -94,7 +94,7 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
           {/* pris-visual */}
           <div className="hidden md:flex justify-center">
             <div className="relative w-44 h-44 rounded-full bg-white/10 border border-white/20 flex flex-col items-center justify-center text-center">
-              <span className="text-white text-lg font-bold line-through decoration-[#ff5a5a] decoration-[3px]">{pris} kr.</span>
+              <span className="text-white text-lg font-bold line-through decoration-2">{pris} kr.</span>
               <span className="text-6xl font-black leading-none mt-1 tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]">0 kr.</span>
               <span className="text-white/80 text-xs font-semibold mt-1.5 uppercase tracking-widest">montering</span>
             </div>
