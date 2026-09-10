@@ -302,7 +302,7 @@ export default function BuyBox({ product }: { product: Product }) {
     return (
       <div className="space-y-3" aria-hidden="true">
         <span className="w-full inline-flex items-center justify-center gap-2 bg-gray-200 text-gray-400 py-4 px-6 rounded-full font-bold text-sm cursor-not-allowed select-none">
-          Køb nu <ArrowRight className="w-4 h-4" />
+          Gå til kassen <ArrowRight className="w-4 h-4" />
         </span>
         <span className="w-full inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-400 py-3 px-6 rounded-full font-bold text-sm cursor-not-allowed select-none">
           <ShoppingBag className="w-4 h-4" /> Læg i kurv
@@ -514,7 +514,7 @@ export default function BuyBox({ product }: { product: Product }) {
         disabled={buying}
         className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white disabled:opacity-60 py-3 px-6 rounded-xl font-bold text-sm transition-all"
       >
-        {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Køb nu <ArrowRight className="w-4 h-4" /></>)}
+        {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Gå til kassen <ArrowRight className="w-4 h-4" /></>)}
       </button>
       </div>
     </div>

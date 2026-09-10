@@ -72,7 +72,7 @@ export default function KandeBuy({
         disabled={buying}
         className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 text-white font-bold px-8 py-4 text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
       >
-        {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Køb nu <ArrowRight className="w-4 h-4" /></>)}
+        {buying ? (<><Loader2 className="w-4 h-4 animate-spin" /> Åbner betaling…</>) : (<>Gå til kassen <ArrowRight className="w-4 h-4" /></>)}
       </button>
       <button
         onClick={add}
