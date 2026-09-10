@@ -9,6 +9,7 @@ import MonteringModal from '@/components/MonteringModal'
 import LanguageFloat from '@/components/LanguageFloat'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
+import { isGratisMonteringActive } from '@/lib/campaign'
 
 
 export const metadata: Metadata = {
@@ -110,7 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <Navigation />
-          <div className="pt-24">
+          <div className={isGratisMonteringActive() ? 'pt-[132px]' : 'pt-24'}>
             {children}
           </div>
           <Footer />

@@ -8,7 +8,9 @@ import { useCart } from '@/contexts/CartContext'
 import { useAudience } from '@/lib/useAudience'
 import { useB2bLoggedIn } from '@/lib/useB2b'
 import { useUser } from '@clerk/nextjs'
-import { Menu, X, ChevronDown, ShoppingBag, Home, Building2 } from 'lucide-react'
+import { Menu, X, ChevronDown, ShoppingBag, Home, Building2, Wrench, ArrowRight } from 'lucide-react'
+import { isGratisMonteringActive, GRATIS_MONTERING } from '@/lib/campaign'
+import { INSTALLATION_PRICE } from '@/lib/products'
 
 export default function Navigation() {
   const { t } = useLanguage()
@@ -81,6 +83,20 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a2540] shadow-lg" aria-label="Hovednavigation">
+      {isGratisMonteringActive() && (
+        <Link
+          href="/montering"
+          className="block bg-[#3aad4a] hover:bg-[#2e9a3d] text-white transition-colors"
+        >
+          <div className="h-9 flex items-center justify-center gap-2 px-4 text-[12px] sm:text-[13px] font-semibold">
+            <Wrench className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">
+              Gratis montering af dit blødgøringsanlæg – spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr. · til og med {GRATIS_MONTERING.endLabel}
+            </span>
+            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+          </div>
+        </Link>
+      )}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
 
