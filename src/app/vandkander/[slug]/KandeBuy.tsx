@@ -42,8 +42,8 @@ export default function KandeBuy({
   }
 
   return (
-    <div className="mt-8">
-      <div className="inline-flex items-center gap-3 mb-4 rounded-2xl ring-1 ring-gray-200 bg-gray-50 px-4 py-2 shadow-sm">
+    <div className="mt-8 rounded-3xl ring-1 ring-gray-200 bg-gray-50 shadow-sm p-4 sm:p-5 max-w-lg">
+      <div className="inline-flex items-center gap-3 mb-4">
         <span className="text-sm font-semibold text-gray-600">Antal</span>
         <div className="inline-flex items-center gap-2">
           <button
