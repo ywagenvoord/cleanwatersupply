@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { useAudience } from '@/lib/useAudience'
 import WaterBackground from '@/components/WaterBackground'
 import ImageCarousel from '@/components/ImageCarousel'
 import { ArrowRight, Heart, Eye, Leaf, Lightbulb, ShieldCheck, Users, Star, Droplets, Facebook, Instagram } from 'lucide-react'
@@ -11,7 +12,11 @@ const VALUE_ICONS = [ShieldCheck, Leaf, Lightbulb, Heart, Users, Star]
 
 export default function AboutPage() {
   const { t } = useLanguage()
-  const values: { title: string; description: string }[] = t('aboutPage.values.items')
+  const [audience] = useAudience()
+  // Erhverv beholder den oprindelige (B2B-neutrale) om-tekst; privat/øvrige får den nye B2C-mission.
+  const base = audience === 'erhverv' ? 'aboutErhverv' : 'aboutPage'
+  const ta = (key: string) => t(`${base}.${key}`)
+  const values: { title: string; description: string }[] = ta('values.items')
 
   return (
     <main>
@@ -29,13 +34,13 @@ export default function AboutPage() {
             <div>
               <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
                 <Droplets className="w-3.5 h-3.5" />
-                {t('aboutPage.hero.badge')}
+                {ta('hero.badge')}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-[1.08]">
-                {t('aboutPage.hero.headline')}
+                {ta('hero.headline')}
               </h1>
               <p className="text-lg text-white/70 leading-relaxed">
-                {t('aboutPage.hero.subheadline')}
+                {ta('hero.subheadline')}
               </p>
               <div className="flex items-center gap-3 mt-6">
                 <div className="flex">
@@ -113,10 +118,10 @@ export default function AboutPage() {
             {/* Text — second in DOM = right column */}
             <ScrollReveal direction="right" duration={700} delay={100}>
             <div>
-              <span className="section-badge">{t('aboutPage.mission.badge')}</span>
-              <h2 className="section-heading mb-6">{t('aboutPage.mission.headline')}</h2>
-              <p className="text-gray-600 leading-relaxed mb-5">{t('aboutPage.mission.body')}</p>
-              <p className="text-gray-600 leading-relaxed">{t('aboutPage.mission.body2')}</p>
+              <span className="section-badge">{ta('mission.badge')}</span>
+              <h2 className="section-heading mb-6">{ta('mission.headline')}</h2>
+              <p className="text-gray-600 leading-relaxed mb-5">{ta('mission.body')}</p>
+              <p className="text-gray-600 leading-relaxed">{ta('mission.body2')}</p>
             </div>
             </ScrollReveal>
           </div>
@@ -132,13 +137,13 @@ export default function AboutPage() {
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-emerald-300 text-xs font-bold px-4 py-1.5 rounded-full mb-6 uppercase tracking-widest">
             <Eye className="w-3.5 h-3.5" />
-            {t('aboutPage.vision.badge')}
+            {ta('vision.badge')}
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-            {t('aboutPage.vision.headline')}
+            {ta('vision.headline')}
           </h2>
           <p className="text-blue-100/75 text-lg leading-relaxed max-w-2xl mx-auto">
-            {t('aboutPage.vision.body')}
+            {ta('vision.body')}
           </p>
         </div>
       </section>
@@ -147,8 +152,8 @@ export default function AboutPage() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="section-badge">{t('aboutPage.values.badge')}</span>
-            <h2 className="section-heading">{t('aboutPage.values.headline')}</h2>
+            <span className="section-badge">{ta('values.badge')}</span>
+            <h2 className="section-heading">{ta('values.headline')}</h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -190,9 +195,9 @@ export default function AboutPage() {
               <div className="absolute inset-x-4 bottom-4 lg:-bottom-8 bg-white rounded-2xl p-5 shadow-xl border border-gray-100">
                 <div className="grid grid-cols-3 divide-x divide-gray-100">
                   {[
-                    { value: t('aboutPage.sustainability.stat1Value'), label: t('aboutPage.sustainability.stat1Label') },
-                    { value: t('aboutPage.sustainability.stat2Value'), label: t('aboutPage.sustainability.stat2Label') },
-                    { value: t('aboutPage.sustainability.stat3Value'), label: t('aboutPage.sustainability.stat3Label') },
+                    { value: ta('sustainability.stat1Value'), label: ta('sustainability.stat1Label') },
+                    { value: ta('sustainability.stat2Value'), label: ta('sustainability.stat2Label') },
+                    { value: ta('sustainability.stat3Value'), label: ta('sustainability.stat3Label') },
                   ].map((stat, i) => (
                     <div key={i} className="text-center px-3">
                       <p className="text-xl font-extrabold text-gray-900">{stat.value}</p>
@@ -206,10 +211,10 @@ export default function AboutPage() {
             <div className="order-1 lg:order-2">
               <span className="section-badge">
                 <Leaf className="w-3.5 h-3.5" />
-                {t('aboutPage.sustainability.badge')}
+                {ta('sustainability.badge')}
               </span>
-              <h2 className="section-heading mb-6">{t('aboutPage.sustainability.headline')}</h2>
-              <p className="text-gray-600 leading-relaxed">{t('aboutPage.sustainability.body')}</p>
+              <h2 className="section-heading mb-6">{ta('sustainability.headline')}</h2>
+              <p className="text-gray-600 leading-relaxed">{ta('sustainability.body')}</p>
             </div>
           </div>
         </div>
@@ -219,10 +224,10 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden mt-16">
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-5">{t('aboutPage.cta.headline')}</h2>
-          <p className="text-blue-100/80 mb-9 text-lg">{t('aboutPage.cta.subheadline')}</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-5">{ta('cta.headline')}</h2>
+          <p className="text-blue-100/80 mb-9 text-lg">{ta('cta.subheadline')}</p>
           <Link href="/contact" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
-            {t('aboutPage.cta.button')}
+            {ta('cta.button')}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

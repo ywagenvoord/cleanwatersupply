@@ -271,6 +271,52 @@ export const translations = {
         button: 'Kontakt os i dag',
       },
     },
+    aboutErhverv: {
+      hero: {
+        badge: 'Om Clean Water Supply',
+        headline: 'Rent vand er ikke et privilegium – det er en selvfølge',
+        subheadline: 'Hos Clean Water Supply arbejder vi passioneret for at sikre, at alle har adgang til rent, sikkert og sundt vand – uanset behov og størrelse.',
+      },
+      mission: {
+        badge: 'Vores mission',
+        headline: 'Vi er her for at gøre bakteriefrit vand tilgængeligt for alle',
+        body: 'Clean Water Supply blev grundlagt i 2023 med én klar vision: at levere vandløsninger af højeste kvalitet til alle – uanset størrelse, behov eller budget. Vi tror på, at bakteriefrit og sikkert vand er en grundlæggende rettighed, ikke et privilegium for de få.',
+        body2: 'Allerede inden grundlæggelsen i 2023 – og lige siden – har vi arbejdet hårdt og målrettet på at kunne præsentere de bedste løsninger, der lever op til vores kunders behov. Vi kombinerer den nyeste teknologi med personlig service og et dybt engagement i kvalitet, og vi er stolte af hvert eneste anlæg, vi installerer, og hvert eneste samarbejde, vi indgår. Vi leverer også løsninger til landbruget, hvor rent, bakteriefrit vand beskytter dyrene mod bakterier og sygdomme og styrker deres sundhed og trivsel.',
+      },
+      vision: {
+        badge: 'Vores vision',
+        headline: 'Et Danmark med bakteriefrit vand til alle',
+        body: 'Vi arbejder mod en fremtid, hvor alle hjem og virksomheder i Danmark har adgang til bakteriefrit og sikkert vand. Vores vision er at blive Danmarks foretrukne leverandør af vandbehandlingsløsninger – bygget på tillid, kvalitet og innovation.',
+      },
+      values: {
+        badge: 'Vores værdier',
+        headline: 'Det vi tror på',
+        items: [
+          { title: 'Kvalitet', description: 'Vi går aldrig på kompromis med kvaliteten af vores produkter og service. Certificering og godkendelse er ikke forhandlingsbart.' },
+          { title: 'Ansvar', description: 'Vi prioriterer effektive løsninger af høj kvalitet i alt, hvad vi gør. Fremtiden starter med de valg vi træffer i dag.' },
+          { title: 'Innovation', description: 'Vi holder os konstant opdateret med den nyeste teknologi inden for vandbehandling og deler den viden med vores kunder.' },
+          { title: 'Tillid', description: 'Vi bygger langvarige relationer baseret på ærlighed, transparens og opfyldelse af vores løfter.' },
+          { title: 'Service', description: 'Vi er altid klar til at hjælpe vores kunder med professionel og personlig service – før, under og efter installation.' },
+          { title: 'Tilgængelighed', description: 'Vi tror på, at rent vand skal være tilgængeligt for alle – ikke kun de privilegerede. Det driver alt vi gør.' },
+        ],
+      },
+      sustainability: {
+        badge: 'Ansvar & kvalitet',
+        headline: 'Rent vand – med mindre engangsplast',
+        body: 'Med filtreret vand fra hanen kan du erstatte engangsplastflasker med rent vand. Ét års filtreret vand med et Bi-flux®-filter svarer til ca. 1.200 færre 1,5-liters plastflasker.',
+        stat1Value: '1.200',
+        stat1Label: 'Færre plastflasker om året (pr. filter)',
+        stat2Value: 'EU',
+        stat2Label: 'Produceret i EU',
+        stat3Value: '2023',
+        stat3Label: 'Dansk virksomhed siden',
+      },
+      cta: {
+        headline: 'Bliv en del af Clean Water Supply-familien',
+        subheadline: 'Kontakt os og find ud af, hvordan vi kan hjælpe dig med rent vand af høj kvalitet.',
+        button: 'Kontakt os i dag',
+      },
+    },
     businessPage: {
       hero: {
         badge: 'Erhvervsløsninger',
@@ -717,6 +763,52 @@ export const translations = {
       cta: {
         headline: 'Become part of the Clean Water Supply family',
         subheadline: 'Contact us and find out how we bring your home clean, safe water – every day.',
+        button: 'Contact us today',
+      },
+    },
+    aboutErhverv: {
+      hero: {
+        badge: 'About Clean Water Supply',
+        headline: 'Clean water is not a privilege – it is a given',
+        subheadline: 'At Clean Water Supply, we work passionately to ensure that everyone has access to clean, safe, and healthy water – regardless of need or scale.',
+      },
+      mission: {
+        badge: 'Our Mission',
+        headline: 'We are here to make bacteria-free water accessible to all',
+        body: 'Clean Water Supply was founded in 2023 with one clear vision: to deliver water solutions of the highest quality to everyone – regardless of size, need, or budget. We believe that bacteria-free and safe water is a fundamental right, not a privilege for the few.',
+        body2: "Even before our founding in 2023 – and ever since – we have worked hard and purposefully to be able to present the best solutions that meet our customers' needs. We combine the latest technology with personal service and a deep commitment to quality, and we are proud of every system we install and every collaboration we enter. We also deliver solutions for agriculture, where clean, bacteria-free drinking water protects animals from bacteria and disease and strengthens their health and welfare.",
+      },
+      vision: {
+        badge: 'Our Vision',
+        headline: 'A Denmark with bacteria-free water for all',
+        body: "We are working towards a future where all homes and businesses in Denmark have access to bacteria-free, safe water. Our vision is to become Denmark's preferred provider of water treatment solutions – built on trust, quality, and innovation.",
+      },
+      values: {
+        badge: 'Our Values',
+        headline: 'What we believe in',
+        items: [
+          { title: 'Quality', description: 'We never compromise on the quality of our products and service. Certification and approval are non-negotiable.' },
+          { title: 'Responsibility', description: 'We prioritize effective, high-quality solutions in everything we do. The future starts with the choices we make today.' },
+          { title: 'Innovation', description: 'We constantly keep up to date with the latest technology in water treatment and share that knowledge with our customers.' },
+          { title: 'Trust', description: 'We build long-lasting relationships based on honesty, transparency, and keeping our promises.' },
+          { title: 'Service', description: 'We are always ready to help our customers with professional and personal service – before, during, and after installation.' },
+          { title: 'Accessibility', description: 'We believe clean water should be accessible to all – not just the privileged. That drives everything we do.' },
+        ],
+      },
+      sustainability: {
+        badge: 'Responsibility & quality',
+        headline: 'Clean water – with less single-use plastic',
+        body: 'With filtered water from the tap, you can replace single-use plastic bottles with clean water. One year of filtered water with a Bi-flux® filter equals about 1,200 fewer 1.5-litre plastic bottles.',
+        stat1Value: '1,200',
+        stat1Label: 'Fewer plastic bottles per year (per filter)',
+        stat2Value: 'EU',
+        stat2Label: 'Made in the EU',
+        stat3Value: '2023',
+        stat3Label: 'Danish company since',
+      },
+      cta: {
+        headline: 'Become part of the Clean Water Supply family',
+        subheadline: 'Contact us and find out how we can help you with clean, high-quality water.',
         button: 'Contact us today',
       },
     },
