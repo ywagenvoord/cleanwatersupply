@@ -106,7 +106,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           </nav>
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-8 md:pt-12 pb-4">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start [&>*]:min-w-0">
             {/* Billede */}
             <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
@@ -263,7 +263,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
       {/* ─── FILTRE DER PASSER I KANDEN (vandret, under hero) ─ */}
       {k.compatFilters && k.compatFilters.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 sm:-mt-12 pb-4">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 mt-2 pb-4">
           <div className="rounded-3xl bg-blue-50/40 ring-1 ring-[#284eff]/20 p-5 sm:p-6">
             <div className="flex flex-wrap items-baseline justify-between gap-2 mb-4">
               <div>
