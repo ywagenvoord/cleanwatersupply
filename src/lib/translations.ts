@@ -234,8 +234,8 @@ export const translations = {
       mission: {
         badge: 'Vores mission',
         headline: 'Tryghed ved hanen – for hele familien',
-        body: 'Clean Water Supply blev grundlagt i 2023 med ét klart formål: at gøre rent, bakteriefrit drikkevand til en naturlig del af hverdagen i danske hjem. Vandet, vi drikker, laver mad med og giver vores børn, skal man kunne stole på – og det er præcis den tryghed, vi arbejder for.',
-        body2: 'Vi hjælper familier med at få sikkert vand direkte fra hanen med gennemprøvede, certificerede løsninger og personlig rådgivning – fra det rette filter til det færdige blødgøringsanlæg. Vi kombinerer moderne teknologi med tæt service og et grundigt fokus på kvalitet, og vi står bag hver eneste løsning, vi leverer. Samme høje standard bringer vi med ud til erhverv og landbrug, hvor rent, bakteriefrit vand beskytter både mennesker og dyr mod bakterier og sygdom.',
+        body: 'Clean Water Supply blev grundlagt i 2023 med ét klart formål: at gøre rent, bakteriefrit drikkevand til en naturlig del af hverdagen i danske hjem. Vandet, vi drikker, laver mad med og giver vores børn, skal man kunne stole på – og det er præcis den tryghed, vi arbejder for. Det kan være så enkelt som en filterkande på køkkenbordet, der giver friskt, filtreret vand til hele familien hver dag.',
+        body2: 'Vi hjælper familier med at få sikkert vand direkte fra hanen med gennemprøvede, certificerede løsninger og personlig rådgivning – fra filterkanden på køkkenbordet til det færdige blødgøringsanlæg. Vi kombinerer moderne teknologi med tæt service og et grundigt fokus på kvalitet, og vi står bag hver eneste løsning, vi leverer. Samme høje standard bringer vi med ud til erhverv og landbrug, hvor rent, bakteriefrit vand beskytter både mennesker og dyr mod bakterier og sygdom.',
       },
       vision: {
         badge: 'Vores vision',
@@ -683,8 +683,8 @@ export const translations = {
       mission: {
         badge: 'Our Mission',
         headline: 'Peace of mind at the tap – for the whole family',
-        body: 'Clean Water Supply was founded in 2023 with one clear purpose: to make clean, bacteria-free drinking water a natural part of everyday life in Danish homes. The water we drink, cook with and give our children should be something we can trust – and that is exactly the peace of mind we work for.',
-        body2: "We help families get safe water straight from the tap with proven, certified solutions and personal guidance – from the right filter to a complete water softening system. We combine modern technology with close service and a thorough focus on quality, and we stand behind every solution we deliver. We bring that same high standard to business and agriculture, where clean, bacteria-free water protects both people and animals from bacteria and disease.",
+        body: 'Clean Water Supply was founded in 2023 with one clear purpose: to make clean, bacteria-free drinking water a natural part of everyday life in Danish homes. The water we drink, cook with and give our children should be something we can trust – and that is exactly the peace of mind we work for. It can be as simple as a filter jug on the kitchen counter, giving the whole family fresh, filtered water every day.',
+        body2: "We help families get safe water straight from the tap with proven, certified solutions and personal guidance – from the filter jug on the kitchen counter to a complete water softening system. We combine modern technology with close service and a thorough focus on quality, and we stand behind every solution we deliver. We bring that same high standard to business and agriculture, where clean, bacteria-free water protects both people and animals from bacteria and disease.",
       },
       vision: {
         badge: 'Our Vision',
