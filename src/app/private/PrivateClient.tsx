@@ -40,7 +40,7 @@ export default function PrivateClient() {
       href: '/vandkander',
       img: '/images/solution-vandkande.jpg',
       objPos: 'object-[center_72%]',
-      title: da ? 'Vandkande med filter' : 'Water filter jug',
+      title: da ? 'Filterkander' : 'Water filter jugs',
       body: da
         ? 'Rent vand så nemt som at hælde op. Filtrerer kalk, klor og urenheder – og giver bedre smag i vand, kaffe og te. Kræver ingen installation.'
         : 'Clean water as easy as pouring a glass. Filters limescale, chlorine and impurities – for better-tasting water, coffee and tea. No installation required.',
@@ -49,7 +49,7 @@ export default function PrivateClient() {
       slug: 'vandkande-filtre',
       href: '/vandkande-filtre',
       img: '/images/filtre-til-vandkande-v4.jpg',
-      title: da ? 'Filtre til vandkande' : 'Jug filter cartridges',
+      title: da ? 'Filtre til vandkander' : 'Jug filter cartridges',
       body: da
         ? 'Udskiftningsfiltre (Bi-flux®) til vandkanden. Skift filteret, og bevar rent vand med god smag – holder ca. 150 liter pr. filter.'
         : 'Bi-flux® replacement cartridges for the water jug. Swap the filter to keep clean, great-tasting water – around 150 litres per cartridge.',
