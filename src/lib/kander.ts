@@ -96,8 +96,7 @@ export const KANDER: Kande[] = [
     stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
-    name: 'Vandkande med filter Germ-stop',
-    heading: 'Rent vand, dine børn kan drikke trygt',
+    name: 'Germ-Stop Filterkande',
     art: 'Laica Predator',
     img: '/images/kande-germ-stop.png',
     gallery: [
