@@ -16,6 +16,7 @@ export type Kande = {
   ogImage?: string           // delebillede (1200×630) til Facebook/social preview
   ogVideo?: string           // Open Graph-video (mp4) til social preview
   video?: string             // produktvideo (mp4) vist i galleriet
+  videoPoster?: string       // cover-/posterbillede til videoen (thumbnail + preview)
   manual?: string            // brugsanvisning (PDF) til download
   capacity?: string
   highlight?: string
@@ -100,6 +101,7 @@ export const KANDER: Kande[] = [
     art: 'Laica Predator',
     img: '/images/kande-germ-stop.png',
     video: '/videos/germ-stop.mp4',
+    videoPoster: '/images/germ-stop-poster.jpg',
     gallery: [
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',

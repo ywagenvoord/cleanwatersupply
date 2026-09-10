@@ -112,7 +112,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <ProductGallery
                 items={[
                   { src: k.img },
-                  ...(k.video ? [{ src: k.video, video: true }] : []),
+                  ...(k.video ? [{ src: k.video, video: true, poster: k.videoPoster }] : []),
                   ...(k.lifestyle ?? []).map((src) => ({ src, cover: true })),
                   ...(k.gallery ?? []).map((src) => ({ src })),
                   ...(k.lifestyleEnd ?? []).map((src) => ({ src, cover: true })),

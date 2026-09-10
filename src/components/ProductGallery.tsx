@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react'
 
-type Item = { src: string; cover?: boolean; video?: boolean }
+type Item = { src: string; cover?: boolean; video?: boolean; poster?: string }
 
 export default function ProductGallery({
   items,
@@ -33,6 +33,7 @@ export default function ProductGallery({
           <video
             key={current.src}
             src={current.src}
+            poster={current.poster}
             autoPlay
             loop
             muted
@@ -90,7 +91,11 @@ export default function ProductGallery({
             >
               {it.video ? (
                 <>
-                  <video src={it.src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
+                  {it.poster ? (
+                    <img src={it.poster} alt="" className="w-full h-full object-cover" />
+                  ) : (
+                    <video src={it.src} muted playsInline preload="metadata" className="w-full h-full object-cover" />
+                  )}
                   <span className="absolute inset-0 flex items-center justify-center bg-black/25">
                     <Play className="w-6 h-6 text-white fill-white" />
                   </span>
