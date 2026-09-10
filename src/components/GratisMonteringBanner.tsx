@@ -93,11 +93,10 @@ export default function GratisMonteringBanner({ variant = 'full', className = ''
 
           {/* pris-visual */}
           <div className="hidden md:flex justify-center">
-            <div className="relative w-36 h-36 rounded-full bg-white/10 border border-white/20 flex flex-col items-center justify-center text-center">
-              <Wrench className="w-6 h-6 text-white/80 mb-0.5" />
+            <div className="relative w-44 h-44 rounded-full bg-white/10 border border-white/20 flex flex-col items-center justify-center text-center">
               <span className="text-white/60 text-xs line-through">{pris} kr.</span>
-              <span className="text-3xl font-extrabold leading-none mt-0.5">0 kr.</span>
-              <span className="text-white/80 text-xs font-semibold mt-0.5">montering</span>
+              <span className="text-6xl font-black leading-none mt-1 tracking-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.25)]">0 kr.</span>
+              <span className="text-white/80 text-xs font-semibold mt-1.5 uppercase tracking-widest">montering</span>
             </div>
           </div>
         </div>
