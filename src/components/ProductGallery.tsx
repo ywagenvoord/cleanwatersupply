@@ -33,7 +33,9 @@ export default function ProductGallery({
           <video
             key={current.src}
             src={current.src}
-            controls
+            autoPlay
+            loop
+            muted
             playsInline
             preload="metadata"
             className="absolute inset-0 w-full h-full object-contain bg-black"
