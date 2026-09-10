@@ -96,7 +96,7 @@ export const KANDER: Kande[] = [
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
     name: 'Vandkande med filter Germ-Stop™',
     art: 'Laica Predator',
-    img: '/images/kande-mikroplastik-stop.jpg',
+    img: '/images/kande-germ-stop.png',
     gallery: [
       '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',

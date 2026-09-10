@@ -3,9 +3,9 @@
 
 // Fuldt billedgalleri (første billede er hero). Bruges på produktsiden.
 export const STRIPE_GALLERY_OVERRIDE: Record<string, string[]> = {
-  // MikroPLASTIK-STOP filterkande – rigtige produktbilleder (dobbeltfilter)
+  // Germ-Stop filterkande (Laica Predator) – rigtige produktbilleder
   'prod_V2wDbJ1i8O20Kj': [
-    '/images/kande-mikroplastik-stop.jpg',
+    '/images/kande-germ-stop.png',
     '/images/kande-mikroplastik-stop-b.jpg',
     '/images/kande-mikroplastik-stop-c.jpg',
     '/images/kande-mikroplastik-stop-d.jpg',
