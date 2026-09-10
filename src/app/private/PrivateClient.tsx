@@ -48,7 +48,7 @@ export default function PrivateClient() {
     {
       slug: 'vandkande-filtre',
       href: '/vandkande-filtre',
-      img: '/images/product-filter-udskift.jpg',
+      img: '/images/filter-biflux-universal-lg.png',
       title: da ? 'Filtre til vandkande' : 'Jug filter cartridges',
       body: da
         ? 'Udskiftningsfiltre (Bi-flux®) til vandkanden. Skift filteret, og bevar rent vand med god smag – holder ca. 150 liter pr. filter.'
