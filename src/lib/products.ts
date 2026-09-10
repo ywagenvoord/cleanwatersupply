@@ -756,7 +756,7 @@ export const PRODUCTS: Product[] = [
     tagline: 'Slank Laica-filterkande med Bi-flux® – rent vand med god smag hver dag',
     category: 'vandkande',
     price: 225,
-    priceNote: 'Stop med at slæbe flaskevand hjem: ét filter (følger med) giver ca. 150 liter rent vand – svarende til omkring 300 halvlitersflasker. Fast pris, ingen abonnement.',
+    priceNote: 'Stop med at slæbe flaskevand hjem: ét filter (følger med) giver ca. 150 liter rent vand – svarende til omkring 300 halvlitersflasker. Fast pris, ingen abonnement – udskift blot dit filter.',
     imgSrc:   '/images/kande-carmen-2.jpg',
     imgLarge: '/images/kande-carmen-2.jpg',
     images: ['/images/kande-carmen-2.jpg', '/images/kande-carmen-pour.jpg', '/images/kande-carmen-fridge.jpg', '/images/kande-carmen-box.jpg'],
