@@ -7,6 +7,7 @@ import {
   Truck, BadgeCheck, Heart, FileText,
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
+import { getFilter } from '@/lib/filtre'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
@@ -276,6 +277,49 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   </span>
                   <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{h.title}</h3>
                   <p className="text-[13px] text-gray-500 mt-1.5 leading-relaxed">{h.text}</p>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
+
+      {/* ─── FILTRE DER PASSER I KANDEN ────────────────────── */}
+      {k.compatFilters && k.compatFilters.length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <div className="text-center mb-8">
+            <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Vælg dit filter</span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Filtre der passer i kanden</h2>
+            <p className="text-gray-500 mt-2 text-sm">Skift til det filter, der passer til dit vand og dine behov – alle passer i {k.name}.</p>
+          </div>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {k.compatFilters.map((slug) => {
+              const f = getFilter(slug)
+              if (!f) return null
+              return (
+                <div key={f.slug} className="rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-xl hover:shadow-gray-300/40 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col">
+                  <Link href={`/vandkande-filtre/${f.slug}`} className="group block w-full h-36 rounded-xl bg-gray-50 flex items-center justify-center p-3 mb-4">
+                    <img src={f.img} alt={f.name} className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300" />
+                  </Link>
+                  <h3 className="text-sm font-extrabold text-[#0a2540] leading-snug">{f.name}</h3>
+                  <p className="text-[13px] text-gray-500 mt-1 leading-relaxed flex-1">{f.tagline}</p>
+                  {f.price != null && (
+                    <p className="text-base font-extrabold text-[#0a2540] mt-3">
+                      {f.price.toLocaleString('da-DK')} kr <span className="text-xs font-medium text-gray-400">inkl. moms</span>
+                    </p>
+                  )}
+                  {f.cwsId && f.price != null ? (
+                    <div className="mt-3 [&>button]:rounded-full [&>button]:py-2.5">
+                      <FilterAddToCart id={f.cwsId} name={f.name} price={f.price} image={f.img} />
+                      <Link href={`/vandkande-filtre/${f.slug}`} className="mt-2 block text-center text-[13px] font-semibold text-[#2e9a3d] hover:underline">
+                        Se filteret →
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link href={`/vandkande-filtre/${f.slug}`} className="mt-3 w-full inline-flex items-center justify-center gap-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white font-bold text-sm px-4 py-2.5 transition-all">
+                      Se filteret <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
               )
             })}

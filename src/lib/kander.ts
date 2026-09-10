@@ -26,6 +26,7 @@ export type Kande = {
   specs: Spec[]
   filter?: string
   addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number; link?: string; cwsId?: string }
+  compatFilters?: string[]   // slugs på filtre der passer i kanden (fra filtre.ts)
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
@@ -149,6 +150,7 @@ export const KANDER: Kande[] = [
       blurb: 'Det matchende Germ-stop™-udskiftningsfilter – bevar det sikre, bakteriestoppende drikkevand.',
       link: '/shop/mikroplastik-stop-filter',
     },
+    compatFilters: ['bi-flux-universal', 'bi-flux-limescalestop', 'bi-flux-healthexpert'],
     highlights: [
       { icon: 'shield', title: 'Stopper 99,999 % af bakterier*', text: 'Germ-stop™-filteret stopper bakterier i vandet – tryghed i hver tår, også for de mindste.' },
       { icon: 'droplet', title: 'Trygt til børnefamilier', text: 'Sikkert drikkevand, som hele familien kan drikke uden bekymring.' },
