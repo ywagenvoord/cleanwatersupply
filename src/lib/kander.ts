@@ -101,7 +101,6 @@ export const KANDER: Kande[] = [
     img: '/images/kande-germ-stop.png',
     video: '/videos/germ-stop.mp4',
     gallery: [
-      '/images/kande-mikroplastik-stop-b.jpg',
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',
     ],
