@@ -145,6 +145,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{k.name}</h1>
               <p className="text-lg text-gray-600 mt-4 leading-relaxed">{k.tagline}</p>
+              {k.footnote && (
+                <p className="text-xs text-gray-400 mt-2 leading-relaxed">{k.footnote}</p>
+              )}
               {k.capacity && (
                 <p className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] bg-gray-100 rounded-full px-4 py-1.5 mt-5">
                   <Droplet className="w-3.5 h-3.5" /> {k.capacity}

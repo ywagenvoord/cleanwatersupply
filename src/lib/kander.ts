@@ -18,6 +18,7 @@ export type Kande = {
   manual?: string            // brugsanvisning (PDF) til download
   capacity?: string
   highlight?: string
+  footnote?: string          // lille fodnote (fx forklaring til * ved et claim)
   intro: string
   points: string[]
   specs: Spec[]
@@ -94,7 +95,7 @@ export const KANDER: Kande[] = [
     stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
-    name: 'Vandkande med filter Germ-Stop™',
+    name: 'Vandkande med filter Germ-stop',
     art: 'Laica Predator',
     img: '/images/kande-germ-stop.png',
     gallery: [
@@ -102,25 +103,27 @@ export const KANDER: Kande[] = [
       '/images/kande-mikroplastik-stop-c.jpg',
       '/images/kande-mikroplastik-stop-d.jpg',
     ],
-    tagline: 'Tryghed i hver tår – kanden med antibakterielt filter til hele familien.',
+    tagline: 'Stopper 99,999 % af bakterier* – for sikkert drikkevand til hele familien.',
     capacity: '3 L total · 2 L filtreret',
-    highlight: 'Beskytter mod bakterier',
+    highlight: 'Stopper 99,999 % af bakterier*',
+    footnote:
+      '*Op til 99,999 % bakteriereduktion dokumenteret af Laica ved test af Germ-stop™-filteret under laboratorieforhold.',
     intro:
       'Som forælder vil du det allerbedste for dine børn – også når de rækker op efter et glas vand. ' +
-      'Germ-Stop™ er vandkanden med et antibakterielt filter, der beskytter mod bakterier i vandet, så de mindste ' +
-      'kan drikke trygt. Filteret renser samtidig vandet for kalk, klor og uønskede stoffer – uden at fjerne de ' +
-      'nyttige mineralsalte, som kroppen har brug for. ' +
-      'Kanden er bygget på den robuste Laica Predator med automatisk Quickfill-låg til hurtig påfyldning og en ' +
-      'batterifri skift-tæller, så du altid ved, hvornår filteret skal skiftes. Rent, trygt vand – lige ved ' +
+      'Germ-stop er vandkanden, der stopper 99,999 % af bakterier* i vandet, så de mindste kan drikke trygt. ' +
+      'Kanden bruger et dobbelt filtersystem: bi-flux®-filteret reducerer kalk, klor og tungmetaller og bevarer ' +
+      'samtidig de nyttige mineralsalte, mens Germ-stop™-filteret blokerer bakterier og små partikler ned til ' +
+      '0,1 µm. Kanden er bygget på den robuste Laica Predator med automatisk Quickfill-låg til hurtig påfyldning ' +
+      'og en batterifri skift-tæller, så du altid ved, hvornår filteret skal skiftes. Rent, trygt vand – lige ved ' +
       'hånden hele dagen. Made in Italy.',
     points: [
-      'Antibakterielt filter – beskytter mod bakterier i vandet',
-      'Trygt drikkevand til hele familien, også de mindste',
-      'Renser for kalk, klor og uønskede stoffer',
-      'Bevarer de nyttige mineralsalte, kroppen har brug for',
+      'Stopper 99,999 % af bakterier* – sikkert drikkevand til hele familien',
+      'Dobbelt filtersystem: bi-flux® + Germ-stop™',
+      'Germ-stop™ blokerer bakterier og partikler ned til 0,1 µm',
+      'bi-flux® reducerer kalk, klor og tungmetaller – bevarer mineralsalte',
       'Automatisk “Quickfill”-låg – fyld hurtigt direkte under hanen',
-      'Batterifri skift-tæller, så du aldrig er i tvivl om filterskift',
-      'Fødevaregodkendte materialer · Made in Italy',
+      'Batterifri analog tæller + aftagelig elektronisk levetidsindikator',
+      'Medfølger: 1 bi-flux®- + 1 Germ-stop™-filter · Made in Italy',
     ],
     specs: [
       { label: 'Model', value: 'Laica Predator' },
@@ -129,33 +132,34 @@ export const KANDER: Kande[] = [
       { label: 'Mål (H×B×D)', value: '27,8 × 27,8 × 11,4 cm' },
       { label: 'Vægt', value: '0,95 kg' },
       { label: 'Farve', value: 'Hvid' },
-      { label: 'Filter', value: 'Germ-Stop™ antibakterielt filter' },
+      { label: 'Filtreringssystem', value: 'Dobbelt (bi-flux® + Germ-stop™)' },
       { label: 'Made in', value: 'Italien' },
-      { label: 'Indhold', value: 'Kande + 1 Germ-Stop™-filter + manual' },
+      { label: 'EAN', value: '8013240705941' },
+      { label: 'Indhold', value: 'Kande + 1 bi-flux®- + 1 Germ-stop™-filter + manual' },
     ],
-    filter: 'Germ-Stop™ antibakterielt filter',
+    filter: 'bi-flux® + Germ-stop™',
     addon: {
-      name: 'Germ-Stop™ udskiftningsfilter',
-      art: 'Til Germ-Stop-kanden',
+      name: 'Germ-stop™ udskiftningsfilter',
+      art: 'EAN 8013240705958',
       img: '/images/product-filter-udskift.jpg',
-      life: '1 måned · ca. 150 L pr. filter',
-      blurb: 'Det matchende udskiftningsfilter til Germ-Stop – bevar det trygge, bakteriebeskyttede vand.',
+      life: 'ca. 1.000 L · ca. 1 år pr. filter',
+      blurb: 'Det matchende Germ-stop™-udskiftningsfilter – bevar det sikre, bakteriestoppende drikkevand.',
       link: '/shop/mikroplastik-stop-filter',
     },
     highlights: [
-      { icon: 'shield', title: 'Beskytter mod bakterier', text: 'Antibakterielt filter, der giver tryghed i hver tår – også for de mindste.' },
-      { icon: 'droplet', title: 'Trygt til børnefamilier', text: 'Rent vand, som hele familien kan drikke uden bekymring.' },
-      { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'Fjerner ikke de nyttige mineraler, kroppen har brug for.' },
+      { icon: 'shield', title: 'Stopper 99,999 % af bakterier*', text: 'Germ-stop™-filteret stopper bakterier i vandet – tryghed i hver tår, også for de mindste.' },
+      { icon: 'droplet', title: 'Trygt til børnefamilier', text: 'Sikkert drikkevand, som hele familien kan drikke uden bekymring.' },
+      { icon: 'leaf', title: 'Bevarer mineralsalte', text: 'bi-flux®-filteret fjerner ikke de nyttige mineraler, kroppen har brug for.' },
       { icon: 'timer', title: 'Nem i hverdagen', text: 'Quickfill-låg og batterifri skift-tæller gør det let at holde vandet rent.' },
     ],
-    eco: 'Tryghed for familien og færre engangs-plastflasker på én gang – filteret rækker til ca. 150 liter.',
+    eco: 'Sikkert vand til familien og færre engangs-plastflasker på én gang – Germ-stop™-filteret rækker til ca. 1.000 liter.',
     steps: [
-      'Læg Germ-Stop™-filteret i blød i en skål med rent, koldt vand i ca. 10-15 minutter',
-      'Skyl filteret under rindende vand',
-      'Monter filteret i tragten inde i kanden',
+      'Læg begge filtre (bi-flux® og Germ-stop™) i blød i en skål med rent, koldt vand i ca. 10-15 minutter',
+      'Skyl begge filtre under rindende vand',
+      'Monter begge filtre i tragten inde i kanden',
       'Fyld tragten med koldt vand via Quickfill-låget',
-      'Lad vandet løbe gennem det antibakterielle filter',
-      'Nyd rent, trygt vand – med de nyttige mineraler bevaret',
+      'Lad vandet løbe gennem det dobbelte filtersystem',
+      'Nyd sikkert, bakteriestoppet vand – med de nyttige mineraler bevaret',
     ],
   },
   {
