@@ -311,7 +311,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
       {/* ─── HIGHLIGHTS ────────────────────────────────────── */}
       {k.highlights && k.highlights.length > 0 && (
-        <section className="max-w-5xl mx-auto px-4 sm:px-6 -mt-2 pb-6">
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 mt-6 sm:mt-10 pb-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {k.highlights.map((h) => {
               const Icon = HIGHLIGHT_ICONS[h.icon] ?? Droplets
