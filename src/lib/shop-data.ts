@@ -88,9 +88,12 @@ export async function getMergedShopProducts(): Promise<Product[]> {
   orderIndex.set('filter-biflux-limescale', 10001)    // LimescaleSTOP
   orderIndex.set('filter-biflux-healthexpert', 10002) // HealthExpert
   orderIndex.set('filter-biflux-universal', 10003)    // Universal (sidst)
-  // Laica-produkterne (vandkande-kategorien: kander, karaffel, bi-flux-filtre, FAST DISK)
-  // skal ligge øverst i shoppen – behold den kuraterede rækkefølge inden for hver gruppe.
-  const laicaRank = (p: Product) => (p.category === 'vandkande' ? 0 : 1)
+  // Gruppe-rækkefølge i shoppen: Laica-produkterne (vandkande-kategorien: kander,
+  // karaffel, bi-flux-filtre, FAST DISK) øverst, derefter blødgøringsanlæggene,
+  // og til sidst alt det øvrige – behold den kuraterede rækkefølge inden for hver gruppe.
+  const laicaRank = (p: Product) =>
+    p.category === 'vandkande' ? 0 :
+    p.category === 'blosgoringsanlaeg' ? 1 : 2
   // Inden for Laica-gruppen: kander/karafler først, derefter filtrene.
   const kandeRank = (p: Product) => {
     if (p.category !== 'vandkande') return 0
