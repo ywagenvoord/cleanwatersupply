@@ -33,7 +33,6 @@ export default function Footer() {
                 className="h-20 w-auto"
                 width={180}
                 height={56}
-                loading="lazy"
                 decoding="async"
               />
             </Link>
