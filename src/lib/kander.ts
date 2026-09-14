@@ -98,7 +98,7 @@ export const KANDER: Kande[] = [
     stockLeft: 1,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
-    name: 'Filterkande – fjerner 99,999 % af bakterier*',
+    name: 'Fjerner 99,999 % af bakterierne i dit drikkevand*',
     heading: 'Vandfilterkande – Germ-STOP',
     art: 'Germ-Stop',
     img: '/images/kande-germ-stop.png',
