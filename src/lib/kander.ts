@@ -229,11 +229,8 @@ export const KANDER: Kande[] = [
       'Stil karaflen i køleskabet – så har du altid koldt, filtreret vand klar',
       'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
-    galleryFront: ['/images/glassmart-box-front.jpg', '/images/glassmart-box-back.jpg'],
+    galleryFront: ['/images/glassmart-box-front.jpg', '/images/glassmart-box-back.jpg', '/images/glassmart-filter-pack.jpg'],
     lifestyle: ['/images/glassmart-life-hand.jpg', '/images/glassmart-life-beach.jpg', '/images/glassmart-life-3.jpg'],
-    gallery: [
-      '/images/glassmart-filter-pack.jpg',
-    ],
     lifestyleEnd: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg'],
   },
 ]
