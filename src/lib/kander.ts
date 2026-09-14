@@ -30,6 +30,7 @@ export type Kande = {
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
+  galleryFront?: string[]    // produktbilleder der vises lige efter hovedbilledet
   lifestyle?: string[]
   gallery?: string[]
   lifestyleEnd?: string[]
@@ -228,11 +229,10 @@ export const KANDER: Kande[] = [
       'Stil karaflen i køleskabet – så har du altid koldt, filtreret vand klar',
       'Hæld det filtrerede vand direkte i et glas, når du vil have en tår',
     ],
+    galleryFront: ['/images/glassmart-box-front.jpg', '/images/glassmart-box-back.jpg'],
     lifestyle: ['/images/glassmart-life-hand.jpg', '/images/glassmart-life-beach.jpg', '/images/glassmart-life-3.jpg'],
     gallery: [
       '/images/glassmart-filter-pack.jpg',
-      '/images/glassmart-box-front.jpg',
-      '/images/glassmart-box-back.jpg',
     ],
     lifestyleEnd: ['/images/glassmart-life-1.jpg', '/images/glassmart-life-2.jpg'],
   },
