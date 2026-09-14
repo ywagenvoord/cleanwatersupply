@@ -147,7 +147,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
                   <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
                 </div>
-                <EuBadge size={78} className="shrink-0" />
+                <EuBadge size={78} className="shrink-0 -rotate-[13deg]" />
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{k.heading ?? k.name}</h1>
               {k.heading && <p className="text-sm font-semibold text-gray-400 mt-2">{k.name}</p>}

@@ -23,10 +23,10 @@ export default function EuBadge({
         <path id="euArcBot" d="M 50 50 m -36 0 a 36 36 0 1 0 72 0" fill="none" />
       </defs>
 
-      {/* Segl */}
-      <circle cx="50" cy="50" r="48" fill="#0a2540" />
+      {/* Segl – EU-blå + guld */}
+      <circle cx="50" cy="50" r="48" fill="#003399" />
       <circle cx="50" cy="50" r="48" fill="none" stroke="#ffd54a" strokeWidth="2.5" />
-      <circle cx="50" cy="50" r="41.5" fill="none" stroke="#ffffff" strokeOpacity="0.16" strokeWidth="1" />
+      <circle cx="50" cy="50" r="41.5" fill="none" stroke="#ffd54a" strokeOpacity="0.55" strokeWidth="1" />
 
       {/* Buet tekst hele vejen rundt */}
       <text fill="#ffffff" fontSize="8.6" fontWeight="700" letterSpacing="2.6"
@@ -39,9 +39,9 @@ export default function EuBadge({
       </text>
 
       {/* Midter-cirkel + flueben */}
-      <circle cx="50" cy="50" r="20" fill="none" stroke="#3aad4a" strokeWidth="2.5" />
+      <circle cx="50" cy="50" r="20" fill="none" stroke="#ffd54a" strokeWidth="2.5" />
       <polyline points="41,50 47.5,57 60,43"
-                fill="none" stroke="#3aad4a" strokeWidth="4"
+                fill="none" stroke="#ffd54a" strokeWidth="4"
                 strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
