@@ -5,6 +5,7 @@ import { ArrowRight, Check, ChevronRight, Filter, BadgeCheck, Truck, Droplets, C
 import { FILTRE, getFilter } from '@/lib/filtre'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
+import EuBadge from '@/components/EuBadge'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import { stockFor } from '@/lib/stock'
@@ -69,9 +70,12 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
 
             {/* Tekst */}
             <div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 mb-5 shadow-sm">
-                <Filter className="w-3.5 h-3.5 text-[#3aad4a]" />
-                <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{f.art}</span>
+              <div className="flex items-center justify-between gap-4 mb-5">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 shadow-sm">
+                  <Filter className="w-3.5 h-3.5 text-[#3aad4a]" />
+                  <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{f.art}</span>
+                </div>
+                <EuBadge size={78} className="shrink-0 -rotate-[13deg]" />
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">
                 {f.name}

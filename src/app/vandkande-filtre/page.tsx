@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Check, Filter } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 import { FILTRE } from '@/lib/filtre'
+import EuBadge from '@/components/EuBadge'
 
 export const metadata: Metadata = {
   title: 'Filtre til vandkande – Bi-flux®, kalk, PFAS & FAST DISK | Clean Water Supply',
@@ -41,7 +42,8 @@ export default function VandkandeFiltrePage() {
               className="group rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all bg-white overflow-hidden flex flex-col"
             >
               {/* Billede */}
-              <div className="h-64 bg-white flex items-center justify-center p-4 overflow-hidden">
+              <div className="relative h-64 bg-white flex items-center justify-center p-4 overflow-hidden">
+                <EuBadge size={54} className="absolute top-3 right-3 z-10 -rotate-[13deg] drop-shadow" />
                 <img src={f.img} alt={f.name} className={`max-h-full max-w-full object-contain ${f.glassmart ? '' : 'scale-[1.35]'}`} />
               </div>
 

@@ -7,6 +7,7 @@ import { stockFor } from '@/lib/stock'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
 import BuyBox from './BuyBox'
 import ProductGallery from './ProductGallery'
+import EuBadge from '@/components/EuBadge'
 import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
 import FilterAddToCart from './FilterAddToCart'
@@ -294,6 +295,9 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
             {/* LEFT: Product image / galleri (billeder + evt. stemningsbillede & video) */}
             <div className="relative order-1 lg:order-none">
+              {product.category === 'vandkande' && (
+                <EuBadge size={72} className="absolute top-2 right-2 z-20 -rotate-[13deg] drop-shadow pointer-events-none" />
+              )}
               {(() => {
                 const baseImgs = product.images && product.images.length > 0
                   ? product.images

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Droplets } from 'lucide-react'
 import { KANDER } from '@/lib/kander'
+import EuBadge from '@/components/EuBadge'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -51,6 +52,7 @@ export default function VandkanderPage() {
                     {k.highlight}
                   </span>
                 )}
+                <EuBadge size={56} className="absolute top-3 right-3 z-10 -rotate-[13deg] drop-shadow" />
                 <img
                   src={k.img}
                   alt={k.name}
