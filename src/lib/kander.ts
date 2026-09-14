@@ -109,7 +109,7 @@ export const KANDER: Kande[] = [
     ],
     tagline: 'Stopper 99,999 % af bakterier* – for sikkert drikkevand til hele familien.',
     capacity: '3 L total · 2 L filtreret',
-    highlight: 'Stopper 99,999 % af bakterier*',
+    highlight: 'Stopper 99,999 % af bakterierne i dit drikkevand*',
     footnote:
       '*Op til 99,999 % bakteriereduktion dokumenteret af Laica ved test af Germ-stop™-filteret under laboratorieforhold.',
     intro:
