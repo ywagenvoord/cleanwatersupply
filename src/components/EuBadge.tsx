@@ -20,7 +20,7 @@ export default function EuBadge({
     >
       <defs>
         <path id="euArcTop" d="M 50 50 m -36 0 a 36 36 0 1 1 72 0" fill="none" />
-        <path id="euArcBot" d="M 50 50 m 36 0 a 36 36 0 1 1 -72 0" fill="none" />
+        <path id="euArcBot" d="M 50 50 m -36 0 a 36 36 0 1 0 72 0" fill="none" />
       </defs>
 
       {/* Segl */}

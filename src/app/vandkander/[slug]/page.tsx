@@ -110,8 +110,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-8 md:pt-12 pb-4">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start [&>*]:min-w-0">
             {/* Billede */}
-            <div className="relative order-1 md:order-none md:col-start-1 md:row-start-1">
-              <EuBadge className="absolute -top-2 -right-2 z-20 drop-shadow-lg pointer-events-none" size={92} />
+            <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
               <ProductGallery
                 items={[
                   { src: k.img },
@@ -143,9 +142,12 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
             {/* Tekst */}
             <div className="order-2 md:order-none md:col-start-2 md:row-start-1 md:row-span-2">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 mb-5 shadow-sm">
-                <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
-                <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
+              <div className="flex items-center justify-between gap-4 mb-5">
+                <div className="inline-flex items-center gap-2 rounded-full bg-white ring-1 ring-gray-200 px-3.5 py-1.5 shadow-sm">
+                  <Droplets className="w-3.5 h-3.5 text-[#3aad4a]" />
+                  <span className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-widest">{k.art}</span>
+                </div>
+                <EuBadge size={78} className="shrink-0" />
               </div>
               <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] leading-[1.05] tracking-tight">{k.heading ?? k.name}</h1>
               {k.heading && <p className="text-sm font-semibold text-gray-400 mt-2">{k.name}</p>}
