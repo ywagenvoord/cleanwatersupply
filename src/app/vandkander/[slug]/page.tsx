@@ -11,6 +11,7 @@ import { getFilter } from '@/lib/filtre'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
+import EuBadge from '@/components/EuBadge'
 import KandeBuy from './KandeBuy'
 import GlaSSmartVideoModal from './GlaSSmartVideoModal'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
@@ -109,7 +110,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-8 md:pt-12 pb-4">
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-start [&>*]:min-w-0">
             {/* Billede */}
-            <div className="order-1 md:order-none md:col-start-1 md:row-start-1">
+            <div className="relative order-1 md:order-none md:col-start-1 md:row-start-1">
+              <EuBadge className="absolute -top-2 -right-2 z-20 drop-shadow-lg pointer-events-none" size={92} />
               <ProductGallery
                 items={[
                   { src: k.img },
