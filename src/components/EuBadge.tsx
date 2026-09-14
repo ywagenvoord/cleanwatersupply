@@ -47,7 +47,7 @@ export default function EuBadge({
             fontFamily="Helvetica, Arial, sans-serif">
         <textPath href="#euArcTop" startOffset="50%" textAnchor="middle">PRODUCERET</textPath>
       </text>
-      <text fill="#ffffff" fontSize="8.4" fontWeight="700" letterSpacing="3"
+      <text fill="#ffd54a" fontSize="13" fontWeight="800" letterSpacing="3.5"
             fontFamily="Helvetica, Arial, sans-serif">
         <textPath href="#euArcBot" startOffset="50%" textAnchor="middle">I&#160;EU</textPath>
       </text>
