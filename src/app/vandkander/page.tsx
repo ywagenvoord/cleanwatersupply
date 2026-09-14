@@ -61,8 +61,8 @@ export default function VandkanderPage() {
               {/* Tekst */}
               <div className="p-6 flex flex-col flex-1">
                 <p className="text-[11px] font-bold text-[#2e9a3d] uppercase tracking-wider mb-1">{k.art}</p>
-                <h2 className="text-lg font-extrabold text-[#0a2540] leading-tight">{k.name}</h2>
-                <p className="text-sm text-gray-500 mt-2 leading-relaxed">{k.tagline}</p>
+                <h2 className="text-lg font-extrabold text-[#0a2540] leading-tight min-h-[2.9rem]">{k.name}</h2>
+                <p className="text-sm text-gray-500 mt-2 leading-relaxed min-h-[2.9rem]">{k.tagline}</p>
 
                 {k.capacity && (
                   <p className="text-sm font-bold text-[#284eff] mt-3">{k.capacity}</p>
