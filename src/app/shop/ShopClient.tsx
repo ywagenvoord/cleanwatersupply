@@ -245,6 +245,20 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
+          {soldOut && (
+            <p className="mb-1.5 text-xs font-semibold text-red-600">
+              Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
+            </p>
+          )}
+          {stockLeft != null && stockLeft > 0 && (
+            <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+              </span>
+              {stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${stockLeft} tilbage på lager`}
+            </p>
+          )}
           {product.quoteOnly ? (
             <p className="text-base font-bold text-[#0a2540]">Kontakt for info</p>
           ) : product.comingSoon || displayPrice === undefined ? (
@@ -253,20 +267,6 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             <p className="flex items-baseline gap-1.5">
               <span className="text-xl font-extrabold text-[#0a2540]">{displayPrice.toLocaleString('da-DK')} kr</span>
               <span className="text-[11px] font-medium text-gray-400">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
-            </p>
-          )}
-          {soldOut && (
-            <p className="mt-1.5 text-xs font-semibold text-red-600">
-              Udsolgt{restockLabel ? ` · forventet på lager igen ${restockLabel}` : ''}
-            </p>
-          )}
-          {stockLeft != null && stockLeft > 0 && (
-            <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-              </span>
-              {stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${stockLeft} tilbage på lager`}
             </p>
           )}
         </div>
