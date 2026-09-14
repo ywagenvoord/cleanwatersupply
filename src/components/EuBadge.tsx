@@ -43,7 +43,7 @@ export default function EuBadge({
       <circle cx="50" cy="50" r="40" fill="none" stroke="#ffd54a" strokeOpacity="0.5" strokeWidth="1" />
 
       {/* Buet tekst */}
-      <text fill="#ffffff" fontSize="8.4" fontWeight="700" letterSpacing="2.4"
+      <text fill="#ffd54a" fontSize="10.5" fontWeight="800" letterSpacing="1.8"
             fontFamily="Helvetica, Arial, sans-serif">
         <textPath href="#euArcTop" startOffset="50%" textAnchor="middle">PRODUCERET</textPath>
       </text>
