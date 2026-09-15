@@ -113,7 +113,7 @@ export default function VandkanderPage() {
               Se i shoppen <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center justify-center rounded-full border border-white/25 hover:bg-white/10 text-white font-semibold px-7 py-3.5 text-sm transition-colors"
             >
               Få gratis rådgivning

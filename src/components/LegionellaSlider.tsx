@@ -109,7 +109,7 @@ export default function LegionellaSlider() {
               ))}
             </div>
 
-            <Link href="/solutions" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20">
+            <Link href="/loesninger" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20">
               Se alle løsninger
               <ArrowRight className="w-4 h-4" />
             </Link>

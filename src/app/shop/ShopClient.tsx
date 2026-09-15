@@ -457,7 +457,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
                 <> {da ? 'i' : 'in'} <span className="text-gray-700 font-semibold">{da ? activeCat.labelDa : activeCat.labelEn}</span></>
               )}
             </p>
-            <Link href="/contact" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
+            <Link href="/kontakt" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
               {da ? 'Få rådgivning' : 'Get advice'}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -488,7 +488,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
               : 'Our specialists will help you find the right solution for your home or business — completely free.'}
           </p>
           <Link
-            href="/contact"
+            href="/kontakt"
             className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
           >
             {da ? 'Få gratis rådgivning' : 'Get free advice'}

@@ -33,7 +33,7 @@ export default function LegionellaPage() {
               Se filtre til hjemmet <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center gap-2 bg-white text-[#0a2540] px-7 py-3.5 rounded-full font-bold ring-1 ring-blue-100 hover:ring-blue-200 shadow-sm transition-all"
             >
               Få gratis rådgivning
@@ -193,7 +193,7 @@ export default function LegionellaPage() {
           </div>
           <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
             Bor du i en større ejendom, udlejning eller driver du erhverv? Så gælder der flere krav til
-            fx cirkulation og dokumentation – <Link href="/contact" className="text-[#284eff] font-semibold hover:underline">dem hjælper vi også med</Link>.
+            fx cirkulation og dokumentation – <Link href="/kontakt" className="text-[#284eff] font-semibold hover:underline">dem hjælper vi også med</Link>.
           </p>
         </div>
       </section>
@@ -350,7 +350,7 @@ export default function LegionellaPage() {
                 Se alle Legionella-filtre <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                href="/contact"
+                href="/kontakt"
                 className="inline-flex items-center gap-2 bg-white text-[#0a2540] px-8 py-4 rounded-full font-bold ring-1 ring-blue-100 hover:ring-blue-200 shadow-sm transition-all"
               >
                 Få gratis rådgivning

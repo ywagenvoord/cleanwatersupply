@@ -3,7 +3,7 @@ import SolutionsClient from './SolutionsClient'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import { SITE_URL } from '@/lib/site'
 
-const URL = `${SITE_URL}/solutions`
+const URL = `${SITE_URL}/loesninger`
 
 export const metadata: Metadata = {
   title: 'Vandløsninger til det private hjem | Clean Water Supply',

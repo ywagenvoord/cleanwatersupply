@@ -77,7 +77,7 @@ export default function AnlaegPage() {
             <Link href="#legionella-anlaeg" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
               Se anlæggene <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
               Få en teknisk gennemgang
             </Link>
           </div>
@@ -113,7 +113,7 @@ export default function AnlaegPage() {
                 <Link href="/legionella-anlaeg" className="inline-flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#123a63] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
                   Læs mere om Legionella-anlæg <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 text-[#0a2540] px-7 py-3.5 rounded-full font-semibold text-sm transition-colors">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 border border-gray-300 hover:bg-gray-50 text-[#0a2540] px-7 py-3.5 rounded-full font-semibold text-sm transition-colors">
                   Kontakt erhvervsteam
                 </Link>
               </div>
@@ -152,7 +152,7 @@ export default function AnlaegPage() {
                 <Link href="/eca-vand" className="inline-flex items-center justify-center gap-2 bg-[#0a2540] hover:bg-[#123a63] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
                   Læs mere om ECA-vand &amp; HOCl <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-gray-300 hover:bg-white text-[#0a2540] px-7 py-3.5 rounded-full font-semibold text-sm transition-colors">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 border border-gray-300 hover:bg-white text-[#0a2540] px-7 py-3.5 rounded-full font-semibold text-sm transition-colors">
                   Kontakt erhvervsteam
                 </Link>
               </div>
@@ -209,7 +209,7 @@ export default function AnlaegPage() {
           <p className="text-white/70 mb-8 max-w-xl mx-auto">
             Få en uforpligtende teknisk gennemgang og et tilbud tilpasset jeres branche, vandkvalitet og driftsbehov.
           </p>
-          <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
+          <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
             Kontakt vores erhvervsteam <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

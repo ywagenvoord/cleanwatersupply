@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 
 const links = [
   { href: '/shop', icon: ShoppingBag, title: 'Shop', text: 'Filtre, blødgøringsanlæg og vandkander' },
-  { href: '/solutions', icon: Droplets, title: 'Løsninger', text: 'Legionella, kalk, ECA-vand og mere' },
+  { href: '/loesninger', icon: Droplets, title: 'Løsninger', text: 'Legionella, kalk, ECA-vand og mere' },
   { href: '/', icon: Home, title: 'Forsiden', text: 'Tilbage til start' },
-  { href: '/contact', icon: Phone, title: 'Kontakt', text: 'Vi hjælper dig med at finde det rette' },
+  { href: '/kontakt', icon: Phone, title: 'Kontakt', text: 'Vi hjælper dig med at finde det rette' },
 ]
 
 export default function NotFound() {

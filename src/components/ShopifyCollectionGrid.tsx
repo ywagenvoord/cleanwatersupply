@@ -192,7 +192,7 @@ export default function ShopifyCollectionGrid() {
       <div className="text-center py-16">
         <p className="text-gray-400 text-sm mb-4">Produkter ikke tilgængelige via Shopify.</p>
         <Link
-          href="/contact"
+          href="/kontakt"
           className="inline-flex items-center gap-2 bg-[#0a2540] text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-[#0d2f50] transition-colors"
         >
           Kontakt os for priser <ArrowRight className="w-4 h-4" />

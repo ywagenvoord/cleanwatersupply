@@ -105,7 +105,7 @@ export default function LegionellaAnlaegClient() {
                   : 'A central system that continuously treats the water and keeps the pipework free of bacteria and biofilm – chemical-free, automatic and documentable.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
                   {da ? 'Få et tilbud' : 'Get a quote'}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -292,7 +292,7 @@ export default function LegionellaAnlaegClient() {
               : 'Contact us for a no-obligation assessment. We review your installation and recommend the right legionella system – emergency barrier or permanent solution.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:-translate-y-0.5">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:-translate-y-0.5">
               <Phone className="w-4 h-4" /> {da ? 'Kontakt os' : 'Contact us'}
             </Link>
             <Link href="/legionella" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">

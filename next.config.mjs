@@ -11,8 +11,10 @@ const nextConfig = {
   // sider der har skiftet slug). Uden disse rammer Google-resultater en 404.
   async redirects() {
     return [
-      // Dansk URL for om-os (gammel /about bevarer sin autoritet via 301)
+      // Danske URL'er (gamle engelske stier bevarer autoritet via 301)
       { source: '/about', destination: '/om-os', permanent: true },
+      { source: '/contact', destination: '/kontakt', permanent: true },
+      { source: '/solutions', destination: '/loesninger', permanent: true },
       // ── Én produktside per produkt: /shop-dubletter → de kanoniske sider ──
       // Kander → /vandkander (rige sider). Carmen er dog rigest som shop-side:
       { source: '/vandkander/carmen',            destination: '/shop/kande-carmen', permanent: true },

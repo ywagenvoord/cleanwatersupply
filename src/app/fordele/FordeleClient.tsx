@@ -116,7 +116,7 @@ export default function FordelePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/contact" className="btn-primary">
+                  <Link href="/kontakt" className="btn-primary">
                     {page.cta}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -167,7 +167,7 @@ export default function FordelePage() {
                 </li>
               ))}
             </ul>
-            <Link href="/contact" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
+            <Link href="/kontakt" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
               {page.summary.cta}
               <ArrowRight className="w-5 h-5" />
             </Link>

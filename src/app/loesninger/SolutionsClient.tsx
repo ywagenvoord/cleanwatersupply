@@ -211,7 +211,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <Link href="/contact" className="btn-primary">
+                  <Link href="/kontakt" className="btn-primary">
                     {t(`solutionsPage.${sol.key}.cta`)}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -256,7 +256,7 @@ export default function SolutionsPage() {
           <p className="text-blue-100/80 mb-9 text-lg">
             {tx('solutionsPage.bottomCta.subheadline')}
           </p>
-          <Link href="/contact" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
+          <Link href="/kontakt" className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
             {t('solutionsPage.bottomCta.cta')}
             <ArrowRight className="w-5 h-5" />
           </Link>

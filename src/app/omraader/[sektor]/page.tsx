@@ -324,7 +324,7 @@ export default function SektorPage({ params }: { params: { sektor: string } }) {
                 Vi er klar til at hjælpe dig med den rette løsning til {sektor.title.toLowerCase()}.
               </p>
               <Link
-                href="/contact"
+                href="/kontakt"
                 className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-base transition-all hover:shadow-lg hover:shadow-green-500/20"
               >
                 Kontakt os <ArrowRight className="w-5 h-5" />

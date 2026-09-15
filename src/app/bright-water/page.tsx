@@ -246,7 +246,7 @@ export default function BrightWaterGuide() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 gap-4">
             <Link
-              href="/contact"
+              href="/kontakt"
               className="group bg-white rounded-2xl ring-1 ring-blue-100 hover:ring-[#3aad4a]/40 shadow-sm hover:shadow-md transition-all p-6"
             >
               <div className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-4">
@@ -259,7 +259,7 @@ export default function BrightWaterGuide() {
               </span>
             </Link>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="group bg-white rounded-2xl ring-1 ring-blue-100 hover:ring-[#3aad4a]/40 shadow-sm hover:shadow-md transition-all p-6"
             >
               <div className="w-11 h-11 rounded-xl bg-sky-50 text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center mb-4">

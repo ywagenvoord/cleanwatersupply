@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`,            lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
     { url: `${SITE_URL}/shop`,        lastModified: now, changeFrequency: 'daily',   priority: 0.95 },
-    { url: `${SITE_URL}/solutions`,   lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
+    { url: `${SITE_URL}/loesninger`,   lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/legionella`,  lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/legionella-anlaeg`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/anlaeg`,      lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/vandkander`,       lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/vandkande-filtre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/om-os`,       lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE_URL}/contact`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/kontakt`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/privatlivspolitik`,   lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/handelsbetingelser`,  lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/returpolitik`,        lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },

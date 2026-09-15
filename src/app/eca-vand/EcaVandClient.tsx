@@ -198,7 +198,7 @@ export default function EcaVandPage() {
               Se ECA-produkter <ArrowRight className="w-5 h-5" />
             </Link>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/25 text-white px-8 py-4 rounded-full font-bold text-base transition-all"
             >
               Få gratis ECA-rådgivning <ArrowRight className="w-5 h-5" />

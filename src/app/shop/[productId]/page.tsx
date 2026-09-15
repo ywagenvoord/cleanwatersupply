@@ -800,7 +800,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 ))}
               </div>
               <p className="text-xs text-gray-500 mt-4">
-                I tvivl om, hvilken kobling din hane skal bruge? <Link href="/contact" className="font-semibold text-[#284eff]">Kontakt os</Link>, så hjælper vi dig.
+                I tvivl om, hvilken kobling din hane skal bruge? <Link href="/kontakt" className="font-semibold text-[#284eff]">Kontakt os</Link>, så hjælper vi dig.
               </p>
             </div>
           </section>
@@ -961,7 +961,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
                     I tvivl om forholdene hos jer? Vi rådgiver gerne og finder den rette løsning. Kontakt os for pris og book installation sammen med dit{isSoftener ? ' anlæg' : ' filterhus'}.
                   </p>
-                  <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors shrink-0">
+                  <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-6 py-3 rounded-full font-bold text-sm transition-colors shrink-0">
                     Kontakt os
                     <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -1046,7 +1046,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center justify-center gap-2.5 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
             >
               Kontakt os

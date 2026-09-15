@@ -127,7 +127,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                   </div>
                 )}
                 <Link
-                  href="/contact"
+                  href="/kontakt"
                   className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
                 >
                   Få rådgivning

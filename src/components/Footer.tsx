@@ -78,7 +78,7 @@ export default function Footer() {
                 { href: '/legionella',    label: 'Legionella-filtre' },
                 { href: '/eca-vand',      label: 'ECA-vand & HOCl' },
                 { href: '/shop',          label: 'Shop alle produkter' },
-                { href: '/solutions',     label: 'Alle løsninger' },
+                { href: '/loesninger',     label: 'Alle løsninger' },
                 { href: '/fordele',       label: 'Fordele' },
               ].map((link) => (
                 <li key={link.href}>
@@ -120,7 +120,7 @@ export default function Footer() {
                 { href: '/business',  label: 'Erhverv' },
                 { href: '/montering', label: 'Montering' },
                 { href: '/faq',       label: 'FAQ' },
-                { href: '/contact',   label: 'Kontakt' },
+                { href: '/kontakt',   label: 'Kontakt' },
               ].map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm hover:text-white transition-colors flex items-center gap-1.5 group">

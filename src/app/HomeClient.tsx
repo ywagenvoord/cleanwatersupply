@@ -34,9 +34,9 @@ export default function HomePage() {
   }
 
   const solutions = [
-    { key: 'filtration', color: 'blue', href: '/solutions#filtration' },
-    { key: 'softening', color: 'sky', href: '/solutions#softening' },
-    { key: 'drinking', color: 'emerald', href: '/solutions#drinking' },
+    { key: 'filtration', color: 'blue', href: '/loesninger#filtration' },
+    { key: 'softening', color: 'sky', href: '/loesninger#softening' },
+    { key: 'drinking', color: 'emerald', href: '/loesninger#drinking' },
   ]
 
   const whyFeatures: { title: string; description: string }[] = t('whyUs.features')
@@ -76,14 +76,14 @@ export default function HomePage() {
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
-                href="/contact"
+                href="/kontakt"
                 className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full text-base font-bold transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
               >
                 {t('hero.cta1')}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
-                href="/solutions"
+                href="/loesninger"
                 className="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white px-8 py-4 rounded-full text-base font-semibold transition-all"
               >
                 {t('hero.cta2')}
@@ -271,7 +271,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/solutions" className="btn-secondary">
+            <Link href="/loesninger" className="btn-secondary">
               {t('common.seeAllSolutions')}
               <ArrowRight className="w-4 h-4" />
             </Link>
@@ -491,7 +491,7 @@ export default function HomePage() {
                 </span>
                 <h3 className="text-2xl font-bold text-white mb-3">{t('segments.private.headline')}</h3>
                 <p className="text-blue-100/80 text-sm mb-6 leading-relaxed">{t('segments.private.description')}</p>
-                <Link href="/solutions" className="inline-flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-full text-sm font-bold transition-all self-start">
+                <Link href="/loesninger" className="inline-flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-full text-sm font-bold transition-all self-start">
                   {t('segments.private.cta')}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -598,7 +598,7 @@ export default function HomePage() {
             {t('ctaBanner.subheadline')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5">
               {t('ctaBanner.cta1')}
               <ArrowRight className="w-5 h-5" />
             </Link>

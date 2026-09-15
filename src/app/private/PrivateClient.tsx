@@ -156,7 +156,7 @@ export default function PrivateClient() {
                   {da ? 'Se produkterne' : 'Explore products'}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
                   {da ? 'Kontakt os' : 'Contact us'}
                 </Link>
               </div>
@@ -394,7 +394,7 @@ export default function PrivateClient() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{da ? 'Klar til rent og bakteriefrit vand i hjemmet?' : 'Ready for clean, bacteria-free water at home?'}</h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">{da ? 'Kontakt os i dag og få gratis, uforpligtende rådgivning til netop dit hjem.' : 'Contact us today for free, no-obligation advice for your home.'}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
               {da ? 'Få gratis rådgivning' : 'Get free advice'}
               <ArrowRight className="w-4 h-4" />
             </Link>

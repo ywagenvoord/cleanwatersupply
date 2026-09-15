@@ -310,7 +310,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">I tvivl om, hvad der passer til dit hjem?</h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">Få gratis, uforpligtende rådgivning, så finder vi den rette løsning til netop dit vand og dit behov.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
               Få gratis rådgivning <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/shop" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">

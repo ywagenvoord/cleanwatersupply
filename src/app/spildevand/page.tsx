@@ -88,7 +88,7 @@ export default function SpildevandPage() {
               ))}
             </ul>
             <div className="flex flex-col sm:flex-row gap-3">
-              <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all">
+              <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all">
                 Kontakt os om jeres projekt <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/eca-vand" className="inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all">

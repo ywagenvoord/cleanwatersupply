@@ -193,7 +193,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                     Køb i shoppen <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
-                    href="/contact"
+                    href="/kontakt"
                     className="inline-flex items-center justify-center rounded-full border border-gray-300 bg-white/60 hover:bg-white text-[#0a2540] font-semibold px-8 py-4 text-sm transition-all"
                   >
                     Få rådgivning
@@ -464,7 +464,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               Se i shoppen <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/contact"
+              href="/kontakt"
               className="inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white font-semibold px-8 py-4 text-sm transition-all"
             >
               Få gratis rådgivning

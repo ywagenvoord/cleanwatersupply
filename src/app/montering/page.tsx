@@ -99,7 +99,7 @@ export default function MonteringPage({ searchParams }: { searchParams: { sent?:
             </div>
 
             <p className="text-sm text-gray-500 mt-6">
-              Er du i tvivl, eller vil du hellere ringe? <Link href="/contact" className="font-bold text-[#0a2540] hover:text-[#3aad4a]">Kontakt os her</Link>.
+              Er du i tvivl, eller vil du hellere ringe? <Link href="/kontakt" className="font-bold text-[#0a2540] hover:text-[#3aad4a]">Kontakt os her</Link>.
             </p>
           </div>
 

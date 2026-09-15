@@ -43,7 +43,7 @@ export default function BusinessPage() {
                   {t('businessPage.hero.cta1')}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-sm transition-all">
                   {t('businessPage.hero.cta2')}
                 </Link>
               </div>

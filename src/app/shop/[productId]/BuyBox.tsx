@@ -284,14 +284,14 @@ export default function BuyBox({ product }: { product: Product }) {
     return (
       <div className="space-y-3">
         <Link
-          href="/contact"
+          href="/kontakt"
           className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg"
         >
           <Phone className="w-4 h-4" />
           Kontakt for info
         </Link>
         <Link
-          href="/contact"
+          href="/kontakt"
           className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-3 px-6 rounded-full font-bold text-sm transition-all"
         >
           Få et uforpligtende tilbud
@@ -319,14 +319,14 @@ export default function BuyBox({ product }: { product: Product }) {
     return (
       <div className="space-y-3">
         <Link
-          href="/contact"
+          href="/kontakt"
           className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg"
         >
           <Phone className="w-4 h-4" />
           {product.comingSoon ? 'Forhåndsbestil – kontakt os' : 'Bestil – kontakt os'}
         </Link>
         <Link
-          href="/contact"
+          href="/kontakt"
           className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-3 px-6 rounded-full font-bold text-sm transition-all"
         >
           Få et gratis tilbud
@@ -369,7 +369,7 @@ export default function BuyBox({ product }: { product: Product }) {
         {selector}
         {installInfo}
         <Link
-          href="/contact"
+          href="/kontakt"
           className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-4 px-6 rounded-full font-bold text-sm transition-all hover:shadow-lg hover:shadow-green-500/20"
         >
           <Wrench className="w-4 h-4" />

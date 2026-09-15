@@ -175,7 +175,7 @@ export default function ErhvervClient() {
                   : "With medically certified Legionella filters and Kirkmayer's HOCl systems, we deliver documented water hygiene to hospitals, hotels, pools, the food industry and agriculture – right out to every outlet and every animal."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
+                <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
                   {da ? 'Få et erhvervstilbud' : 'Request a business quote'}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -445,7 +445,7 @@ export default function ErhvervClient() {
                   ? 'Vores anlæg og filtre er certificeret efter anerkendte standarder og leveres med den dokumentation, jeres branche kræver – fra medicinsk udstyrsgodkendelse til godkendt aktivstof. Det giver et revisions- og tilsynssikkert grundlag for jeres vandhygiejne.'
                   : 'Our systems and filters are certified to recognised standards and supplied with the documentation your sector requires – from medical device approval to approved active substance. This gives an audit- and inspection-ready basis for your water hygiene.'}
               </p>
-              <Link href="/contact" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
+              <Link href="/kontakt" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-colors">
                 {da ? 'Anmod om dokumentation' : 'Request documentation'}
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -503,7 +503,7 @@ export default function ErhvervClient() {
               : 'Get a no-obligation technical review and a quote tailored to your sector, water quality and operational needs.'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
+            <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">
               {da ? 'Kontakt vores erhvervsteam' : 'Contact our business team'}
               <ArrowRight className="w-4 h-4" />
             </Link>

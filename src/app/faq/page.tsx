@@ -152,7 +152,7 @@ export default function FaqPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-extrabold text-[#0a2540] mb-3">Fik du ikke svar på dit spørgsmål?</h2>
           <p className="text-gray-600 mb-7">Vi sidder klar til at hjælpe dig med at finde den rigtige løsning.</p>
-          <Link href="/contact" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-lg">
+          <Link href="/kontakt" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-lg">
             Kontakt os
             <ArrowRight className="w-4 h-4" />
           </Link>

@@ -63,15 +63,15 @@ export default function Navigation() {
     { href: '/legionella-anlaeg', label: 'Legionella-anlæg' },
     { href: '/eca-vand', label: 'ECA-VAND' },
     { href: '/om-os', label: t('nav.about') },
-    { href: '/contact', label: t('nav.contact') },
+    { href: '/kontakt', label: t('nav.contact') },
   ]
 
   // Privat: forenklet, hjem-fokuseret menu
   const privatLinks: NavLink[] = [
-    { href: '/solutions', label: t('nav.solutions'), children: loesningerChildren },
+    { href: '/loesninger', label: t('nav.solutions'), children: loesningerChildren },
     { href: '/legionella', label: 'Bakterier' },
     { href: '/om-os', label: t('nav.about') },
-    { href: '/contact', label: t('nav.contact') },
+    { href: '/kontakt', label: t('nav.contact') },
   ]
 
   const navLinks: NavLink[] = audience === 'erhverv' ? erhvervLinks : privatLinks
