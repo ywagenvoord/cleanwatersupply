@@ -10,7 +10,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 
 const VALUE_ICONS = [ShieldCheck, Leaf, Lightbulb, Heart, Users, Star]
 
-export default function AboutPage() {
+export default function AboutPage({ faqs = [] }: { faqs?: { q: string; a: string }[] }) {
   const { t } = useLanguage()
   const [audience] = useAudience()
   // Erhverv beholder den oprindelige (B2B-neutrale) om-tekst; privat/øvrige får den nye B2C-mission.
@@ -219,6 +219,29 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ─── OFTE STILLEDE SPØRGSMÅL ──────────────────────────── */}
+      {faqs.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="section-badge">Ofte stillede spørgsmål</span>
+              <h2 className="section-heading">Godt at vide om Clean Water Supply</h2>
+            </div>
+            <div className="space-y-3">
+              {faqs.map((f) => (
+                <details key={f.q} className="group rounded-2xl bg-gray-50 ring-1 ring-gray-200 open:ring-blue-200 open:bg-white">
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0a2540]">
+                    {f.q}
+                    <ArrowRight className="w-4 h-4 shrink-0 text-gray-400 transition-transform group-open:rotate-90" />
+                  </summary>
+                  <p className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden mt-16">

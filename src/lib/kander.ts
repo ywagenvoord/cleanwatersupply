@@ -30,6 +30,7 @@ export type Kande = {
   highlights?: { icon: string; title: string; text: string }[]
   eco?: string
   steps?: string[]
+  faqs?: { q: string; a: string }[]   // ofte stillede spørgsmål (vises + FAQPage-schema til AI/Google)
   galleryFront?: string[]    // produktbilleder der vises lige efter hovedbilledet
   lifestyle?: string[]
   gallery?: string[]
@@ -153,6 +154,13 @@ export const KANDER: Kande[] = [
       link: '/shop/mikroplastik-stop-filter',
     },
     compatFilters: ['bi-flux-universal', 'bi-flux-limescalestop', 'bi-flux-healthexpert'],
+    faqs: [
+      { q: 'Hvad gør Germ-Stop filterkanden?', a: 'Germ-Stop er en filterkande med et særligt Germ-stop™-filter, der er udviklet til at reducere bakterier i drikkevandet. Op til 99,999 % bakteriereduktion er dokumenteret af Laica ved test under laboratorieforhold. Du får friskt, filtreret vand direkte fra køkkenbordet eller køleskabet.' },
+      { q: 'Er Germ-Stop sikker for børn og børnefamilier?', a: 'Ja. Kanden er netop tænkt til børnefamilier, der vil have ekstra tryghed om det vand, hele familien drikker og bruger til mad og drikke. Produktet er produceret i EU.' },
+      { q: 'Hvor ofte skal filteret skiftes?', a: 'Filteret skiftes typisk hver 2. måned afhængigt af forbrug. Kanden har en indikator, der viser, hvornår det er tid til et nyt filter, så du aldrig er i tvivl.' },
+      { q: 'Hvilke filtre passer i Germ-Stop kanden?', a: 'Ud over Germ-stop™-filteret passer også bi-flux®-filtrene Universal, LimescaleSTOP og HealthExpert i kanden, så du kan vælge det filter, der passer til dit behov.' },
+      { q: 'Hvor stor er kanden?', a: 'Kanden har en samlet kapacitet på 3 liter og er designet til at stå i de fleste køleskabe, så du altid har koldt, filtreret vand klar.' },
+    ],
     highlights: [
       { icon: 'shield', title: 'Stopper 99,999 % af bakterier*', text: 'Germ-stop™-filteret stopper bakterier i vandet – tryghed i hver tår, også for de mindste.' },
       { icon: 'droplet', title: 'Trygt til børnefamilier', text: 'Sikkert drikkevand, som hele familien kan drikke uden bekymring.' },
@@ -214,6 +222,12 @@ export const KANDER: Kande[] = [
       cwsId: 'fast-disk',
       link: '/vandkande-filtre/fast-disk',
     },
+    faqs: [
+      { q: 'Hvad er GlaSSmart vandkaraffel?', a: 'GlaSSmart er en elegant glaskaraffel med et FAST DISK™-filter, der filtrerer vandet i det øjeblik, du hælder (instant-filtrering). Den forbedrer smagen og reducerer klor, mens de nyttige mineraler bevares.' },
+      { q: 'Passer karaflen i køleskabet?', a: 'Ja. Den slanke glaskaraffel er skabt til at stå i køleskabet og passer i de fleste køleskabsdøre. Den kan både stå op og ligge ned uden at lække, når blot låget er lukket korrekt.' },
+      { q: 'Hvor ofte skal FAST DISK™-filteret skiftes?', a: 'Et FAST DISK™-filter giver ca. 3 måneders filtreret vand ved normalt forbrug. Der følger filtre med, og du kan nemt købe nye, når de skal skiftes.' },
+      { q: 'Kan karaflen tåle opvaskemaskine?', a: 'Ja, selve glaskaraflen tåler opvaskemaskine. Glasset bevarer vandets naturlige karakter og er 100 % genanvendeligt.' },
+    ],
     highlights: [
       { icon: 'droplet', title: 'Passer i køleskabet', text: 'Passer i de fleste køleskabe og kan både stå op og ligge ned – luk blot låget korrekt, så den er tæt. Altid koldt, filtreret vand klar.' },
       { icon: 'zap', title: 'Instant-filtrering', text: 'FAST DISK™ filtrerer vandet i det øjeblik, du hælder.' },

@@ -16,6 +16,7 @@ import KandeBuy from './KandeBuy'
 import GlaSSmartVideoModal from './GlaSSmartVideoModal'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
+import FaqJsonLd from '@/components/seo/FaqJsonLd'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -94,6 +95,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           { name: k.name, url: `${SITE_URL}/vandkander/${k.slug}` },
         ]}
       />
+      {k.faqs && k.faqs.length > 0 && <FaqJsonLd faqs={k.faqs} />}
       {k.slug === 'glassmart' && <GlaSSmartVideoModal />}
       {/* ─── HERO ──────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white">
@@ -442,6 +444,24 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               <h2 className="text-xl font-extrabold text-[#0a2540]">Godt for både dig og miljøet</h2>
               <p className="text-gray-600 text-sm md:text-base mt-1.5 leading-relaxed max-w-xl">{k.eco}</p>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── OFTE STILLEDE SPØRGSMÅL ───────────────────────── */}
+      {k.faqs && k.faqs.length > 0 && (
+        <section className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-6 text-center">Ofte stillede spørgsmål</h2>
+          <div className="space-y-3">
+            {k.faqs.map((f) => (
+              <details key={f.q} className="group rounded-2xl bg-white ring-1 ring-gray-200 open:ring-[#284eff]/30 shadow-sm">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 py-4 font-semibold text-[#0a2540]">
+                  {f.q}
+                  <ChevronRight className="w-4 h-4 shrink-0 text-gray-400 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
       )}
