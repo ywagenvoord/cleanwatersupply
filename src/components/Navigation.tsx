@@ -62,7 +62,7 @@ export default function Navigation() {
     { href: '/omraader', label: 'Løsninger', children: omraaderChildren },
     { href: '/legionella-anlaeg', label: 'Legionella-anlæg' },
     { href: '/eca-vand', label: 'ECA-VAND' },
-    { href: '/about', label: t('nav.about') },
+    { href: '/om-os', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
 
@@ -70,7 +70,7 @@ export default function Navigation() {
   const privatLinks: NavLink[] = [
     { href: '/solutions', label: t('nav.solutions'), children: loesningerChildren },
     { href: '/legionella', label: 'Bakterier' },
-    { href: '/about', label: t('nav.about') },
+    { href: '/om-os', label: t('nav.about') },
     { href: '/contact', label: t('nav.contact') },
   ]
 

@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/omraader`,    lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/vandkander`,       lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/vandkande-filtre`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${SITE_URL}/about`,       lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${SITE_URL}/om-os`,       lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${SITE_URL}/contact`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/privatlivspolitik`,   lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/handelsbetingelser`,  lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },

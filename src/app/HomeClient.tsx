@@ -189,7 +189,7 @@ export default function HomePage() {
                 ))}
               </ul>
 
-              <Link href="/about" className="btn-primary">
+              <Link href="/om-os" className="btn-primary">
                 {t('homeAbout.cta')}
                 <ChevronRight className="w-4 h-4" />
               </Link>

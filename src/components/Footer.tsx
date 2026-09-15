@@ -116,7 +116,7 @@ export default function Footer() {
             <h2 className="text-white font-semibold text-sm mb-5 uppercase tracking-wider">Virksomhed</h2>
             <ul className="space-y-3">
               {[
-                { href: '/about',     label: 'Om os' },
+                { href: '/om-os',     label: 'Om os' },
                 { href: '/business',  label: 'Erhverv' },
                 { href: '/montering', label: 'Montering' },
                 { href: '/faq',       label: 'FAQ' },

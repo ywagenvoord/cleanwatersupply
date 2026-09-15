@@ -7,9 +7,9 @@ export const metadata: Metadata = {
   title: 'Om Clean Water Supply – Danmarks vandhygiejne specialist',
   description:
     'Lær Clean Water Supply at kende: Danmarks specialist i Legionella-filtre, blødgøringsanlæg og ECA-vand. Møde teamet, vores mission og hvordan vi sikrer rent vand til hospitaler og hoteller.',
-  alternates: { canonical: `${SITE_URL}/about` },
+  alternates: { canonical: `${SITE_URL}/om-os` },
   openGraph: {
-    type: 'website', url: `${SITE_URL}/about`,
+    type: 'website', url: `${SITE_URL}/om-os`,
     title: 'Om os | Clean Water Supply',
     description: 'Mød Danmarks vandhygiejne specialist.',
     locale: 'da_DK', siteName: 'Clean Water Supply',
