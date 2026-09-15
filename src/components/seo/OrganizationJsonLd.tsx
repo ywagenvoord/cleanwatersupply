@@ -12,6 +12,7 @@ export default function OrganizationJsonLd() {
         '@type': ['Organization', 'LocalBusiness'],
         '@id': `${SITE_URL}/#organization`,
         name: 'Clean Water Supply',
+        alternateName: ['Clean Water Supply ApS', 'CleanWaterSupply'],
         legalName: 'Clean Water Supply ApS',
         url: SITE_URL,
         logo: {
