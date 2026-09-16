@@ -164,8 +164,9 @@ export default function SolutionsPage() {
       </section>
 
       {/* ─── SOLUTIONS ─────────────────────────────────────────── */}
-      {solutionData.map((sol) => {
+      {solutionData.map((sol, idx) => {
         const Icon = sol.icon
+        const reverse = idx % 2 === 1   // skift side automatisk, så billeder zigzagger
         const benefits: string[] = tx(`solutionsPage.${sol.key}.benefits`)
         const useCases: string[] = tx(`solutionsPage.${sol.key}.useCases`)
 
@@ -188,9 +189,9 @@ export default function SolutionsPage() {
         return (
           <section key={sol.key} id={sol.id} className="py-24 scroll-mt-20 even:bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${sol.reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
+              <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
                 {/* Content */}
-                <ScrollReveal direction={sol.reverse ? 'right' : 'left'} duration={700}>
+                <ScrollReveal direction={reverse ? 'right' : 'left'} duration={700}>
                 <div>
                   <div className={`inline-flex items-center gap-2.5 ${accentBg[sol.accentColor]} border ${accentBorder[sol.accentColor]} ${accentText[sol.accentColor]} text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5`}>
                     <Icon className="w-3.5 h-3.5" />
@@ -237,7 +238,7 @@ export default function SolutionsPage() {
                 </ScrollReveal>
 
                 {/* Image */}
-                <ScrollReveal direction={sol.reverse ? 'left' : 'right'} duration={700} delay={100}>
+                <ScrollReveal direction={reverse ? 'left' : 'right'} duration={700} delay={100}>
                 <div className="relative pb-10 lg:pb-0">
                   <div className={`aspect-[5/4] rounded-3xl overflow-hidden shadow-2xl ${sol.imgBg}`}>
                     {sol.images && sol.images.length > 0 ? (
