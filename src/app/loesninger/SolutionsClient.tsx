@@ -17,12 +17,10 @@ const solutionData = [
     imgSrc: '/images/softener-talent100b.jpg',
     fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
-    imgBg: 'bg-white',
-    images: [
-      '/images/blosgoringsanlaeg-100m.jpg',
-      '/images/blosgoringsanlaeg-100bs.jpg',
-      '/images/blosgoringsanlaeg-100b-v2.jpg',
-    ] as string[],
+    imgBg: 'bg-black',
+    video: '/videos/kalkanlaeg.mp4',
+    videoPoster: '/images/kalkanlaeg-poster.jpg',
+    images: [] as string[],
     reverse: true,
   },
   {
@@ -241,7 +239,17 @@ export default function SolutionsPage() {
                 <ScrollReveal direction={reverse ? 'left' : 'right'} duration={700} delay={100}>
                 <div className="relative pb-10 lg:pb-0">
                   <div className={`aspect-[5/4] rounded-3xl overflow-hidden shadow-2xl ${sol.imgBg}`}>
-                    {sol.images && sol.images.length > 0 ? (
+                    {(sol as { video?: string }).video ? (
+                      <video
+                        src={(sol as { video?: string }).video}
+                        poster={(sol as { videoPoster?: string }).videoPoster}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-contain"
+                      />
+                    ) : sol.images && sol.images.length > 0 ? (
                       <ImageCarousel
                         images={sol.images.map((src) => ({ src, alt: t(`solutionsPage.${sol.key}.title`) as string }))}
                       />
