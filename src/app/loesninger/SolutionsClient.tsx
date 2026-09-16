@@ -194,9 +194,20 @@ export default function SolutionsPage() {
                 {/* Content */}
                 <ScrollReveal direction={reverse ? 'right' : 'left'} duration={700}>
                 <div>
-                  <div className={`inline-flex items-center gap-2.5 ${accentBg[sol.accentColor]} border ${accentBorder[sol.accentColor]} ${accentText[sol.accentColor]} text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5`}>
-                    <Icon className="w-3.5 h-3.5" />
-                    {t(`solutionsPage.${sol.key}.title`)}
+                  <div className="flex items-center justify-between gap-4 mb-5">
+                    <div className={`inline-flex items-center gap-2.5 ${accentBg[sol.accentColor]} border ${accentBorder[sol.accentColor]} ${accentText[sol.accentColor]} text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest`}>
+                      <Icon className="w-3.5 h-3.5" />
+                      {t(`solutionsPage.${sol.key}.title`)}
+                    </div>
+                    {(sol as { readMoreHref?: string }).readMoreHref && (
+                      <Link
+                        href={(sol as { readMoreHref?: string }).readMoreHref!}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors shrink-0"
+                      >
+                        Læs mere
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </div>
 
                   <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-5 leading-tight">
@@ -231,21 +242,10 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                    {(sol as { readMoreHref?: string }).readMoreHref && (
-                      <Link
-                        href={(sol as { readMoreHref?: string }).readMoreHref!}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors"
-                      >
-                        Læs mere
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    )}
-                    <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
-                      {t(`solutionsPage.${sol.key}.cta`)}
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                  </div>
+                  <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
+                    {t(`solutionsPage.${sol.key}.cta`)}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </div>
                 </ScrollReveal>
 
