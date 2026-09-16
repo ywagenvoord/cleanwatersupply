@@ -17,10 +17,12 @@ const solutionData = [
     imgSrc: '/images/softener-talent100b.jpg',
     fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
-    imgBg: 'bg-black',
-    video: '/videos/kalkanlaeg.mp4',
-    videoPoster: '/images/kalkanlaeg-poster.jpg',
-    images: [] as string[],
+    imgBg: 'bg-white',
+    images: [
+      '/images/blosgoringsanlaeg-100m.jpg',
+      '/images/blosgoringsanlaeg-100bs.jpg',
+      '/images/blosgoringsanlaeg-100b-v2.jpg',
+    ] as string[],
     reverse: true,
   },
   {
