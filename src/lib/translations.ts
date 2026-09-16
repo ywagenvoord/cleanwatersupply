@@ -189,6 +189,21 @@ export const translations = {
         useCases: ['Køkkenet', 'Hele huset', 'Egen brønd', 'Sommerhus'],
         cta: 'Få tilbud på vandfiltrering',
       },
+      vandkander: {
+        title: 'Filterkander',
+        headline: 'Rent, filtreret vand direkte fra kanden',
+        description: 'Vil du have rent vand uden at montere noget? Vores filterkander giver friskt, filtreret vand direkte fra køkkenbordet eller køleskabet. Vælg mellem en klassisk hverdagskande, en elegant glaskaraffel med instant-filtrering, eller Germ-Stop, der er udviklet til at reducere bakterier i drikkevandet – helt uden værktøj eller installation.',
+        benefits: [
+          'Rent vand uden montering eller værktøj',
+          'Germ-Stop: op til 99,999 % bakteriereduktion*',
+          'Bedre smag – mindre klor og kalk',
+          'Passer i de fleste køleskabe',
+          'Nemt filterskift med indikator',
+          'Produceret i EU',
+        ],
+        useCases: ['Køkkenet', 'Børnefamilier', 'Kontoret', 'Sommerhus'],
+        cta: 'Se filterkanderne',
+      },
       softening: {
         title: 'Blødgøringsanlæg',
         headline: 'Blødt vand i hele hjemmet – uden kalk',

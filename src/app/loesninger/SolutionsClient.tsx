@@ -22,6 +22,24 @@ const solutionData = [
     reverse: false,
   },
   {
+    key: 'vandkander',
+    id: 'vandkander',
+    icon: Droplets,
+    iconBg: 'from-emerald-500 to-emerald-600',
+    accentColor: 'emerald',
+    imgSrc: '/images/kande-germ-stop.png',
+    fallbackSrc: '/images/kande-carmen-2.jpg',
+    imgFit: 'object-contain',
+    imgBg: 'bg-gradient-to-br from-blue-50 to-white',
+    images: [
+      '/images/kande-germ-stop.png',
+      '/images/kande-carmen-2.jpg',
+      '/images/glassmart-flaske-t.png',
+    ] as string[],
+    ctaHref: '/vandkander',
+    reverse: true,
+  },
+  {
     key: 'softening',
     id: 'softening',
     icon: Droplets,
@@ -211,7 +229,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <Link href="/kontakt" className="btn-primary">
+                  <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
                     {t(`solutionsPage.${sol.key}.cta`)}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
