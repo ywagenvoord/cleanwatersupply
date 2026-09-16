@@ -36,6 +36,7 @@ const solutionData = [
     fallbackSrc: 'https://images.unsplash.com/photo-1612966809548-4f4a8e1c9e7d?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
     imgBg: 'bg-white',
+    readMoreHref: '/loesninger/filtre-i-vandforsyningen',
     images: [] as string[],
     reverse: false,
   },
@@ -55,6 +56,7 @@ const solutionData = [
       '/images/glassmart-flaske-t.png',
     ] as string[],
     ctaHref: '/vandkander',
+    readMoreHref: '/vandkande-filtre',
     reverse: true,
   },
   {
@@ -67,6 +69,7 @@ const solutionData = [
     fallbackSrc: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
     imgBg: 'bg-white',
+    readMoreHref: '/loesninger/filtre-paa-tappestedet',
     images: [
       '/images/product-tr5.jpg',
       '/images/product-tl6.jpg',
