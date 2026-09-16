@@ -231,7 +231,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-start gap-3">
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
                     {(sol as { readMoreHref?: string }).readMoreHref && (
                       <Link
                         href={(sol as { readMoreHref?: string }).readMoreHref!}
