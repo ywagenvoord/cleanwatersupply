@@ -217,15 +217,6 @@ export default function SolutionsPage() {
                         </li>
                       ))}
                     </ul>
-                    {(sol as { readMoreHref?: string }).readMoreHref && (
-                      <Link
-                        href={(sol as { readMoreHref?: string }).readMoreHref!}
-                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#284eff] hover:text-[#0a2540] transition-colors mt-5"
-                      >
-                        Læs mere
-                        <ArrowRight className="w-4 h-4" />
-                      </Link>
-                    )}
                   </div>
 
                   {/* Use cases */}
@@ -240,10 +231,21 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
-                    {t(`solutionsPage.${sol.key}.cta`)}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="flex flex-col items-start gap-3">
+                    {(sol as { readMoreHref?: string }).readMoreHref && (
+                      <Link
+                        href={(sol as { readMoreHref?: string }).readMoreHref!}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#284eff] hover:text-[#0a2540] transition-colors"
+                      >
+                        Læs mere
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                    <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
+                      {t(`solutionsPage.${sol.key}.cta`)}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
                 </ScrollReveal>
 
