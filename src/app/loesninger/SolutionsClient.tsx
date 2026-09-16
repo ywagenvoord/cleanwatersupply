@@ -18,6 +18,7 @@ const solutionData = [
     fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
     imgFit: 'object-contain',
     imgBg: 'bg-white',
+    readMoreHref: '/loesninger/kalkanlaeg',
     images: [
       '/images/blosgoringsanlaeg-100m.jpg',
       '/images/blosgoringsanlaeg-100bs.jpg',
@@ -230,10 +231,21 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
-                    {t(`solutionsPage.${sol.key}.cta`)}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                    <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
+                      {t(`solutionsPage.${sol.key}.cta`)}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    {(sol as { readMoreHref?: string }).readMoreHref && (
+                      <Link
+                        href={(sol as { readMoreHref?: string }).readMoreHref!}
+                        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors"
+                      >
+                        Læs mere
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
+                  </div>
                 </div>
                 </ScrollReveal>
 
