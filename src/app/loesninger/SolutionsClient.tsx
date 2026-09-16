@@ -231,11 +231,7 @@ export default function SolutionsPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-                    <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
-                      {t(`solutionsPage.${sol.key}.cta`)}
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                  <div className="flex flex-col items-start gap-3">
                     {(sol as { readMoreHref?: string }).readMoreHref && (
                       <Link
                         href={(sol as { readMoreHref?: string }).readMoreHref!}
@@ -245,6 +241,10 @@ export default function SolutionsPage() {
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     )}
+                    <Link href={(sol as { ctaHref?: string }).ctaHref ?? '/kontakt'} className="btn-primary">
+                      {t(`solutionsPage.${sol.key}.cta`)}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
                   </div>
                 </div>
                 </ScrollReveal>
