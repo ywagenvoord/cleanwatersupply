@@ -9,6 +9,23 @@ import ImageCarousel from '@/components/ImageCarousel'
 
 const solutionData = [
   {
+    key: 'softening',
+    id: 'softening',
+    icon: Droplets,
+    iconBg: 'from-sky-500 to-sky-600',
+    accentColor: 'sky',
+    imgSrc: '/images/softener-talent100b.jpg',
+    fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
+    imgFit: 'object-contain',
+    imgBg: 'bg-white',
+    images: [
+      '/images/blosgoringsanlaeg-100m.jpg',
+      '/images/blosgoringsanlaeg-100bs.jpg',
+      '/images/blosgoringsanlaeg-100b-v2.jpg',
+    ] as string[],
+    reverse: true,
+  },
+  {
     key: 'filtration',
     id: 'filtration',
     icon: Filter,
@@ -37,23 +54,6 @@ const solutionData = [
       '/images/glassmart-flaske-t.png',
     ] as string[],
     ctaHref: '/vandkander',
-    reverse: true,
-  },
-  {
-    key: 'softening',
-    id: 'softening',
-    icon: Droplets,
-    iconBg: 'from-sky-500 to-sky-600',
-    accentColor: 'sky',
-    imgSrc: '/images/softener-talent100b.jpg',
-    fallbackSrc: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&fit=crop',
-    imgFit: 'object-contain',
-    imgBg: 'bg-white',
-    images: [
-      '/images/blosgoringsanlaeg-100m.jpg',
-      '/images/blosgoringsanlaeg-100bs.jpg',
-      '/images/blosgoringsanlaeg-100b-v2.jpg',
-    ] as string[],
     reverse: true,
   },
   {
