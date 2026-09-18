@@ -34,19 +34,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/returpolitik`,        lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ]
 
-  const productRoutes: MetadataRoute.Sitemap = PRODUCTS.map(p => ({
-    url:            `${SITE_URL}/shop/${p.id}`,
-    lastModified:   now,
-    changeFrequency: 'weekly',
-    priority:        p.featured ? 0.9 : 0.8,
-  }))
+  // Produkt-ID'er hvis /shop-side 301-viderestiller til en kanonisk side
+  // (må IKKE stå i sitemap – ellers "Omdirigeringsfejl" i Search Console).
+  const REDIRECTED_SHOP_IDS = new Set([
+    'kande-mikroplastik',
+    'filter-biflux-universal',
+    'filter-biflux-limescale',
+    'filter-biflux-healthexpert',
+  ])
 
-  const sectorRoutes: MetadataRoute.Sitemap = sektorer.map(s => ({
-    url:            `${SITE_URL}/omraader/${s.id}`,
-    lastModified:   now,
-    changeFrequency: 'monthly',
-    priority:        0.8,
-  }))
+  const productRoutes: MetadataRoute.Sitemap = PRODUCTS
+    .filter(p => !REDIRECTED_SHOP_IDS.has(p.id))
+    .map(p => ({
+      url:            `${SITE_URL}/shop/${p.id}`,
+      lastModified:   now,
+      changeFrequency: 'weekly',
+      priority:        p.featured ? 0.9 : 0.8,
+    }))
+
+  // 'det-private-hjem' viderestiller til /private – ekskluderes fra sitemap.
+  const sectorRoutes: MetadataRoute.Sitemap = sektorer
+    .filter(s => s.id !== 'det-private-hjem')
+    .map(s => ({
+      url:            `${SITE_URL}/omraader/${s.id}`,
+      lastModified:   now,
+      changeFrequency: 'monthly',
+      priority:        0.8,
+    }))
 
   const kandeRoutes: MetadataRoute.Sitemap = KANDER.filter(k => k.slug !== 'carmen').map(k => ({
     url:            `${SITE_URL}/vandkander/${k.slug}`,
