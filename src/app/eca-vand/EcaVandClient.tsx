@@ -53,7 +53,7 @@ export default function EcaVandPage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="absolute inset-0 bg-[#0a2540]/60" />
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -74,7 +74,7 @@ export default function EcaVandPage() {
       </section>
 
       {/* ─── SECTION 1 – What is ECA ──────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mb-6">
@@ -106,7 +106,7 @@ export default function EcaVandPage() {
       </section>
 
       {/* ─── SECTION 2 – Safe solution ────────────────────────── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
@@ -127,7 +127,7 @@ export default function EcaVandPage() {
       </section>
 
       {/* ─── SECTION 3 – Biofilm ──────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mb-6">
@@ -156,7 +156,7 @@ export default function EcaVandPage() {
       </section>
 
       {/* ─── ANBEFALEDE PRODUKTER ────────────────────────────── */}
-      <section className="py-20 bg-white border-t border-gray-100">
+      <section className="py-12 sm:py-20 bg-white border-t border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Kirkmayer ECA-generatorer' : 'Kirkmayer ECA generators'}</h2>
@@ -203,7 +203,7 @@ export default function EcaVandPage() {
       </section>
 
       {/* ─── CTA BANNER ───────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-white mb-6">{da ? 'Få ECA-vand til din virksomhed' : 'Get ECA water for your business'}</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

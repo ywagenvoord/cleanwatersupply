@@ -40,7 +40,7 @@ export default function OmraaderPage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="absolute inset-0 bg-[#0a2540]/60" />
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -61,7 +61,7 @@ export default function OmraaderPage() {
       </section>
 
       {/* ─── SECTOR CARDS ─────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {sectors.map((sector) => (

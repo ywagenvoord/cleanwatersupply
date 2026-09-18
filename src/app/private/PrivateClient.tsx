@@ -251,7 +251,7 @@ export default function PrivateClient() {
       </section>
 
       {/* ─── WHY PROTECT (EMOTIONAL) ───────────────────────────── */}
-      <section className="py-20 bg-blue-50/60">
+      <section className="py-12 sm:py-20 bg-blue-50/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-14 h-14 rounded-2xl bg-white text-blue-700 flex items-center justify-center mx-auto mb-6 shadow-sm">
             <ShieldCheck className="w-7 h-7" />
@@ -312,7 +312,7 @@ export default function PrivateClient() {
       </section>
 
       {/* ─── PRODUCTS ──────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-xl">
@@ -329,7 +329,7 @@ export default function PrivateClient() {
       </section>
 
       {/* ─── AUTORISERET VVS-INSTALLATØR ───────────────────────── */}
-      <section className="py-16 lg:py-20 bg-white">
+      <section className="py-10 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             {/* Billede */}
@@ -388,7 +388,7 @@ export default function PrivateClient() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ShieldCheck className="w-10 h-10 text-green-400 mx-auto mb-5" />
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{da ? 'Klar til rent og bakteriefrit vand i hjemmet?' : 'Ready for clean, bacteria-free water at home?'}</h2>

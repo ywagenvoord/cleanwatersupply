@@ -215,7 +215,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── BEHOVSVÆLGER ──────────────────────────────────────── */}
-      <section className="py-16 bg-gradient-to-b from-white to-blue-50/50">
+      <section className="py-10 sm:py-16 bg-gradient-to-b from-white to-blue-50/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="section-badge"><ListChecks className="w-3.5 h-3.5" /> {da ? 'Hvad har I brug for?' : 'What do you need?'}</span>
           <h2 className="section-heading">{da ? 'Find løsningen ud fra jeres behov' : 'Find the solution by your need'}</h2>
@@ -240,7 +240,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── OMRÅDER (BRANCHEVÆLGER) ───────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="section-badge"><MapPin className="w-3.5 h-3.5" /> {da ? 'Områder' : 'Sectors'}</span>
@@ -280,7 +280,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── ANLÆG & SYSTEMER ──────────────────────────────────── */}
-      <section id="anlaeg" className="py-24 bg-gray-50 scroll-mt-24">
+      <section id="anlaeg" className="py-12 sm:py-24 bg-gray-50 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge"><FlaskConical className="w-3.5 h-3.5" /> {da ? 'Anlæg & systemer' : 'Systems & equipment'}</span>
@@ -326,7 +326,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── VIDEO · HYPOKLORSYRE ──────────────────────────────── */}
-      <section className="py-20 bg-[#0a2540]">
+      <section className="py-12 sm:py-20 bg-[#0a2540]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             <div>
@@ -369,7 +369,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── SAMMENLIGNINGSOVERBLIK ────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="section-badge"><ListChecks className="w-3.5 h-3.5" /> {da ? 'Overblik' : 'Overview'}</span>
@@ -408,7 +408,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── FAQ ───────────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="section-badge"><HelpCircle className="w-3.5 h-3.5" /> {da ? 'Spørgsmål & svar' : 'Questions & answers'}</span>
@@ -429,7 +429,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── COMPLIANCE / DOKUMENTATION ────────────────────────── */}
-      <section id="compliance" className="py-20 bg-[#0a2540] scroll-mt-24">
+      <section id="compliance" className="py-12 sm:py-20 bg-[#0a2540] scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -464,7 +464,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── CATCH-ALL KONTAKT ─────────────────────────────────── */}
-      <section id="kontakt" className="py-20 bg-blue-50/60 scroll-mt-24">
+      <section id="kontakt" className="py-12 sm:py-20 bg-blue-50/60 scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl bg-white border border-gray-100 shadow-sm p-8 md:p-12 text-center">
             <div className="w-14 h-14 rounded-2xl bg-blue-50 text-[#0044c4] flex items-center justify-center mx-auto mb-6">
@@ -491,7 +491,7 @@ export default function ErhvervClient() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Building2 className="w-10 h-10 text-green-400 mx-auto mb-5" />
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">

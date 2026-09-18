@@ -17,7 +17,7 @@ export default function VandkandeFiltrePage() {
     <main className="bg-white">
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-24 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-16 md:py-24 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-white border border-blue-100 px-4 py-1.5 mb-6">
             <Filter className="w-3.5 h-3.5 text-[#3aad4a]" />
             <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">Udskiftningsfiltre</span>

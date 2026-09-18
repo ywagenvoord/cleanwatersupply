@@ -62,7 +62,7 @@ export default function AnlaegPage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0d3160] to-[#123a7a]">
         <div className="pointer-events-none absolute -top-24 -right-24 w-[30rem] h-[30rem] rounded-full bg-[#284eff]/25 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-20 -left-24 w-96 h-96 rounded-full bg-[#3aad4a]/20 blur-3xl" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 md:py-28 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-green-300 text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-6">
             <Building2 className="w-3.5 h-3.5" /> Erhverv · anlæg
           </span>
@@ -85,7 +85,7 @@ export default function AnlaegPage() {
       </section>
 
       {/* ─── LEGIONELLA-ANLÆG ─────────────────────────────────── */}
-      <section id="legionella-anlaeg" className="py-20 bg-white scroll-mt-28">
+      <section id="legionella-anlaeg" className="py-12 sm:py-20 bg-white scroll-mt-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="rounded-3xl bg-gray-50 ring-1 ring-gray-200 p-6 md:p-8 flex items-center justify-center">
@@ -123,7 +123,7 @@ export default function AnlaegPage() {
       </section>
 
       {/* ─── HOCl-ANLÆG (ECA) ─────────────────────────────────── */}
-      <section id="hocl-anlaeg" className="py-20 bg-gray-50 border-y border-gray-100 scroll-mt-28">
+      <section id="hocl-anlaeg" className="py-12 sm:py-20 bg-gray-50 border-y border-gray-100 scroll-mt-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="lg:order-2 rounded-3xl bg-white ring-1 ring-gray-200 p-6 md:p-8 flex items-center justify-center">
@@ -162,7 +162,7 @@ export default function AnlaegPage() {
       </section>
 
       {/* ─── HVORFOR / FORDELE ────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a2540] mb-3">Hvorfor et centralt anlæg?</h2>
@@ -200,7 +200,7 @@ export default function AnlaegPage() {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Phone className="w-10 h-10 text-green-400 mx-auto mb-5" />
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">

@@ -23,7 +23,7 @@ export default function BusinessPage() {
     <main>
       {/* ─── HERO – SPLIT LAYOUT ──────────────────────────────── */}
       <section className="bg-[#0a2540] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             {/* Left: content */}
@@ -80,7 +80,7 @@ export default function BusinessPage() {
       </section>
 
       {/* ─── INDUSTRIES ───────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge">{t('businessPage.industries.badge')}</span>
@@ -116,7 +116,7 @@ export default function BusinessPage() {
       </section>
 
       {/* ─── TECHNICIAN VISUAL ────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden bg-gray-900">
+      <section className="relative py-12 sm:py-24 overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
           <img
             src="/images/technician-system.jpg"
@@ -138,7 +138,7 @@ export default function BusinessPage() {
       </section>
 
       {/* ─── BENEFITS ─────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge">{t('businessPage.benefits.badge')}</span>
@@ -168,7 +168,7 @@ export default function BusinessPage() {
       </section>
 
       {/* ─── INQUIRY FORM ─────────────────────────────────────── */}
-      <section id="inquiry" className="py-24 bg-white scroll-mt-24">
+      <section id="inquiry" className="py-12 sm:py-24 bg-white scroll-mt-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="section-badge">{t('businessPage.hero.badge')}</span>

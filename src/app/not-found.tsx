@@ -18,7 +18,7 @@ const links = [
 
 export default function NotFound() {
   return (
-    <div className="min-h-[60vh] flex items-center justify-center px-4 py-20">
+    <div className="min-h-[60vh] flex items-center justify-center px-4 py-12 sm:py-20">
       <div className="w-full max-w-2xl text-center">
         <p className="text-sm font-bold uppercase tracking-widest text-[#284eff]">Fejl 404</p>
         <h1 className="mt-3 text-3xl sm:text-4xl font-extrabold text-[#0a2540]">

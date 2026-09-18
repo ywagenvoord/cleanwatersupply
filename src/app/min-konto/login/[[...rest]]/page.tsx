@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ErhvervLoginPage() {
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-16">
+    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-10 sm:py-16">
       <div className="text-center mb-8">
         <div className="w-14 h-14 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mx-auto mb-5">
           <Building2 className="w-7 h-7" />

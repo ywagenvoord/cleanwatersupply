@@ -81,7 +81,7 @@ export default function LegionellaAnlaegClient() {
           className="pointer-events-none absolute inset-0 opacity-[0.06]"
           style={{ backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)', backgroundSize: '30px 30px' }}
         />
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-24">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Tekst */}
             <div>
@@ -152,7 +152,7 @@ export default function LegionellaAnlaegClient() {
       </section>
 
       {/* ─── HVAD ER LEGIONELLA ────────────────────────────────── */}
-      <section className="py-16 md:py-20">
+      <section className="py-10 sm:py-16 md:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
@@ -188,7 +188,7 @@ export default function LegionellaAnlaegClient() {
       </section>
 
       {/* ─── SÅDAN VIRKER ANLÆGGET (flertrins) ─────────────────── */}
-      <section id="saadan" className="py-16 md:py-20 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">
+      <section id="saadan" className="py-10 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#f5fbff] border-y border-blue-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal direction="up">
             <div className="text-center mb-12">
@@ -217,7 +217,7 @@ export default function LegionellaAnlaegClient() {
       </section>
 
       {/* ─── FORDELE ───────────────────────────────────────────── */}
-      <section className="py-16 md:py-20">
+      <section className="py-10 sm:py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{da ? 'Fordele' : 'Benefits'}</span>
@@ -257,7 +257,7 @@ export default function LegionellaAnlaegClient() {
       </section>
 
       {/* ─── ANLÆGGET I DRIFT (galleri) ────────────────────────── */}
-      <section className="py-16 md:py-20">
+      <section className="py-10 sm:py-16 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-[11px] font-black text-[#3aad4a] uppercase tracking-widest">{da ? 'Fra virkeligheden' : 'From the field'}</span>
@@ -283,7 +283,7 @@ export default function LegionellaAnlaegClient() {
       </section>
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">{da ? 'Klar til at sikre jeres vandanlæg?' : 'Ready to secure your water system?'}</h2>
           <p className="text-blue-100/80 mb-8 max-w-xl mx-auto leading-relaxed">

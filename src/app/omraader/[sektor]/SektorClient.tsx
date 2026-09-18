@@ -88,7 +88,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <img src={sektor.heroImage} alt="" width={1920} height={800} loading="eager" decoding="async" className="w-full h-full object-cover opacity-20" aria-hidden="true" />
         </div>
@@ -107,7 +107,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
       </section>
 
       {/* ─── VALUES ───────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-7">
             {c.values.map((val, i) => (
@@ -125,7 +125,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
 
       {/* ─── VIDEO (valgfri) ──────────────────────────────────── */}
       {sektor.video && (
-        <section className="py-16 bg-white border-t border-gray-100">
+        <section className="py-10 sm:py-16 bg-white border-t border-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {c.videoHeading && (
               <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-3 text-center">{c.videoHeading}</h2>
@@ -142,7 +142,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
 
       {/* ─── RENT VAND I STALDEN – kun landbrug ─────────────────── */}
       {sektor.id === 'landbruget' && (
-        <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <section className="py-12 sm:py-20 bg-gray-50 border-t border-gray-100">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Rent vand betaler sig – i hele stalden' : 'Clean water pays off – throughout the barn'}</h2>
@@ -202,7 +202,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
       )}
 
       {/* ─── PROBLEM + BENEFITS ───────────────────────────────── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <div>
@@ -226,7 +226,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
 
       {/* ─── SÅDAN HJÆLPER VI (eksempler) ─────────────────────── */}
       {examples && (
-        <section className="py-20 bg-white border-t border-gray-100">
+        <section className="py-12 sm:py-20 bg-white border-t border-gray-100">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? `Sådan hjælper vi ${titleLower}` : `How we help ${titleLower}`}</h2>
@@ -247,7 +247,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
       )}
 
       {/* ─── CONTACT PERSON ───────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 items-start">
             <div>
@@ -281,7 +281,7 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
       </section>
 
       {/* ─── CTA BANNER ───────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-white mb-4">{da ? 'Klar til at sikre din vandkvalitet?' : 'Ready to secure your water quality?'}</h2>
           <p className="text-blue-100/70 mb-8">{da ? 'Se alle vores løsninger eller kontakt os direkte.' : 'See all our solutions or contact us directly.'}</p>

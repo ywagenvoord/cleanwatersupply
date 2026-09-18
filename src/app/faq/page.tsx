@@ -117,7 +117,7 @@ export default function FaqPage() {
       <BreadcrumbJsonLd crumbs={[{ name: 'Forside', url: SITE_URL }, { name: 'FAQ', url: URL }]} />
 
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-24 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-12 sm:py-24 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
             <HelpCircle className="w-3.5 h-3.5" />
@@ -133,7 +133,7 @@ export default function FaqPage() {
       </section>
 
       {/* ─── Q&A ──────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
           {FAQS.map((f) => (
             <details key={f.q} className="group rounded-2xl border border-gray-200 bg-gray-50 open:bg-white open:shadow-sm transition-all">
@@ -148,7 +148,7 @@ export default function FaqPage() {
       </section>
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50 border-t border-gray-100">
+      <section className="py-10 sm:py-16 bg-gray-50 border-t border-gray-100">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-extrabold text-[#0a2540] mb-3">Fik du ikke svar på dit spørgsmål?</h2>
           <p className="text-gray-600 mb-7">Vi sidder klar til at hjælpe dig med at finde den rigtige løsning.</p>

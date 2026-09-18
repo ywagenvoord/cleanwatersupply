@@ -90,7 +90,7 @@ export default function ContactPage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80&fit=crop"
@@ -117,7 +117,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── CONTACT INFO CARDS ───────────────────────────────── */}
-      <section className="py-16 bg-white">
+      <section className="py-10 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-12">
             {[
@@ -174,7 +174,7 @@ export default function ContactPage() {
       </section>
 
       {/* ─── FORM + MAP ───────────────────────────────────────── */}
-      <section className="py-16 pb-28 bg-white">
+      <section className="py-10 sm:py-16 pb-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-10">
 
@@ -335,7 +335,7 @@ export default function ContactPage() {
         </div>
       </section>
       {/* ─── TEAM ─────────────────────────────────────────────── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">Mød teamet</h2>

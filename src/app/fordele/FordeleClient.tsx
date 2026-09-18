@@ -50,7 +50,7 @@ export default function FordelePage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <img
             src="https://amysoft.nl/wp-content/uploads/2025/01/Thebrandwagon-23November-27-2024140806-e1738683543933.png"
@@ -144,7 +144,7 @@ export default function FordelePage() {
       })}
 
       {/* ─── SUMMARY BANNER ───────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden bg-gray-900">
+      <section className="relative py-12 sm:py-24 overflow-hidden bg-gray-900">
         <div className="absolute inset-0">
           <img
             src="https://amysoft.nl/wp-content/uploads/2025/02/Thebrandwagon-23November-27-2024140806.jpg"

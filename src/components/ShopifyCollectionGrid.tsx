@@ -189,7 +189,7 @@ export default function ShopifyCollectionGrid() {
 
   if (error || products.length === 0) {
     return (
-      <div className="text-center py-16">
+      <div className="text-center py-10 sm:py-16">
         <p className="text-gray-400 text-sm mb-4">Produkter ikke tilgængelige via Shopify.</p>
         <Link
           href="/kontakt"

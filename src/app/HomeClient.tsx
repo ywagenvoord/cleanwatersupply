@@ -44,7 +44,7 @@ export default function HomePage() {
   return (
     <main>
       {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="relative min-h-[540px] flex items-center overflow-hidden">
+      <section className="relative min-h-[460px] sm:min-h-[540px] flex items-center overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           {/* Animated water background (WebGL) */}
           <WaterBackground />
@@ -134,7 +134,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── OMRÅDER (AREA SELECTOR) ───────────────────────────── */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="section-badge">Områder</span>
@@ -169,7 +169,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── ABOUT INTRO ───────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div>
@@ -221,7 +221,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── SOLUTIONS ─────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge">{t('solutions.badge')}</span>
@@ -280,7 +280,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── ECA-VAND ──────────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -329,7 +329,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── LEGIONELLA & BIOFILM ──────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="section-badge">Vidste du det?</span>
@@ -375,7 +375,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── FN'S VERDENSMÅL ───────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="section-badge">Bæredygtighed</span>
@@ -405,7 +405,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── WHY US ────────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge">{t('whyUs.badge')}</span>
@@ -435,7 +435,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── SERVICE PROCESS ──────────────────────────────── */}
-      <section className="py-24 bg-[#0a2540] relative overflow-hidden">
+      <section className="py-12 sm:py-24 bg-[#0a2540] relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
@@ -466,7 +466,7 @@ export default function HomePage() {
       <LegionellaSlider />
 
       {/* ─── PRIVATE & BUSINESS ────────────────────────────────── */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <h2 className="section-heading">{t('segments.headline')}</h2>
@@ -476,7 +476,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 gap-7">
             {/* Private */}
             <ScrollReveal direction="left" delay={0} className="h-full">
-            <div className="relative rounded-3xl overflow-hidden min-h-[420px] group h-full">
+            <div className="relative rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[420px] group h-full">
               <img
                 src="/images/area-det-private-hjem.jpg"
                 alt="Moderne bruser i privat hjem med rent, bakteriefrit vand"
@@ -484,7 +484,7 @@ export default function HomePage() {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-950/90 via-blue-900/50 to-transparent" />
-              <div className="relative p-10 flex flex-col h-full justify-end min-h-[420px]">
+              <div className="relative p-10 flex flex-col h-full justify-end min-h-[300px] sm:min-h-[420px]">
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-200 uppercase tracking-widest mb-3">
                   <Home className="w-3.5 h-3.5" />
                   {t('segments.private.badge')}
@@ -501,7 +501,7 @@ export default function HomePage() {
 
             {/* Business */}
             <ScrollReveal direction="right" delay={120} className="h-full">
-            <div className="relative rounded-3xl overflow-hidden min-h-[420px] group h-full">
+            <div className="relative rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[420px] group h-full">
               <img
                 src="/images/area-hoteller.jpg"
                 alt="Hotellobby – professionelle vandløsninger til erhverv"
@@ -509,7 +509,7 @@ export default function HomePage() {
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/90 via-emerald-900/50 to-transparent" />
-              <div className="relative p-10 flex flex-col h-full justify-end min-h-[420px]">
+              <div className="relative p-10 flex flex-col h-full justify-end min-h-[300px] sm:min-h-[420px]">
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-200 uppercase tracking-widest mb-3">
                   <Building2 className="w-3.5 h-3.5" />
                   {t('segments.business.badge')}
@@ -528,7 +528,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── TESTIMONIALS ──────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-12 sm:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="section-badge">{t('testimonials.badge')}</span>
@@ -564,7 +564,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── NYHEDSBREV ────────────────────────────────────────── */}
-      <section className="py-24 bg-blue-50">
+      <section className="py-12 sm:py-24 bg-blue-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-3xl border border-blue-100 shadow-sm p-8 md:p-12 text-center">
             <div className="w-14 h-14 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mx-auto mb-6">
@@ -585,7 +585,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── CTA BANNER ────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl" />

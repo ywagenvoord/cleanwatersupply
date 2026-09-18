@@ -140,7 +140,7 @@ export default function SolutionsPage() {
   return (
     <main>
       {/* ─── PAGE HERO ─────────────────────────────────────────── */}
-      <section className="relative py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
+      <section className="relative py-14 sm:py-28 overflow-hidden bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <video
             src="/videos/loesninger-cover.mp4"
@@ -190,7 +190,7 @@ export default function SolutionsPage() {
         }
 
         return (
-          <section key={sol.key} id={sol.id} className="py-24 scroll-mt-20 even:bg-gray-50">
+          <section key={sol.key} id={sol.id} className="py-12 sm:py-24 scroll-mt-20 even:bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${reverse ? 'lg:[&>*:first-child]:order-2 lg:[&>*:last-child]:order-1' : ''}`}>
                 {/* Content */}
@@ -287,7 +287,7 @@ export default function SolutionsPage() {
       })}
 
       {/* ─── BOTTOM CTA ────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />

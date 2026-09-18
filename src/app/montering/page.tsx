@@ -60,7 +60,7 @@ export default function MonteringPage({ searchParams }: { searchParams: { sent?:
 
       <GratisMonteringBanner className="pt-14" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         {sent && (
           <div className="mb-10 rounded-2xl border border-green-100 bg-green-50 p-6 text-center">
             <CheckCircle2 className="w-8 h-8 text-[#3aad4a] mx-auto mb-2" />

@@ -123,7 +123,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── HVAD ER LEGIONELLA – KORT FORTALT ────────────────── */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Hvad er Legionella – kort fortalt' : 'What is Legionella – in short'}</h2>
@@ -146,7 +146,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── HVORFOR DET BETYDER NOGET FOR FAMILIEN ───────────── */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50/50">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white to-blue-50/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
@@ -184,7 +184,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── HVOR MØDER DU DEN I HVERDAGEN ────────────────────── */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Hvor møder du den i hverdagen?' : 'Where do you meet it in everyday life?'}</h2>
@@ -207,7 +207,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── SÅDAN BESKYTTER DU DIT HJEM ──────────────────────── */}
-      <section className="py-20 bg-gradient-to-b from-blue-50/50 to-white">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-blue-50/50 to-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">
@@ -237,7 +237,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── FILTER GØR DET NEMT (highlight) ──────────────────── */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl bg-gradient-to-br from-sky-50 to-emerald-50 ring-1 ring-blue-100 p-10 text-center shadow-sm order-last lg:order-first">
@@ -270,7 +270,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── ANBEFALEDE PRODUKTER ─────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50/50">
+      <section className="py-12 sm:py-20 bg-gradient-to-b from-white to-blue-50/50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Anbefalede Legionella-filtre' : 'Recommended Legionella filters'}</h2>
@@ -309,7 +309,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── ANDRE BAKTERIER (fakta / SEO) ────────────────────── */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Legionella er ikke den eneste' : 'Legionella is not the only one'}</h2>
@@ -359,7 +359,7 @@ export default function LegionellaPage() {
       </section>
 
       {/* ─── CTA (lyst) ───────────────────────────────────────── */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-[2rem] bg-gradient-to-br from-sky-50 via-blue-50 to-emerald-50 ring-1 ring-blue-100 px-6 py-14 text-center shadow-sm">
             <h2 className="text-3xl font-extrabold text-[#0a2540] mb-4">{da ? 'Skab tryghed i vandet derhjemme' : 'Create peace of mind about the water at home'}</h2>

@@ -858,7 +858,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── STANDARD INSTALLATION (kalkanlæg + showInstallation) ──── */}
       {showInstall && (
-        <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <section className="py-10 sm:py-16 bg-gray-50 border-t border-gray-100">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="rounded-3xl bg-white border border-gray-100 shadow-sm overflow-hidden">
 
@@ -988,7 +988,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── RELATED PRODUCTS ─────────────────────────────────────── */}
       {related.length > 0 && (
-        <section className="py-16 bg-white border-t border-gray-100">
+        <section className="py-10 sm:py-16 bg-white border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-2xl font-extrabold text-gray-900">{product.alsoBought && product.alsoBought.length > 0 ? 'Andre købte også …' : 'Lignende produkter'}</h2>
@@ -1034,7 +1034,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
       )}
 
       {/* ─── CTA BANNER ───────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

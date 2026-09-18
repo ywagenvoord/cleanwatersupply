@@ -18,7 +18,7 @@ export default function MinKontoGate({ children }: { children: ReactNode }) {
 
   if (!loggedIn && !previewOpen) {
     return (
-      <div className="min-h-[70vh] bg-gray-50 flex items-center justify-center px-4 py-16">
+      <div className="min-h-[70vh] bg-gray-50 flex items-center justify-center px-4 py-10 sm:py-16">
         <div className="w-full max-w-md text-center">
           <div className="w-16 h-16 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mx-auto mb-6">
             <Lock className="w-7 h-7" />

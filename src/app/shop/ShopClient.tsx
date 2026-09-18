@@ -361,7 +361,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
   return (
     <main>
       {/* ─── HERO ───────────────────────────────────────────────── */}
-      <section className="relative py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-12 sm:py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <img
             src="/images/filters-legionella.jpg"
@@ -446,7 +446,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
       )}
 
       {/* ─── PRODUCT GRID ───────────────────────────────────────── */}
-      <section className="py-16 bg-gray-50 min-h-[60vh]">
+      <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section heading with count */}
@@ -475,7 +475,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
       </section>
 
       {/* ─── BOTTOM CTA ─────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="bg-white py-16">
+    <main className="bg-white py-10 sm:py-16">
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 prose prose-slate">
         <Link href="/" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 no-underline mb-6">
           <ArrowLeft className="w-4 h-4" /> Tilbage til forsiden

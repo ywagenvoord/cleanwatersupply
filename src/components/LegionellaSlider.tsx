@@ -51,7 +51,7 @@ export default function LegionellaSlider() {
   const slide = slides[active]
 
   return (
-    <section className="py-24 bg-gray-950 overflow-hidden">
+    <section className="py-12 sm:py-24 bg-gray-950 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="inline-flex items-center gap-2 text-xs font-bold text-green-400 bg-green-400/10 border border-green-400/20 px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">

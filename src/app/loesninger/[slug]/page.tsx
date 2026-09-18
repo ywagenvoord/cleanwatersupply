@@ -85,7 +85,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── SÆLGENDE HOOK ────────────────────────────────────── */}
       {sol.sell && (
-        <section className="py-16 md:py-20 bg-gradient-to-b from-[#eef6ff] to-white">
+        <section className="py-10 sm:py-16 md:py-20 bg-gradient-to-b from-[#eef6ff] to-white">
           <ScrollReveal>
             <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white via-[#f4f9ff] to-[#eefaf1] ring-1 ring-blue-100/70 shadow-[0_30px_80px_-40px_rgba(10,37,64,0.22)] px-6 py-14 md:px-16 md:py-20 text-center">
@@ -106,7 +106,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── GENKENDELIGE FRUSTRATIONER ───────────────────────── */}
       {sol.sell && (
-        <section className="py-20 bg-white">
+        <section className="py-12 sm:py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-10">
               <span className="section-badge">Kan du genkende det?</span>
@@ -132,7 +132,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
       )}
 
       {/* ─── HVAD / HVORDAN ───────────────────────────────────── */}
-      <section className="py-16 bg-white">
+      <section className="py-10 sm:py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6 items-stretch">
           {/* Venstre: to tekstkort i samme bredde, stablet */}
           <div className="space-y-6">
@@ -160,7 +160,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── FORVANDLINGEN (sælgende) ─────────────────────────── */}
       {sol.sell && (
-        <section className="py-20 bg-gradient-to-b from-[#f5faff] to-white">
+        <section className="py-12 sm:py-20 bg-gradient-to-b from-[#f5faff] to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-12">
               <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> Forvandlingen</span>
@@ -185,7 +185,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── DET BETALER SIG SELV ─────────────────────────────── */}
       {sol.sell && (
-        <section className="py-20 bg-white">
+        <section className="py-12 sm:py-20 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-12">
               <span className="section-badge"><Coins className="w-3.5 h-3.5" /> Økonomi</span>
@@ -212,7 +212,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── HVERDAGSFORDELE (kun uden sælgende lag) ──────────── */}
       {!sol.sell && (
-        <section className="py-16 bg-blue-50/50">
+        <section className="py-10 sm:py-16 bg-blue-50/50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-10">
               <span className="section-badge"><Sparkles className="w-3.5 h-3.5" /> I hverdagen</span>
@@ -235,7 +235,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── NEMT & TRYGT (sælgende) ──────────────────────────── */}
       {sol.sell && (
-        <section className="py-16 bg-gradient-to-b from-white to-[#f5faff]">
+        <section className="py-10 sm:py-16 bg-gradient-to-b from-white to-[#f5faff]">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal>
               <div className="rounded-[2rem] bg-white ring-1 ring-gray-100 shadow-[0_24px_70px_-30px_rgba(10,37,64,0.25)] p-8 md:p-12">
@@ -268,7 +268,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
 
       {/* ─── PRODUKTER ────────────────────────────────────────── */}
       {products.length > 0 && (
-        <section className="py-16 bg-white">
+        <section className="py-10 sm:py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
               <div className="max-w-xl">
@@ -305,7 +305,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
       )}
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
+      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">I tvivl om, hvad der passer til dit hjem?</h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">Få gratis, uforpligtende rådgivning, så finder vi den rette løsning til netop dit vand og dit behov.</p>
