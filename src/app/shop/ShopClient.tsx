@@ -105,6 +105,9 @@ const FITS_WITH: Record<string, { img: string; label: string; text?: string }> =
   'cartridge-mf5':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cartridge-sc3':                { img: ASTUBE_IMG,  label: 'AS Tube' },
   'cblue-sc3-filter':             { img: CBLUE_IMG,   label: 'cBlue SC3' },
+  // Manuel adapter M22/M24 (id starter med 'coupling-')
+  'coupling-m22':                 { img: '/images/baclyser-neo-tr.jpg', label: 'Baclyser® neo-filtre' },
+  'coupling-m24':                 { img: '/images/baclyser-neo-tr.jpg', label: 'Baclyser® neo-filtre' },
   // Filterkander → hvilket/hvor mange filtre der passer til dem
   'kande-carmen':                 { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filtre', text: 'Vælg mellem 3 Bi-flux®-filtre' },
   'prod_V2wDbJ1i8O20Kj':          { img: '/images/filter-biflux-universal.png', label: 'Bi-flux®-filtre', text: 'Vælg mellem 3 Bi-flux®-filtre' }, // MikroPLASTIK-STOP
