@@ -326,7 +326,7 @@ export const PRODUCTS: Product[] = [
     faqs: [
       { q: 'Hvilken adapter skal jeg vælge?', a: 'Tjek dit eksisterende vandhanegevind: indvendigt M22 → Coupling M22; udvendigt M24 → Coupling M24.' },
     ],
-    useCases: ['Vandhaner med indvendigt M22-gevind'],
+    useCases: [],
     stripePaymentLink: 'https://buy.stripe.com/14A9AS20b8P8b2mauj4gg05',
   },
 
@@ -359,7 +359,7 @@ export const PRODUCTS: Product[] = [
     faqs: [
       { q: 'Hvilken adapter skal jeg vælge?', a: 'Tjek dit eksisterende vandhanegevind: indvendigt M22 → Coupling M22; udvendigt M24 → Coupling M24.' },
     ],
-    useCases: ['Vandhaner med udvendigt M24-gevind'],
+    useCases: [],
     stripePaymentLink: 'https://buy.stripe.com/14AaEWcEPc1kfiC59Z4gg06',
   },
 
