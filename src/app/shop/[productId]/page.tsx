@@ -72,7 +72,7 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
     images: ['/images/hurtigkobling-m22-1.jpg', '/images/hurtigkobling-m22-2.jpg', '/images/hurtigkobling-m22-3.jpg'],
     tagline: 'Hurtigkobling til vandhaner med indvendigt M22-gevind',
     description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med indvendigt M22-gevind (M22 IG).',
-    longDescription: 'Coupling M22 er hurtigkoblingen til vandhaner med indvendigt M22-gevind (IG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
+    longDescription: 'Coupling M22 er hurtigkoblingen til vandhaner med indvendigt M22-gevind (IG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er solid og holdbar og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
     highlights: ['Til indvendigt M22-gevind (IG)', 'Klik dit filter på uden værktøj', 'Passer til alle Baclyser® neo-filtre', 'Solid metal-konstruktion'],
     features: ['Passer M22 IG (indvendigt gevind)', 'Snap-on montering – ingen værktøj', 'Kompatibel med alle Baclyser® neo-filtre', 'Solid, holdbar konstruktion', 'Sidder fast, når du skifter filter'],
     specs: [
@@ -97,7 +97,7 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
     images: ['/images/hurtigkobling-m24-1.jpg', '/images/hurtigkobling-m24-2.jpg', '/images/hurtigkobling-m24-3.jpg'],
     tagline: 'Hurtigkobling til vandhaner med udvendigt M24-gevind',
     description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med udvendigt M24-gevind (M24 AG).',
-    longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24-gevind (AG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
+    longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24-gevind (AG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er solid og holdbar og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
     highlights: ['Til udvendigt M24-gevind (AG)', 'Klik dit filter på uden værktøj', 'Passer til alle Baclyser® neo-filtre', 'Solid metal-konstruktion'],
     features: ['Passer M24 AG (udvendigt gevind)', 'Snap-on montering – ingen værktøj', 'Kompatibel med alle Baclyser® neo-filtre', 'Solid, holdbar konstruktion', 'Sidder fast, når du skifter filter'],
     specs: [
