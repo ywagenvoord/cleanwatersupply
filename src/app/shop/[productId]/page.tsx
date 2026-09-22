@@ -623,18 +623,21 @@ export default async function ProductDetailPage({ params }: { params: { productI
           .filter((f): f is Product => !!f)
         if (filters.length === 0) return null
         const isKande = product.category === 'vandkande'
+        const isAdapter = product.id.startsWith('coupling') // Manuel adapter M22/M24
         return (
           <section className="py-14 bg-gradient-to-b from-[#f5fbff] to-white border-y border-blue-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2 mb-1.5">
                 <Filter className="w-4 h-4 text-[#284eff]" />
-                <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Tilkøb</span>
+                <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Passer til</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">
-                {isKande ? 'Filtre der passer til kanden' : 'Filtre der passer i huset'}
+                {isKande ? 'Filtre der passer til kanden' : isAdapter ? 'Vandhanefiltre der passer til adapteren' : 'Filtre der passer i huset'}
               </h2>
               <p className="text-gray-500 mb-8 max-w-2xl">
-                Vælg den filterpatron, der passer til dit behov – alle passer i {isKande ? 'denne kande' : 'dette filterhus'}.
+                {isAdapter
+                  ? 'Adapteren sættes på din vandhane – herefter passer disse Baclyser® neo-filtre direkte på, helt uden værktøj.'
+                  : `Vælg den filterpatron, der passer til dit behov – alle passer i ${isKande ? 'denne kande' : 'dette filterhus'}.`}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {filters.map((f) => (
