@@ -17,11 +17,13 @@ export default function FilterAddToCart({
   const stock = stockFor({ id, name })
   if (stock) {
     return (
-      <div className="w-full text-center">
+      <div className="w-full">
+        <div className="flex items-center justify-center min-h-8 mb-2.5">
+          <p className="text-xs font-semibold text-red-600 text-center leading-tight">Forventet på lager igen {stock.restockLabel}</p>
+        </div>
         <span className="inline-flex w-full items-center justify-center gap-2 py-3 px-5 rounded-full font-bold text-sm bg-gray-100 text-gray-400 cursor-not-allowed">
           Udsolgt
         </span>
-        <p className="mt-1 text-xs font-semibold text-red-600">Forventet på lager igen {stock.restockLabel}</p>
       </div>
     )
   }
