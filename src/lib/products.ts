@@ -1259,6 +1259,7 @@ export const PRODUCTS: Product[] = [
     price: 11250,
     imgSrc:   '/images/blosgoringsanlaeg-100m.jpg',
     imgLarge: '/images/blosgoringsanlaeg-100m.jpg',
+    lifestyleVideo: '/videos/kalkanlaeg-100m.mp4',
     description: 'Få blødt vand ved hvert tappested i hjemmet. Det kompakte alt-i-ét anlæg fjerner kalken automatisk – blødere hud og hår, mindre kalk og rengøring, og længere levetid på hvidevarer og rør. 3 L resin, 15 kg integreret saltkar, 1.500 l/t.',
     longDescription: 'Blødgøringsanlæg 100M giver dig blødt vand i hele huset – fra bruser og køkken til vaskemaskine og varmtvandsbeholder. Kalken fjernes ved kilden via ionbytning, så du mærker forskellen med det samme: blødere hud og hår, glas og fliser der bliver blanke uden skrubben, blødere håndklæder og markant mindre sæbeforbrug. Samtidig skånes rør og hvidevarer for kalk, så de holder længere og bruger mindre energi.\n\nAlt er samlet i ét kompakt kabinet: 3 liter ionbytterharpiks og en integreret 15 kg salttank. Anlægget regenererer automatisk med salt og leverer 1.500 l/t – rigeligt til en familie – og kræver kun service ca. hvert 2. år.',
     highlights: ['Blødt vand ved hvert tappested', 'Mindre kalk, sæbe & rengøring', 'Fuldautomatisk · alt-i-ét'],
