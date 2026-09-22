@@ -137,6 +137,13 @@ const ADAPTER_GUIDE = [
   { id: 'coupling-m22', label: 'Manuel adapter M22', where: 'på indersiden', img: '/images/coupling-m22.jpg' },
   { id: 'coupling-m24', label: 'Manuel adapter M24', where: 'på ydersiden', img: '/images/coupling-m24.jpg' },
 ]
+// Alle 4 valgmuligheder (koblinger + adaptere) med pris – vises i guiden med "Læg i kurv"
+const GUIDE_ALL = [
+  { id: 'prod_VJ1JDGsfJxyr4r', spid: 'prod_VJ1JDGsfJxyr4r', name: 'Coupling M22',       where: 'på indersiden', img: '/images/hurtigkobling-m22-1.jpg', price: 310 },
+  { id: 'coupling-m22',        spid: undefined,             name: 'Manuel adapter M22', where: 'på indersiden', img: '/images/coupling-m22.jpg',       price: 129 },
+  { id: 'prod_VJ1QAt4Yw2Dju4', spid: 'prod_VJ1QAt4Yw2Dju4', name: 'Coupling M24',       where: 'på ydersiden',  img: '/images/hurtigkobling-m24-1.jpg', price: 310 },
+  { id: 'coupling-m24',        spid: undefined,             name: 'Manuel adapter M24', where: 'på ydersiden',  img: '/images/coupling-m24.jpg',       price: 129 },
+]
 
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 
@@ -714,8 +721,6 @@ export default async function ProductDetailPage({ params }: { params: { productI
         const isCoupling = product.id === 'prod_VJ1JDGsfJxyr4r' || product.id === 'prod_VJ1QAt4Yw2Dju4'
         const isAdapter = product.id === 'coupling-m22' || product.id === 'coupling-m24'
         if (!isCoupling && !isAdapter) return null
-        const guide = isCoupling ? COUPLING_GUIDE : ADAPTER_GUIDE
-        const noun = isCoupling ? 'kobling' : 'adapter'
         return (
         <section className="bg-white border-y border-blue-50 py-14">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -723,30 +728,35 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <Wrench className="w-4 h-4 text-[#284eff]" />
               <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Guide</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Hvordan ved jeg, hvilken {noun} jeg skal købe?</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Hvilken skal du bruge til din vandhane?</h2>
             <p className="text-gray-600 mb-8 max-w-2xl">
-              Det kan du nemt tjekke selv. Kig på din vandhanes munding – dér hvor vandet løber ud – og læg mærke til, hvor de små riller (gevindet) sidder.
+              Det kan du nemt tjekke selv. Kig på din vandhanes munding – dér hvor vandet løber ud – og læg mærke til, hvor de små riller (gevindet) sidder. Vælg så herunder – og læg den direkte i kurven.
             </p>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {guide.map((c) => {
+            <div className="grid sm:grid-cols-2 gap-5">
+              {GUIDE_ALL.map((c) => {
                 const current = c.id === product.id
                 return (
-                  <Link
+                  <div
                     key={c.id}
-                    href={`/shop/${c.id}`}
-                    className={`group flex items-center gap-4 rounded-3xl border bg-white p-5 transition-all hover:shadow-md ${current ? 'border-[#3aad4a] ring-1 ring-[#3aad4a]' : 'border-blue-100 hover:border-blue-300'}`}
+                    className={`flex flex-col rounded-3xl border bg-white p-5 ${current ? 'border-[#3aad4a] ring-1 ring-[#3aad4a]' : 'border-blue-100'}`}
                   >
-                    <img src={c.img} alt={c.label} className="w-20 h-20 rounded-2xl bg-white object-contain border border-blue-100 p-1 shrink-0" />
-                    <div>
-                      <p className="text-sm text-gray-600">Sidder rillerne <strong className="text-[#0a2540]">{c.where}</strong>?</p>
-                      <p className="text-lg font-extrabold text-[#0a2540] mt-0.5">Vælg {c.label}</p>
-                      {current ? (
-                        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#2e7d34]"><CheckCircle2 className="w-3.5 h-3.5" /> Det er den, du kigger på nu</span>
-                      ) : (
-                        <span className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-[#284eff]">Se {c.label} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></span>
-                      )}
+                    <div className="flex items-center gap-4">
+                      <Link href={`/shop/${c.id}`} className="shrink-0">
+                        <img src={c.img} alt={c.name} className="w-16 h-16 rounded-2xl bg-white object-contain border border-blue-100 p-1" />
+                      </Link>
+                      <div className="min-w-0">
+                        <p className="text-[11px] font-bold text-[#284eff] uppercase tracking-wide">Gevind {c.where}</p>
+                        <Link href={`/shop/${c.id}`} className="hover:text-[#284eff] transition-colors">
+                          <h3 className="text-base font-extrabold text-[#0a2540] leading-tight">{c.name}</h3>
+                        </Link>
+                        <p className="mt-1 text-lg font-extrabold text-[#0a2540]">{c.price} kr <span className="text-[11px] font-medium text-gray-400">inkl. moms</span></p>
+                      </div>
                     </div>
-                  </Link>
+                    <div className="mt-4">
+                      <FilterAddToCart id={c.id} name={c.name} price={c.price} image={c.img} stripeProductId={c.spid} />
+                    </div>
+                    {current && <p className="mt-2 text-center text-[11px] font-bold text-[#2e7d34]">Det er den, du kigger på nu</p>}
+                  </div>
                 )
               })}
             </div>

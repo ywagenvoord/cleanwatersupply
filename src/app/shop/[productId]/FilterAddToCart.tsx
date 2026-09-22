@@ -8,12 +8,12 @@ import { ShoppingBag, Check, Minus, Plus } from 'lucide-react'
 
 /* Lille "Tilføj til kurv"-knap til filter-tilkøb-kortene (kurven er client-side). */
 export default function FilterAddToCart({
-  id, name, price, image,
-}: { id: string; name: string; price?: number; image?: string }) {
+  id, name, price, image, stripeProductId,
+}: { id: string; name: string; price?: number; image?: string; stripeProductId?: string }) {
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [qty, setQty] = useState(1)
-  const stripe = getStripe(id)
+  const spid = stripeProductId ?? getStripe(id)?.productId
   const stock = stockFor({ id, name })
   if (stock) {
     return (
@@ -27,11 +27,11 @@ export default function FilterAddToCart({
       </div>
     )
   }
-  if (!stripe || price == null) return null
+  if (!spid || price == null) return null
 
   function add() {
-    if (!stripe || price == null) return
-    addItem({ id, stripeProductId: stripe.productId, name, price, image: image ?? '' }, qty)
+    if (!spid || price == null) return
+    addItem({ id, stripeProductId: spid, name, price, image: image ?? '' }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }
