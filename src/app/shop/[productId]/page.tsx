@@ -123,6 +123,8 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
 const OPPOSITE_COUPLING: Record<string, { id: string; label: string; gevind: string; img: string }> = {
   'prod_VJ1JDGsfJxyr4r': { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', gevind: 'gevind på ydersiden', img: '/images/hurtigkobling-m24-1.jpg' },
   'prod_VJ1QAt4Yw2Dju4': { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', gevind: 'gevind på indersiden', img: '/images/hurtigkobling-m22-1.jpg' },
+  'coupling-m22': { id: 'coupling-m24', label: 'Manuel adapter M24', gevind: 'gevind på ydersiden', img: '/images/coupling-m24.jpg' },
+  'coupling-m24': { id: 'coupling-m22', label: 'Manuel adapter M22', gevind: 'gevind på indersiden', img: '/images/coupling-m22.jpg' },
 }
 
 // Begge kobling-varianter til "hvilken skal jeg bruge?"-guiden
@@ -709,7 +711,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
       {(() => {
-        const isCoupling = !!OPPOSITE_COUPLING[product.id]
+        const isCoupling = product.id === 'prod_VJ1JDGsfJxyr4r' || product.id === 'prod_VJ1QAt4Yw2Dju4'
         const isAdapter = product.id === 'coupling-m22' || product.id === 'coupling-m24'
         if (!isCoupling && !isAdapter) return null
         const guide = isCoupling ? COUPLING_GUIDE : ADAPTER_GUIDE
