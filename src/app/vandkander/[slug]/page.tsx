@@ -173,13 +173,13 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               )}
 
               {k.stockLeft != null && k.stockLeft > 0 && (
-                <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-red-50 ring-1 ring-red-200 px-3.5 py-1.5">
+                <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-orange-50 ring-1 ring-orange-200 px-3.5 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-orange-500" />
                   </span>
-                  <span className="text-sm font-bold text-red-700">
-                    {k.stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${k.stockLeft} tilbage på lager`}
+                  <span className="text-sm font-bold text-orange-700">
+                    Få på lager
                   </span>
                 </div>
               )}
