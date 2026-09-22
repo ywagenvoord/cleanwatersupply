@@ -125,6 +125,12 @@ const OPPOSITE_COUPLING: Record<string, { id: string; label: string; gevind: str
   'prod_VJ1QAt4Yw2Dju4': { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', gevind: 'gevind på indersiden', img: '/images/hurtigkobling-m22-1.jpg' },
 }
 
+// Begge kobling-varianter til "hvilken skal jeg bruge?"-guiden
+const COUPLING_GUIDE = [
+  { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', where: 'på indersiden', img: '/images/hurtigkobling-m22-1.jpg' },
+  { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', where: 'på ydersiden', img: '/images/hurtigkobling-m24-1.jpg' },
+]
+
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 
 // allow on-demand rendering for new Stripe products
@@ -697,6 +703,47 @@ export default async function ProductDetailPage({ params }: { params: { productI
       )}
 
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
+      {OPPOSITE_COUPLING[product.id] && (
+        <section className="bg-white border-y border-blue-50 py-14">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-2 mb-1.5">
+              <Wrench className="w-4 h-4 text-[#284eff]" />
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Guide</span>
+            </div>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Hvordan ved jeg, hvilken kobling jeg skal købe?</h2>
+            <p className="text-gray-600 mb-8 max-w-2xl">
+              Det kan du nemt tjekke selv. Kig på din vandhanes munding – dér hvor vandet løber ud – og læg mærke til, hvor de små riller (gevindet) sidder.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {COUPLING_GUIDE.map((c) => {
+                const current = c.id === product.id
+                return (
+                  <Link
+                    key={c.id}
+                    href={`/shop/${c.id}`}
+                    className={`group flex items-center gap-4 rounded-3xl border bg-white p-5 transition-all hover:shadow-md ${current ? 'border-[#3aad4a] ring-1 ring-[#3aad4a]' : 'border-blue-100 hover:border-blue-300'}`}
+                  >
+                    <img src={c.img} alt={c.label} className="w-20 h-20 rounded-2xl bg-white object-contain border border-blue-100 p-1 shrink-0" />
+                    <div>
+                      <p className="text-sm text-gray-600">Sidder rillerne <strong className="text-[#0a2540]">{c.where}</strong>?</p>
+                      <p className="text-lg font-extrabold text-[#0a2540] mt-0.5">Vælg {c.label}</p>
+                      {current ? (
+                        <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#2e7d34]"><CheckCircle2 className="w-3.5 h-3.5" /> Det er den, du kigger på nu</span>
+                      ) : (
+                        <span className="mt-2 inline-flex items-center gap-1 text-[13px] font-bold text-[#284eff]">Se {c.label} <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" /></span>
+                      )}
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+            <p className="text-sm text-gray-500 mt-6 max-w-2xl">
+              Stadig i tvivl? Skru den lille si (luftblanderen) af mundingen og kig efter rillerne – eller <Link href="/kontakt" className="font-semibold text-[#284eff]">kontakt os</Link>, så hjælper vi dig med at finde den rigtige.
+            </p>
+          </div>
+        </section>
+      )}
+
       {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
         const filters = product.compatibleFilters
           .map((id) => getProduct(id))
