@@ -118,9 +118,9 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
 }
 
 // Kobling → den modsatte gevind-variant (til "skift"-boks på koblingssiderne)
-const OPPOSITE_COUPLING: Record<string, { id: string; label: string; gevind: string }> = {
-  'prod_VJ1JDGsfJxyr4r': { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', gevind: 'udvendigt M24-gevind' },
-  'prod_VJ1QAt4Yw2Dju4': { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', gevind: 'indvendigt M22-gevind' },
+const OPPOSITE_COUPLING: Record<string, { id: string; label: string; gevind: string; img: string }> = {
+  'prod_VJ1JDGsfJxyr4r': { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', gevind: 'udvendigt M24-gevind', img: '/images/hurtigkobling-m24-1.jpg' },
+  'prod_VJ1QAt4Yw2Dju4': { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', gevind: 'indvendigt M22-gevind', img: '/images/hurtigkobling-m22-1.jpg' },
 }
 
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
@@ -550,10 +550,16 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 return (
                   <Link
                     href={`/shop/${o.id}`}
-                    className="order-1 lg:order-none group flex items-center justify-between gap-3 mb-6 rounded-2xl bg-blue-50 border border-blue-100 hover:border-blue-300 px-4 py-3 transition-colors"
+                    className="order-1 lg:order-none group flex items-center gap-3 mb-6 rounded-2xl bg-blue-50 border border-blue-100 hover:border-blue-300 hover:shadow-sm p-3 transition-all"
                   >
-                    <span className="text-[13px] text-[#0a2540] leading-snug">
-                      Har din vandhane <strong>{o.gevind}</strong>? Skift til <strong>{o.label}</strong>
+                    <img
+                      src={o.img}
+                      alt={o.label}
+                      className="w-14 h-14 rounded-xl bg-white object-contain border border-blue-100 shrink-0 p-1"
+                    />
+                    <span className="flex-1 text-[13px] text-[#0a2540] leading-snug">
+                      Har din vandhane <strong>{o.gevind}</strong>?<br />
+                      Skift til <strong>{o.label}</strong>
                     </span>
                     <ArrowRight className="w-4 h-4 text-[#284eff] shrink-0 group-hover:translate-x-0.5 transition-transform" />
                   </Link>
