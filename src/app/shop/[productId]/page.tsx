@@ -65,6 +65,50 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
     ],
     useCases: ['Hjem', 'Kontor', 'Frisk drikkevand i køleskabet'],
   },
+  'prod_VJ1JDGsfJxyr4r': {
+    category: 'vandhane',
+    tagline: 'Hurtigkobling til vandhaner med indvendigt M22-gevind',
+    description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med indvendigt M22-gevind (M22 IG).',
+    longDescription: 'Coupling M22 er hurtigkoblingen til vandhaner med indvendigt M22-gevind (IG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
+    highlights: ['Til indvendigt M22-gevind (IG)', 'Klik dit filter på uden værktøj', 'Passer til alle Baclyser® neo-filtre', 'Holdbar messing'],
+    features: ['Passer M22 IG (indvendigt gevind)', 'Snap-on montering – ingen værktøj', 'Kompatibel med alle Baclyser® neo-filtre', 'Holdbar messing-konstruktion', 'Sidder fast, når du skifter filter'],
+    specs: [
+      { label: 'Type', value: 'Hurtigkobling' },
+      { label: 'Gevind', value: 'M22 IG (indvendigt)' },
+      { label: 'Materiale', value: 'Messing' },
+      { label: 'Passer til', value: 'Baclyser® neo TL/TR' },
+      { label: 'Varenr.', value: '100296' },
+    ],
+    faqs: [
+      { q: 'Hvilken kobling skal jeg vælge?', a: 'Tjek din vandhanes gevind: indvendigt gevind → Coupling M22 (denne). Udvendigt gevind → Coupling M24.' },
+      { q: 'Skal jeg bruge værktøj?', a: 'Nej. Koblingen sættes på hanen, og filteret klikkes på og af helt uden værktøj.' },
+      { q: 'Hvilke filtre passer på?', a: 'Alle Baclyser® neo-vandhanefiltre (TL og TR) passer på koblingen.' },
+    ],
+    useCases: ['Vandhaner med indvendigt M22-gevind'],
+    compatibleFilters: ['baclyser-neo-tr-2m', 'baclyser-neo-tl-2m'],
+  },
+  'prod_VJ1QAt4Yw2Dju4': {
+    category: 'vandhane',
+    tagline: 'Hurtigkobling til vandhaner med udvendigt M24-gevind',
+    description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med udvendigt M24-gevind (M24 AG).',
+    longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24-gevind (AG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
+    highlights: ['Til udvendigt M24-gevind (AG)', 'Klik dit filter på uden værktøj', 'Passer til alle Baclyser® neo-filtre', 'Holdbar messing'],
+    features: ['Passer M24 AG (udvendigt gevind)', 'Snap-on montering – ingen værktøj', 'Kompatibel med alle Baclyser® neo-filtre', 'Holdbar messing-konstruktion', 'Sidder fast, når du skifter filter'],
+    specs: [
+      { label: 'Type', value: 'Hurtigkobling' },
+      { label: 'Gevind', value: 'M24 AG (udvendigt)' },
+      { label: 'Materiale', value: 'Messing' },
+      { label: 'Passer til', value: 'Baclyser® neo TL/TR' },
+      { label: 'Varenr.', value: '100298' },
+    ],
+    faqs: [
+      { q: 'Hvilken kobling skal jeg vælge?', a: 'Tjek din vandhanes gevind: udvendigt gevind → Coupling M24 (denne). Indvendigt gevind → Coupling M22.' },
+      { q: 'Skal jeg bruge værktøj?', a: 'Nej. Koblingen sættes på hanen, og filteret klikkes på og af helt uden værktøj.' },
+      { q: 'Hvilke filtre passer på?', a: 'Alle Baclyser® neo-vandhanefiltre (TL og TR) passer på koblingen.' },
+    ],
+    useCases: ['Vandhaner med udvendigt M24-gevind'],
+    compatibleFilters: ['baclyser-neo-tr-2m', 'baclyser-neo-tl-2m'],
+  },
 }
 
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
@@ -623,7 +667,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
           .filter((f): f is Product => !!f)
         if (filters.length === 0) return null
         const isKande = product.category === 'vandkande'
-        const isAdapter = product.id.startsWith('coupling') // Manuel adapter M22/M24
+        const isTapFit = product.id.startsWith('coupling') || /coupling/i.test(product.name) // Manuel adapter + Coupling
         return (
           <section className="py-14 bg-gradient-to-b from-[#f5fbff] to-white border-y border-blue-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -632,11 +676,11 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Passer til</span>
               </div>
               <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">
-                {isKande ? 'Filtre der passer til kanden' : isAdapter ? 'Vandhanefiltre der passer til adapteren' : 'Filtre der passer i huset'}
+                {isKande ? 'Filtre der passer til kanden' : isTapFit ? 'Vandhanefiltre der passer til' : 'Filtre der passer i huset'}
               </h2>
               <p className="text-gray-500 mb-8 max-w-2xl">
-                {isAdapter
-                  ? 'Adapteren sættes på din vandhane – herefter passer disse Baclyser® neo-filtre direkte på, helt uden værktøj.'
+                {isTapFit
+                  ? 'Sættes på din vandhane – herefter passer disse Baclyser® neo-filtre direkte på, helt uden værktøj.'
                   : `Vælg den filterpatron, der passer til dit behov – alle passer i ${isKande ? 'denne kande' : 'dette filterhus'}.`}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
