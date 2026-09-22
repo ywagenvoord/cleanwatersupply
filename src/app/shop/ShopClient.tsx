@@ -254,7 +254,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
-          <div className="min-h-[2.75rem]">
+          <div className="min-h-[2.75rem] flex flex-col justify-end">
           {soldOut && (
             <div className="mb-1.5">
               {restockLabel && (
