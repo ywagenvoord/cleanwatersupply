@@ -130,6 +130,11 @@ const COUPLING_GUIDE = [
   { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', where: 'på indersiden', img: '/images/hurtigkobling-m22-1.jpg' },
   { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', where: 'på ydersiden', img: '/images/hurtigkobling-m24-1.jpg' },
 ]
+// Samme guide til de manuelle adaptere (med adapternes egne billeder)
+const ADAPTER_GUIDE = [
+  { id: 'coupling-m22', label: 'Manuel adapter M22', where: 'på indersiden', img: '/images/coupling-m22.jpg' },
+  { id: 'coupling-m24', label: 'Manuel adapter M24', where: 'på ydersiden', img: '/images/coupling-m24.jpg' },
+]
 
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 
@@ -703,19 +708,25 @@ export default async function ProductDetailPage({ params }: { params: { productI
       )}
 
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
-      {OPPOSITE_COUPLING[product.id] && (
+      {(() => {
+        const isCoupling = !!OPPOSITE_COUPLING[product.id]
+        const isAdapter = product.id === 'coupling-m22' || product.id === 'coupling-m24'
+        if (!isCoupling && !isAdapter) return null
+        const guide = isCoupling ? COUPLING_GUIDE : ADAPTER_GUIDE
+        const noun = isCoupling ? 'kobling' : 'adapter'
+        return (
         <section className="bg-white border-y border-blue-50 py-14">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2 mb-1.5">
               <Wrench className="w-4 h-4 text-[#284eff]" />
               <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Guide</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Hvordan ved jeg, hvilken kobling jeg skal købe?</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mb-2">Hvordan ved jeg, hvilken {noun} jeg skal købe?</h2>
             <p className="text-gray-600 mb-8 max-w-2xl">
               Det kan du nemt tjekke selv. Kig på din vandhanes munding – dér hvor vandet løber ud – og læg mærke til, hvor de små riller (gevindet) sidder.
             </p>
             <div className="grid sm:grid-cols-2 gap-6">
-              {COUPLING_GUIDE.map((c) => {
+              {guide.map((c) => {
                 const current = c.id === product.id
                 return (
                   <Link
@@ -742,7 +753,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
             </p>
           </div>
         </section>
-      )}
+        )
+      })()}
 
       {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
         const filters = product.compatibleFilters
