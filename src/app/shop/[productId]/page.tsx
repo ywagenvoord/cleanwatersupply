@@ -67,6 +67,9 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
   },
   'prod_VJ1JDGsfJxyr4r': {
     category: 'vandhane',
+    imgSrc: '/images/hurtigkobling-m22-1.jpg',
+    imgLarge: '/images/hurtigkobling-m22-1.jpg',
+    images: ['/images/hurtigkobling-m22-1.jpg', '/images/hurtigkobling-m22-2.jpg', '/images/hurtigkobling-m22-3.jpg'],
     tagline: 'Hurtigkobling til vandhaner med indvendigt M22-gevind',
     description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med indvendigt M22-gevind (M22 IG).',
     longDescription: 'Coupling M22 er hurtigkoblingen til vandhaner med indvendigt M22-gevind (IG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
@@ -89,6 +92,9 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
   },
   'prod_VJ1QAt4Yw2Dju4': {
     category: 'vandhane',
+    imgSrc: '/images/hurtigkobling-m24-1.jpg',
+    imgLarge: '/images/hurtigkobling-m24-1.jpg',
+    images: ['/images/hurtigkobling-m24-1.jpg', '/images/hurtigkobling-m24-2.jpg', '/images/hurtigkobling-m24-3.jpg'],
     tagline: 'Hurtigkobling til vandhaner med udvendigt M24-gevind',
     description: 'Hurtigkobling, der klikker dit Baclyser® neo-vandhanefilter fast på hanen – helt uden værktøj. Passer til vandhaner med udvendigt M24-gevind (M24 AG).',
     longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24-gevind (AG). Den sættes på hanen én gang og bliver siddende – herefter klikker du bare dit Baclyser® neo-filter på og af uden værktøj, når det skal skiftes.\n\nKoblingen er fremstillet i holdbar messing og passer til alle Baclyser® neo-filtre (TL og TR). Er du i tvivl om, hvilken kobling din hane skal bruge, så kontakt os – vi hjælper dig.',
