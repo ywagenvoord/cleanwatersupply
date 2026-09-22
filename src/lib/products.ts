@@ -300,7 +300,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'coupling-m22',
     productNr: '100296',
-    name: 'Coupling M22',
+    name: 'Manuel adapter M22',
     tagline: 'Hurtigkobling til indvendigt M22-gevind',
     category: 'vandhane',
     price: 310, priceErhverv: 129,
@@ -333,7 +333,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'coupling-m24',
     productNr: '100298',
-    name: 'Coupling M24',
+    name: 'Manuel adapter M24',
     tagline: 'Hurtigkobling til udvendigt M24-gevind',
     category: 'vandhane',
     price: 310, priceErhverv: 129,
