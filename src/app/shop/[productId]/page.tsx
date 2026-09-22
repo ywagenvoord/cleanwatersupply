@@ -117,6 +117,12 @@ const STRIPE_CONTENT_OVERRIDE: Record<string, Partial<Product>> = {
   },
 }
 
+// Kobling → den modsatte gevind-variant (til "skift"-boks på koblingssiderne)
+const OPPOSITE_COUPLING: Record<string, { id: string; label: string; gevind: string }> = {
+  'prod_VJ1JDGsfJxyr4r': { id: 'prod_VJ1QAt4Yw2Dju4', label: 'Coupling M24', gevind: 'udvendigt M24-gevind' },
+  'prod_VJ1QAt4Yw2Dju4': { id: 'prod_VJ1JDGsfJxyr4r', label: 'Coupling M22', gevind: 'indvendigt M22-gevind' },
+}
+
 /* ─── STATIC PARAMS ──────────────────────────────────────────────────────── */
 
 // allow on-demand rendering for new Stripe products
@@ -667,6 +673,26 @@ export default async function ProductDetailPage({ params }: { params: { productI
       )}
 
       {/* ─── TILKØB: FILTRE DER PASSER (fx til kanden) ────────────── */}
+      {OPPOSITE_COUPLING[product.id] && (() => {
+        const o = OPPOSITE_COUPLING[product.id]
+        return (
+          <section className="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+            <div className="rounded-2xl bg-blue-50 border border-blue-100 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 justify-between">
+              <div className="text-center sm:text-left">
+                <p className="text-sm font-extrabold text-[#0a2540]">Har din vandhane {o.gevind}?</p>
+                <p className="text-sm text-gray-600 mt-0.5">Så skal du bruge {o.label} i stedet – skift hurtigt her.</p>
+              </div>
+              <Link
+                href={`/shop/${o.id}`}
+                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#0a2540] hover:bg-[#0d3050] text-white font-bold px-6 py-3 text-sm transition-colors"
+              >
+                Skift til {o.label} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </section>
+        )
+      })()}
+
       {product.compatibleFilters && product.compatibleFilters.length > 0 && (() => {
         const filters = product.compatibleFilters
           .map((id) => getProduct(id))
