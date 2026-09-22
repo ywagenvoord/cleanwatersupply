@@ -104,6 +104,16 @@ export async function getMergedShopProducts(): Promise<Product[]> {
       p.id === 'prod_V2wDbJ1i8O20Kj'    // MikroPLASTIK-STOP filterkande (Stripe-only)
     return isKande ? 0 : 1
   }
+  // Placer Stripe-only Coupling-produkterne lige efter de manuelle adaptere (M22/M24),
+  // så koblinger og adaptere står samlet i shoppen.
+  const adapterAnchor = Math.max(orderIndex.get('coupling-m22') ?? -1, orderIndex.get('coupling-m24') ?? -1)
+  if (adapterAnchor >= 0) {
+    for (const p of merged) {
+      if (p.id.startsWith('prod_') && /coupling/i.test(p.name)) {
+        orderIndex.set(p.id, adapterAnchor + (/m24/i.test(p.name) ? 0.2 : 0.1))
+      }
+    }
+  }
   merged.sort((a, b) => {
     const r = laicaRank(a) - laicaRank(b)
     if (r !== 0) return r
