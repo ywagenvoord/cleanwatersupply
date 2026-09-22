@@ -254,6 +254,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
+          <div className="min-h-[2.5rem]">
           {soldOut && (
             <div className="mb-1.5">
               <p className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
@@ -283,6 +284,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               På lager
             </p>
           )}
+          </div>
           {product.quoteOnly ? (
             <p className="text-base font-bold text-[#0a2540]">Kontakt for info</p>
           ) : product.comingSoon || displayPrice === undefined ? (
