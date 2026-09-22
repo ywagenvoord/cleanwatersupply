@@ -268,6 +268,12 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
               {stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${stockLeft} tilbage på lager`}
             </p>
           )}
+          {!soldOut && (stockLeft == null || stockLeft <= 0) && buyable && !product.quoteOnly && !product.comingSoon && displayPrice !== undefined && (
+            <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#2e7d34]">
+              <span className="inline-flex h-2 w-2 rounded-full bg-[#3aad4a]" />
+              På lager
+            </p>
+          )}
           {product.quoteOnly ? (
             <p className="text-base font-bold text-[#0a2540]">Kontakt for info</p>
           ) : product.comingSoon || displayPrice === undefined ? (
