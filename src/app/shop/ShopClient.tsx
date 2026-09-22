@@ -211,18 +211,24 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           </span>
         )}
 
-        {FITS_WITH[product.id] && (
+        {(() => {
+          const fits = FITS_WITH[product.id] ?? (/coupling/i.test(product.name)
+            ? { img: '/images/baclyser-neo-tr.jpg', label: 'Baclyser® neo-filtre' }
+            : undefined)
+          if (!fits) return null
+          return (
           <div className="mt-2.5 inline-flex items-center gap-1.5 self-start rounded-full border border-gray-200 bg-gray-50 py-1 pl-1 pr-2.5">
             <img
-              src={FITS_WITH[product.id].img}
-              alt={FITS_WITH[product.id].label}
+              src={fits.img}
+              alt={fits.label}
               className="w-5 h-5 rounded-full object-contain bg-white border border-gray-200"
             />
-            <span className="text-[11px] font-medium text-gray-500">{FITS_WITH[product.id].text
-              ? <span className="font-semibold text-gray-700">{FITS_WITH[product.id].text}</span>
-              : <>Passer til <span className="font-semibold text-gray-700">{FITS_WITH[product.id].label}</span></>}</span>
+            <span className="text-[11px] font-medium text-gray-500">{fits.text
+              ? <span className="font-semibold text-gray-700">{fits.text}</span>
+              : <>Passer til <span className="font-semibold text-gray-700">{fits.label}</span></>}</span>
           </div>
-        )}
+          )
+        })()}
 
         <div className="flex-1" />
 

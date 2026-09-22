@@ -28,9 +28,9 @@ function taglineForStripeProduct(sp: { stripeProductId: string; name: string }):
   if (SHOP_TAGLINES[sp.stripeProductId]) return SHOP_TAGLINES[sp.stripeProductId]
   const n = sp.name.toLowerCase()
   if (n.includes('coupling') && n.includes('m22'))
-    return 'Til vandhaner med indvendigt M22-gevind · passer til alle Baclyser® neo-filtre – klik på uden værktøj'
+    return 'Indvendigt M22-gevind · klik dit filter på uden værktøj'
   if (n.includes('coupling') && n.includes('m24'))
-    return 'Til vandhaner med udvendigt M24-gevind · passer til alle Baclyser® neo-filtre – klik på uden værktøj'
+    return 'Udvendigt M24-gevind · klik dit filter på uden værktøj'
   return 'Rent, filtreret vand – nemt og uden installation'
 }
 
