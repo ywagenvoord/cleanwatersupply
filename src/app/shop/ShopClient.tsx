@@ -260,12 +260,12 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             </p>
           )}
           {stockLeft != null && stockLeft > 0 && (
-            <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
+            <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold text-orange-600">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+                <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500" />
               </span>
-              {stockLeft === 1 ? 'Kun 1 tilbage på lager' : `Kun ${stockLeft} tilbage på lager`}
+              Få på lager
             </p>
           )}
           {!soldOut && (stockLeft == null || stockLeft <= 0) && buyable && !product.quoteOnly && !product.comingSoon && displayPrice !== undefined && (
