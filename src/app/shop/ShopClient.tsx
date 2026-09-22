@@ -254,19 +254,19 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
-          <div className="min-h-[2.5rem]">
+          <div className="min-h-[2.75rem]">
           {soldOut && (
             <div className="mb-1.5">
-              <p className="inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
+              {restockLabel && (
+                <p className="text-[11px] font-medium text-gray-500 leading-tight">Forventes på lager d. {restockLabel}</p>
+              )}
+              <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 animate-ping" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
                 </span>
                 Udsolgt
               </p>
-              {restockLabel && (
-                <p className="mt-0.5 text-[11px] font-medium text-gray-500">Forventes på lager d. {restockLabel}</p>
-              )}
             </div>
           )}
           {stockLeft != null && stockLeft > 0 && (
