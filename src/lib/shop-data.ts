@@ -22,6 +22,18 @@ const SHOP_TAGLINES: Record<string, string> = {
   'prod_V2wHIQrdoXx6RG': 'Udskiftningsfiltre til GlaSSmart · 3 stk. · frisk, filtreret vand hele tiden',
 }
 
+// Tagline til Stripe-only produkter: fast tekst pr. id, ellers navne-baseret
+// beskrivelse (fx koblinger), ellers en neutral fallback.
+function taglineForStripeProduct(sp: { stripeProductId: string; name: string }): string {
+  if (SHOP_TAGLINES[sp.stripeProductId]) return SHOP_TAGLINES[sp.stripeProductId]
+  const n = sp.name.toLowerCase()
+  if (n.includes('coupling') && n.includes('m22'))
+    return 'Til vandhaner med indvendigt M22-gevind · passer til alle Baclyser® neo-filtre – klik på uden værktøj'
+  if (n.includes('coupling') && n.includes('m24'))
+    return 'Til vandhaner med udvendigt M24-gevind · passer til alle Baclyser® neo-filtre – klik på uden værktøj'
+  return 'Rent, filtreret vand – nemt og uden installation'
+}
+
 export async function getMergedShopProducts(): Promise<Product[]> {
   const stripeProducts = await getActiveStripeProducts()
 
@@ -49,7 +61,7 @@ export async function getMergedShopProducts(): Promise<Product[]> {
       merged.push({
         id:              sp.stripeProductId,
         name:            sp.name,
-        tagline:         SHOP_TAGLINES[sp.stripeProductId] ?? 'Tilgængelig via Stripe',
+        tagline:         taglineForStripeProduct(sp),
         description:     sp.description || sp.name,
         category:        STRIPE_ONLY_CATEGORY[sp.stripeProductId] ?? 'filtre',
         price:           sp.price,
