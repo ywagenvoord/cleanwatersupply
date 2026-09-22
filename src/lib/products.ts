@@ -309,18 +309,18 @@ export const PRODUCTS: Product[] = [
     compatibleFilters: ['baclyser-neo-tr-2m', 'baclyser-neo-tl-2m'],
     installVideo: '/videos/coupling-montering.mp4',
     description: 'Hurtigkobling til indvendigt M22-gevind. Værktøjsfri montering af Baclyser®-filtre.',
-    longDescription: 'Coupling M22 er hurtigkoblingen der passer indvendige M22 IG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj og er fremstillet i kvalitetsmessing.',
-    highlights: ['M22 indvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],
+    longDescription: 'Coupling M22 er hurtigkoblingen der passer indvendige M22 IG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj.',
+    highlights: ['M22 indvendigt gevind', 'Værktøjsfri montering', 'Solid metal-konstruktion'],
     features: [
       'Passer M22 IG (indvendigt gevind)',
       'Quick-release montering – ingen værktøj',
       'Kompatibel med alle Baclyser® neo filtre',
-      'Holdbar messing-konstruktion',
+      'Solid, holdbar konstruktion',
     ],
     specs: [
       { label: 'Type',         value: 'Hurtigkobling' },
       { label: 'Gevind',       value: 'M22 IG (indvendigt)' },
-      { label: 'Materiale',    value: 'Messing' },
+      { label: 'Materiale',    value: 'Metal' },
       { label: 'Kompatibel',   value: 'Baclyser® neo TL/TR' },
     ],
     faqs: [
@@ -343,17 +343,17 @@ export const PRODUCTS: Product[] = [
     installVideo: '/videos/coupling-montering.mp4',
     description: 'Hurtigkobling til udvendigt M24-gevind. Værktøjsfri montering af Baclyser®-filtre.',
     longDescription: 'Coupling M24 er hurtigkoblingen til vandhaner med udvendigt M24 AG-gevind. Den giver simpel snap-on montering af alle Baclyser® neo-filtre uden brug af værktøj.',
-    highlights: ['M24 udvendigt gevind', 'Værktøjsfri montering', 'Holdbar messing'],
+    highlights: ['M24 udvendigt gevind', 'Værktøjsfri montering', 'Solid metal-konstruktion'],
     features: [
       'Passer M24 AG (udvendigt gevind)',
       'Quick-release montering – ingen værktøj',
       'Kompatibel med alle Baclyser® neo filtre',
-      'Holdbar messing-konstruktion',
+      'Solid, holdbar konstruktion',
     ],
     specs: [
       { label: 'Type',         value: 'Hurtigkobling' },
       { label: 'Gevind',       value: 'M24 AG (udvendigt)' },
-      { label: 'Materiale',    value: 'Messing' },
+      { label: 'Materiale',    value: 'Metal' },
       { label: 'Kompatibel',   value: 'Baclyser® neo TL/TR' },
     ],
     faqs: [
