@@ -207,6 +207,9 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
         </Link>
         <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">{product.tagline}</p>
+        {product.cardNote && (
+          <p className="mt-1 text-[11px] text-gray-400 italic leading-snug">{product.cardNote}</p>
+        )}
 
         {isMedical && (
           <span className="mt-2.5 inline-flex items-center gap-1 self-start rounded-full bg-[#3aad4a]/10 text-[#2e7d34] text-[10px] font-bold px-2 py-1 uppercase tracking-wide">

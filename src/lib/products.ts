@@ -70,6 +70,7 @@ export type Product = {
   stripeProductId?: string
   // Kort sælgende linje vist lige under prisen på produktsiden
   priceNote?: string
+  cardNote?: string       // kort note vist direkte på shop-kortet
   // Anbefalet husstandsstørrelse (fx blødgøringsanlæg) – så folk kan matche deres familie
   recommendedFor?: string
   // Filterets levetid – vises tydeligt øverst på produktsiden (fx "ca. 1 måned / 150 L pr. filter")
@@ -614,6 +615,7 @@ export const PRODUCTS: Product[] = [
     name: 'Udskiftningsfilter til brusehoved',
     tagline: 'Aktivt kul-filter – renser bruservandet for klor, rust & urenheder',
     priceNote: 'Bemærk: Kun filteret indgår i købet. Brusehovedet er udelukkende vist som reference for, hvilken model filteret passer til.',
+    cardNote: 'Kun filteret følger med – brusehoved vist som reference',
     badge: 'Udskiftningsfilter',
     category: 'bruser',
     price: 64,
@@ -649,6 +651,7 @@ export const PRODUCTS: Product[] = [
     name: 'Udskiftningsfilter til brusehoved + C-vitamin',
     tagline: 'Aktivt kul med C-vitamin – ekstra mildt mod hud & hår',
     priceNote: 'Bemærk: Kun filteret indgår i købet. Brusehovedet er udelukkende vist som reference for, hvilken model filteret passer til.',
+    cardNote: 'Kun filteret følger med – brusehoved vist som reference',
     badge: 'Udskiftningsfilter',
     category: 'bruser',
     price: 69,
@@ -684,6 +687,7 @@ export const PRODUCTS: Product[] = [
     name: 'Udskiftningsfilter til brusehoved + kalkhæmmer',
     tagline: 'Aktivt kul med kalkhæmmer – mindsker kalkens påvirkning af hud, hår & armatur',
     priceNote: 'Bemærk: Kun filteret indgår i købet. Brusehovedet er udelukkende vist som reference for, hvilken model filteret passer til.',
+    cardNote: 'Kun filteret følger med – brusehoved vist som reference',
     badge: 'Udskiftningsfilter',
     category: 'bruser',
     price: 69,
