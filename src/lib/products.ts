@@ -419,7 +419,6 @@ export const PRODUCTS: Product[] = [
     productNr: '102146',
     name: 'Cartridge SC3 – filter til cBlue SC3',
     tagline: 'Nyt udskiftningsfilter til cBlue SC3 brusehoved – 3 måneders levetid',
-    priceNote: 'Bemærk: Kun filteret indgår i købet. cBlue SC3-brusehovedet er udelukkende vist som reference for, hvilken model filteret passer til.',
     category: 'bruser',
     badge: 'Medicinsk godkendt',
     price: 625, priceErhverv: 550,
@@ -489,7 +488,6 @@ export const PRODUCTS: Product[] = [
   {
     id: 'cartridge-mf5', productNr: '101471', name: 'Løst filter til AS Tube (MF5)', images: ['/images/cartridge-mf5-1.jpg', '/images/cartridge-mf5-2.jpg'],
     tagline: 'Løst udskiftningsfilter til AS Tube – skift kun patronen, behold huset · ca. 3 måneders levetid',
-    priceNote: 'Bemærk: Kun selve filterpatronen indgår i købet. AS Tube-huset er udelukkende vist som reference for, hvilken model patronen passer til.',
     badge: 'Løst filter', category: 'bruser', audience: 'erhverv', priceExMoms: true, price: 795, priceErhverv: 795,
     imgSrc: '/images/cartridge-mf5-1.jpg', imgLarge: '/images/cartridge-mf5-1.jpg',
     installNote: 'Filteret skal presses godt ind i huset. Det kan føles en smule forkert undervejs, men det er helt normalt – monteringen kræver lidt kræfter, for at filteret sidder tæt. Vær opmærksom på at vende filteret rigtigt, så pilen (gennemstrømningen) peger den rigtige vej, før du presser det på plads.',
