@@ -160,17 +160,17 @@ export default function PrivateClient() {
                   {da ? 'Kontakt os' : 'Contact us'}
                 </Link>
               </div>
-              <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-8">
+              <div className="mt-8 grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-start sm:gap-8">
                 {[
                   { da: 'Nem montering', en: 'Easy installation', Icon: Wrench },
                   { da: 'Levering 2-3 hverdage', en: 'Delivery in 2-3 business days', Icon: Truck },
                   { da: 'Medicinsk godkendt', en: 'Medically approved', Icon: ShieldCheck },
                 ].map(({ da: dl, en: el, Icon }) => (
                   <div key={dl} className="flex flex-col items-center gap-2 text-center">
-                    <span className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center">
+                    <span className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-green-400" />
                     </span>
-                    <span className="text-white/70 text-sm">{da ? dl : el}</span>
+                    <span className="text-white/70 text-xs sm:text-sm leading-tight">{da ? dl : el}</span>
                   </div>
                 ))}
               </div>
