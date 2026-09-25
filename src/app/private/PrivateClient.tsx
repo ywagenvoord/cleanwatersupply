@@ -228,7 +228,7 @@ export default function PrivateClient() {
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group relative aspect-[2/1] rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
+                className="group relative aspect-[4/3] sm:aspect-[2/1] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
               >
                 <img
                   src={img}
@@ -238,8 +238,8 @@ export default function PrivateClient() {
                   }`}
                 />
                 <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5">
-                  <h3 className="text-white font-extrabold text-2xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">{title}</h3>
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-5">
+                  <h3 className="text-white font-extrabold text-base sm:text-2xl leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">{title}</h3>
                   <p className="max-w-xs text-sm leading-snug text-white/0 max-h-0 overflow-hidden transition-all duration-300 group-hover:text-white/95 group-hover:max-h-32 group-hover:mt-2">
                     {body}
                   </p>
