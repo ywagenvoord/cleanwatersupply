@@ -9,6 +9,22 @@ import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 
+function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: string; body: string; da: boolean }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div className="group rounded-2xl sm:rounded-3xl bg-white border border-gray-100 p-4 sm:p-8 shadow-sm hover:shadow-xl sm:hover:-translate-y-1 transition-all duration-300">
+      <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center mb-3 sm:mb-5 group-hover:bg-blue-100 transition-colors">
+        <Icon className="w-5 h-5 sm:w-7 sm:h-7" />
+      </div>
+      <h3 className="font-bold text-gray-900 text-base sm:text-xl mb-2 sm:mb-3 leading-tight">{title}</h3>
+      <p className={`text-gray-600 text-sm sm:text-[15px] leading-relaxed ${open ? '' : 'line-clamp-4 sm:line-clamp-none'}`}>{body}</p>
+      <button type="button" onClick={() => setOpen((o) => !o)} className="sm:hidden mt-2 text-sm font-bold text-[#284eff]">
+        {open ? (da ? 'Vis mindre' : 'Show less') : (da ? 'Læs mere' : 'Read more')}
+      </button>
+    </div>
+  )
+}
+
 export default function PrivateClient() {
   const { language } = useLanguage()
   const da = language !== 'en'
@@ -296,16 +312,7 @@ export default function PrivateClient() {
                   : 'The most thorough protection begins before the water even reaches you. With filtration directly in the water supply, the water is cleaned centrally, so every tap in the home delivers clean water – without you having to think about it. One system, complete peace of mind throughout the house.',
               },
             ].map(({ Icon, title, body }) => (
-              <div
-                key={title}
-                className="group rounded-3xl bg-white border border-gray-100 p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center mb-5 group-hover:bg-blue-100 transition-colors">
-                  <Icon className="w-7 h-7" />
-                </div>
-                <h3 className="font-bold text-gray-900 text-xl mb-3">{title}</h3>
-                <p className="text-gray-600 text-[15px] leading-relaxed">{body}</p>
-              </div>
+              <ProtectCard key={title} Icon={Icon} title={title} body={body} da={da} />
             ))}
           </div>
         </div>
