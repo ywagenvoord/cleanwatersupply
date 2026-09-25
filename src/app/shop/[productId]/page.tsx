@@ -695,7 +695,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-2 mb-3 leading-tight">{product.sellStory.heading}</h2>
               <p className="text-gray-600 text-[15px] leading-relaxed">{product.sellStory.intro}</p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4">
               {product.sellStory.cards.map((c) => {
                 const Icon = STORY_ICONS[c.icon] ?? Droplets
                 return (
@@ -732,7 +732,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
             <p className="text-gray-600 mb-8 max-w-2xl">
               Det kan du nemt tjekke selv. Kig på din vandhanes munding – dér hvor vandet løber ud – og læg mærke til, hvor de små riller (gevindet) sidder. Vælg så herunder – og læg den direkte i kurven.
             </p>
-            <div className="grid sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-3 sm:gap-5">
               {GUIDE_ALL.map((c) => {
                 const current = c.id === product.id
                 return (
@@ -790,7 +790,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   ? 'Sættes på din vandhane – herefter passer disse Baclyser® neo-filtre direkte på, helt uden værktøj.'
                   : `Vælg den filterpatron, der passer til dit behov – alle passer i ${isKande ? 'denne kande' : 'dette filterhus'}.`}
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-6">
                 {filters.map((f) => (
                   <div
                     key={f.id}
@@ -851,7 +851,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
               <p className="text-gray-500 mb-8 max-w-2xl">
                 Bi-flux®-filteret passer i disse Laica-filterkander – og i de fleste Brita®-kander.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-3 sm:gap-6">
                 {jugs.map((j) => (
                   <div
                     key={j.id}
@@ -933,7 +933,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   </p>
                 </div>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4">
                 {couplings.map((c) => (
                   <Link
                     key={c.id}
@@ -1150,7 +1150,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 Se alle <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               {related.map((rp) => (
                 <Link key={rp.id} href={`/shop/${rp.id}`} className="group bg-gray-50 hover:bg-white rounded-2xl border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col">
                   <div className="h-48 bg-white overflow-hidden flex items-center justify-center p-6">

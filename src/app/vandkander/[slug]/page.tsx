@@ -334,7 +334,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               </div>
               <p className="text-[13px] text-gray-500">Alle tre Bi-flux®-filtre passer – skift efter dit behov.</p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
               {k.compatFilters.map((slug) => {
                 const f = getFilter(slug)
                 if (!f) return null
