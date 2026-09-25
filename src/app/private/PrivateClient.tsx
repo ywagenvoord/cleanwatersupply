@@ -223,7 +223,7 @@ export default function PrivateClient() {
             <h2 className="section-heading">{da ? 'Vores løsninger til dig og din familie' : 'Our solutions for you and your family'}</h2>
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
             {solutions.map(({ img, title, body, slug, href, objPos }) => (
               <Link
                 key={title}

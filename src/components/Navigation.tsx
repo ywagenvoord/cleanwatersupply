@@ -37,12 +37,21 @@ export default function Navigation() {
     router.push(value === 'erhverv' ? '/' : '/private')
   }
 
-  const loesningerChildren = [
-    { href: '/loesninger/filtre-paa-tappestedet', label: 'Håndvask' },
-    { href: '/loesninger/brusefilter', label: 'Bruser' },
-    { href: '/loesninger/filtre-i-vandforsyningen', label: 'Vandforsyningen' },
-    { href: '/loesninger/kalkanlaeg', label: 'Kalkanlæg' },
+  // Privat/B2C: produkter i kundens ord
+  const produktChildren = [
+    { href: '/loesninger/brusefilter', label: 'Brusefiltre' },
+    { href: '/loesninger/filtre-paa-tappestedet', label: 'Vandhanefiltre' },
+    { href: '/loesninger/kalkanlaeg', label: 'Blødgøringsanlæg' },
     { href: '/vandkander', label: 'Filterkander' },
+    { href: '/shop', label: 'Se alle produkter' },
+  ]
+
+  // Privat/B2C: hjælp der guider kunden (og fanger søgninger fra Google)
+  const guideChildren = [
+    { href: '/guides/er-kalk-i-vandet-skadeligt', label: 'Er kalk i vandet skadeligt?' },
+    { href: '/guides/vandets-haardhed', label: 'Hvor hårdt er dit vand?' },
+    { href: '/guides/vaelg-vandfilter', label: 'Hvilket filter skal du vælge?' },
+    { href: '/guides/find-filter', label: 'Find dit filter' },
   ]
 
   const omraaderChildren = [
@@ -66,10 +75,10 @@ export default function Navigation() {
     { href: '/kontakt', label: t('nav.contact') },
   ]
 
-  // Privat: forenklet, hjem-fokuseret menu
+  // Privat: forenklet, B2C-venlig menu (produkter + guides frem for teknik)
   const privatLinks: NavLink[] = [
-    { href: '/loesninger', label: t('nav.solutions'), children: loesningerChildren },
-    { href: '/legionella', label: 'Bakterier' },
+    { href: '/shop', label: 'Produkter', children: produktChildren },
+    { href: '/guides', label: 'Guides', children: guideChildren },
     { href: '/om-os', label: t('nav.about') },
     { href: '/kontakt', label: t('nav.contact') },
   ]

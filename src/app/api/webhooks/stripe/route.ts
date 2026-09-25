@@ -127,6 +127,12 @@ export async function POST(req: NextRequest) {
             <tr><td style="color:#888;padding:3px 0;vertical-align:top;">Leveringsadresse</td><td>${addressStr}</td></tr>
           </table>
 
+          <div style="margin-top:22px;padding-top:16px;border-top:1px solid #eee;">
+            <p style="font-size:13px;font-weight:bold;color:#0a2540;margin:0 0 6px;">Retlig garanti (reklamationsret)</p>
+            <p style="font-size:12px;color:#666;margin:0 0 10px;line-height:1.5;">Dine varer er omfattet af den lovpligtige retlige garanti på mindst 2 år i EU. <a href="https://europa.eu/youreurope/garantier" style="color:#284eff;">Læs om dine rettigheder på europa.eu</a>.</p>
+            <img src="https://cleanwatersupply.dk/images/retlig-garanti-da.png" alt="EU-notits om den retlige garanti (reklamationsret)" width="320" style="max-width:100%;height:auto;border:1px solid #eee;border-radius:8px;display:block;" />
+          </div>
+
           <p style="margin-top:22px;font-size:12px;color:#aaa;">Sendt automatisk fra cleanwatersupply.dk · Ordre-id: ${session.id}</p>
         </div>
       </div>`

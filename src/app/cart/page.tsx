@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import RecommendedProducts from '@/components/RecommendedProducts'
+import RetligGaranti from '@/components/RetligGaranti'
 import FakturaCheckout from './FakturaCheckout'
 import { useB2bLoggedIn } from '@/lib/useB2b'
 
@@ -248,6 +249,9 @@ function CartPageContent() {
                     </>
                   )}
                 </div>
+
+                {/* Lovpligtig EU-notits: retlig garanti – direkte under ordreoversigt */}
+                <RetligGaranti />
               </div>
             </div>
 

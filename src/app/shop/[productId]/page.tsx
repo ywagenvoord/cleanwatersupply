@@ -523,7 +523,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 <div className="inline-flex items-center gap-2.5 rounded-xl bg-red-50 ring-1 ring-red-200 px-4 py-2.5 mb-4">
                   <span className="inline-flex items-center rounded-full bg-red-600 text-white font-black text-xs uppercase tracking-wide px-3 py-1">Udsolgt</span>
                   {restockLabel && (
-                    <span className="text-sm font-semibold text-red-700">Forventet på lager igen {restockLabel}</span>
+                    <span className="text-sm font-semibold text-red-700">Forventes på lager {restockLabel}</span>
                   )}
                 </div>
               )}

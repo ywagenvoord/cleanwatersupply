@@ -7,7 +7,7 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   title: 'Filterkander & filterflasker – Laica vandkande med filter | Clean Water Supply',
   description:
-    'Køb filterkande fra Laica: Carmen, MikroPLASTIK-STOP og GlaSSmart. En vandkande med filter giver rent vand med god smag – helt uden installation.',
+    'Køb filterkande fra Laica: Carmen, Germ-STOP og GlaSSmart. En vandkande med filter giver rent vand med god smag – helt uden installation.',
   keywords: [
     'filterkande', 'filterkander', 'vandkande med filter', 'Laica filterkande',
     'filtervandkande', 'vandfilterkande', 'filterkande test', 'køb filterkande',

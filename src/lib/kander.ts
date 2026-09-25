@@ -28,6 +28,7 @@ export type Kande = {
   addon?: { name: string; art: string; img: string; life: string; blurb: string; price?: number; link?: string; cwsId?: string }
   compatFilters?: string[]   // slugs på filtre der passer i kanden (fra filtre.ts)
   highlights?: { icon: string; title: string; text: string }[]
+  plainPoints?: { icon: string; tone: string; t: string; d: string }[]   // helt enkle "hvad gør den"-punkter med farvede ikoner
   eco?: string
   steps?: string[]
   faqs?: { q: string; a: string }[]   // ofte stillede spørgsmål (vises + FAQPage-schema til AI/Google)
@@ -123,6 +124,12 @@ export const KANDER: Kande[] = [
       '0,1 µm. Kanden er bygget på den robuste Laica Predator med automatisk Quickfill-låg til hurtig påfyldning ' +
       'og en batterifri skift-tæller, så du altid ved, hvornår filteret skal skiftes. Rent, trygt vand – lige ved ' +
       'hånden hele dagen. Made in Italy.',
+    plainPoints: [
+      { icon: 'shield', tone: 'green', t: 'Fjerner bakterier', d: 'Stopper 99,999 % af bakterierne i vandet* – så det er trygt at drikke.' },
+      { icon: 'droplet', tone: 'blue', t: 'Fanger mikroplast', d: 'Filtrerer bittesmå partikler og mikroplast fra – helt ned til 0,1 mikrometer.' },
+      { icon: 'sparkles', tone: 'teal', t: 'Bedre smag & mindre kalk', d: 'Fjerner klor og reducerer kalk – friskere vand og færre skjolder på glassene.' },
+      { icon: 'heart', tone: 'amber', t: 'Til hele familien', d: 'Beholder de sunde mineraler og giver rent vand – også til de mindste.' },
+    ],
     points: [
       'Stopper 99,999 % af bakterier* – sikkert drikkevand til hele familien',
       'Dobbelt filtersystem: bi-flux® + Germ-stop™',

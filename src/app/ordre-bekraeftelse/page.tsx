@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Stripe from 'stripe'
 import { CheckCircle2, Package, Truck, CreditCard, MapPin, ArrowRight } from 'lucide-react'
 import ClearCart from './ClearCart'
+import RetligGaranti from '@/components/RetligGaranti'
 
 export const dynamic = 'force-dynamic'
 
@@ -167,6 +168,9 @@ export default async function OrderConfirmationPage({
             </div>
           </section>
         </div>
+
+        {/* Lovpligtig EU-notits: retlig garanti (reklamationsret) */}
+        <RetligGaranti />
 
         <div className="text-center mt-10">
           <Link href="/shop" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all">

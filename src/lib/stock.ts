@@ -16,17 +16,26 @@ type Rule = {
 }
 
 // Tilføj/fjern produkter her, når lagerstatus ændrer sig.
+const RESTOCK_ISO = '2026-09-29'
+const RESTOCK_LABEL = 'tirsdag d. 29. september'
+
 const RULES: Rule[] = [
   {
     keywords: ['fast disk', 'fast-disk', 'lai-1003', 'healthexpert', 'health expert', 'lai-1004'],
-    restockISO: '2026-09-24',
-    restockLabel: '24/9',
+    restockISO: RESTOCK_ISO,
+    restockLabel: RESTOCK_LABEL,
+  },
+  {
+    // Germ-STOP filterkande – udsolgt
+    keywords: ['mikroplastik-stop', 'prod_v2wdbj1i8o20kj'],
+    restockISO: RESTOCK_ISO,
+    restockLabel: RESTOCK_LABEL,
   },
 ]
 
 // Lav-lager-besked ("Kun X tilbage på lager"), keyet på Stripe-produkt-id eller produkt-id.
 const LOW_STOCK: Record<string, number> = {
-  'prod_V2wDbJ1i8O20Kj': 1, // MikroPLASTIK-STOP filterkande
+  // (ingen aktive lav-lager-produkter)
 }
 
 export function lowStockFor(p: { stripeProductId?: string; id?: string }): number | undefined {

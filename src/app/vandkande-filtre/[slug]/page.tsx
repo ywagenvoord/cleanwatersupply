@@ -88,7 +88,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
               {stock && (
                 <div className="mt-5 flex w-fit items-center gap-2.5 rounded-xl bg-red-50 ring-1 ring-red-200 px-4 py-2.5">
                   <span className="text-sm font-extrabold text-red-700">Udsolgt</span>
-                  <span className="text-sm text-red-600">· forventet på lager igen {stock.restockLabel}</span>
+                  <span className="text-sm text-red-600">· forventes på lager {stock.restockLabel}</span>
                 </div>
               )}
 

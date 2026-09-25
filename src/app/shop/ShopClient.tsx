@@ -206,7 +206,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         <Link href={detailHref}>
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
         </Link>
-        <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2">{product.tagline}</p>
+        <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2 min-h-[2.9rem]">{product.tagline}</p>
         {product.cardNote && (
           <p className="mt-1 text-[11px] text-gray-400 italic leading-snug">{product.cardNote}</p>
         )}
@@ -261,7 +261,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           {soldOut && (
             <div className="mb-1.5">
               {restockLabel && (
-                <p className="text-[11px] font-medium text-gray-500 leading-tight">Forventes på lager d. {restockLabel}</p>
+                <p className="text-[11px] font-medium text-gray-500 leading-tight">Forventes på lager {restockLabel}</p>
               )}
               <p className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-bold text-red-600">
                 <span className="relative flex h-2 w-2">

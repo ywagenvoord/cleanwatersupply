@@ -8,6 +8,7 @@ import {
 } from 'lucide-react'
 import { KANDER, getKande } from '@/lib/kander'
 import { getFilter } from '@/lib/filtre'
+import { stockFor } from '@/lib/stock'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import { SITE_URL } from '@/lib/site'
 import ProductGallery from '@/components/ProductGallery'
@@ -27,6 +28,15 @@ const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   glass: GlassWater,
   timer: Timer,
   droplet: Droplet,
+  heart: Heart,
+}
+
+// Farvetoner til de enkle "hvad gør filteret"-punkter
+const PLAIN_TONES: Record<string, string> = {
+  green: 'from-[#3aad4a] to-[#2e9a3d] shadow-green-500/25',
+  blue:  'from-[#284eff] to-[#1b32c9] shadow-[#284eff]/25',
+  teal:  'from-teal-400 to-cyan-600 shadow-cyan-500/25',
+  amber: 'from-amber-400 to-orange-500 shadow-amber-500/25',
 }
 
 // Ikoner til trin-for-trin tidslinjen (går på skift efter trinnets nummer)
@@ -76,6 +86,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 export default function KandePage({ params }: { params: { slug: string } }) {
   const k = getKande(params.slug)
   if (!k) notFound()
+
+  const stock = stockFor({ id: k.slug, name: k.name, stripeProductId: k.stripeProductId })
 
   return (
     <main className="bg-white">
@@ -172,7 +184,14 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              {k.stockLeft != null && k.stockLeft > 0 && (
+              {stock && (
+                <div className="mt-3 inline-flex flex-wrap items-center gap-2 rounded-xl bg-red-50 ring-1 ring-red-200 px-3.5 py-2">
+                  <span className="text-sm font-extrabold text-red-700">Udsolgt</span>
+                  <span className="text-sm text-red-600">· forventes på lager {stock.restockLabel}</span>
+                </div>
+              )}
+
+              {!stock && k.stockLeft != null && k.stockLeft > 0 && (
                 <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-orange-50 ring-1 ring-orange-200 px-3.5 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
@@ -184,7 +203,14 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              {k.stripeProductId && k.price != null ? (
+              {stock ? (
+                <div className="mt-8">
+                  <span className="inline-flex w-full sm:w-auto items-center justify-center gap-2 py-4 px-8 rounded-full font-bold text-sm bg-gray-100 text-gray-400 cursor-not-allowed">
+                    Udsolgt
+                  </span>
+                  <p className="text-sm font-semibold text-red-600 mt-2.5">Forventes på lager {stock.restockLabel}</p>
+                </div>
+              ) : k.stripeProductId && k.price != null ? (
                 <KandeBuy stripeProductId={k.stripeProductId} name={k.name} price={k.price} image={k.img} />
               ) : (
                 <div className="flex flex-col sm:flex-row gap-3 mt-8">
@@ -267,6 +293,35 @@ export default function KandePage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {/* ─── HVAD GØR FILTERET – helt enkelt (lige under hero) ─ */}
+      {k.plainPoints && k.plainPoints.length > 0 && (
+        <section className="py-12 bg-white border-t border-gray-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="text-center mb-9">
+              <span className="text-[11px] font-black text-[#2e9a3d] uppercase tracking-widest">Helt enkelt</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-1.5">Hvad gør filteret?</h2>
+              <p className="text-gray-500 mt-2 text-sm max-w-xl mx-auto">Kort fortalt – så enhver kan forstå, hvad du får ud af kanden.</p>
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {k.plainPoints.map((pp) => {
+                const Icon = HIGHLIGHT_ICONS[pp.icon] ?? Droplets
+                const tone = PLAIN_TONES[pp.tone] ?? PLAIN_TONES.blue
+                return (
+                  <div key={pp.t} className="rounded-2xl bg-white ring-1 ring-gray-200 shadow-sm hover:shadow-xl hover:shadow-gray-300/40 hover:-translate-y-1 transition-all duration-300 p-5 flex flex-col">
+                    <span className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${tone} flex items-center justify-center mb-3.5 shadow-lg`}>
+                      <Icon className="w-6 h-6 text-white" strokeWidth={2} />
+                    </span>
+                    <h3 className="text-sm font-extrabold text-[#0a2540] leading-tight">{pp.t}</h3>
+                    <p className="text-[13px] text-gray-500 mt-1.5 leading-relaxed">{pp.d}</p>
+                  </div>
+                )
+              })}
+            </div>
+            {k.footnote && <p className="text-xs text-gray-400 mt-6 text-center max-w-2xl mx-auto leading-relaxed">{k.footnote}</p>}
+          </div>
+        </section>
+      )}
 
       {/* ─── FILTRE DER PASSER I KANDEN (vandret, under hero) ─ */}
       {k.compatFilters && k.compatFilters.length > 0 && (

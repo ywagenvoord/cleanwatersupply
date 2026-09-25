@@ -11,7 +11,7 @@ import { overrideImage } from '@/lib/stripe-image-overrides'
 const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
   'prod_V2wHIQrdoXx6RG': 'vandkande', // FAST DISK™ filter til GlaSSmart
   'prod_V2wFs5adWhY4cF': 'vandkande', // GlaSSmart™ glas-filterkaraffel
-  'prod_V2wDbJ1i8O20Kj': 'vandkande', // MikroPLASTIK-STOP filterkande + 1 Bi-flux
+  'prod_V2wDbJ1i8O20Kj': 'vandkande', // Germ-STOP filterkande + 1 Bi-flux
 }
 
 // Kort, sælgende beskrivelse på shop-kortet for Stripe-only produkter
