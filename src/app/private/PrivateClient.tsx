@@ -273,10 +273,12 @@ export default function PrivateClient() {
             href="/shop"
             className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-white via-sky-50 to-blue-100/70 ring-1 ring-blue-100 px-6 py-12 sm:px-12 sm:py-16 text-center shadow-lg transition-all hover:shadow-2xl hover:ring-blue-200"
           >
-            <div className="pointer-events-none absolute -top-20 -right-16 w-64 h-64 bg-sky-200/40 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-72 h-72 bg-[#3aad4a]/15 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -top-20 -right-16 w-64 h-64 bg-sky-200/40 rounded-full blur-3xl animate-[shopGlow_7s_ease-in-out_infinite]" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-72 h-72 bg-[#3aad4a]/15 rounded-full blur-3xl animate-[shopGlow_9s_ease-in-out_infinite_1s]" />
+            {/* Sart lys-stribe der glider hen over kortet */}
+            <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-[shopShine_6s_ease-in-out_infinite]" />
             <span className="relative inline-flex items-center gap-2 bg-white text-[#284eff] text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm">
-              <ShoppingBag className="w-3.5 h-3.5" /> Webshop
+              <ShoppingBag className="w-3.5 h-3.5 animate-[shopBag_3s_ease-in-out_infinite]" /> Webshop
             </span>
             <h2 className="relative text-gray-900 text-3xl sm:text-5xl font-extrabold mb-3">Shop</h2>
             <p className="relative text-gray-600 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
