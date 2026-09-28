@@ -390,7 +390,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
   return (
     <main>
       {/* ─── HERO ───────────────────────────────────────────────── */}
-      <section className="relative py-12 sm:py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
+      <section className="relative py-6 sm:py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
         <div className="absolute inset-0">
           <img
             src="/images/filters-legionella.jpg"
@@ -408,14 +408,14 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-emerald-300 text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-emerald-300 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest">
             <Droplets className="w-3.5 h-3.5" />
             {da ? 'Vores produkter' : 'Our products'}
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-5 leading-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 sm:mb-5 leading-tight">
             {da ? 'Shop Clean Water Supply' : 'Shop Clean Water Supply'}
           </h1>
-          <p className="text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
             {da
               ? 'Professionelle vandbehandlingsløsninger til private og erhvervskunder. Vælg den løsning der passer til dit behov.'
               : 'Professional water treatment solutions for private and business customers. Choose the solution that suits your needs.'}
