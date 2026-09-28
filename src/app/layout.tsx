@@ -111,7 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <Navigation />
-          <div className={isGratisMonteringActive() ? 'pt-[132px]' : 'pt-24'}>
+          <div className={isGratisMonteringActive() ? 'pt-[100px] sm:pt-[132px]' : 'pt-16 sm:pt-24'}>
             {children}
           </div>
           <Footer />

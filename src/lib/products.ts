@@ -21,6 +21,7 @@ export type Product = {
   addon?: boolean             // true = tilbehør, skjules fra shop-oversigt; vises kun som tilkøb på kalkanlæg-siden
   // Price
   price?: number          // DKK – privatpris (typisk inkl. moms)
+  beforePrice?: number    // DKK – tidligere/normalpris (før tilbud). Sæt denne for at vise streget før-pris + "Spar X kr."-badge
   priceErhverv?: number   // DKK – erhvervs-/grossistpris (ekskl. moms), vises til indloggede erhvervskunder
   comingSoon?: boolean
   // Midlertidigt udsolgt (styres centralt via src/lib/stock.ts)

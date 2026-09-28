@@ -138,6 +138,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
   // Erhverv ser grossistpris (ekskl. moms), privat ser privatpris
   const { amount: displayPrice, exMoms } = shopPrice(product, showErhverv)
 
+  // Tilbud: vis streget før-pris + "Spar X kr." (kun privatpris, ikke erhverv)
+  const beforePrice = !showErhverv ? product.beforePrice : undefined
+  const onSale = beforePrice != null && displayPrice != null && beforePrice > displayPrice
+  const saveAmount = onSale ? beforePrice! - displayPrice! : 0
+
   // Midlertidigt udsolgt (central styring)
   const stock = stockFor(product)
   const soldOut = !!product.soldOut || !!stock
@@ -179,6 +184,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
         {soldOut && (
           <span className="absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white">
             Udsolgt
+          </span>
+        )}
+        {onSale && !soldOut && (
+          <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
+            Spar {saveAmount.toLocaleString('da-DK')} kr.
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
@@ -293,8 +303,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           ) : product.comingSoon || displayPrice === undefined ? (
             <p className="text-base font-bold text-gray-400">Kommer snart</p>
           ) : (
-            <p className="flex items-baseline gap-1.5">
-              <span className="text-xl font-extrabold text-[#0a2540]">{displayPrice.toLocaleString('da-DK')} kr</span>
+            <p className="flex items-baseline gap-1.5 flex-wrap">
+              <span className={`text-xl font-extrabold ${onSale ? 'text-red-600' : 'text-[#0a2540]'}`}>{displayPrice.toLocaleString('da-DK')} kr</span>
+              {onSale && (
+                <span className="text-sm font-semibold text-gray-400 line-through">{beforePrice!.toLocaleString('da-DK')} kr</span>
+              )}
               <span className="text-[11px] font-medium text-gray-400">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
           )}
@@ -424,7 +437,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
       </section>
 
       {/* ─── CATEGORY TABS ──────────────────────────────────────── */}
-      <section className="sticky top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
+      <section className="sticky top-16 sm:top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
             {CATEGORIES.filter(cat => cat.key === 'alle' || products.some(p => p.category === cat.key)).map((cat) => {
