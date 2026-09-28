@@ -304,11 +304,11 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             <p className="text-base font-bold text-gray-400">Kommer snart</p>
           ) : (
             <p className="flex items-baseline gap-1.5 flex-wrap">
-              <span className={`text-xl font-extrabold ${onSale ? 'text-red-600' : 'text-[#0a2540]'}`}>{displayPrice.toLocaleString('da-DK')} kr</span>
+              <span className={`text-base sm:text-xl font-extrabold whitespace-nowrap ${onSale ? 'text-red-600' : 'text-[#0a2540]'}`}>{displayPrice.toLocaleString('da-DK')} kr</span>
               {onSale && (
-                <span className="text-sm font-semibold text-gray-400 line-through">{beforePrice!.toLocaleString('da-DK')} kr</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-400 line-through whitespace-nowrap">{beforePrice!.toLocaleString('da-DK')} kr</span>
               )}
-              <span className="text-[11px] font-medium text-gray-400">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
+              <span className="text-[10px] sm:text-[11px] font-medium text-gray-400 whitespace-nowrap">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
           )}
         </div>
