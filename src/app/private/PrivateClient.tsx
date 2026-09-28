@@ -42,9 +42,10 @@ export default function PrivateClient() {
     'cblue-sc3',
     'brusehoved-filter-acf',
     'brusehoved-til-filter',
-    'dualstage-mf-10-cl',
-    'kulblokfilter-10-cl',
-    'filter-housing',
+    'kande-carmen',
+    'filter-biflux-limescale',
+    'filter-biflux-healthexpert',
+    'filter-biflux-universal',
   ]
   const products = featuredIds
     .map((id) => PRODUCTS.find((p) => p.id === id))
