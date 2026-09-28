@@ -118,7 +118,7 @@ export default function Navigation() {
             <img
               src="/images/logo.png"
               alt="Clean Water Supply – Danmarks specialist i Legionella-filtre"
-              className="h-16 w-auto"
+              className="h-11 sm:h-16 w-auto"
               width={200}
               height={64}
               decoding="async"
