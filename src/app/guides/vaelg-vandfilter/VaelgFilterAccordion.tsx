@@ -26,7 +26,7 @@ const SOLUTIONS: Solution[] = [
     tip: 'Starter du fra bunden, anbefaler vi det komplette brusehoved, hvor filteret følger med. Har du allerede et brusehoved, køber du bare et udskiftningsfilter.',
     recommended: { name: 'Brusehoved med vandfilter – komplet', price: 525, img: '/images/product-kalkbruser.jpg', href: '/shop/brusehoved-filter-acf', why: 'Alt følger med – brusehoved, filter, børste og svamp. Nemmest at komme i gang med.' },
     others: [
-      { name: 'Brusehoved med udskiftlig filter', price: 499, img: '/images/product-brusehoved-sort-v2.jpg', href: '/shop/brusehoved-til-filter' },
+      { name: 'Brusehoved med udskifteligt filter', price: 499, img: '/images/product-brusehoved-sort-v2.jpg', href: '/shop/brusehoved-til-filter' },
       { name: 'Udskiftningsfilter til brusehoved', price: 64, img: '/images/product-acf-filter.jpg', href: '/shop/brusefilter-acf' },
       { name: 'Udskiftningsfilter + C-vitamin', price: 69, img: '/images/product-acf-vitamin-c.jpg', href: '/shop/brusefilter-acf-vitamin-c' },
       { name: 'Udskiftningsfilter + kalkhæmmer', price: 69, img: '/images/product-acf-amino-acid.jpg', href: '/shop/brusefilter-acf-amino-acid' },

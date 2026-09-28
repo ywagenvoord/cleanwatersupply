@@ -580,7 +580,7 @@ export const PRODUCTS: Product[] = [
     id: 'brusehoved-til-filter',
     productNr: 'WDbrusehoved',
     audience: 'privat',
-    name: 'Brusehoved med udskiftlig filter',
+    name: 'Brusehoved med udskifteligt filter',
     tagline: 'Renser bruservandet for klor, rust & urenheder – inkl. ACF-filter',
     badge: 'Brusehoved',
     category: 'bruser',
