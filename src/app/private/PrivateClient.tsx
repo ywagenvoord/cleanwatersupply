@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, GlassWater, ShowerHead, Droplets } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
@@ -262,6 +262,53 @@ export default function PrivateClient() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SHOP ──────────────────────────────────────────────── */}
+      <section className="py-14 sm:py-24 bg-gradient-to-b from-white to-blue-50/40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-9 sm:mb-12">
+            <span className="section-badge inline-block mb-3">Webshop</span>
+            <h2 className="section-heading">Shop</h2>
+            <p className="text-gray-600 mt-3 text-base sm:text-lg leading-relaxed">
+              {da
+                ? 'Alt til rent vand i hjemmet – lige til at lægge i kurven. Hurtig levering og medicinsk certificerede filtre.'
+                : 'Everything for clean water at home – ready to add to your cart. Fast delivery and medically certified filters.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+            {[
+              { da: 'Filterkander', en: 'Water filter jugs', href: '/vandkander', Icon: GlassWater, tone: 'from-sky-400 to-blue-600' },
+              { da: 'Brusefiltre', en: 'Shower filters', href: '/loesninger/brusefilter', Icon: ShowerHead, tone: 'from-cyan-400 to-teal-600' },
+              { da: 'Vandhanefiltre', en: 'Tap filters', href: '/loesninger/filtre-paa-tappestedet', Icon: Filter, tone: 'from-emerald-400 to-green-600' },
+              { da: 'Blødgøringsanlæg', en: 'Water softeners', href: '/loesninger/kalkanlaeg', Icon: Droplets, tone: 'from-indigo-400 to-blue-700' },
+            ].map(({ da: dl, en: el, href, Icon, tone }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group relative overflow-hidden rounded-3xl bg-white ring-1 ring-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-5 sm:p-6 flex flex-col"
+              >
+                <span className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${tone} flex items-center justify-center mb-4 shadow-lg`}>
+                  <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" strokeWidth={2} />
+                </span>
+                <h3 className="font-extrabold text-[#0a2540] text-sm sm:text-lg leading-tight">{da ? dl : el}</h3>
+                <span className="mt-2 inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#3aad4a] group-hover:gap-2 transition-all">
+                  {da ? 'Se udvalg' : 'Shop now'} <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 sm:mt-10 text-center">
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm sm:text-base transition-all hover:shadow-xl hover:shadow-green-500/25"
+            >
+              {da ? 'Se hele shoppen' : 'Browse the full shop'} <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
