@@ -253,7 +253,14 @@ export default function Navigation() {
           </div>
 
           {/* Mobile cart + menu */}
-          <div className="lg:hidden flex items-center gap-1">
+          <div className="lg:hidden flex items-center gap-1.5">
+            <Link
+              href={shopHref}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {t('nav.shop')}
+            </Link>
             <button
               onClick={() => setCartOpen(true)}
               className="relative p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
