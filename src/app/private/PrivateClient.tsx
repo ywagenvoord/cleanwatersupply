@@ -25,7 +25,7 @@ function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: 
   )
 }
 
-export default function PrivateClient() {
+export default function PrivateClient({ shopProducts }: { shopProducts?: Product[] }) {
   const { language } = useLanguage()
   const da = language !== 'en'
 
@@ -36,20 +36,34 @@ export default function PrivateClient() {
   }, [])
 
   // Curated, varied selection for the home (incl. the water carafe).
-  const featuredIds = [
+  // Faste "ikke-Laica" bestsellers øverst i karrusellen
+  const baseIds = [
     'baclyser-neo-tr-2m',
     'baclyser-neo-tl-2m',
     'cblue-sc3',
     'brusehoved-filter-acf',
     'brusehoved-til-filter',
-    'kande-carmen',
-    'filter-biflux-limescale',
-    'filter-biflux-healthexpert',
-    'filter-biflux-universal',
   ]
-  const products = featuredIds
-    .map((id) => PRODUCTS.find((p) => p.id === id))
+  const pool = shopProducts && shopProducts.length > 0 ? shopProducts : PRODUCTS
+  const base = baseIds
+    .map((id) => pool.find((p) => p.id === id) ?? PRODUCTS.find((p) => p.id === id))
     .filter((p): p is Product => !!p && !p.comingSoon)
+
+  // Alle Laica-produkter (vandkande-kategorien): kander, karaffel og bi-flux-filtre.
+  // Udelad den gamle MikroPLASTIK-kande (erstattet af Germ-STOP), rene reservedele
+  // og erhvervs-varer, så listen matcher det private sortiment.
+  const excludeLaica = new Set(['kande-mikroplastik', 'mikroplastik-stop-filter'])
+  const laica = pool.filter(
+    (p) =>
+      p.category === 'vandkande' &&
+      p.audience !== 'erhverv' &&
+      !p.comingSoon &&
+      !excludeLaica.has(p.id),
+  )
+
+  // Undgå dubletter, hvis en Laica-vare også skulle ligge i base
+  const seen = new Set(base.map((p) => p.id))
+  const products = [...base, ...laica.filter((p) => !seen.has(p.id))]
 
   const solutions = [
     {

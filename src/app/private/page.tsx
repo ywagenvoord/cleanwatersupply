@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import PrivateClient from './PrivateClient'
 import { SITE_URL } from '@/lib/site'
+import { getMergedShopProducts } from '@/lib/shop-data'
 
 export const metadata: Metadata = {
   title: 'Privat – rent og sundt vand til dit hjem | Clean Water Supply',
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function Page() {
-  return <PrivateClient />
+export default async function Page() {
+  const shopProducts = await getMergedShopProducts()
+  return <PrivateClient shopProducts={shopProducts} />
 }
