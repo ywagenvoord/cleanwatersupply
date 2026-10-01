@@ -3,7 +3,8 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 // Sider der kræver login (erhvervsshop + kontoside).
 // Selve login-siden (/min-konto/login) skal IKKE beskyttes.
 const isProtectedRoute = createRouteMatcher(['/shop/erhverv(.*)', '/min-konto(.*)'])
-const isPublicAuthRoute = createRouteMatcher(['/min-konto/login(.*)'])
+// Login OG ansøg-om-konto skal være åbne (man er jo ikke logget ind endnu).
+const isPublicAuthRoute = createRouteMatcher(['/min-konto/login(.*)', '/min-konto/ansog(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
   // Preview-tilstand: åben adgang (til chef-gennemgang) – ingen login-væg
