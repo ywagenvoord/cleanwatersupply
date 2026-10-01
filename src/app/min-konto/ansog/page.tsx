@@ -14,13 +14,43 @@ const STEPS = [
 export default function AnsogPage() {
   const [sent, setSent] = useState(false)
   const [email, setEmail] = useState('')
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setError('')
+    setSending(true)
+    const fd = new FormData(e.currentTarget)
+    const payload = {
+      firma:   String(fd.get('firma') || ''),
+      cvr:     String(fd.get('cvr') || ''),
+      kontakt: String(fd.get('kontakt') || ''),
+      telefon: String(fd.get('telefon') || ''),
+      email:   String(fd.get('email') || ''),
+      besked:  String(fd.get('besked') || ''),
+    }
+    try {
+      const res = await fetch('/api/erhverv-ansog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}))
+        throw new Error(d.error || 'Kunne ikke sende ansøgningen. Prøv igen, eller kontakt os direkte.')
+      }
+      setSent(true)
+      if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (err) {
+      setError((err as Error).message)
+    } finally {
+      setSending(false)
+    }
+  }
 
   return (
     <main className="min-h-screen bg-gray-50">
-      <div className="bg-amber-100 text-amber-800 text-center text-xs font-semibold py-2 px-4">
-        Prototype / udkast – ansøgningen sendes ikke rigtigt endnu.
-      </div>
-
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-10">
           <div className="w-14 h-14 rounded-2xl bg-[#0a2540] text-white flex items-center justify-center mx-auto mb-5">
@@ -67,38 +97,42 @@ export default function AnsogPage() {
           </div>
         ) : (
           <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+            onSubmit={handleSubmit}
             className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-8 space-y-4"
           >
             <div className="grid sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">Firmanavn</label>
-                <input required className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Eksempel Håndværk ApS" />
+                <input name="firma" required className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Eksempel Håndværk ApS" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">CVR-nummer</label>
-                <input required inputMode="numeric" className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="12345678" />
+                <input name="cvr" required inputMode="numeric" className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="12345678" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">Kontaktperson</label>
-                <input required className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Fornavn Efternavn" />
+                <input name="kontakt" required className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Fornavn Efternavn" />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">Telefon</label>
-                <input required inputMode="tel" className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="+45 12 34 56 78" />
+                <input name="telefon" required inputMode="tel" className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="+45 12 34 56 78" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">E-mail</label>
-              <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="navn@virksomhed.dk" />
+              <input name="email" required type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="navn@virksomhed.dk" />
             </div>
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">Besked (valgfri)</label>
-              <textarea rows={3} className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Fortæl fx hvad I typisk har brug for." />
+              <textarea name="besked" rows={3} className="w-full rounded-xl border border-gray-300 px-3 py-2.5 text-sm focus:border-[#3aad4a] focus:outline-none focus:ring-1 focus:ring-[#3aad4a]" placeholder="Fortæl fx hvad I typisk har brug for." />
             </div>
 
-            <button type="submit" className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3.5 rounded-full font-bold text-sm transition-all">
-              Send ansøgning <ArrowRight className="w-4 h-4" />
+            {error && (
+              <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-3 py-2.5">{error}</p>
+            )}
+
+            <button type="submit" disabled={sending} className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] disabled:opacity-60 disabled:cursor-not-allowed text-white py-3.5 rounded-full font-bold text-sm transition-all">
+              {sending ? 'Sender…' : <>Send ansøgning <ArrowRight className="w-4 h-4" /></>}
             </button>
             <p className="text-center text-xs text-gray-400">Vi bruger kun oplysningerne til at oprette og godkende din erhvervskonto.</p>
           </form>
