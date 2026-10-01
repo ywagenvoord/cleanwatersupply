@@ -11,12 +11,12 @@ export const metadata: Metadata = {
 export default function ErhvervLoginPage() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#eaf2ff] via-white to-white flex flex-col items-center justify-start px-4 pt-20 pb-20 sm:pt-24">
-      {/* Dekorative, bløde farveskær */}
-      <div className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#284eff]/10 blur-3xl" />
-      <div className="pointer-events-none absolute top-40 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
+      {/* Dekorative, bløde farveskær (bag indholdet, ikke klikbare) */}
+      <div className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#284eff]/10 blur-3xl z-0" />
+      <div className="pointer-events-none absolute top-40 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl z-0" />
 
       {/* Header */}
-      <div className="relative text-center mb-8">
+      <div className="relative z-10 text-center mb-8">
         <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#0a2540] to-[#0044c4] text-white flex items-center justify-center mx-auto mb-5 shadow-lg shadow-blue-500/20">
           <Building2 className="w-8 h-8" />
         </div>
@@ -28,7 +28,7 @@ export default function ErhvervLoginPage() {
       </div>
 
       {/* Login-kort */}
-      <div className="relative w-full max-w-sm">
+      <div className="relative z-10 w-full max-w-sm">
         <SignIn
           signUpUrl="/min-konto/ansog"
           appearance={{
@@ -45,7 +45,7 @@ export default function ErhvervLoginPage() {
       </div>
 
       {/* Opret konto */}
-      <div className="relative mt-8 w-full max-w-sm rounded-3xl bg-white border border-gray-100 shadow-lg shadow-blue-900/5 p-6 text-center">
+      <div className="relative z-10 mt-8 w-full max-w-sm rounded-3xl bg-white border border-gray-100 shadow-lg shadow-blue-900/5 p-6 text-center">
         <p className="text-base font-extrabold text-[#0a2540] mb-1">Har du endnu ikke en konto?</p>
         <p className="text-sm text-gray-500 mb-5">Opret en erhvervskonto og få adgang til dine fordele.</p>
 
