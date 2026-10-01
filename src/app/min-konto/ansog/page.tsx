@@ -6,7 +6,7 @@ import { Building2, CheckCircle2, ArrowRight, FileText, ClipboardCheck, KeyRound
 
 const STEPS = [
   { Icon: FileText,       title: 'Udfyld ansøgning', body: 'Firma, CVR og kontaktoplysninger – tager et par minutter.' },
-  { Icon: ClipboardCheck, title: 'Vi gennemgår',      body: 'Vi tjekker oplysningerne og godkender din konto (typisk inden for 1 hverdag).' },
+  { Icon: ClipboardCheck, title: 'Vi gennemgår',      body: 'Vi tjekker oplysningerne og godkender din konto (typisk inden for 24 timer).' },
   { Icon: KeyRound,       title: 'Aktivér login',     body: 'Du får en mail med et link til at oprette din adgangskode.' },
   { Icon: ShoppingBag,    title: 'Bestil på faktura',  body: 'Log ind, se dine faste priser og bestil – betal på faktura.' },
 ]
@@ -89,7 +89,7 @@ export default function AnsogPage() {
             </div>
             <h2 className="text-2xl font-extrabold text-[#0a2540] mb-2">Tak for din ansøgning!</h2>
             <p className="text-gray-600 max-w-md mx-auto">
-              Vi har modtaget din ansøgning og vender tilbage inden for 1 hverdag{email ? <> på <span className="font-semibold text-gray-900">{email}</span></> : ''} med besked om godkendelse og et link til at oprette din adgangskode.
+              Vi har modtaget din ansøgning og vender tilbage inden for 24 timer{email ? <> på <span className="font-semibold text-gray-900">{email}</span></> : ''} med besked om godkendelse og et link til at oprette din adgangskode.
             </p>
             <Link href="/" className="inline-flex items-center gap-2 mt-7 text-sm font-bold text-[#3aad4a] hover:text-[#2e9a3d]">
               Tilbage til forsiden <ArrowRight className="w-4 h-4" />
