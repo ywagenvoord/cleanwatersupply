@@ -11,7 +11,7 @@ import ScrollReveal from '@/components/ScrollReveal'
 import ShopifyBuyButton from '@/components/ShopifyBuyButton'
 import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
-import { stockFor, lowStockFor } from '@/lib/stock'
+import { stockFor, lowStockFor, isRemoteStock } from '@/lib/stock'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
 
@@ -294,7 +294,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           {!soldOut && (stockLeft == null || stockLeft <= 0) && buyable && !product.quoteOnly && !product.comingSoon && displayPrice !== undefined && (
             <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#2e7d34]">
               <span className="inline-flex h-2 w-2 rounded-full bg-[#3aad4a]" />
-              På fjernlager · forvent 1+ dags levering
+              {isRemoteStock(product) ? 'På fjernlager · forvent 1+ dags levering' : 'På lager'}
             </p>
           )}
           </div>

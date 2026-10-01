@@ -23,6 +23,22 @@ const RULES: Rule[] = [
   // Ingen udsolgte varer – alt er på lager igen.
 ]
 
+// Fjernlager: varen er på lager, men ligger på eksternt lager med lidt længere
+// leveringstid. Vises som "På fjernlager · forvent 1+ dags levering".
+// Keyet på produkt-id (matcher også via includes på navn/id, se remoteStockFor).
+const REMOTE_STOCK_IDS = new Set<string>([
+  'brusehoved-filter-acf',      // Brusehoved med vandfilter – komplet
+  'brusehoved-til-filter',      // Brusehoved med udskifteligt filter
+  'brusefilter-acf',            // Udskiftningsfilter til brusehoved
+  'brusefilter-acf-vitamin-c',  // + C-vitamin
+  'brusefilter-acf-amino-acid', // + kalkhæmmer
+])
+
+export function isRemoteStock(p: { id?: string; stripeProductId?: string }): boolean {
+  return !!(p.id && REMOTE_STOCK_IDS.has(p.id)) ||
+         !!(p.stripeProductId && REMOTE_STOCK_IDS.has(p.stripeProductId))
+}
+
 // Lav-lager-besked ("Kun X tilbage på lager"), keyet på Stripe-produkt-id eller produkt-id.
 const LOW_STOCK: Record<string, number> = {
   // (ingen aktive lav-lager-produkter)
