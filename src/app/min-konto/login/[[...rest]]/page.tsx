@@ -29,18 +29,15 @@ export default function ErhvervLoginPage() {
         }}
       />
 
-      <div className="mt-8 w-full max-w-sm text-center">
-        <div className="flex items-center gap-3 mb-5">
-          <span className="h-px flex-1 bg-gray-200" />
-          <span className="text-xs text-gray-400">Har du endnu ikke en konto?</span>
-          <span className="h-px flex-1 bg-gray-200" />
-        </div>
+      <div className="mt-8 w-full max-w-sm rounded-2xl border-2 border-[#3aad4a]/30 bg-[#3aad4a]/5 p-5 text-center">
+        <p className="text-base font-extrabold text-[#0a2540] mb-1">Har du endnu ikke en konto?</p>
+        <p className="text-sm text-gray-500 mb-4">Opret en erhvervskonto og få faste priser og køb på faktura.</p>
         <Link
           href="/min-konto/ansog"
-          className="inline-flex items-center justify-center gap-2 w-full rounded-full border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white px-6 py-3 text-sm font-bold transition-all"
+          className="inline-flex items-center justify-center gap-2 w-full rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-6 py-3.5 text-base font-bold transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
         >
-          Opret den her
-          <ArrowRight className="w-4 h-4" />
+          Opret konto her
+          <ArrowRight className="w-5 h-5" />
         </Link>
       </div>
 
