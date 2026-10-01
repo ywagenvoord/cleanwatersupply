@@ -6,9 +6,10 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // Modtagere af ordre-mails (jer) – sendes ved hvert online salg.
-// Kontoret (info@) + bogholderiet (bogholderi@) får hver ordre med faktura-link.
-// OBS: For at mailene modtages pålideligt skal cleanwatersupply.dk være verificeret hos Resend.
-const ORDER_EMAIL_TO = ['info@cleanwatersupply.dk', 'bogholderi@cleanwatersupply.dk']
+// OBS: Indtil cleanwatersupply.dk er verificeret hos Resend, leverer den delte
+// afsender kun til Resend-kontoens egen adresse (caj@). Derfor går ordre-mails
+// indtil videre KUN til caj@. Tilføj info@/bogholderi@ igen efter verificering.
+const ORDER_EMAIL_TO = ['caj@cleanwatersupply.dk']
 // Afsender – Resends fælles domæne virker uden domæneopsætning
 const ORDER_EMAIL_FROM = 'Clean Water Supply <onboarding@resend.dev>'
 

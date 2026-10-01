@@ -5,7 +5,10 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // Modtagere af erhvervs-ansøgninger (jer).
-const TO = ['info@cleanwatersupply.dk', 'caj@cleanwatersupply.dk']
+// OBS: Indtil cleanwatersupply.dk er verificeret hos Resend, leverer den delte
+// afsender kun til Resend-kontoens egen adresse (caj@). Tilføj info@/bogholderi@
+// igen, når domænet er verificeret.
+const TO = ['caj@cleanwatersupply.dk']
 const FROM = 'Clean Water Supply <onboarding@resend.dev>'
 
 function esc(s: unknown): string {
