@@ -19,6 +19,7 @@ export default function ErhvervLoginPage() {
       </div>
 
       <SignIn
+        signUpUrl="/min-konto/ansog"
         appearance={{
           elements: {
             formButtonPrimary: 'bg-[#3aad4a] hover:bg-[#2e9a3d] text-sm normal-case',
