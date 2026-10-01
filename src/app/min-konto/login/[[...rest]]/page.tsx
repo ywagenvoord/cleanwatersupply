@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ErhvervLoginPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#eaf2ff] via-white to-white flex flex-col items-center justify-start px-4 pt-10 pb-20 sm:pt-14">
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-[#eaf2ff] via-white to-white flex flex-col items-center justify-start px-4 pt-20 pb-20 sm:pt-24">
       {/* Dekorative, bløde farveskær */}
       <div className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#284eff]/10 blur-3xl" />
       <div className="pointer-events-none absolute top-40 -left-24 w-80 h-80 rounded-full bg-[#3aad4a]/10 blur-3xl" />
