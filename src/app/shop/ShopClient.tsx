@@ -294,7 +294,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           {!soldOut && (stockLeft == null || stockLeft <= 0) && buyable && !product.quoteOnly && !product.comingSoon && displayPrice !== undefined && (
             <p className="mb-1.5 inline-flex items-center gap-1.5 text-xs font-semibold text-[#2e7d34]">
               <span className="inline-flex h-2 w-2 rounded-full bg-[#3aad4a]" />
-              På lager
+              På fjernlager · forvent 1+ dags levering
             </p>
           )}
           </div>
