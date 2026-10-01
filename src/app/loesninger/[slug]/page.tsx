@@ -279,7 +279,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
                 Se alle produkter <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
               {products.map((p) => (
                 <Link
                   key={p.id}
@@ -287,15 +287,15 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
                   className="group bg-white rounded-2xl border-2 border-[#0044c4]/15 hover:border-[#0044c4]/50 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col"
                 >
                   <div className="aspect-square bg-gray-50 flex items-center justify-center overflow-hidden">
-                    <img src={p.imgSrc} alt={p.name} className="w-full h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105" />
+                    <img src={p.imgSrc} alt={p.name} className="w-full h-full object-contain p-3 sm:p-4 transition-transform duration-300 group-hover:scale-105" />
                   </div>
-                  <div className="p-5 flex flex-col flex-1">
+                  <div className="p-3 sm:p-5 flex flex-col flex-1">
                     {p.badge && (
-                      <span className="inline-block w-fit text-[10px] font-semibold text-blue-700 bg-blue-50 rounded-full px-2 py-0.5 mb-2">{p.badge}</span>
+                      <span className="inline-block w-fit text-[10px] font-semibold text-blue-700 bg-blue-50 rounded-full px-2 py-0.5 mb-1.5 sm:mb-2">{p.badge}</span>
                     )}
-                    <h3 className="font-bold text-gray-900 text-sm leading-snug">{p.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-[13px] sm:text-sm leading-snug line-clamp-2">{p.name}</h3>
                     <p className="text-xs text-gray-500 mt-1 line-clamp-2 flex-1">{p.tagline}</p>
-                    <p className="mt-3 font-extrabold text-gray-900 text-sm">{price(p.price)}</p>
+                    <p className="mt-2 sm:mt-3 font-extrabold text-gray-900 text-sm">{price(p.price)}</p>
                   </div>
                 </Link>
               ))}
