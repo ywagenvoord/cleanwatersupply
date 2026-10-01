@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { SignIn } from '@clerk/nextjs'
-import { Building2 } from 'lucide-react'
+import { Building2, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Log ind – Erhvervskonto',
@@ -28,8 +29,23 @@ export default function ErhvervLoginPage() {
         }}
       />
 
+      <div className="mt-8 w-full max-w-sm text-center">
+        <div className="flex items-center gap-3 mb-5">
+          <span className="h-px flex-1 bg-gray-200" />
+          <span className="text-xs text-gray-400">Har du endnu ikke en konto?</span>
+          <span className="h-px flex-1 bg-gray-200" />
+        </div>
+        <Link
+          href="/min-konto/ansog"
+          className="inline-flex items-center justify-center gap-2 w-full rounded-full border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white px-6 py-3 text-sm font-bold transition-all"
+        >
+          Opret den her
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+
       <p className="mt-6 text-xs text-gray-400 max-w-sm text-center">
-        Erhvervskonti oprettes efter godkendelse. Kontakt os, hvis du ønsker en konto.
+        Erhvervskonti oprettes efter godkendelse.
       </p>
     </main>
   )
