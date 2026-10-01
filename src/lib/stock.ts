@@ -20,17 +20,7 @@ const RESTOCK_ISO = '2026-09-29'
 const RESTOCK_LABEL = 'tirsdag d. 29. september'
 
 const RULES: Rule[] = [
-  {
-    keywords: ['fast disk', 'fast-disk', 'lai-1003', 'healthexpert', 'health expert', 'lai-1004'],
-    restockISO: RESTOCK_ISO,
-    restockLabel: RESTOCK_LABEL,
-  },
-  {
-    // Germ-STOP filterkande – udsolgt
-    keywords: ['mikroplastik-stop', 'prod_v2wdbj1i8o20kj'],
-    restockISO: RESTOCK_ISO,
-    restockLabel: RESTOCK_LABEL,
-  },
+  // Ingen udsolgte varer – alt er på lager igen.
 ]
 
 // Lav-lager-besked ("Kun X tilbage på lager"), keyet på Stripe-produkt-id eller produkt-id.
