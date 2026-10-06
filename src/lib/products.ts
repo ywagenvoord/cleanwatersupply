@@ -771,7 +771,7 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'kande-carmen',
-    productNr: 'J35-AD',
+    productNr: 'LAI-1007',
     name: 'Carmen Slim filterkande',
     tagline: 'Slank Laica-filterkande med Bi-flux® – rent vand med god smag hver dag',
     category: 'vandkande',
@@ -867,7 +867,7 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'filter-biflux-universal',
-    productNr: 'F0M',
+    productNr: 'LAI-1006',
     name: 'Bi-flux® Universal – filter til vandkande',
     tagline: 'Det alsidige hverdagsfilter · 2 stk. i pakken',
     lifespan: 'ca. 1 måned / 150 L pr. filter',
@@ -907,7 +907,7 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'filter-biflux-limescale',
-    productNr: 'H0L',
+    productNr: 'LAI-1005',
     name: 'Bi-flux® LimescaleSTOP – filter til vandkande',
     tagline: 'Mod kalk og hårdt vand · 2 stk. i pakken',
     priceNote: 'Pakken indeholder 2 filtre – ca. 2 måneders forbrug, alt efter hvor meget vand du drikker.',
@@ -948,7 +948,7 @@ export const PRODUCTS: Product[] = [
 
   {
     id: 'filter-biflux-healthexpert',
-    productNr: 'P3M',
+    productNr: 'LAI-1004',
     name: 'Bi-flux® HealthExpert – Filter',
     tagline: 'Mod PFAS – med ekstra magnesium · 2 stk. i pakken',
     priceNote: 'Ca. 2 kr. om dagen for renere, sundere vand – uden dyre flasker.',
