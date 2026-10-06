@@ -390,7 +390,7 @@ export const PRODUCTS: Product[] = [
     lifestyleVideo: '/videos/cblue-sc3-video.mp4',
     videoFirst: true,
     description: 'Brusehoved i krom med udskifteligt filter. Legionella-beskyttelse i et elegant design.',
-    longDescription: 'cBlue SC3 forener premium krom brusehoveddesign med en integreret hulfiber-filterpatron. Brusehovedet er æstetisk og passer alle badeværelsesmiljøer, mens den udskiftelige filterpatron sikrer kontinuerlig Legionella-beskyttelse.',
+    longDescription: 'cBlue SC3 forener premium krom brusehoveddesign med en integreret hulfiber-filterpatron. Brusehovedet er æstetisk og passer alle badeværelsesmiljøer, mens den udskiftelige filterpatron sikrer kontinuerlig Legionella-beskyttelse.\n\nEr der meldt om bakterieudbrud – fx Legionella – i vandet i din kommune, kan du sætte cBlue SC3 på bruseren og bade med filtreret vand. Så er du og din familie beskyttet og kan trygt tage et bad uden bekymringer.',
     highlights: ['Krom design', 'Udskifteligt filter', '7 log Legionella-beskyttelse'],
     features: [
       '99,99999% (7 log) retention mod Legionella',
