@@ -13,6 +13,21 @@ export type StripeProductData = {
   priceId:         string                  // price_...
 }
 
+// Fald-tilbage: udled cws_id fra Stripe-produktnavnet, når Stripe-produktet
+// mangler metadata.cws_id. Så kobles nye Stripe-produkter automatisk til det
+// rige hardcodede indhold (billeder, sælgende sektion, relaterede varer) uden
+// at man manuelt skal sætte metadata i Stripe.
+function inferCwsId(stripeId: string, name: string): string | undefined {
+  // Kendt Stripe-id for Germ-STOP filtret (ét løst filter, ikke selve kanden)
+  if (stripeId === 'prod_VOH0TENKrnTQT9') return 'mikroplastik-stop-filter'
+  const n = name.toLowerCase()
+  // Germ-STOP filter TIL filterkanden (adskiller fra selve "Germ-STOP filterkande")
+  if (n.includes('germ-stop') && n.includes('til filterkande')) {
+    return 'mikroplastik-stop-filter'
+  }
+  return undefined
+}
+
 export async function getActiveStripeProducts(): Promise<StripeProductData[]> {
   const key = process.env.STRIPE_SECRET_KEY
   if (!key) return []
@@ -70,7 +85,7 @@ export async function getActiveStripeProducts(): Promise<StripeProductData[]> {
 
       result.push({
         stripeProductId: p.id,
-        cwsId:           p.metadata?.cws_id || undefined,
+        cwsId:           p.metadata?.cws_id || inferCwsId(p.id, p.name),
         name:            p.name,
         description:     p.description,
         images:          p.images,
