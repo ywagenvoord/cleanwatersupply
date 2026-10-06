@@ -156,7 +156,7 @@ export const KANDER: Kande[] = [
     addon: {
       name: 'Germ-stop™ udskiftningsfilter',
       art: 'EAN 8013240705958',
-      img: '/images/product-filter-udskift.jpg',
+      img: '/images/germ-stop-filter-1.jpg',
       life: 'ca. 1.000 L · ca. 1 år pr. filter',
       blurb: 'Det matchende Germ-stop™-udskiftningsfilter – bevar det sikre, bakteriestoppende drikkevand.',
       link: '/shop/mikroplastik-stop-filter',
