@@ -50,7 +50,7 @@ export const FILTRE: Filter[] = [
       'med at de nyttige mineralsalte (calcium, magnesium og kalium) bevares. BPA-fri, som loven kræver, og Made in EU.',
     specs: [
       { label: 'Type', value: 'Bi-flux® udskiftningsfilter' },
-      { label: 'Varenr.', value: 'F0M' },
+      { label: 'Varenr.', value: 'LAI-1006' },
       { label: 'Levetid', value: '1 måned · ca. 150 liter' },
       { label: 'Reducerer', value: 'Klor, tungmetaller, pesticider, kalk' },
       { label: 'Materiale', value: 'BPA-fri (lovkrav)' },
@@ -83,7 +83,7 @@ export const FILTRE: Filter[] = [
       'Passer også til Brita®-kander (LAICA-Key medfølger).',
     specs: [
       { label: 'Type', value: 'Bi-flux® udskiftningsfilter' },
-      { label: 'Varenr.', value: 'H0L' },
+      { label: 'Varenr.', value: 'LAI-1005' },
       { label: 'Levetid', value: '1 måned · ca. 150 liter' },
       { label: 'Reducerer', value: 'Kalk (op til 90 %), mikroplast, tungmetaller, klor' },
       { label: 'Kompatibilitet', value: 'Laica- og Brita®-kander (LAICA-Key medfølger)' },
@@ -106,17 +106,17 @@ export const FILTRE: Filter[] = [
     brita: true,
     points: [
       'Reducerer PFAS (“evighedskemikalier”) med op til 92 %',
-      'Øger magnesium-indholdet i vandet (godt for hjerte & hjerne)',
+      'Tilfører magnesium – et vigtigt mineral, kroppen har brug for hver dag',
       'Reducerer også mikroplast, klor, kalk og tungmetaller (5-trins)',
       'Passer også til Brita®-kander (LAICA-Key medfølger)',
     ],
     description:
       'Bi-flux® HealthExpert giver maksimal beskyttelse. Det reducerer PFAS (“evighedskemikalier”) med op til ' +
-      '92 % og øger samtidig magnesium-indholdet i vandet – godt for hjerte og hjerne. 5-trins filtrering ' +
+      '92 % og tilfører samtidig magnesium til vandet – et vigtigt mineral, kroppen har brug for hver dag. 5-trins filtrering ' +
       'reducerer også mikroplast, klor, kalk og tungmetaller. Passer også til Brita®-kander (LAICA-Key medfølger).',
     specs: [
       { label: 'Type', value: 'Bi-flux® udskiftningsfilter' },
-      { label: 'Varenr.', value: 'P3M' },
+      { label: 'Varenr.', value: 'LAI-1004' },
       { label: 'Levetid', value: '1 måned · ca. 150 liter' },
       { label: 'Reducerer', value: 'PFAS (op til 92 %), mikroplast, klor, kalk, tungmetaller' },
       { label: 'Tilfører', value: 'Magnesium' },
