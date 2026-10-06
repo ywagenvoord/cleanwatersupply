@@ -242,6 +242,27 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </span>
               </div>
 
+              {/* Link til det matchende udskiftningsfilter */}
+              {k.addon?.link && (
+                <Link
+                  href={k.addon.link}
+                  className="group mt-5 flex items-center gap-4 rounded-2xl bg-white ring-1 ring-gray-200 hover:ring-[#284eff]/40 hover:shadow-md transition-all p-3.5 max-w-md"
+                >
+                  {k.addon.img && (
+                    <span className="w-14 h-14 shrink-0 rounded-xl bg-gray-50 overflow-hidden flex items-center justify-center p-1.5">
+                      <img src={k.addon.img} alt={k.addon.name} width={120} height={120} loading="lazy" className="h-full w-full object-contain" />
+                    </span>
+                  )}
+                  <span className="flex flex-col min-w-0">
+                    <span className="text-[13px] font-extrabold text-[#0a2540] leading-snug">{k.addon.name}</span>
+                    <span className="text-xs text-gray-500 mt-0.5">Køb udskiftningsfilteret til kanden</span>
+                    <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-[#284eff] group-hover:text-blue-700">
+                      Se filteret <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </span>
+                </Link>
+              )}
+
               {/* Tilkøb: matchende filter (kun kander uden filter-række nedenfor) */}
               {!(k.compatFilters && k.compatFilters.length > 0) && k.addon && (
                 <div className="mt-5 rounded-2xl bg-gray-50 ring-1 ring-gray-200 shadow-sm p-5 max-w-md">
