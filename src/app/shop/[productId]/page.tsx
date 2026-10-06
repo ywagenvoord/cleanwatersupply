@@ -698,46 +698,37 @@ export default async function ProductDetailPage({ params }: { params: { productI
                   ))}
                 </div>
               )}
+
+              {/* Passer til denne kande – lille boks */}
+              {compatibleJugProducts.length > 0 && (
+                <div className="order-2 lg:order-none mt-6">
+                  <p className="text-[11px] font-black text-[#284eff] uppercase tracking-widest mb-2">Passer til denne kande</p>
+                  {compatibleJugProducts.map((jug) => (
+                    <Link key={jug.id} href={`/shop/${jug.id}`} className="group flex items-center gap-4 rounded-2xl bg-white ring-1 ring-blue-100 hover:ring-[#284eff]/40 hover:shadow-md transition-all p-3.5">
+                      <span className="w-16 h-16 shrink-0 rounded-xl bg-gray-50 overflow-hidden flex items-center justify-center p-1.5">
+                        {jug.imgSrc ? (
+                          <img src={jug.imgSrc} alt={jug.name} width={120} height={120} loading="lazy" className="h-full w-full object-contain" />
+                        ) : (
+                          <GlassWater className="w-8 h-8 text-gray-300" />
+                        )}
+                      </span>
+                      <span className="flex flex-col min-w-0">
+                        <span className="text-[13px] font-extrabold text-[#0a2540] leading-snug">{jug.name}</span>
+                        {typeof jug.price === 'number' && jug.price > 0 && (
+                          <span className="text-xs font-bold text-[#0a2540] mt-0.5">{jug.price.toLocaleString('da-DK')} kr</span>
+                        )}
+                        <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-[#284eff] group-hover:text-blue-700">
+                          Se kanden <ArrowRight className="w-3.5 h-3.5" />
+                        </span>
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
-
-      {/* ─── PASSER TIL DENNE KANDE ────────────────────────────────── */}
-      {compatibleJugProducts.length > 0 && (
-        <section className="py-10 sm:py-14 bg-gradient-to-b from-sky-50 to-white border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-8">
-              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Passer til</span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-2">Brug filteret i denne kande</h2>
-              <p className="text-gray-600 text-[15px] mt-2">Germ-STOP-filteret sidder i Germ-STOP filterkanden – fyld vand i, og hæld op.</p>
-            </div>
-            <div className={`grid gap-4 sm:gap-6 max-w-3xl mx-auto ${compatibleJugProducts.length > 1 ? 'sm:grid-cols-2' : 'sm:grid-cols-1 max-w-md'}`}>
-              {compatibleJugProducts.map((jug) => (
-                <Link key={jug.id} href={`/shop/${jug.id}`} className="group bg-white rounded-2xl ring-1 ring-blue-100 hover:ring-blue-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex items-center gap-4 p-4">
-                  <div className="w-28 h-28 shrink-0 bg-white rounded-xl overflow-hidden flex items-center justify-center p-2">
-                    {jug.imgSrc ? (
-                      <img src={jug.imgSrc} alt={jug.name} width={200} height={200} loading="lazy" decoding="async" className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-                    ) : (
-                      <GlassWater className="w-12 h-12 text-gray-200" />
-                    )}
-                  </div>
-                  <div className="flex flex-col flex-1 min-w-0">
-                    <h3 className="font-bold text-[#0a2540] text-[15px] leading-snug">{jug.name}</h3>
-                    {jug.tagline && <p className="text-xs text-gray-500 line-clamp-2 mt-1 leading-relaxed">{jug.tagline}</p>}
-                    {typeof jug.price === 'number' && jug.price > 0 && (
-                      <p className="text-sm font-extrabold text-[#0a2540] mt-2">{jug.price.toLocaleString('da-DK')} kr</p>
-                    )}
-                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
-                      Se kanden <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ─── SÆLGENDE STORY (fx sundhed) ─────────────────────────── */}
       {product.sellStory && (
