@@ -1019,6 +1019,8 @@ export const PRODUCTS: Product[] = [
     name: 'Germ-STOP filter',
     tagline: 'Ultrafiltrerings-filter til Germ-STOP filterkanden – reducerer 99,999 % af bakterier*',
     category: 'vandkande',
+    price: 199, // fallback – overskrives af live Stripe-pris på produktsiden
+    stripeProductId: 'prod_VOH0TENKrnTQT9', // Germ-STOP filter i Stripe (så den er købbar)
     imgSrc:   '/images/germ-stop-filter-1.jpg',
     imgLarge: '/images/germ-stop-filter-1.jpg',
     images: ['/images/germ-stop-filter-1.jpg', '/images/germ-stop-filter-2.jpg', '/images/germ-stop-filter-3.jpg'],
