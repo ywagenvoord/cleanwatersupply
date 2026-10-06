@@ -1058,8 +1058,8 @@ export const PRODUCTS: Product[] = [
     },
     lifestyleImage: '/images/germ-stop-filter-2.jpg',
     useCases: ['Private hjem', 'Kontorer', 'Caféer', 'Mødelokaler'],
-    compatibleJugs: ['kande-mikroplastik'],
-    alsoBought: ['kande-mikroplastik', 'filter-biflux-universal', 'filter-biflux-limescale'],
+    compatibleJugs: ['prod_V2wDbJ1i8O20Kj'], // Germ-STOP filterkande (Stripe-only)
+    alsoBought: ['filter-biflux-universal', 'filter-biflux-limescale'],
   },
 
   {

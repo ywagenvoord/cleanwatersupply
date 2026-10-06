@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { PRODUCTS, getProduct, getRelated, ADDON_PRODUCTS, type Product } from '@/lib/products'
+import { getMergedShopProducts } from '@/lib/shop-data'
 import { overrideImage, galleryFor, videoFor } from '@/lib/stripe-image-overrides'
 import { stockFor } from '@/lib/stock'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
@@ -306,6 +307,17 @@ export default async function ProductDetailPage({ params }: { params: { productI
   const related = product.alsoBought && product.alsoBought.length > 0
     ? product.alsoBought.map((id) => getProduct(id)).filter((p): p is Product => !!p)
     : getRelated(product, 3)
+
+  // "Passer til denne kande": slå de kompatible kander op – også Stripe-only
+  // produkter (fx Germ-STOP filterkanden), så vi altid viser den rigtige kande.
+  let compatibleJugProducts: Product[] = []
+  if (product.compatibleJugs && product.compatibleJugs.length > 0) {
+    const shopProducts = await getMergedShopProducts()
+    compatibleJugProducts = product.compatibleJugs
+      .map((id) => getProduct(id) ?? shopProducts.find((p) => p.id === id))
+      .filter((p): p is Product => !!p)
+  }
+
   const CatIcon = CAT_ICONS[product.category] ?? Droplets
 
   // Montering/installation: kalkanlæg + produkter med showInstallation (fx Filter Housing)
@@ -1134,6 +1146,42 @@ export default async function ProductDetailPage({ params }: { params: { productI
             <div className="space-y-3">
               {product.faqs.map((faq, i) => (
                 <FaqItem key={i} q={faq.q} a={faq.a} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ─── PASSER TIL DENNE KANDE ────────────────────────────────── */}
+      {compatibleJugProducts.length > 0 && (
+        <section className="py-10 sm:py-16 bg-gradient-to-b from-sky-50 to-white border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Passer til</span>
+              <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a2540] mt-2">Brug filteret i denne kande</h2>
+              <p className="text-gray-600 text-[15px] mt-2">Germ-STOP-filteret sidder i Germ-STOP filterkanden – fyld vand i, og hæld op.</p>
+            </div>
+            <div className={`grid gap-4 sm:gap-6 max-w-3xl mx-auto ${compatibleJugProducts.length > 1 ? 'sm:grid-cols-2' : 'sm:grid-cols-1 max-w-md'}`}>
+              {compatibleJugProducts.map((jug) => (
+                <Link key={jug.id} href={`/shop/${jug.id}`} className="group bg-white rounded-2xl ring-1 ring-blue-100 hover:ring-blue-200 hover:shadow-lg transition-all duration-300 overflow-hidden flex items-center gap-4 p-4">
+                  <div className="w-28 h-28 shrink-0 bg-white rounded-xl overflow-hidden flex items-center justify-center p-2">
+                    {jug.imgSrc ? (
+                      <img src={jug.imgSrc} alt={jug.name} width={200} height={200} loading="lazy" decoding="async" className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <GlassWater className="w-12 h-12 text-gray-200" />
+                    )}
+                  </div>
+                  <div className="flex flex-col flex-1 min-w-0">
+                    <h3 className="font-bold text-[#0a2540] text-[15px] leading-snug">{jug.name}</h3>
+                    {jug.tagline && <p className="text-xs text-gray-500 line-clamp-2 mt-1 leading-relaxed">{jug.tagline}</p>}
+                    {typeof jug.price === 'number' && jug.price > 0 && (
+                      <p className="text-sm font-extrabold text-[#0a2540] mt-2">{jug.price.toLocaleString('da-DK')} kr</p>
+                    )}
+                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-bold text-blue-600 group-hover:text-blue-700">
+                      Se kanden <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
