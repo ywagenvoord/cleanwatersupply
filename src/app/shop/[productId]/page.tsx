@@ -273,7 +273,7 @@ export async function generateMetadata({ params }: { params: { productId: string
 
 /* ─── FAQ ITEM ───────────────────────────────────────────────────────────── */
 
-function FaqItem({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a, link }: { q: string; a: string; link?: { href: string; label: string } }) {
   return (
     <details className="group border border-gray-100 rounded-2xl overflow-hidden bg-white">
       <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer select-none list-none font-semibold text-gray-900 hover:bg-gray-50 transition-colors">
@@ -282,6 +282,13 @@ function FaqItem({ q, a }: { q: string; a: string }) {
       </summary>
       <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed border-t border-gray-50 pt-4">
         {a}
+        {link && (
+          <div className="mt-3">
+            <Link href={link.href} className="inline-flex items-center gap-1.5 font-bold text-blue-600 hover:text-blue-700">
+              {link.label} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </details>
   )
@@ -1145,7 +1152,7 @@ export default async function ProductDetailPage({ params }: { params: { productI
             <h2 className="text-2xl font-extrabold text-gray-900 mb-8 text-center">Ofte stillede spørgsmål</h2>
             <div className="space-y-3">
               {product.faqs.map((faq, i) => (
-                <FaqItem key={i} q={faq.q} a={faq.a} />
+                <FaqItem key={i} q={faq.q} a={faq.a} link={faq.link} />
               ))}
             </div>
           </div>

@@ -3,7 +3,7 @@
 // Used by /shop (listing) and /shop/[productId] (detail page)
 
 export type Spec = { label: string; value: string }
-export type FAQ  = { q: string; a: string }
+export type FAQ  = { q: string; a: string; link?: { href: string; label: string } }
 
 export type Product = {
   id: string
@@ -1040,7 +1040,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Vare-nr.',        value: 'LAI-1008' },
     ],
     faqs: [
-      { q: 'Hvilken kande passer filteret til?', a: 'Det passer til Germ-STOP filterkanden, hvor det sidder sammen med et bi-flux®-filter.' },
+      { q: 'Hvilken kande passer filteret til?', a: 'Det passer til Germ-STOP filterkanden, hvor det sidder sammen med et bi-flux®-filter.', link: { href: '/vandkander/mikroplastik-stop', label: 'Se Germ-STOP filterkanden' } },
       { q: 'Hvad gør Germ-STOP™-filteret?', a: 'Det er et ultrafiltrerings-filter, der blokerer bakterier og fjerner uklarhed i vandet. Det reducerer 99,999 % af bakterier* målt af akkrediterede laboratorier.' },
       { q: 'Hvor længe holder et filter?', a: 'Levetiden varierer efter vandets uklarhed. Filteret stopper, når fibrenes porer er fyldte.' },
     ],
