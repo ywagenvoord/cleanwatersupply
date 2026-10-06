@@ -191,7 +191,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </div>
               )}
 
-              {!stock && k.stockLeft != null && k.stockLeft > 0 && (
+              {!stock && k.stockLeft != null && k.stockLeft > 0 && k.stockLeft <= 3 && (
                 <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-orange-50 ring-1 ring-orange-200 px-3.5 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75 animate-ping" />
@@ -199,6 +199,17 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   </span>
                   <span className="text-sm font-bold text-orange-700">
                     Få på lager
+                  </span>
+                </div>
+              )}
+
+              {!stock && (k.stockLeft == null || k.stockLeft > 3) && (
+                <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-green-50 ring-1 ring-green-200 px-3.5 py-1.5">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
+                  </span>
+                  <span className="text-sm font-bold text-green-700">
+                    På lager
                   </span>
                 </div>
               )}

@@ -98,7 +98,7 @@ export const KANDER: Kande[] = [
   {
     slug: 'mikroplastik-stop',
     price: 399,
-    stockLeft: 1,
+    stockLeft: 25,
     varenr: 'LAI-1001',
     stripeProductId: 'prod_V2wDbJ1i8O20Kj',
     manual: 'https://www.laica.com/wp-content/uploads/Manual-Predator-GermStop-Jug.pdf',
