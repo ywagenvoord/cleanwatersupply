@@ -43,6 +43,9 @@ export const metadata: Metadata = {
   applicationName: 'Clean Water Supply',
   generator: 'Next.js',
   referrer: 'origin-when-cross-origin',
+  verification: {
+    google: 'UV_j_aA3QscLws5yej0Dn9vGe9ith1XaHJmS6tIf6zE',
+  },
   robots: {
     index: true,
     follow: true,
