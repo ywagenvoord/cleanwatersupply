@@ -8,6 +8,7 @@ import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
+import NewsletterPopup from '@/components/NewsletterPopup'
 
 function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: string; body: string; da: boolean }) {
   const [open, setOpen] = useState(false)
@@ -451,6 +452,8 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
           </div>
         </div>
       </section>
+
+      <NewsletterPopup />
     </main>
   )
 }
