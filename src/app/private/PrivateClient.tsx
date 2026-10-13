@@ -314,7 +314,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 <ShieldCheck className="w-4 h-4" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
-                {da ? 'Sikr dig og din familie rent vand' : 'Protect you and your family with clean water'}
+                {da ? 'Sikr dig og din familie bakteriefrit vand' : 'Protect you and your family with bacteria-free water'}
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
                 {da
