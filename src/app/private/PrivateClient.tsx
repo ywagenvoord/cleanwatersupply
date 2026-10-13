@@ -266,18 +266,19 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group relative shrink-0 w-36 h-48 sm:w-auto sm:flex-1 sm:h-52 snap-start rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
+                className="group shrink-0 w-36 sm:w-auto sm:flex-1 snap-start"
               >
-                <img
-                  src={img}
-                  alt={title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
-                    objPos ?? 'object-center'
-                  }`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-colors group-hover:from-black/80" />
-                <div className="absolute inset-x-0 bottom-0 p-3 text-center">
-                  <h3 className="text-white font-bold text-xs sm:text-sm leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{title}</h3>
+                <h3 className="text-center font-bold text-xs sm:text-sm text-[#0a2540] group-hover:text-[#284eff] leading-tight mb-2 min-h-[2.5rem] flex items-end justify-center transition-colors">
+                  {title}
+                </h3>
+                <div className="relative h-40 sm:h-48 rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 group-hover:shadow-xl transition-all duration-300">
+                  <img
+                    src={img}
+                    alt={title}
+                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
+                      objPos ?? 'object-center'
+                    }`}
+                  />
                 </div>
               </Link>
             ))}
