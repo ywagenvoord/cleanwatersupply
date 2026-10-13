@@ -287,15 +287,15 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
-            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#123a63] to-[#1b4f86] ring-1 ring-white/10 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
+            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#2f74e0] via-[#3d82e3] to-[#5aa0ec] ring-1 ring-white/20 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
           >
-            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/25 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3b7fd4]/20 rounded-full blur-3xl" />
-            <span className="relative inline-flex items-center gap-2 bg-white/10 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/15 backdrop-blur-sm">
+            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#9fc3ff]/25 rounded-full blur-3xl" />
+            <span className="relative inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/25 backdrop-blur-sm">
               <ShoppingBag className="w-3.5 h-3.5" /> Webshop
             </span>
-            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 bg-[linear-gradient(110deg,#ffffff_0%,#ffffff_35%,#6ee787_50%,#ffffff_65%,#ffffff_100%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[shopText_5s_ease-in-out_infinite]">Shop</h2>
-            <p className="relative text-blue-100/85 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 text-white">Shop</h2>
+            <p className="relative text-white/90 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
               {da
                 ? 'Se hele vores udvalg af filtre og anlæg til rent vand – hurtig levering og medicinsk certificeret kvalitet.'
                 : 'Browse our full range of filters and systems for clean water – fast delivery and medically certified quality.'}
