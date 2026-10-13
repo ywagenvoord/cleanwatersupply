@@ -283,7 +283,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── SHOP ──────────────────────────────────────────────── */}
-      <section className="pt-4 pb-10 sm:pt-8 sm:pb-16 bg-gradient-to-b from-white to-blue-50/40">
+      <section className="pt-4 pb-6 sm:pt-8 sm:pb-10 bg-gradient-to-b from-white to-blue-50/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
@@ -308,7 +308,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── WHY PROTECT (EMOTIONAL) ───────────────────────────── */}
-      <section className="py-12 sm:py-20 bg-blue-50/60">
+      <section className="pt-6 pb-12 sm:pt-10 sm:pb-20 bg-blue-50/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-white text-blue-700 flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-sm">
             <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7" />
