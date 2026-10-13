@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Search, MapPin, ArrowRight, ChevronDown } from 'lucide-react'
+import { byForPostnummer } from '@/lib/postnumre'
 
 type Tier = 'blod' | 'middel' | 'haard'
 type Zone = {
@@ -52,6 +53,7 @@ const TIER_HEADING: Record<Tier, string> = {
 export default function PostnummerHaardhed() {
   const [value, setValue] = useState('')
   const [result, setResult] = useState<Zone | null>(null)
+  const [city, setCity] = useState<string | null>(null)
   const [error, setError] = useState('')
   const [showProducts, setShowProducts] = useState(false)
 
@@ -66,6 +68,7 @@ export default function PostnummerHaardhed() {
     setError('')
     setShowProducts(true)
     setResult(lookup(pn))
+    setCity(byForPostnummer(pn) ?? null)
   }
 
   return (
@@ -98,7 +101,12 @@ export default function PostnummerHaardhed() {
 
       {result && (
         <div className="mt-5 rounded-2xl ring-1 ring-blue-100 bg-blue-50/40 p-5">
-          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{result.area}</p>
+          {city && (
+            <p className="flex items-center gap-1.5 text-sm font-extrabold text-[#0a2540] mb-1">
+              <MapPin className="w-4 h-4 text-[#284eff]" /> {city}
+            </p>
+          )}
+          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{result.area}</p>
           <div className="flex items-center gap-2.5">
             <span className="w-4 h-4 rounded-sm shrink-0" style={{ backgroundColor: result.color }} />
             <span className="text-xl font-extrabold text-[#0a2540]">{result.dh}</span>
