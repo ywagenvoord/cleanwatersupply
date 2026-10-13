@@ -616,7 +616,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               {
                 q: 'Skal du bruge hjælp med indkøb, salg, webshop og ordrer, produkter, hjemmeside, nyhedsbrev eller marketing?',
                 person: 'Camilla', role: 'Salg & Marketing Manager', photo: '/images/team-camilla-sq.jpg',
-                lead: 'Ring eller send en mail til Camilla.', phone: '+45 40 73 70 53', email: 'caj@cleanwatersupply.dk',
+                lead: 'Send en mail til Camilla.', phone: null, email: 'caj@cleanwatersupply.dk',
               },
             ].map((m) => (
               <details key={m.person} className="group bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm open:shadow-md transition-shadow overflow-hidden">
