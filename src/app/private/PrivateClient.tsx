@@ -286,36 +286,43 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── LEGIONELLA-PROMO ──────────────────────────────────── */}
-      <section className="py-10 sm:py-16 bg-white">
+      {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
+      <section className="py-12 sm:py-16 bg-[#f4f7fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/legionella" className="group relative block overflow-hidden rounded-3xl shadow-xl ring-1 ring-black/5">
-            <div className="relative h-56 sm:h-72 lg:h-80">
-              <img
-                src="/images/area-det-private-hjem.jpg"
-                alt="Rent, bakteriefrit vand i hjemmet"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-              {/* mørk overgang så teksten kan læses */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0a2540]/85 via-[#0a2540]/55 to-transparent" />
-              <div className="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 lg:px-16 max-w-2xl">
-                <span className="inline-flex items-center gap-2 w-fit rounded-full bg-white/15 text-white text-[11px] font-bold px-4 py-2 uppercase tracking-widest ring-1 ring-white/25 backdrop-blur-sm mb-4">
-                  <ShieldCheck className="w-3.5 h-3.5" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
-                </span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight mb-3">
-                  {da ? 'Sikr dig og din familie rent vand' : 'Protect you and your family with clean water'}
-                </h2>
-                <p className="text-white/85 text-sm sm:text-lg leading-relaxed max-w-lg">
-                  {da
-                    ? 'Medicinsk certificerede Legionella-filtre, der stopper bakterier lige ved vandhanen og bruseren – trygt at drikke og bade i.'
-                    : 'Medically certified Legionella filters that stop bacteria right at the tap and shower – safe to drink and bathe in.'}
-                </p>
-                <span className="mt-6 inline-flex w-fit items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all group-hover:gap-3">
-                  {da ? 'Se Legionella-filtrene' : 'See the Legionella filters'} <ArrowRight className="w-4 h-4" />
-                </span>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Billede med forskudt farvet ramme bagved (som Imerco) */}
+            <div className="relative order-1">
+              <div className="pointer-events-none absolute -bottom-4 -right-4 w-full h-full rounded-2xl bg-[#3aad4a]" />
+              <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10]">
+                <img
+                  src="/images/area-det-private-hjem.jpg"
+                  alt="Rent, bakteriefrit vand i hjemmet"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
               </div>
             </div>
-          </Link>
+
+            {/* Tekst (overskrift + undertekst) */}
+            <div className="order-2">
+              <span className="inline-flex items-center gap-2 text-[#284eff] text-xs font-bold uppercase tracking-widest mb-3">
+                <ShieldCheck className="w-4 h-4" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
+                {da ? 'Sikr dig og din familie rent vand' : 'Protect you and your family with clean water'}
+              </h2>
+              <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
+                {da
+                  ? 'Vores medicinsk certificerede Legionella-filtre sættes direkte på vandhanen eller bruseren og stopper bakterier lige ved tappestedet – trygt at drikke og bade i. Enkelt at montere, uden værktøj.'
+                  : 'Our medically certified Legionella filters mount directly on the tap or shower and stop bacteria right at the point of use – safe to drink and bathe in. Easy to fit, no tools required.'}
+              </p>
+              <Link
+                href="/legionella"
+                className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+              >
+                {da ? 'Se Legionella-filtrene' : 'See the Legionella filters'} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
