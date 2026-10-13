@@ -287,20 +287,20 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
-            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-white via-sky-50 to-blue-100/70 ring-1 ring-blue-100 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-lg transition-all hover:shadow-2xl hover:ring-blue-200"
+            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#123a63] to-[#1b4f86] ring-1 ring-white/10 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
           >
-            <div className="pointer-events-none absolute -top-20 -right-16 w-64 h-64 bg-sky-200/40 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-72 h-72 bg-[#3aad4a]/15 rounded-full blur-3xl" />
-            <span className="relative inline-flex items-center gap-2 bg-white text-[#284eff] text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm">
+            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/30 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3aad4a]/25 rounded-full blur-3xl" />
+            <span className="relative inline-flex items-center gap-2 bg-white/10 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/15 backdrop-blur-sm">
               <ShoppingBag className="w-3.5 h-3.5" /> Webshop
             </span>
-            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 bg-[linear-gradient(110deg,#0a2540_0%,#0a2540_35%,#3aad4a_50%,#0a2540_65%,#0a2540_100%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[shopText_5s_ease-in-out_infinite]">Shop</h2>
-            <p className="relative text-gray-600 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 bg-[linear-gradient(110deg,#ffffff_0%,#ffffff_35%,#6ee787_50%,#ffffff_65%,#ffffff_100%)] bg-[length:220%_100%] bg-clip-text text-transparent animate-[shopText_5s_ease-in-out_infinite]">Shop</h2>
+            <p className="relative text-blue-100/85 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
               {da
                 ? 'Se hele vores udvalg af filtre og anlæg til rent vand – hurtig levering og medicinsk certificeret kvalitet.'
                 : 'Browse our full range of filters and systems for clean water – fast delivery and medically certified quality.'}
             </p>
-            <span className="relative inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base sm:text-lg transition-all group-hover:gap-3 shadow-lg shadow-green-500/25">
+            <span className="relative inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base sm:text-lg transition-all group-hover:gap-3 shadow-lg shadow-green-500/30">
               {da ? 'Gå til shoppen' : 'Go to the shop'} <ArrowRight className="w-5 h-5" />
             </span>
           </Link>
