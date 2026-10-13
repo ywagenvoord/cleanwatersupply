@@ -476,15 +476,27 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
               return (
                 <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
                   {/* Gennemgående linje + grønne prikker der løber fra trin 1 → 5 (desktop) */}
-                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 overflow-visible z-0" aria-hidden="true">
-                    {Array.from({ length: 12 }).map((_, k) => (
+                  {/* Fire segmenter (1→2, 2→3, 3→4, 4→5) med STIGENDE antal prikker */}
+                  {[0, 1, 2, 3].map((seg) => {
+                    const count = seg + 1 // 1, 2, 3, 4 prikker – bygger op som en proces
+                    const cycle = 3.2
+                    return (
                       <span
-                        key={k}
-                        className="tl-flow absolute top-1/2 w-1.5 h-1.5 rounded-full bg-[#3aad4a] shadow-[0_0_6px_1px_rgba(58,173,74,0.5)]"
-                        style={{ animationDelay: `${(k * 0.75).toFixed(2)}s` }}
-                      />
-                    ))}
-                  </span>
+                        key={seg}
+                        className="hidden sm:block absolute top-6 h-0.5 bg-blue-200 overflow-visible z-0"
+                        style={{ left: `${10 + seg * 20}%`, width: '20%' }}
+                        aria-hidden="true"
+                      >
+                        {Array.from({ length: count }).map((_, j) => (
+                          <span
+                            key={j}
+                            className="tl-flow absolute top-1/2 w-1.5 h-1.5 rounded-full bg-[#3aad4a] shadow-[0_0_6px_1px_rgba(58,173,74,0.5)]"
+                            style={{ animationDelay: `${(-(j * cycle) / count).toFixed(2)}s`, animationDuration: `${cycle}s` }}
+                          />
+                        ))}
+                      </span>
+                    )
+                  })}
                   {steps.map((s, i) => {
                     const Icon = s.icon
                     return (
