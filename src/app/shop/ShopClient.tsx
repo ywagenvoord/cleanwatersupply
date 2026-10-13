@@ -442,7 +442,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
             {catalog ? (da ? 'Til erhverv' : 'For business') : (da ? 'Vores produkter' : 'Our products')}
           </span>
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 sm:mb-5 leading-tight">
-            {catalog ? (da ? 'Produkter til erhverv' : 'Products for business') : 'Shop Clean Water Supply'}
+            {catalog ? (da ? 'Produktoversigt' : 'Product overview') : 'Shop Clean Water Supply'}
           </h1>
           <p className="text-sm sm:text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
             {catalog
