@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BookOpen, ArrowRight, Sparkles, Gauge, Filter, HelpCircle } from 'lucide-react'
+import { BookOpen, ArrowRight, Sparkles, Gauge, Filter, HelpCircle, ShieldCheck } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
@@ -16,6 +16,7 @@ const GUIDES = [
   { Icon: Gauge, title: 'Hvor hårdt er dit vand?', text: 'Forstå vandets hårdhed (°dH), og find hårdheden for din adresse.', href: '/guides/vandets-haardhed' },
   { Icon: Filter, title: 'Hvilket filter skal du vælge?', text: 'Brusefilter, vandhanefilter, filterkande eller blødgøringsanlæg – vælg rigtigt.', href: '/guides/vaelg-vandfilter' },
   { Icon: HelpCircle, title: 'Find dit filter', text: 'Svar på fire korte spørgsmål og bliv guidet til den rette løsning.', href: '/guides/find-filter' },
+  { Icon: ShieldCheck, title: '4 gode råd til at undgå Legionella', text: 'Sådan forebygger du Legionella i hjemmet – især efter ferie.', href: '/guides/undgaa-legionella' },
 ]
 
 export default function Page() {

@@ -52,6 +52,7 @@ export default function Navigation() {
     { href: '/guides/vandets-haardhed', label: 'Hvor hårdt er dit vand?' },
     { href: '/guides/vaelg-vandfilter', label: 'Hvilket filter skal du vælge?' },
     { href: '/guides/find-filter', label: 'Find dit filter' },
+    { href: '/guides/undgaa-legionella', label: '4 gode råd til at undgå Legionella' },
   ]
 
   const omraaderChildren = [
