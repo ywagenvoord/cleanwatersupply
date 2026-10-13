@@ -290,7 +290,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
       {/* ─── SHOP ──────────────────────────────────────────────── */}
       <section className="pt-4 pb-6 sm:pt-8 sm:pb-10 bg-gradient-to-b from-white to-blue-50/40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
             className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63] ring-1 ring-white/10 px-6 py-6 sm:px-12 sm:py-9 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
