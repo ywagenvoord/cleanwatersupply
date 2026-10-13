@@ -599,22 +599,22 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
           <div className="max-w-3xl mx-auto space-y-3">
             {[
               {
-                q: 'Skal du bruge hjælp inden for vores bogholderi?',
+                q: 'Skal du bruge hjælp med bogholderi, faktura, betaling, moms eller regnskab?',
                 person: 'Heidi', role: 'Bogholder', photo: '/images/team-heidi-sq.jpg',
                 lead: 'Kontakt Heidi på mail.', phone: null, email: 'bogholderi@cleanwatersupply.dk',
               },
               {
-                q: 'Skal du bruge teknisk info, viden, tekniske spørgsmål eller installation?',
+                q: 'Skal du bruge teknisk info, installation, montering, fejlfinding, service eller filterskift?',
                 person: 'Kristoffer', role: 'Tekniker & rejsemontør', photo: '/images/team-kristoffer-sq.jpg',
                 lead: 'Ring eller send en mail til Kristoffer.', phone: '+45 22 32 01 56', email: 'kristoffer@cleanwatersupply.dk',
               },
               {
-                q: 'Skal du bruge viden inden for salg, montering, tekniske spørgsmål – eller noget helt andet?',
+                q: 'Skal du bruge rådgivning om salg, montering, tekniske løsninger, erhvervsprojekter, Legionella-sikring eller samarbejde?',
                 person: 'Kenneth', role: 'Stifter & indehaver', photo: '/images/team-kenneth-sq.jpg',
-                lead: 'Ring eller send en mail til Kenneth.', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk',
+                lead: 'Ring eller send en mail til Kenneth – eller spørg bare om noget helt andet.', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk',
               },
               {
-                q: 'Skal du bruge hjælp inden for indkøb, salg, hjemmeside, produkter eller marketing?',
+                q: 'Skal du bruge hjælp med indkøb, salg, webshop og ordrer, produkter, hjemmeside, nyhedsbrev eller marketing?',
                 person: 'Camilla', role: 'Salg & Marketing Manager', photo: '/images/team-camilla-sq.jpg',
                 lead: 'Ring eller send en mail til Camilla.', phone: '+45 40 73 70 53', email: 'caj@cleanwatersupply.dk',
               },
