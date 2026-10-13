@@ -288,7 +288,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
-      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
+      <section className="py-12 sm:py-16 bg-sky-50/70 border-y border-blue-100/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Video med forskudt blå ramme bagved (som Imerco) */}
@@ -310,13 +310,13 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
             {/* Tekst (overskrift + undertekst) */}
             <div className="order-2">
-              <span className="inline-flex items-center gap-2 text-green-300 text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 text-[#284eff] text-xs font-bold uppercase tracking-widest mb-3">
                 <ShieldCheck className="w-4 h-4" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
                 {da ? 'Sikr dig og din familie bakteriefrit vand' : 'Protect you and your family with bacteria-free water'}
               </h2>
-              <p className="text-blue-100/85 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
+              <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
                 {da
                   ? 'Vores medicinsk certificerede Legionella-filtre sættes direkte på vandhanen eller bruseren og stopper bakterier lige ved tappestedet – trygt at drikke og bade i. Enkelt at montere, uden værktøj.'
                   : 'Our medically certified Legionella filters mount directly on the tap or shower and stop bacteria right at the point of use – safe to drink and bathe in. Easy to fit, no tools required.'}
@@ -377,16 +377,16 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── NYHED: VANDHÅRDHED-GUIDE ───────────────────────────── */}
-      <section className="py-12 sm:py-16 bg-white border-t border-gray-100">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-8">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#284eff]/10 text-[#284eff] text-[11px] font-black px-3.5 py-1.5 uppercase tracking-widest">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 text-green-300 text-[11px] font-black px-3.5 py-1.5 uppercase tracking-widest ring-1 ring-white/15">
               <Sparkles className="w-3.5 h-3.5" /> {da ? 'Nyhed' : 'New'}
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] leading-tight mt-3">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white leading-tight mt-3">
               {da ? 'Nyt værktøj: Kend hårdheden i dit vand' : 'New tool: know your water hardness'}
             </h2>
-            <p className="text-gray-600 text-base sm:text-lg mt-3 leading-relaxed">
+            <p className="text-blue-100/85 text-base sm:text-lg mt-3 leading-relaxed">
               {da
                 ? 'Vi har samlet en guide, hvor du kan slå dit postnummer op og se den vejledende vandhårdhed, hvor du bor – så du ved, hvilke løsninger der passer til netop dit vand.'
                 : 'We’ve built a guide where you can look up your postcode and see the water hardness where you live – so you know which solutions fit your water.'}
