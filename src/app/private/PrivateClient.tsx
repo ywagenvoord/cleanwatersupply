@@ -289,17 +289,14 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       {/* ─── LEGIONELLA-PROMO ──────────────────────────────────── */}
       <section className="py-10 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center rounded-3xl bg-gradient-to-br from-sky-50 to-blue-100/50 ring-1 ring-blue-100 p-6 sm:p-10 lg:p-12">
-            {/* Billede med farvet accent bagved */}
-            <div className="relative order-1">
-              <div className="pointer-events-none absolute -top-3 -left-3 w-full h-full rounded-3xl bg-[#3aad4a]/20" />
-              <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3] bg-white">
-                <img
-                  src="/images/baclyser-neo-tr.jpg"
-                  alt="Legionella-filter til vandhanen"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+          <div className="grid lg:grid-cols-[1.5fr_1fr] gap-6 lg:gap-12 items-center rounded-3xl bg-gradient-to-br from-sky-50 to-blue-100/50 ring-1 ring-blue-100 p-5 sm:p-8">
+            {/* Billede */}
+            <div className="relative order-1 rounded-2xl overflow-hidden shadow-lg ring-1 ring-black/5 h-44 sm:h-56 lg:h-60">
+              <img
+                src="/images/area-det-private-hjem.jpg"
+                alt="Rent, bakteriefrit vand i badet"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
             </div>
 
             {/* Tekst */}
@@ -307,10 +304,10 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <span className="inline-flex items-center gap-2 rounded-full bg-white text-[#284eff] text-xs font-bold px-4 py-2 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm">
                 <ShieldCheck className="w-3.5 h-3.5" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0a2540] leading-tight mt-4 mb-3">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540] leading-tight mt-3 mb-2.5">
                 {da ? 'Sikr dig og din familie rent vand' : 'Protect you and your family with clean water'}
               </h2>
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-5">
                 {da
                   ? 'Vores medicinsk certificerede Legionella-filtre sættes direkte på vandhanen eller bruseren og stopper bakterier lige ved tappestedet – så vandet er trygt at drikke og bade i. Enkelt at montere, uden værktøj.'
                   : 'Our medically certified Legionella filters mount directly on the tap or shower and stop bacteria right at the point of use – so the water is safe to drink and bathe in. Easy to fit, no tools required.'}
