@@ -288,7 +288,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
-      <section className="py-12 sm:py-16 bg-[#f4f7fb]">
+      <section className="py-12 sm:py-16 bg-sky-50/70 border-y border-blue-100/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Video med forskudt blå ramme bagved (som Imerco) */}
@@ -377,7 +377,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── NYHED: VANDHÅRDHED-GUIDE ───────────────────────────── */}
-      <section className="py-12 sm:py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white border-t border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-8">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#284eff]/10 text-[#284eff] text-[11px] font-black px-3.5 py-1.5 uppercase tracking-widest">
