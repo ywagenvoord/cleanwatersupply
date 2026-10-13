@@ -112,15 +112,16 @@ const AREA_INTRO: Record<Area, string> = {
 }
 // Et produkt kan høre til flere områder (fx filterhus/kulblok under både Drikkevand og Bakteriesikring)
 function areasForProduct(p: Product): Area[] {
+  // Kun vores Legionella-anlæg hører under Legionellaanlæg
+  if (/legionella-?anl/i.test(p.name)) return ['legionella']
   switch (p.category) {
     case 'vandkande': return ['drikkevand']
     case 'blosgoringsanlaeg': return ['blodgoring']
     case 'anlaeg': return ['hocl']
     case 'filtre': {
       const n = p.name.toLowerCase()
-      if (/hygienesiphon|inline-filter|\bil \d|il dent/.test(n)) return ['legionella']
       if (/dualstage|kulblok|filter housing/.test(n)) return ['drikkevand', 'bakteriesikring']
-      return ['bakteriesikring']
+      return ['bakteriesikring'] // inline-filtre, HygieneSiphon m.fl. hører under Bakteriesikring
     }
     default: return ['bakteriesikring'] // vandhane + bruser (Baclyser m.fl.)
   }
@@ -160,6 +161,7 @@ const DETAIL_LINK_OVERRIDES: Record<string, string> = {
   'filter-biflux-limescale':    '/vandkande-filtre/bi-flux-limescalestop',
   'filter-biflux-healthexpert': '/vandkande-filtre/bi-flux-healthexpert',
   'prod_V2wHIQrdoXx6RG':        '/vandkande-filtre/fast-disk', // FAST DISK
+  'legionella-anlaeg-sicursan': '/legionella-anlaeg', // Legionella-anlæg → dedikeret side
 }
 
 function ProductCard({ product, catColor, showErhverv, catalog = false }: { product: Product; catColor: string; showErhverv: boolean; catalog?: boolean }) {
