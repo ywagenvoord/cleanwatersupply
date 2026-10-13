@@ -66,6 +66,12 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
   const seen = new Set(base.map((p) => p.id))
   const products = [...base, ...laica.filter((p) => !seen.has(p.id))]
 
+  // Små runde produktbilleder der kører i loop i Shop-feltet
+  const shopLoopImgs = products
+    .map((p) => ({ src: p.imgSrc, name: p.name }))
+    .filter((x) => !!x.src)
+    .slice(0, 10)
+
   const solutions = [
     {
       slug: 'vandkande',
@@ -303,6 +309,25 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             <span className="relative inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base sm:text-lg transition-all group-hover:gap-3 shadow-lg shadow-green-500/30">
               {da ? 'Gå til shoppen' : 'Go to the shop'} <ArrowRight className="w-5 h-5" />
             </span>
+
+            {/* Små runde produktbilleder der glider i loop */}
+            {shopLoopImgs.length > 0 && (
+              <div
+                className="relative mt-8 sm:mt-10 -mx-6 sm:-mx-12 overflow-hidden"
+                style={{ maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}
+              >
+                <div className="flex w-max gap-4 sm:gap-5 animate-marquee">
+                  {[...shopLoopImgs, ...shopLoopImgs].map((img, i) => (
+                    <span
+                      key={i}
+                      className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white ring-2 ring-white/60 shadow-md overflow-hidden flex items-center justify-center p-2"
+                    >
+                      <img src={img.src} alt={img.name} width={120} height={120} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </Link>
         </div>
       </section>
