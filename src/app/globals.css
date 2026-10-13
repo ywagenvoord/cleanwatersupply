@@ -116,18 +116,23 @@
   .animate-\[shopText_5s_ease-in-out_infinite\] { animation: none; }
 }
 
-/* Live tidslinje: grønne prikker fyldes op som en timer fra trin 1 → 5 */
+/* Live tidslinje: grønne prikker fades blødt ind som en timer fra trin 1 → 5.
+   Blød maske-kant (feather) gør, at hver prik toner smooth i grønt. */
 @keyframes tlFill {
-  0%   { clip-path: inset(0 100% 0 0); }
-  85%  { clip-path: inset(0 0 0 0); }
-  100% { clip-path: inset(0 0 0 0); }
+  0%   { -webkit-mask-position: 100% 0; mask-position: 100% 0; }
+  85%  { -webkit-mask-position: 0% 0;   mask-position: 0% 0; }
+  100% { -webkit-mask-position: 0% 0;   mask-position: 0% 0; }
 }
 .tl-fill {
+  -webkit-mask-image: linear-gradient(to right, #000 0, #000 50%, transparent 58%);
+  mask-image: linear-gradient(to right, #000 0, #000 50%, transparent 58%);
+  -webkit-mask-size: 200% 100%; mask-size: 200% 100%;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
   animation: tlFill 7.5s cubic-bezier(.45,.05,.2,1) infinite;
-  will-change: clip-path;
+  will-change: mask-position;
 }
 @media (prefers-reduced-motion: reduce) {
-  .tl-fill { animation: none; clip-path: none; }
+  .tl-fill { animation: none; -webkit-mask-image: none; mask-image: none; }
 }
 @keyframes tlPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(58,173,74,0.45); }
