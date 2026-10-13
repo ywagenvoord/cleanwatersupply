@@ -128,7 +128,7 @@ const DETAIL_LINK_OVERRIDES: Record<string, string> = {
   'prod_V2wHIQrdoXx6RG':        '/vandkande-filtre/fast-disk', // FAST DISK
 }
 
-function ProductCard({ product, catColor, showErhverv }: { product: Product; catColor: string; showErhverv: boolean }) {
+function ProductCard({ product, catColor, showErhverv, catalog = false }: { product: Product; catColor: string; showErhverv: boolean; catalog?: boolean }) {
   const c = COLOR[catColor as keyof typeof COLOR] ?? COLOR.blue
   const CatIcon = CATEGORIES.find(c => c.key === product.category)?.icon ?? Droplets
   const { addItem } = useCart()
@@ -186,7 +186,7 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             Udsolgt
           </span>
         )}
-        {onSale && !soldOut && (
+        {onSale && !soldOut && !catalog && (
           <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
             Spar {saveAmount.toLocaleString('da-DK')} kr.
           </span>
@@ -265,6 +265,25 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
           </div>
         )}
 
+        {/* ── KATALOG (erhverv, ingen priser) ───────────────────── */}
+        {catalog ? (
+          <div className="mt-4 pt-4 border-t border-gray-100">
+            <Link
+              href={detailHref}
+              className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all"
+            >
+              Se produkt
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+            <Link
+              href="/kontakt"
+              className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
+            >
+              Få et tilbud
+            </Link>
+          </div>
+        ) : (
+        <>
         {/* ── PRICE ─────────────────────────────────────────────── */}
         <div className="mt-4 pt-4 border-t border-gray-100">
           <div className="min-h-[2.75rem] flex flex-col justify-end">
@@ -374,6 +393,8 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
             </Link>
           )}
         </div>
+        </>
+        )}
       </div>
     </div>
   )
@@ -381,9 +402,10 @@ function ProductCard({ product, catColor, showErhverv }: { product: Product; cat
 
 /* ─── PAGE ─────────────────────────────────────────────────────────────── */
 
-export default function ShopClient({ products: allProducts, showErhverv = false }: { products: Product[]; showErhverv?: boolean }) {
+export default function ShopClient({ products: allProducts, showErhverv = false, mode = 'shop' }: { products: Product[]; showErhverv?: boolean; mode?: 'shop' | 'catalog' }) {
   const { language } = useLanguage()
   const da = language === 'da'
+  const catalog = mode === 'catalog'
   const [activeCategory, setActiveCategory] = useState('alle')
 
   // Filtrér efter shop: kun-erhverv vises kun i erhvervs-shop, kun-privat kun i privat-shop.
@@ -423,15 +445,19 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-emerald-300 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest">
             <Droplets className="w-3.5 h-3.5" />
-            {da ? 'Vores produkter' : 'Our products'}
+            {catalog ? (da ? 'Til erhverv' : 'For business') : (da ? 'Vores produkter' : 'Our products')}
           </span>
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 sm:mb-5 leading-tight">
-            {da ? 'Shop Clean Water Supply' : 'Shop Clean Water Supply'}
+            {catalog ? (da ? 'Produkter til erhverv' : 'Products for business') : 'Shop Clean Water Supply'}
           </h1>
           <p className="text-sm sm:text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-            {da
-              ? 'Professionelle vandbehandlingsløsninger til private og erhvervskunder. Vælg den løsning der passer til dit behov.'
-              : 'Professional water treatment solutions for private and business customers. Choose the solution that suits your needs.'}
+            {catalog
+              ? (da
+                  ? 'Få overblik over hele vores sortiment til erhverv – fra medicinsk certificerede filtre til blødgøringsanlæg og professionelle anlæg. Kontakt os for pris og et uforpligtende tilbud.'
+                  : 'An overview of our full range for business – from medically certified filters to water softeners and professional systems. Contact us for pricing and a no-obligation quote.')
+              : (da
+                  ? 'Professionelle vandbehandlingsløsninger til private og erhvervskunder. Vælg den løsning der passer til dit behov.'
+                  : 'Professional water treatment solutions for private and business customers. Choose the solution that suits your needs.')}
           </p>
         </div>
       </section>
@@ -500,7 +526,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
               )}
             </p>
             <Link href="/kontakt" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
-              {da ? 'Få rådgivning' : 'Get advice'}
+              {catalog ? (da ? 'Få et tilbud' : 'Get a quote') : (da ? 'Få rådgivning' : 'Get advice')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -509,7 +535,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
             {filtered.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
-                <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} />
+                <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} catalog={catalog} />
               </ScrollReveal>
             ))}
           </div>
@@ -522,18 +548,24 @@ export default function ShopClient({ products: allProducts, showErhverv = false 
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-            {da ? 'Ikke sikker på hvad du har brug for?' : 'Not sure what you need?'}
+            {catalog
+              ? (da ? 'Skal vi finde den rette løsning til jer?' : 'Shall we find the right solution for you?')
+              : (da ? 'Ikke sikker på hvad du har brug for?' : 'Not sure what you need?')}
           </h2>
           <p className="text-blue-100/80 mb-9 text-lg">
-            {da
-              ? 'Vores specialister hjælper dig gratis med at finde den rigtige løsning til dit hjem eller din virksomhed.'
-              : 'Our specialists will help you find the right solution for your home or business — completely free.'}
+            {catalog
+              ? (da
+                  ? 'Fortæl os om jeres behov, så vender vi tilbage med en anbefaling og et uforpligtende tilbud med erhvervspriser.'
+                  : 'Tell us about your needs and we’ll get back with a recommendation and a no-obligation quote with business pricing.')
+              : (da
+                  ? 'Vores specialister hjælper dig gratis med at finde den rigtige løsning til dit hjem eller din virksomhed.'
+                  : 'Our specialists will help you find the right solution for your home or business — completely free.')}
           </p>
           <Link
             href="/kontakt"
             className="inline-flex items-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
           >
-            {da ? 'Få gratis rådgivning' : 'Get free advice'}
+            {catalog ? (da ? 'Få et tilbud' : 'Get a quote') : (da ? 'Få gratis rådgivning' : 'Get free advice')}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>
