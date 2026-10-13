@@ -484,18 +484,20 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                       // altid falder MELLEM prikker – hver hele prik lyser op, uden at blive skåret.
                       const pos = (j: number) => `${((j + 0.5) / DOTS) * 100}%`
                       return (
-                        <>
+                        // Prik-rækken rykkes ind fra enderne (left/right 8%), så de yderste
+                        // prikker ikke rammer ikonerne – men den blå linje rører stadig ikonerne.
+                        <span className="absolute top-1/2 -translate-y-1/2 left-[8%] right-[8%] h-4 block">
                           {/* Grå bane: alle prikker svagt synlige */}
                           {dots.map((_, j) => (
                             <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-200" style={{ left: pos(j) }} />
                           ))}
-                          {/* Grøn timer: fyldes op fra trin 1 → 5 (høj nok beholder, så prikker ikke klippes) */}
-                          <span className="tl-fill absolute left-0 right-0 top-1/2 -translate-y-1/2 h-4 block">
+                          {/* Grøn timer: fyldes op fra trin 1 → 5 */}
+                          <span className="tl-fill absolute inset-0 block">
                             {dots.map((_, j) => (
                               <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: pos(j) }} />
                             ))}
                           </span>
-                        </>
+                        </span>
                       )
                     })()}
                   </span>
