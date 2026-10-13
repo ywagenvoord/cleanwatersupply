@@ -290,7 +290,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
       <section className="py-12 sm:py-16 bg-[#f4f7fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Video med forskudt blå ramme bagved (som Imerco) */}
             <div className="relative order-1">
               <div className="pointer-events-none absolute -bottom-4 -right-4 w-full h-full rounded-2xl bg-[#284eff]" />
