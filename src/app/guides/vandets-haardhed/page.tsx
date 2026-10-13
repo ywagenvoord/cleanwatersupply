@@ -83,7 +83,7 @@ export default function Page() {
             Guide til vandhårdhed
           </span>
           <h1 className="reveal text-4xl sm:text-6xl font-extrabold text-[#0a2540] leading-[1.05] mb-5" style={{ animationDelay: '80ms' }}>
-            Hvor hårdt er <span className="bg-gradient-to-r from-[#284eff] to-[#5aa0ff] bg-clip-text text-transparent">dit vand?</span>
+            Hvor hårdt er dit vand?
           </h1>
           <p className="reveal text-lg sm:text-xl text-gray-600 leading-relaxed" style={{ animationDelay: '160ms' }}>
             Vandets hårdhed afgør, hvor meget kalk du kæmper med i hverdagen. Få de enkle svar på,
