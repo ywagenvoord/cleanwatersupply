@@ -625,6 +625,12 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
             {AREA_ORDER.map((area) => {
               const items = products.filter((p) => areaForProduct(p) === area)
               if (items.length === 0) return null
+              // Byt rundt på GlaSSmart og Germ-STOP-kanden i Drikkevand
+              if (area === 'drikkevand') {
+                const gi = items.findIndex((p) => /glassmart/i.test(p.name))
+                const hi = items.findIndex((p) => /germ-?stop vandfilterkande|predator/i.test(p.name))
+                if (gi > -1 && hi > -1) { const t = items[gi]; items[gi] = items[hi]; items[hi] = t }
+              }
               return (
                 <div key={area} id={area} className="scroll-mt-28">
                   <div className="mb-6 pb-4 border-b border-gray-200">
