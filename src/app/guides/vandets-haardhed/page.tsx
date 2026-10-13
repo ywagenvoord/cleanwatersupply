@@ -42,10 +42,10 @@ const FAQS: FAQ[] = [
 ]
 
 const HAARDHED = [
-  { range: '0–8 °dH', label: 'Blødt til middelhårdt', note: 'Få kalkgener. Blødgøring sjældent nødvendigt.' },
-  { range: '8–12 °dH', label: 'Middelhårdt', note: 'Begyndende kalk. Blødgøring kan overvejes.' },
-  { range: '12–18 °dH', label: 'Hårdt', note: 'Tydelige kalkgener. Blødgøring anbefales.' },
-  { range: 'Over 18 °dH', label: 'Meget hårdt', note: 'Kraftige aflejringer. Blødgøring betaler sig hurtigt.' },
+  { range: '0–8', unit: '°dH', label: 'Blødt til middelhårdt', note: 'Få kalkgener. Blødgøring sjældent nødvendigt.', color: '#3aad4a', bg: 'from-green-50', ring: 'ring-green-100' },
+  { range: '8–12', unit: '°dH', label: 'Middelhårdt', note: 'Begyndende kalk. Blødgøring kan overvejes.', color: '#f5b301', bg: 'from-amber-50', ring: 'ring-amber-100' },
+  { range: '12–18', unit: '°dH', label: 'Hårdt', note: 'Tydelige kalkgener. Blødgøring anbefales.', color: '#f97316', bg: 'from-orange-50', ring: 'ring-orange-100' },
+  { range: 'Over 18', unit: '°dH', label: 'Meget hårdt', note: 'Kraftige aflejringer. Blødgøring betaler sig hurtigt.', color: '#dc2626', bg: 'from-red-50', ring: 'ring-red-100' },
 ]
 
 const KORT = [
@@ -74,30 +74,43 @@ export default function Page() {
       <FaqJsonLd faqs={FAQS} />
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/40 to-white">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-sky-200/40 rounded-full blur-3xl" />
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10 text-center">
-          <span className="inline-flex items-center gap-2 bg-white text-[#0a2540] text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm">
+      <section className="relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/50 to-white">
+        <div className="pointer-events-none absolute -top-16 -right-10 w-[28rem] h-[28rem] bg-sky-300/30 rounded-full blur-3xl animate-[shopText_8s_ease-in-out_infinite]" />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 w-96 h-96 bg-[#3aad4a]/15 rounded-full blur-3xl" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-14 text-center">
+          <span className="reveal inline-flex items-center gap-2 bg-white text-[#0a2540] text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm" style={{ animationDelay: '0ms' }}>
             <Gauge className="w-3.5 h-3.5 text-[#3aad4a]" />
             Guide til vandhårdhed
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0a2540] mb-4">Hvor hårdt er dit vand?</h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Vandets hårdhed afgør, hvor meget kalk du kæmper med i hverdagen. Her får du de enkle svar på,
-            hvad °dH betyder, hvordan du finder din hårdhed, og hvornår det kan betale sig at gøre noget.
+          <h1 className="reveal text-4xl sm:text-6xl font-extrabold text-[#0a2540] leading-[1.05] mb-5" style={{ animationDelay: '80ms' }}>
+            Hvor hårdt er <span className="bg-gradient-to-r from-[#284eff] to-[#3aad4a] bg-clip-text text-transparent">dit vand?</span>
+          </h1>
+          <p className="reveal text-lg sm:text-xl text-gray-600 leading-relaxed" style={{ animationDelay: '160ms' }}>
+            Vandets hårdhed afgør, hvor meget kalk du kæmper med i hverdagen. Få de enkle svar på,
+            hvad °dH betyder, hvordan du finder din hårdhed – og hvornår det kan betale sig at gøre noget.
           </p>
+          <div className="reveal flex flex-wrap gap-3 justify-center mt-8" style={{ animationDelay: '240ms' }}>
+            <a href="#opslag" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">
+              <MapPin className="w-4 h-4" /> Slå dit postnummer op
+            </a>
+            <a href="#skala" className="inline-flex items-center gap-2 bg-white text-[#0a2540] ring-1 ring-blue-100 hover:ring-blue-200 px-7 py-3.5 rounded-full font-bold text-sm transition-all">
+              Se hårdhedsskalaen
+            </a>
+          </div>
         </div>
       </section>
 
       {/* KORT FORTALT */}
-      <section className="py-10">
+      <section className="py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-5">Kort fortalt</h2>
-          <div className="grid sm:grid-cols-2 gap-3">
-            {KORT.map((t) => (
-              <div key={t} className="flex items-start gap-3 bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-4">
-                <CheckCircle2 className="w-5 h-5 text-[#3aad4a] shrink-0 mt-0.5" />
-                <p className="text-sm text-gray-700 leading-relaxed">{t}</p>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540] mb-6">Kort fortalt</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {KORT.map((t, i) => (
+              <div key={t} className="reveal flex items-start gap-4 bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm hover:shadow-md transition-shadow p-5" style={{ animationDelay: `${i * 90}ms` }}>
+                <span className="w-9 h-9 rounded-xl bg-[#3aad4a]/10 text-[#3aad4a] flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="w-5 h-5" />
+                </span>
+                <p className="text-[15px] text-gray-700 leading-relaxed">{t}</p>
               </div>
             ))}
           </div>
@@ -105,14 +118,21 @@ export default function Page() {
       </section>
 
       {/* HÅRDHEDSSKALA */}
-      <section className="py-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-5">Hårdhedsskalaen</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-            {HAARDHED.map((h) => (
-              <div key={h.range} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5">
-                <p className="text-lg font-extrabold text-[#284eff]">{h.range}</p>
-                <p className="font-bold text-[#0a2540] text-sm mt-1">{h.label}</p>
+      <section id="skala" className="py-12 scroll-mt-24 bg-gradient-to-b from-white to-sky-50/60">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-9">
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Fra blødt til meget hårdt</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540] mt-2">Hårdhedsskalaen</h2>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {HAARDHED.map((h, i) => (
+              <div key={h.range} className={`reveal relative bg-gradient-to-b ${h.bg} to-white rounded-3xl ring-1 ${h.ring} shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all p-5 pt-6 overflow-hidden`} style={{ animationDelay: `${i * 110}ms` }}>
+                <span className="absolute top-0 left-0 right-0 h-1.5" style={{ backgroundColor: h.color }} />
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl sm:text-4xl font-extrabold" style={{ color: h.color }}>{h.range}</span>
+                  <span className="text-sm font-bold text-gray-400">{h.unit}</span>
+                </div>
+                <p className="font-extrabold text-[#0a2540] text-sm mt-2">{h.label}</p>
                 <p className="text-sm text-gray-600 mt-1.5 leading-relaxed">{h.note}</p>
               </div>
             ))}
@@ -121,9 +141,9 @@ export default function Page() {
       </section>
 
       {/* POSTNUMMER-OPSLAG */}
-      <section className="py-8">
+      <section id="opslag" className="py-12 scroll-mt-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-2">Hvor hårdt er vandet, hvor du bor?</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540] mb-2">Hvor hårdt er vandet, hvor du bor?</h2>
           <p className="text-gray-600 mb-6 text-sm max-w-2xl leading-relaxed">
             Groft sagt er vandet blødest i Vestjylland og bliver hårdere, jo længere mod øst man kommer –
             hårdest på Sjælland og øerne. Slå dit postnummer op og få et vejledende bud på hårdheden hos dig.
