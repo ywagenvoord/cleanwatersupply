@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin, Phone, Mail } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin, Phone, Mail, ChevronDown } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
@@ -596,36 +596,57 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               {da ? 'Find den rette hjælp her – ring eller skriv direkte til den af os, der kan hjælpe dig bedst.' : 'Find the right help here – call or email the person who can help you best.'}
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <div className="max-w-3xl mx-auto space-y-3">
             {[
-              { name: 'Kenneth', role: da ? 'Stifter & indehaver' : 'Founder & Owner', photo: '/images/team-kenneth-sq.jpg', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk' },
-              { name: 'Kristoffer', role: da ? 'Tekniker & rejsemontør' : 'Technician & Field Service', photo: '/images/team-kristoffer-sq.jpg', phone: '+45 22 32 01 56', email: 'kristoffer@cleanwatersupply.dk' },
-              { name: 'Camilla', role: da ? 'Salg & Marketing Manager' : 'Sales & Marketing Manager', photo: '/images/team-camilla-sq.jpg', phone: '+45 40 73 70 53', email: 'caj@cleanwatersupply.dk' },
-              { name: 'Heidi', role: da ? 'Bogholder' : 'Accountant', photo: '/images/team-heidi-sq.jpg', phone: null, email: 'bogholderi@cleanwatersupply.dk' },
+              {
+                q: 'Skal du bruge hjælp inden for vores bogholderi?',
+                person: 'Heidi', role: 'Bogholder', photo: '/images/team-heidi-sq.jpg',
+                lead: 'Kontakt Heidi på mail.', phone: null, email: 'bogholderi@cleanwatersupply.dk',
+              },
+              {
+                q: 'Skal du bruge teknisk info, viden, tekniske spørgsmål eller installation?',
+                person: 'Kristoffer', role: 'Tekniker & rejsemontør', photo: '/images/team-kristoffer-sq.jpg',
+                lead: 'Ring eller send en mail til Kristoffer.', phone: '+45 22 32 01 56', email: 'kristoffer@cleanwatersupply.dk',
+              },
+              {
+                q: 'Skal du bruge viden inden for salg, montering, tekniske spørgsmål – eller noget helt andet?',
+                person: 'Kenneth', role: 'Stifter & indehaver', photo: '/images/team-kenneth-sq.jpg',
+                lead: 'Ring eller send en mail til Kenneth.', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk',
+              },
+              {
+                q: 'Skal du bruge hjælp inden for indkøb, salg, hjemmeside, produkter eller marketing?',
+                person: 'Camilla', role: 'Salg & Marketing Manager', photo: '/images/team-camilla-sq.jpg',
+                lead: 'Ring eller send en mail til Camilla.', phone: '+45 40 73 70 53', email: 'caj@cleanwatersupply.dk',
+              },
             ].map((m) => (
-              <div key={m.name} className="group bg-white rounded-3xl ring-1 ring-blue-100 shadow-sm hover:shadow-lg transition-all p-5 text-center">
-                <div className="relative w-24 h-24 mx-auto rounded-full overflow-hidden ring-2 ring-white shadow-md">
-                  <img src={m.photo} alt={`${m.name} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover" />
+              <details key={m.person} className="group bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm open:shadow-md transition-shadow overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 cursor-pointer select-none list-none font-bold text-[#0a2540] hover:bg-blue-50/40 transition-colors">
+                  <span>{m.q}</span>
+                  <ChevronDown className="w-5 h-5 text-[#284eff] shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="px-5 sm:px-6 pb-5 border-t border-blue-50 pt-4 flex items-center gap-4">
+                  <span className="relative w-14 h-14 shrink-0 rounded-full overflow-hidden ring-2 ring-white shadow">
+                    <img src={m.photo} alt={`${m.person} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[15px] text-gray-700 leading-relaxed">
+                      <span className="font-bold text-[#0a2540]">{m.person}</span> · <span className="text-gray-500">{m.role}</span>
+                    </p>
+                    <p className="text-sm text-gray-600 mt-0.5">{m.lead}</p>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
+                      {m.phone && (
+                        <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors">
+                          <Phone className="w-3.5 h-3.5 text-[#284eff]" /> {m.phone}
+                        </a>
+                      )}
+                      <a href={`mailto:${m.email}`} className="inline-flex items-center gap-1.5 text-sm text-[#284eff] hover:underline break-all">
+                        <Mail className="w-3.5 h-3.5 shrink-0" /> {m.email}
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="mt-4 font-extrabold text-[#0a2540]">{m.name}</h3>
-                <p className="text-sm text-gray-500 mt-0.5 mb-3">{m.role}</p>
-                <div className="space-y-1.5">
-                  {m.phone && (
-                    <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="flex items-center justify-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors">
-                      <Phone className="w-3.5 h-3.5 text-[#284eff]" /> {m.phone}
-                    </a>
-                  )}
-                  <a href={`mailto:${m.email}`} className="flex items-center justify-center gap-1.5 text-xs text-gray-500 hover:text-[#284eff] transition-colors break-all">
-                    <Mail className="w-3.5 h-3.5 text-[#284eff] shrink-0" /> {m.email}
-                  </a>
-                </div>
-              </div>
+              </details>
             ))}
-          </div>
-          <div className="text-center mt-9">
-            <Link href="/kontakt" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">
-              {da ? 'Til kontaktsiden' : 'Go to contact page'} <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>
