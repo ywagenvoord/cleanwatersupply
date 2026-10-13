@@ -478,7 +478,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                   {/* Gennemgående linje + grønne prikker der løber fra trin 1 → 5 (desktop) */}
                   {/* Fire segmenter (1→2, 2→3, 3→4, 4→5) med STIGENDE antal prikker */}
                   {[0, 1, 2, 3].map((seg) => {
-                    const count = seg + 1 // 1, 2, 3, 4 prikker – bygger op som en proces
+                    const count = (seg + 1) * 3 // 3, 6, 9, 12 prikker – stigende funktion mod trin 5
                     const cycle = 3.2
                     return (
                       <span
