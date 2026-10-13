@@ -270,16 +270,10 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           <div className="mt-4 pt-4 border-t border-gray-100">
             <Link
               href={detailHref}
-              className="w-full inline-flex items-center justify-center gap-2 border-2 border-[#0a2540] text-[#0a2540] hover:bg-[#0a2540] hover:text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-3 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
             >
-              Se produkt
+              Læs mere
               <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-            <Link
-              href="/kontakt"
-              className="mt-2 w-full inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white py-2.5 px-4 rounded-xl text-sm font-bold transition-all hover:shadow-md hover:-translate-y-0.5"
-            >
-              Få et tilbud
             </Link>
           </div>
         ) : (
