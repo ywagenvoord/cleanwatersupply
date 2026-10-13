@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin, Phone, Mail } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
@@ -586,37 +586,45 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── MEDARBEJDERE ──────────────────────────────────────── */}
+      {/* ─── SKAL DU BRUGE HJÆLP? (MEDARBEJDERE) ───────────────── */}
       <section className="py-12 sm:py-20 bg-white border-t border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{da ? 'Menneskerne bag' : 'The people behind'}</span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] mt-2.5">{da ? 'Vores medarbejdere' : 'Our team'}</h2>
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{da ? 'Vi er her for dig' : 'We’re here for you'}</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] mt-2.5">{da ? 'Skal du bruge hjælp?' : 'Need a hand?'}</h2>
             <p className="text-gray-600 text-base sm:text-lg mt-3 leading-relaxed">
-              {da
-                ? 'Et lille, dedikeret team, der brænder for rent og trygt vand – altid klar til at hjælpe dig med den rette løsning.'
-                : 'A small, dedicated team passionate about clean, safe water – always ready to help you find the right solution.'}
+              {da ? 'Find den rette hjælp her – ring eller skriv direkte til den af os, der kan hjælpe dig bedst.' : 'Find the right help here – call or email the person who can help you best.'}
             </p>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {[
-              { name: 'Kenneth', role: da ? 'Stifter & indehaver' : 'Founder & Owner', photo: '/images/team-kenneth-sq.jpg' },
-              { name: 'Kristoffer', role: da ? 'Tekniker & rejsemontør' : 'Technician & Field Service', photo: '/images/team-kristoffer-sq.jpg' },
-              { name: 'Camilla', role: da ? 'Salg & Marketing Manager' : 'Sales & Marketing Manager', photo: '/images/team-camilla-sq.jpg' },
-              { name: 'Heidi', role: da ? 'Bogholder' : 'Accountant', photo: '/images/team-heidi-sq.jpg' },
+              { name: 'Kenneth', role: da ? 'Stifter & indehaver' : 'Founder & Owner', photo: '/images/team-kenneth-sq.jpg', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk' },
+              { name: 'Kristoffer', role: da ? 'Tekniker & rejsemontør' : 'Technician & Field Service', photo: '/images/team-kristoffer-sq.jpg', phone: '+45 22 32 01 56', email: 'kristoffer@cleanwatersupply.dk' },
+              { name: 'Camilla', role: da ? 'Salg & Marketing Manager' : 'Sales & Marketing Manager', photo: '/images/team-camilla-sq.jpg', phone: '+45 40 73 70 53', email: 'caj@cleanwatersupply.dk' },
+              { name: 'Heidi', role: da ? 'Bogholder' : 'Accountant', photo: '/images/team-heidi-sq.jpg', phone: null, email: 'bogholderi@cleanwatersupply.dk' },
             ].map((m) => (
-              <div key={m.name} className="group text-center">
-                <div className="relative aspect-square rounded-3xl overflow-hidden ring-1 ring-blue-100 shadow-sm group-hover:shadow-lg transition-all">
-                  <img src={m.photo} alt={`${m.name} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div key={m.name} className="group bg-white rounded-3xl ring-1 ring-blue-100 shadow-sm hover:shadow-lg transition-all p-5 text-center">
+                <div className="relative w-24 h-24 mx-auto rounded-full overflow-hidden ring-2 ring-white shadow-md">
+                  <img src={m.photo} alt={`${m.name} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover" />
                 </div>
                 <h3 className="mt-4 font-extrabold text-[#0a2540]">{m.name}</h3>
-                <p className="text-sm text-gray-500 mt-0.5">{m.role}</p>
+                <p className="text-sm text-gray-500 mt-0.5 mb-3">{m.role}</p>
+                <div className="space-y-1.5">
+                  {m.phone && (
+                    <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="flex items-center justify-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors">
+                      <Phone className="w-3.5 h-3.5 text-[#284eff]" /> {m.phone}
+                    </a>
+                  )}
+                  <a href={`mailto:${m.email}`} className="flex items-center justify-center gap-1.5 text-xs text-gray-500 hover:text-[#284eff] transition-colors break-all">
+                    <Mail className="w-3.5 h-3.5 text-[#284eff] shrink-0" /> {m.email}
+                  </a>
+                </div>
               </div>
             ))}
           </div>
           <div className="text-center mt-9">
-            <Link href="/om-os" className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] hover:text-[#1b3fd0]">
-              {da ? 'Læs mere om os' : 'Learn more about us'} <ArrowRight className="w-4 h-4" />
+            <Link href="/kontakt" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">
+              {da ? 'Til kontaktsiden' : 'Go to contact page'} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
