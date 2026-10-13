@@ -365,7 +365,9 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10] bg-white p-6 sm:p-8"
                 images={[
                   { src: '/images/kande-carmen.jpg', alt: 'Carmen filterkande' },
+                  { src: '/images/filtre-til-vandkande.jpg', alt: 'Bi-flux® filtre til vandkanden' },
                   { src: '/images/kande-germ-stop.png', alt: 'Germ-STOP filterkande' },
+                  { src: '/images/germ-stop-filter-1.jpg', alt: 'Germ-STOP filter' },
                   { src: '/images/glassmart-flaske.png', alt: 'GlaSSmart glas-filterkaraffel' },
                 ]}
               />
