@@ -110,18 +110,19 @@ const AREA_INTRO: Record<Area, string> = {
   hocl: 'Kirkmayer ECA-/HOCl-anlæg – kemikaliefri desinfektion.',
   blodgoring: 'Blødgøringsanlæg og tilbehør, der fjerner kalk og beskytter installation og hvidevarer.',
 }
-function areaForProduct(p: Product): Area {
+// Et produkt kan høre til flere områder (fx filterhus/kulblok under både Drikkevand og Bakteriesikring)
+function areasForProduct(p: Product): Area[] {
   switch (p.category) {
-    case 'vandkande': return 'drikkevand'
-    case 'blosgoringsanlaeg': return 'blodgoring'
-    case 'anlaeg': return 'hocl'
+    case 'vandkande': return ['drikkevand']
+    case 'blosgoringsanlaeg': return ['blodgoring']
+    case 'anlaeg': return ['hocl']
     case 'filtre': {
       const n = p.name.toLowerCase()
-      if (/hygienesiphon|inline-filter|\bil \d|il dent/.test(n)) return 'legionella'
-      if (/dualstage|kulblok|filter housing/.test(n)) return 'drikkevand'
-      return 'bakteriesikring'
+      if (/hygienesiphon|inline-filter|\bil \d|il dent/.test(n)) return ['legionella']
+      if (/dualstage|kulblok|filter housing/.test(n)) return ['drikkevand', 'bakteriesikring']
+      return ['bakteriesikring']
     }
-    default: return 'bakteriesikring' // vandhane + bruser (Baclyser m.fl.)
+    default: return ['bakteriesikring'] // vandhane + bruser (Baclyser m.fl.)
   }
 }
 
@@ -623,7 +624,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
             {AREA_ORDER.map((area) => {
-              const items = products.filter((p) => areaForProduct(p) === area)
+              const items = products.filter((p) => areasForProduct(p).includes(area))
               if (items.length === 0) return null
               // Byt rundt på GlaSSmart og Germ-STOP-kanden i Drikkevand
               if (area === 'drikkevand') {
