@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import Providers from '@/components/Providers'
 import Navigation from '@/components/Navigation'
@@ -95,12 +94,6 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ClerkProvider
-      signInUrl="/min-konto/login"
-      signUpUrl="/min-konto/login"
-      signInFallbackRedirectUrl="/min-konto"
-      signUpFallbackRedirectUrl="/min-konto"
-    >
     <html lang="da-DK">
       <head>
         {/* DNS prefetch + preconnect for critical third-party origins */}
@@ -124,6 +117,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Providers>
       </body>
     </html>
-    </ClerkProvider>
   )
 }

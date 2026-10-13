@@ -7,8 +7,6 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import RecommendedProducts from '@/components/RecommendedProducts'
 import RetligGaranti from '@/components/RetligGaranti'
-import FakturaCheckout from './FakturaCheckout'
-import { useB2bLoggedIn } from '@/lib/useB2b'
 
 export default function CartPage() {
   return (
@@ -26,8 +24,8 @@ function CartPageContent() {
   const success = searchParams.get('success') === 'true'
   const ordreSendt = searchParams.get('ordre') === 'sendt'
 
-  // Erhvervskunde (demo-login) → bestil på faktura i stedet for Stripe
-  const b2b = useB2bLoggedIn()
+  // Login er fjernet – alle kunder checker ud via Stripe (B2C).
+  const b2b = false
 
   // Clear cart after successful payment / faktura-ordre
   useEffect(() => {
@@ -254,9 +252,6 @@ function CartPageContent() {
                 <RetligGaranti />
               </div>
             </div>
-
-            {/* ─── ERHVERV: BESTIL PÅ FAKTURA ──────────────────────── */}
-            {b2b && <FakturaCheckout items={items} subtotal={subtotal} />}
 
             {/* ─── RECOMMENDED PRODUCTS (UPSELL) ───────────────────── */}
             <RecommendedProducts variant="grid" count={3} />

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@clerk/nextjs'
 import { Home, Building2, X } from 'lucide-react'
 import { writeAudience } from '@/lib/useAudience'
 
@@ -12,16 +11,8 @@ const SESSION_SEEN_KEY = 'cws-audience-modal-shown'
 export default function AudienceModal() {
   const [open, setOpen] = useState(false)
   const router = useRouter()
-  const { isSignedIn, isLoaded } = useAuth()
 
   useEffect(() => {
-    if (!isLoaded) return
-    // Logget ind som erhverv → altid erhverv, aldrig mulighed for at vælge 'Privat'.
-    if (isSignedIn) {
-      writeAudience('erhverv')
-      setOpen(false)
-      return
-    }
     // Vis vælgeren når man LANDER på forsiden – én gang per browsersession, så
     // alle der kommer ind via fx et Google-link ser, at der både er Privat og
     // Erhverv. Den vises ikke igen ved intern navigation i samme session, og
@@ -31,7 +22,7 @@ export default function AudienceModal() {
       if (sessionStorage.getItem(SESSION_SEEN_KEY)) return
     } catch { /* sessionStorage utilgængelig – vis alligevel */ }
     setOpen(true)
-  }, [isLoaded, isSignedIn])
+  }, [])
 
   // Marker som vist i denne session + flag så quiz-popup'en kan vente på os.
   useEffect(() => {
@@ -43,11 +34,11 @@ export default function AudienceModal() {
   }, [open])
 
   useEffect(() => {
-    // Logo-klik åbner vælgeren – men aldrig for indloggede erhvervskunder.
-    const handler = () => { if (!isSignedIn) setOpen(true) }
+    // Logo-klik åbner vælgeren.
+    const handler = () => setOpen(true)
     window.addEventListener('cws-open-audience', handler)
     return () => window.removeEventListener('cws-open-audience', handler)
-  }, [isSignedIn])
+  }, [])
 
   const choose = (value: 'privat' | 'erhverv') => {
     writeAudience(value)

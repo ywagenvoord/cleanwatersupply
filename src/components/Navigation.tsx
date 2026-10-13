@@ -6,8 +6,6 @@ import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
 import { useAudience } from '@/lib/useAudience'
-import { useB2bLoggedIn } from '@/lib/useB2b'
-import { useUser } from '@clerk/nextjs'
 import { Menu, X, ChevronDown, ShoppingBag, Home, Building2, Wrench, ArrowRight } from 'lucide-react'
 import { isGratisMonteringActive, GRATIS_MONTERING } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
@@ -18,13 +16,6 @@ export default function Navigation() {
   const pathname = usePathname()
   const router = useRouter()
   const [audience, setAudience] = useAudience()
-  const b2bLoggedIn = useB2bLoggedIn()
-  const { user } = useUser()
-  const firmaName =
-    ((user?.unsafeMetadata as any)?.firma?.firmanavn as string) ||
-    ((user?.publicMetadata as any)?.firma?.firmanavn as string) ||
-    user?.firstName ||
-    'Erhvervskonto'
   const [mobileOpen, setMobileOpen] = useState(false)
   const [audOpen, setAudOpen] = useState(false)
   const [mobileSub, setMobileSub] = useState<string | null>(null)
@@ -179,14 +170,6 @@ export default function Navigation() {
 
           {/* Right side */}
           <div className="hidden lg:flex items-center gap-3">
-            {audience === 'erhverv' && !b2bLoggedIn && (
-              <Link
-                href="/min-konto/login"
-                className="whitespace-nowrap px-4 py-2 rounded-full border border-white/25 text-white/85 hover:text-white hover:bg-white/10 text-sm font-semibold transition-colors"
-              >
-                Log ind
-              </Link>
-            )}
             <Link
               href={shopHref}
               className="px-5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
@@ -207,8 +190,7 @@ export default function Navigation() {
                 </span>
               )}
             </button>
-            {/* Audience switcher – skjules når man er logget ind som erhverv */}
-            {!b2bLoggedIn && (
+            {/* Audience switcher */}
             <div className="relative">
               <button
                 onClick={() => setAudOpen(!audOpen)}
@@ -237,20 +219,6 @@ export default function Navigation() {
                 </div>
               )}
             </div>
-            )}
-            {/* Firmanavn – klikbar chip helt til højre, fører til Min konto */}
-            {b2bLoggedIn && (
-              <Link
-                href="/min-konto"
-                title={`${firmaName} – gå til min konto`}
-                className="flex items-center gap-2 pl-3 ml-1 border-l border-white/15 group"
-              >
-                <span className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 group-hover:bg-white/10 border border-white/10 group-hover:border-[#3aad4a]/40 text-white/90 group-hover:text-white text-sm font-semibold whitespace-nowrap max-w-[200px] transition-colors">
-                  <Building2 className="w-4 h-4 text-[#3aad4a] shrink-0" />
-                  <span className="truncate">{firmaName}</span>
-                </span>
-              </Link>
-            )}
           </div>
 
           {/* Mobile cart + menu */}
@@ -340,15 +308,6 @@ export default function Navigation() {
               </Link>
             )
           ))}
-          {audience === 'erhverv' && !b2bLoggedIn && (
-            <Link
-              href="/min-konto/login"
-              onClick={() => setMobileOpen(false)}
-              className="block border border-white/25 text-white/85 text-center px-6 py-3 rounded-full text-sm font-semibold mt-3"
-            >
-              Log ind
-            </Link>
-          )}
           <Link
             href={shopHref}
             onClick={() => setMobileOpen(false)}
@@ -356,36 +315,23 @@ export default function Navigation() {
           >
             {t('nav.shop')}
           </Link>
-          {b2bLoggedIn ? (
-            <div className="pt-4 border-t border-white/10">
-              <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Logget ind som</p>
-              <Link
-                href="/min-konto"
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-2 px-1 text-white font-semibold"
+          <div className="pt-4 border-t border-white/10">
+            <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Jeg handler som</p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => { chooseAudience('privat'); setMobileOpen(false) }}
+                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'privat' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
               >
-                <Building2 className="w-4 h-4 text-[#3aad4a]" /> {firmaName}
-              </Link>
+                <Home className="w-4 h-4" /> Privat
+              </button>
+              <button
+                onClick={() => { chooseAudience('erhverv'); setMobileOpen(false) }}
+                className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'erhverv' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
+              >
+                <Building2 className="w-4 h-4" /> Erhverv
+              </button>
             </div>
-          ) : (
-            <div className="pt-4 border-t border-white/10">
-              <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Jeg handler som</p>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => { chooseAudience('privat'); setMobileOpen(false) }}
-                  className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'privat' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
-                >
-                  <Home className="w-4 h-4" /> Privat
-                </button>
-                <button
-                  onClick={() => { chooseAudience('erhverv'); setMobileOpen(false) }}
-                  className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${audience === 'erhverv' ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
-                >
-                  <Building2 className="w-4 h-4" /> Erhverv
-                </button>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       )}
     </nav>

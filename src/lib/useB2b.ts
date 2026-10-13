@@ -1,12 +1,10 @@
 'use client'
 
-import { useAuth } from '@clerk/nextjs'
-
 /**
- * Login-status for erhvervskunder – nu baseret på Clerk (rigtige konti).
- * Bruges af menu, kurv, erhvervsshop-gate og kontoside.
+ * Login er fjernet fra sitet. Der er ikke længere indloggede erhvervskunder,
+ * så denne returnerer altid false. Alle priser vises som privatpriser (inkl. moms).
+ * (Bevaret som funktion, så eksisterende kald ikke skal ændres.)
  */
 export function useB2bLoggedIn(): boolean {
-  const { isSignedIn } = useAuth()
-  return isSignedIn === true
+  return false
 }
