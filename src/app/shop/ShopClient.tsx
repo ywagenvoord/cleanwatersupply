@@ -480,7 +480,9 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                     {(() => {
                       const DOTS = 16
                       const dots = Array.from({ length: DOTS })
-                      const pos = (j: number) => `${(j / (DOTS - 1)) * 100}%`
+                      // Prikker placeres i midten af hvert step-interval, så clip-kanten
+                      // altid falder MELLEM prikker – hver hele prik lyser op, uden at blive skåret.
+                      const pos = (j: number) => `${((j + 0.5) / DOTS) * 100}%`
                       return (
                         <>
                           {/* Grå bane: alle prikker svagt synlige */}
