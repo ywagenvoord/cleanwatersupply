@@ -266,7 +266,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group relative shrink-0 w-36 sm:w-auto sm:flex-1 snap-start aspect-[3/4] rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
+                className="group relative shrink-0 w-36 h-48 sm:w-auto sm:flex-1 sm:h-52 snap-start rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
               >
                 <img
                   src={img}
