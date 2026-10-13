@@ -137,10 +137,10 @@ export default function Page() {
             </div>
             <div className="relative">
               <div className="pointer-events-none absolute -bottom-4 -right-4 w-full h-full rounded-3xl bg-[#284eff]/15" />
-              <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3]">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/3] bg-white">
                 <img
-                  src="/images/area-det-private-hjem.jpg"
-                  alt="Rent, bakteriefrit vand i badet"
+                  src="/images/baclyser-neo-tr.jpg"
+                  alt="Baclyser® Legionella-filter monteret på vandhanen"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
