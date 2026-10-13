@@ -121,8 +121,8 @@ export default function Page() {
       <section id="skala" className="py-12 scroll-mt-24 bg-gradient-to-b from-white to-sky-50/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-9">
-            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">Fra blødt til meget hårdt</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540] mt-2">Hårdhedsskalaen</h2>
+            <span className="text-xs sm:text-sm font-black text-[#284eff] uppercase tracking-widest">Fra blødt til meget hårdt</span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-[#0a2540] mt-2.5">Hårdhedsskalaen</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {HAARDHED.map((h, i) => (
