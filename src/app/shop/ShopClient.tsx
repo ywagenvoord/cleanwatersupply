@@ -98,7 +98,7 @@ type Area = 'drikkevand' | 'bakteriesikring' | 'legionella' | 'hocl' | 'blodgori
 const AREA_ORDER: Area[] = ['drikkevand', 'bakteriesikring', 'legionella', 'hocl', 'blodgoring']
 const AREA_LABELS: Record<Area, string> = {
   drikkevand: 'Vandfilterkander',
-  bakteriesikring: 'Bakteriesikring',
+  bakteriesikring: 'Bakteriefiltre',
   legionella: 'Legionellaanlæg',
   hocl: 'HOCl / ECA-anlæg',
   blodgoring: 'Blødgøring & kalk',
