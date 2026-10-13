@@ -266,12 +266,9 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group shrink-0 w-36 sm:w-auto sm:flex-1 snap-start"
+                className="group shrink-0 w-48 sm:w-auto sm:flex-1 snap-start rounded-2xl bg-gray-50 ring-1 ring-gray-100 overflow-hidden hover:shadow-lg hover:ring-gray-200 transition-all duration-300"
               >
-                <h3 className="text-center font-bold text-xs sm:text-sm text-[#0a2540] group-hover:text-[#284eff] leading-tight mb-2 min-h-[2.5rem] flex items-end justify-center transition-colors">
-                  {title}
-                </h3>
-                <div className="relative h-40 sm:h-48 rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 group-hover:shadow-xl transition-all duration-300">
+                <div className="relative h-28 sm:h-32 overflow-hidden">
                   <img
                     src={img}
                     alt={title}
@@ -280,6 +277,9 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                     }`}
                   />
                 </div>
+                <h3 className="text-center font-semibold text-xs sm:text-sm text-[#0a2540] group-hover:text-[#284eff] leading-tight px-2 py-3 transition-colors">
+                  {title}
+                </h3>
               </Link>
             ))}
           </div>
