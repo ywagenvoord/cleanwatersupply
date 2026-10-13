@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
@@ -284,6 +284,36 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── GUIDE-LINK: VANDHÅRDHED ────────────────────────────── */}
+      <section className="py-6 sm:py-10 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/guides/vandets-haardhed"
+            className="group flex flex-col sm:flex-row sm:items-center gap-5 rounded-3xl bg-gradient-to-br from-sky-50 to-blue-100/50 ring-1 ring-blue-100 hover:ring-blue-200 hover:shadow-lg transition-all p-6 sm:p-8"
+          >
+            <span className="w-14 h-14 shrink-0 rounded-2xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center shadow-sm">
+              <Gauge className="w-7 h-7" />
+            </span>
+            <div className="flex-1">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-black text-[#284eff] uppercase tracking-widest mb-1">
+                <MapPin className="w-3.5 h-3.5" /> {da ? 'Guide' : 'Guide'}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540] leading-snug">
+                {da ? 'Hvor hårdt er dit vand?' : 'How hard is your water?'}
+              </h2>
+              <p className="text-sm sm:text-[15px] text-gray-600 mt-1 leading-relaxed">
+                {da
+                  ? 'Slå dit postnummer op og se den vejledende hårdhed, hvor du bor – og hvilke løsninger der passer.'
+                  : 'Look up your postcode and see the water hardness where you live – and which solutions fit.'}
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 bg-[#284eff] group-hover:bg-[#1b3fd0] text-white px-6 py-3 rounded-full font-bold text-sm transition-all group-hover:gap-3 shrink-0 w-fit">
+              {da ? 'Slå dit postnummer op' : 'Look up your postcode'} <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
         </div>
       </section>
 
