@@ -44,7 +44,7 @@ export default function FadeSlideshow({
           {images.map((_, i) => (
             <span
               key={i}
-              className={`h-1.5 rounded-full transition-all ${i === active ? 'w-5 bg-white' : 'w-1.5 bg-white/60'}`}
+              className={`h-1.5 rounded-full transition-all ${i === active ? 'w-5 bg-[#0a2540]' : 'w-1.5 bg-[#0a2540]/30'}`}
             />
           ))}
         </div>

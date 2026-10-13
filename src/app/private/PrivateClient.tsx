@@ -9,6 +9,7 @@ import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import NewsletterPopup from '@/components/NewsletterPopup'
+import FadeSlideshow from '@/components/FadeSlideshow'
 
 function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: string; body: string; da: boolean }) {
   const [open, setOpen] = useState(false)
@@ -356,21 +357,18 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               </Link>
             </div>
 
-            {/* Video med forskudt grøn ramme bagved (til højre på desktop) */}
-            <div className="relative order-1 lg:order-2 mx-auto w-full max-w-sm lg:max-w-md">
+            {/* Skiftende kande-billeder med forskudt grøn ramme bagved (til højre på desktop) */}
+            <div className="relative order-1 lg:order-2">
               <div className="pointer-events-none absolute -bottom-4 -left-4 w-full h-full rounded-2xl bg-[#3aad4a]" />
-              <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[4/5]">
-                <video
-                  src="/videos/kande-promo.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster="/images/kande-promo-poster.jpg"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
+              <FadeSlideshow
+                fit="contain"
+                className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10] bg-white p-6 sm:p-8"
+                images={[
+                  { src: '/images/kande-carmen.jpg', alt: 'Carmen filterkande' },
+                  { src: '/images/kande-mikroplastik-stop.jpg', alt: 'Germ-STOP filterkande' },
+                  { src: '/images/glassmart-3.jpg', alt: 'GlaSSmart glas-filterkaraffel' },
+                ]}
+              />
             </div>
           </div>
         </div>
