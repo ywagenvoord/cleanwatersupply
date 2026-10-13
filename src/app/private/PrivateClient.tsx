@@ -335,7 +335,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       {/* ─── DRIKKEVAND / KANDER-PROMO (spejlvendt) ─────────────── */}
       <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Tekst (til venstre på desktop) */}
             <div className="order-2 lg:order-1">
               <span className="inline-flex items-center gap-2 text-[#3aad4a] text-xs font-bold uppercase tracking-widest mb-3">
