@@ -124,7 +124,7 @@
   100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) scale(1); }
 }
 .tl-flow {
-  animation: tlFlow 6s ease-in-out infinite;
+  animation: tlFlow 9s ease-in-out infinite;
   will-change: left, opacity;
 }
 @keyframes tlPulse {
