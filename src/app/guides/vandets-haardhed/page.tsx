@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Gauge, CheckCircle2, ArrowRight, MapPin, Home, ShowerHead } from 'lucide-react'
+import { Gauge, CheckCircle2, ArrowRight, MapPin, Home, ShowerHead, ChevronDown } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 import type { FAQ } from '@/lib/products'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
@@ -189,15 +189,23 @@ export default function Page() {
       </section>
 
       {/* FAQ */}
-      <section className="py-10">
+      <section className="py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-extrabold text-[#0a2540] mb-6">Spørgsmål og svar om vandhårdhed</h2>
-          <div className="space-y-4">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="text-xs sm:text-sm font-black text-[#284eff] uppercase tracking-widest">Ofte stillede spørgsmål</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a2540] mt-2.5">Spørgsmål og svar om vandhårdhed</h2>
+          </div>
+          <div className="space-y-3">
             {FAQS.map((f) => (
-              <div key={f.q} className="bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm p-5">
-                <h3 className="font-bold text-[#0a2540] mb-1.5">{f.q}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{f.a}</p>
-              </div>
+              <details key={f.q} className="group bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm open:shadow-md transition-shadow overflow-hidden">
+                <summary className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 cursor-pointer select-none list-none font-bold text-[#0a2540] hover:bg-blue-50/40 transition-colors">
+                  <span>{f.q}</span>
+                  <ChevronDown className="w-5 h-5 text-[#284eff] shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="px-5 sm:px-6 pb-5 text-[15px] text-gray-600 leading-relaxed border-t border-blue-50 pt-4">
+                  {f.a}
+                </div>
+              </details>
             ))}
           </div>
         </div>
