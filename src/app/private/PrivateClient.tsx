@@ -261,26 +261,23 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             <h2 className="section-heading">{da ? 'Vores løsninger til dig og din familie' : 'Our solutions for you and your family'}</h2>
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
-          <div className="grid grid-cols-2 gap-3 sm:gap-6">
-            {solutions.map(({ img, title, body, slug, href, objPos }) => (
+          <div className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 scrollbar-hide">
+            {solutions.map(({ img, title, slug, href, objPos }) => (
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group relative aspect-[3/2] sm:aspect-[2/1] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
+                className="group relative shrink-0 w-36 sm:w-auto sm:flex-1 snap-start aspect-[3/4] rounded-2xl overflow-hidden shadow-sm ring-1 ring-black/5 hover:shadow-xl transition-all duration-300"
               >
                 <img
                   src={img}
                   alt={title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04] ${
+                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05] ${
                     objPos ?? 'object-center'
                   }`}
                 />
-                <div className="absolute inset-0 bg-black/30 transition-colors group-hover:bg-black/40" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-3 sm:px-5">
-                  <h3 className="text-white font-extrabold text-sm sm:text-2xl leading-tight drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">{title}</h3>
-                  <p className="max-w-xs text-sm leading-snug text-white/0 max-h-0 overflow-hidden transition-all duration-300 group-hover:text-white/95 group-hover:max-h-32 group-hover:mt-2">
-                    {body}
-                  </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-colors group-hover:from-black/80" />
+                <div className="absolute inset-x-0 bottom-0 p-3 text-center">
+                  <h3 className="text-white font-bold text-xs sm:text-sm leading-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{title}</h3>
                 </div>
               </Link>
             ))}
