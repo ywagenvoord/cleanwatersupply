@@ -460,17 +460,17 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
 
       {/* ─── SÅDAN BESTILLER DU (tidslinje, kun erhverv) ────────── */}
       {catalog && (
-        <section className="bg-white border-b border-gray-100">
+        <section className="bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
             <div className="text-center mb-8">
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540]">Sådan bestiller du</h2>
-              <p className="text-sm text-gray-500 mt-1.5">Fem enkle trin fra forespørgsel til leveret vare.</p>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-white">Sådan bestiller du</h2>
+              <p className="text-sm text-blue-100/70 mt-1.5">Fem enkle trin fra forespørgsel til leveret vare.</p>
             </div>
 
             {(() => {
               const steps = [
-                { icon: Phone, title: 'Ring om info', text: <>Har du spørgsmål? Ring til os på{' '}<a href="tel:+4551215800" className="font-semibold text-[#284eff] hover:underline">+45 51 21 58 00</a>.</> },
-                { icon: Mail, title: 'Send din bestilling', text: <>Send en mail til{' '}<a href="mailto:info@cleanwatersupply.dk" className="font-semibold text-[#284eff] hover:underline">info@cleanwatersupply.dk</a>{' '}med de ønskede produkter.</> },
+                { icon: Phone, title: 'Ring om info', text: <>Har du spørgsmål? Ring til os på{' '}<a href="tel:+4551215800" className="font-semibold text-sky-300 hover:underline">+45 51 21 58 00</a>.</> },
+                { icon: Mail, title: 'Send din bestilling', text: <>Send en mail til{' '}<a href="mailto:info@cleanwatersupply.dk" className="font-semibold text-sky-300 hover:underline">info@cleanwatersupply.dk</a>{' '}med de ønskede produkter.</> },
                 { icon: FileText, title: 'Vi vender retur', text: <>Vi sender dig priser og en faktura på de ønskede produkter.</> },
                 { icon: CreditCard, title: 'Du betaler', text: <>Du betaler fakturaen, så er bestillingen bekræftet.</> },
                 { icon: Truck, title: 'Vi sender varen', text: <>Vi sender varen direkte til dig.</> },
@@ -478,7 +478,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
               return (
                 <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
                   {/* Gennemgående linje mellem ikonerne (desktop) */}
-                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 -translate-y-1/2 z-0" aria-hidden="true" />
+                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-white/20 -translate-y-1/2 z-0" aria-hidden="true" />
                   {/* Prikker KUN i mellemrummene mellem ikonerne + grøn timer der fyldes 1 → 5 */}
                   <span className="hidden sm:block absolute top-6 left-0 right-0 -translate-y-1/2 h-4 overflow-visible z-0" aria-hidden="true">
                     {(() => {
@@ -494,7 +494,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                         <>
                           {/* Grå bane */}
                           {dots.map((p, j) => (
-                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-200" style={{ left: `${p}%` }} />
+                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/25" style={{ left: `${p}%` }} />
                           ))}
                           {/* Grøn timer: fyldes op fra venstre mod højre (trin 1 → 5) */}
                           <span className="tl-fill absolute inset-0 block">
@@ -510,15 +510,15 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                     const Icon = s.icon
                     return (
                       <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
-                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-white" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Icon className="w-5 h-5" />
                         </span>
                         <div className="min-w-0">
-                          <p className="flex items-center sm:justify-center gap-1.5 font-bold text-[#0a2540] text-sm">
-                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#284eff] text-white text-[11px] font-black">{i + 1}</span>
+                          <p className="flex items-center sm:justify-center gap-1.5 font-bold text-white text-sm">
+                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3aad4a] text-white text-[11px] font-black">{i + 1}</span>
                             {s.title}
                           </p>
-                          <p className="text-[13px] text-gray-500 leading-relaxed mt-1.5">{s.text}</p>
+                          <p className="text-[13px] text-blue-100/70 leading-relaxed mt-1.5">{s.text}</p>
                         </div>
                       </li>
                     )
