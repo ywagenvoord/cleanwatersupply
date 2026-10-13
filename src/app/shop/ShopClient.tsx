@@ -477,7 +477,25 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
                   {/* Gennemgående linje + grønne prikker der løber fra trin 1 → 5 (desktop) */}
                   <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 overflow-visible z-0" aria-hidden="true">
-                    <span className="tl-flow absolute top-1/2 w-3 h-3 rounded-full bg-[#3aad4a] shadow-[0_0_10px_3px_rgba(58,173,74,0.55)]" />
+                    {(() => {
+                      const DOTS = 24
+                      const dots = Array.from({ length: DOTS })
+                      const pos = (j: number) => `${(j / (DOTS - 1)) * 100}%`
+                      return (
+                        <>
+                          {/* Grå bane: alle prikker svagt synlige */}
+                          {dots.map((_, j) => (
+                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-blue-200" style={{ left: pos(j) }} />
+                          ))}
+                          {/* Grøn timer: fyldes op fra trin 1 → 5 */}
+                          <span className="tl-fill absolute inset-0 block">
+                            {dots.map((_, j) => (
+                              <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#3aad4a] shadow-[0_0_6px_1px_rgba(58,173,74,0.5)]" style={{ left: pos(j) }} />
+                            ))}
+                          </span>
+                        </>
+                      )
+                    })()}
                   </span>
                   {steps.map((s, i) => {
                     const Icon = s.icon
