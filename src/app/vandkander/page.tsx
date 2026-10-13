@@ -88,6 +88,21 @@ export default function VandkanderPage() {
             Vi har flere typer udskiftningsfiltre til vandkanden – fra standard til
             kalk-, PFAS- og magnesium-varianter.
           </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
+            {[
+              { src: '/images/filtre-til-vandkande.jpg', alt: 'Bi-flux® filtre' },
+              { src: '/images/germ-stop-filter-1.jpg', alt: 'Germ-STOP filter' },
+              { src: '/images/product-filter-udskift.jpg', alt: 'Udskiftningsfilter' },
+              { src: '/images/fast-disk-single.jpg', alt: 'FAST DISK filter' },
+            ].map((f) => (
+              <span
+                key={f.src}
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white ring-1 ring-blue-100 shadow-sm overflow-hidden flex items-center justify-center p-2"
+              >
+                <img src={f.src} alt={f.alt} width={120} height={120} loading="lazy" className="w-full h-full object-contain" />
+              </span>
+            ))}
+          </div>
           <Link
             href="/vandkande-filtre"
             className="inline-flex items-center gap-2 rounded-full bg-[#0a2540] hover:bg-[#0d3050] text-white font-bold px-7 py-3.5 text-sm transition-colors"
