@@ -42,7 +42,7 @@ const FAQS: FAQ[] = [
 ]
 
 const HAARDHED = [
-  { range: '0–8', unit: '°dH', label: 'Blødt til middelhårdt', note: 'Få kalkgener. Blødgøring sjældent nødvendigt.', color: '#3aad4a', bg: 'from-green-50', ring: 'ring-green-100' },
+  { range: '0–8', unit: '°dH', label: 'Blødt til middelhårdt', note: 'Få kalkgener. Blødgøring sjældent nødvendigt.', color: '#284eff', bg: 'from-blue-50', ring: 'ring-blue-100' },
   { range: '8–12', unit: '°dH', label: 'Middelhårdt', note: 'Begyndende kalk. Blødgøring kan overvejes.', color: '#f5b301', bg: 'from-amber-50', ring: 'ring-amber-100' },
   { range: '12–18', unit: '°dH', label: 'Hårdt', note: 'Tydelige kalkgener. Blødgøring anbefales.', color: '#f97316', bg: 'from-orange-50', ring: 'ring-orange-100' },
   { range: 'Over 18', unit: '°dH', label: 'Meget hårdt', note: 'Kraftige aflejringer. Blødgøring betaler sig hurtigt.', color: '#dc2626', bg: 'from-red-50', ring: 'ring-red-100' },
