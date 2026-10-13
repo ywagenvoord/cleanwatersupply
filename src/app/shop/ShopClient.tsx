@@ -419,32 +419,34 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
   return (
     <main>
       {/* ─── HERO ───────────────────────────────────────────────── */}
-      <section className="relative py-6 sm:py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800">
-        <div className="absolute inset-0">
-          <img
-            src="/images/filters-legionella.jpg"
-            alt=""
-            width={1920}
-            height={600}
-            loading="eager"
-            decoding="async"
-            className="w-full h-full object-cover opacity-10"
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0a2540]/90 to-blue-800/80" />
-        </div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl" />
+      <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
+        {!catalog && (
+          <div className="absolute inset-0">
+            <img
+              src="/images/filters-legionella.jpg"
+              alt=""
+              width={1920}
+              height={600}
+              loading="eager"
+              decoding="async"
+              className="w-full h-full object-cover opacity-10"
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0a2540]/90 to-blue-800/80" />
+          </div>
+        )}
+        <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl ${catalog ? 'bg-sky-300/30' : 'bg-blue-500/10'}`} />
+        <div className={`absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl ${catalog ? 'bg-blue-300/25' : 'bg-emerald-500/10'}`} />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-emerald-300 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest">
-            <Droplets className="w-3.5 h-3.5" />
+          <span className={`inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest ${catalog ? 'bg-white text-[#0a2540] ring-1 ring-blue-100 shadow-sm' : 'bg-white/10 border border-white/20 text-emerald-300'}`}>
+            <Droplets className={`w-3.5 h-3.5 ${catalog ? 'text-[#3aad4a]' : ''}`} />
             {catalog ? (da ? 'Til erhverv' : 'For business') : (da ? 'Vores produkter' : 'Our products')}
           </span>
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-2 sm:mb-5 leading-tight">
+          <h1 className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 sm:mb-5 leading-tight ${catalog ? 'text-[#0a2540]' : 'text-white'}`}>
             {catalog ? (da ? 'Produktoversigt' : 'Product overview') : 'Shop Clean Water Supply'}
           </h1>
-          <p className="text-sm sm:text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
+          <p className={`text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed ${catalog ? 'text-gray-600' : 'text-blue-100/80'}`}>
             {catalog
               ? (da
                   ? 'Få overblik over hele vores sortiment til erhverv – fra medicinsk certificerede filtre til blødgøringsanlæg og professionelle anlæg. Kontakt os for pris og et uforpligtende tilbud.'
