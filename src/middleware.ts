@@ -14,11 +14,15 @@ export default clerkMiddleware(async (auth, req) => {
   }
 })
 
+// VIGTIGT (SEO): Clerk-middlewaren må KUN køre på de sider, der faktisk kræver
+// login. På en Clerk development-instans laver middlewaren ellers et "handshake"
+// -redirect (307) til clerk.accounts.dev på ALLE sider – også forsiden – når
+// der ikke er cookies (fx Googlebot). Det gør forsiden "Non-indexable / Redirected".
+// Ved kun at matche /min-konto og /shop/erhverv svarer alle offentlige sider nu
+// med et rent HTTP 200 uden redirect, så de kan indekseres.
 export const config = {
   matcher: [
-    // Kør på alle sider undtagen Next-interne filer og statiske filer
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Kør altid for API-ruter
-    '/(api|trpc)(.*)',
+    '/min-konto/:path*',
+    '/shop/erhverv/:path*',
   ],
 }
