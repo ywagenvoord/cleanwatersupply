@@ -475,29 +475,32 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
               ]
               return (
                 <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
-                  {/* Gennemgående linje + grønne prikker der løber fra trin 1 → 5 (desktop) */}
-                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 overflow-visible z-0" aria-hidden="true">
+                  {/* Gennemgående linje mellem ikonerne (desktop) */}
+                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 -translate-y-1/2 z-0" aria-hidden="true" />
+                  {/* Prikker KUN i mellemrummene mellem ikonerne + grøn timer der fyldes 1 → 5 */}
+                  <span className="hidden sm:block absolute top-6 left-0 right-0 -translate-y-1/2 h-4 overflow-visible z-0" aria-hidden="true">
                     {(() => {
-                      const DOTS = 16
-                      const dots = Array.from({ length: DOTS })
-                      // Prikker placeres i midten af hvert step-interval, så clip-kanten
-                      // altid falder MELLEM prikker – hver hele prik lyser op, uden at blive skåret.
-                      const pos = (j: number) => `${((j + 0.5) / DOTS) * 100}%`
+                      // Ikon-centre sidder ved 10/30/50/70/90 % af bredden. Vi lægger prikker i
+                      // de fire mellemrum imellem dem, med god afstand til hvert ikon.
+                      const GAPS: [number, number][] = [[10, 30], [30, 50], [50, 70], [70, 90]]
+                      const MARGIN = 5.5, PER = 3
+                      const dots = GAPS.flatMap(([a, b]) => {
+                        const s = a + MARGIN, e = b - MARGIN
+                        return Array.from({ length: PER }, (_, k) => s + (e - s) * (k / (PER - 1)))
+                      })
                       return (
-                        // Prik-rækken rykkes ind fra enderne (left/right 8%), så de yderste
-                        // prikker ikke rammer ikonerne – men den blå linje rører stadig ikonerne.
-                        <span className="absolute top-1/2 -translate-y-1/2 left-[8%] right-[8%] h-4 block">
-                          {/* Grå bane: alle prikker svagt synlige */}
-                          {dots.map((_, j) => (
-                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-200" style={{ left: pos(j) }} />
+                        <>
+                          {/* Grå bane */}
+                          {dots.map((p, j) => (
+                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-200" style={{ left: `${p}%` }} />
                           ))}
-                          {/* Grøn timer: fyldes op fra trin 1 → 5 */}
+                          {/* Grøn timer: fyldes op fra venstre mod højre (trin 1 → 5) */}
                           <span className="tl-fill absolute inset-0 block">
-                            {dots.map((_, j) => (
-                              <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: pos(j) }} />
+                            {dots.map((p, j) => (
+                              <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: `${p}%` }} />
                             ))}
                           </span>
-                        </span>
+                        </>
                       )
                     })()}
                   </span>

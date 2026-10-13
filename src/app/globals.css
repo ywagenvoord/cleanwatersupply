@@ -116,13 +116,14 @@
   .animate-\[shopText_5s_ease-in-out_infinite\] { animation: none; }
 }
 
-/* Live tidslinje: grønne prikker fyldes én efter én som en timer fra trin 1 → 5 */
+/* Live tidslinje: grønne prikker fyldes op som en timer fra trin 1 → 5 */
 @keyframes tlFill {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
+  0%   { clip-path: inset(0 100% 0 0); }
+  85%  { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
 }
 .tl-fill {
-  animation: tlFill 6.4s steps(16, end) infinite;
+  animation: tlFill 7.5s cubic-bezier(.45,.05,.2,1) infinite;
   will-change: clip-path;
 }
 @media (prefers-reduced-motion: reduce) {
