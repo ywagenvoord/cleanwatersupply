@@ -261,14 +261,14 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             <h2 className="section-heading">{da ? 'Vores løsninger til dig og din familie' : 'Our solutions for you and your family'}</h2>
             <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
-          <div className="flex gap-3 sm:gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 no-scrollbar">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
             {solutions.map(({ img, title, slug, href, objPos }) => (
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group shrink-0 w-48 sm:w-auto sm:flex-1 snap-start rounded-2xl bg-gray-50 ring-1 ring-gray-100 overflow-hidden hover:shadow-lg hover:ring-gray-200 transition-all duration-300"
+                className="group rounded-2xl bg-gray-50 ring-1 ring-gray-100 overflow-hidden hover:shadow-lg hover:ring-gray-200 transition-all duration-300"
               >
-                <div className="relative h-28 sm:h-32 overflow-hidden">
+                <div className="relative h-40 sm:h-56 overflow-hidden">
                   <img
                     src={img}
                     alt={title}
@@ -277,7 +277,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                     }`}
                   />
                 </div>
-                <h3 className="text-center font-semibold text-xs sm:text-sm text-[#0a2540] group-hover:text-[#284eff] leading-tight px-2 py-3 transition-colors">
+                <h3 className="text-center font-semibold text-sm sm:text-base text-[#0a2540] group-hover:text-[#284eff] leading-tight px-2 py-4 transition-colors">
                   {title}
                 </h3>
               </Link>
