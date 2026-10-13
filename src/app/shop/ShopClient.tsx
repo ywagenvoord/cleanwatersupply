@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -455,6 +455,29 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
           </p>
         </div>
       </section>
+
+      {/* ─── SÅDAN BESTILLER DU (kun erhverv) ───────────────────── */}
+      {catalog && (
+        <section className="bg-[#eef5ff] border-b border-blue-100">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="w-10 h-10 rounded-xl bg-[#0a2540] text-white flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5" />
+                </span>
+                <h2 className="text-base sm:text-lg font-extrabold text-[#0a2540]">Sådan bestiller du</h2>
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Du bestiller ved at sende en mail til{' '}
+                <a href="mailto:info@cleanwatersupply.dk" className="font-bold text-[#284eff] hover:underline">
+                  info@cleanwatersupply.dk
+                </a>{' '}
+                med de ønskede produkter, så vender vi tilbage med pris og tilbud.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ─── CATEGORY TABS ──────────────────────────────────────── */}
       <section className="sticky top-16 sm:top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
