@@ -286,50 +286,6 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── SHOP ──────────────────────────────────────────────── */}
-      <section className="pt-4 pb-6 sm:pt-8 sm:pb-10 bg-gradient-to-b from-white to-blue-50/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/shop"
-            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63] ring-1 ring-white/10 px-6 py-6 sm:px-12 sm:py-9 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
-          >
-            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/20 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3b7fd4]/15 rounded-full blur-3xl" />
-            <span className="relative inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/25 backdrop-blur-sm">
-              <ShoppingBag className="w-3.5 h-3.5" /> Webshop
-            </span>
-            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 text-white">Shop</h2>
-            <p className="relative text-white/90 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
-              {da
-                ? 'Se hele vores udvalg af filtre og anlæg til rent vand – hurtig levering og medicinsk certificeret kvalitet.'
-                : 'Browse our full range of filters and systems for clean water – fast delivery and medically certified quality.'}
-            </p>
-            <span className="relative inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base sm:text-lg transition-all group-hover:gap-3 shadow-lg shadow-green-500/30">
-              {da ? 'Gå til shoppen' : 'Go to the shop'} <ArrowRight className="w-5 h-5" />
-            </span>
-
-            {/* Små runde produktbilleder der glider i loop */}
-            {shopLoopImgs.length > 0 && (
-              <div
-                className="relative mt-5 sm:mt-7 -mx-6 sm:-mx-12 overflow-hidden"
-                style={{ maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}
-              >
-                <div className="flex w-max gap-4 sm:gap-6 animate-marquee">
-                  {[...shopLoopImgs, ...shopLoopImgs].map((img, i) => (
-                    <span
-                      key={i}
-                      className="shrink-0 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white ring-1 ring-white/50 shadow-lg overflow-hidden flex items-center justify-center p-3"
-                    >
-                      <img src={img.src} alt={img.name} width={200} height={200} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-          </Link>
-        </div>
-      </section>
-
       {/* ─── WHY PROTECT (EMOTIONAL) ───────────────────────────── */}
       <section className="pt-6 pb-12 sm:pt-10 sm:pb-20 bg-blue-50/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -396,6 +352,50 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             </Link>
           </div>
           <ProductCarousel products={products} />
+        </div>
+      </section>
+
+      {/* ─── SHOP ──────────────────────────────────────────────── */}
+      <section className="pt-4 pb-6 sm:pt-8 sm:pb-10 bg-gradient-to-b from-white to-blue-50/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/shop"
+            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63] ring-1 ring-white/10 px-6 py-6 sm:px-12 sm:py-9 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
+          >
+            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/20 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3b7fd4]/15 rounded-full blur-3xl" />
+            <span className="relative inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/25 backdrop-blur-sm">
+              <ShoppingBag className="w-3.5 h-3.5" /> Webshop
+            </span>
+            <h2 className="relative text-3xl sm:text-5xl font-extrabold mb-2 sm:mb-3 text-white">Shop</h2>
+            <p className="relative text-white/90 text-base sm:text-lg max-w-xl mx-auto mb-6 sm:mb-8 leading-relaxed">
+              {da
+                ? 'Se hele vores udvalg af filtre og anlæg til rent vand – hurtig levering og medicinsk certificeret kvalitet.'
+                : 'Browse our full range of filters and systems for clean water – fast delivery and medically certified quality.'}
+            </p>
+            <span className="relative inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white px-9 py-4 rounded-full font-bold text-base sm:text-lg transition-all group-hover:gap-3 shadow-lg shadow-green-500/30">
+              {da ? 'Gå til shoppen' : 'Go to the shop'} <ArrowRight className="w-5 h-5" />
+            </span>
+
+            {/* Små runde produktbilleder der glider i loop */}
+            {shopLoopImgs.length > 0 && (
+              <div
+                className="relative mt-5 sm:mt-7 -mx-6 sm:-mx-12 overflow-hidden"
+                style={{ maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}
+              >
+                <div className="flex w-max gap-4 sm:gap-6 animate-marquee">
+                  {[...shopLoopImgs, ...shopLoopImgs].map((img, i) => (
+                    <span
+                      key={i}
+                      className="shrink-0 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white ring-1 ring-white/50 shadow-lg overflow-hidden flex items-center justify-center p-3"
+                    >
+                      <img src={img.src} alt={img.name} width={200} height={200} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </Link>
         </div>
       </section>
 
