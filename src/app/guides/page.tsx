@@ -16,7 +16,7 @@ const GUIDES = [
   { Icon: Gauge, title: 'Hvor hårdt er dit vand?', text: 'Forstå vandets hårdhed (°dH), og find hårdheden for din adresse.', href: '/guides/vandets-haardhed' },
   { Icon: Filter, title: 'Hvilket filter skal du vælge?', text: 'Brusefilter, vandhanefilter, filterkande eller blødgøringsanlæg – vælg rigtigt.', href: '/guides/vaelg-vandfilter' },
   { Icon: HelpCircle, title: 'Find dit filter', text: 'Svar på fire korte spørgsmål og bliv guidet til den rette løsning.', href: '/guides/find-filter' },
-  { Icon: ShieldCheck, title: '4 gode råd til at undgå Legionella', text: 'Sådan forebygger du Legionella i hjemmet – især efter ferie.', href: '/guides/undgaa-legionella' },
+  { Icon: ShieldCheck, title: 'Hvordan undgår jeg Legionella?', text: 'Sådan forebygger du Legionella i hjemmet – 4 gode råd, især efter ferie.', href: '/guides/undgaa-legionella' },
 ]
 
 export default function Page() {

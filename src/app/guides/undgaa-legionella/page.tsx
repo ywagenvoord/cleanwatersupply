@@ -7,9 +7,9 @@ import FaqJsonLd from '@/components/seo/FaqJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
-  title: '4 gode råd til at undgå Legionella i hjemmet | Clean Water Supply',
+  title: 'Hvordan undgår jeg Legionella? 4 gode råd | Clean Water Supply',
   description:
-    'Få 4 gode råd til at undgå Legionella i hjemmet – især efter ferie. Lær hvad Legionella er, hvordan det smitter, og hvordan du nemt forebygger bakterien.',
+    'Hvordan undgår jeg Legionella? Få 4 gode råd til at forebygge Legionella i hjemmet – især efter ferie. Lær hvad Legionella er, hvordan det smitter, og hvordan du nemt undgår bakterien.',
   alternates: { canonical: `${SITE_URL}/guides/undgaa-legionella` },
   keywords: [
     'undgå legionella', 'legionella i hjemmet', 'gode råd legionella', 'legionella bruser',
@@ -102,7 +102,7 @@ export default function Page() {
         crumbs={[
           { name: 'Forside', url: SITE_URL },
           { name: 'Guides', url: `${SITE_URL}/guides` },
-          { name: '4 gode råd til at undgå Legionella', url: `${SITE_URL}/guides/undgaa-legionella` },
+          { name: 'Hvordan undgår jeg Legionella?', url: `${SITE_URL}/guides/undgaa-legionella` },
         ]}
       />
       <FaqJsonLd faqs={FAQS} />
@@ -119,7 +119,7 @@ export default function Page() {
                 Guide til Legionella i hjemmet
               </span>
               <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
-                4 gode råd til at undgå Legionella
+                Hvordan undgår jeg Legionella?
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed mb-7">
                 Legionella-bakterien trives i lunkent, stillestående vand – især hvis dine haner og brusere
@@ -216,6 +216,16 @@ export default function Page() {
               Legionærsyge er en alvorlig form for lungebetændelse, der kan opstå efter smitte med Legionella.
               Symptomerne minder om influenza: høj feber, hovedpine og muskelsmerter. De mest udsatte er ældre
               og svækkede personer, blandt andet på plejehjem og sygehuse.
+            </p>
+          </div>
+          <div>
+            <h2 className="text-2xl font-extrabold text-[#0a2540] mb-3">Hold varmtvandsbeholderen varm nok</h2>
+            <p className="text-gray-600 leading-relaxed">
+              Legionella formerer sig bedst i lunkent vand. Derfor er det vigtigt, at dit varme brugsvand
+              holdes tilstrækkeligt varmt hele vejen fra varmtvandsbeholderen og ud til hanen. Som
+              tommelfingerregel bør vandet i beholderen være omkring 60 °C og mindst 52 °C ved tapstedet.
+              Mange varmtvandsbeholdere har en indbygget anti-Legionella-funktion, der med jævne mellemrum
+              varmer vandet ekstra op – tjek din beholders vejledning, eller spørg din VVS’er.
             </p>
           </div>
           <div>
