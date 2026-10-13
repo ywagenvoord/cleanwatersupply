@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
 import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown } from 'lucide-react'
@@ -437,6 +437,10 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
   const da = language === 'da'
   const catalog = mode === 'catalog'
   const [activeCategory, setActiveCategory] = useState('alle')
+  const areasRef = useRef<HTMLDivElement>(null)
+  const openAllAreas = () => {
+    areasRef.current?.querySelectorAll('details').forEach((d) => { d.open = true })
+  }
 
   // Filtrér efter shop: kun-erhverv vises kun i erhvervs-shop, kun-privat kun i privat-shop.
   const products = allProducts.filter(p => {
@@ -624,7 +628,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {catalog ? (
         /* Erhvervs-katalog: grupperet efter område med overskrifter */
         <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div ref={areasRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             {AREA_ORDER.map((area, idx) => {
               const items = products.filter((p) => areasForProduct(p).includes(area))
               if (items.length === 0) return null
@@ -658,6 +662,16 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 </details>
               )
             })}
+
+            <div className="pt-6 text-center">
+              <button
+                onClick={openAllAreas}
+                className="inline-flex items-center gap-2 bg-[#0a2540] hover:bg-[#0e2f52] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-lg"
+              >
+                Se alle produkter
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </section>
       ) : (
