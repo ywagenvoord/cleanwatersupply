@@ -76,21 +76,21 @@ export default function Page() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/50 to-white">
         <div className="pointer-events-none absolute -top-16 -right-10 w-[28rem] h-[28rem] bg-sky-300/30 rounded-full blur-3xl animate-[shopText_8s_ease-in-out_infinite]" />
-        <div className="pointer-events-none absolute -bottom-24 -left-16 w-96 h-96 bg-[#3aad4a]/15 rounded-full blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 w-96 h-96 bg-[#284eff]/15 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-14 text-center">
           <span className="reveal inline-flex items-center gap-2 bg-white text-[#0a2540] text-xs font-bold px-4 py-2 rounded-full mb-6 uppercase tracking-widest ring-1 ring-blue-100 shadow-sm" style={{ animationDelay: '0ms' }}>
-            <Gauge className="w-3.5 h-3.5 text-[#3aad4a]" />
+            <Gauge className="w-3.5 h-3.5 text-[#284eff]" />
             Guide til vandhårdhed
           </span>
           <h1 className="reveal text-4xl sm:text-6xl font-extrabold text-[#0a2540] leading-[1.05] mb-5" style={{ animationDelay: '80ms' }}>
-            Hvor hårdt er <span className="bg-gradient-to-r from-[#284eff] to-[#3aad4a] bg-clip-text text-transparent">dit vand?</span>
+            Hvor hårdt er <span className="bg-gradient-to-r from-[#284eff] to-[#5aa0ff] bg-clip-text text-transparent">dit vand?</span>
           </h1>
           <p className="reveal text-lg sm:text-xl text-gray-600 leading-relaxed" style={{ animationDelay: '160ms' }}>
             Vandets hårdhed afgør, hvor meget kalk du kæmper med i hverdagen. Få de enkle svar på,
             hvad °dH betyder, hvordan du finder din hårdhed – og hvornår det kan betale sig at gøre noget.
           </p>
           <div className="reveal flex flex-wrap gap-3 justify-center mt-8" style={{ animationDelay: '240ms' }}>
-            <a href="#opslag" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">
+            <a href="#opslag" className="inline-flex items-center gap-2 bg-[#284eff] hover:bg-[#1b3fd0] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-blue-500/25 hover:-translate-y-0.5">
               <MapPin className="w-4 h-4" /> Slå dit postnummer op
             </a>
             <a href="#skala" className="inline-flex items-center gap-2 bg-white text-[#0a2540] ring-1 ring-blue-100 hover:ring-blue-200 px-7 py-3.5 rounded-full font-bold text-sm transition-all">
@@ -107,7 +107,7 @@ export default function Page() {
           <div className="grid sm:grid-cols-2 gap-4">
             {KORT.map((t, i) => (
               <div key={t} className="reveal flex items-start gap-4 bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm hover:shadow-md transition-shadow p-5" style={{ animationDelay: `${i * 90}ms` }}>
-                <span className="w-9 h-9 rounded-xl bg-[#3aad4a]/10 text-[#3aad4a] flex items-center justify-center shrink-0">
+                <span className="w-9 h-9 rounded-xl bg-[#284eff]/10 text-[#284eff] flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-5 h-5" />
                 </span>
                 <p className="text-[15px] text-gray-700 leading-relaxed">{t}</p>
