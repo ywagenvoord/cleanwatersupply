@@ -510,12 +510,13 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                     const Icon = s.icon
                     return (
                       <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
-                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm sm:mb-3 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Icon className="w-5 h-5" />
                         </span>
+                        <span className="hidden sm:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#3aad4a] text-white text-xs font-black mb-2">{i + 1}</span>
                         <div className="min-w-0">
-                          <p className="flex items-center sm:justify-center gap-1.5 font-bold text-white text-sm">
-                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3aad4a] text-white text-[11px] font-black">{i + 1}</span>
+                          <p className="font-bold text-white text-sm">
+                            <span className="sm:hidden inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3aad4a] text-white text-[11px] font-black mr-1.5 align-middle">{i + 1}</span>
                             {s.title}
                           </p>
                           <p className="text-[13px] text-blue-100/70 leading-relaxed mt-1.5">{s.text}</p>
