@@ -287,36 +287,6 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── GUIDE-LINK: VANDHÅRDHED ────────────────────────────── */}
-      <section className="py-6 sm:py-10 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/guides/vandets-haardhed"
-            className="group flex flex-col sm:flex-row sm:items-center gap-5 rounded-3xl bg-gradient-to-br from-sky-50 to-blue-100/50 ring-1 ring-blue-100 hover:ring-blue-200 hover:shadow-lg transition-all p-6 sm:p-8"
-          >
-            <span className="w-14 h-14 shrink-0 rounded-2xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center shadow-sm">
-              <Gauge className="w-7 h-7" />
-            </span>
-            <div className="flex-1">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-black text-[#284eff] uppercase tracking-widest mb-1">
-                <MapPin className="w-3.5 h-3.5" /> {da ? 'Guide' : 'Guide'}
-              </span>
-              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540] leading-snug">
-                {da ? 'Hvor hårdt er dit vand?' : 'How hard is your water?'}
-              </h2>
-              <p className="text-sm sm:text-[15px] text-gray-600 mt-1 leading-relaxed">
-                {da
-                  ? 'Slå dit postnummer op og se den vejledende hårdhed, hvor du bor – og hvilke løsninger der passer.'
-                  : 'Look up your postcode and see the water hardness where you live – and which solutions fit.'}
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-2 bg-[#284eff] group-hover:bg-[#1b3fd0] text-white px-6 py-3 rounded-full font-bold text-sm transition-all group-hover:gap-3 shrink-0 w-fit">
-              {da ? 'Slå dit postnummer op' : 'Look up your postcode'} <ArrowRight className="w-4 h-4" />
-            </span>
-          </Link>
-        </div>
-      </section>
-
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
       <section className="py-12 sm:py-16 bg-[#f4f7fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -455,6 +425,44 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <ProtectCard key={title} Icon={Icon} title={title} body={body} da={da} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── NYHED: VANDHÅRDHED-GUIDE ───────────────────────────── */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#284eff]/10 text-[#284eff] text-[11px] font-black px-3.5 py-1.5 uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5" /> {da ? 'Nyhed' : 'New'}
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] leading-tight mt-3">
+              {da ? 'Nyt værktøj: Kend hårdheden i dit vand' : 'New tool: know your water hardness'}
+            </h2>
+            <p className="text-gray-600 text-base sm:text-lg mt-3 leading-relaxed">
+              {da
+                ? 'Vi har samlet en guide, hvor du kan slå dit postnummer op og se den vejledende vandhårdhed, hvor du bor – så du ved, hvilke løsninger der passer til netop dit vand.'
+                : 'We’ve built a guide where you can look up your postcode and see the water hardness where you live – so you know which solutions fit your water.'}
+            </p>
+          </div>
+          <Link
+            href="/guides/vandets-haardhed"
+            className="group flex flex-col sm:flex-row sm:items-center gap-5 rounded-3xl bg-gradient-to-br from-sky-50 to-blue-100/50 ring-1 ring-blue-100 hover:ring-blue-200 hover:shadow-lg transition-all p-6 sm:p-8 max-w-3xl mx-auto"
+          >
+            <span className="w-14 h-14 shrink-0 rounded-2xl bg-white text-[#284eff] ring-1 ring-blue-100 flex items-center justify-center shadow-sm">
+              <Gauge className="w-7 h-7" />
+            </span>
+            <div className="flex-1">
+              <h3 className="text-lg sm:text-xl font-extrabold text-[#0a2540] leading-snug">
+                {da ? 'Hvor hårdt er dit vand?' : 'How hard is your water?'}
+              </h3>
+              <p className="text-sm sm:text-[15px] text-gray-600 mt-1 leading-relaxed">
+                {da ? 'Slå dit postnummer op og se hårdheden, hvor du bor.' : 'Look up your postcode and see the hardness where you live.'}
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 bg-[#284eff] group-hover:bg-[#1b3fd0] text-white px-6 py-3 rounded-full font-bold text-sm transition-all group-hover:gap-3 shrink-0 w-fit">
+              <MapPin className="w-4 h-4" /> {da ? 'Slå op' : 'Look up'} <ArrowRight className="w-4 h-4" />
+            </span>
+          </Link>
         </div>
       </section>
 
