@@ -630,7 +630,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         /* Erhvervs-katalog: grupperet efter område med overskrifter */
         <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
           <div ref={areasRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            {AREA_ORDER.map((area, idx) => {
+            {AREA_ORDER.map((area) => {
               const items = products.filter((p) => areasForProduct(p).includes(area))
               if (items.length === 0) return null
               // Byt rundt på GlaSSmart og Germ-STOP-kanden i Drikkevand
@@ -640,7 +640,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 if (gi > -1 && hi > -1) { const t = items[gi]; items[gi] = items[hi]; items[hi] = t }
               }
               return (
-                <details key={area} id={area} open={idx === 0} className="group scroll-mt-28 rounded-2xl bg-white ring-1 ring-gray-100 shadow-sm overflow-hidden">
+                <details key={area} id={area} className="group scroll-mt-28 rounded-2xl bg-white ring-1 ring-gray-100 shadow-sm overflow-hidden">
                   <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 sm:px-7 py-5 hover:bg-gray-50/70 transition-colors">
                     <div className="min-w-0">
                       <div className="flex items-center gap-3">
