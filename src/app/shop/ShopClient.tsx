@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -456,25 +456,49 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         </div>
       </section>
 
-      {/* ─── SÅDAN BESTILLER DU (kun erhverv) ───────────────────── */}
+      {/* ─── SÅDAN BESTILLER DU (tidslinje, kun erhverv) ────────── */}
       {catalog && (
         <section className="bg-[#eef5ff] border-b border-blue-100">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
-              <div className="flex items-center gap-3 shrink-0">
-                <span className="w-10 h-10 rounded-xl bg-[#0a2540] text-white flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5" />
-                </span>
-                <h2 className="text-base sm:text-lg font-extrabold text-[#0a2540]">Sådan bestiller du</h2>
-              </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                Du bestiller ved at sende en mail til{' '}
-                <a href="mailto:info@cleanwatersupply.dk" className="font-bold text-[#284eff] hover:underline">
-                  info@cleanwatersupply.dk
-                </a>{' '}
-                med de ønskede produkter, så vender vi tilbage med pris og tilbud.
-              </p>
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+            <div className="text-center mb-8">
+              <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540]">Sådan bestiller du</h2>
+              <p className="text-sm text-gray-500 mt-1.5">Fem enkle trin fra forespørgsel til leveret vare.</p>
             </div>
+
+            {(() => {
+              const steps = [
+                { icon: Phone, title: 'Ring om info', text: <>Har du spørgsmål? Ring til os på{' '}<a href="tel:+4551215800" className="font-semibold text-[#284eff] hover:underline">+45 51 21 58 00</a>.</> },
+                { icon: Mail, title: 'Send din bestilling', text: <>Send en mail til{' '}<a href="mailto:info@cleanwatersupply.dk" className="font-semibold text-[#284eff] hover:underline">info@cleanwatersupply.dk</a>{' '}med de ønskede produkter.</> },
+                { icon: FileText, title: 'Vi vender retur', text: <>Vi sender dig priser og en faktura på de ønskede produkter.</> },
+                { icon: CreditCard, title: 'Du betaler', text: <>Du betaler fakturaen, så er bestillingen bekræftet.</> },
+                { icon: Truck, title: 'Vi sender varen', text: <>Vi sender varen direkte til dig.</> },
+              ]
+              return (
+                <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
+                  {steps.map((s, i) => {
+                    const Icon = s.icon
+                    return (
+                      <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
+                        {/* Connector line (desktop) */}
+                        {i < steps.length - 1 && (
+                          <span className="hidden sm:block absolute top-6 left-1/2 w-full h-0.5 bg-blue-200" aria-hidden="true" />
+                        )}
+                        <span className="relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-[#eef5ff]">
+                          <Icon className="w-5 h-5" />
+                        </span>
+                        <div className="min-w-0">
+                          <p className="flex items-center sm:justify-center gap-1.5 font-bold text-[#0a2540] text-sm">
+                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#284eff] text-white text-[11px] font-black">{i + 1}</span>
+                            {s.title}
+                          </p>
+                          <p className="text-[13px] text-gray-500 leading-relaxed mt-1.5">{s.text}</p>
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ol>
+              )
+            })()}
           </div>
         </section>
       )}
