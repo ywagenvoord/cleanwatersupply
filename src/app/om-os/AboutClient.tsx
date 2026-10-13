@@ -7,6 +7,7 @@ import WaterBackground from '@/components/WaterBackground'
 import ImageCarousel from '@/components/ImageCarousel'
 import { ArrowRight, Heart, Eye, Leaf, Lightbulb, ShieldCheck, Users, Star, Droplets, Facebook, Instagram } from 'lucide-react'
 import ScrollReveal from '@/components/ScrollReveal'
+import HelpFaq from '@/components/HelpFaq'
 
 const VALUE_ICONS = [ShieldCheck, Leaf, Lightbulb, Heart, Users, Star]
 
@@ -242,6 +243,9 @@ export default function AboutPage({ faqs = [] }: { faqs?: { q: string; a: string
           </div>
         </section>
       )}
+
+      {/* ─── SKAL DU BRUGE HJÆLP? (MEDARBEJDERE) ───────────────── */}
+      <HelpFaq />
 
       {/* ─── CTA ──────────────────────────────────────────────── */}
       <section className="py-12 sm:py-20 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 relative overflow-hidden mt-16">

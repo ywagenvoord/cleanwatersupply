@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
-import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin, Phone, Mail, ChevronDown } from 'lucide-react'
+import { ArrowRight, Home, ShieldCheck, Sparkles, Wind, Filter, Facebook, Instagram, Wrench, Truck, Trophy, ShoppingBag, Gauge, MapPin } from 'lucide-react'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import NewsletterPopup from '@/components/NewsletterPopup'
 import FadeSlideshow from '@/components/FadeSlideshow'
+import HelpFaq from '@/components/HelpFaq'
 
 function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: string; body: string; da: boolean }) {
   const [open, setOpen] = useState(false)
@@ -587,69 +588,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── SKAL DU BRUGE HJÆLP? (MEDARBEJDERE) ───────────────── */}
-      <section className="py-12 sm:py-20 bg-white border-t border-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{da ? 'Vi er her for dig' : 'We’re here for you'}</span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] mt-2.5">{da ? 'Skal du bruge hjælp?' : 'Need a hand?'}</h2>
-            <p className="text-gray-600 text-base sm:text-lg mt-3 leading-relaxed">
-              {da ? 'Find den rette hjælp her – ring eller skriv direkte til den af os, der kan hjælpe dig bedst.' : 'Find the right help here – call or email the person who can help you best.'}
-            </p>
-          </div>
-          <div className="max-w-3xl mx-auto space-y-3">
-            {[
-              {
-                q: 'Skal du bruge hjælp med bogholderi, faktura, betaling, moms eller regnskab?',
-                person: 'Heidi', role: 'Bogholder', photo: '/images/team-heidi-sq.jpg',
-                lead: 'Kontakt Heidi på mail.', phone: null, email: 'bogholderi@cleanwatersupply.dk',
-              },
-              {
-                q: 'Skal du bruge teknisk info, installation, montering, fejlfinding, service eller filterskift?',
-                person: 'Kristoffer', role: 'Tekniker & rejsemontør', photo: '/images/team-kristoffer-sq.jpg',
-                lead: 'Ring eller send en mail til Kristoffer.', phone: '+45 22 32 01 56', email: 'kristoffer@cleanwatersupply.dk',
-              },
-              {
-                q: 'Skal du bruge rådgivning om salg, montering, tekniske løsninger, erhvervsprojekter, Legionella-sikring eller samarbejde?',
-                person: 'Kenneth', role: 'Stifter & indehaver', photo: '/images/team-kenneth-sq.jpg',
-                lead: 'Ring eller send en mail til Kenneth – eller spørg bare om noget helt andet.', phone: '+45 51 21 58 00', email: 'ksj@cleanwatersupply.dk',
-              },
-              {
-                q: 'Skal du bruge hjælp med indkøb, salg, webshop og ordrer, produkter, hjemmeside, nyhedsbrev eller marketing?',
-                person: 'Camilla', role: 'Salg & Marketing Manager', photo: '/images/team-camilla-sq.jpg',
-                lead: 'Send en mail til Camilla.', phone: null, email: 'caj@cleanwatersupply.dk',
-              },
-            ].map((m) => (
-              <details key={m.person} className="group bg-white rounded-2xl ring-1 ring-blue-100 shadow-sm open:shadow-md transition-shadow overflow-hidden">
-                <summary className="flex items-center justify-between gap-4 px-5 sm:px-6 py-4 cursor-pointer select-none list-none font-bold text-[#0a2540] hover:bg-blue-50/40 transition-colors">
-                  <span>{m.q}</span>
-                  <ChevronDown className="w-5 h-5 text-[#284eff] shrink-0 transition-transform duration-200 group-open:rotate-180" />
-                </summary>
-                <div className="px-5 sm:px-6 pb-5 border-t border-blue-50 pt-4 flex items-center gap-4">
-                  <span className="relative w-14 h-14 shrink-0 rounded-full overflow-hidden ring-2 ring-white shadow">
-                    <img src={m.photo} alt={`${m.person} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover" />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-[15px] text-gray-700 leading-relaxed">
-                      <span className="font-bold text-[#0a2540]">{m.person}</span> · <span className="text-gray-500">{m.role}</span>
-                    </p>
-                    <p className="text-sm text-gray-600 mt-0.5">{m.lead}</p>
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2">
-                      {m.phone && (
-                        <a href={`tel:${m.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0a2540] hover:text-[#284eff] transition-colors">
-                          <Phone className="w-3.5 h-3.5 text-[#284eff]" /> {m.phone}
-                        </a>
-                      )}
-                      <a href={`mailto:${m.email}`} className="inline-flex items-center gap-1.5 text-sm text-[#284eff] hover:underline break-all">
-                        <Mail className="w-3.5 h-3.5 shrink-0" /> {m.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HelpFaq />
 
       {/* ─── CTA ───────────────────────────────────────────────── */}
       <section className="py-10 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
