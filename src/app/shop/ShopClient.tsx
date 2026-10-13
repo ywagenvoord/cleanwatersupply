@@ -460,7 +460,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
 
       {/* ─── SÅDAN BESTILLER DU (tidslinje, kun erhverv) ────────── */}
       {catalog && (
-        <section className="bg-[#eef5ff] border-b border-blue-100">
+        <section className="bg-white border-b border-gray-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
             <div className="text-center mb-8">
               <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540]">Sådan bestiller du</h2>
@@ -510,7 +510,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                     const Icon = s.icon
                     return (
                       <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
-                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-[#eef5ff]" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-white" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Icon className="w-5 h-5" />
                         </span>
                         <div className="min-w-0">
