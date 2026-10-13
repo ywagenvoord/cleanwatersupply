@@ -477,7 +477,13 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
                   {/* Gennemgående linje + grønne prikker der løber fra trin 1 → 5 (desktop) */}
                   <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-blue-200 overflow-visible z-0" aria-hidden="true">
-                    <span className="tl-flow absolute top-1/2 w-3 h-3 rounded-full bg-[#3aad4a] shadow-[0_0_10px_3px_rgba(58,173,74,0.55)]" />
+                    {Array.from({ length: 12 }).map((_, k) => (
+                      <span
+                        key={k}
+                        className="tl-flow absolute top-1/2 w-1.5 h-1.5 rounded-full bg-[#3aad4a] shadow-[0_0_6px_1px_rgba(58,173,74,0.5)]"
+                        style={{ animationDelay: `${(k * 0.75).toFixed(2)}s` }}
+                      />
+                    ))}
                   </span>
                   {steps.map((s, i) => {
                     const Icon = s.icon
