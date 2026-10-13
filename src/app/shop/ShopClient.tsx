@@ -95,7 +95,8 @@ const COLOR = {
 /* ─── OMRÅDER (erhvervs-produktoversigt grupperes efter område) ─────────── */
 
 type Area = 'drikkevand' | 'bakteriesikring' | 'legionella' | 'hocl' | 'blodgoring'
-const AREA_ORDER: Area[] = ['drikkevand', 'bakteriesikring', 'legionella', 'hocl', 'blodgoring']
+// Alfabetisk efter overskrift: Bakteriefiltre, Blødgøring & kalk, HOCl / ECA-anlæg, Legionellaanlæg, Vandfilterkander
+const AREA_ORDER: Area[] = ['bakteriesikring', 'blodgoring', 'hocl', 'legionella', 'drikkevand']
 const AREA_LABELS: Record<Area, string> = {
   drikkevand: 'Vandfilterkander',
   bakteriesikring: 'Bakteriefiltre',
