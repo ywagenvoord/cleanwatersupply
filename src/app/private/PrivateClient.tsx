@@ -288,7 +288,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
-      <section className="py-12 sm:py-16 bg-sky-50/70 border-y border-blue-100/70">
+      <section className="py-12 sm:py-16 bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Video med forskudt blå ramme bagved (som Imerco) */}
@@ -310,13 +310,13 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
             {/* Tekst (overskrift + undertekst) */}
             <div className="order-2">
-              <span className="inline-flex items-center gap-2 text-[#284eff] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 text-green-300 text-xs font-bold uppercase tracking-widest mb-3">
                 <ShieldCheck className="w-4 h-4" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
               </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] mb-4">
                 {da ? 'Sikr dig og din familie bakteriefrit vand' : 'Protect you and your family with bacteria-free water'}
               </h2>
-              <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
+              <p className="text-blue-100/85 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
                 {da
                   ? 'Vores medicinsk certificerede Legionella-filtre sættes direkte på vandhanen eller bruseren og stopper bakterier lige ved tappestedet – trygt at drikke og bade i. Enkelt at montere, uden værktøj.'
                   : 'Our medically certified Legionella filters mount directly on the tap or shower and stop bacteria right at the point of use – safe to drink and bathe in. Easy to fit, no tools required.'}
