@@ -289,8 +289,8 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             href="/shop"
             className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#123a63] to-[#1b4f86] ring-1 ring-white/10 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
           >
-            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/30 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3aad4a]/25 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/25 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3b7fd4]/20 rounded-full blur-3xl" />
             <span className="relative inline-flex items-center gap-2 bg-white/10 text-green-300 text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/15 backdrop-blur-sm">
               <ShoppingBag className="w-3.5 h-3.5" /> Webshop
             </span>
