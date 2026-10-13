@@ -290,13 +290,18 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       <section className="py-12 sm:py-16 bg-[#f4f7fb]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Billede med forskudt farvet ramme bagved (som Imerco) */}
+            {/* Video med forskudt blå ramme bagved (som Imerco) */}
             <div className="relative order-1">
-              <div className="pointer-events-none absolute -bottom-4 -right-4 w-full h-full rounded-2xl bg-[#3aad4a]" />
+              <div className="pointer-events-none absolute -bottom-4 -right-4 w-full h-full rounded-2xl bg-[#284eff]" />
               <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10]">
-                <img
-                  src="/images/area-det-private-hjem.jpg"
-                  alt="Rent, bakteriefrit vand i hjemmet"
+                <video
+                  src="/videos/cblue-sc3-video.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster="/images/area-det-private-hjem.jpg"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
