@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -624,8 +624,8 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {catalog ? (
         /* Erhvervs-katalog: grupperet efter område med overskrifter */
         <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
-            {AREA_ORDER.map((area) => {
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            {AREA_ORDER.map((area, idx) => {
               const items = products.filter((p) => areasForProduct(p).includes(area))
               if (items.length === 0) return null
               // Byt rundt på GlaSSmart og Germ-STOP-kanden i Drikkevand
@@ -635,19 +635,27 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 if (gi > -1 && hi > -1) { const t = items[gi]; items[gi] = items[hi]; items[hi] = t }
               }
               return (
-                <div key={area} id={area} className="scroll-mt-28">
-                  <div className="mb-6 pb-4 border-b border-gray-200">
-                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540]">{AREA_LABELS[area]}</h2>
-                    <p className="text-sm text-gray-500 mt-1.5 max-w-3xl leading-relaxed">{AREA_INTRO[area]}</p>
+                <details key={area} id={area} open={idx === 0} className="group scroll-mt-28 rounded-2xl bg-white ring-1 ring-gray-100 shadow-sm overflow-hidden">
+                  <summary className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 sm:px-7 py-5 hover:bg-gray-50/70 transition-colors">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-3">
+                        <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540]">{AREA_LABELS[area]}</h2>
+                        <span className="shrink-0 text-xs font-bold text-[#0a2540] bg-blue-50 ring-1 ring-blue-100 rounded-full px-2.5 py-0.5">{items.length}</span>
+                      </div>
+                      <p className="text-sm text-gray-500 mt-1 max-w-3xl leading-relaxed">{AREA_INTRO[area]}</p>
+                    </div>
+                    <span className="shrink-0 w-9 h-9 rounded-full bg-gray-100 text-[#0a2540] flex items-center justify-center group-open:bg-[#0a2540] group-open:text-white transition-colors">
+                      <ChevronDown className="w-5 h-5 transition-transform group-open:rotate-180" />
+                    </span>
+                  </summary>
+                  <div className="px-5 sm:px-7 pb-7 pt-1">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
+                      {items.map((product) => (
+                        <ProductCard key={product.id} product={product} catColor="blue" showErhverv={showErhverv} catalog={catalog} />
+                      ))}
+                    </div>
                   </div>
-                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
-                    {items.map((product, i) => (
-                      <ScrollReveal key={product.id} delay={i * 40} direction="up" scale threshold={0.05}>
-                        <ProductCard product={product} catColor="blue" showErhverv={showErhverv} catalog={catalog} />
-                      </ScrollReveal>
-                    ))}
-                  </div>
-                </div>
+                </details>
               )
             })}
           </div>
