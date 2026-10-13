@@ -283,7 +283,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── SHOP ──────────────────────────────────────────────── */}
-      <section className="py-10 sm:py-24 bg-gradient-to-b from-white to-blue-50/40">
+      <section className="pt-4 pb-10 sm:pt-8 sm:pb-16 bg-gradient-to-b from-white to-blue-50/40">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
