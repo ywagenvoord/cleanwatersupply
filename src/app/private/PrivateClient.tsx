@@ -586,6 +586,42 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
+      {/* ─── MEDARBEJDERE ──────────────────────────────────────── */}
+      <section className="py-12 sm:py-20 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="text-[11px] font-black text-[#284eff] uppercase tracking-widest">{da ? 'Menneskerne bag' : 'The people behind'}</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0a2540] mt-2.5">{da ? 'Vores medarbejdere' : 'Our team'}</h2>
+            <p className="text-gray-600 text-base sm:text-lg mt-3 leading-relaxed">
+              {da
+                ? 'Et lille, dedikeret team, der brænder for rent og trygt vand – altid klar til at hjælpe dig med den rette løsning.'
+                : 'A small, dedicated team passionate about clean, safe water – always ready to help you find the right solution.'}
+            </p>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {[
+              { name: 'Kenneth', role: da ? 'Stifter & indehaver' : 'Founder & Owner', photo: '/images/team-kenneth-sq.jpg' },
+              { name: 'Kristoffer', role: da ? 'Tekniker & rejsemontør' : 'Technician & Field Service', photo: '/images/team-kristoffer-sq.jpg' },
+              { name: 'Camilla', role: da ? 'Salg & Marketing Manager' : 'Sales & Marketing Manager', photo: '/images/team-camilla-sq.jpg' },
+              { name: 'Heidi', role: da ? 'Bogholder' : 'Accountant', photo: '/images/team-heidi-sq.jpg' },
+            ].map((m) => (
+              <div key={m.name} className="group text-center">
+                <div className="relative aspect-square rounded-3xl overflow-hidden ring-1 ring-blue-100 shadow-sm group-hover:shadow-lg transition-all">
+                  <img src={m.photo} alt={`${m.name} – Clean Water Supply`} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <h3 className="mt-4 font-extrabold text-[#0a2540]">{m.name}</h3>
+                <p className="text-sm text-gray-500 mt-0.5">{m.role}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-9">
+            <Link href="/om-os" className="inline-flex items-center gap-2 text-sm font-bold text-[#284eff] hover:text-[#1b3fd0]">
+              {da ? 'Læs mere om os' : 'Learn more about us'} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── CTA ───────────────────────────────────────────────── */}
       <section className="py-10 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
