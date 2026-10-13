@@ -8,10 +8,12 @@ export default function FadeSlideshow({
   images,
   interval = 3500,
   className = '',
+  fit = 'cover',
 }: {
   images: Slide[]
   interval?: number
   className?: string
+  fit?: 'cover' | 'contain'
 }) {
   const [active, setActive] = useState(0)
 
@@ -30,7 +32,7 @@ export default function FadeSlideshow({
           alt={img.alt}
           loading="lazy"
           decoding="async"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1000ms] ease-in-out ${
+          className={`absolute inset-0 w-full h-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} transition-opacity duration-[1000ms] ease-in-out ${
             i === active ? 'opacity-100' : 'opacity-0'
           }`}
           aria-hidden={i === active ? undefined : true}
