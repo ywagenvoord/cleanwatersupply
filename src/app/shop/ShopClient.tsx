@@ -479,11 +479,16 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                     const Icon = s.icon
                     return (
                       <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
-                        {/* Connector line (desktop) */}
+                        {/* Connector line + løbende prik (desktop) */}
                         {i < steps.length - 1 && (
-                          <span className="hidden sm:block absolute top-6 left-1/2 w-full h-0.5 bg-blue-200" aria-hidden="true" />
+                          <span className="hidden sm:block absolute top-6 left-1/2 w-full h-0.5 bg-blue-200 overflow-visible" aria-hidden="true">
+                            <span
+                              className="tl-dot absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-[#284eff] shadow-[0_0_8px_2px_rgba(40,78,255,0.5)]"
+                              style={{ animationDelay: `${i * 0.5}s` }}
+                            />
+                          </span>
                         )}
-                        <span className="relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-[#eef5ff]">
+                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-[#0a2540] text-white flex items-center justify-center shadow-sm sm:mb-4 ring-4 ring-[#eef5ff]" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Icon className="w-5 h-5" />
                         </span>
                         <div className="min-w-0">
