@@ -266,7 +266,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group rounded-2xl bg-gray-50 ring-1 ring-gray-100 overflow-hidden hover:shadow-lg hover:ring-gray-200 transition-all duration-300"
+                className="group rounded-2xl bg-sky-50 ring-1 ring-blue-100 overflow-hidden hover:shadow-lg hover:ring-blue-200 transition-all duration-300"
               >
                 <div className="relative h-40 sm:h-56 overflow-hidden">
                   <img
