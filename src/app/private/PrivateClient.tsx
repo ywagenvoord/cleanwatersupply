@@ -316,13 +316,13 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 className="relative mt-8 sm:mt-10 -mx-6 sm:-mx-12 overflow-hidden"
                 style={{ maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}
               >
-                <div className="flex w-max gap-4 sm:gap-5 animate-marquee">
+                <div className="flex w-max gap-4 sm:gap-6 animate-marquee">
                   {[...shopLoopImgs, ...shopLoopImgs].map((img, i) => (
                     <span
                       key={i}
-                      className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white ring-2 ring-white/60 shadow-md overflow-hidden flex items-center justify-center p-2"
+                      className="shrink-0 w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white ring-1 ring-white/50 shadow-lg overflow-hidden flex items-center justify-center p-3"
                     >
-                      <img src={img.src} alt={img.name} width={120} height={120} loading="lazy" decoding="async" className="w-full h-full object-contain" />
+                      <img src={img.src} alt={img.name} width={200} height={200} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                     </span>
                   ))}
                 </div>
