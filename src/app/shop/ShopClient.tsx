@@ -628,7 +628,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
               // Byt rundt på GlaSSmart og Germ-STOP-kanden i Drikkevand
               if (area === 'drikkevand') {
                 const gi = items.findIndex((p) => /glassmart/i.test(p.name))
-                const hi = items.findIndex((p) => /germ-?stop vandfilterkande|predator/i.test(p.name))
+                const hi = items.findIndex((p) => /germ-?stop filter/i.test(p.name))
                 if (gi > -1 && hi > -1) { const t = items[gi]; items[gi] = items[hi]; items[hi] = t }
               }
               return (
