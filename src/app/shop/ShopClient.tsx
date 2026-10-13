@@ -92,6 +92,39 @@ const COLOR = {
   violet:  { tab: 'bg-violet-600 text-white',  tabIdle: 'text-violet-700 hover:bg-violet-50',  badge: 'bg-violet-50 text-violet-700 border-violet-100',  icon: 'from-violet-500 to-violet-600'  },
 }
 
+/* ─── OMRÅDER (erhvervs-produktoversigt grupperes efter område) ─────────── */
+
+type Area = 'drikkevand' | 'bakteriesikring' | 'legionella' | 'hocl' | 'blodgoring'
+const AREA_ORDER: Area[] = ['drikkevand', 'bakteriesikring', 'legionella', 'hocl', 'blodgoring']
+const AREA_LABELS: Record<Area, string> = {
+  drikkevand: 'Drikkevand',
+  bakteriesikring: 'Bakteriesikring',
+  legionella: 'Legionellaanlæg',
+  hocl: 'HOCl / ECA-anlæg',
+  blodgoring: 'Blødgøring & kalk',
+}
+const AREA_INTRO: Record<Area, string> = {
+  drikkevand: 'Filterkander og drikkevandsfiltre til rent, friskt drikkevand.',
+  bakteriesikring: 'Medicinsk certificerede Baclyser®-filtre til hane, bruser og tapsted – beskyttelse mod Legionella, Pseudomonas m.fl.',
+  legionella: 'Inline-filtre og installationsløsninger til Legionella-sikring af større installationer.',
+  hocl: 'Kirkmayer ECA-/HOCl-anlæg – kemikaliefri desinfektion.',
+  blodgoring: 'Blødgøringsanlæg og tilbehør, der fjerner kalk og beskytter installation og hvidevarer.',
+}
+function areaForProduct(p: Product): Area {
+  switch (p.category) {
+    case 'vandkande': return 'drikkevand'
+    case 'blosgoringsanlaeg': return 'blodgoring'
+    case 'anlaeg': return 'hocl'
+    case 'filtre': {
+      const n = p.name.toLowerCase()
+      if (/hygienesiphon|inline-filter|\bil \d|il dent/.test(n)) return 'legionella'
+      if (/dualstage|kulblok|filter housing/.test(n)) return 'drikkevand'
+      return 'bakteriesikring'
+    }
+    default: return 'bakteriesikring' // vandhane + bruser (Baclyser m.fl.)
+  }
+}
+
 /* ─── PRODUCT CARD ─────────────────────────────────────────────────────── */
 
 // Produkter der "passer til" et andet produkt – vises som lille rund markering
@@ -531,7 +564,8 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         </section>
       )}
 
-      {/* ─── CATEGORY TABS ──────────────────────────────────────── */}
+      {/* ─── CATEGORY TABS (kun almindelig shop, ikke erhvervs-katalog) ── */}
+      {!catalog && (
       <section className="sticky top-16 sm:top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
@@ -560,9 +594,10 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
           </div>
         </div>
       </section>
+      )}
 
       {/* ─── CATEGORY INTRO BANNER ──────────────────────────────── */}
-      {activeCategory !== 'alle' && activeCat.imgSrc && (
+      {!catalog && activeCategory !== 'alle' && activeCat.imgSrc && (
         <section className="bg-gray-50 border-b border-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center gap-6">
@@ -583,33 +618,60 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       )}
 
       {/* ─── PRODUCT GRID ───────────────────────────────────────── */}
-      <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          {/* Section heading with count */}
-          <div className="flex items-center justify-between mb-10">
-            <p className="text-sm text-gray-400 font-medium">
-              {filtered.length} {da ? 'produkter' : 'products'}
-              {activeCategory !== 'alle' && (
-                <> {da ? 'i' : 'in'} <span className="text-gray-700 font-semibold">{da ? activeCat.labelDa : activeCat.labelEn}</span></>
-              )}
-            </p>
-            <Link href="/kontakt" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
-              {catalog ? (da ? 'Få et tilbud' : 'Get a quote') : (da ? 'Få rådgivning' : 'Get advice')}
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+      {catalog ? (
+        /* Erhvervs-katalog: grupperet efter område med overskrifter */
+        <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+            {AREA_ORDER.map((area) => {
+              const items = products.filter((p) => areaForProduct(p) === area)
+              if (items.length === 0) return null
+              return (
+                <div key={area} id={area} className="scroll-mt-28">
+                  <div className="mb-6 pb-4 border-b border-gray-200">
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0a2540]">{AREA_LABELS[area]}</h2>
+                    <p className="text-sm text-gray-500 mt-1.5 max-w-3xl leading-relaxed">{AREA_INTRO[area]}</p>
+                  </div>
+                  <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
+                    {items.map((product, i) => (
+                      <ScrollReveal key={product.id} delay={i * 40} direction="up" scale threshold={0.05}>
+                        <ProductCard product={product} catColor="blue" showErhverv={showErhverv} catalog={catalog} />
+                      </ScrollReveal>
+                    ))}
+                  </div>
+                </div>
+              )
+            })}
           </div>
+        </section>
+      ) : (
+        <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
-            {filtered.map((product, i) => (
-              <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
-                <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} catalog={catalog} />
-              </ScrollReveal>
-            ))}
+            {/* Section heading with count */}
+            <div className="flex items-center justify-between mb-10">
+              <p className="text-sm text-gray-400 font-medium">
+                {filtered.length} {da ? 'produkter' : 'products'}
+                {activeCategory !== 'alle' && (
+                  <> {da ? 'i' : 'in'} <span className="text-gray-700 font-semibold">{da ? activeCat.labelDa : activeCat.labelEn}</span></>
+                )}
+              </p>
+              <Link href="/kontakt" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
+                {da ? 'Få rådgivning' : 'Get advice'}
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
+              {filtered.map((product, i) => (
+                <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
+                  <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} catalog={catalog} />
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ─── BOTTOM CTA ─────────────────────────────────────────── */}
       <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
