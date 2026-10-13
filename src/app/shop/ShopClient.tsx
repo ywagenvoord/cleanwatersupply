@@ -489,8 +489,8 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                           {dots.map((_, j) => (
                             <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-blue-200" style={{ left: pos(j) }} />
                           ))}
-                          {/* Grøn timer: fyldes op fra trin 1 → 5 */}
-                          <span className="tl-fill absolute inset-0 block">
+                          {/* Grøn timer: fyldes op fra trin 1 → 5 (høj nok beholder, så prikker ikke klippes) */}
+                          <span className="tl-fill absolute left-0 right-0 top-1/2 -translate-y-1/2 h-4 block">
                             {dots.map((_, j) => (
                               <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: pos(j) }} />
                             ))}
