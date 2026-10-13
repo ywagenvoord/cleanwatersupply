@@ -92,7 +92,7 @@ export default function VandkanderPage() {
             {[
               { src: '/images/filtre-til-vandkande.jpg', alt: 'Bi-flux® filtre' },
               { src: '/images/germ-stop-filter-1.jpg', alt: 'Germ-STOP filter' },
-              { src: '/images/product-filter-udskift.jpg', alt: 'Udskiftningsfilter' },
+              { src: '/images/filtre-til-vandkande-v3.jpg', alt: 'Udskiftningsfiltre til vandkanden' },
               { src: '/images/fast-disk-single.jpg', alt: 'FAST DISK filter' },
             ].map((f) => (
               <span
