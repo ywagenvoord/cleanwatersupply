@@ -366,7 +366,9 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 images={[
                   { src: '/images/kande-carmen.jpg', alt: 'Carmen filterkande' },
                   { src: '/images/kande-mikroplastik-stop.jpg', alt: 'Germ-STOP filterkande' },
-                  { src: '/images/glassmart-3.jpg', alt: 'GlaSSmart glas-filterkaraffel' },
+                  { src: '/images/kande-mikroplastik-hvid.jpg', alt: 'Germ-STOP filterkande med rent vand' },
+                  { src: '/images/glassmart-bottle.jpg', alt: 'GlaSSmart glas-filterkaraffel' },
+                  { src: '/images/kande-carmen-2.jpg', alt: 'Carmen filterkande' },
                 ]}
               />
             </div>
