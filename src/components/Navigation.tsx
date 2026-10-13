@@ -79,8 +79,10 @@ export default function Navigation() {
 
   // Hjem/logo: privat → den private forside; erhverv (og standard) → den originale forside
   const homeHref = audience === 'privat' ? '/private' : '/'
-  // Shop-knap følger valget: erhverv → erhvervs-shoppen, ellers privat-shoppen
-  const shopHref = audience === 'erhverv' ? '/shop/erhverv' : '/shop'
+  // Privat → "Shop" (webshop). Erhverv → "Se produkter" (produktoversigt uden priser).
+  const isErhverv = audience === 'erhverv'
+  const shopHref = isErhverv ? '/shop/erhverv' : '/shop'
+  const shopLabel = isErhverv ? 'Se produkter' : t('nav.shop')
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a2540] shadow-lg" aria-label="Hovednavigation">
@@ -174,7 +176,7 @@ export default function Navigation() {
               href={shopHref}
               className="px-5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
             >
-              {t('nav.shop')}
+              {shopLabel}
             </Link>
 
             {/* Cart icon */}
@@ -228,7 +230,7 @@ export default function Navigation() {
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
             >
               <ShoppingBag className="w-4 h-4" />
-              {t('nav.shop')}
+              {shopLabel}
             </Link>
             <button
               onClick={() => setCartOpen(true)}
@@ -313,7 +315,7 @@ export default function Navigation() {
             onClick={() => setMobileOpen(false)}
             className="block bg-[#3aad4a] text-white text-center px-6 py-3 rounded-full text-sm font-bold mt-3"
           >
-            {t('nav.shop')}
+            {shopLabel}
           </Link>
           <div className="pt-4 border-t border-white/10">
             <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Jeg handler som</p>

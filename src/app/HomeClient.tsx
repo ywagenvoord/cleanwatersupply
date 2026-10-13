@@ -279,6 +279,32 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── SE PRODUKTER ──────────────────────────────────────── */}
+      <section className="py-12 sm:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63] p-10 sm:p-14 text-center">
+            <div className="pointer-events-none absolute -top-16 -right-10 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl" />
+            <div className="relative">
+              <span className="inline-flex items-center gap-2 bg-white/10 ring-1 ring-white/15 text-white text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
+                Produkter
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-white mb-4">Se vores produkter</h2>
+              <p className="text-blue-100/85 max-w-2xl mx-auto leading-relaxed mb-8">
+                Få overblik over hele vores sortiment til erhverv – fra medicinsk certificerede filtre og
+                blødgøringsanlæg til ECA-vand og professionelle anlæg. Kontakt os for pris og et uforpligtende tilbud.
+              </p>
+              <Link
+                href="/shop/erhverv"
+                className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-9 py-4 rounded-full font-bold text-base transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
+              >
+                Se produkter
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── ECA-VAND ──────────────────────────────────────────── */}
       <section className="py-12 sm:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
