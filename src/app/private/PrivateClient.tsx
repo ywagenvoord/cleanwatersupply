@@ -8,7 +8,6 @@ import { PRODUCTS, type Product } from '@/lib/products'
 import { PRIZE_SHORT, DEADLINE, DEADLINE_DATE } from '@/lib/quiz'
 import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
-import NewsletterPopup from '@/components/NewsletterPopup'
 import FadeSlideshow from '@/components/FadeSlideshow'
 import HelpFaq from '@/components/HelpFaq'
 
@@ -607,8 +606,6 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
           </div>
         </div>
       </section>
-
-      <NewsletterPopup />
     </main>
   )
 }
