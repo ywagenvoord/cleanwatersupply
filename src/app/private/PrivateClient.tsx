@@ -290,13 +290,13 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
       {/* ─── SHOP ──────────────────────────────────────────────── */}
       <section className="pt-4 pb-6 sm:pt-8 sm:pb-10 bg-gradient-to-b from-white to-blue-50/40">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href="/shop"
-            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#2f74e0] via-[#3d82e3] to-[#5aa0ec] ring-1 ring-white/20 px-6 py-8 sm:px-12 sm:py-16 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
+            className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63] ring-1 ring-white/10 px-6 py-8 sm:px-10 sm:py-14 text-center shadow-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
           >
-            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-white/20 rounded-full blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#9fc3ff]/25 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -top-24 -right-16 w-72 h-72 bg-[#284eff]/20 rounded-full blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-80 h-80 bg-[#3b7fd4]/15 rounded-full blur-3xl" />
             <span className="relative inline-flex items-center gap-2 bg-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-4 sm:mb-5 uppercase tracking-widest ring-1 ring-white/25 backdrop-blur-sm">
               <ShoppingBag className="w-3.5 h-3.5" /> Webshop
             </span>
@@ -313,7 +313,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
             {/* Små runde produktbilleder der glider i loop */}
             {shopLoopImgs.length > 0 && (
               <div
-                className="relative mt-8 sm:mt-10 -mx-6 sm:-mx-12 overflow-hidden"
+                className="relative mt-8 sm:mt-10 -mx-6 sm:-mx-10 overflow-hidden"
                 style={{ maskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, #000 8%, #000 92%, transparent)' }}
               >
                 <div className="flex w-max gap-4 sm:gap-6 animate-marquee">
