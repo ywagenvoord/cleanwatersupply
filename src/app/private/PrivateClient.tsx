@@ -331,6 +331,51 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
+      {/* ─── DRIKKEVAND / KANDER-PROMO (spejlvendt) ─────────────── */}
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Tekst (til venstre på desktop) */}
+            <div className="order-2 lg:order-1">
+              <span className="inline-flex items-center gap-2 text-[#3aad4a] text-xs font-bold uppercase tracking-widest mb-3">
+                <Sparkles className="w-4 h-4" /> {da ? 'Rent drikkevand' : 'Clean drinking water'}
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
+                {da ? 'Rent, friskt drikkevand – lige ved hånden' : 'Clean, fresh drinking water – right at hand'}
+              </h2>
+              <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
+                {da
+                  ? 'Vores Laica-filterkander reducerer klor, kalk og urenheder og giver renere vand med bedre smag – til både vand, kaffe og te. Rent vand så nemt som at hælde op, helt uden installation.'
+                  : 'Our Laica filter jugs reduce chlorine, limescale and impurities for cleaner, better-tasting water – for water, coffee and tea. Clean water as easy as pouring a glass, with no installation.'}
+              </p>
+              <Link
+                href="/vandkander"
+                className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5"
+              >
+                {da ? 'Se filterkanderne' : 'See the filter jugs'} <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Video med forskudt grøn ramme bagved (til højre på desktop) */}
+            <div className="relative order-1 lg:order-2">
+              <div className="pointer-events-none absolute -bottom-4 -left-4 w-full h-full rounded-2xl bg-[#3aad4a]" />
+              <div className="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10]">
+                <video
+                  src="/videos/mikroplastik-stop.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster="/images/germ-stop-poster.jpg"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── WHY PROTECT (EMOTIONAL) ───────────────────────────── */}
       <section className="pt-6 pb-12 sm:pt-10 sm:pb-20 bg-blue-50/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
