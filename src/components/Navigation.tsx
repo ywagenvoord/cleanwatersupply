@@ -227,9 +227,9 @@ export default function Navigation() {
           <div className="lg:hidden flex items-center gap-1.5">
             <Link
               href={shopHref}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-sm font-bold transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#3aad4a] hover:bg-[#2e9a3d] text-white text-xs font-bold transition-colors whitespace-nowrap shrink-0 leading-tight"
             >
-              <ShoppingBag className="w-4 h-4" />
+              <ShoppingBag className="w-4 h-4 shrink-0" />
               {shopLabel}
             </Link>
             <button
