@@ -37,7 +37,7 @@ function Flag({ code, size = 24 }: { code: string; size?: number }) {
   )
 }
 
-export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
+export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' | 'float' }) {
   const [open, setOpen] = useState(false)
   const [lang, setLang] = useState('da')
 
@@ -66,6 +66,34 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
   }
 
   const others = LANGS.filter((l) => l.code !== lang)
+
+  if (variant === 'float') {
+    return (
+      <div className="fixed bottom-5 left-5 z-40">
+        <div className="flex flex-col-reverse items-center gap-2">
+          <button
+            onClick={() => setOpen(!open)}
+            onBlur={() => setTimeout(() => setOpen(false), 150)}
+            aria-label="Skift sprog"
+            className="w-11 h-11 rounded-full bg-[#0a2540] ring-1 ring-white/15 shadow-lg flex items-center justify-center hover:ring-white/30 transition-all"
+          >
+            <Flag code={lang} size={26} />
+          </button>
+          {open && others.map((l) => (
+            <button
+              key={l.code}
+              onMouseDown={() => choose(l.code)}
+              aria-label={l.label}
+              title={l.label}
+              className="w-11 h-11 rounded-full bg-[#0a2540] ring-1 ring-white/15 shadow-lg flex items-center justify-center hover:ring-white/40 transition-all animate-[fadeUp_.25s_ease]"
+            >
+              <Flag code={l.code} size={26} />
+            </button>
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   if (variant === 'mobile') {
     return (
