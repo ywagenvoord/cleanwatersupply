@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Globe, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 /**
- * Vores egen sprog-vælger – matcher resten af topmenuen.
- * Weglot kører skjult (hide_switcher: true) og styrer selve oversættelsen
- * via window.Weglot.switchTo(). Så har vi fuld kontrol over udseendet.
+ * Vores egen sprog-vælger – gennemsigtig baggrund, kun flaget som symbol.
+ * De øvrige flag folder ud. Weglot kører skjult (hide_switcher) og styrer
+ * oversættelsen via window.Weglot.switchTo().
  */
 
 type WeglotGlobal = {
@@ -16,10 +16,26 @@ type WeglotGlobal = {
 }
 
 const LANGS = [
-  { code: 'da', label: 'Dansk', short: 'DA', flag: '🇩🇰' },
-  { code: 'en', label: 'English', short: 'EN', flag: '🇬🇧' },
-  { code: 'de', label: 'Deutsch', short: 'DE', flag: '🇩🇪' },
+  { code: 'da', label: 'Dansk', flag: 'dk' },
+  { code: 'en', label: 'English', flag: 'gb' },
+  { code: 'de', label: 'Deutsch', flag: 'de' },
 ]
+
+const flagUrl = (f: string) => `https://cdn.weglot.com/flags/circle/${f}.svg`
+
+function Flag({ code, size = 24 }: { code: string; size?: number }) {
+  const l = LANGS.find((x) => x.code === code) ?? LANGS[0]
+  return (
+    <img
+      src={flagUrl(l.flag)}
+      alt={l.label}
+      width={size}
+      height={size}
+      className="rounded-full shrink-0"
+      style={{ width: size, height: size }}
+    />
+  )
+}
 
 export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'desktop' | 'mobile' }) {
   const [open, setOpen] = useState(false)
@@ -38,7 +54,6 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
       getW()?.on?.('languageChanged', (nl) => { if (typeof nl === 'string') setLang(nl) })
       getW()?.on?.('initialized', sync)
     } catch { /* ignore */ }
-    // Weglot kan loade efter mount – synk kort indtil den er klar
     const t = setInterval(sync, 1000)
     const stop = setTimeout(() => clearInterval(t), 10000)
     return () => { clearInterval(t); clearTimeout(stop) }
@@ -50,7 +65,7 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
     setOpen(false)
   }
 
-  const current = LANGS.find((l) => l.code === lang) ?? LANGS[0]
+  const others = LANGS.filter((l) => l.code !== lang)
 
   if (variant === 'mobile') {
     return (
@@ -59,9 +74,10 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
           <button
             key={l.code}
             onClick={() => choose(l.code)}
-            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${lang === l.code ? 'text-green-400 bg-white/10' : 'text-white/70 bg-white/5 hover:bg-white/10 hover:text-white'}`}
+            aria-label={l.label}
+            className={`flex-1 flex items-center justify-center gap-2 px-3 py-2.5 rounded-lg transition-colors ${lang === l.code ? 'bg-white/10 ring-1 ring-white/20' : 'bg-white/5 hover:bg-white/10'}`}
           >
-            <span className="text-base leading-none">{l.flag}</span> {l.short}
+            <Flag code={l.code} size={22} />
           </button>
         ))}
       </div>
@@ -74,22 +90,22 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
         onClick={() => setOpen(!open)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         aria-label="Skift sprog"
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/10 transition-colors text-xs font-medium"
+        className="flex items-center gap-1 p-1.5 rounded-full bg-transparent hover:bg-white/10 transition-colors"
       >
-        <Globe className="w-3.5 h-3.5" />
-        <span>{current.short}</span>
-        <ChevronDown className={`w-3 h-3 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <Flag code={lang} size={24} />
+        <ChevronDown className={`w-3 h-3 text-white/60 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <div className="absolute right-0 mt-1 w-40 bg-[#0a2540] border border-white/15 rounded-xl shadow-xl overflow-hidden z-50">
-          <p className="px-4 pt-3 pb-1 text-[10px] uppercase tracking-widest text-white/40">Sprog</p>
-          {LANGS.map((l) => (
+        <div className="absolute right-0 mt-2 bg-[#0a2540] border border-white/15 rounded-xl shadow-xl overflow-hidden z-50 p-1.5 flex flex-col gap-1">
+          {others.map((l) => (
             <button
               key={l.code}
               onMouseDown={() => choose(l.code)}
-              className={`flex items-center gap-2.5 w-full text-left px-4 py-3 text-sm transition-colors ${lang === l.code ? 'text-green-400 font-semibold bg-white/10' : 'text-white/75 hover:bg-white/10 hover:text-white'}`}
+              aria-label={l.label}
+              title={l.label}
+              className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors"
             >
-              <span className="text-base leading-none">{l.flag}</span> {l.label}
+              <Flag code={l.code} size={24} />
             </button>
           ))}
         </div>
