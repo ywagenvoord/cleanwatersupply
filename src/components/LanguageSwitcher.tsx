@@ -69,7 +69,7 @@ export default function LanguageSwitcher({ variant = 'desktop' }: { variant?: 'd
 
   if (variant === 'float') {
     return (
-      <div className="fixed bottom-5 left-5 z-40">
+      <div className="fixed bottom-5 right-5 z-40">
         <div className="flex flex-col-reverse items-center gap-2">
           <button
             onClick={() => setOpen(!open)}
