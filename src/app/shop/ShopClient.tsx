@@ -550,13 +550,13 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                   {steps.map((s, i) => {
                     const Icon = s.icon
                     return (
-                      <li key={i} className="relative flex flex-col items-center text-center">
+                      <li key={i} className="relative min-w-0 flex flex-col items-center text-center px-0.5">
                         <span className="tl-pulse relative z-10 w-9 h-9 sm:w-12 sm:h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm mb-2 sm:mb-3 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </span>
                         <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#3aad4a] text-white text-[10px] sm:text-xs font-black mb-1.5 sm:mb-2">{i + 1}</span>
-                        <div className="min-w-0">
-                          <p className="font-bold text-white text-[11px] leading-tight sm:text-sm">{s.title}</p>
+                        <div className="min-w-0 w-full">
+                          <p className="font-bold text-white text-[10px] leading-tight sm:text-sm break-words hyphens-auto">{s.title}</p>
                           <p className="hidden sm:block text-[13px] text-blue-100/70 leading-relaxed mt-1.5">{s.text}</p>
                         </div>
                       </li>
