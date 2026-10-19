@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import AudienceModal from '@/components/AudienceModal'
 import MonteringModal from '@/components/MonteringModal'
-import LanguageFloat from '@/components/LanguageFloat'
+import WeglotLoader from '@/components/WeglotLoader'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
 import { isGratisMonteringActive } from '@/lib/campaign'
@@ -113,8 +113,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <AudienceModal />
           <MonteringModal />
-          <LanguageFloat />
         </Providers>
+        <WeglotLoader />
       </body>
     </html>
   )

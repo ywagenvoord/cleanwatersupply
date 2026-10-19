@@ -1,9 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useContext, useState, ReactNode } from 'react'
 import { translations, Language } from '@/lib/translations'
-
-const LANG_KEY = 'cws-lang'
 
 interface LanguageContextType {
   language: Language
@@ -14,28 +12,12 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('da')
+  // Oversættelse håndteres nu af Weglot. Siden renderes altid på dansk (kilde-sprog),
+  // og Weglot oversætter DOM'en til engelsk/tysk. Derfor er sproget låst til 'da'.
+  const [language] = useState<Language>('da')
 
-  // Ved første besøg: brug gemt valg hvis det findes, ellers auto ud fra browseren
-  // (dansk browser → dansk, alle andre → engelsk). Manuelt valg i vælgeren huskes.
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(LANG_KEY)
-      if (saved === 'da' || saved === 'en') {
-        setLanguageState(saved)
-        return
-      }
-    } catch {}
-    if (typeof navigator !== 'undefined') {
-      const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language]
-      const prefersDanish = langs.some((l) => l?.toLowerCase().startsWith('da'))
-      setLanguageState(prefersDanish ? 'da' : 'en')
-    }
-  }, [])
-
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang)
-    try { localStorage.setItem(LANG_KEY, lang) } catch {}
+  const setLanguage = (_lang: Language) => {
+    /* no-op – sprogskift sker via Weglots egen vælger */
   }
 
   const t = (path: string): any => {
