@@ -11,7 +11,7 @@ import { useEffect } from 'react'
  * ikke er opbrugt. Er kvoten nået ("Words limit reached"), svarer Weglots CDN 403,
  * og hverken vælger eller oversættelse vises – det er en konto-/plan-ting, ikke kode.
  */
-const WEGLOT_API_KEY = 'wg_b9ca1189f293a7e5371f5f5440650e8b9'
+const WEGLOT_API_KEY = 'wg_7ae52435c2ee505a1b7dd071006fe78b0'
 
 type WeglotGlobal = { initialize: (o: Record<string, unknown>) => void }
 
