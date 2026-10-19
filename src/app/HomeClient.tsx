@@ -77,14 +77,14 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link
                 href="/kontakt"
-                className="inline-flex items-center justify-center gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-full text-base font-bold transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-bold whitespace-nowrap transition-all hover:shadow-xl hover:shadow-emerald-500/20 hover:-translate-y-0.5"
               >
                 {t('hero.cta1')}
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
               </Link>
               <Link
                 href="/loesninger"
-                className="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white px-8 py-4 rounded-full text-base font-semibold transition-all"
+                className="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white px-6 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base font-semibold whitespace-nowrap transition-all"
               >
                 {t('hero.cta2')}
               </Link>
