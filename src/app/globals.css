@@ -119,6 +119,38 @@
 /* Weglot: skjul den flydende standard-sprogvælger – vi bruger vores egen i topmenuen */
 .country-selector.weglot-default { display: none !important; }
 
+/* Weglot sprog-vælger i topmenuen – tilpasset den mørke nav (matcher Erhverv-knappen) */
+#weglot-switcher-desktop .country-selector,
+#weglot-switcher-mobile .country-selector { border: none !important; background: transparent !important; box-shadow: none !important; font-family: inherit !important; }
+#weglot-switcher-desktop .wgcurrent,
+#weglot-switcher-mobile .wgcurrent {
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
+  border-radius: 9999px !important;
+  padding: 6px 12px !important;
+  box-shadow: none !important;
+}
+#weglot-switcher-desktop .wgcurrent:hover,
+#weglot-switcher-mobile .wgcurrent:hover { background: rgba(255,255,255,.12) !important; }
+#weglot-switcher-desktop a,
+#weglot-switcher-mobile a { color: #fff !important; font-weight: 600 !important; font-size: 13px !important; text-decoration: none !important; }
+#weglot-switcher-desktop ul#weglot-listbox,
+#weglot-switcher-mobile ul#weglot-listbox {
+  background: #0a2540 !important;
+  border: 1px solid rgba(255,255,255,.15) !important;
+  border-radius: .75rem !important;
+  overflow: hidden !important;
+  margin-top: 8px !important;
+  padding: 4px 0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35) !important;
+}
+#weglot-switcher-desktop .wg-li,
+#weglot-switcher-mobile .wg-li { padding: 8px 14px !important; }
+#weglot-switcher-desktop .wg-li:hover,
+#weglot-switcher-mobile .wg-li:hover { background: rgba(255,255,255,.1) !important; }
+#weglot-switcher-desktop .wg-flag,
+#weglot-switcher-mobile .wg-flag { width: 18px !important; height: 18px !important; margin-right: 7px !important; }
+
 /* Live tidslinje: grønne prikker fades blødt ind som en timer fra trin 1 → 5.
    Blød maske-kant (feather) gør, at hver prik toner smooth i grønt. */
 @keyframes tlFill {
