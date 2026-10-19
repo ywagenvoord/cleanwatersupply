@@ -517,11 +517,11 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                 { icon: Truck, title: 'Vi sender varen', text: <>Vi sender varen direkte til dig.</> },
               ]
               return (
-                <ol className="grid gap-6 sm:gap-4 sm:grid-cols-5 relative">
-                  {/* Gennemgående linje mellem ikonerne (desktop) */}
-                  <span className="hidden sm:block absolute top-6 left-[10%] right-[10%] h-0.5 bg-white/20 -translate-y-1/2 z-0" aria-hidden="true" />
+                <ol className="grid grid-cols-5 gap-1.5 sm:gap-4 relative">
+                  {/* Gennemgående linje mellem ikonerne */}
+                  <span className="block absolute top-[18px] sm:top-6 left-[10%] right-[10%] h-0.5 bg-white/20 -translate-y-1/2 z-0" aria-hidden="true" />
                   {/* Prikker KUN i mellemrummene mellem ikonerne + grøn timer der fyldes 1 → 5 */}
-                  <span className="hidden sm:block absolute top-6 left-0 right-0 -translate-y-1/2 h-4 overflow-visible z-0" aria-hidden="true">
+                  <span className="block absolute top-[18px] sm:top-6 left-0 right-0 -translate-y-1/2 h-4 overflow-visible z-0" aria-hidden="true">
                     {(() => {
                       // Ikon-centre sidder ved 10/30/50/70/90 % af bredden. Vi lægger prikker i
                       // de fire mellemrum imellem dem, med god afstand til hvert ikon.
@@ -535,12 +535,12 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                         <>
                           {/* Grå bane */}
                           {dots.map((p, j) => (
-                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/25" style={{ left: `${p}%` }} />
+                            <span key={`g${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-white/25" style={{ left: `${p}%` }} />
                           ))}
                           {/* Grøn timer: fyldes op fra venstre mod højre (trin 1 → 5) */}
                           <span className="tl-fill absolute inset-0 block">
                             {dots.map((p, j) => (
-                              <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: `${p}%` }} />
+                              <span key={`fill${j}`} className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#3aad4a] ring-2 ring-white shadow-[0_0_8px_2px_rgba(58,173,74,0.6)]" style={{ left: `${p}%` }} />
                             ))}
                           </span>
                         </>
@@ -550,17 +550,14 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                   {steps.map((s, i) => {
                     const Icon = s.icon
                     return (
-                      <li key={i} className="relative flex sm:flex-col items-start sm:items-center gap-4 sm:gap-0 sm:text-center">
-                        <span className="tl-pulse relative z-10 w-12 h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm sm:mb-3 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
-                          <Icon className="w-5 h-5" />
+                      <li key={i} className="relative flex flex-col items-center text-center">
+                        <span className="tl-pulse relative z-10 w-9 h-9 sm:w-12 sm:h-12 shrink-0 rounded-full bg-white text-[#0a2540] flex items-center justify-center shadow-sm mb-2 sm:mb-3 ring-4 ring-white/10" style={{ animationDelay: `${i * 0.5}s` }}>
+                          <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
                         </span>
-                        <span className="hidden sm:inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#3aad4a] text-white text-xs font-black mb-2">{i + 1}</span>
+                        <span className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#3aad4a] text-white text-[10px] sm:text-xs font-black mb-1.5 sm:mb-2">{i + 1}</span>
                         <div className="min-w-0">
-                          <p className="font-bold text-white text-sm">
-                            <span className="sm:hidden inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#3aad4a] text-white text-[11px] font-black mr-1.5 align-middle">{i + 1}</span>
-                            {s.title}
-                          </p>
-                          <p className="text-[13px] text-blue-100/70 leading-relaxed mt-1.5">{s.text}</p>
+                          <p className="font-bold text-white text-[11px] leading-tight sm:text-sm">{s.title}</p>
+                          <p className="hidden sm:block text-[13px] text-blue-100/70 leading-relaxed mt-1.5">{s.text}</p>
                         </div>
                       </li>
                     )
