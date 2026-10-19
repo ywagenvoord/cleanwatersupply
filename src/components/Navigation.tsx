@@ -192,8 +192,6 @@ export default function Navigation() {
                 </span>
               )}
             </button>
-            {/* Weglot sprog-vælger (indsættes af Weglot) */}
-            <div id="weglot-switcher-desktop" className="flex items-center text-white" />
             {/* Audience switcher */}
             <div className="relative">
               <button
@@ -223,6 +221,8 @@ export default function Navigation() {
                 </div>
               )}
             </div>
+            {/* Weglot sprog-vælger – helt til højre (indsættes af Weglot) */}
+            <div id="weglot-switcher-desktop" className="flex items-center text-white" />
           </div>
 
           {/* Mobile cart + menu */}
