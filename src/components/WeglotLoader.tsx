@@ -24,6 +24,8 @@ export default function WeglotLoader() {
       try {
         w.initialize({
           api_key: WEGLOT_API_KEY,
+          // Udelad den private forside fra oversættelse (sparer ord på kvoten)
+          excluded_paths: [{ value: '/private', type: 'START_WITH' }],
           // Placér sprog-vælgeren fast i topmenuen (desktop + mobil)
           switchers: [
             { style, location: { target: '#weglot-switcher-desktop', sibling: null } },
