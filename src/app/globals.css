@@ -116,6 +116,9 @@
   .animate-\[shopText_5s_ease-in-out_infinite\] { animation: none; }
 }
 
+/* Weglot: skjul den flydende standard-sprogvælger – vi bruger vores egen i topmenuen */
+.country-selector.weglot-default { display: none !important; }
+
 /* Live tidslinje: grønne prikker fades blødt ind som en timer fra trin 1 → 5.
    Blød maske-kant (feather) gør, at hver prik toner smooth i grønt. */
 @keyframes tlFill {

@@ -16,8 +16,16 @@ export default function WeglotLoader() {
       strategy="afterInteractive"
       onLoad={() => {
         try {
-          ;(window as unknown as { Weglot?: { initialize: (o: { api_key: string }) => void } })
-            .Weglot?.initialize({ api_key: WEGLOT_API_KEY })
+          const style = { full_name: false, with_name: true, is_dropdown: true, with_flags: true, flag_type: 'circle', invert_flags: false }
+          ;(window as unknown as { Weglot?: { initialize: (o: Record<string, unknown>) => void } })
+            .Weglot?.initialize({
+              api_key: WEGLOT_API_KEY,
+              // Placér sprog-vælgeren fast i topmenuen (desktop + mobil)
+              switchers: [
+                { style, location: { target: '#weglot-switcher-desktop', sibling: null } },
+                { style, location: { target: '#weglot-switcher-mobile', sibling: null } },
+              ],
+            })
         } catch {
           /* Weglot ikke tilgængelig – siden fungerer stadig på dansk */
         }
