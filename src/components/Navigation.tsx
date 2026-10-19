@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
 import { useAudience } from '@/lib/useAudience'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { Menu, X, ChevronDown, ShoppingBag, Home, Building2, Wrench, ArrowRight } from 'lucide-react'
 import { isGratisMonteringActive, GRATIS_MONTERING } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
@@ -221,8 +222,8 @@ export default function Navigation() {
                 </div>
               )}
             </div>
-            {/* Weglot sprog-vælger – helt til højre (indsættes af Weglot) */}
-            <div id="weglot-switcher-desktop" className="flex items-center text-white" />
+            {/* Sprog-vælger (vores egen) – helt til højre */}
+            <LanguageSwitcher variant="desktop" />
           </div>
 
           {/* Mobile cart + menu */}
@@ -336,10 +337,10 @@ export default function Navigation() {
               </button>
             </div>
           </div>
-          {/* Weglot sprog-vælger (mobil) */}
+          {/* Sprog-vælger (mobil) */}
           <div className="pt-4 border-t border-white/10">
             <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2 px-1">Sprog</p>
-            <div id="weglot-switcher-mobile" className="text-white" />
+            <LanguageSwitcher variant="mobile" />
           </div>
         </div>
       )}
