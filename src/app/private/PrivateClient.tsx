@@ -355,7 +355,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-28 items-center">
             {/* Tekst (til venstre på desktop) */}
             <div className="order-2 lg:order-1">
-              <span className="inline-flex items-center gap-2 text-[#3aad4a] text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-2 text-[#284eff] text-xs font-bold uppercase tracking-widest mb-3">
                 <Sparkles className="w-4 h-4" /> {da ? 'Rent drikkevand' : 'Clean drinking water'}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
@@ -376,7 +376,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
             {/* Skiftende kande-billeder med forskudt grøn ramme bagved (til højre på desktop) */}
             <div className="relative order-1 lg:order-2">
-              <div className="pointer-events-none absolute -bottom-4 -left-4 w-full h-full rounded-2xl bg-[#3aad4a]" />
+              <div className="pointer-events-none absolute -bottom-4 -left-4 w-full h-full rounded-2xl bg-[#284eff]" />
               <FadeSlideshow
                 fit="contain"
                 className="rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5 aspect-[16/10] bg-white p-6 sm:p-8"
