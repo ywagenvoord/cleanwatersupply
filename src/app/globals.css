@@ -120,6 +120,14 @@
    skjult (hide_switcher). Skjul for en sikkerheds skyld enhver Weglot-switcher. */
 .country-selector, .weglot-container { display: none !important; }
 
+/* Blid svæve-bevægelse (fx favorit-produktbilleder) */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+.floaty { animation: floaty 4.5s ease-in-out infinite; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .floaty { animation: none; } }
+
 /* Live tidslinje: grønne prikker fades blødt ind som en timer fra trin 1 → 5.
    Blød maske-kant (feather) gør, at hver prik toner smooth i grønt. */
 @keyframes tlFill {
