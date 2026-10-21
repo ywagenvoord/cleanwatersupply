@@ -3,6 +3,7 @@ import { PRODUCTS } from '@/lib/products'
 import { sektorer } from '@/lib/sektorer'
 import { KANDER } from '@/lib/kander'
 import { FILTRE } from '@/lib/filtre'
+import { SOLUTIONS } from '@/lib/solutions'
 import { SITE_URL } from '@/lib/site'
 
 
@@ -82,5 +83,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:        0.75,
   }))
 
-  return [...staticRoutes, ...productRoutes, ...sectorRoutes, ...kandeRoutes, ...filterRoutes]
+  // Løsnings-landingssider (kalkanlæg, brusefilter, filtre på tappestedet m.fl.) –
+  // vigtige kommercielle søgeords-sider, der skal med i sitemap.
+  const solutionRoutes: MetadataRoute.Sitemap = SOLUTIONS.map(s => ({
+    url:            `${SITE_URL}/loesninger/${s.slug}`,
+    lastModified:   now,
+    changeFrequency: 'monthly',
+    priority:        0.85,
+  }))
+
+  return [...staticRoutes, ...productRoutes, ...sectorRoutes, ...kandeRoutes, ...filterRoutes, ...solutionRoutes]
 }
