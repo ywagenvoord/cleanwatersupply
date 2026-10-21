@@ -287,6 +287,42 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
+      {/* ─── VORES FAVORITTER ──────────────────────────────────── */}
+      <section className="pt-2 pb-12 sm:pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
+            <span className="section-badge">{da ? 'Vores favoritter' : 'Our favourites'}</span>
+            <h2 className="section-heading">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
+            <p className="section-subheading">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+            {[
+              { name: 'Bi-flux® HealthExpert', tagline: da ? 'Mod PFAS – med ekstra magnesium' : 'Against PFAS – with extra magnesium', img: '/images/filter-healthexpert-v2.jpg', price: 109, href: '/vandkande-filtre/bi-flux-healthexpert' },
+              { name: 'Baclyser® neo TR (3M)', tagline: da ? 'Rent, bakteriefrit vand fra hanen – blød bruserstråle' : 'Clean, bacteria-free water from the tap', img: '/images/baclyser-neo-tr.jpg', price: 625, href: '/shop/baclyser-neo-tr-3m' },
+              { name: da ? 'Germ-STOP vandfilterkande' : 'Germ-STOP water filter jug', tagline: da ? 'Fjerner 99,999 % af bakterierne i drikkevandet' : 'Removes 99.999 % of bacteria from drinking water', img: '/images/kande-germ-stop.png', price: 399, href: '/vandkander/mikroplastik-stop' },
+            ].map((p) => (
+              <Link
+                key={p.name}
+                href={p.href}
+                className="group flex flex-col rounded-2xl bg-sky-50 ring-1 ring-blue-100 overflow-hidden hover:shadow-lg hover:ring-blue-200 transition-all duration-300"
+              >
+                <div className="h-48 sm:h-56 bg-white flex items-center justify-center p-4">
+                  <img src={p.img} alt={p.name} className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-4 sm:p-5 flex flex-col flex-1">
+                  <h3 className="font-bold text-[#0a2540] text-base leading-snug group-hover:text-[#284eff] transition-colors">{p.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1 leading-relaxed flex-1">{p.tagline}</p>
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-lg font-extrabold text-[#0a2540]">{p.price.toLocaleString('da-DK')} kr</span>
+                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a]">{da ? 'Se produkt' : 'See product'} <ArrowRight className="w-4 h-4" /></span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── LEGIONELLA-PROMO (Imerco-stil) ────────────────────── */}
       <section className="py-12 sm:py-16 bg-sky-50/70 border-y border-blue-100/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
