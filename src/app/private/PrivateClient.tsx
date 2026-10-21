@@ -288,17 +288,13 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── VORES FAVORITTER (øjenfangende) ───────────────────── */}
-      <section className="relative py-10 sm:py-16 overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
-        <div className="pointer-events-none absolute -top-16 -right-10 w-80 h-80 bg-sky-400/10 rounded-full blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-10 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ─── VORES FAVORITTER ──────────────────────────────────── */}
+      <section className="py-10 sm:py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
-            <span className="inline-flex items-center gap-2 bg-white/10 ring-1 ring-white/15 text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-300" /> {da ? 'Kundefavoritter' : 'Customer favourites'}
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white mt-3 sm:mt-4">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
-            <p className="text-blue-100/80 mt-2 text-sm sm:text-base leading-relaxed">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
+            <span className="section-badge">{da ? 'Kundefavoritter' : 'Customer favourites'}</span>
+            <h2 className="section-heading">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
+            <p className="section-subheading">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
           </div>
           <FavoritesSlider da={da} />
         </div>

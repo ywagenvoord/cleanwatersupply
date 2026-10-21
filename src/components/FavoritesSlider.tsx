@@ -72,7 +72,7 @@ export default function FavoritesSlider({ da }: { da: boolean }) {
             key={i}
             onClick={() => setIdx(i)}
             aria-label={`${da ? 'Vis favorit' : 'Show favourite'} ${i + 1}`}
-            className={`h-2 rounded-full transition-all ${i === idx ? 'w-6 bg-[#3aad4a]' : 'w-2 bg-white/30 hover:bg-white/50'}`}
+            className={`h-2 rounded-full transition-all ${i === idx ? 'w-6 bg-[#3aad4a]' : 'w-2 bg-gray-300 hover:bg-gray-400'}`}
           />
         ))}
       </div>
