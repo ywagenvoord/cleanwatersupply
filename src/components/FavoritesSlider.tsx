@@ -38,7 +38,7 @@ export default function FavoritesSlider({ da }: { da: boolean }) {
           className="flex transition-transform duration-[650ms] ease-[cubic-bezier(.45,.05,.2,1)]"
           style={{ transform: `translateX(-${idx * 100}%)` }}
         >
-          {items.map((p, i) => (
+          {items.map((p) => (
             <div key={p.name} className="w-full shrink-0">
               <div className="grid sm:grid-cols-2 bg-white">
                 {/* Billede */}
@@ -47,7 +47,7 @@ export default function FavoritesSlider({ da }: { da: boolean }) {
                     <div className="absolute top-6 right-8 w-32 h-32 bg-sky-200/50 rounded-full blur-2xl" />
                   </div>
                   <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-[#0a2540] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">
-                    <Sparkles className="w-3 h-3 text-emerald-300" /> {da ? 'Favorit' : 'Favourite'} #{i + 1}
+                    <Sparkles className="w-3 h-3 text-emerald-300" /> {da ? 'Favorit' : 'Favourite'}
                   </span>
                   <img src={p.img} alt={p.name} className="floaty relative h-44 sm:h-56 w-auto object-contain drop-shadow-xl" />
                 </div>
