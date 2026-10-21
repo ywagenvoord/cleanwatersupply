@@ -287,34 +287,43 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
-      {/* ─── VORES FAVORITTER ──────────────────────────────────── */}
-      <section className="pt-2 pb-12 sm:pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-6 sm:mb-8">
-            <span className="section-badge">{da ? 'Vores favoritter' : 'Our favourites'}</span>
-            <h2 className="section-heading">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
-            <p className="section-subheading">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
+      {/* ─── VORES FAVORITTER (øjenfangende) ───────────────────── */}
+      <section className="relative py-14 sm:py-24 overflow-hidden bg-gradient-to-br from-[#0a2540] via-[#0e2f52] to-[#123a63]">
+        <div className="pointer-events-none absolute -top-16 -right-10 w-96 h-96 bg-sky-400/10 rounded-full blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-20 -left-10 w-96 h-96 bg-emerald-400/10 rounded-full blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+            <span className="inline-flex items-center gap-2 bg-white/10 ring-1 ring-white/15 text-white text-[11px] sm:text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-300" /> {da ? 'Kundefavoritter' : 'Customer favourites'}
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-4 sm:mt-5">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
+            <p className="text-blue-100/80 mt-3 text-base sm:text-lg leading-relaxed">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               { name: 'Bi-flux® HealthExpert', tagline: da ? 'Mod PFAS – med ekstra magnesium' : 'Against PFAS – with extra magnesium', img: '/images/filter-healthexpert-v2.jpg', price: 109, href: '/vandkande-filtre/bi-flux-healthexpert' },
               { name: 'Baclyser® neo TR (3M)', tagline: da ? 'Rent, bakteriefrit vand fra hanen – blød bruserstråle' : 'Clean, bacteria-free water from the tap', img: '/images/baclyser-neo-tr.jpg', price: 625, href: '/shop/baclyser-neo-tr-3m' },
               { name: da ? 'Germ-STOP vandfilterkande' : 'Germ-STOP water filter jug', tagline: da ? 'Fjerner 99,999 % af bakterierne i drikkevandet' : 'Removes 99.999 % of bacteria from drinking water', img: '/images/kande-germ-stop.png', price: 399, href: '/vandkander/mikroplastik-stop' },
-            ].map((p) => (
+            ].map((p, i) => (
               <Link
                 key={p.name}
                 href={p.href}
-                className="group flex flex-col rounded-2xl bg-sky-50 ring-1 ring-blue-100 overflow-hidden hover:shadow-lg hover:ring-blue-200 transition-all duration-300"
+                className="group relative flex flex-col rounded-3xl bg-white shadow-xl hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
               >
-                <div className="h-48 sm:h-56 bg-white flex items-center justify-center p-4">
-                  <img src={p.img} alt={p.name} className="h-full w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                <span className="absolute top-4 left-4 z-10 inline-flex items-center gap-1 bg-[#3aad4a] text-white text-[11px] font-black px-3 py-1 rounded-full shadow uppercase tracking-wide">
+                  <Sparkles className="w-3 h-3" /> {da ? 'Favorit' : 'Favourite'} #{i + 1}
+                </span>
+                <div className="h-56 sm:h-64 bg-gradient-to-b from-sky-50 to-white flex items-center justify-center p-6">
+                  <img src={p.img} alt={p.name} className="h-full w-full object-contain group-hover:scale-110 transition-transform duration-500" />
                 </div>
-                <div className="p-4 sm:p-5 flex flex-col flex-1">
-                  <h3 className="font-bold text-[#0a2540] text-base leading-snug group-hover:text-[#284eff] transition-colors">{p.name}</h3>
-                  <p className="text-sm text-gray-500 mt-1 leading-relaxed flex-1">{p.tagline}</p>
-                  <div className="mt-4 flex items-center justify-between">
-                    <span className="text-lg font-extrabold text-[#0a2540]">{p.price.toLocaleString('da-DK')} kr</span>
-                    <span className="inline-flex items-center gap-1.5 text-sm font-bold text-[#3aad4a]">{da ? 'Se produkt' : 'See product'} <ArrowRight className="w-4 h-4" /></span>
+                <div className="p-6 flex flex-col flex-1 border-t border-gray-100">
+                  <h3 className="font-extrabold text-[#0a2540] text-lg leading-snug">{p.name}</h3>
+                  <p className="text-sm text-gray-500 mt-1.5 leading-relaxed flex-1">{p.tagline}</p>
+                  <div className="mt-5 flex items-center justify-between gap-3">
+                    <span className="text-2xl font-extrabold text-[#0a2540]">{p.price.toLocaleString('da-DK')} kr</span>
+                    <span className="inline-flex items-center gap-2 bg-[#3aad4a] group-hover:bg-[#2e9a3d] text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shrink-0">
+                      {da ? 'Se produkt' : 'See product'} <ArrowRight className="w-4 h-4" />
+                    </span>
                   </div>
                 </div>
               </Link>
