@@ -120,6 +120,20 @@
    skjult (hide_switcher). Skjul for en sikkerheds skyld enhver Weglot-switcher. */
 .country-selector, .weglot-container { display: none !important; }
 
+/* Live, animeret gradient-overskrift */
+@keyframes liveGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+.heading-live {
+  background: linear-gradient(90deg, #0a2540, #284eff, #3aad4a, #284eff, #0a2540);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: liveGradient 6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .heading-live { animation: none; } }
+
 /* Blid svæve-bevægelse (fx favorit-produktbilleder) */
 @keyframes floaty {
   0%, 100% { transform: translateY(0); }

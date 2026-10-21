@@ -289,12 +289,16 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       </section>
 
       {/* ─── VORES FAVORITTER ──────────────────────────────────── */}
-      <section className="py-10 sm:py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
-            <span className="section-badge">{da ? 'Kundefavoritter' : 'Customer favourites'}</span>
-            <h2 className="section-heading">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
-            <p className="section-subheading">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
+      <section className="relative py-12 sm:py-20 overflow-hidden bg-gradient-to-b from-white via-sky-50/50 to-white">
+        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[640px] h-[320px] bg-sky-200/25 rounded-full blur-3xl" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="reveal text-center max-w-xl mx-auto mb-9 sm:mb-12">
+            <span className="inline-flex items-center gap-2 bg-white text-[#0a2540] ring-1 ring-blue-100 shadow-sm text-[11px] font-bold px-4 py-2 rounded-full uppercase tracking-widest">
+              <Sparkles className="w-3.5 h-3.5 text-[#3aad4a] animate-pulse" /> {da ? 'Kundefavoritter' : 'Customer favourites'}
+            </span>
+            <h2 className="heading-live text-3xl sm:text-5xl font-extrabold tracking-tight mt-4 sm:mt-5 leading-tight">{da ? 'Vores favoritter' : 'Our favourites'}</h2>
+            <div className="mx-auto mt-3 h-1 w-16 rounded-full bg-gradient-to-r from-[#284eff] to-[#3aad4a]" />
+            <p className="text-gray-500 mt-4 text-sm sm:text-base leading-relaxed">{da ? 'Tre af de produkter, vores kunder og vi selv holder allermest af.' : 'Three of the products our customers – and we – love the most.'}</p>
           </div>
           <FavoritesSlider da={da} />
         </div>
