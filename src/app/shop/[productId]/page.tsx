@@ -7,6 +7,7 @@ import { overrideImage, galleryFor, videoFor } from '@/lib/stripe-image-override
 import { stockFor } from '@/lib/stock'
 import { CheckCircle2, ChevronRight, ShieldCheck, Droplets, Droplet, ShowerHead, GlassWater, Filter, Waves, ArrowRight, Phone, Wrench, Sparkles, Heart, Zap, Shirt, Users, Clock } from 'lucide-react'
 import BuyBox from './BuyBox'
+import SameDayDispatch from '@/components/SameDayDispatch'
 import ProductGallery from './ProductGallery'
 import EuBadge from '@/components/EuBadge'
 import ProductPrice from './ProductPrice'
@@ -662,6 +663,11 @@ export default async function ProductDetailPage({ params }: { params: { productI
                 )}
 
                 <BuyBox product={product} />
+                {!product.comingSoon && !product.quoteOnly && product.price != null && (
+                  <div className="mt-4">
+                    <SameDayDispatch />
+                  </div>
+                )}
                 <p className="text-xs text-gray-400 text-center mt-4">
                   🚚 Hurtig levering · 🔒 Sikker betaling · 💬 Gratis rådgivning
                 </p>

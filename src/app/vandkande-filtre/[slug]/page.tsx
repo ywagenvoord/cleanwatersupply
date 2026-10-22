@@ -10,6 +10,7 @@ import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import { stockFor } from '@/lib/stock'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
+import SameDayDispatch from '@/components/SameDayDispatch'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -133,6 +134,12 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
                   Få rådgivning
                 </Link>
               </div>
+
+              {f.cwsId && (
+                <div className="mt-5">
+                  <SameDayDispatch />
+                </div>
+              )}
 
               <div className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
                 {!/(dag|uge|måned|år|liter)/i.test(f.life) && (

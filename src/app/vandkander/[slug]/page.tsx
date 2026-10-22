@@ -18,6 +18,7 @@ import GlaSSmartVideoModal from './GlaSSmartVideoModal'
 import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
+import SameDayDispatch from '@/components/SameDayDispatch'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -237,6 +238,12 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   >
                     Få rådgivning
                   </Link>
+                </div>
+              )}
+
+              {k.stripeProductId && k.price != null && (
+                <div className="mt-5">
+                  <SameDayDispatch />
                 </div>
               )}
 
