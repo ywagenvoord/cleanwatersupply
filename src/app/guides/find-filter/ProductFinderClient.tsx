@@ -19,7 +19,7 @@ type Product = {
 const PRODUCTS: Record<PKey, Product> = {
   blodgoring: { name: 'Blødgøringsanlæg 100M', price: 11250, img: '/images/blosgoringsanlaeg-100m.jpg', href: '/shop/blosgoringsanlaeg-100m', cta: 'Se produkt', blurb: 'Fjerner kalk i hele huset – beskytter rør og hvidevarer.' },
   brusehoved: { name: 'Brusehoved med vandfilter', price: 525, img: '/images/product-kalkbruser.jpg', href: '/shop/brusehoved-filter-acf', cta: 'Se produkt', blurb: 'Blødere badevand med mindre kalk og klor – mildere for hud og hår.' },
-  germstop: { name: 'Germ-STOP filterkande', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/mikroplastik-stop', cta: 'Se produkt', blurb: 'Fjerner bakterier og mikroplast mens du hælder – tryghed til familien.' },
+  germstop: { name: 'Germ-STOP filterkande', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/germ-stop', cta: 'Se produkt', blurb: 'Fjerner bakterier og mikroplast mens du hælder – tryghed til familien.' },
   carmen: { name: 'Filterkande med udskifteligt filter', price: 189, img: '/images/kande-carmen-t.png', href: '/shop/kande-carmen', cta: 'Se produkt', blurb: 'Bedre smag med det samme – nem hverdagskande uden installation.' },
   glassmart: { name: 'GlaSSmart – vandkaraffel med filter', price: 199, img: '/images/glassmart-flaske-t.png', href: '/vandkander/glassmart', cta: 'Se produkt', blurb: 'Køligt, filtreret vand klar i køleskabet – elegant glaskaraffel.' },
   limescale: { name: 'Bi-flux® LimescaleSTOP – kalkfilter', price: 99, img: '/images/filter-limescalestop-v2.jpg', href: '/vandkande-filtre/bi-flux-limescalestop', cta: 'Se produkt', blurb: 'Filter til din kande, der reducerer kalk – blødere, mildere drikkevand.' },

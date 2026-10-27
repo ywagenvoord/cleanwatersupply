@@ -14,7 +14,7 @@ export default function FavoritesSlider({ da }: { da: boolean }) {
   const items: Fav[] = [
     { name: 'Bi-flux® HealthExpert', tagline: da ? 'Reducerer PFAS med op til 92 % og tilfører ekstra magnesium – renere, sundere vand hver dag.' : 'Reduces PFAS by up to 92 % and adds extra magnesium – cleaner, healthier water every day.', img: '/images/filter-healthexpert-v2.jpg', price: 109, href: '/vandkande-filtre/bi-flux-healthexpert' },
     { name: 'Baclyser® neo TR (3M)', tagline: da ? 'Rent, bakteriefrit vand direkte fra hanen – med en blød bruserstråle. Samme filter som hospitaler bruger.' : 'Clean, bacteria-free water straight from the tap – the same filter hospitals use.', img: '/images/baclyser-neo-tr.jpg', price: 625, href: '/shop/baclyser-neo-tr-3m' },
-    { name: da ? 'Germ-STOP vandfilterkande' : 'Germ-STOP water filter jug', tagline: da ? 'Fjerner 99,999 % af bakterierne i dit drikkevand – frisk, sikkert vand lige ved hånden.' : 'Removes 99.999 % of bacteria from your drinking water.', img: '/images/kande-germ-stop.png', price: 399, href: '/vandkander/mikroplastik-stop' },
+    { name: da ? 'Germ-STOP vandfilterkande' : 'Germ-STOP water filter jug', tagline: da ? 'Fjerner 99,999 % af bakterierne i dit drikkevand – frisk, sikkert vand lige ved hånden.' : 'Removes 99.999 % of bacteria from your drinking water.', img: '/images/kande-germ-stop.png', price: 399, href: '/vandkander/germ-stop' },
   ]
 
   const [idx, setIdx] = useState(0)

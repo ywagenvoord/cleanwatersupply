@@ -96,7 +96,7 @@ export const KANDER: Kande[] = [
     ],
   },
   {
-    slug: 'mikroplastik-stop',
+    slug: 'germ-stop',
     price: 399,
     stockLeft: 25,
     varenr: 'LAI-1001',

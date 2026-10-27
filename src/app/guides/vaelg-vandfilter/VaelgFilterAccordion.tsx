@@ -53,7 +53,7 @@ const SOLUTIONS: Solution[] = [
     title: 'Filterkande',
     text: 'Renser vandet mens du hælder. Ingen installation.',
     tip: 'Vi anbefaler Germ-stop-kanden – den fjerner både bakterier og mikroplast og er det tryggeste valg til familien. Vil du bare have bedre smag i hverdagen, er den enkle filterkande et billigere alternativ.',
-    recommended: { name: 'Kande der fjerner 99,999 % bakterier*', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/mikroplastik-stop', why: 'Fjerner bakterier og mikroplast, mens du hælder – det tryggeste drikkevand til hele familien.' },
+    recommended: { name: 'Kande der fjerner 99,999 % bakterier*', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/germ-stop', why: 'Fjerner bakterier og mikroplast, mens du hælder – det tryggeste drikkevand til hele familien.' },
     others: [
       { name: 'Filterkande med udskifteligt filter', price: 189, img: '/images/kande-carmen-t.png', href: '/shop/kande-carmen' },
       { name: 'Vandkaraffel med filter', price: 199, img: '/images/glassmart-flaske-t.png', href: '/vandkander/glassmart' },

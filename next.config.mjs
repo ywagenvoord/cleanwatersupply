@@ -18,8 +18,10 @@ const nextConfig = {
       // ── Én produktside per produkt: /shop-dubletter → de kanoniske sider ──
       // Kander → /vandkander (rige sider). Carmen er dog rigest som shop-side:
       { source: '/vandkander/carmen',            destination: '/shop/kande-carmen', permanent: true },
-      { source: '/shop/kande-mikroplastik',      destination: '/vandkander/mikroplastik-stop', permanent: true },
-      { source: '/shop/prod_V2wDbJ1i8O20Kj',     destination: '/vandkander/mikroplastik-stop', permanent: true },
+      // Germ-STOP-kanden fik ny, retvisende slug (bakterie-stop, ikke mikroplast)
+      { source: '/vandkander/mikroplastik-stop', destination: '/vandkander/germ-stop', permanent: true },
+      { source: '/shop/kande-mikroplastik',      destination: '/vandkander/germ-stop', permanent: true },
+      { source: '/shop/prod_V2wDbJ1i8O20Kj',     destination: '/vandkander/germ-stop', permanent: true },
       { source: '/shop/prod_V2wFs5adWhY4cF',     destination: '/vandkander/glassmart', permanent: true },
       // Filtre → /vandkande-filtre (dedikerede sider)
       { source: '/shop/filter-biflux-universal',    destination: '/vandkande-filtre/bi-flux-universal', permanent: true },

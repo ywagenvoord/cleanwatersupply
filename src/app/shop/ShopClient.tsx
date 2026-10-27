@@ -155,7 +155,7 @@ const FITS_WITH: Record<string, { img: string; label: string; text?: string }> =
 const DETAIL_LINK_OVERRIDES: Record<string, string> = {
   // Kander → de rige /vandkander-sider
   'prod_V2wFs5adWhY4cF': '/vandkander/glassmart', // GlaSSmart glas-filterkaraffel
-  'prod_V2wDbJ1i8O20Kj': '/vandkander/mikroplastik-stop', // MikroPLASTIK-STOP filterkande
+  'prod_V2wDbJ1i8O20Kj': '/vandkander/germ-stop', // MikroPLASTIK-STOP filterkande
   // Carmen beholdes på den rige /shop-side (kande-carmen) – ingen override
   // Filtre → de dedikerede /vandkande-filtre-sider
   'filter-biflux-universal':    '/vandkande-filtre/bi-flux-universal',

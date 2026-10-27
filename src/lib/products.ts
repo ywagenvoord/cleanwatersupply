@@ -1067,7 +1067,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Vare-nr.',        value: 'LAI-1008' },
     ],
     faqs: [
-      { q: 'Hvilken kande passer filteret til?', a: 'Det passer til Germ-STOP filterkanden, hvor det sidder sammen med et bi-flux®-filter.', link: { href: '/vandkander/mikroplastik-stop', label: 'Se Germ-STOP filterkanden' } },
+      { q: 'Hvilken kande passer filteret til?', a: 'Det passer til Germ-STOP filterkanden, hvor det sidder sammen med et bi-flux®-filter.', link: { href: '/vandkander/germ-stop', label: 'Se Germ-STOP filterkanden' } },
       { q: 'Hvad gør Germ-STOP™-filteret?', a: 'Det er et ultrafiltrerings-filter, der blokerer bakterier og fjerner uklarhed i vandet. Det reducerer 99,999 % af bakterier* målt af akkrediterede laboratorier.' },
       { q: 'Hvor længe holder et filter?', a: 'I gennemsnit ca. 1 år – men det afhænger af, hvor meget vand der filtreres, og hvor uklart vandet er. Filteret stopper, når fibrenes porer er fyldte.' },
     ],

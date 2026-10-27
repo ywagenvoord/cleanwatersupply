@@ -33,7 +33,7 @@ function lookup(pn: number): Zone | null {
 const P = {
   blodgoring: { name: 'Blødgøringsanlæg 100M', price: 11250, img: '/images/blosgoringsanlaeg-100m.jpg', href: '/shop/blosgoringsanlaeg-100m' },
   brusehoved: { name: 'Brusehoved med vandfilter – komplet', price: 525, img: '/images/product-kalkbruser.jpg', href: '/shop/brusehoved-filter-acf' },
-  germstop: { name: 'Germ-STOP filterkande', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/mikroplastik-stop' },
+  germstop: { name: 'Germ-STOP filterkande', price: 399, img: '/images/kande-germ-stop.png', href: '/vandkander/germ-stop' },
   carmen: { name: 'Filterkande med udskifteligt filter', price: 189, img: '/images/kande-carmen-t.png', href: '/shop/kande-carmen' },
   vandhane: { name: 'Baclyser® neo TL (3M) – vandhanefilter', price: 625, img: '/images/baclyser-neo-tl.jpg', href: '/shop/baclyser-neo-tl-3m' },
 } satisfies Record<string, Product>
