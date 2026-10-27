@@ -274,6 +274,9 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                   <span className="flex flex-col min-w-0">
                     <span className="text-[13px] font-extrabold text-[#0a2540] leading-snug">{k.addon.name}</span>
                     <span className="text-xs text-gray-500 mt-0.5">Køb udskiftningsfilteret til kanden</span>
+                    {k.addon.price != null && (
+                      <span className="mt-1 text-sm font-extrabold text-[#0a2540]">{k.addon.price.toLocaleString('da-DK')} kr <span className="text-[11px] font-medium text-gray-400">inkl. moms</span></span>
+                    )}
                     <span className="mt-1 inline-flex items-center gap-1 text-xs font-bold text-[#284eff] group-hover:text-blue-700">
                       Se filteret <ArrowRight className="w-3.5 h-3.5" />
                     </span>
