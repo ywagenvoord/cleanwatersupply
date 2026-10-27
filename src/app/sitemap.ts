@@ -39,6 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/privatlivspolitik`,   lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/handelsbetingelser`,  lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
     { url: `${SITE_URL}/returpolitik`,        lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${SITE_URL}/cookiepolitik`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ]
 
   // Produkt-ID'er hvis /shop-side 301-viderestiller til en kanonisk side

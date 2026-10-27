@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
 import NewsletterForm from '@/components/NewsletterForm'
+import CookieFooterLink from '@/components/CookieFooterLink'
 
 const SECTORS = [
   { id: 'hoteller',         label: 'Hoteller' },
@@ -182,6 +183,8 @@ export default function Footer() {
             <Link href="/privatlivspolitik" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Privatlivspolitik</Link>
             <Link href="/handelsbetingelser" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Handelsbetingelser</Link>
             <Link href="/returpolitik" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Returpolitik</Link>
+            <Link href="/cookiepolitik" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Cookiepolitik</Link>
+            <span className="text-xs text-gray-600"><CookieFooterLink /></span>
           </div>
         </div>
       </div>

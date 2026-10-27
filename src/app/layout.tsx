@@ -7,6 +7,8 @@ import AudienceModal from '@/components/AudienceModal'
 import MonteringModal from '@/components/MonteringModal'
 import WeglotLoader from '@/components/WeglotLoader'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import CookieConsent from '@/components/CookieConsent'
+import CookieFloatingButton from '@/components/CookieFloatingButton'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
 import { isGratisMonteringActive } from '@/lib/campaign'
@@ -115,6 +117,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AudienceModal />
           <MonteringModal />
           <LanguageSwitcher variant="float" />
+          <CookieConsent />
+          <CookieFloatingButton />
         </Providers>
         <WeglotLoader />
       </body>
