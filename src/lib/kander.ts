@@ -159,6 +159,7 @@ export const KANDER: Kande[] = [
       img: '/images/germ-stop-filter-1.jpg',
       life: 'ca. 1.000 L · ca. 1 år pr. filter',
       blurb: 'Det matchende Germ-stop™-udskiftningsfilter – bevar det sikre, bakteriestoppende drikkevand.',
+      price: 199,
       link: '/shop/mikroplastik-stop-filter',
     },
     compatFilters: ['bi-flux-universal', 'bi-flux-limescalestop', 'bi-flux-healthexpert'],
