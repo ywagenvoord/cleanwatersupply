@@ -44,6 +44,8 @@ export const BLACK_PRODUCT_DISCOUNTS: Record<string, number> = {
   'baclyser-neo-tl-3m': 20,
   'cblue-sc3': 20,
   'cblue-sc3-filter': 20,
+  'brusehoved-filter-acf': 25, // Brusehoved med vandfilter – komplet
+  'brusehoved-til-filter': 25, // Brusehoved med udskifteligt filter
 }
 
 /** Kategorier/grupper til visning (kort i tilbudssektionen). */
