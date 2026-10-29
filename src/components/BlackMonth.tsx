@@ -21,7 +21,15 @@ export function useBlackMonthActive(): boolean {
   const [active, setActive] = useState(false)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const preview = BLACK_MONTH_PREVIEW || params.has('blackmonth')
+    let preview = BLACK_MONTH_PREVIEW
+    try {
+      if (params.has('blackmonth')) {
+        sessionStorage.setItem('cws-preview-blackmonth', '1')
+        preview = true
+      } else if (sessionStorage.getItem('cws-preview-blackmonth') === '1') {
+        preview = true
+      }
+    } catch {}
     const on = preview || isBlackMonthDate()
     // Fødselsdagen har forrang
     setActive(on && !isBirthdayDate())

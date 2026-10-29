@@ -23,7 +23,15 @@ export function useBirthdayActive(): boolean {
   const [active, setActive] = useState(false)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const preview = BIRTHDAY_PREVIEW || params.has('fodselsdag')
+    let preview = BIRTHDAY_PREVIEW
+    try {
+      if (params.has('fodselsdag')) {
+        sessionStorage.setItem('cws-preview-fodselsdag', '1')
+        preview = true
+      } else if (sessionStorage.getItem('cws-preview-fodselsdag') === '1') {
+        preview = true
+      }
+    } catch {}
     setActive(preview || isBirthdayDate())
   }, [])
   return active
