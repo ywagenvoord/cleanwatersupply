@@ -11,6 +11,8 @@ import {
   birthdayPrice,
   isBirthdayDate,
 } from '@/lib/birthday'
+import { useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 
 /**
  * True når fødselsdags-temaet skal vises:
@@ -112,11 +114,28 @@ export function BirthdayRibbon() {
  *  - ellers           → normal pris (navy)
  * `meta` er den lille tekst efter prisen (fx "inkl. moms · Varenr. X").
  */
-export function BirthdayPrice({ price, meta }: { price?: number | null; meta?: ReactNode }) {
+export function BirthdayPrice({ price, meta, category }: { price?: number | null; meta?: ReactNode; category?: string }) {
   const active = useBirthdayActive()
+  const blackPct = useBlackDealPercent(category)
   if (price == null) return null
 
+  // Fødselsdagen har forrang; ellers Black Month hvis kategorien er på tilbud; ellers normal pris.
   if (!active) {
+    if (blackPct > 0) {
+      const nyB = blackPrice(price, blackPct)
+      return (
+        <div className="mt-6">
+          <div className="flex items-center flex-wrap gap-x-3 gap-y-1">
+            <span className="text-3xl font-black text-[#0a2540] leading-none">{nyB.toLocaleString('da-DK')} kr</span>
+            <span className="text-base font-semibold text-gray-400 line-through">{price.toLocaleString('da-DK')} kr</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-black text-white text-xs font-black px-2.5 py-1 shadow-sm ring-1 ring-[#E8B64C]">
+              <span style={{ color: '#E8B64C' }}>BLACK</span> −{blackPct}%
+            </span>
+          </div>
+          <p className="mt-1.5 text-sm text-gray-400">Black Month −{blackPct}% · {meta}</p>
+        </div>
+      )
+    }
     return (
       <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
         <span className="text-3xl font-extrabold text-[#0a2540]">{price.toLocaleString('da-DK')} kr</span>

@@ -13,7 +13,9 @@ import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/pr
 import { getStripe } from '@/lib/stripe-products'
 import { stockFor, lowStockFor } from '@/lib/stock'
 import { BirthdayRibbon, BirthdayFlagRain, useBirthdayActive } from '@/components/Birthday'
-import { birthdayPrice, BIRTHDAY_DISCOUNT } from '@/lib/birthday'
+import { BIRTHDAY_DISCOUNT } from '@/lib/birthday'
+import { BlackMonthRibbon, useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 import SameDayDispatch from '@/components/SameDayDispatch'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
@@ -196,10 +198,14 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
 
   // Fødselsdag: −30 % på Laica-produkterne (filterkander + vandkande-filtre)
   const birthdayActive = useBirthdayActive()
-  const birthdayDeal = birthdayActive && product.category === 'vandkande' && !showErhverv && !soldOut && displayPrice != null
-  const shownPrice = birthdayDeal ? birthdayPrice(displayPrice!) : displayPrice
-  const shownBefore = birthdayDeal ? displayPrice : beforePrice
-  const shownOnSale = birthdayDeal ? true : onSale
+  const blackPct = useBlackDealPercent(product.category)
+  const canDeal = !showErhverv && !soldOut && displayPrice != null
+  const useBday = canDeal && birthdayActive && product.category === 'vandkande'
+  const useBlack = canDeal && !useBday && blackPct > 0
+  const campPct = useBday ? BIRTHDAY_DISCOUNT.percent : (useBlack ? blackPct : 0)
+  const shownPrice = campPct ? blackPrice(displayPrice!, campPct) : displayPrice
+  const shownBefore = campPct ? displayPrice : beforePrice
+  const shownOnSale = campPct ? true : onSale
   const shownSave = shownOnSale && shownBefore != null && shownPrice != null ? shownBefore - shownPrice : 0
 
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
@@ -236,7 +242,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
         )}
         {shownOnSale && !soldOut && !catalog && (
           <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
-            {birthdayDeal ? `−${BIRTHDAY_DISCOUNT.percent}%` : `Spar ${shownSave.toLocaleString('da-DK')} kr.`}
+            {campPct ? `−${campPct}%` : `Spar ${shownSave.toLocaleString('da-DK')} kr.`}
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
@@ -478,6 +484,8 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {/* ─── FØDSELSDAG: flag-regn + festligt bånd (dato-styret) ── */}
       {!catalog && <BirthdayFlagRain />}
       {!catalog && <BirthdayRibbon />}
+      {/* ─── BLACK MONTH-bånd (dato-styret – hele november) ─────── */}
+      {!catalog && <BlackMonthRibbon />}
 
       {/* ─── HERO ───────────────────────────────────────────────── */}
       <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>

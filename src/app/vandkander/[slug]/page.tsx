@@ -20,6 +20,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
 import SameDayDispatch from '@/components/SameDayDispatch'
 import { BirthdayRibbon, BirthdayPrice, BirthdayFlagRain } from '@/components/Birthday'
+import { BlackMonthRibbon } from '@/components/BlackMonth'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -95,6 +96,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
     <main className="bg-white">
       <BirthdayFlagRain />
       <BirthdayRibbon />
+      <BlackMonthRibbon />
       <LaicaProductJsonLd
         name={k.name}
         path={`/vandkander/${k.slug}`}
@@ -183,6 +185,7 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               {k.price != null && (
                 <BirthdayPrice
                   price={k.price}
+                  category="vandkande"
                   meta={
                     <>
                       <span className="text-sm text-gray-400">inkl. moms</span>
