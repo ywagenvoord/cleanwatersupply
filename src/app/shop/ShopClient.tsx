@@ -14,7 +14,7 @@ import { getStripe } from '@/lib/stripe-products'
 import { stockFor, lowStockFor } from '@/lib/stock'
 import { BirthdayRibbon, BirthdayFlagRain, useBirthdayActive } from '@/components/Birthday'
 import { BIRTHDAY_DISCOUNT } from '@/lib/birthday'
-import { BlackMonthRibbon, useBlackDealPercent } from '@/components/BlackMonth'
+import { BlackMonthRibbon, useBlackDealPercent, useBlackMonthActive } from '@/components/BlackMonth'
 import { blackPrice } from '@/lib/blackmonth'
 import SameDayDispatch from '@/components/SameDayDispatch'
 
@@ -479,6 +479,10 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
   const activeCat = CATEGORIES.find(c => c.key === activeCategory)!
   const catColor = activeCat.color ?? 'blue'
 
+  // Black Month: giv shoppen et sort/guld-look mens kampagnen kører.
+  const blackActive = useBlackMonthActive()
+  const black = !catalog && blackActive
+
   return (
     <main>
       {/* ─── FØDSELSDAG: flag-regn + festligt bånd (dato-styret) ── */}
@@ -488,7 +492,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {!catalog && <BlackMonthRibbon />}
 
       {/* ─── HERO ───────────────────────────────────────────────── */}
-      <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
+      <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : black ? 'bg-gradient-to-br from-black via-[#0b0b0e] to-[#19130a] border-b border-[#E8B64C]/25' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
         {!catalog && (
           <div className="absolute inset-0">
             <img
@@ -501,16 +505,16 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
               className="w-full h-full object-cover opacity-10"
               aria-hidden="true"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a2540]/90 to-blue-800/80" />
+            <div className={`absolute inset-0 ${black ? 'bg-gradient-to-br from-black/90 to-[#19130a]/85' : 'bg-gradient-to-br from-[#0a2540]/90 to-blue-800/80'}`} />
           </div>
         )}
-        <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl ${catalog ? 'bg-sky-300/30' : 'bg-blue-500/10'}`} />
-        <div className={`absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl ${catalog ? 'bg-blue-300/25' : 'bg-emerald-500/10'}`} />
+        <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl ${catalog ? 'bg-sky-300/30' : black ? 'bg-[#E8B64C]/15' : 'bg-blue-500/10'}`} />
+        <div className={`absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl ${catalog ? 'bg-blue-300/25' : black ? 'bg-[#E8B64C]/10' : 'bg-emerald-500/10'}`} />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className={`inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest ${catalog ? 'bg-white text-[#0a2540] ring-1 ring-blue-100 shadow-sm' : 'bg-white/10 border border-white/20 text-emerald-300'}`}>
+          <span className={`inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest ${catalog ? 'bg-white text-[#0a2540] ring-1 ring-blue-100 shadow-sm' : black ? 'bg-[#E8B64C]/15 border border-[#E8B64C]/40 text-[#E8B64C]' : 'bg-white/10 border border-white/20 text-emerald-300'}`}>
             <Droplets className={`w-3.5 h-3.5 ${catalog ? 'text-[#3aad4a]' : ''}`} />
-            {catalog ? (da ? 'Til erhverv' : 'For business') : (da ? 'Vores produkter' : 'Our products')}
+            {catalog ? (da ? 'Til erhverv' : 'For business') : black ? 'BLACK MONTH' : (da ? 'Vores produkter' : 'Our products')}
           </span>
           <h1 className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2 sm:mb-5 leading-tight ${catalog ? 'text-[#0a2540]' : 'text-white'}`}>
             {catalog ? (da ? 'Produktoversigt' : 'Product overview') : 'Shop Clean Water Supply'}
@@ -599,7 +603,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
 
       {/* ─── CATEGORY TABS (kun almindelig shop, ikke erhvervs-katalog) ── */}
       {!catalog && (
-      <section className="sticky top-16 sm:top-24 z-30 bg-white border-b border-gray-100 shadow-sm">
+      <section className={`sticky top-16 sm:top-24 z-30 shadow-sm ${black ? 'bg-black border-b border-[#E8B64C]/25' : 'bg-white border-b border-gray-100'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-1 overflow-x-auto py-3 scrollbar-none">
             {CATEGORIES.filter(cat => cat.key === 'alle' || products.some(p => p.category === cat.key)).map((cat) => {
@@ -611,13 +615,17 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key)}
                   className={`shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                    isActive ? c.tab : `text-gray-500 hover:bg-gray-50 ${c.tabIdle}`
+                    black
+                      ? (isActive ? 'bg-[#E8B64C] text-black' : 'text-white/60 hover:bg-white/10')
+                      : (isActive ? c.tab : `text-gray-500 hover:bg-gray-50 ${c.tabIdle}`)
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
                   {da ? cat.labelDa : cat.labelEn}
                   <span className={`text-xs px-1.5 py-0.5 rounded-full font-bold ${
-                    isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-400'
+                    black
+                      ? (isActive ? 'bg-black/20 text-black' : 'bg-white/10 text-white/50')
+                      : (isActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-400')
                   }`}>
                     {cat.key === 'alle' ? products.length : products.filter(p => p.category === cat.key).length}
                   </span>
@@ -631,17 +639,17 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
 
       {/* ─── CATEGORY INTRO BANNER ──────────────────────────────── */}
       {!catalog && activeCategory !== 'alle' && activeCat.imgSrc && (
-        <section className="bg-gray-50 border-b border-gray-100">
+        <section className={`${black ? 'bg-[#0a0a0c] border-b border-[#E8B64C]/20' : 'bg-gray-50 border-b border-gray-100'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex items-center gap-6">
               <div className="hidden sm:block w-20 h-20 rounded-2xl overflow-hidden bg-gray-200 shrink-0">
                 <img src={activeCat.imgSrc} alt="" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h2 className="text-xl font-extrabold text-gray-900">
+                <h2 className={`text-xl font-extrabold ${black ? 'text-white' : 'text-gray-900'}`}>
                   {da ? activeCat.labelDa : activeCat.labelEn}
                 </h2>
-                <p className="text-gray-500 text-sm mt-1">
+                <p className={`text-sm mt-1 ${black ? 'text-white/60' : 'text-gray-500'}`}>
                   {da ? activeCat.descDa : activeCat.descEn}
                 </p>
               </div>
@@ -701,18 +709,18 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
           </div>
         </section>
       ) : (
-        <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
+        <section className={`py-10 sm:py-16 min-h-[60vh] ${black ? 'bg-[#0a0a0c]' : 'bg-gray-50'}`}>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Section heading with count */}
             <div className="flex items-center justify-between mb-10">
-              <p className="text-sm text-gray-400 font-medium">
+              <p className={`text-sm font-medium ${black ? 'text-white/50' : 'text-gray-400'}`}>
                 {filtered.length} {da ? 'produkter' : 'products'}
                 {activeCategory !== 'alle' && (
-                  <> {da ? 'i' : 'in'} <span className="text-gray-700 font-semibold">{da ? activeCat.labelDa : activeCat.labelEn}</span></>
+                  <> {da ? 'i' : 'in'} <span className={`font-semibold ${black ? 'text-white' : 'text-gray-700'}`}>{da ? activeCat.labelDa : activeCat.labelEn}</span></>
                 )}
               </p>
-              <Link href="/kontakt" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-blue-800 transition-colors">
+              <Link href="/kontakt" className={`hidden sm:inline-flex items-center gap-2 text-sm font-semibold transition-colors ${black ? 'text-[#E8B64C] hover:text-[#f0c870]' : 'text-blue-700 hover:text-blue-800'}`}>
                 {da ? 'Få rådgivning' : 'Get advice'}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -731,7 +739,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       )}
 
       {/* ─── BOTTOM CTA ─────────────────────────────────────────── */}
-      <section className="py-12 sm:py-20 bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800 relative overflow-hidden">
+      <section className={`py-12 sm:py-20 relative overflow-hidden ${black ? 'bg-gradient-to-br from-black via-[#0b0b0e] to-[#19130a]' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
