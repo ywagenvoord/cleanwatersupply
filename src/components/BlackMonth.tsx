@@ -54,6 +54,84 @@ function useCountdown(to: Date) {
 }
 const pad = (n: number) => String(n).padStart(2, '0')
 
+/* ── Guld-konfetti (daler ned fra toppen) ────────────────── */
+const CONFETTI_GOLD = ['#E8B64C', '#F0C870', '#D4AF37', '#FFFFFF', '#C9962E']
+export function BlackMonthConfetti({ count = 26 }: { count?: number }) {
+  const active = useBlackMonthActive()
+  if (!active) return null
+  const pieces = Array.from({ length: count }, (_, i) => {
+    const left = (i * 37) % 100
+    const delay = ((i * 13) % 50) / 10
+    const dur = 4 + ((i * 7) % 30) / 10
+    const color = CONFETTI_GOLD[i % CONFETTI_GOLD.length]
+    const size = 6 + (i % 3) * 3
+    const round = i % 3 === 0
+    return { left, delay, dur, color, size, round, i }
+  })
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {pieces.map((p) => (
+        <span
+          key={p.i}
+          className="confetti-piece"
+          style={{
+            left: `${p.left}%`,
+            width: p.size,
+            height: p.size,
+            background: p.color,
+            borderRadius: p.round ? '9999px' : '2px',
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.dur}s`,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+/* ── Guld-fyrværkeri (spræng fra flere steder) ───────────── */
+export function BlackMonthFireworks() {
+  const active = useBlackMonthActive()
+  if (!active) return null
+  const origins = [
+    { l: 14, t: 28, d: 0, c: '#E8B64C' },
+    { l: 48, t: 16, d: 0.7, c: '#F4D27A' },
+    { l: 84, t: 30, d: 1.3, c: '#FFFFFF' },
+    { l: 28, t: 60, d: 2.0, c: '#D4AF37' },
+    { l: 70, t: 64, d: 2.6, c: '#E8B64C' },
+    { l: 58, t: 44, d: 3.2, c: '#F4D27A' },
+  ]
+  const SPARKS = 12
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      {origins.map((o, oi) => (
+        <div key={oi} className="absolute" style={{ left: `${o.l}%`, top: `${o.t}%` }}>
+          {Array.from({ length: SPARKS }).map((_, i) => {
+            const ang = (i / SPARKS) * 2 * Math.PI
+            const r = 44 + (i % 3) * 12
+            const dx = Math.cos(ang) * r
+            const dy = Math.sin(ang) * r
+            return (
+              <span
+                key={i}
+                className="fw-spark"
+                style={{
+                  background: o.c,
+                  boxShadow: `0 0 8px ${o.c}`,
+                  // @ts-expect-error CSS custom properties
+                  '--dx': `${dx.toFixed(1)}px`,
+                  '--dy': `${dy.toFixed(1)}px`,
+                  animationDelay: `${o.d}s`,
+                }}
+              />
+            )
+          })}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 /* ── Topbånd ─────────────────────────────────────────────── */
 export function BlackMonthRibbon() {
   const active = useBlackMonthActive()

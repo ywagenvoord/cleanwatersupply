@@ -333,3 +333,25 @@
 @media (prefers-reduced-motion: reduce) {
   .birthday-marquee { animation: none; }
 }
+
+/* ─── Black Month fyrværkeri (guld-spræng) ──────────────── */
+.fw-spark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  opacity: 0;
+  animation: fw-burst 1.8s ease-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes fw-burst {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  8% { opacity: 1; }
+  70% { opacity: 0.9; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fw-spark { animation: none; display: none; }
+}
