@@ -10,10 +10,10 @@ export function generateMetadata(): Metadata {
   const birthday = Date.now() <= BIRTHDAY.end.getTime()
 
   const ogTitle = birthday
-    ? 'Clean Water Supply fylder 3 år – spar 30%'
+    ? 'Spar 30% – KUN I DAG 🎉 Vi fylder 3 år'
     : 'Privat | Clean Water Supply'
   const ogDesc = birthday
-    ? 'Vi fylder 3 år! Spar 30% på alle filterkander og vandkande-filtre – kun den 3. november.'
+    ? 'Vi fejrer 3 år! Få 30% på alle filterkander og vandkande-filtre – men skynd dig, tilbuddet gælder KUN i dag.'
     : 'Rent, bakteriefrit og kalkfrit vand til dit hjem.'
   const ogImages = birthday
     ? [{ url: '/images/og-fodselsdag.jpg', width: 1200, height: 630, alt: 'Clean Water Supply fylder 3 år – spar 30%' }]
