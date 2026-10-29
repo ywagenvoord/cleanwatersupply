@@ -268,37 +268,8 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
       {/* Content */}
       <div className="p-3 sm:p-5 flex flex-col flex-1">
         <Link href={detailHref}>
-          <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
+          <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2 min-h-[2.75rem]">{product.name}</h3>
         </Link>
-        <p className="mt-1 text-sm text-gray-500 leading-relaxed line-clamp-2 min-h-[2.9rem]">{product.tagline}</p>
-        {product.cardNote && (
-          <p className="mt-1 text-[11px] text-gray-400 italic leading-snug">{product.cardNote}</p>
-        )}
-
-        {isMedical && (
-          <span className="mt-2.5 inline-flex items-center gap-1 self-start rounded-full bg-[#3aad4a]/10 text-[#2e7d34] text-[10px] font-bold px-2 py-1 uppercase tracking-wide">
-            <ShieldCheck className="w-3 h-3" /> Medicinsk godkendt
-          </span>
-        )}
-
-        {(() => {
-          const fits = FITS_WITH[product.id] ?? (/coupling/i.test(product.name)
-            ? { img: '/images/baclyser-neo-tr.jpg', label: 'Baclyser® neo-filtre' }
-            : undefined)
-          if (!fits) return null
-          return (
-          <div className="mt-2.5 inline-flex items-center gap-1.5 self-start rounded-full border border-gray-200 bg-gray-50 py-1 pl-1 pr-2.5">
-            <img
-              src={fits.img}
-              alt={fits.label}
-              className="w-5 h-5 rounded-full object-contain bg-white border border-gray-200"
-            />
-            <span className="text-[11px] font-medium text-gray-500">{fits.text
-              ? <span className="font-semibold text-gray-700">{fits.text}</span>
-              : <>Passer til <span className="font-semibold text-gray-700">{fits.label}</span></>}</span>
-          </div>
-          )
-        })()}
 
         <div className="flex-1" />
 
@@ -377,11 +348,6 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
               )}
               <span className="text-[10px] sm:text-[11px] font-medium text-gray-400 whitespace-nowrap">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
-          )}
-          {!catalog && buyable && (
-            <div className="mt-1.5">
-              <SameDayDispatch variant="inline" />
-            </div>
           )}
         </div>
 
