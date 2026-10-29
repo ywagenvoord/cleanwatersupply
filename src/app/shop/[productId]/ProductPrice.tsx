@@ -12,7 +12,7 @@ import { Gift, Tag, Wrench } from 'lucide-react'
 export default function ProductPrice({ product }: { product: Product }) {
   const erhverv = useB2bLoggedIn()
   const birthdayActive = useBirthdayActive()
-  const blackPct = useBlackDealPercent(product.category)
+  const blackPct = useBlackDealPercent(product.category, product.id)
 
   if (product.quoteOnly) {
     return (

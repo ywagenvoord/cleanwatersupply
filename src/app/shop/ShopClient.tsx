@@ -198,7 +198,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
 
   // Fødselsdag: −30 % på Laica-produkterne (filterkander + vandkande-filtre)
   const birthdayActive = useBirthdayActive()
-  const blackPct = useBlackDealPercent(product.category)
+  const blackPct = useBlackDealPercent(product.category, product.id)
   const canDeal = !showErhverv && !soldOut && displayPrice != null
   const useBday = canDeal && birthdayActive && product.category === 'vandkande'
   const useBlack = canDeal && !useBday && blackPct > 0

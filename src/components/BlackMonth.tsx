@@ -37,10 +37,10 @@ export function useBlackMonthActive(): boolean {
   return active
 }
 
-/** Rabatprocent for en kategori, kun når Black Month er aktiv (ellers 0). */
-export function useBlackDealPercent(category?: string): number {
+/** Rabatprocent for et produkt, kun når Black Month er aktiv (ellers 0). */
+export function useBlackDealPercent(category?: string, id?: string): number {
   const active = useBlackMonthActive()
-  return active ? blackPercentFor(category) : 0
+  return active ? blackPercentFor(category, id) : 0
 }
 
 /* ── Nedtælling til kampagnens slut ──────────────────────── */

@@ -46,8 +46,20 @@ export const BLACK_CATEGORIES = [
 /** Højeste rabat (til "spar op til X%"). */
 export const BLACK_MAX = Math.max(...Object.values(BLACK_DISCOUNTS))
 
-/** Rabatprocent for en given produktkategori (0 hvis ikke på tilbud). */
-export function blackPercentFor(category?: string): number {
+/** Produkter der ALDRIG er med i Black Month (fx manuelle adaptere/koblinger),
+ *  selvom deres kategori er på tilbud. */
+export const BLACK_EXCLUDE_IDS = new Set<string>([
+  'coupling-m22',
+  'coupling-m24',
+  'manuel-adapter-m22',
+  'manuel-adapter-m24',
+  'adapter-straalesamler-m22',
+  'adapter-straalesamler-m24',
+])
+
+/** Rabatprocent for et produkt (0 hvis ikke på tilbud eller undtaget). */
+export function blackPercentFor(category?: string, id?: string): number {
+  if (id && BLACK_EXCLUDE_IDS.has(id)) return 0
   return category ? (BLACK_DISCOUNTS[category] ?? 0) : 0
 }
 
