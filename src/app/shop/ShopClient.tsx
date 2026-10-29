@@ -14,7 +14,7 @@ import { getStripe } from '@/lib/stripe-products'
 import { stockFor, lowStockFor } from '@/lib/stock'
 import { BirthdayRibbon, BirthdayFlagRain, useBirthdayActive } from '@/components/Birthday'
 import { BIRTHDAY_DISCOUNT } from '@/lib/birthday'
-import { BlackMonthRibbon, useBlackDealPercent, useBlackMonthActive, BlackMonthFireworks } from '@/components/BlackMonth'
+import { BlackMonthRibbon, useBlackDealPercent, useBlackMonthActive, BlackMonthConfetti } from '@/components/BlackMonth'
 import { blackPrice } from '@/lib/blackmonth'
 import SameDayDispatch from '@/components/SameDayDispatch'
 
@@ -475,7 +475,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         <div className={`absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl ${catalog ? 'bg-sky-300/30' : black ? 'bg-[#E8B64C]/15' : 'bg-blue-500/10'}`} />
         <div className={`absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl ${catalog ? 'bg-blue-300/25' : black ? 'bg-[#E8B64C]/10' : 'bg-emerald-500/10'}`} />
 
-        {black && <BlackMonthFireworks />}
+        {black && <BlackMonthConfetti />}
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className={`inline-flex items-center gap-2 text-[11px] sm:text-xs font-bold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-3 sm:mb-6 uppercase tracking-widest ${catalog ? 'bg-white text-[#0a2540] ring-1 ring-blue-100 shadow-sm' : black ? 'bg-[#E8B64C]/15 border border-[#E8B64C]/40 text-[#E8B64C]' : 'bg-white/10 border border-white/20 text-emerald-300'}`}>

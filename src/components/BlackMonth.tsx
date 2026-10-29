@@ -54,18 +54,18 @@ function useCountdown(to: Date) {
 }
 const pad = (n: number) => String(n).padStart(2, '0')
 
-/* ── Guld-konfetti (daler ned fra toppen) ────────────────── */
-const CONFETTI_GOLD = ['#E8B64C', '#F0C870', '#D4AF37', '#FFFFFF', '#C9962E']
-export function BlackMonthConfetti({ count = 26 }: { count?: number }) {
+/* ── Guld- & sølv-konfetti (daler ned i rask tempo) ──────── */
+const CONFETTI_COLORS = ['#E8B64C', '#F4D27A', '#D4AF37', '#C9962E', '#E8EAEE', '#C0C4CC', '#FFFFFF', '#AAB0B8']
+export function BlackMonthConfetti({ count = 50 }: { count?: number }) {
   const active = useBlackMonthActive()
   if (!active) return null
   const pieces = Array.from({ length: count }, (_, i) => {
-    const left = (i * 37) % 100
-    const delay = ((i * 13) % 50) / 10
-    const dur = 4 + ((i * 7) % 30) / 10
-    const color = CONFETTI_GOLD[i % CONFETTI_GOLD.length]
-    const size = 6 + (i % 3) * 3
-    const round = i % 3 === 0
+    const left = (i * 53) % 100
+    const delay = ((i * 7) % 24) / 10 // 0–2.4s – tæt, kontinuerlig strøm
+    const dur = 1.8 + ((i * 11) % 18) / 10 // 1.8–3.5s – rask tempo
+    const color = CONFETTI_COLORS[i % CONFETTI_COLORS.length]
+    const size = 6 + (i % 4) * 2 // 6–12px
+    const round = i % 4 === 0
     return { left, delay, dur, color, size, round, i }
   })
   return (
@@ -77,9 +77,9 @@ export function BlackMonthConfetti({ count = 26 }: { count?: number }) {
           style={{
             left: `${p.left}%`,
             width: p.size,
-            height: p.size,
+            height: p.round ? p.size : p.size * 0.6,
             background: p.color,
-            borderRadius: p.round ? '9999px' : '2px',
+            borderRadius: p.round ? '9999px' : '1px',
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.dur}s`,
           }}
