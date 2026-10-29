@@ -12,6 +12,9 @@ import ShopifyBuyButton from '@/components/ShopifyBuyButton'
 import { PRODUCTS, shopPrice, MEDICAL_PRODUCT_IDS, type Product } from '@/lib/products'
 import { getStripe } from '@/lib/stripe-products'
 import { stockFor, lowStockFor } from '@/lib/stock'
+import { BirthdayRibbon, BirthdayFlagRain, useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice, BIRTHDAY_DISCOUNT } from '@/lib/birthday'
+import SameDayDispatch from '@/components/SameDayDispatch'
 
 /* ─── CATEGORY CONFIG ──────────────────────────────────────────────────── */
 
@@ -191,6 +194,14 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
   const freeMontering = product.category === 'blosgoringsanlaeg' && isGratisMonteringActive()
   const buyable = !!stripeProductId && !product.comingSoon && !soldOut
 
+  // Fødselsdag: −30 % på Laica-produkterne (filterkander + vandkande-filtre)
+  const birthdayActive = useBirthdayActive()
+  const birthdayDeal = birthdayActive && product.category === 'vandkande' && !showErhverv && !soldOut && displayPrice != null
+  const shownPrice = birthdayDeal ? birthdayPrice(displayPrice!) : displayPrice
+  const shownBefore = birthdayDeal ? displayPrice : beforePrice
+  const shownOnSale = birthdayDeal ? true : onSale
+  const shownSave = shownOnSale && shownBefore != null && shownPrice != null ? shownBefore - shownPrice : 0
+
   // Nogle produkter linker til en dedikeret side (fx GlaSSmart → /vandkander/glassmart)
   const detailHref = DETAIL_LINK_OVERRIDES[product.id] ?? `/shop/${product.id}`
   const isMedical = MEDICAL_PRODUCT_IDS.has(product.id)
@@ -202,7 +213,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
       id:              product.id,
       stripeProductId,
       name:            product.name,
-      price:           displayPrice,
+      price:           shownPrice ?? displayPrice,
       image:           product.imgSrc,
     })
     setAdded(true)
@@ -223,9 +234,9 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
             Udsolgt
           </span>
         )}
-        {onSale && !soldOut && !catalog && (
+        {shownOnSale && !soldOut && !catalog && (
           <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
-            Spar {saveAmount.toLocaleString('da-DK')} kr.
+            {birthdayDeal ? `−${BIRTHDAY_DISCOUNT.percent}%` : `Spar ${shownSave.toLocaleString('da-DK')} kr.`}
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
@@ -354,12 +365,17 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
             <p className="text-base font-bold text-gray-400">Kommer snart</p>
           ) : (
             <p className="flex items-baseline gap-1.5 flex-wrap">
-              <span className={`text-base sm:text-xl font-extrabold whitespace-nowrap ${onSale ? 'text-red-600' : 'text-[#0a2540]'}`}>{displayPrice.toLocaleString('da-DK')} kr</span>
-              {onSale && (
-                <span className="text-xs sm:text-sm font-semibold text-gray-400 line-through whitespace-nowrap">{beforePrice!.toLocaleString('da-DK')} kr</span>
+              <span className={`text-base sm:text-xl font-extrabold whitespace-nowrap ${shownOnSale ? 'text-red-600' : 'text-[#0a2540]'}`}>{shownPrice!.toLocaleString('da-DK')} kr</span>
+              {shownOnSale && shownBefore != null && (
+                <span className="text-xs sm:text-sm font-semibold text-gray-400 line-through whitespace-nowrap">{shownBefore.toLocaleString('da-DK')} kr</span>
               )}
               <span className="text-[10px] sm:text-[11px] font-medium text-gray-400 whitespace-nowrap">{exMoms ? 'ekskl. moms' : 'inkl. moms'}</span>
             </p>
+          )}
+          {!catalog && buyable && (
+            <div className="mt-1.5">
+              <SameDayDispatch variant="inline" />
+            </div>
           )}
         </div>
 
@@ -459,6 +475,10 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
 
   return (
     <main>
+      {/* ─── FØDSELSDAG: flag-regn + festligt bånd (dato-styret) ── */}
+      {!catalog && <BirthdayFlagRain />}
+      {!catalog && <BirthdayRibbon />}
+
       {/* ─── HERO ───────────────────────────────────────────────── */}
       <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
         {!catalog && (
@@ -674,7 +694,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         </section>
       ) : (
         <section className="py-10 sm:py-16 bg-gray-50 min-h-[60vh]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* Section heading with count */}
             <div className="flex items-center justify-between mb-10">

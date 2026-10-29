@@ -11,6 +11,7 @@ import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import { stockFor } from '@/lib/stock'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import SameDayDispatch from '@/components/SameDayDispatch'
+import { BirthdayRibbon, BirthdayPrice, BirthdayFlagRain } from '@/components/Birthday'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -35,6 +36,8 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
+      <BirthdayFlagRain />
+      <BirthdayRibbon />
       <LaicaProductJsonLd
         name={f.name}
         path={`/vandkande-filtre/${f.slug}`}
@@ -113,12 +116,16 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
               </div>
 
               {f.price != null && (
-                <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
-                  <span className="text-3xl font-extrabold text-[#0a2540]">{f.price.toLocaleString('da-DK')} kr</span>
-                  <span className="text-sm text-gray-400">inkl. moms</span>
-                  {f.pack && <span className="text-sm font-bold text-[#2e9a3d]">· {f.pack}</span>}
-                  {f.varenr && <span className="text-xs text-gray-400">· Varenr. {f.varenr}</span>}
-                </div>
+                <BirthdayPrice
+                  price={f.price}
+                  meta={
+                    <>
+                      <span className="text-sm text-gray-400">inkl. moms</span>
+                      {f.pack && <span className="text-sm font-bold text-[#2e9a3d]"> · {f.pack}</span>}
+                      {f.varenr && <span className="text-xs text-gray-400"> · Varenr. {f.varenr}</span>}
+                    </>
+                  }
+                />
               )}
 
               <div className="flex flex-col sm:flex-row items-stretch gap-3 mt-8">

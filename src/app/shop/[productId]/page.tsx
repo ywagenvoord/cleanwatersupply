@@ -14,6 +14,7 @@ import ProductPrice from './ProductPrice'
 import AddonProducts from './AddonProducts'
 import FilterAddToCart from './FilterAddToCart'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
+import { BirthdayRibbon, BirthdayFlagRain } from '@/components/Birthday'
 import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import ProductJsonLd from '@/components/seo/ProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
@@ -365,6 +366,8 @@ export default async function ProductDetailPage({ params }: { params: { productI
 
   return (
     <main className="bg-gray-50 min-h-screen">
+      <BirthdayFlagRain />
+      <BirthdayRibbon />
 
       {/* JSON-LD structured data */}
       <ProductJsonLd product={product} />

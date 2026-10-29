@@ -19,6 +19,7 @@ import LaicaProductJsonLd from '@/components/seo/LaicaProductJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 import FaqJsonLd from '@/components/seo/FaqJsonLd'
 import SameDayDispatch from '@/components/SameDayDispatch'
+import { BirthdayRibbon, BirthdayPrice, BirthdayFlagRain } from '@/components/Birthday'
 
 const HIGHLIGHT_ICONS: Record<string, typeof Zap> = {
   zap: Zap,
@@ -92,6 +93,8 @@ export default function KandePage({ params }: { params: { slug: string } }) {
 
   return (
     <main className="bg-white">
+      <BirthdayFlagRain />
+      <BirthdayRibbon />
       <LaicaProductJsonLd
         name={k.name}
         path={`/vandkander/${k.slug}`}
@@ -178,11 +181,15 @@ export default function KandePage({ params }: { params: { slug: string } }) {
               )}
 
               {k.price != null && (
-                <div className="mt-6 flex items-baseline flex-wrap gap-x-2 gap-y-1">
-                  <span className="text-3xl font-extrabold text-[#0a2540]">{k.price.toLocaleString('da-DK')} kr</span>
-                  <span className="text-sm text-gray-400">inkl. moms</span>
-                  {k.varenr && <span className="text-xs text-gray-400">· Varenr. {k.varenr}</span>}
-                </div>
+                <BirthdayPrice
+                  price={k.price}
+                  meta={
+                    <>
+                      <span className="text-sm text-gray-400">inkl. moms</span>
+                      {k.varenr && <span className="text-xs text-gray-400"> · Varenr. {k.varenr}</span>}
+                    </>
+                  }
+                />
               )}
 
               {stock && (
@@ -558,6 +565,48 @@ export default function KandePage({ params }: { params: { slug: string } }) {
                 </summary>
                 <p className="px-5 pb-5 -mt-1 text-gray-600 leading-relaxed">{f.a}</p>
               </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ─── ANDRE KØBTE OGSÅ (øvrige vandfilterkander) ────── */}
+      {KANDER.filter((o) => o.slug !== k.slug).length > 0 && (
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-[#0a2540] mb-6">Andre købte også</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+            {KANDER.filter((o) => o.slug !== k.slug).map((o) => (
+              <Link
+                key={o.slug}
+                href={`/vandkander/${o.slug}`}
+                className="group flex flex-col rounded-2xl bg-white ring-1 ring-gray-100 shadow-sm hover:shadow-md hover:ring-gray-200 transition-all overflow-hidden"
+              >
+                <div className="flex items-center justify-center bg-gradient-to-b from-sky-50 to-white p-4">
+                  <div className="h-28 w-28 flex items-center justify-center">
+                    <img
+                      src={o.img}
+                      alt={o.heading ?? o.name}
+                      className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div className="flex flex-col flex-1 p-4">
+                  <h3 className="text-sm font-bold text-[#0a2540] leading-snug line-clamp-2 group-hover:text-[#284eff] transition-colors">
+                    {o.heading ?? o.name}
+                  </h3>
+                  {o.price != null && (
+                    <p className="mt-1.5 text-base font-extrabold text-[#0a2540]">
+                      {o.price.toLocaleString('da-DK')} kr{' '}
+                      <span className="text-xs font-medium text-gray-400">inkl. moms</span>
+                    </p>
+                  )}
+                  <span className="mt-auto pt-3 inline-flex items-center gap-1 text-sm font-bold text-[#284eff]">
+                    Se kande
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
         </section>

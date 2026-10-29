@@ -10,6 +10,8 @@ import ProductCarousel from '@/components/ProductCarousel'
 import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import FadeSlideshow from '@/components/FadeSlideshow'
 import FavoritesSlider from '@/components/FavoritesSlider'
+import { BirthdayRibbon, BirthdayOffers, BirthdayFlagRain, BirthdayDealBadge } from '@/components/Birthday'
+import { BIRTHDAY_DEAL_SLUGS } from '@/lib/birthday'
 import HelpFaq from '@/components/HelpFaq'
 
 function ProtectCard({ Icon, title, body, da }: { Icon: typeof Sparkles; title: string; body: string; da: boolean }) {
@@ -130,6 +132,10 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
   return (
     <main>
+      {/* ─── FØDSELSDAG: flag-regn over hele siden + festligt bånd ─ */}
+      <BirthdayFlagRain />
+      <BirthdayRibbon />
+
       {/* ─── KONKURRENCE-BANNER (indtil fristen) ───────────────── */}
       {showComp && (
         <Link
@@ -252,12 +258,15 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
         </div>
       </section>
 
+      {/* ─── FØDSELSDAGSTILBUD (dato-styret – kun på selve dagen) ─ */}
+      <BirthdayOffers />
+
       {/* ─── KAMPAGNE: GRATIS MONTERING ────────────────────────── */}
       <GratisMonteringBanner className="pt-14" />
 
       {/* ─── SOLUTIONS FOR THE HOME ────────────────────────────── */}
       <section className="pt-6 pb-10 sm:pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
             <span className="section-badge">{da ? 'Til hjemmet' : 'For the home'}</span>
             <h2 className="section-heading">{da ? 'Vores løsninger til dig og din familie' : 'Our solutions for you and your family'}</h2>
@@ -268,7 +277,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
               <Link
                 key={title}
                 href={href ?? `/loesninger/${slug}`}
-                className="group rounded-2xl bg-sky-50 ring-1 ring-blue-100 overflow-hidden hover:shadow-lg hover:ring-blue-200 transition-all duration-300"
+                className="group relative rounded-2xl bg-sky-50 ring-1 ring-blue-100 overflow-hidden hover:shadow-lg hover:ring-blue-200 transition-all duration-300"
               >
                 <div className="relative h-40 sm:h-56 overflow-hidden">
                   <img
@@ -278,6 +287,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                       objPos ?? 'object-center'
                     }`}
                   />
+                  {BIRTHDAY_DEAL_SLUGS.includes(slug) && <BirthdayDealBadge />}
                 </div>
                 <h3 className="text-center font-semibold text-sm sm:text-base text-[#0a2540] group-hover:text-[#284eff] leading-tight px-2 py-4 transition-colors">
                   {title}
@@ -485,7 +495,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
       {/* ─── PRODUCTS ──────────────────────────────────────────── */}
       <section className="py-12 sm:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-6 mb-6 sm:mb-12">
             <div className="max-w-xl">
               <span className="section-badge">Bestsellers</span>
