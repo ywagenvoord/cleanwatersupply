@@ -26,25 +26,38 @@ export function isBlackMonthActive(now: Date = new Date()): boolean {
 }
 
 /**
- * Udvalgte kategorier på tilbud + rabatprocent.
- * Nøglen er produktets `category` (se src/lib/products.ts).
- * ▼ Ret frit i procenter/kategorier.
+ * Hele kategorier på tilbud (nøgle = produktets `category`).
+ * Kun Laica/filterkander & vandkande-filtre er med som fuld kategori.
  */
 export const BLACK_DISCOUNTS: Record<string, number> = {
-  bruser: 20, // Brusefiltre (cBlue SC3 m.fl.) – Aqua Free
-  vandhane: 20, // Vandhanefiltre (Baclyser neo TR/TL m.fl.) – Aqua Free
   vandkande: 25, // Filterkander & vandkande-filtre (Laica)
 }
 
-/** Kategorier til visning (badges, knapper). */
+/**
+ * Enkelt-produkter på tilbud (nøgle = produktets id → rabat%).
+ * ▼ Ret frit – kun disse specifikke varer er på tilbud (ud over Laica-kategorien).
+ */
+export const BLACK_PRODUCT_DISCOUNTS: Record<string, number> = {
+  'baclyser-neo-tr-2m': 20,
+  'baclyser-neo-tr-3m': 20,
+  'baclyser-neo-tl-2m': 20,
+  'baclyser-neo-tl-3m': 20,
+  'cblue-sc3': 20,
+  'cblue-sc3-filter': 20,
+}
+
+/** Kategorier/grupper til visning (kort i tilbudssektionen). */
 export const BLACK_CATEGORIES = [
-  { key: 'bruser', label: 'Brusefiltre', href: '/loesninger/brusefilter', percent: 20 },
-  { key: 'vandhane', label: 'Vandhanefiltre', href: '/loesninger/filtre-paa-tappestedet', percent: 20 },
-  { key: 'vandkande', label: 'Filterkander', href: '/vandkander', percent: 25 },
+  { key: 'vandhane', label: 'Baclyser® neo hanefiltre', href: '/loesninger/filtre-paa-tappestedet', percent: 20 },
+  { key: 'bruser', label: 'cBlue brusefiltre', href: '/loesninger/brusefilter', percent: 20 },
+  { key: 'vandkande', label: 'Filterkander & filtre', href: '/vandkander', percent: 25 },
 ]
 
 /** Højeste rabat (til "spar op til X%"). */
-export const BLACK_MAX = Math.max(...Object.values(BLACK_DISCOUNTS))
+export const BLACK_MAX = Math.max(
+  ...Object.values(BLACK_DISCOUNTS),
+  ...Object.values(BLACK_PRODUCT_DISCOUNTS),
+)
 
 /** Produkter der ALDRIG er med i Black Month (fx manuelle adaptere/koblinger),
  *  selvom deres kategori er på tilbud. */
@@ -57,9 +70,11 @@ export const BLACK_EXCLUDE_IDS = new Set<string>([
   'adapter-straalesamler-m24',
 ])
 
-/** Rabatprocent for et produkt (0 hvis ikke på tilbud eller undtaget). */
+/** Rabatprocent for et produkt (0 hvis ikke på tilbud eller undtaget).
+ *  Rækkefølge: undtaget → specifikt produkt-tilbud → hel kategori (kun vandkande). */
 export function blackPercentFor(category?: string, id?: string): number {
   if (id && BLACK_EXCLUDE_IDS.has(id)) return 0
+  if (id && BLACK_PRODUCT_DISCOUNTS[id] != null) return BLACK_PRODUCT_DISCOUNTS[id]
   return category ? (BLACK_DISCOUNTS[category] ?? 0) : 0
 }
 
