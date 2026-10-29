@@ -273,8 +273,10 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
       {/* Content */}
       <div className="p-3 sm:p-5 flex flex-col flex-1">
         <Link href={detailHref}>
-          <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2">{product.name}</h3>
+          <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2 min-h-[2.75rem]">{product.name}</h3>
         </Link>
+
+        <div className="flex-1" />
 
         {/* ── KAMPAGNE (rullende) ───────────────────────────────── */}
         {freeMontering && (
@@ -698,7 +700,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 items-start [&>*]:min-w-0">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 [&>*]:min-w-0">
               {filtered.map((product, i) => (
                 <ScrollReveal key={product.id} delay={i * 50} direction="up" scale threshold={0.05}>
                   <ProductCard product={product} catColor={catColor} showErhverv={showErhverv} catalog={catalog} />
