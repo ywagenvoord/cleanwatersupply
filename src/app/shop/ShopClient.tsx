@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown, Wrench } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -262,6 +262,11 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           <div className={`h-40 sm:h-64 bg-gradient-to-br ${c.icon} flex items-center justify-center`}>
             <CatIcon className="w-16 h-16 text-white/30" />
           </div>
+        )}
+        {product.category === 'blosgoringsanlaeg' && (
+          <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">
+            <Wrench className="w-4 h-4" /> Gratis montering
+          </span>
         )}
       </Link>
 

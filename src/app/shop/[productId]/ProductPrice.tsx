@@ -6,7 +6,7 @@ import { useBirthdayActive } from '@/components/Birthday'
 import { birthdayPrice, BIRTHDAY_DISCOUNT } from '@/lib/birthday'
 import { useBlackDealPercent } from '@/components/BlackMonth'
 import { blackPrice } from '@/lib/blackmonth'
-import { Gift, Tag } from 'lucide-react'
+import { Gift, Tag, Wrench } from 'lucide-react'
 
 /** Pris på detaljesiden – erhverv ser grossistpris (ekskl. moms), privat ser privatpris. */
 export default function ProductPrice({ product }: { product: Product }) {
@@ -72,6 +72,11 @@ export default function ProductPrice({ product }: { product: Product }) {
     <div className="mb-5">
       <p className="text-3xl font-extrabold text-[#0a2540]">{amount.toLocaleString('da-DK')} kr</p>
       <p className="text-xs text-gray-400 mt-1">{exMoms ? 'Ekskl. moms' : 'Inkl. moms'} · Hurtig levering</p>
+      {product.category === 'blosgoringsanlaeg' && (
+        <span className="mt-2.5 inline-flex items-center gap-1.5 rounded-full bg-[#3aad4a]/10 text-[#2e7d34] text-sm font-bold px-3 py-1.5">
+          <Wrench className="w-4 h-4" /> Gratis montering inkluderet
+        </span>
+      )}
     </div>
   )
 }
