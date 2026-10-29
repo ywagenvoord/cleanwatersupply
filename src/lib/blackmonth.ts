@@ -33,7 +33,6 @@ export function isBlackMonthActive(now: Date = new Date()): boolean {
 export const BLACK_DISCOUNTS: Record<string, number> = {
   bruser: 20, // Brusefiltre (cBlue SC3 m.fl.) – Aqua Free
   vandhane: 20, // Vandhanefiltre (Baclyser neo TR/TL m.fl.) – Aqua Free
-  filtre: 20, // Øvrige Aqua Free-filtre (filterhuse, inline, HygieneSiphon m.fl.)
   vandkande: 25, // Filterkander & vandkande-filtre (Laica)
 }
 
@@ -41,7 +40,6 @@ export const BLACK_DISCOUNTS: Record<string, number> = {
 export const BLACK_CATEGORIES = [
   { key: 'bruser', label: 'Brusefiltre', href: '/loesninger/brusefilter', percent: 20 },
   { key: 'vandhane', label: 'Vandhanefiltre', href: '/loesninger/filtre-paa-tappestedet', percent: 20 },
-  { key: 'filtre', label: 'Filtre & tilbehør', href: '/shop', percent: 20 },
   { key: 'vandkande', label: 'Filterkander', href: '/vandkander', percent: 25 },
 ]
 

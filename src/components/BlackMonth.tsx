@@ -211,7 +211,7 @@ export function BlackMonthOffers() {
         )}
 
         {/* kategori-kort */}
-        <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {BLACK_CATEGORIES.map((c) => (
             <Link
               key={c.key}
