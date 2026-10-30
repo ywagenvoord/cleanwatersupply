@@ -13,7 +13,7 @@ export const BLACK_MONTH = {
 /** Preview under udvikling. TRUE = temaet vises nu (så du kan se det på localhost).
  *  HUSK at sætte til false før udgivelse – ellers vises Black Month hele tiden.
  *  (Du kan også se den med ?blackmonth=1 i adressen.) */
-export const BLACK_MONTH_PREVIEW = true
+export const BLACK_MONTH_PREVIEW = false
 
 /** Er vi i Black Month-perioden (ren dato)? */
 export function isBlackMonthDate(now: Date = new Date()): boolean {
