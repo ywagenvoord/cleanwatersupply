@@ -246,6 +246,11 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
             {campPct ? `−${campPct}%` : `Spar ${shownSave.toLocaleString('da-DK')} kr.`}
           </span>
         )}
+        {product.category === 'blosgoringsanlaeg' && blackActive && !soldOut && !catalog && (
+          <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
+            Tilbud
+          </span>
+        )}
         {product.imgSrc && !imgFailed ? (
           <div className="h-40 sm:h-64 overflow-hidden bg-gray-50 flex items-center justify-center p-3 sm:p-4">
             <img
