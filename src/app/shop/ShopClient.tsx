@@ -198,6 +198,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
 
   // Fødselsdag: −30 % på Laica-produkterne (filterkander + vandkande-filtre)
   const birthdayActive = useBirthdayActive()
+  const blackActive = useBlackMonthActive()
   const blackPct = useBlackDealPercent(product.category, product.id)
   const canDeal = !showErhverv && !soldOut && displayPrice != null
   const useBday = canDeal && birthdayActive && product.category === 'vandkande'
@@ -264,9 +265,17 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           </div>
         )}
         {product.category === 'blosgoringsanlaeg' && (
-          <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">
-            <Wrench className="w-4 h-4" /> Gratis montering
-          </span>
+          blackActive ? (
+            <span className="absolute bottom-0 inset-x-0 z-10 bg-gradient-to-r from-black via-[#1a1206] to-black text-[#E8B64C] text-xs sm:text-sm font-extrabold py-2 flex items-center justify-center gap-2 shadow-md border-t border-[#E8B64C]/40 uppercase tracking-wide">
+              <Wrench className="w-4 h-4" />
+              Gratis montering
+              <span className="text-white/90 font-bold normal-case tracking-normal">· spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
+            </span>
+          ) : (
+            <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">
+              <Wrench className="w-4 h-4" /> Gratis montering
+            </span>
+          )
         )}
       </Link>
 
@@ -461,7 +470,6 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {!catalog && <BirthdayRibbon />}
       {/* ─── BLACK MONTH-bånd (dato-styret – hele november) ─────── */}
       {!catalog && <BlackMonthRibbon />}
-      {!catalog && <BlackMonthMarquee />}
 
       {/* ─── HERO ───────────────────────────────────────────────── */}
       <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : black ? 'bg-gradient-to-br from-black via-[#0b0b0e] to-[#19130a] border-b border-[#E8B64C]/25' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>
@@ -610,6 +618,8 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
         </div>
       </section>
       )}
+
+      {!catalog && <BlackMonthMarquee />}
 
       {/* ─── CATEGORY INTRO BANNER ──────────────────────────────── */}
       {!catalog && activeCategory !== 'alle' && activeCat.imgSrc && (
