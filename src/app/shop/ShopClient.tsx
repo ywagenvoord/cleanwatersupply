@@ -283,7 +283,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
         </Link>
 
         {product.category === 'blosgoringsanlaeg' && blackActive && product.badge && (
-          <p className="text-xs font-semibold text-gray-500 -mt-1 mb-1">{product.badge}</p>
+          <p className="text-xs font-bold text-[#3aad4a] -mt-1 mb-1">{product.badge}</p>
         )}
 
         {product.category === 'blosgoringsanlaeg' && blackActive && (
