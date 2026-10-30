@@ -264,25 +264,10 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
             <CatIcon className="w-16 h-16 text-white/30" />
           </div>
         )}
-        {product.category === 'blosgoringsanlaeg' && (
-          blackActive ? (
-            <span className="absolute bottom-0 inset-x-0 z-10 overflow-hidden bg-gradient-to-r from-black via-[#1a1206] to-black py-2 shadow-md border-t border-[#E8B64C]/40">
-              <span className="bm-band flex w-max will-change-transform">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <span key={i} className="flex items-center shrink-0 text-xs sm:text-sm font-extrabold uppercase tracking-wide text-[#E8B64C]">
-                    <Wrench className="w-4 h-4 mx-2 shrink-0" />
-                    Gratis montering
-                    <span className="text-white/90 font-bold normal-case tracking-normal mx-2">· spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
-                    <span className="mx-2" style={{ color: '#E8B64C' }}>✦</span>
-                  </span>
-                ))}
-              </span>
-            </span>
-          ) : (
-            <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">
-              <Wrench className="w-4 h-4" /> Gratis montering
-            </span>
-          )
+        {product.category === 'blosgoringsanlaeg' && !blackActive && (
+          <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">
+            <Wrench className="w-4 h-4" /> Gratis montering
+          </span>
         )}
       </Link>
 
@@ -291,6 +276,21 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
         <Link href={detailHref}>
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2 min-h-[2.75rem]">{product.name}</h3>
         </Link>
+
+        {product.category === 'blosgoringsanlaeg' && blackActive && (
+          <span className="mt-1.5 -mx-3 sm:-mx-5 relative z-10 overflow-hidden flex items-center bg-gradient-to-r from-black via-[#1a1206] to-black py-1 border-y border-[#E8B64C]/40">
+            <span className="bm-band flex w-max will-change-transform">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span key={i} className="flex items-center shrink-0 text-[11px] font-extrabold uppercase tracking-wide text-[#E8B64C]">
+                  <Wrench className="w-3 h-3 mx-2 shrink-0" />
+                  Gratis montering
+                  <span className="text-white/90 font-bold normal-case tracking-normal mx-2">· spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
+                  <span className="mx-2" style={{ color: '#E8B64C' }}>✦</span>
+                </span>
+              ))}
+            </span>
+          </span>
+        )}
 
         <div className="flex-1" />
 
