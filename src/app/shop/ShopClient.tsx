@@ -247,8 +247,8 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           </span>
         )}
         {product.category === 'blosgoringsanlaeg' && blackActive && !soldOut && !catalog && (
-          <span className="absolute top-3 right-3 z-10 text-[11px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm">
-            Tilbud
+          <span className="absolute top-3 right-3 z-10 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm whitespace-nowrap">
+            Tilbud · spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr.
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
