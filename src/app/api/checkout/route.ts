@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { cwsIdForStripeProduct } from '@/lib/stripe-products'
-import { getProduct } from '@/lib/products'
+import { categoryForStripeProduct } from '@/lib/shop-data'
 import { campaignPercentFor, blackPrice } from '@/lib/blackmonth'
 
 export const runtime = 'nodejs'
@@ -62,8 +62,10 @@ export async function POST(req: NextRequest) {
         if (!price) throw new Error(`Mangler pris for produkt ${item.stripeProductId}`)
 
         // Find vores vare og dens kategori → beregn evt. kampagnerabat.
+        // Kategorien slås op både i den hardcodede liste OG blandt Stripe-only
+        // varer (GlaSSmart, FAST DISK), så ingen vandkande-vare falder igennem.
         const cwsId = cwsIdForStripeProduct(item.stripeProductId)
-        const cat = cwsId ? getProduct(cwsId)?.category : undefined
+        const cat = categoryForStripeProduct(item.stripeProductId)
         const pct = campaignPercentFor(cat, cwsId, now)
 
         // Rabat kun på engangsbeløb (ikke abonnement) med et kendt beløb.

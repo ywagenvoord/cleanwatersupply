@@ -5,6 +5,7 @@ import { getActiveStripeProducts } from '@/lib/stripe-fetch'
 import { PRODUCTS, type Product } from '@/lib/products'
 import { stockFor } from '@/lib/stock'
 import { overrideImage } from '@/lib/stripe-image-overrides'
+import { cwsIdForStripeProduct } from '@/lib/stripe-products'
 
 // Stripe-only produkter (uden hardcodet match) der skal have en anden kategori
 // end default 'filtre' – fx GlaSSmart-karaffel og FAST DISK-filter hører til vandkande.
@@ -12,6 +13,17 @@ const STRIPE_ONLY_CATEGORY: Record<string, Product['category']> = {
   'prod_V2wHIQrdoXx6RG': 'vandkande', // FAST DISK™ filter til GlaSSmart
   'prod_V2wFs5adWhY4cF': 'vandkande', // GlaSSmart™ glas-filterkaraffel
   'prod_V2wDbJ1i8O20Kj': 'vandkande', // Germ-STOP filterkande + 1 Bi-flux
+}
+
+/**
+ * Find kategorien for et Stripe-produkt – både for hardcodede produkter
+ * (via cws-id) og for Stripe-only produkter (GlaSSmart, FAST DISK m.fl.).
+ * Bruges server-side i checkout til at afgøre kampagnerabat.
+ */
+export function categoryForStripeProduct(stripeProductId: string): Product['category'] | undefined {
+  if (STRIPE_ONLY_CATEGORY[stripeProductId]) return STRIPE_ONLY_CATEGORY[stripeProductId]
+  const cwsId = cwsIdForStripeProduct(stripeProductId)
+  return cwsId ? PRODUCTS.find((p) => p.id === cwsId)?.category : undefined
 }
 
 // Kort, sælgende beskrivelse på shop-kortet for Stripe-only produkter
