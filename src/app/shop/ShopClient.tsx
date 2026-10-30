@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useCart } from '@/contexts/CartContext'
-import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown, Wrench } from 'lucide-react'
+import { Filter, Droplets, Droplet, ShowerHead, GlassWater, ShieldCheck, FlaskConical, Waves, ArrowRight, ShoppingBag, Check, Mail, Phone, FileText, CreditCard, Truck, ChevronDown, Wrench, Tag } from 'lucide-react'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { INSTALLATION_PRICE } from '@/lib/products'
 import Link from 'next/link'
@@ -231,7 +231,7 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
     <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md hover:border-gray-200 transition-all duration-300 flex flex-col overflow-hidden group h-full min-w-0">
       {/* Image / icon top */}
       <Link href={detailHref} className="block relative">
-        {product.badge && !/medicinsk/i.test(product.badge) && !soldOut && (
+        {product.badge && !/medicinsk/i.test(product.badge) && !soldOut && !(product.category === 'blosgoringsanlaeg' && blackActive) && (
           <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold px-2.5 py-1 rounded-full border uppercase tracking-wide ${c.badge}`}>
             {product.badge}
           </span>
@@ -247,8 +247,8 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           </span>
         )}
         {product.category === 'blosgoringsanlaeg' && blackActive && !soldOut && !catalog && (
-          <span className="absolute top-3 right-3 z-10 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm whitespace-nowrap">
-            Tilbud · spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr.
+          <span className="absolute top-3 left-3 z-10 inline-flex items-center gap-1 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-600 text-white shadow-sm whitespace-nowrap">
+            <Tag className="w-3 h-3" /> Tilbud · spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr.
           </span>
         )}
         {product.imgSrc && !imgFailed ? (
