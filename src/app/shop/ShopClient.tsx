@@ -282,6 +282,10 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
           <h3 className="font-bold text-gray-900 text-[15px] leading-snug hover:text-blue-700 transition-colors line-clamp-2 min-h-[2.75rem]">{product.name}</h3>
         </Link>
 
+        {product.category === 'blosgoringsanlaeg' && blackActive && product.badge && (
+          <p className="text-xs font-semibold text-gray-500 -mt-1 mb-1">{product.badge}</p>
+        )}
+
         {product.category === 'blosgoringsanlaeg' && blackActive && (
           <span className="mt-1.5 -mx-3 sm:-mx-5 relative z-10 overflow-hidden flex items-center bg-gradient-to-r from-black via-[#1a1206] to-black py-1 border-y border-[#E8B64C]/40">
             <span className="bm-band flex w-max will-change-transform">
