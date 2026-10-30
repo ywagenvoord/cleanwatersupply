@@ -266,10 +266,17 @@ function ProductCard({ product, catColor, showErhverv, catalog = false }: { prod
         )}
         {product.category === 'blosgoringsanlaeg' && (
           blackActive ? (
-            <span className="absolute bottom-0 inset-x-0 z-10 bg-gradient-to-r from-black via-[#1a1206] to-black text-[#E8B64C] text-xs sm:text-sm font-extrabold py-2 flex items-center justify-center gap-2 shadow-md border-t border-[#E8B64C]/40 uppercase tracking-wide">
-              <Wrench className="w-4 h-4" />
-              Gratis montering
-              <span className="text-white/90 font-bold normal-case tracking-normal">· spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
+            <span className="absolute bottom-0 inset-x-0 z-10 overflow-hidden bg-gradient-to-r from-black via-[#1a1206] to-black py-2 shadow-md border-t border-[#E8B64C]/40">
+              <span className="bm-band flex w-max will-change-transform">
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <span key={i} className="flex items-center shrink-0 text-xs sm:text-sm font-extrabold uppercase tracking-wide text-[#E8B64C]">
+                    <Wrench className="w-4 h-4 mx-2 shrink-0" />
+                    Gratis montering
+                    <span className="text-white/90 font-bold normal-case tracking-normal mx-2">· spar {INSTALLATION_PRICE.toLocaleString('da-DK')} kr</span>
+                    <span className="mx-2" style={{ color: '#E8B64C' }}>✦</span>
+                  </span>
+                ))}
+              </span>
             </span>
           ) : (
             <span className="absolute bottom-0 inset-x-0 z-10 bg-[#3aad4a] text-white text-xs sm:text-sm font-bold py-2 flex items-center justify-center gap-1.5 shadow-md">

@@ -336,7 +336,14 @@
 
 /* ─── Black Month rullende tilbuds-streg ────────────────── */
 .bm-marquee {
-  animation: bm-marquee 48s linear infinite;
+  animation: bm-marquee 22s linear infinite;
+}
+/* Langsomt rullende "Gratis montering"-bånd på blødgøringsanlæg */
+.bm-band {
+  animation: bm-marquee 24s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bm-band { animation: none; }
 }
 .bm-marquee:hover {
   animation-play-state: paused;
