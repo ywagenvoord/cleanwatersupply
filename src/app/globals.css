@@ -336,7 +336,7 @@
 
 /* ─── Black Month rullende tilbuds-streg ────────────────── */
 .bm-marquee {
-  animation: bm-marquee 22s linear infinite;
+  animation: bm-marquee 48s linear infinite;
 }
 .bm-marquee:hover {
   animation-play-state: paused;
