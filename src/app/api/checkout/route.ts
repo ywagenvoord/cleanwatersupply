@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import { cwsIdForStripeProduct } from '@/lib/stripe-products'
+import { getProduct } from '@/lib/products'
+import { campaignPercentFor, blackPrice } from '@/lib/blackmonth'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -28,25 +31,58 @@ export async function POST(req: NextRequest) {
 
     // Resolve each Stripe product to its active price.
     // Try default_price first; fall back to first active price for the product.
+    //
+    // Kampagnerabat: er varen på tilbud (Black Month / fødselsdag) i det
+    // rigtige kampagnevindue, bygger vi en ad-hoc pris med den rabatterede
+    // beløb, så kunden automatisk betaler tilbudsprisen – uden rabatkode.
+    const now = new Date()
     const lineItems = await Promise.all(
       items.map(async (item) => {
         const product = await stripe.products.retrieve(item.stripeProductId)
-        let priceId: string | undefined =
-          typeof product.default_price === 'string'
-            ? product.default_price
-            : product.default_price?.id
+        let price: Stripe.Price | undefined =
+          typeof product.default_price === 'object' && product.default_price
+            ? (product.default_price as Stripe.Price)
+            : undefined
 
-        if (!priceId) {
-          const prices = await stripe.prices.list({
-            product: item.stripeProductId,
-            active: true,
-            limit: 1,
-          })
-          priceId = prices.data[0]?.id
+        if (!price) {
+          const priceId =
+            typeof product.default_price === 'string' ? product.default_price : undefined
+          if (priceId) {
+            price = await stripe.prices.retrieve(priceId)
+          } else {
+            const prices = await stripe.prices.list({
+              product: item.stripeProductId,
+              active: true,
+              limit: 1,
+            })
+            price = prices.data[0]
+          }
         }
 
-        if (!priceId) throw new Error(`Mangler pris for produkt ${item.stripeProductId}`)
-        return { price: priceId, quantity: item.quantity }
+        if (!price) throw new Error(`Mangler pris for produkt ${item.stripeProductId}`)
+
+        // Find vores vare og dens kategori → beregn evt. kampagnerabat.
+        const cwsId = cwsIdForStripeProduct(item.stripeProductId)
+        const cat = cwsId ? getProduct(cwsId)?.category : undefined
+        const pct = campaignPercentFor(cat, cwsId, now)
+
+        // Rabat kun på engangsbeløb (ikke abonnement) med et kendt beløb.
+        if (
+          pct > 0 &&
+          typeof price.unit_amount === 'number' &&
+          price.type === 'one_time'
+        ) {
+          return {
+            price_data: {
+              currency: price.currency,
+              unit_amount: blackPrice(price.unit_amount, pct),
+              product: item.stripeProductId,
+            },
+            quantity: item.quantity,
+          }
+        }
+
+        return { price: price.id, quantity: item.quantity }
       }),
     )
 

@@ -63,3 +63,13 @@ export const STRIPE_MAPPING: Record<string, StripeData> = {
 export function getStripe(cwsId: string): StripeData | undefined {
   return STRIPE_MAPPING[cwsId]
 }
+
+/** Omvendt opslag: fra Stripe-produkt-id (prod_...) til vores cws-id.
+ *  Bruges server-side i checkout til at finde evt. kampagnerabat på varen. */
+const REVERSE_STRIPE_MAPPING: Record<string, string> = Object.fromEntries(
+  Object.entries(STRIPE_MAPPING).map(([cwsId, data]) => [data.productId, cwsId]),
+)
+
+export function cwsIdForStripeProduct(stripeProductId: string): string | undefined {
+  return REVERSE_STRIPE_MAPPING[stripeProductId]
+}

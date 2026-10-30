@@ -2,7 +2,7 @@
 // Fødselsdagen (2.-3. nov) har FORRANG: når fødselsdagen er aktiv, vises
 // Black Month ikke (så de to kampagner ikke slås oveni hinanden).
 
-import { isBirthdayDate } from './birthday'
+import { isBirthdayDate, BIRTHDAY_DISCOUNT } from './birthday'
 
 export const BLACK_MONTH = {
   start: new Date('2026-11-01T00:00:00+01:00'),
@@ -83,4 +83,25 @@ export function blackPercentFor(category?: string, id?: string): number {
 /** Beregn Black Month-pris ud fra normalpris og procent. */
 export function blackPrice(normal: number, pct: number): number {
   return Math.round(normal * (1 - pct / 100))
+}
+
+/**
+ * Samlet kampagnerabat for en vare – bruges SERVER-SIDE i checkout, så kunden
+ * automatisk betaler tilbudsprisen (ingen rabatkode nødvendig).
+ *
+ * VIGTIGT: Denne funktion bruger KUN den rigtige dato (ingen preview-flag),
+ * så der aldrig gives rabat i kassen uden for kampagnevinduet.
+ *
+ * Rækkefølge/forrang:
+ *   1. Fødselsdagen (2.–3. nov): −30 % på filterkander & vandkande-filtre.
+ *   2. Black Month (hele nov, undt. fødselsdagen): rabat pr. vare/kategori.
+ */
+export function campaignPercentFor(category?: string, id?: string, now: Date = new Date()): number {
+  if (isBirthdayDate(now)) {
+    return category === 'vandkande' ? BIRTHDAY_DISCOUNT.percent : 0
+  }
+  if (isBlackMonthActive(now)) {
+    return blackPercentFor(category, id)
+  }
+  return 0
 }
