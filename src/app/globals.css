@@ -334,6 +334,21 @@
   .birthday-marquee { animation: none; }
 }
 
+/* ─── Black Month rullende tilbuds-streg ────────────────── */
+.bm-marquee {
+  animation: bm-marquee 22s linear infinite;
+}
+.bm-marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes bm-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bm-marquee { animation: none; }
+}
+
 /* ─── Black Month fyrværkeri (guld-spræng) ──────────────── */
 .fw-spark {
   position: absolute;

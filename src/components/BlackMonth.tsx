@@ -165,6 +165,45 @@ export function BlackMonthRibbon() {
   )
 }
 
+/* ── Rullende tilbuds-streg (marquee) ────────────────────── */
+export function BlackMonthMarquee() {
+  const active = useBlackMonthActive()
+  if (!active) return null
+
+  // Ét "led" i strengen – gentages og duplikeres, så den ruller sømløst.
+  const Unit = () => (
+    <div className="flex items-center shrink-0" aria-hidden="true">
+      <span className="mx-5 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em]" style={{ color: GOLD }}>
+        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-black text-xs font-black" style={{ background: GOLD }}>%</span>
+        Tilbud
+      </span>
+      <Star />
+      <span className="mx-5 text-sm font-extrabold uppercase tracking-[0.18em] text-white whitespace-nowrap">
+        Spar op til <span style={{ color: GOLD }}>25%</span> på udvalgte produkter
+      </span>
+      <Star />
+    </div>
+  )
+
+  return (
+    <div className="relative overflow-hidden bg-black border-b border-[#E8B64C]/25 py-2.5">
+      <div className="bm-marquee flex w-max will-change-transform">
+        <Unit /><Unit /><Unit /><Unit /><Unit /><Unit />
+      </div>
+      {/* bløde kanter */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-black to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-black to-transparent" />
+    </div>
+  )
+}
+function Star() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" className="shrink-0" aria-hidden="true">
+      <path d="M6 0l1 5 5 1-5 1-1 5-1-5-5-1 5-1z" fill={GOLD} />
+    </svg>
+  )
+}
+
 /* ── Black Month tilbudssektion ──────────────────────────── */
 export function BlackMonthOffers() {
   const active = useBlackMonthActive()

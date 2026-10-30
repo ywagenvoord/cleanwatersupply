@@ -14,7 +14,7 @@ import { getStripe } from '@/lib/stripe-products'
 import { stockFor, lowStockFor } from '@/lib/stock'
 import { BirthdayRibbon, BirthdayFlagRain, useBirthdayActive } from '@/components/Birthday'
 import { BIRTHDAY_DISCOUNT } from '@/lib/birthday'
-import { BlackMonthRibbon, useBlackDealPercent, useBlackMonthActive, BlackMonthConfetti } from '@/components/BlackMonth'
+import { BlackMonthRibbon, BlackMonthMarquee, useBlackDealPercent, useBlackMonthActive, BlackMonthConfetti } from '@/components/BlackMonth'
 import { blackPrice } from '@/lib/blackmonth'
 import SameDayDispatch from '@/components/SameDayDispatch'
 
@@ -461,6 +461,7 @@ export default function ShopClient({ products: allProducts, showErhverv = false,
       {!catalog && <BirthdayRibbon />}
       {/* ─── BLACK MONTH-bånd (dato-styret – hele november) ─────── */}
       {!catalog && <BlackMonthRibbon />}
+      {!catalog && <BlackMonthMarquee />}
 
       {/* ─── HERO ───────────────────────────────────────────────── */}
       <section className={`relative py-6 sm:py-24 overflow-hidden ${catalog ? 'bg-gradient-to-br from-sky-50 via-blue-50 to-sky-100 border-b border-blue-100' : black ? 'bg-gradient-to-br from-black via-[#0b0b0e] to-[#19130a] border-b border-[#E8B64C]/25' : 'bg-gradient-to-br from-[#0a2540] via-blue-900 to-blue-800'}`}>

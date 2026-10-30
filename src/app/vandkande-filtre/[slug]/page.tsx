@@ -12,7 +12,7 @@ import { stockFor } from '@/lib/stock'
 import FilterAddToCart from '@/app/shop/[productId]/FilterAddToCart'
 import SameDayDispatch from '@/components/SameDayDispatch'
 import { BirthdayRibbon, BirthdayPrice, BirthdayFlagRain } from '@/components/Birthday'
-import { BlackMonthRibbon } from '@/components/BlackMonth'
+import { BlackMonthRibbon, BlackMonthMarquee } from '@/components/BlackMonth'
 
 export function generateStaticParams() {
   return FILTRE.map((f) => ({ slug: f.slug }))
@@ -40,6 +40,7 @@ export default function FilterPage({ params }: { params: { slug: string } }) {
       <BirthdayFlagRain />
       <BirthdayRibbon />
       <BlackMonthRibbon />
+      <BlackMonthMarquee />
       <LaicaProductJsonLd
         name={f.name}
         path={`/vandkande-filtre/${f.slug}`}

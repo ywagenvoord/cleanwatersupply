@@ -11,7 +11,7 @@ import GratisMonteringBanner from '@/components/GratisMonteringBanner'
 import FadeSlideshow from '@/components/FadeSlideshow'
 import FavoritesSlider from '@/components/FavoritesSlider'
 import { BirthdayRibbon, BirthdayOffers, BirthdayFlagRain, BirthdayDealBadge } from '@/components/Birthday'
-import { BlackMonthRibbon, BlackMonthOffers } from '@/components/BlackMonth'
+import { BlackMonthRibbon, BlackMonthMarquee, BlackMonthOffers } from '@/components/BlackMonth'
 import { BIRTHDAY_DEAL_SLUGS } from '@/lib/birthday'
 import HelpFaq from '@/components/HelpFaq'
 
@@ -139,6 +139,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
 
       {/* ─── BLACK MONTH (dato-styret – hele november) ─────────── */}
       <BlackMonthRibbon />
+      <BlackMonthMarquee />
 
       {/* ─── KONKURRENCE-BANNER (indtil fristen) ───────────────── */}
       {showComp && (
