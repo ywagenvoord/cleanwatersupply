@@ -5,6 +5,10 @@ import { useCart } from '@/contexts/CartContext'
 import { getStripe } from '@/lib/stripe-products'
 import { ShoppingBag, Check, Plus } from 'lucide-react'
 import type { Product } from '@/lib/products'
+import { useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice } from '@/lib/birthday'
+import { useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 
 export default function AddonProducts({ products }: { products: Product[] }) {
   if (products.length === 0) return null
@@ -26,10 +30,21 @@ function AddonRow({ product }: { product: Product }) {
   const [added, setAdded] = useState(false)
   const stripeProductId = product.stripeProductId ?? getStripe(product.id)?.productId
   const buyable = !!stripeProductId && product.price !== undefined
+  const birthdayActive = useBirthdayActive()
+  const blackPct = useBlackDealPercent(product.category, product.id)
+  // Den viste (rabatterede) pris – vises og gemmes i kurven.
+  const shownPrice =
+    product.price === undefined
+      ? product.price
+      : birthdayActive && product.category === 'vandkande'
+        ? birthdayPrice(product.price)
+        : blackPct > 0
+          ? blackPrice(product.price, blackPct)
+          : product.price
 
   function add() {
     if (!stripeProductId || product.price === undefined) return
-    addItem({ id: product.id, stripeProductId, name: product.name, price: product.price, image: product.imgSrc })
+    addItem({ id: product.id, stripeProductId, name: product.name, price: shownPrice ?? product.price, image: product.imgSrc })
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }

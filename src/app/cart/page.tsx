@@ -41,7 +41,7 @@ function CartPageContent() {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({
-          items: items.map(i => ({ stripeProductId: i.stripeProductId, quantity: i.quantity })),
+          items: items.map(i => ({ stripeProductId: i.stripeProductId, quantity: i.quantity, price: i.price })),
         }),
       })
       const data = await res.json()

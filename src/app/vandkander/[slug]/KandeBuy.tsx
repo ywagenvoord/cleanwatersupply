@@ -3,6 +3,10 @@
 import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
 import { ArrowRight, ShoppingBag, Check, Loader2, Minus, Plus } from 'lucide-react'
+import { useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice } from '@/lib/birthday'
+import { useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 
 /* Køb direkte fra kande-siden: "Køb nu" (dynamisk Stripe Checkout) + "Tilføj til kurv". */
 export default function KandeBuy({
@@ -13,8 +17,18 @@ export default function KandeBuy({
   const [buying, setBuying] = useState(false)
   const [qty, setQty] = useState(1)
 
+  // Filterkander hører til 'vandkande' – beregn den viste (rabatterede) pris,
+  // så kurv og kasse matcher siden.
+  const birthdayActive = useBirthdayActive()
+  const blackPct = useBlackDealPercent('vandkande')
+  const shownPrice = birthdayActive
+    ? birthdayPrice(price)
+    : blackPct > 0
+      ? blackPrice(price, blackPct)
+      : price
+
   function add() {
-    addItem({ id: stripeProductId, stripeProductId, name, price, image: image ?? '' }, qty)
+    addItem({ id: stripeProductId, stripeProductId, name, price: shownPrice, image: image ?? '' }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }
@@ -22,13 +36,17 @@ export default function KandeBuy({
   async function buyNow() {
     if (buying) return
     // Læg produktet i kurven og gå til kassen med HELE kurven (aldrig tom kurv til kassen)
-    addItem({ id: stripeProductId, stripeProductId, name, price, image: image ?? '' }, qty)
+    addItem({ id: stripeProductId, stripeProductId, name, price: shownPrice, image: image ?? '' }, qty)
     setBuying(true)
     try {
-      const map = new Map<string, number>()
-      for (const it of items) map.set(it.stripeProductId, (map.get(it.stripeProductId) ?? 0) + it.quantity)
-      map.set(stripeProductId, (map.get(stripeProductId) ?? 0) + qty)
-      const checkoutItems = Array.from(map, ([id, quantity]) => ({ stripeProductId: id, quantity }))
+      const map = new Map<string, { quantity: number; price?: number }>()
+      for (const it of items) {
+        const prev = map.get(it.stripeProductId)
+        map.set(it.stripeProductId, { quantity: (prev?.quantity ?? 0) + it.quantity, price: it.price })
+      }
+      const prevThis = map.get(stripeProductId)
+      map.set(stripeProductId, { quantity: (prevThis?.quantity ?? 0) + qty, price: shownPrice })
+      const checkoutItems = Array.from(map, ([id, v]) => ({ stripeProductId: id, quantity: v.quantity, price: v.price }))
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

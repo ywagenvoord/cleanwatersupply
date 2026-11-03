@@ -11,6 +11,10 @@ import { useB2bLoggedIn } from '@/lib/useB2b'
 import { zoneForPostnummer, ZONE_INFO } from '@/lib/zones'
 import { isGratisMonteringActive } from '@/lib/campaign'
 import { stockFor } from '@/lib/stock'
+import { useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice } from '@/lib/birthday'
+import { useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 
 /* ─── Montering-valg (radio) ─────────────────────────────────────── */
 function OptionCard({
@@ -58,6 +62,18 @@ export default function BuyBox({ product }: { product: Product }) {
   const zone = postnummer.length === 4 ? zoneForPostnummer(postnummer) : undefined
   const erhverv = useB2bLoggedIn()
   const { amount: unitPrice } = shopPrice(product, erhverv)
+  // Pris kunden faktisk betaler (inkl. evt. kampagnerabat) – den gemmes i kurven
+  // og opkræves i kassen, så vist pris og betalt pris altid stemmer.
+  const birthdayActive = useBirthdayActive()
+  const blackPct = useBlackDealPercent(product.category, product.id)
+  const shownUnitPrice =
+    unitPrice == null || erhverv
+      ? unitPrice
+      : birthdayActive && product.category === 'vandkande'
+        ? birthdayPrice(unitPrice)
+        : blackPct > 0
+          ? blackPrice(unitPrice, blackPct)
+          : unitPrice
   // Foretræk live Stripe-id (sat af fetchProduct via cws_id-match) over statisk mapping,
   // så nye Stripe-produkter er købbare uden at skulle tilføjes i STRIPE_MAPPING.
   const stripe  = getStripe(product.id)
@@ -78,7 +94,7 @@ export default function BuyBox({ product }: { product: Product }) {
       id:              product.id,
       stripeProductId: stripeProductId,
       name:            product.name,
-      price:           unitPrice,
+      price:           shownUnitPrice ?? unitPrice,
       image:           product.imgSrc,
     }, qty)
     setAdded(true)
@@ -142,14 +158,21 @@ export default function BuyBox({ product }: { product: Product }) {
   async function buyNow(extraStripeIds: string[] = []) {
     if (!stripeProductId || unitPrice == null || buying) return
     // Læg produktet i kurven og gå til kassen med HELE kurven (aldrig tom kurv til kassen)
-    addItem({ id: product.id, stripeProductId, name: product.name, price: unitPrice, image: product.imgSrc }, qty)
+    addItem({ id: product.id, stripeProductId, name: product.name, price: shownUnitPrice ?? unitPrice, image: product.imgSrc }, qty)
     setBuying(true)
     try {
-      const map = new Map<string, number>()
-      for (const it of cartItems) map.set(it.stripeProductId, (map.get(it.stripeProductId) ?? 0) + it.quantity)
-      map.set(stripeProductId, (map.get(stripeProductId) ?? 0) + qty)
-      for (const id of extraStripeIds) map.set(id, (map.get(id) ?? 0) + 1)
-      const items = Array.from(map, ([id, quantity]) => ({ stripeProductId: id, quantity }))
+      const map = new Map<string, { quantity: number; price?: number }>()
+      for (const it of cartItems) {
+        const prev = map.get(it.stripeProductId)
+        map.set(it.stripeProductId, { quantity: (prev?.quantity ?? 0) + it.quantity, price: it.price })
+      }
+      const prevThis = map.get(stripeProductId)
+      map.set(stripeProductId, { quantity: (prevThis?.quantity ?? 0) + qty, price: shownUnitPrice ?? prevThis?.price })
+      for (const id of extraStripeIds) {
+        const prev = map.get(id)
+        map.set(id, { quantity: (prev?.quantity ?? 0) + 1, price: prev?.price })
+      }
+      const items = Array.from(map, ([id, v]) => ({ stripeProductId: id, quantity: v.quantity, price: v.price }))
       const res = await fetch('/api/checkout', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },

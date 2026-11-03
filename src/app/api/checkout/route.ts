@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { cwsIdForStripeProduct } from '@/lib/stripe-products'
-import { categoryForStripeProduct } from '@/lib/shop-data'
-import { campaignPercentFor, blackPrice } from '@/lib/blackmonth'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -10,6 +7,10 @@ export const dynamic = 'force-dynamic'
 type CartLine = {
   stripeProductId: string
   quantity:        number
+  // Den fulde pris kunden ser på siden (kr, inkl. moms). Bruges som grundlag,
+  // så kassen ALTID opkræver præcis den pris, der vises – også når Stripe-prisen
+  // er løbet fra den viste pris.
+  price?:          number
 }
 
 export async function POST(req: NextRequest) {
@@ -32,10 +33,8 @@ export async function POST(req: NextRequest) {
     // Resolve each Stripe product to its active price.
     // Try default_price first; fall back to first active price for the product.
     //
-    // Kampagnerabat: er varen på tilbud (Black Month / fødselsdag) i det
-    // rigtige kampagnevindue, bygger vi en ad-hoc pris med den rabatterede
-    // beløb, så kunden automatisk betaler tilbudsprisen – uden rabatkode.
-    const now = new Date()
+    // Kampagnerabat: kurven sender den viste pris (item.price) med, og kassen
+    // opkræver præcis den – så det viste og det opkrævede altid stemmer.
     const lineItems = await Promise.all(
       items.map(async (item) => {
         const product = await stripe.products.retrieve(item.stripeProductId)
@@ -61,23 +60,31 @@ export async function POST(req: NextRequest) {
 
         if (!price) throw new Error(`Mangler pris for produkt ${item.stripeProductId}`)
 
-        // Find vores vare og dens kategori → beregn evt. kampagnerabat.
-        // Kategorien slås op både i den hardcodede liste OG blandt Stripe-only
-        // varer (GlaSSmart, FAST DISK), så ingen vandkande-vare falder igennem.
-        const cwsId = cwsIdForStripeProduct(item.stripeProductId)
-        const cat = categoryForStripeProduct(item.stripeProductId)
-        const pct = campaignPercentFor(cat, cwsId, now)
+        // Kassen opkræver PRÆCIS den pris, kunden så på siden (sendt med fra
+        // kurven som item.price, allerede inkl. evt. kampagnerabat). Så er der
+        // aldrig forskel på det viste og det opkrævede.
+        //
+        // Sikkerhed: vi accepterer kun den sendte pris, hvis den ligger mellem
+        // 30 % og 100 % af Stripe-prisen – aldrig DYRERE end Stripe-prisen, og
+        // ikke absurd lav (værn mod manipulation af beløbet). Ellers falder vi
+        // tilbage på Stripe-prisen.
+        const stripeUnit = typeof price.unit_amount === 'number' ? price.unit_amount : undefined
+        const oneTime = price.type === 'one_time'
+        const shownUnit =
+          typeof item.price === 'number' && item.price > 0 ? Math.round(item.price * 100) : undefined
 
-        // Rabat kun på engangsbeløb (ikke abonnement) med et kendt beløb.
         if (
-          pct > 0 &&
-          typeof price.unit_amount === 'number' &&
-          price.type === 'one_time'
+          oneTime &&
+          stripeUnit !== undefined &&
+          shownUnit !== undefined &&
+          shownUnit >= stripeUnit * 0.3 &&
+          shownUnit <= stripeUnit &&
+          shownUnit !== stripeUnit
         ) {
           return {
             price_data: {
               currency: price.currency,
-              unit_amount: blackPrice(price.unit_amount, pct),
+              unit_amount: shownUnit,
               product: item.stripeProductId,
             },
             quantity: item.quantity,

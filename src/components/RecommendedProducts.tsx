@@ -6,6 +6,11 @@ import { getStripe } from '@/lib/stripe-products'
 import { Sparkles, Plus, Check } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import type { Product } from '@/lib/products'
+import { useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice } from '@/lib/birthday'
+import { useBlackMonthActive } from '@/components/BlackMonth'
+import { blackPercentFor, blackPrice } from '@/lib/blackmonth'
 
 type Variant = 'compact' | 'grid'
 
@@ -18,6 +23,16 @@ export default function RecommendedProducts({
 }) {
   const { items, addItem } = useCart()
   const [addedId, setAddedId] = useState<string | null>(null)
+  const birthdayActive = useBirthdayActive()
+  const blackActive = useBlackMonthActive()
+
+  // Den viste (rabatterede) pris – vises på kortet OG gemmes i kurven.
+  function shownPriceFor(p: Product): number | undefined {
+    if (p.price == null) return p.price
+    if (birthdayActive && p.category === 'vandkande') return birthdayPrice(p.price)
+    const pct = blackActive ? blackPercentFor(p.category, p.id) : 0
+    return pct > 0 ? blackPrice(p.price, pct) : p.price
+  }
 
   if (items.length === 0) return null
 
@@ -33,7 +48,7 @@ export default function RecommendedProducts({
       id:              product.id,
       stripeProductId: stripe.productId,
       name:            product.name,
-      price:           product.price,
+      price:           shownPriceFor(product) ?? product.price,
       image:           product.imgSrc,
     })
     setAddedId(productId)
@@ -57,7 +72,7 @@ export default function RecommendedProducts({
                 <Link href={`/shop/${p.id}`} className="block">
                   <p className="font-semibold text-xs text-gray-900 leading-tight truncate hover:text-blue-700 transition-colors">{p.name}</p>
                 </Link>
-                <p className="text-xs font-bold text-[#0a2540]">{p.price?.toLocaleString('da-DK')} kr</p>
+                <p className="text-xs font-bold text-[#0a2540]">{shownPriceFor(p)?.toLocaleString('da-DK')} kr</p>
               </div>
               <button
                 onClick={() => handleAdd(p.id)}
@@ -104,7 +119,7 @@ export default function RecommendedProducts({
               </Link>
               <p className="text-xs text-gray-400 mb-3 line-clamp-2 flex-1">{p.tagline}</p>
               <div className="flex items-center justify-between gap-2 mt-auto">
-                <p className="text-base font-extrabold text-[#0a2540]">{p.price?.toLocaleString('da-DK')} kr</p>
+                <p className="text-base font-extrabold text-[#0a2540]">{shownPriceFor(p)?.toLocaleString('da-DK')} kr</p>
                 <button
                   onClick={() => handleAdd(p.id)}
                   className={`shrink-0 inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold transition-all ${

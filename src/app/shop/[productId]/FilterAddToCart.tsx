@@ -3,8 +3,13 @@
 import { useState } from 'react'
 import { useCart } from '@/contexts/CartContext'
 import { getStripe } from '@/lib/stripe-products'
+import { getProduct } from '@/lib/products'
 import { stockFor } from '@/lib/stock'
 import { ShoppingBag, Check, Minus, Plus } from 'lucide-react'
+import { useBirthdayActive } from '@/components/Birthday'
+import { birthdayPrice } from '@/lib/birthday'
+import { useBlackDealPercent } from '@/components/BlackMonth'
+import { blackPrice } from '@/lib/blackmonth'
 
 /* Lille "Tilføj til kurv"-knap til filter-tilkøb-kortene (kurven er client-side). */
 export default function FilterAddToCart({
@@ -13,6 +18,18 @@ export default function FilterAddToCart({
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
   const [qty, setQty] = useState(1)
+  const category = getProduct(id)?.category
+  const birthdayActive = useBirthdayActive()
+  const blackPct = useBlackDealPercent(category, id)
+  // Den viste (rabatterede) pris – gemmes i kurven, så kurv/kasse matcher siden.
+  const shownPrice =
+    price == null
+      ? price
+      : birthdayActive && category === 'vandkande'
+        ? birthdayPrice(price)
+        : blackPct > 0
+          ? blackPrice(price, blackPct)
+          : price
   const spid = stripeProductId ?? getStripe(id)?.productId
   const stock = stockFor({ id, name })
   if (stock) {
@@ -31,7 +48,7 @@ export default function FilterAddToCart({
 
   function add() {
     if (!spid || price == null) return
-    addItem({ id, stripeProductId: spid, name, price, image: image ?? '' }, qty)
+    addItem({ id, stripeProductId: spid, name, price: shownPrice ?? price, image: image ?? '' }, qty)
     setAdded(true)
     setTimeout(() => setAdded(false), 1500)
   }
