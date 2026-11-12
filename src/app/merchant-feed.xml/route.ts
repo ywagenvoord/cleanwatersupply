@@ -56,6 +56,8 @@ function itemXml(p: Product): string {
       <g:price>${esc(price)}</g:price>
       <g:brand>${esc(BRAND.name)}</g:brand>${mpn}
       <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>Home &amp; Garden &gt; Kitchen &amp; Dining &gt; Water Coolers &amp; Filters</g:google_product_category>
+      <g:product_type>Vandbehandling &gt; Filtre</g:product_type>
     </item>`
 }
 
