@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { BookOpen, ArrowRight, Sparkles, Gauge, Filter, HelpCircle, ShieldCheck } from 'lucide-react'
+import { BookOpen, ArrowRight, Sparkles, Gauge, Filter, HelpCircle, ShieldCheck, Microscope } from 'lucide-react'
 import { SITE_URL } from '@/lib/site'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
@@ -17,6 +17,7 @@ const GUIDES = [
   { Icon: Filter, title: 'Hvilket filter skal du vælge?', text: 'Brusefilter, vandhanefilter, filterkande eller blødgøringsanlæg – vælg rigtigt.', href: '/guides/vaelg-vandfilter' },
   { Icon: HelpCircle, title: 'Find dit filter', text: 'Svar på fire korte spørgsmål og bliv guidet til den rette løsning.', href: '/guides/find-filter' },
   { Icon: ShieldCheck, title: 'Hvordan undgår jeg Legionella?', text: 'Sådan forebygger du Legionella i hjemmet – 4 gode råd, især efter ferie.', href: '/guides/undgaa-legionella' },
+  { Icon: Microscope, title: 'Bakterier i drikkevand', text: 'Typiske fund, hvad en vandprøve betyder, og hvornår du skal kontakte vandværk eller kommune.', href: '/guides/bakterier-i-drikkevand' },
 ]
 
 export default function Page() {

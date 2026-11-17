@@ -44,6 +44,7 @@ export default function Navigation() {
     { href: '/guides/vaelg-vandfilter', label: 'Hvilket filter skal du vælge?' },
     { href: '/guides/find-filter', label: 'Find dit filter' },
     { href: '/guides/undgaa-legionella', label: 'Hvordan undgår jeg Legionella?' },
+    { href: '/guides/bakterier-i-drikkevand', label: 'Bakterier i drikkevand' },
   ]
 
   const omraaderChildren = [
