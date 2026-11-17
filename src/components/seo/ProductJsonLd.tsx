@@ -6,6 +6,12 @@ export default function ProductJsonLd({ product }: { product: Product }) {
   const url = `${SITE_URL}/shop/${product.id}`
   const image = product.imgLarge || product.imgSrc
 
+  // Google kræver, at Product-strukturdata har enten offers, review eller
+  // aggregateRating. Produkter uden pris (fx "kontakt os for pris") ville
+  // ellers udskrive et ugyldigt produktuddrag – så dem springer vi helt over.
+  const hasOffer = (product.price !== undefined || product.comingSoon)
+  if (!hasOffer) return null
+
   const schema: Record<string, any> = {
     '@context': 'https://schema.org',
     '@type': 'Product',
