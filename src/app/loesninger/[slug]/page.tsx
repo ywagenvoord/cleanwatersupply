@@ -75,7 +75,7 @@ export default function SolutionPage({ params }: { params: { slug: string } }) {
           <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
             <Droplets className="w-3.5 h-3.5 text-green-400" /> Løsning til hjemmet
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">{sol.label}</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 leading-tight">{sol.h1 ?? sol.label}</h1>
           <p className="text-lg text-blue-100/90 max-w-2xl leading-relaxed">{sol.intro}</p>
         </div>
       </section>

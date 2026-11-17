@@ -7,9 +7,9 @@ import FaqJsonLd from '@/components/seo/FaqJsonLd'
 import BreadcrumbJsonLd from '@/components/seo/BreadcrumbJsonLd'
 
 export const metadata: Metadata = {
-  title: 'Hvordan undgår jeg Legionella? 4 gode råd | Clean Water Supply',
+  title: 'Legionella i vand: forebyggelse og gode råd | Clean Water Supply',
   description:
-    'Hvordan undgår jeg Legionella? Få 4 gode råd til at forebygge Legionella i hjemmet – især efter ferie. Lær hvad Legionella er, hvordan det smitter, og hvordan du nemt undgår bakterien.',
+    'Legionella i vand kan vokse i vandinstallationer, især hvor vandet står stille. Få overblik over risikofaktorer, praktiske forebyggelsestiltag og gode råd til at forebygge Legionella i hjemmet.',
   alternates: { canonical: `${SITE_URL}/guides/undgaa-legionella` },
   keywords: [
     'undgå legionella', 'legionella i hjemmet', 'gode råd legionella', 'legionella bruser',
@@ -41,6 +41,10 @@ const FAQS: FAQ[] = [
   {
     q: 'Er risikoen stor i Danmark?',
     a: 'Nej. I langt de fleste tilfælde kan vi trygt bruge vores vandhaner og brusere, fordi der stilles høje krav til brugsvandsinstallationer i Danmark. Med nogle få gode vaner – og eventuelt et filter ved tappestedet – mindsker du risikoen yderligere.',
+  },
+  {
+    q: 'Hvordan forebygger man Legionella i vandinstallationer?',
+    a: 'Forebyggelse handler blandt andet om korrekt temperaturstyring, regelmæssig brug og vedligeholdelse af installationerne samt opmærksomhed på stillestående vand. I udsatte miljøer kan et bakteriefilter ved tappestedet give ekstra beskyttelse.',
   },
 ]
 
@@ -119,12 +123,14 @@ export default function Page() {
                 Guide til Legionella i hjemmet
               </span>
               <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
-                Hvordan undgår jeg Legionella?
+                Legionella i vand – sådan forebygger du risikoen
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed mb-7">
-                Legionella-bakterien trives i lunkent, stillestående vand – især hvis dine haner og brusere
-                ikke har været brugt i et stykke tid. Her får du fire enkle råd til at forebygge Legionella
-                i hjemmet, plus baggrundsviden om bakterien.
+                Legionella er en bakterie, der kan vokse i vandinstallationer, især hvor vandet står stille eller
+                har en uhensigtsmæssig temperatur. Smitte sker typisk ved indånding af små vanddråber. Her får du
+                overblik over risikofaktorer, praktiske forebyggelsestiltag og fire enkle råd til hjemmet. Driver
+                du erhverv, kan du læse om{' '}
+                <Link href="/loesninger/legionella-forebyggelse-erhverv" className="text-blue-700 underline underline-offset-2 hover:text-blue-900">Legionella-forebyggelse til erhverv</Link>.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="#raad" className="inline-flex items-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-7 py-3.5 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5">

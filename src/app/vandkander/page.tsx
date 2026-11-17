@@ -5,9 +5,9 @@ import { KANDER } from '@/lib/kander'
 import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Filterkander & filterflasker – Laica vandkande med filter | Clean Water Supply',
+  title: 'Vandfilterkander og filtre til drikkevand | Clean Water Supply',
   description:
-    'Køb filterkande fra Laica: Carmen, Germ-STOP og GlaSSmart. En vandkande med filter giver rent vand med god smag – helt uden installation.',
+    'Vandfilterkander og udskiftningsfiltre til drikkevand. Sammenlign kapacitet, filtertype og udskiftningsinterval, så du vælger en kande, der passer til dit forbrug og de stoffer, du ønsker at reducere.',
   keywords: [
     'filterkande', 'filterkander', 'vandkande med filter', 'Laica filterkande',
     'filtervandkande', 'vandfilterkande', 'filterkande test', 'køb filterkande',
@@ -26,11 +26,15 @@ export default function VandkanderPage() {
             <span className="text-xs font-bold text-[#3aad4a] uppercase tracking-widest">Til hjemmet</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a2540] mb-5 leading-tight">
-            Filterkander &amp; filterflasker
+            Vandfilterkander – find kande og udskiftningsfilter
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            En filterkande (vandkande med filter) giver rent vand med god smag – så nemt som at hælde op.
-            Ingen installation, ingen værktøj. Vælg den filterkande, der passer til dit hjem og dit forbrug.
+            En vandfilterkande filtrerer drikkevandet uden installation og kan være en praktisk løsning i hverdagen.
+            Sammenlign kapacitet, filtertype og udskiftningsinterval, så du vælger en kande, der passer til dit
+            forbrug og de stoffer, du ønsker at reducere. Se også vores{' '}
+            <Link href="/guides/vaelg-vandfilter" className="text-blue-700 underline underline-offset-2 hover:text-blue-900">guide til valg af vandfilter</Link>{' '}
+            og{' '}
+            <Link href="/guides/bakterier-i-drikkevand" className="text-blue-700 underline underline-offset-2 hover:text-blue-900">bakterier i drikkevand</Link>.
           </p>
         </div>
       </section>

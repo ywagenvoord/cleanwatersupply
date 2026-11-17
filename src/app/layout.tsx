@@ -9,6 +9,7 @@ import WeglotLoader from '@/components/WeglotLoader'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import CookieConsent from '@/components/CookieConsent'
 import CookieFloatingButton from '@/components/CookieFloatingButton'
+import GoogleTagManager, { GoogleTagManagerNoScript } from '@/components/GoogleTagManager'
 import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd'
 import { SITE_URL } from '@/lib/site'
 import { isGratisMonteringActive } from '@/lib/campaign'
@@ -106,8 +107,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://buy.stripe.com" />
         {/* Site-wide Organization JSON-LD */}
         <OrganizationJsonLd />
+        {/* Google Tag Manager (med Consent Mode v2) */}
+        <GoogleTagManager />
       </head>
       <body>
+        <GoogleTagManagerNoScript />
         <Providers>
           <Navigation />
           <div className={isGratisMonteringActive() ? 'pt-[100px] sm:pt-[132px]' : 'pt-16 sm:pt-24'}>

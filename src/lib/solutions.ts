@@ -21,6 +21,7 @@ export type SolutionInfo = {
   heroVideo?: string   // valgfri cover-video i hero'en (mp4)
   heroPoster?: string  // poster-billede til video
   intro: string
+  h1?: string              // valgfri søgeords-optimeret <h1> (ellers bruges label)
   seoTitle?: string        // valgfri søgeords-optimeret <title> (ellers bruges label)
   seoDescription?: string  // valgfri søgeords-optimeret meta description (ellers intro)
   what: string
@@ -53,9 +54,10 @@ export const SOLUTIONS: SolutionInfo[] = [
     label: 'Kalkanlæg',
     heroImg: '/images/solution-kalkanlaeg.jpg',
     ogImage: '/images/og-gratis-montering-wide.jpg',
-    intro: 'Blødt vand i hele huset – en forskel, du mærker hver eneste dag.',
-    seoTitle: 'Blødgøringsanlæg & kalkanlæg – blødt vand i hele huset | Clean Water Supply',
-    seoDescription: 'Blødgøringsanlæg (kalkanlæg) der fjerner kalk og giver blødt vand i hele huset – mindre kalk, mindre sæbe og længere levetid på rør, hvidevarer og varmtvandsbeholder.',
+    intro: 'Med et blødgøringsanlæg kan du reducere vandets hårdhed i hele boligen og mindske kalkaflejringer på armaturer, fliser og i hvidevarer. Se modeller og priser, og få hjælp til at vælge et anlæg, der passer til husstandens vandforbrug og installation.',
+    h1: 'Blødgøringsanlæg til hjemmet – mindre kalk i vandet',
+    seoTitle: 'Blødgøringsanlæg til hjemmet | Priser og modeller | Clean Water Supply',
+    seoDescription: 'Blødgøringsanlæg til hjemmet, der reducerer vandets hårdhed i hele boligen og mindsker kalkaflejringer på armaturer, fliser og i hvidevarer. Se modeller og priser.',
     what: 'Et kalkanlæg (blødgøringsanlæg) fjerner kalken fra vandet via ionbytning, hvor calcium og magnesium udskiftes med natrium. Resultatet er blødt vand ved hvert eneste tappested i boligen – fra bruser og køkken til vaskemaskine og hvidevarer.',
     how: 'Vandet ledes gennem en harpiksbeholder, der binder kalken. Anlægget regenererer automatisk med salt, så det altid yder optimalt, og det fås som kompakt alt-i-ét-løsning, der ikke fylder meget.',
     everyday: [
@@ -121,9 +123,10 @@ export const SOLUTIONS: SolutionInfo[] = [
     heroImg: '/images/solution-brusefilter.jpg',
     heroVideo: '/videos/brusefilter-cover.mp4',
     heroPoster: '/images/brusefilter-cover-poster.jpg',
-    intro: 'Renere bruservand – mildere mod hud, hår og luftveje.',
-    seoTitle: 'Brusefilter mod klor & kalk – blødere hud og hår | Clean Water Supply',
-    seoDescription: 'Brusefilter der reducerer klor og kalk i bruservandet – blødere hud, lettere hår og renere damp. Nem montering på bruseren, vælg C-vitamin eller kalkhæmmer.',
+    intro: 'Et brusehoved med filter er en enkel løsning, hvis du ønsker at filtrere bestemte urenheder i badevandet. Sammenlign komplette brusehoveder med filter og udskiftningsfiltre, se hvordan de monteres, og find ud af, hvornår filteret bør skiftes.',
+    h1: 'Brusehoved med filter – find det rette brusefilter',
+    seoTitle: 'Brusehoved med filter og brusefilter | Clean Water Supply',
+    seoDescription: 'Brusehoved med filter og brusefilter til badevandet. Sammenlign komplette brusehoveder og udskiftningsfiltre, se montering, og vælg ud fra de stoffer, filteret er dokumenteret til at reducere.',
     what: 'Et brusefilter renser vandet i bruseren for klor, rust, bundfald og urenheder. Det fås som et komplet brusehoved med indbygget filter eller som et udskifteligt filter til dit eksisterende sæt – med varianter til C-vitamin eller kalkhæmmer.',
     how: 'Vandet løber gennem et aktivt kul-filter (ACF) i brusehovedet, der binder klor og urenheder, lige inden vandet rammer dig. Brusehovedet skrues på som en almindelig håndbruser, og filteret skiftes ca. hver 2.-3. måned.',
     everyday: [

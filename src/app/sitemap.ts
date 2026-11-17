@@ -28,6 +28,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/guides/vaelg-vandfilter`,          lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/guides/find-filter`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/guides/undgaa-legionella`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/guides/bakterier-i-drikkevand`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${SITE_URL}/loesninger/legionella-forebyggelse-erhverv`, lastModified: now, changeFrequency: 'monthly', priority: 0.85 },
     { url: `${SITE_URL}/spildevand`,  lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE_URL}/fordele`,     lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
     { url: `${SITE_URL}/business`,    lastModified: now, changeFrequency: 'monthly', priority: 0.75 },
