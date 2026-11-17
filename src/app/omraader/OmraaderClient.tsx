@@ -1,38 +1,44 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowRight, MapPin } from 'lucide-react'
+import { ArrowRight, MapPin, Hotel, Waves, HeartPulse, Tent, UtensilsCrossed, Wheat } from 'lucide-react'
 
 const sectors = [
   {
     title: 'Hoteller',
     slug: 'hoteller',
     desc: 'Beskyt gæster og omdømme mod skjulte bakterier i vandinstallationer',
+    Icon: Hotel,
   },
   {
     title: 'Svømmehaller',
     slug: 'svoemmehaller',
     desc: 'Effektiv vandhygiejne i bassiner, jacuzzier og skyllerum',
+    Icon: Waves,
   },
   {
     title: 'Hospitaler',
     slug: 'hospitaler',
     desc: 'Dokumenterbar patientbeskyttelse mod Legionella og Pseudomonas',
+    Icon: HeartPulse,
   },
   {
     title: 'Campingpladser',
     slug: 'campingpladser',
     desc: 'Sikker vandkvalitet til sæsonbetonede installationer',
+    Icon: Tent,
   },
   {
     title: 'Fødevareindustri',
     slug: 'foedevare',
     desc: 'Kemikaliefri desinfektion til fødevareproduktion',
+    Icon: UtensilsCrossed,
   },
   {
     title: 'Landbrug',
     slug: 'landbruget',
     desc: 'Mikrobiologisk rent vand øger indtjeningen',
+    Icon: Wheat,
   },
 ]
 
@@ -70,6 +76,9 @@ export default function OmraaderPage() {
                 href={`/omraader/${sector.slug}`}
                 className="group bg-gray-50 hover:bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-2xl p-8 flex flex-col gap-4 transition-all hover:shadow-lg hover:-translate-y-1"
               >
+                <span className="w-14 h-14 rounded-2xl bg-white ring-1 ring-blue-100 text-[#284eff] flex items-center justify-center shadow-sm transition-colors group-hover:bg-[#3aad4a] group-hover:text-white group-hover:ring-[#3aad4a]">
+                  <sector.Icon className="w-7 h-7" strokeWidth={1.75} />
+                </span>
                 <h2 className="text-xl font-extrabold text-[#0a2540] group-hover:text-[#3aad4a] transition-colors">
                   {sector.title}
                 </h2>
