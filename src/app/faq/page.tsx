@@ -11,7 +11,7 @@ const URL = `${SITE_URL}/faq`
 const FAQS = [
   {
     q: 'Hvad er rent og sikkert vand?',
-    a: 'Rent og sikkert vand er vand, der er renset for sygdomsfremkaldende bakterier som Legionella og Pseudomonas. Vores medicinsk certificerede filtre tilbageholder op til 99,9999 % af alle vandbårne bakterier direkte ved hanen eller bruseren.',
+    a: 'Rent og sikkert vand er vand, der er renset for sygdomsfremkaldende bakterier som Legionella og Pseudomonas. Vores medicinsk certificerede filtre tilbageholder op til 99,99999 % af alle vandbårne bakterier direkte ved hanen eller bruseren.',
   },
   {
     q: 'Hvorfor skal jeg filtrere mit vand, når postevandet i Danmark er rent?',

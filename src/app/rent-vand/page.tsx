@@ -50,7 +50,7 @@ const FAQS = [
   },
   {
     q: 'Hvordan sikrer man rent vand mod Legionella?',
-    a: 'Legionella bekæmpes med et bakteriefilter ved tappestedet – typisk på bruser og hane. Medicinsk certificerede filtre tilbageholder op til 99,9999 % af vandbårne bakterier og bruges på hospitaler, hoteller og i private hjem, hvor sikkert vand er kritisk.',
+    a: 'Legionella bekæmpes med et bakteriefilter ved tappestedet – typisk på bruser og hane. Medicinsk certificerede filtre tilbageholder op til 99,99999 % af vandbårne bakterier og bruges på hospitaler, hoteller og i private hjem, hvor sikkert vand er kritisk.',
   },
   {
     q: 'Er filtreret vand sundere end postevand?',

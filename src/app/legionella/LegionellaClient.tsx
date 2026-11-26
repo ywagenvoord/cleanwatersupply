@@ -244,7 +244,7 @@ export default function LegionellaPage() {
               <div className="w-16 h-16 rounded-2xl bg-white ring-1 ring-blue-100 flex items-center justify-center mx-auto mb-5 shadow-sm">
                 <ShieldCheck className="w-8 h-8 text-[#3aad4a]" />
               </div>
-              <p className="text-5xl font-extrabold text-[#0a2540] mb-2">99,9999<span className="text-[#3aad4a]">%</span></p>
+              <p className="text-5xl font-extrabold text-[#0a2540] mb-2">99,99999<span className="text-[#3aad4a]">%</span></p>
               <p className="text-gray-600 text-sm">{da ? 'af alle vandbårne bakterier tilbageholdes – inkl. Legionella og Pseudomonas' : 'of all waterborne bacteria are retained – incl. Legionella and Pseudomonas'}</p>
             </div>
             <div>
@@ -253,8 +253,8 @@ export default function LegionellaPage() {
               </h2>
               <p className="text-gray-600 leading-relaxed text-lg mb-5">
                 {da
-                  ? 'Et sterilt brusefilter eller vandhanefilter er den mest direkte beskyttelse. Det tilbageholder 99,9999 % af alle vandbårne bakterier – inkl. Legionella og Pseudomonas – lige dér, hvor vandet kommer ud og bliver til damp.'
-                  : 'A sterile shower filter or tap filter is the most direct protection. It retains 99.9999% of all waterborne bacteria – incl. Legionella and Pseudomonas – right where the water comes out and turns to mist.'}
+                  ? 'Et sterilt brusefilter eller vandhanefilter er den mest direkte beskyttelse. Det tilbageholder 99,99999 % af alle vandbårne bakterier – inkl. Legionella og Pseudomonas – lige dér, hvor vandet kommer ud og bliver til damp.'
+                  : 'A sterile shower filter or tap filter is the most direct protection. It retains 99.99999% of all waterborne bacteria – incl. Legionella and Pseudomonas – right where the water comes out and turns to mist.'}
               </p>
               <ul className="space-y-3">
                 {filterPoints.map((t) => (
@@ -332,7 +332,7 @@ export default function LegionellaPage() {
           </div>
           <div className="flex items-center justify-center gap-2 text-sm text-gray-500 mt-8 max-w-2xl mx-auto text-center">
             <Sparkles className="w-4 h-4 text-[#3aad4a] shrink-0" />
-            <span>{da ? 'Et filter ved hanen eller bruseren tilbageholder 99,9999 % af vandbårne bakterier – uanset type.' : 'A filter at the tap or shower retains 99.9999% of waterborne bacteria – regardless of type.'}</span>
+            <span>{da ? 'Et filter ved hanen eller bruseren tilbageholder 99,99999 % af vandbårne bakterier – uanset type.' : 'A filter at the tap or shower retains 99.99999% of waterborne bacteria – regardless of type.'}</span>
           </div>
         </div>
       </section>
