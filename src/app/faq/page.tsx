@@ -10,8 +10,8 @@ const URL = `${SITE_URL}/faq`
 // ─── Q&A – forbrugervenlige spørgsmål (læses af AI-søgemaskiner via FAQPage-markup) ───
 const FAQS = [
   {
-    q: 'Hvad er bakteriefrit vand?',
-    a: 'Bakteriefrit vand er vand, der er renset for sygdomsfremkaldende bakterier som Legionella og Pseudomonas. Vores medicinsk certificerede filtre tilbageholder op til 99,9999 % af alle vandbårne bakterier direkte ved hanen eller bruseren.',
+    q: 'Hvad er rent og sikkert vand?',
+    a: 'Rent og sikkert vand er vand, der er renset for sygdomsfremkaldende bakterier som Legionella og Pseudomonas. Vores medicinsk certificerede filtre tilbageholder op til 99,9999 % af alle vandbårne bakterier direkte ved hanen eller bruseren.',
   },
   {
     q: 'Hvorfor skal jeg filtrere mit vand, når postevandet i Danmark er rent?',
@@ -98,13 +98,13 @@ const FAQS = [
 export const metadata: Metadata = {
   title: 'Ofte stillede spørgsmål (FAQ) om vandfiltre og blødt vand',
   description:
-    'Svar på de mest almindelige spørgsmål om bakteriefrit vand, Legionella, vandfiltre, blødgøringsanlæg og hårdt vand – til det private hjem.',
+    'Svar på de mest almindelige spørgsmål om rent og sikkert vand, Legionella, vandfiltre, blødgøringsanlæg og hårdt vand – til det private hjem.',
   alternates: { canonical: URL },
   openGraph: {
     type: 'website',
     url: URL,
     title: 'Ofte stillede spørgsmål | Clean Water Supply',
-    description: 'Svar på spørgsmål om bakteriefrit vand, Legionella, vandfiltre og blødgøringsanlæg.',
+    description: 'Svar på spørgsmål om rent og sikkert vand, Legionella, vandfiltre og blødgøringsanlæg.',
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },
@@ -127,7 +127,7 @@ export default function FaqPage() {
             Spørgsmål og svar om rent vand
           </h1>
           <p className="text-lg text-blue-100/80">
-            De spørgsmål vi oftest får om bakteriefrit vand, Legionella, filtre og blødt vand i hjemmet.
+            De spørgsmål vi oftest får om rent og sikkert vand, Legionella, filtre og blødt vand i hjemmet.
           </p>
         </div>
       </section>

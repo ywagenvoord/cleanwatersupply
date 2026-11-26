@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     'HOCl generator',
     'Baclyser filter',
     'Pseudomonas filter',
-    'bakteriefrit vand',
+    'rent og sikkert vand',
     'vandbehandling hospital',
     'vandhygiejne hotel',
     'kalkfilter',

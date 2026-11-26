@@ -61,7 +61,7 @@ export default function OmraaderPage() {
             Vælg dit område
           </h1>
           <p className="text-lg text-blue-100/80 max-w-2xl mx-auto leading-relaxed">
-            Og din løsning til bakteriefrit vand...
+            Og din løsning til rent og sikkert vand...
           </p>
         </div>
       </section>

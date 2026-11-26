@@ -84,11 +84,11 @@ const solutionData = [
    Bruges når audience === 'erhverv', ellers falder vi tilbage på de private tekster. */
 const ERHVERV_OVERRIDES: Record<string, string | string[]> = {
   'solutionsPage.hero.badge': 'Løsninger til erhverv',
-  'solutionsPage.hero.headline': 'Rent, blødt og bakteriefrit vand i hele ejendommen',
+  'solutionsPage.hero.headline': 'Rent, blødt og sikkert vand i hele ejendommen',
   'solutionsPage.hero.subheadline':
-    'Fra kalkfrit vand til bakteriefrie filtre – vi gør vandet i jeres ejendom renere, blødere og sikrere. Løsninger til bygninger og installationer af enhver størrelse.',
+    'Fra kalkfrit vand til bakteriereducerende filtre – vi gør vandet i jeres ejendom renere, blødere og sikrere. Løsninger til bygninger og installationer af enhver størrelse.',
 
-  'solutionsPage.filtration.headline': 'Rent og sikkert bakteriefrit vand i hele ejendommen',
+  'solutionsPage.filtration.headline': 'Rent og sikkert rent og sikkert vand i hele ejendommen',
   'solutionsPage.filtration.description':
     'Vores vandfiltre fjerner uønskede stoffer fra vandet i jeres bygning – uanset om I er på kommunalt vand eller egen boring. Filteret monteres centralt i rørledningen, så hvert eneste tappested i ejendommen leverer rent vand.',
   'solutionsPage.filtration.benefits': [

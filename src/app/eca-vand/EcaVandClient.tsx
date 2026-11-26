@@ -196,7 +196,7 @@ export default function EcaVandPage() {
             </Link>
             <Link href="/omraader/landbruget" className="bg-white border border-gray-100 hover:border-[#3aad4a]/30 rounded-xl p-5 transition-colors">
               <p className="font-bold text-sm text-[#0a2540] mb-1">{da ? 'ECA-vand i landbruget' : 'ECA water in agriculture'}</p>
-              <p className="text-xs text-gray-500">{da ? 'Bakteriefrit vand til dyrene' : 'Clean drinking water for the animals'}</p>
+              <p className="text-xs text-gray-500">{da ? 'Rent og sikkert vand til dyrene' : 'Clean drinking water for the animals'}</p>
             </Link>
           </div>
         </div>

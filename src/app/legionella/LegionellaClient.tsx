@@ -347,7 +347,7 @@ export default function LegionellaPage() {
               <p className="text-xs text-gray-500">{da ? 'Kogepåbud, Legionella, filtre og meget mere' : 'Boil-water notices, Legionella, filters and much more'}</p>
             </Link>
             <Link href="/loesninger/filtre-paa-tappestedet" className="bg-white ring-1 ring-blue-100 hover:ring-[#3aad4a]/40 rounded-2xl p-5 transition-all hover:shadow-md">
-              <p className="font-bold text-sm text-[#0a2540] mb-1">{da ? 'Bakteriefrit vand ved hanen' : 'Clean water at the tap'}</p>
+              <p className="font-bold text-sm text-[#0a2540] mb-1">{da ? 'Rent og sikkert vand ved hanen' : 'Clean water at the tap'}</p>
               <p className="text-xs text-gray-500">{da ? 'Vandhanefilter til hjemmet' : 'Tap filter for the home'}</p>
             </Link>
             <Link href="/loesninger/brusefilter" className="bg-white ring-1 ring-blue-100 hover:ring-[#3aad4a]/40 rounded-2xl p-5 transition-all hover:shadow-md">

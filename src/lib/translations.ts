@@ -22,7 +22,7 @@ export const translations = {
     },
     hero: {
       badge: 'Løsninger der passer til dig og dine behov',
-      headline: 'Løsningen til bakteriefrit vand',
+      headline: 'Løsningen til rent og sikkert vand',
       subheadline: 'Effektive vandbehandlinger inden for bakterier og kalk. Fri rådgivning, professionel installation og mulighed for løbende service – vi klarer det hele.',
       cta1: 'Få et gratis tilbud',
       cta2: 'Se vores løsninger',
@@ -49,7 +49,7 @@ export const translations = {
       subheadline: 'Vi tilbyder et komplet sortiment af vandbehandlingsløsninger designet til at forbedre vandkvaliteten i dit hjem eller din virksomhed.',
       filtration: {
         title: 'Vandfiltrering',
-        description: 'Avancerede filtersystemer der fjerner urenheder, kalk og skadelige stoffer fra dit bakteriefrie vand.',
+        description: 'Avancerede filtersystemer der fjerner urenheder, kalk og skadelige stoffer fra dit vand.',
         benefit1: 'Fjerner bakterier og mikroorganismer',
         benefit2: 'Bedre smag og lugt',
         benefit3: 'Beskytter dine installationer',
@@ -64,12 +64,12 @@ export const translations = {
         cta: 'Se blødgøringsanlæg',
       },
       drinking: {
-        title: 'Bakteriefrit vand',
-        description: 'Premium anlæg til bakteriefrit vand med avanceret filtrering direkte ved taphanen.',
-        benefit1: 'Bakteriefrit vand direkte fra hanen',
+        title: 'Rent og sikkert vand',
+        description: 'Premium anlæg til rent og sikkert vand med avanceret filtrering direkte ved taphanen.',
+        benefit1: 'Rent og sikkert vand direkte fra hanen',
         benefit2: 'Eliminerer plastikflasker',
         benefit3: 'Mineralrigt og sundt vand',
-        cta: 'Se anlæg til bakteriefrit vand',
+        cta: 'Se anlæg til rent og sikkert vand',
       },
     },
     whyUs: {
@@ -82,7 +82,7 @@ export const translations = {
         { title: 'Gratis hjemmebesøg', description: 'Vi tilbyder gratis og uforpligtende rådgivning hjemme hos dig. Vores ekspert analyserer din vandkvalitet og anbefaler den rigtige løsning.' },
         { title: 'Professionel installation', description: 'Vores certificerede teknikere installerer dit anlæg professionelt inden for 2 uger. Installationen tager typisk én formiddag.' },
         { title: 'Service hvert 2. år', description: 'Vi kontakter dig proaktivt når service er nødvendigt – du behøver ikke huske det selv. Service udføres kun hvert andet år.' },
-        { title: 'Bakteriebeskyttelse', description: 'Integreret desinfektionsmodul med elektrolyse forhindrer bakterievækst i harskolonnen – sikkert og bakteriefrit uden klor i handevandet.' },
+        { title: 'Bakteriebeskyttelse', description: 'Integreret desinfektionsmodul med elektrolyse forhindrer bakterievækst i harskolonnen – sikkert uden klor i handevandet.' },
       ],
     },
     segments: {
@@ -91,7 +91,7 @@ export const translations = {
       private: {
         badge: 'Private kunder',
         headline: 'Rent vand til din familie',
-        description: 'Beskyt din familie med bakteriefrit og sundt vand. Vores hjemmeløsninger er nemme at installere, vedligeholde og tilpasse til ethvert boligtype.',
+        description: 'Beskyt din familie med rent og sundt vand. Vores hjemmeløsninger er nemme at installere, vedligeholde og tilpasse til ethvert boligtype.',
         cta: 'Se private løsninger',
       },
       business: {
@@ -164,19 +164,19 @@ export const translations = {
       address: 'Danmark',
       solution1: 'Vandfiltrering',
       solution2: 'Blødgøringsanlæg',
-      solution3: 'Bakteriefrit vand',
+      solution3: 'Rent og sikkert vand',
       solution4: 'Erhvervsløsninger',
       tagline: 'Rent vand. Bedre liv.',
     },
     solutionsPage: {
       hero: {
         badge: 'Løsninger til hjemmet',
-        headline: 'Rent, blødt og bakteriefrit vand i hele hjemmet',
-        subheadline: 'Fra kalkfrit vand til bakteriefrie filtre – vi gør vandet i dit hjem renere, blødere og sundere. Løsninger til både byvand og egen brønd.',
+        headline: 'Rent, blødt og sikkert vand i hele hjemmet',
+        subheadline: 'Fra kalkfrit vand til bakteriereducerende filtre – vi gør vandet i dit hjem renere, blødere og sundere. Løsninger til både byvand og egen brønd.',
       },
       filtration: {
         title: 'Vandfiltrering',
-        headline: 'Rent og sikkert bakteriefrit vand i hele hjemmet',
+        headline: 'Rent og sikkert rent og sikkert vand i hele hjemmet',
         description: 'Vores vandfiltre fjerner uønskede stoffer fra vandet i dit hjem – uanset om du er på kommunalt vand eller egen brønd. Filteret kan monteres diskret direkte i rørledningen, så du får rent vand i hele huset uden synlige, sterile filtre, der skæmmer et moderne hjem.',
         benefits: [
           'Fjerner bakterier, virus og parasitter',
@@ -220,8 +220,8 @@ export const translations = {
         cta: 'Få tilbud på blødgøringsanlæg',
       },
       drinking: {
-        title: 'Bakteriefrit vand',
-        headline: 'Bakteriefrit vand direkte fra hane og bruser',
+        title: 'Rent og sikkert vand',
+        headline: 'Rent og sikkert vand direkte fra hane og bruser',
         description: 'Vores filtre monteres direkte på hanen eller bruseren og danner en barriere mod bakterier på det sidste stykke frem til tappestedet – dér, hvor risikoen er størst. Perfekt til hjem, hvor man vil være helt tryg ved vandet, fx med småbørn, ældre eller nedsat immunforsvar.',
         benefits: [
           'Filtrerer bakterier fra ved hane og bruser',
@@ -244,13 +244,13 @@ export const translations = {
       hero: {
         badge: 'Om Clean Water Supply',
         headline: 'Rent, sikkert vand til dig og din familie',
-        subheadline: 'Hos Clean Water Supply hjælper vi danske familier med rent, bakteriefrit drikkevand i hverdagen – så du trygt kan give det bedste vand til dem, du holder mest af.',
+        subheadline: 'Hos Clean Water Supply hjælper vi danske familier med rent, sikkert drikkevand i hverdagen – så du trygt kan give det bedste vand til dem, du holder mest af.',
       },
       mission: {
         badge: 'Vores mission',
         headline: 'Tryghed ved hanen – for hele familien',
-        body: 'Clean Water Supply blev grundlagt i 2023 med ét klart formål: at gøre rent, bakteriefrit drikkevand til en naturlig del af hverdagen i danske hjem. Vandet, vi drikker, laver mad med og giver vores børn, skal man kunne stole på – og det er præcis den tryghed, vi arbejder for. Det kan være så enkelt som en filterkande på køkkenbordet, der giver friskt, filtreret vand til hele familien hver dag.',
-        body2: 'Vi hjælper familier med at få sikkert vand direkte fra hanen med gennemprøvede, certificerede løsninger og personlig rådgivning – fra filterkanden på køkkenbordet til det færdige blødgøringsanlæg. Vi kombinerer moderne teknologi med tæt service og et grundigt fokus på kvalitet, og vi står bag hver eneste løsning, vi leverer. Samme høje standard bringer vi med ud til erhverv og landbrug, hvor rent, bakteriefrit vand beskytter både mennesker og dyr mod bakterier og sygdom.',
+        body: 'Clean Water Supply blev grundlagt i 2023 med ét klart formål: at gøre rent, sikkert drikkevand til en naturlig del af hverdagen i danske hjem. Vandet, vi drikker, laver mad med og giver vores børn, skal man kunne stole på – og det er præcis den tryghed, vi arbejder for. Det kan være så enkelt som en filterkande på køkkenbordet, der giver friskt, filtreret vand til hele familien hver dag.',
+        body2: 'Vi hjælper familier med at få sikkert vand direkte fra hanen med gennemprøvede, certificerede løsninger og personlig rådgivning – fra filterkanden på køkkenbordet til det færdige blødgøringsanlæg. Vi kombinerer moderne teknologi med tæt service og et grundigt fokus på kvalitet, og vi står bag hver eneste løsning, vi leverer. Samme høje standard bringer vi med ud til erhverv og landbrug, hvor rent, sikkert vand beskytter både mennesker og dyr mod bakterier og sygdom.',
       },
       vision: {
         badge: 'Vores vision',
@@ -294,14 +294,14 @@ export const translations = {
       },
       mission: {
         badge: 'Vores mission',
-        headline: 'Vi er her for at gøre bakteriefrit vand tilgængeligt for alle',
-        body: 'Clean Water Supply blev grundlagt i 2023 med én klar vision: at levere vandløsninger af højeste kvalitet til alle – uanset størrelse, behov eller budget. Vi tror på, at bakteriefrit og sikkert vand er en grundlæggende rettighed, ikke et privilegium for de få.',
-        body2: 'Allerede inden grundlæggelsen i 2023 – og lige siden – har vi arbejdet hårdt og målrettet på at kunne præsentere de bedste løsninger, der lever op til vores kunders behov. Vi kombinerer den nyeste teknologi med personlig service og et dybt engagement i kvalitet, og vi er stolte af hvert eneste anlæg, vi installerer, og hvert eneste samarbejde, vi indgår. Vi leverer også løsninger til landbruget, hvor rent, bakteriefrit vand beskytter dyrene mod bakterier og sygdomme og styrker deres sundhed og trivsel.',
+        headline: 'Vi er her for at gøre rent og sikkert vand tilgængeligt for alle',
+        body: 'Clean Water Supply blev grundlagt i 2023 med én klar vision: at levere vandløsninger af højeste kvalitet til alle – uanset størrelse, behov eller budget. Vi tror på, at rent og sikkert vand er en grundlæggende rettighed, ikke et privilegium for de få.',
+        body2: 'Allerede inden grundlæggelsen i 2023 – og lige siden – har vi arbejdet hårdt og målrettet på at kunne præsentere de bedste løsninger, der lever op til vores kunders behov. Vi kombinerer den nyeste teknologi med personlig service og et dybt engagement i kvalitet, og vi er stolte af hvert eneste anlæg, vi installerer, og hvert eneste samarbejde, vi indgår. Vi leverer også løsninger til landbruget, hvor rent, sikkert vand beskytter dyrene mod bakterier og sygdomme og styrker deres sundhed og trivsel.',
       },
       vision: {
         badge: 'Vores vision',
-        headline: 'Et Danmark med bakteriefrit vand til alle',
-        body: 'Vi arbejder mod en fremtid, hvor alle hjem og virksomheder i Danmark har adgang til bakteriefrit og sikkert vand. Vores vision er at blive Danmarks foretrukne leverandør af vandbehandlingsløsninger – bygget på tillid, kvalitet og innovation.',
+        headline: 'Et Danmark med rent og sikkert vand til alle',
+        body: 'Vi arbejder mod en fremtid, hvor alle hjem og virksomheder i Danmark har adgang til rent og sikkert vand. Vores vision er at blive Danmarks foretrukne leverandør af vandbehandlingsløsninger – bygget på tillid, kvalitet og innovation.',
       },
       values: {
         badge: 'Vores værdier',
@@ -346,9 +346,9 @@ export const translations = {
         subheadline: 'Vi har leveret vandbehandlingsløsninger til virksomheder i hele Danmark – fra store internationale kæder til lokale erhverv.',
         items: [
           { title: 'Hoteller & Spa', description: 'Leverer premium vandkvalitet til gæster og beskytter installationer mod kalkskader. Ideel til pool- og spa-faciliteter.' },
-          { title: 'Skoler & Institutioner', description: 'Sikrer bakteriefrit og sundt vand til elever og medarbejdere i hverdagen. Vi forstår kravene til offentlige institutioner.' },
+          { title: 'Skoler & Institutioner', description: 'Sikrer rent og sundt vand til elever og medarbejdere i hverdagen. Vi forstår kravene til offentlige institutioner.' },
           { title: 'Lufthavne & Transport', description: 'Storskalerede vandbehandlingsløsninger til høj trafikerede faciliteter med krav om kontinuerlig drift.' },
-          { title: 'Kontorer & Coworking', description: 'Frisk og bakteriefrit vand direkte til arbejdspladsen – øger produktivitet, trivsel og reducerer plastikforbrug.' },
+          { title: 'Kontorer & Coworking', description: 'Frisk og rent og sikkert vand direkte til arbejdspladsen – øger produktivitet, trivsel og reducerer plastikforbrug.' },
           { title: 'Restauranter & Caféer', description: 'Bedre vandkvalitet giver bedre mad og drikke. Vi leverer filtrerings- og blødgøringsanlæg til de kræsne gastronomiske virksomheder.' },
           { title: 'Industri & Produktion', description: 'Specialtilpassede vandbehandlingsløsninger til industrielle processer, produktion og tekniske installationer.' },
         ],
@@ -359,7 +359,7 @@ export const translations = {
         subheadline: 'Vores erhvervsløsninger leverer målbare resultater på bundlinjen.',
         items: [
           { title: 'Reducerede driftsomkostninger', description: 'Blødgøringsanlæg og filtrering forlænger levetiden på dyre anlæg med op til 50% og reducerer vedligeholdelsesomkostninger markant.' },
-          { title: 'Medarbejdertrivsel', description: 'Bakteriefrit og frisk vand øger medarbejdertrivsel og produktivitet. En lille investering med stor effekt.' },
+          { title: 'Medarbejdertrivsel', description: 'Rent og frisk vand øger medarbejdertrivsel og produktivitet. En lille investering med stor effekt.' },
           { title: 'Færre plastflasker', description: 'Erstat engangsplastflasker med filtreret vand fra hanen – konkret og målbart.' },
           { title: 'Lovkrav opfyldes', description: 'Vi sikrer at jeres vandanlæg overholder alle gældende love, regulativer og branchestandarder.' },
           { title: "Skræddersyede SLA'er", description: 'Vi tilbyder serviceniveauaftaler med garanteret responstid tilpasset jeres operationelle behov og budget.' },
@@ -532,7 +532,7 @@ export const translations = {
     },
     hero: {
       badge: 'Solutions tailored to you and your needs',
-      headline: 'The solution for bacteria-free water',
+      headline: 'The solution for clean, safe water',
       subheadline: 'Effective water treatments for bacteria and limescale. Free consultation, professional installation and ongoing service options – we handle it all.',
       cta1: 'Get a Free Quote',
       cta2: 'Explore Solutions',
@@ -681,12 +681,12 @@ export const translations = {
     solutionsPage: {
       hero: {
         badge: 'Solutions for the home',
-        headline: 'Clean, soft and bacteria-free water throughout your home',
-        subheadline: 'From limescale-free water to bacteria-free filters – we make the water in your home cleaner, softer and healthier. Solutions for both municipal water and your own well.',
+        headline: 'Clean, soft and clean, safe water throughout your home',
+        subheadline: 'From limescale-free water to bacteria-reducing filters – we make the water in your home cleaner, softer and healthier. Solutions for both municipal water and your own well.',
       },
       filtration: {
         title: 'Water Filtration',
-        headline: 'Clean and safe bacteria-free water throughout your home',
+        headline: 'Clean and safe water throughout your home',
         description: 'Our water filters remove unwanted substances from the water in your home – whether you are on municipal water or your own well. The filter can be installed discreetly, directly in the pipe, so you get clean water throughout the house without visible, sterile filters that spoil a modern home.',
         benefits: [
           'Removes bacteria, viruses and parasites',
@@ -715,8 +715,8 @@ export const translations = {
         cta: 'Get a quote for water softener',
       },
       drinking: {
-        title: 'Bacteria-free water',
-        headline: 'Bacteria-free water straight from tap and shower',
+        title: 'Clean, safe water',
+        headline: 'Clean, safe water straight from tap and shower',
         description: 'Our filters mount directly on the tap or shower and form a barrier against bacteria on the final stretch to the outlet – where the risk is greatest. Perfect for homes where you want complete peace of mind about the water, for example with small children, the elderly or reduced immunity.',
         benefits: [
           'Filters out bacteria at the tap and shower',
@@ -739,13 +739,13 @@ export const translations = {
       hero: {
         badge: 'About Clean Water Supply',
         headline: 'Clean, safe water for you and your family',
-        subheadline: 'At Clean Water Supply, we help families get clean, bacteria-free drinking water every day – so you can give the very best water to the people you love, with complete peace of mind.',
+        subheadline: 'At Clean Water Supply, we help families get clean, clean, safe drinking water every day – so you can give the very best water to the people you love, with complete peace of mind.',
       },
       mission: {
         badge: 'Our Mission',
         headline: 'Peace of mind at the tap – for the whole family',
-        body: 'Clean Water Supply was founded in 2023 with one clear purpose: to make clean, bacteria-free drinking water a natural part of everyday life in Danish homes. The water we drink, cook with and give our children should be something we can trust – and that is exactly the peace of mind we work for. It can be as simple as a filter jug on the kitchen counter, giving the whole family fresh, filtered water every day.',
-        body2: "We help families get safe water straight from the tap with proven, certified solutions and personal guidance – from the filter jug on the kitchen counter to a complete water softening system. We combine modern technology with close service and a thorough focus on quality, and we stand behind every solution we deliver. We bring that same high standard to business and agriculture, where clean, bacteria-free water protects both people and animals from bacteria and disease.",
+        body: 'Clean Water Supply was founded in 2023 with one clear purpose: to make clean, clean, safe drinking water a natural part of everyday life in Danish homes. The water we drink, cook with and give our children should be something we can trust – and that is exactly the peace of mind we work for. It can be as simple as a filter jug on the kitchen counter, giving the whole family fresh, filtered water every day.',
+        body2: "We help families get safe water straight from the tap with proven, certified solutions and personal guidance – from the filter jug on the kitchen counter to a complete water softening system. We combine modern technology with close service and a thorough focus on quality, and we stand behind every solution we deliver. We bring that same high standard to business and agriculture, where clean, safe water protects both people and animals from bacteria and disease.",
       },
       vision: {
         badge: 'Our Vision',
@@ -789,14 +789,14 @@ export const translations = {
       },
       mission: {
         badge: 'Our Mission',
-        headline: 'We are here to make bacteria-free water accessible to all',
-        body: 'Clean Water Supply was founded in 2023 with one clear vision: to deliver water solutions of the highest quality to everyone – regardless of size, need, or budget. We believe that bacteria-free and safe water is a fundamental right, not a privilege for the few.',
-        body2: "Even before our founding in 2023 – and ever since – we have worked hard and purposefully to be able to present the best solutions that meet our customers' needs. We combine the latest technology with personal service and a deep commitment to quality, and we are proud of every system we install and every collaboration we enter. We also deliver solutions for agriculture, where clean, bacteria-free drinking water protects animals from bacteria and disease and strengthens their health and welfare.",
+        headline: 'We are here to make clean, safe water accessible to all',
+        body: 'Clean Water Supply was founded in 2023 with one clear vision: to deliver water solutions of the highest quality to everyone – regardless of size, need, or budget. We believe that safe water is a fundamental right, not a privilege for the few.',
+        body2: "Even before our founding in 2023 – and ever since – we have worked hard and purposefully to be able to present the best solutions that meet our customers' needs. We combine the latest technology with personal service and a deep commitment to quality, and we are proud of every system we install and every collaboration we enter. We also deliver solutions for agriculture, where clean, clean, safe drinking water protects animals from bacteria and disease and strengthens their health and welfare.",
       },
       vision: {
         badge: 'Our Vision',
-        headline: 'A Denmark with bacteria-free water for all',
-        body: "We are working towards a future where all homes and businesses in Denmark have access to bacteria-free, safe water. Our vision is to become Denmark's preferred provider of water treatment solutions – built on trust, quality, and innovation.",
+        headline: 'A Denmark with clean, safe water for all',
+        body: "We are working towards a future where all homes and businesses in Denmark have access to clean, safe water. Our vision is to become Denmark's preferred provider of water treatment solutions – built on trust, quality, and innovation.",
       },
       values: {
         badge: 'Our Values',

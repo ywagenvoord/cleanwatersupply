@@ -146,13 +146,13 @@ export default function SektorClient({ sektor }: { sektor: Sektor }) {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="text-3xl font-extrabold text-[#0a2540] mb-3">{da ? 'Rent vand betaler sig – i hele stalden' : 'Clean water pays off – throughout the barn'}</h2>
-              <p className="text-gray-600">{da ? 'Bakterier og biofilm i vandsystemet koster på både dyresundhed og bundlinje. Bakteriefrit vand giver sundere dyr, bedre produktion og lavere medicinforbrug.' : 'Bacteria and biofilm in the water system cost both animal health and the bottom line. Bacteria-free water means healthier animals, better production and lower medicine use.'}</p>
+              <p className="text-gray-600">{da ? 'Bakterier og biofilm i vandsystemet koster på både dyresundhed og bundlinje. Rent og sikkert vand giver sundere dyr, bedre produktion og lavere medicinforbrug.' : 'Bacteria and biofilm in the water system cost both animal health and the bottom line. Clean, safe water means healthier animals, better production and lower medicine use.'}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
                 <h3 className="text-xl font-bold text-[#0a2540] mb-3">{da ? 'Malkekvæg' : 'Dairy cattle'}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  {da ? 'Bakterier og biofilm i vandsystemet svækker køernes sundhed og øger smittetrykket. Rent, bakteriefrit vand – og elektrolyseret vand til pattedypning i stedet for jod – giver:' : 'Bacteria and biofilm in the water system weaken the cows’ health and increase infection pressure. Clean, bacteria-free water – and electrolysed water for teat dipping instead of iodine – provides:'}
+                  {da ? 'Bakterier og biofilm i vandsystemet svækker køernes sundhed og øger smittetrykket. Rent, sikkert vand – og elektrolyseret vand til pattedypning i stedet for jod – giver:' : 'Bacteria and biofilm in the water system weaken the cows’ health and increase infection pressure. Clean, safe water – and electrolysed water for teat dipping instead of iodine – provides:'}
                 </p>
                 <ul className="space-y-2.5">
                   {(da

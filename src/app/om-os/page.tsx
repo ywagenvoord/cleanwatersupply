@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/site'
 
 // Ofte stillede spørgsmål (B2C) – vises på siden + som FAQPage-schema, så AI/Google kan læse dem.
 const OM_OS_FAQS = [
-  { q: 'Hvem er Clean Water Supply?', a: 'Clean Water Supply er en dansk virksomhed, der hjælper familier og virksomheder med rent, bakteriefrit vand i hverdagen. Vi leverer filterkander, filtre til bruser og hane samt blødgøringsanlæg – med personlig rådgivning og professionel montering.' },
+  { q: 'Hvem er Clean Water Supply?', a: 'Clean Water Supply er en dansk virksomhed, der hjælper familier og virksomheder med rent, sikkert vand i hverdagen. Vi leverer filterkander, filtre til bruser og hane samt blødgøringsanlæg – med personlig rådgivning og professionel montering.' },
   { q: 'Hvor ligger I?', a: 'Vi holder til på Strømøvej 3, 8700 Horsens, og hjælper kunder i hele Danmark.' },
   { q: 'Er jeres produkter certificerede?', a: 'Ja. Vores Legionella-filtre er medicinsk godkendte, og vores løsninger er dokumenterede og certificerede efter anerkendte standarder. Vores kande- og filterprodukter er produceret i EU.' },
   { q: 'Hjælper I private, eller kun erhverv?', a: 'Begge dele. Vi har enkle løsninger til hjemmet – fra filterkande til blødgøringsanlæg – og skræddersyede løsninger til hoteller, hospitaler, industri og landbrug.' },

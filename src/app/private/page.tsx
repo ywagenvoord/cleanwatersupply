@@ -14,7 +14,7 @@ export function generateMetadata(): Metadata {
     : 'Privat | Clean Water Supply'
   const ogDesc = birthday
     ? 'Vi fejrer 3 år! Få 30% på alle filterkander og vandkande-filtre – men skynd dig, tilbuddet gælder KUN i dag.'
-    : 'Rent, bakteriefrit og kalkfrit vand til dit hjem.'
+    : 'Rent, sikkert og kalkfrit vand til dit hjem.'
   const ogImages = birthday
     ? [{ url: '/images/og-fodselsdag.jpg', width: 1200, height: 630, alt: 'Clean Water Supply fylder 3 år – spar 30%' }]
     : undefined
@@ -22,7 +22,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Privat – rent og sundt vand til dit hjem | Clean Water Supply',
     description:
-      'Vandløsninger til private hjem: bakteriefrit vand, bakteriefrit vand og kalkfrit vand. Nemme at installere og tilpasse til enhver bolig.',
+      'Vandløsninger til private hjem: rent, sikkert og kalkfrit vand. Nemme at installere og tilpasse til enhver bolig.',
     alternates: { canonical: `${SITE_URL}/private` },
     openGraph: {
       type: 'website',

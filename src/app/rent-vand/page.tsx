@@ -68,7 +68,7 @@ const FEATURED = [
 
 const solutions = [
   { Icon: GlassWater, title: 'Filterkander', text: 'Rent vand med god smag – uden installation.', href: '/vandkander' },
-  { Icon: ShieldCheck, title: 'Filter mod Legionella', text: 'Bakteriefrit vand ved hane og bruser.', href: '/legionella' },
+  { Icon: ShieldCheck, title: 'Filter mod Legionella', text: 'Rent og sikkert vand ved hane og bruser.', href: '/legionella' },
   { Icon: FlaskConical, title: 'Bright Water til vandtanke', text: 'Desinfektion af drikkevand i campingvogn, autocamper og båd.', href: '/bright-water' },
 ]
 

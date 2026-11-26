@@ -29,7 +29,7 @@ export const sektorer: Sektor[] = [
     heroImage: '/images/area-hoteller.jpg',
     intro: 'Hoteller – En overset risikofaktor',
     values: [
-      { title: 'Tryghed for gæster', body: 'Bakteriefrit vand beskytter gæster mod Legionella og andre skadelige mikroorganismer' },
+      { title: 'Tryghed for gæster', body: 'Rent og sikkert vand beskytter gæster mod Legionella og andre skadelige mikroorganismer' },
       { title: 'Effektiv drift og lavere risiko', body: 'Reducerer behovet for kemisk rengøring og sænker vedligeholdelsesomkostningerne' },
       { title: 'Ansvarlig og driftssikker løsning', body: 'Sterile filtre med lang levetid og lavt vedligehold' },
     ],
@@ -49,7 +49,7 @@ export const sektorer: Sektor[] = [
       tagline: 'Use a filter – Know the risk and take responsibility',
       intro: 'Hotels – An overlooked risk factor',
       values: [
-        { title: 'Peace of mind for guests', body: 'Bacteria-free water protects guests against Legionella and other harmful microorganisms' },
+        { title: 'Peace of mind for guests', body: 'Clean, safe water protects guests against Legionella and other harmful microorganisms' },
         { title: 'Efficient operation and lower risk', body: 'Reduces the need for chemical cleaning and lowers maintenance costs' },
         { title: 'Responsible and reliable solution', body: 'Sterile filters with a long lifespan and low maintenance' },
       ],
@@ -72,7 +72,7 @@ export const sektorer: Sektor[] = [
     heroImage: '/images/area-svoemmehaller.jpg',
     intro: 'Svømmehaller – En overset risikofaktor',
     values: [
-      { title: 'Tryghed for besøgende', body: 'Bakteriefrit vand beskytter mod Legionella og andre patogener i hele anlægget' },
+      { title: 'Tryghed for besøgende', body: 'Rent og sikkert vand beskytter mod Legionella og andre patogener i hele anlægget' },
       { title: 'Effektiv drift og lavere risiko', body: 'Rene installationer reducerer behovet for kemisk rengøring og nedetid' },
       { title: 'Ansvarlig og driftssikker løsning', body: 'Sterile filtre med lang levetid og minimalt vedligehold' },
     ],
@@ -92,7 +92,7 @@ export const sektorer: Sektor[] = [
       tagline: 'Use a filter – Know the risk and take responsibility',
       intro: 'Swimming pools – An overlooked risk factor',
       values: [
-        { title: 'Peace of mind for visitors', body: 'Bacteria-free water protects against Legionella and other pathogens throughout the facility' },
+        { title: 'Peace of mind for visitors', body: 'Clean, safe water protects against Legionella and other pathogens throughout the facility' },
         { title: 'Efficient operation and lower risk', body: 'Clean installations reduce the need for chemical cleaning and downtime' },
         { title: 'Responsible and reliable solution', body: 'Sterile filters with a long lifespan and minimal maintenance' },
       ],
@@ -291,7 +291,7 @@ export const sektorer: Sektor[] = [
     videoBody: 'Yverbetændelse (mastitis) er en af de dyreste sygdomme i mælkeproduktionen – med et gennemsnitligt tab på omkring 250 euro pr. ko om året. I videoen ser du, hvordan elektrolyseret vand (hypoklorsyre) kan erstatte jodbaserede produkter til pattedypning: lige så effektivt mod bakterier, men klorfrit, ugiftigt og for blot få cent pr. ko om året.',
     intro: 'ECA-vand i landbruget',
     values: [
-      { title: 'Mikrobiologisk rent vand', body: 'Bakteriefrit vand til dyrene øger drikkelysten og foderoptaget markant' },
+      { title: 'Mikrobiologisk rent vand', body: 'Rent og sikkert vand til dyrene øger drikkelysten og foderoptaget markant' },
       { title: 'Bedre dyrevelværd', body: 'Færre bakterier i vandinstallationerne giver sundere dyr og lavere medicinomkostninger' },
       { title: 'Skånsom løsning', body: 'Kemikaliefri desinfektion der er sikker for dyr og medarbejdere' },
     ],
@@ -313,7 +313,7 @@ export const sektorer: Sektor[] = [
       videoHeading: 'Electrolysed water in agriculture',
       videoBody: 'Mastitis is one of the most expensive diseases in milk production – with an average loss of around EUR 250 per cow per year. In the video you can see how electrolysed water (hypochlorous acid) can replace iodine-based products for teat dipping: just as effective against bacteria, but chlorine-free, non-toxic and for just a few cents per cow per year.',
       values: [
-        { title: 'Microbiologically clean water', body: 'Bacteria-free water for the animals markedly increases their water and feed intake' },
+        { title: 'Microbiologically clean water', body: 'Clean, safe water for the animals markedly increases their water and feed intake' },
         { title: 'Better animal welfare', body: 'Fewer bacteria in the water installations means healthier animals and lower medicine costs' },
         { title: 'Gentle solution', body: 'Chemical-free disinfection that is safe for animals and staff' },
       ],

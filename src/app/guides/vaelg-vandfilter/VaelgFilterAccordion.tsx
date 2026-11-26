@@ -79,7 +79,7 @@ const SOLUTIONS: Solution[] = [
     title: 'Bakteriefilter',
     text: 'Medicinsk certificeret filter ved hane og bruser.',
     tip: 'Til hjemmet anbefaler vi Baclyser® neo TR ved hanen. Ønsker du en fast gennemstrøms-løsning, er cBlue SC3 alternativet.',
-    recommended: { name: 'Baclyser® neo TR (2M) – til hanen', price: 450, img: '/images/baclyser-neo-tr.jpg', href: '/shop/baclyser-neo-tr-2m', why: 'Bakteriefrit vand direkte fra hanen – samme filter, som hospitaler bruger.' },
+    recommended: { name: 'Baclyser® neo TR (2M) – til hanen', price: 450, img: '/images/baclyser-neo-tr.jpg', href: '/shop/baclyser-neo-tr-2m', why: 'Rent og sikkert vand direkte fra hanen – samme filter, som hospitaler bruger.' },
     others: [
       { name: 'cBlue SC3 (inkl. filter)', price: 1120, img: '/images/cblue-sc3-2.jpg', href: '/shop/cblue-sc3' },
       { name: 'Filter Housing – til rørledninger', price: 500, img: '/images/filter-housing.jpg', href: '/shop/filter-housing' },

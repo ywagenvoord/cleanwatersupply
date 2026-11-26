@@ -8,12 +8,12 @@ const URL = `${SITE_URL}/loesninger`
 export const metadata: Metadata = {
   title: 'Vandløsninger til det private hjem | Clean Water Supply',
   description:
-    'Rent, blødt og bakteriefrit vand i hele hjemmet: vandfiltrering, blødgøringsanlæg og bakteriefrie filtre til hane og bruser. Til både byvand og egen brønd.',
+    'Rent, blødt og sikkert vand i hele hjemmet: vandfiltrering, blødgøringsanlæg og bakteriereducerende filtre til hane og bruser. Til både byvand og egen brønd.',
   keywords: [
     'vandløsninger hjem',
     'vandfiltrering privat',
     'blødgøringsanlæg hjem',
-    'bakteriefrit vand',
+    'rent og sikkert vand',
     'kalkfrit vand',
     'brøndvand filter',
   ],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: URL,
     title: 'Vandløsninger til det private hjem | Clean Water Supply',
-    description: 'Rent, blødt og bakteriefrit vand i hele hjemmet – vandfiltrering, blødgøringsanlæg og filtre til hane og bruser.',
+    description: 'Rent, blødt og sikkert vand i hele hjemmet – vandfiltrering, blødgøringsanlæg og filtre til hane og bruser.',
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },

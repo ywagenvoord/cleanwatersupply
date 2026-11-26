@@ -46,7 +46,7 @@ export default function ErhvervClient() {
       title: da ? 'Kirkmayer-anlæg · HOCl-generator' : 'Kirkmayer systems · HOCl generator',
       featured: true,
       body: da
-        ? 'Kirkmayer-anlæggene er HOCl-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkelinjerne, så dyrene får bakteriefrit vand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
+        ? 'Kirkmayer-anlæggene er HOCl-generatorer (BMI-, LAMI- og AMI-serien), der producerer Anolyt – hypoklorsyre – on-site af blot salt, vand og strøm. Et ikke-toksisk desinfektionsmiddel, der eliminerer bakterier, vira og svampe på sekunder. I landbruget er anlæggene især stærke til dyrehold som kyllinge- og svineproduktion: de fjerner og forebygger biofilm i drikkelinjerne, så dyrene får rent og sikkert vand. Bakterierne bekæmpes helt ude ved dyrene, hvilket hæver deres trivsel, sundhed og levestandard. Aktivstoffet er godkendt under ECHA Article 95.'
         : 'The Kirkmayer systems are HOCl generators (BMI, LAMI and AMI series) that produce Anolyte – hypochlorous acid – on-site from only salt, water and electricity. A non-toxic disinfectant that eliminates bacteria, viruses and fungi within seconds. In agriculture the systems are especially strong for livestock such as poultry and pig production: they remove and prevent biofilm in the drinking water lines so the animals get clean drinking water. Bacteria are fought right at the animals, raising their welfare, health and living standard. The active substance is approved under ECHA Article 95.',
       specs: da
         ? ['Anolyt / HOCl', 'Kemikaliefri – on-site', 'Fjerner biofilm i drikkelinjer']
@@ -92,7 +92,7 @@ export default function ErhvervClient() {
   const needs = [
     { Icon: ShieldCheck, label: da ? 'Vi skal sikre mod Legionella' : 'We need to protect against Legionella', target: '#anlaeg-legionella' },
     { Icon: Beaker, label: da ? 'Vi vil desinficere uden kemikalier' : 'We want chemical-free disinfection', target: '#anlaeg-eca' },
-    { Icon: Droplets, label: da ? 'Vi vil sikre bakteriefrit vand til vores dyr' : 'We want clean drinking water for our animals', target: '#anlaeg-eca' },
+    { Icon: Droplets, label: da ? 'Vi vil sikre rent og sikkert vand til vores dyr' : 'We want clean drinking water for our animals', target: '#anlaeg-eca' },
     { Icon: Layers, label: da ? 'Vi vil beskytte hele bygningen' : 'We want to protect the whole building', target: '#anlaeg-central' },
     { Icon: FileCheck2, label: da ? 'Vi har brug for dokumentation' : 'We need documentation', target: '#compliance' },
     { Icon: HelpCircle, label: da ? 'Vi er i tvivl – eller har et andet behov' : 'We are unsure – or have another need', target: '#kontakt' },
@@ -111,7 +111,7 @@ export default function ErhvervClient() {
       sectors: da ? 'Fødevareindustri · Mejeri · Svømmehaller' : 'Food industry · Dairy · Pools',
     },
     {
-      need: da ? 'Bakteriefrit vand til dyr' : 'Clean drinking water for animals',
+      need: da ? 'Rent og sikkert vand til dyr' : 'Clean drinking water for animals',
       system: da ? 'Kirkmayer HOCl-anlæg' : 'Kirkmayer HOCl systems',
       sectors: da ? 'Landbrug · Kyllinge- & svineproduktion' : 'Agriculture · Poultry & pig farming',
     },

@@ -119,7 +119,7 @@ export default function HomePage() {
         <div className="overflow-hidden border-y border-white/30 bg-white/10 backdrop-blur-sm py-3">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...Array(2)].map((_, round) =>
-            ['Legionellabekæmpelse', 'Bakteriefrit vand', 'Kemikaliefri desinfektion',
+            ['Legionellabekæmpelse', 'Rent og sikkert vand', 'Kemikaliefri desinfektion',
              'Nem montering', 'Filter løsninger', 'Blødgøringsanlæg',
              'ISO 9001:2015', 'ISO 13485:2016', 'ISO 140010:2015',
              'Løsninger til erhverv', 'Løsninger til private'].map((cert) => (
@@ -337,7 +337,7 @@ export default function HomePage() {
               {[
                 { Icon: ShieldCheck, title: 'Fremtidssikret løsning', body: 'Salt, vand og elektricitet er de eneste ingredienser, ECA-vand kræver for at blive produceret.' },
                 { Icon: Leaf, title: 'Kemikaliefri', body: 'Der kræves ingen værnemidler ved håndtering eller opbevaring – sikkert for mennesker og miljø.' },
-                { Icon: Zap, title: 'Omkostningseffektiv', body: 'Anlægget renser anlæg til bakteriefrit vand, foderanlæg og overflader – alt på én gang.' },
+                { Icon: Zap, title: 'Omkostningseffektiv', body: 'Anlægget renser anlæg til rent og sikkert vand, foderanlæg og overflader – alt på én gang.' },
               ].map(({ Icon, title, body }) => (
                 <div key={title} className="flex items-start gap-4 rounded-2xl bg-white border border-gray-100 p-5 shadow-sm">
                   <div className="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
@@ -410,7 +410,7 @@ export default function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { num: 3,  color: '#4C9F38', Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre bakteriefrit vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
+              { num: 3,  color: '#4C9F38', Icon: HeartPulse, title: 'Sundhed og trivsel', body: 'Vi forebygger smittespredning ved at sikre rent og sikkert vand i kritiske miljøer og understøtter høj patientsikkerhed.' },
               { num: 6,  color: '#26BDE2', Icon: Droplets, title: 'Rent vand og sanitet', body: 'Vi forbedrer vandkvaliteten i installationer, hvor bakteriekontrol er afgørende, med dokumenterbare løsninger.' },
               { num: 9,  color: '#FD6925', Icon: Building2, title: 'Industri & innovation', body: 'Vores produkter og anlæg styrker den tekniske infrastruktur og en mere fremtidssikret vandbehandling.' },
               { num: 12, color: '#BF8B2E', Icon: Leaf, title: 'Ansvarligt forbrug', body: 'Vores løsninger understøtter en ansvarlig og effektiv tilgang til vandbehandling.' },
@@ -505,7 +505,7 @@ export default function HomePage() {
             <div className="relative rounded-3xl overflow-hidden min-h-[300px] sm:min-h-[420px] group h-full">
               <img
                 src="/images/area-det-private-hjem.jpg"
-                alt="Moderne bruser i privat hjem med rent, bakteriefrit vand"
+                alt="Moderne bruser i privat hjem med rent, sikkert vand"
                 onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&fit=crop' }}
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />

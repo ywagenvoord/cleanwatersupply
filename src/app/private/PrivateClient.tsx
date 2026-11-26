@@ -195,12 +195,12 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 </a>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-3 sm:mb-6 leading-[1.1]">
-                {da ? 'Rent og bakteriefrit vand til dit hjem' : 'Clean and bacteria-free water for your home'}
+                {da ? 'Rent og sikkert vand til dit hjem' : 'Clean and clean, safe water for your home'}
               </h1>
               <p className="text-base sm:text-lg text-white/70 mb-6 sm:mb-10 leading-relaxed">
                 {da
-                  ? 'Beskyt din familie med rent, bakteriefrit og kalkfrit vand. Vores løsninger er nemme at installere, vedligeholde og tilpasse til enhver bolig.'
-                  : 'Protect your family with clean, bacteria-free and limescale-free water. Our solutions are easy to install, maintain and adapt to any home.'}
+                  ? 'Beskyt din familie med rent, sikkert og kalkfrit vand. Vores løsninger er nemme at installere, vedligeholde og tilpasse til enhver bolig.'
+                  : 'Protect your family with clean, safe and limescale-free water. Our solutions are easy to install, maintain and adapt to any home.'}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link href="/shop" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-3 sm:py-4 rounded-full font-bold text-sm transition-all hover:shadow-xl hover:shadow-green-500/20 hover:-translate-y-0.5">
@@ -278,7 +278,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
           <div className="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
             <span className="section-badge">{da ? 'Til hjemmet' : 'For the home'}</span>
             <h2 className="section-heading">{da ? 'Vores løsninger til dig og din familie' : 'Our solutions for you and your family'}</h2>
-            <p className="section-subheading">{da ? 'Uanset om du vil have bakteriefrit vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want bacteria-free water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
+            <p className="section-subheading">{da ? 'Uanset om du vil have rent og sikkert vand, bedre smag eller slippe for kalk – vi har en løsning der passer til dit hjem.' : 'Whether you want clean, safe water, better taste or to get rid of limescale – we have a solution that fits your home.'}</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
             {solutions.map(({ img, title, slug, href, objPos }) => (
@@ -349,7 +349,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
                 <ShieldCheck className="w-4 h-4" /> {da ? 'Legionella-beskyttelse' : 'Legionella protection'}
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0a2540] leading-[1.1] mb-4">
-                {da ? 'Sikr dig og din familie bakteriefrit vand' : 'Protect you and your family with bacteria-free water'}
+                {da ? 'Sikr dig og din familie rent og sikkert vand' : 'Protect you and your family with clean, safe water'}
               </h2>
               <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-7 max-w-xl">
                 {da
@@ -628,7 +628,7 @@ export default function PrivateClient({ shopProducts }: { shopProducts?: Product
       <section className="py-10 sm:py-20 bg-gradient-to-br from-[#0c3a73] to-[#0044c4]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ShieldCheck className="w-9 h-9 sm:w-10 sm:h-10 text-green-400 mx-auto mb-4 sm:mb-5" />
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 sm:mb-4">{da ? 'Klar til rent og bakteriefrit vand i hjemmet?' : 'Ready for clean, bacteria-free water at home?'}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-3 sm:mb-4">{da ? 'Klar til rent og sikkert vand i hjemmet?' : 'Ready for clean, safe water at home?'}</h2>
           <p className="text-white/70 text-base mb-6 sm:mb-8 max-w-xl mx-auto">{da ? 'Kontakt os i dag og få gratis, uforpligtende rådgivning til netop dit hjem.' : 'Contact us today for free, no-obligation advice for your home.'}</p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link href="/kontakt" className="inline-flex items-center justify-center gap-2 bg-[#3aad4a] hover:bg-[#2e9a3d] text-white px-8 py-4 rounded-full font-bold text-sm transition-colors">

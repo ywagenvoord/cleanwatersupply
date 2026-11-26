@@ -48,8 +48,8 @@ export default function LegionellaAnlaegClient() {
       Icon: ShieldCheck,
       title: da ? 'Tryghed for gæster og patienter' : 'Safety for guests and patients',
       body: da
-        ? 'Rent, bakteriefrit vand ved hvert tappested beskytter sårbare brugere – og jeres omdømme.'
-        : 'Clean, bacteria-free water at every outlet protects vulnerable users – and your reputation.',
+        ? 'Rent, sikkert vand ved hvert tappested beskytter sårbare brugere – og jeres omdømme.'
+        : 'Clean, safe water at every outlet protects vulnerable users – and your reputation.',
     },
     {
       Icon: Wind,

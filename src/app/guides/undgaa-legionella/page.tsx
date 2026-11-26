@@ -93,7 +93,7 @@ const PRODUKTER = [
   },
   {
     name: 'cBlue SC3 brusefilter',
-    text: 'Filter direkte på bruseren – trygt, bakteriefrit vand, mens du bader.',
+    text: 'Filter direkte på bruseren – trygt, rent og sikkert vand, mens du bader.',
     img: '/images/cblue-sc3-2.jpg',
     href: '/shop/cblue-sc3',
   },

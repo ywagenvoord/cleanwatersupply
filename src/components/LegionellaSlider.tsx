@@ -98,7 +98,7 @@ export default function LegionellaSlider() {
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-4 mb-8">
               {[
-                { value: '99,9%', label: 'Bakteriefri' },
+                { value: '99,9%', label: 'Bakteriereduktion' },
                 { value: '1000+', label: 'Hospitaler' },
                 { value: '0,2 µm', label: 'Filtrering' },
               ].map((st) => (
