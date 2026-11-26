@@ -4,16 +4,16 @@ import { SITE_URL } from '@/lib/site'
 
 
 export const metadata: Metadata = {
-  title: { absolute: 'Clean Water Supply - En sikker løsning til bakteriefrit vand' },
+  title: { absolute: 'Clean Water Supply – Legionella-filtre, vandfiltre & vandhygiejne' },
   description:
-    'Bakteriefrit vand i hjem og erhverv: medicinsk certificerede Legionella-filtre, blødgøringsanlæg og ECA-vand til hospitaler, hoteller og private hjem. ECHA Article 95 godkendt – 7 log retention.',
+    'Rent, sikkert vand i hjem og erhverv: medicinsk certificerede Legionella-filtre, blødgøringsanlæg og ECA-vand til hospitaler, hoteller og private hjem. ECHA Article 95 godkendt – op til 7 log bakteriereduktion.',
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
     url: SITE_URL,
-    title: 'Clean Water Supply – Bakteriefrit vand & Legionella-filtre',
+    title: 'Clean Water Supply – Legionella-filtre & vandhygiejne',
     description:
-      'Bakteriefrit vand med medicinsk certificerede vandfiltre, blødgøringsanlæg og ECA-vand. 7 log retention mod Legionella, Pseudomonas og Staphylococcus.',
+      'Rent, sikkert vand med medicinsk certificerede vandfiltre, blødgøringsanlæg og ECA-vand. Op til 7 log reduktion af Legionella, Pseudomonas og Staphylococcus.',
     locale: 'da_DK',
     siteName: 'Clean Water Supply',
   },
