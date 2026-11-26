@@ -470,11 +470,11 @@ export const PRODUCTS: Product[] = [
     images:   ['/images/as-tube-2.jpg', '/images/as-tube-3.jpg'],
     lifestyleVideo: '/videos/as-tube-video.mp4',
     videoFirst: true,
-    description: 'Hulfibermembran-filter til vandforsyningen, der renser badevandet for bakterier – så du trygt kan bade dine børn i rent, sikkert vand.',
-    longDescription: 'AS Tube er en udskiftelig hulfibermembran-patron med dokumenteret 7 log-retention – det samme medicinsk godkendte filter, som beskytter patienter på hospitaler og dialyseafdelinger. Monteret i vandforsyningen renser den vandet for bakterier, før det når frem til bruser og hane. Så kan du trygt bade dine børn i rent, sikkert vand – uden bekymring om bakterier i badevandet. Rent vand er særligt vigtigt for de mindste, hvis hud og immunforsvar stadig er sarte.',
+    description: 'Hulfibermembran-filter til vandforsyningen, der reducerer bakterier i badevandet – så du trygt kan bade dine børn i rent, sikkert vand.',
+    longDescription: 'AS Tube er en udskiftelig hulfibermembran-patron med dokumenteret 7 log-retention – det samme medicinsk godkendte filter, som beskytter patienter på hospitaler og dialyseafdelinger. Monteret i vandforsyningen reducerer den bakterier i vandet, før det når frem til bruser og hane. Så kan du trygt bade dine børn i rent, sikkert vand – uden bekymring om bakterier i badevandet. Rent vand er særligt vigtigt for de mindste, hvis hud og immunforsvar stadig er sarte.',
     highlights: ['Trygt, sikkert badevand til børn', 'Samme filter som hospitaler bruger', 'Hulfibermembran · 7 log retention'],
     features: [
-      'Renser badevandet for bakterier – trygt til børn og hele familien',
+      'Reducerer bakterier i badevandet – trygt til børn og hele familien',
       'Samme medicinsk godkendte filter, som bruges på hospitaler',
       'Hulfibermembran til inline installation i vandforsyningen',
       'Dokumenteret 7 log-retention',
@@ -488,7 +488,7 @@ export const PRODUCTS: Product[] = [
       { label: 'Max. temperatur', value: '60°C (70°C i ≤ 30 min)' },
     ],
     faqs: [
-      { q: 'Kan AS Tube bruges i hjemmet?', a: 'Ja. Monteret i vandforsyningen renser den vandet for bakterier, før det når bruser og hane – så du trygt kan bade dine børn i rent, sikkert vand. Det er det samme filter, som bruges på hospitaler.' },
+      { q: 'Kan AS Tube bruges i hjemmet?', a: 'Ja. Monteret i vandforsyningen reducerer den bakterier i vandet, før det når bruser og hane – så du trygt kan bade dine børn i rent, sikkert vand. Det er det samme filter, som bruges på hospitaler.' },
       { q: 'Hvor ellers bruges AS Tube?', a: 'I professionelle inline-installationer på hospitaler, dialyseafdelinger og rene rum.' },
     ],
     useCases: ['Børnefamilier', 'Private hjem', 'Hospitaler', 'Dialyse'],

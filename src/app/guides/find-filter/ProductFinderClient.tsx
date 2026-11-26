@@ -63,7 +63,7 @@ const Q: Record<QId, Question> = {
     q: 'Hvor vil du helst have den ekstra tryghed?',
     options: [
       { label: 'Ved køkkenhanen, hvor jeg henter drikkevand', pts: { bakterie: 5 } },
-      { label: 'En fast installation under vasken, der renser vandet for bakterier', pts: { dualstage: 5, bakterie: 1 } },
+      { label: 'En fast installation under vasken, der reducerer bakterier i vandet', pts: { dualstage: 5, bakterie: 1 } },
       { label: 'Flere steder i hjemmet (både hane og bad)', pts: { bakterie: 3, brusehoved: 2 } },
     ],
   },
